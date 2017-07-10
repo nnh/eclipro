@@ -6,5 +6,22 @@ html
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
   body
-    = yield
+    nav.navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          a.navbar-brand href="#" e-Protocol
+
+        div
+          ul.nav.navbar-nav
+            li
+              a href="#" View Protocols
+            li
+              a href="#" Create New Protocols
+          ul.nav.navbar-nav.navbar-right
+            li
+              a href="#" Login
+
+    .container
+      = yield
