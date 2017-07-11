@@ -1,0 +1,6 @@
+en:
+  layouts:
+    application:
+      view_protocols: View protocols
+      create_new_protocols: Create new protocols
+      sign_in: Sign in

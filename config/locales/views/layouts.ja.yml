@@ -1,0 +1,6 @@
+ja:
+  layouts:
+    application:
+      view_protocols: プロトコルを見る
+      create_new_protocols: プロトコルを新規作成
+      sign_in: ログイン
