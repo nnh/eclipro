@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :protocols
+
   devise_for :users
   patch 'current_user/set_current_user_locale', as: 'set_current_user_locale'
 

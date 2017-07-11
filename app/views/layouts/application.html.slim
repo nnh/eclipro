@@ -16,10 +16,8 @@ html
         div
           ul.nav.navbar-nav
             - if user_signed_in?
-              li
-                a href="#" = t('.view_protocols')
-              li
-                a href="#" = t('.create_new_protocols')
+              li = link_to t('.view_protocols'), protocols_path
+              li = link_to t('.create_new_protocols'), new_protocol_path
 
           ul.nav.navbar-nav.navbar-right
             - if user_signed_in?

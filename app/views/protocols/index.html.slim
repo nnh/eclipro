@@ -1,0 +1,25 @@
+h1 Listing protocols
+
+table
+  thead
+    tr
+      th Title
+      th Status
+      th Version
+      th
+      th
+      th
+
+  tbody
+    - @protocols.each do |protocol|
+      tr
+        td = protocol.title
+        td = protocol.status
+        td = protocol.version
+        td = link_to 'Show', protocol
+        td = link_to 'Edit', edit_protocol_path(protocol)
+        td = link_to 'Destroy', protocol, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Protocol', new_protocol_path
