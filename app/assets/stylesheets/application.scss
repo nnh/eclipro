@@ -16,3 +16,20 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+// bootstrap override
+.form-horizontal .form-group {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+// size
+$params: ( z: 0, xs: 5, s: 10, m: 15, l: 20, xl: 25, xxl: 30 );
+
+@each $key, $val in $params {
+  .m-#{$key} { margin: #{$val}px; }
+  .mt-#{$key} { margin-top: #{$val}px; }
+  .mr-#{$key} { margin-right: #{$val}px; }
+  .mb-#{$key} { margin-bottom: #{$val}px; }
+  .ml-#{$key} { margin-left: #{$val}px; }
+}

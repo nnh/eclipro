@@ -1,0 +1,25 @@
+h3 = t('.sign_up', default: 'Sign up')
+= form_for(resource, as: resource_name, url: registration_path(resource_name),
+                     html: { class: 'form-horizontal', role: 'form'}) do |f|
+  = devise_error_messages!
+
+  .form-group
+    = f.label :name, class: 'control-label'
+    = f.text_field :name, class: 'form-control'
+
+  .form-group
+    = f.label :email, class: 'control-label'
+    = f.email_field :email, class: 'form-control'
+
+  .form-group
+    = f.label :password, class: 'control-label'
+    = f.password_field :password, class: 'form-control'
+
+  .form-group
+    = f.label :password_confirmation, class: 'control-label'
+    = f.password_field :password_confirmation, class: 'form-control'
+
+  .form-group
+    = f.submit t('.sign_up', default: 'Sign up'), class: 'btn btn-default'
+
+= render "devise/shared/links"

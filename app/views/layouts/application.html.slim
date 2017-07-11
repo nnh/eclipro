@@ -15,13 +15,24 @@ html
 
         div
           ul.nav.navbar-nav
-            li
-              a href="#" = t('.view_protocols')
-            li
-              a href="#" = t('.create_new_protocols')
+            - if user_signed_in?
+              li
+                a href="#" = t('.view_protocols')
+              li
+                a href="#" = t('.create_new_protocols')
           ul.nav.navbar-nav.navbar-right
-            li
-              a href="#" = t('.sign_in')
+            - if user_signed_in?
+              li = link_to t('.sign_out'), destroy_user_session_path, method: :delete
+            - else
+              li = link_to t('.sign_in'), new_user_session_path
 
     .container
-      = yield
+      .row
+        - flash.each do |key, value|
+          - type = key == 'alert' ? 'danger' : 'success'
+          .alert.alert-dismissible class="alert-#{type}"
+            button.close data-dismiss="alert"
+              span aria-hidden="true" = '×'
+            = value
+      .row
+        = yield
