@@ -1,8 +1,6 @@
-h1 Editing protocol
+h3 = t('.title')
 
-== render 'form'
+= render 'form'
 
-= link_to 'Show', @protocol
-'  |
-= link_to 'Back', protocols_path
-
+= link_to t('.show'), @protocol, class: 'btn btn-default mr-s'
+= link_to t('.back'), protocols_path, class: 'btn btn-default'

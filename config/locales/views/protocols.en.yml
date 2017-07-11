@@ -1,0 +1,30 @@
+en:
+  protocols:
+    index:
+      protocol_title: Protocol title
+      my_role: My role
+      principal_investigator: Principal Investigator
+      status: Status
+      version: Version
+      filter: Filter protocols
+    new:
+      title: New protocol
+      back: Back
+    edit:
+      title: Edit protocol
+      show: Show
+      back: Back
+    show:
+      edit: Edit
+      back: Back
+    form:
+      save: Save
+      error_message:
+        one: '%{count} error prohibited this protocol from being saved.'
+        other: '%{count} errors prohibited this protocol from being saved.'
+    create:
+      success: Protocol was successfully created.
+    update:
+      success: Protocol was successfully updated.
+    destroy:
+      success: Protocol was successfully destroyed.

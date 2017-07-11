@@ -1,18 +1,10 @@
-= form_for @protocol do |f|
+= form_for @protocol, html: { class: 'form-horizontal', role: 'form' } do |f|
   - if @protocol.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@protocol.errors.count, "error")} prohibited this protocol from being saved:"
-      ul
-        - @protocol.errors.full_messages.each do |message|
-          li = message
+    = model_errors(@protocol)
 
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :status
-    = f.number_field :status
-  .field
-    = f.label :version
-    = f.text_field :version
-  .actions = f.submit
+  .form-group
+    = f.label :title, class: 'control-label'
+    = f.text_field :title, class: 'form-control'
+
+  .form-group
+    = f.submit t('.save'), class: 'btn btn-primary'

@@ -1,0 +1,14 @@
+ja:
+  activerecord: &activerecord
+    models:
+      protocol: プロトコル
+    attributes:
+      protocol:
+        title: タイトル
+    enum:
+      protocol:
+        role:
+          co_author: 共著者
+          author: 著者
+          reviewer: レビューアー
+    # errors:

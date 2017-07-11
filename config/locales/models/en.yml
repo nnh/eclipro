@@ -1,0 +1,14 @@
+en:
+  activerecord: &activerecord
+    models:
+      protocol: Protocol
+    attributes:
+      protocol:
+        title: Title
+    enum:
+      protocol:
+        role:
+          co_author: CoAuthor
+          author: Author
+          reviewer: Reviewer
+    # errors:

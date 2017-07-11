@@ -1,0 +1,28 @@
+ja:
+  protocols:
+    index:
+      protocol_title: プロトコルタイトル
+      my_role: 自分の役割
+      principal_investigator: 主任研究員
+      status: 状態
+      version: バージョン
+      filter: プロトコルをフィルタリング
+    new:
+      title: プロトコル新規作成
+      back: 戻る
+    edit:
+      title: プロトコル編集
+      show: 詳細
+      back: 戻る
+    show:
+      edit: 編集
+      back: 戻る
+    form:
+      save: 保存
+      error_message: '%{count} 件のエラーが発生しました。'
+    create:
+      success: プロトコルを作成しました。
+    update:
+      success: プロトコルを更新しました。
+    destroy:
+      success: プロトコルを削除しました。
