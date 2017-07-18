@@ -17,6 +17,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.clickable-tr {
+  cursor: pointer;
+}
+
 // bootstrap override
 .form-horizontal .form-group {
   margin-left: 0px;

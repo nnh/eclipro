@@ -1,0 +1,27 @@
+h1 Listing contents
+
+table
+  thead
+    tr
+      th Protocol
+      th Section
+      th Body
+      th Status
+      th
+      th
+      th
+
+  tbody
+    - @contents.each do |content|
+      tr
+        td = content.protocol
+        td = content.section
+        td = content.body
+        td = content.status
+        td = link_to 'Show', content
+        td = link_to 'Edit', edit_content_path(content)
+        td = link_to 'Destroy', content, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Content', new_content_path

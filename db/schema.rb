@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170711064519) do
+ActiveRecord::Schema.define(version: 20170718004554) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,31 @@ ActiveRecord::Schema.define(version: 20170711064519) do
     t.datetime "updated_at", null: false
     t.index ["protocol_id"], name: "index_co_author_users_on_protocol_id"
     t.index ["user_id"], name: "index_co_author_users_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "protocol_id"
+    t.bigint "section_id"
+    t.bigint "user_id"
+    t.text "body"
+    t.integer "parent_id"
+    t.boolean "resolve"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["protocol_id"], name: "index_comments_on_protocol_id"
+    t.index ["section_id"], name: "index_comments_on_section_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "contents", force: :cascade do |t|
+    t.bigint "protocol_id"
+    t.bigint "section_id"
+    t.text "body"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["protocol_id"], name: "index_contents_on_protocol_id"
+    t.index ["section_id"], name: "index_contents_on_section_id"
   end
 
   create_table "principal_investigator_users", force: :cascade do |t|
@@ -59,6 +84,16 @@ ActiveRecord::Schema.define(version: 20170711064519) do
     t.index ["user_id"], name: "index_reviewer_users_on_user_id"
   end
 
+  create_table "sections", force: :cascade do |t|
+    t.string "no"
+    t.string "title"
+    t.text "template"
+    t.text "description"
+    t.text "example"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -81,10 +116,26 @@ ActiveRecord::Schema.define(version: 20170711064519) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "versions", force: :cascade do |t|
+    t.string "item_type", null: false
+    t.integer "item_id", null: false
+    t.string "event", null: false
+    t.string "whodunnit"
+    t.text "object"
+    t.datetime "created_at"
+    t.text "object_changes"
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
+  end
+
   add_foreign_key "author_users", "protocols"
   add_foreign_key "author_users", "users"
   add_foreign_key "co_author_users", "protocols"
   add_foreign_key "co_author_users", "users"
+  add_foreign_key "comments", "protocols"
+  add_foreign_key "comments", "sections"
+  add_foreign_key "comments", "users"
+  add_foreign_key "contents", "protocols"
+  add_foreign_key "contents", "sections"
   add_foreign_key "principal_investigator_users", "protocols"
   add_foreign_key "principal_investigator_users", "users"
   add_foreign_key "reviewer_users", "protocols"

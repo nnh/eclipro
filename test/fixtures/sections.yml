@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  'no': MyString
+  title: MyString
+  template: MyText
+  description: MyText
+  example: MyText
+
+two:
+  'no': MyString
+  title: MyString
+  template: MyText
+  description: MyText
+  example: MyText

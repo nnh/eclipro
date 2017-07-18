@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :comments
+  resources :contents
+  resources :sections
   resources :protocols
 
   devise_for :users

@@ -1,0 +1,24 @@
+p#notice = notice
+
+p
+  strong Protocol:
+  = @comment.protocol
+p
+  strong Section:
+  = @comment.section
+p
+  strong User:
+  = @comment.user
+p
+  strong Body:
+  = @comment.body
+p
+  strong Parent:
+  = @comment.parent_id
+p
+  strong Resolve:
+  = @comment.resolve
+
+= link_to 'Edit', edit_comment_path(@comment)
+'  |
+= link_to 'Back', comments_path

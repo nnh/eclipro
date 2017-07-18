@@ -20,7 +20,7 @@ table.table.table-striped
 
 javascript:
   $(function() {
-    $('tr[data-link]').click((e) => {
+    $('.clickable-tr[data-link]').click((e) => {
       window.location = $(e.target.parentElement).data('link');
     });
   });
