@@ -1,4 +1,4 @@
-table.table.table-striped
+table.table
   thead
     tr
       th = t('.protocol_title')
@@ -12,7 +12,7 @@ table.table.table-striped
     - @protocols.each do |protocol|
       tr.clickable-tr data-link="#{protocol_path(protocol)}"
         td = protocol.title
-        td = 'TODO: role'
+        td = protocol.my_role(current_user)
         td = protocol.principal_investigator&.name
         td = protocol.status
         td = protocol.version

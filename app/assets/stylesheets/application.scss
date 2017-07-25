@@ -21,6 +21,10 @@
   cursor: pointer;
 }
 
+.clickable-tr:hover {
+  background-color: #eee;
+}
+
 // bootstrap override
 .form-horizontal .form-group {
   margin-left: 0px;

@@ -17,6 +17,7 @@ class ProtocolsController < ApplicationController
 
   def create
     @protocol = Protocol.new(protocol_params)
+    @protocol.principal_investigator = current_user
 
     if @protocol.save
       redirect_to @protocol, notice: t('.success')
@@ -26,6 +27,7 @@ class ProtocolsController < ApplicationController
   end
 
   def update
+    @protocol.version += 0.001
     if @protocol.update(protocol_params)
       redirect_to @protocol, notice: t('.success')
     else

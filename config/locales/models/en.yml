@@ -5,6 +5,7 @@ en:
     attributes:
       protocol:
         title: Title
+        principal_investigator: Principal investigator
     enum:
       protocol:
         role:

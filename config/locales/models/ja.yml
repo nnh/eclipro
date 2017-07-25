@@ -5,6 +5,7 @@ ja:
     attributes:
       protocol:
         title: タイトル
+        principal_investigator: 主任研究員
     enum:
       protocol:
         role:
