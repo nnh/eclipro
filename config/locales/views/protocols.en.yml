@@ -18,10 +18,64 @@ en:
       edit: Edit
       back: Back
     form:
-      save: Save
       error_message:
         one: '%{count} error prohibited this protocol from being saved.'
         other: '%{count} errors prohibited this protocol from being saved.'
+    step:
+      one:
+        step: Step 1 of 3
+        next: Next
+        one: 1) What is the name or title of the clinical trial?
+        two: 2) If applicable, what is the short title?
+        three: 3) What is the Protocol Identifying Number?
+        four: 4) If available, what is the National Clinical Trial (NCT) Identified Number?
+        five: 5) What is the name of the IND/IDE Sponsor? (Ctrl click to select multiple)
+        five_a: 5a) If "Other" was selected, what is the name of the IND/IDE Sponsor?
+        six: 6) What is the name of the entity funding the clinical trial?
+        seven: 7) Is the study agent a drug, biologic, or device?
+        drug: Drug
+        biologic: Biologic
+        device: Device
+        has_ide: Have you obtained an IDE?
+        has_ind: Have you obtained an IND?
+        'yes': Yes
+        'no': No
+        sponsors:
+          - National Cancer Institute
+          - National Institute of Allergy and Infectious Diseases
+          - National Institute of Dental and Craniofacial Research
+          - National Institute of Diabetes and Digestive and Kidney Diseases
+          - National Heart, Lung, and Blood Institute
+          - National Institute of Mental Health
+          - National Institute of Neurological Disorders and Stroke
+          - National Library of Medicine
+          - National Institute of Child Health and Human Development
+          - National Institute of General Medical Sciences
+          - National Eye Institute
+          - National Institute of Environmental Health Sciences
+          - National Institute on Alcohol Abuse and Alcoholism
+          - National Institute on Drug Abuse
+          - National Institute on Aging
+          - National Institute of Arthritis and Musculoskeletal and Skin Diseases
+          - National Institute of Nursing Research
+          - National Institute on Deafness and Other Communication Disorders
+          - National Human Genome Research Institute
+          - National Institute of Biomedical Imaging and Bioengineering
+          - National Institute on Minority Health and Health Disparities
+          - Center for Scientific Review
+          - Clinical Center
+          - National Center for Advancing Translational Sciences
+          - Center for Information Technology
+          - John E.Fogarty International Center
+          - National Center for Complementary and Integrative Health
+          - Other
+      two:
+        step: Step 2 of 3
+        prev: Previous
+        next: Next
+      three:
+        step: Step 3 of 3
+        prev: Previous
     create:
       success: Protocol was successfully created.
     update:

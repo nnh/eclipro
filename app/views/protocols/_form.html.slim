@@ -2,9 +2,63 @@
   - if @protocol.errors.any?
     = model_errors(@protocol)
 
-  .form-group
-    = f.label :title, class: 'control-label'
-    = f.text_field :title, class: 'form-control'
+  div#step-one
+    = render 'protocols/step/one', f: f, protocol: @protocol
 
-  .form-group
-    = f.submit t('.save'), class: 'btn btn-primary'
+  div#step-two
+    = render 'protocols/step/two', f: f
+
+  div#step-three
+    = render 'protocols/step/three', f: f
+
+javascript:
+  $(function() {
+    $('#go-to-two').click(() => {
+      $('#step-one').hide();
+      $('#step-two').show();
+    });
+    $('#go-to-three').click(() => {
+      $('#step-two').hide();
+      $('#step-three').show();
+    });
+    $('#back-to-one').click(() => {
+      $('#step-one').show();
+      $('#step-two').hide();
+    });
+    $('#back-to-two').click(() => {
+      $('#step-two').show();
+      $('#step-three').hide();
+    });
+
+    $('#step-two').hide();
+    $('#step-three').hide();
+    $('#sponsor-other-form').hide();
+
+    if (!$('#protocol_study_agent_1').prop('checked') && !$('#protocol_study_agent_2').prop('checked')) {
+      $('#has-ind-form').hide();
+    }
+    if (!$('#protocol_study_agent_3').prop('checked')) {
+      $('#has-ide-form').hide();
+    }
+
+    $('#protocol_sponsors').change(() => {
+      if ($('#protocol_sponsors').val().indexOf('27') !== -1) {
+        $('#sponsor-other-form').show();
+      } else {
+        $('#sponsor-other-form').hide();
+      }
+    });
+
+    $('.checkbox-form').change(() => {
+      if ($('#protocol_study_agent_1').prop('checked') || $('#protocol_study_agent_2').prop('checked')) {
+        $('#has-ind-form').show();
+      } else {
+        $('#has-ind-form').hide();
+      }
+      if ($('#protocol_study_agent_3').prop('checked')) {
+        $('#has-ide-form').show();
+      } else {
+        $('#has-ide-form').hide();
+      }
+    });
+  });

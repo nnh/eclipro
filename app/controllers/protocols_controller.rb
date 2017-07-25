@@ -2,6 +2,7 @@ class ProtocolsController < ApplicationController
   before_action :set_protocol, only: [:show, :edit, :update, :destroy]
 
   def index
+    # TODO: 権限
     @protocols = Protocol.all
   end
 
@@ -28,6 +29,7 @@ class ProtocolsController < ApplicationController
 
   def update
     @protocol.version += 0.001
+
     if @protocol.update(protocol_params)
       redirect_to @protocol, notice: t('.success')
     else
@@ -47,6 +49,18 @@ class ProtocolsController < ApplicationController
     end
 
     def protocol_params
-      params.require(:protocol).permit(:title)
+      params.require(:protocol).permit(
+        :title,
+        :short_title,
+        :protocol_number,
+        :nct_number,
+        :sponsor_other,
+        :entity_funding_name,
+        :has_ide,
+        :has_ind,
+        :compliance,
+        sponsors: [],
+        study_agent: []
+      )
     end
 end

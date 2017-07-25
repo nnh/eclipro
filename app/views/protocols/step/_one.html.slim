@@ -1,0 +1,68 @@
+h4.mt-l = t('.step')
+
+.form-group
+  = f.label :title, t('.one'), class: 'control-label'
+  = f.text_field :title, class: 'form-control'
+
+.form-group
+  = f.label :short_title, t('.two'), class: 'control-label'
+  = f.text_field :short_title, class: 'form-control'
+
+.form-group
+  = f.label :protocol_number, t('.three'), class: 'control-label'
+  = f.text_field :protocol_number, class: 'form-control'
+
+.form-group
+  = f.label :nct_number, t('.four'), class: 'control-label'
+  = f.text_field :nct_number, class: 'form-control'
+
+.form-group
+  - sponsors = t('.sponsors')
+  = f.label :sponsors, t('.five'), class: 'control-label'
+  = f.select :sponsors, sponsors.map.with_index { |s, i| [s, i] }, { selected: protocol.sponsors },
+                        { multiple: true, class: 'form-control', rows: 5 }
+
+.form-group#sponsor-other-form
+  = f.label :sponsor_other, t('.five_a'), class: 'control-label'
+  = f.text_field :sponsor_other, class: 'form-control'
+
+.form-group
+  = f.label :entity_funding_name, t('.six'), class: 'control-label'
+  = f.text_field :entity_funding_name, class: 'form-control'
+
+.form-group
+  = f.label :study_agent, t('.seven'), class: 'control-label'
+  br
+  label.checkbox-inline.mr-m.checkbox-form
+    = f.check_box :study_agent, { multiple: true, checked: protocol.study_agent&.include?('1') }, 1
+    = t('.drug')
+  label.checkbox-inline.mr-m.checkbox-form
+    = f.check_box :study_agent, { multiple: true, checked: protocol.study_agent&.include?('2') }, 2
+    = t('.biologic')
+  label.checkbox-inline.mr-m.checkbox-form
+    = f.check_box :study_agent, { multiple: true, checked: protocol.study_agent&.include?('3') }, 3
+    = t('.device')
+
+.form-group#has-ide-form
+  = f.label :has_ide, t('.has_ide'), class: 'control-label'
+  br
+  label.radio-inline.mr-m
+    = f.radio_button :has_ide, 1, checked: protocol.has_ide == 1
+    = t('.yes')
+  label.radio-inline.mr-m
+    = f.radio_button :has_ide, 2, checked: protocol.has_ide == 2
+    = t('.no')
+
+.form-group#has-ind-form
+  = f.label :has_ind, t('.has_ind'), class: 'control-label'
+  br
+  label.radio-inline.mr-m
+    = f.radio_button :has_ind, 1, checked: protocol.has_ind == 1
+    = t('.yes')
+  label.radio-inline.mr-m
+    = f.radio_button :has_ind, 2, checked: protocol.has_ind == 2
+    = t('.no')
+
+.form-group.text-right
+  = button_tag t('.next'), type: 'button', id: 'go-to-two', class: 'btn btn-default'
+  = f.submit class: 'btn btn-primary ml-s'

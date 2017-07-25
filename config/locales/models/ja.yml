@@ -5,6 +5,16 @@ ja:
     attributes:
       protocol:
         title: タイトル
+        short_title: 短縮タイトル
+        protocol_number: プロトコル番号
+        nct_number: NCT番号
+        sponsors: スポンサー
+        sponsor_other: その他スポンサー
+        entity_funding_name: 資金提供企業
+        study_agent: 研究薬剤の種類
+        has_ide: IDEの入手
+        has_ind: INDの入手
+        compliance: コンプライアンス
         principal_investigator: 主任研究員
     enum:
       protocol:

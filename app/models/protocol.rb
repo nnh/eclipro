@@ -1,4 +1,7 @@
 class Protocol < ApplicationRecord
+  serialize :sponsors
+  serialize :study_agent
+
   has_one :principal_investigator_user, dependent: :destroy
   has_one :principal_investigator, through: :principal_investigator_user, source: :user
   has_many :co_author_users, dependent: :destroy

@@ -5,6 +5,16 @@ en:
     attributes:
       protocol:
         title: Title
+        short_title: Short title
+        protocol_number: Protocol number
+        nct_number: NCT number
+        sponsors: Sponsors
+        sponsor_other: Other sponsor
+        entity_funding_name: Entity funding name
+        study_agent: Study agent
+        has_ide: Has IDE
+        has_ind: Has IND
+        compliance: Compliance
         principal_investigator: Principal investigator
     enum:
       protocol:
