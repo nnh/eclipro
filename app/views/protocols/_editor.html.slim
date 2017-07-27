@@ -13,4 +13,6 @@
         .row
           .col-md-12
             h4 = t('.editor')
+            = form_for Content.new, html: { class: 'form-horizontal', role: 'form' } do |f|
+              = f.text_area :body, class: 'tinymce'
             | TODO

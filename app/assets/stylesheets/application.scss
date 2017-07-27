@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require font-awesome
  *= require_tree .
  *= require_self
  */
@@ -40,6 +41,14 @@
   border: 1px solid #ccc;
   padding: 0px 10px 10px 10px;
 }
+
+i.mce-i-icon-book:before {
+    content: '\f02d';
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+  }
 
 // bootstrap override
 .form-horizontal .form-group {
