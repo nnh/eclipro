@@ -15,6 +15,10 @@ ja:
       show: 詳細
       back: 戻る
     show:
+      protocol: プロトコル
+      editor: エディタ
+      admin: 管理者
+      edit_title: プロトコル編集
       edit: 編集
       back: 戻る
     form:
@@ -126,6 +130,16 @@ ja:
         user: ユーザー
         role: 役割
         sections: セクション
+    menu:
+      example: 例
+      instructions: 説明
+      sections: セクション
+      title_page: タイトルページ
+    editor:
+      editor: エディタ
+      section_title: タイトルページ(読み出し専用)
+      principal_investigator: 主任研究員
+      draft_number: バージョン
     create:
       success: プロトコルを作成しました。
     update:

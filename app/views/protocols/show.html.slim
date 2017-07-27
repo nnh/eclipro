@@ -1,12 +1,26 @@
-p
-  strong Title:
-  = @protocol.title
-p
-  strong Status:
-  = @protocol.status
-p
-  strong Version:
-  = @protocol.version
+.col-md-12
+  .row
+    .col-md-9
+      h3 = "#{t('.protocol')}: #{@protocol.title}"
+    .col-md-3.text-right
+      ul.nav.nav-tabs
+        li.active
+          a href="#editor" data-toggle="tab" = t('.editor')
+        li
+          a href="#admin" data-toggle="tab" = t('.admin')
+          / TODO: 権限
 
-= link_to t('.edit'), edit_protocol_path(@protocol), class: 'btn btn-default mr-s'
-= link_to t('.back'), protocols_path, class: 'btn btn-default'
+  .row
+    .col-md-12
+      .tab-content
+        .tab-pane.active#editor
+          .row.mt-l
+            .col-md-4
+              = render 'menu'
+            .col-md-8
+              = render 'editor', protocol: @protocol
+        .tab-pane#admin
+          .row
+            .col-md-12
+              h3 = t('.edit_title')
+              = render 'form'

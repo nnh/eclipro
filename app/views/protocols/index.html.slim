@@ -1,22 +1,23 @@
-table.table
-  thead
-    tr
-      th = t('.protocol_title')
-      th = t('.my_role')
-      th = t('.principal_investigator')
-      th = t('.status')
-      th = t('.version')
-      th
+.col-md-12
+  table.table
+    thead
+      tr
+        th = t('.protocol_title')
+        th = t('.my_role')
+        th = t('.principal_investigator')
+        th = t('.status')
+        th = t('.version')
+        th
 
-  tbody
-    - @protocols.each do |protocol|
-      tr.clickable-tr data-link="#{protocol_path(protocol)}"
-        td = protocol.title
-        td = protocol.my_role(current_user)
-        td = protocol.principal_investigator&.name
-        td = protocol.status
-        td = protocol.version
-        td = 'TODO: clone'
+    tbody
+      - @protocols.each do |protocol|
+        tr.clickable-tr data-link="#{protocol_path(protocol)}"
+          td = protocol.title
+          td = protocol.my_role(current_user)
+          td = protocol.principal_investigator&.name
+          td = protocol.status
+          td = protocol.version
+          td = 'TODO: clone'
 
 javascript:
   $(function() {

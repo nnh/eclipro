@@ -15,6 +15,10 @@ en:
       show: Show
       back: Back
     show:
+      protocol: Protocol
+      editor: Editor
+      admin: Admin
+      edit_title: Edit protocol
       edit: Edit
       back: Back
     form:
@@ -130,6 +134,16 @@ en:
         user: User
         role: Role
         sections: Sections
+    menu:
+      example: Example
+      instructions: Instructions
+      sections: Sections
+      title_page: Title page
+    editor:
+      editor: Editor
+      section_title: Title page (Read only)
+      principal_investigator: Principal Investigator
+      draft_number: Draft number
     create:
       success: Protocol was successfully created.
     update:

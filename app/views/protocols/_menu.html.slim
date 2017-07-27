@@ -1,0 +1,23 @@
+.row
+  .col-md-12
+    ul.nav.nav-pills
+      li
+        a href="#example" data-toggle="tab" class="nav-border" = t('.example')
+      li
+        a href="#instructions" data-toggle="tab" class="nav-border" = t('.instructions')
+      li.active
+        a href="#sections" data-toggle="tab" class="nav-border" = t('.sections')
+
+.row.mt-l
+  .col-md-12
+    .tab-content
+      .tab-pane#example
+        = 'TODO'
+      .tab-pane#instructions
+        = 'TODO'
+      .tab-pane.active#sections
+        ul.nav.nav-pills.nav-stacked
+          li.active
+            a href="#title-page" data-toggle="tab" = t('.title_page')
+          li
+            a href="#protocol-amendment-summary" data-toggle="tab" TODO

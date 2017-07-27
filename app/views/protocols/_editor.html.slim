@@ -1,0 +1,16 @@
+.row
+  .col-md-12
+    .tab-content
+      .tab-pane.active#title-page
+        .row
+          .col-md-12
+            h4 = "#{t('.editor')}: #{t('.section_title')}"
+            p = protocol.title
+            p = "#{t('.principal_investigator')}: #{protocol.principal_investigator.name}"
+            p = "#{t('.draft_number')}: #{protocol.version}"
+            p = protocol.updated_at
+      .tab-pane#protocol-amendment-summary
+        .row
+          .col-md-12
+            h4 = t('.editor')
+            | TODO
