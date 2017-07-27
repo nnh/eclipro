@@ -2,6 +2,7 @@ h4.mt-l = t('.step')
 
 .form-group
   = f.label :title, t('.one'), class: 'control-label'
+  = f.label :title, t('.error'), class: 'control-label', id: 'protocol_title_error'
   = f.text_field :title, class: 'form-control'
 
 .form-group
@@ -65,4 +66,4 @@ h4.mt-l = t('.step')
 
 .form-group.text-right
   = button_tag t('.next'), type: 'button', id: 'go-to-two', class: 'btn btn-default'
-  = f.submit class: 'btn btn-primary ml-s'
+  = f.submit class: 'btn btn-primary ml-s', id: 'step_one_submit_button'

@@ -6,16 +6,29 @@
     = render 'protocols/step/one', f: f, protocol: @protocol
 
   div#step-two
-    = render 'protocols/step/two', f: f
+    = render 'protocols/step/two', f: f, protocol: @protocol
 
   div#step-three
-    = render 'protocols/step/three', f: f
+    = render 'protocols/step/three', f: f, protocol: @protocol
 
 javascript:
   $(function() {
-    $('#go-to-two').click(() => {
-      $('#step-one').hide();
-      $('#step-two').show();
+    $('#go-to-two').click((e) => {
+      if ($('#protocol_title').val().length === 0) {
+        showError(e);
+      } else {
+        let error_fields = $('.title-error')
+        if (error_fields.length > 0) {
+          let title = $('#protocol_title').val();
+          for (let i = 0; i < error_fields.length; i++) {
+            $(error_fields[i]).replaceWith($(error_fields[i]).html());
+          }
+          $('#protocol_title').val(title);
+          $('#protocol_title_error').hide();
+        }
+        $('#step-one').hide();
+        $('#step-two').show();
+      }
     });
     $('#go-to-three').click(() => {
       $('#step-two').hide();
@@ -30,6 +43,7 @@ javascript:
       $('#step-three').hide();
     });
 
+    $('#protocol_title_error').hide();
     $('#step-two').hide();
     $('#step-three').hide();
     $('#sponsor-other-form').hide();
@@ -42,7 +56,7 @@ javascript:
     }
 
     $('#protocol_sponsors').change(() => {
-      if ($('#protocol_sponsors').val().indexOf('27') !== -1) {
+      if ($('#protocol_sponsors').children(':selected').last().text() === "#{I18n.t('protocols.step.one.sponsors').last()}") {
         $('#sponsor-other-form').show();
       } else {
         $('#sponsor-other-form').hide();
@@ -61,4 +75,19 @@ javascript:
         $('#has-ide-form').hide();
       }
     });
+
+    $('#step_one_submit_button').click((e) => {
+      if ($('#protocol_title').val().length === 0) {
+        showError(e);
+      }
+    });
+
+    function showError(e) {
+      e.preventDefault();
+      let div = '<div class="field_with_errors title-error"></div>';
+      $('label[for=protocol_title]').wrap(div);
+      $('#protocol_title').wrap(div);
+      $('#protocol_title_error').show();
+      $('html, body').animate({ scrollTop: $('label[for=protocol_title]').offset().top });
+    }
   });

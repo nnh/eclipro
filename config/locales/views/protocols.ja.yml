@@ -38,6 +38,7 @@ ja:
         has_ind: INDを入手しましたか？
         'yes': はい
         'no': いいえ
+        error: タイトルを入力してください
         sponsors:
           - National Cancer Institute
           - National Institute of Allergy and Infectious Diseases
@@ -71,9 +72,60 @@ ja:
         step: ステップ 2 / 3
         prev: 前へ
         next: 次へ
+        one: |-
+          1) コンプライアンス声明は、人間の被験者に関する研究に必要です。 NIH Office of Science Policyは、以下にあるコンプライアンスのステートメントの1つを使用することを推奨しています。<br>
+          <br>
+          ご希望のものをお選びください：
+        or: もしくは
+        radio_one: |-
+          The trial will be carried out in accordance with International Conference on Harmonisation
+          Good Clinical Practice (ICH GCP) and the following:
+          <br><br>
+          <ul><li>
+          United States (US) Code of Federal Regulations (CFR) applicable to clinical studies
+          (45 CFR Part 46, 21 CFR Part 50, 21 CFR Part 56, 21 CFR Part 312, and/or 21 CFR Part 812)
+          </li></ul>
+          National Institutes of Health (NIH)-funded investigators and clinical trial site staff who
+          are responsible for the conduct, management, or oversight of NIH-funded clinical trials have
+          completed Human Subjects Protection and ICH GCP Training.
+          <br><br>
+          The protocol, informed consent form(s), recruitment materials, and all participant materials
+          will be submitted to the Institutional Review Board (IRB) for review and approval.
+          Approval of both the protocol and the consent form must be obtained before any participant
+          is enrolled.
+          Any amendment to the protocol will require review and approval by the IRB before the changes
+          are implemented to the study.
+          In addition, all changes to the consent form will be IRB-approved; a determination will be
+          made regarding whether a new consent needs to be obtained from participants who provided
+          consent, using a previously approved consent form.
+        radio_two: |-
+          The trial will be conducted in accordance with International Conference on Harmonisation Good
+          Clinical Practice (ICH GCP), applicable United States (US) Code of Federal Regulations (CFR),
+          and the [specify NIH Institute or Center (IC)] Terms and Conditions of Award.
+          The Principal Investigator will assure that no deviation from, or changes to the protocol
+          will take place without prior agreement from the Investigational New Drug (IND) or Investigational
+          Device Exemption (IDE) sponsor, funding agency and documented approval from the Institutional
+          Review Board (IRB), except where necessary to eliminate an immediate hazard(s) to the trial
+          participants.
+          All personnel involved in the conduct of this study have completed Human Subjects Protection
+          and ICH GCP Training.
+          <br><br>
+          The protocol, informed consent form(s), recruitment materials, and all participant materials
+          will be submitted to the IRB for review and approval.
+          Approval of both the protocol and the consent form must be obtained before any participant
+          is enrolled.
+          Any amendment to the protocol will require review and approval by the IRB before the changes
+          are implemented to the study.
+          All changes to the consent form will be IRB approved; a determination will be made regarding
+          whether a new consent needs to be obtained from participants who provided consent, using a
+          previously approved consent form.
       three:
         step: ステップ 3 / 3
         prev: 前へ
+        build: チームを作成する
+        user: ユーザー
+        role: 役割
+        sections: セクション
     create:
       success: プロトコルを作成しました。
     update:

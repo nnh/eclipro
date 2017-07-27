@@ -40,6 +40,7 @@ en:
         has_ind: Have you obtained an IND?
         'yes': Yes
         'no': No
+        error: Title can't be blank
         sponsors:
           - National Cancer Institute
           - National Institute of Allergy and Infectious Diseases
@@ -73,9 +74,62 @@ en:
         step: Step 2 of 3
         prev: Previous
         next: Next
+        one: |-
+          1) A Statement of Compliance is required for research involving human subjects.
+          The NIH Office of Science Policy recommends using one of the statements of compliance found
+          below.
+          <br><br>
+          Please select the one you prefer:
+        or: OR
+        radio_one: |-
+          The trial will be carried out in accordance with International Conference on Harmonisation
+          Good Clinical Practice (ICH GCP) and the following:
+          <br><br>
+          <ul><li>
+          United States (US) Code of Federal Regulations (CFR) applicable to clinical studies
+          (45 CFR Part 46, 21 CFR Part 50, 21 CFR Part 56, 21 CFR Part 312, and/or 21 CFR Part 812)
+          </li></ul>
+          National Institutes of Health (NIH)-funded investigators and clinical trial site staff who
+          are responsible for the conduct, management, or oversight of NIH-funded clinical trials have
+          completed Human Subjects Protection and ICH GCP Training.
+          <br><br>
+          The protocol, informed consent form(s), recruitment materials, and all participant materials
+          will be submitted to the Institutional Review Board (IRB) for review and approval.
+          Approval of both the protocol and the consent form must be obtained before any participant
+          is enrolled.
+          Any amendment to the protocol will require review and approval by the IRB before the changes
+          are implemented to the study.
+          In addition, all changes to the consent form will be IRB-approved; a determination will be
+          made regarding whether a new consent needs to be obtained from participants who provided
+          consent, using a previously approved consent form.
+        radio_two: |-
+          The trial will be conducted in accordance with International Conference on Harmonisation Good
+          Clinical Practice (ICH GCP), applicable United States (US) Code of Federal Regulations (CFR),
+          and the [specify NIH Institute or Center (IC)] Terms and Conditions of Award.
+          The Principal Investigator will assure that no deviation from, or changes to the protocol
+          will take place without prior agreement from the Investigational New Drug (IND) or Investigational
+          Device Exemption (IDE) sponsor, funding agency and documented approval from the Institutional
+          Review Board (IRB), except where necessary to eliminate an immediate hazard(s) to the trial
+          participants.
+          All personnel involved in the conduct of this study have completed Human Subjects Protection
+          and ICH GCP Training.
+          <br><br>
+          The protocol, informed consent form(s), recruitment materials, and all participant materials
+          will be submitted to the IRB for review and approval.
+          Approval of both the protocol and the consent form must be obtained before any participant
+          is enrolled.
+          Any amendment to the protocol will require review and approval by the IRB before the changes
+          are implemented to the study.
+          All changes to the consent form will be IRB approved; a determination will be made regarding
+          whether a new consent needs to be obtained from participants who provided consent, using a
+          previously approved consent form.
       three:
         step: Step 3 of 3
         prev: Previous
+        build: Build Your Team
+        user: User
+        role: Role
+        sections: Sections
     create:
       success: Protocol was successfully created.
     update:

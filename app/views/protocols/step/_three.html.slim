@@ -1,5 +1,20 @@
 h4.mt-l = t('.step')
 
+= link_to t('.build'), '#', class: 'btn btn-default mt-m'
+
+table.table.mt-m
+  thead
+    tr
+      th = t('.user')
+      th = t('.role')
+      th = t('.sections')
+
+  tbody
+    tr
+      td TODO
+      td TODO
+      td TODO
+
 .form-group.text-right
    = button_tag t('.prev'), type: 'button', id: 'back-to-two', class: 'btn btn-default'
    = f.submit class: 'btn btn-primary ml-s'
