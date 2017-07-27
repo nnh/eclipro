@@ -95,6 +95,8 @@ GEM
     faraday (0.12.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.18)
+    font-awesome-rails (4.7.0.2)
+      railties (>= 3.2, < 5.2)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     hashie (3.5.5)
@@ -280,6 +282,7 @@ DEPENDENCIES
   devise
   devise-i18n
   faker
+  font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails
   letter_opener
