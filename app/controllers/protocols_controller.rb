@@ -20,6 +20,11 @@ class ProtocolsController < ApplicationController
     @protocol = Protocol.new(protocol_params)
     @protocol.principal_investigator = current_user
 
+    section_no = Section.pluck(:no)
+    section_no.each do |no|
+      @protocol.contents << Content.new(protocol: @protocol, no: no, body: Section.find_by(no: no).template)
+    end
+
     if @protocol.save
       redirect_to @protocol, notice: t('.success')
     else

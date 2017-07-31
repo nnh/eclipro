@@ -1,0 +1,5 @@
+en:
+  contents:
+    update:
+      success: Content was successfully updated.
+      failure: Content update failed.

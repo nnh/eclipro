@@ -1,23 +1,60 @@
 .row
   .col-md-12
     ul.nav.nav-pills
-      li
+      li#show-example
         a href="#example" data-toggle="tab" class="nav-border" = t('.example')
-      li
+      li#show-instructions
         a href="#instructions" data-toggle="tab" class="nav-border" = t('.instructions')
-      li.active
+      li.active#show-sections
         a href="#sections" data-toggle="tab" class="nav-border" = t('.sections')
 
 .row.mt-l
   .col-md-12
     .tab-content
       .tab-pane#example
-        = 'TODO'
+        - examples = Section.select{ |s| s.example.present? } \
+                            .map{ |s| { no: s.no.gsub('.', '-'), example: s.example } }
+        - examples.each do |example|
+          .hide id="section-#{example[:no]}-example" = example[:example].html_safe
       .tab-pane#instructions
-        = 'TODO'
+        - instructions = Section.select{ |s| s.instructions.present? } \
+                                .map{ |s| { no: s.no.gsub('.', '-'), instructions: s.instructions } }
+        - instructions.each do |example|
+          .hide id="section-#{example[:no]}-instructions" = example[:instructions].html_safe
       .tab-pane.active#sections
         ul.nav.nav-pills.nav-stacked
-          li.active
-            a href="#title-page" data-toggle="tab" = t('.title_page')
-          li
-            a href="#protocol-amendment-summary" data-toggle="tab" TODO
+          li.active#section-title
+            a href="#section-title-page" data-toggle="tab" = t('.title_page')
+          li#section-0
+            a href="#section-0-content" data-toggle="tab" = Section.find_by(no: '0').title
+          li#section-compliance
+            a href="#section-compliance-content" data-toggle="tab" = t('.compliance')
+          - titles = Section.all.reject{ |s| s.no == '0' } \
+                                .map{ |s| { no: s.no.gsub('.', '-'), title: "#{s.no} #{s.title}" } }
+          - titles.each do |title|
+            li id="section-#{title[:no]}"
+              a href="#section-#{title[:no]}-content" data-toggle="tab" = title[:title]
+
+javascript:
+  $(function() {
+    $('#show-example').addClass('disabled');
+    $('#show-instructions').addClass('disabled');
+
+    $('li[id^=section-]').click((e) => {
+      let targetId = e.currentTarget.id;
+      $('div[id$=-example]').addClass('hide');
+      $('div[id$=-instructions]').addClass('hide');
+      $('#' + targetId + '-example').removeClass('hide');
+      if ($('#' + targetId + '-example').length === 0) {
+        $('#show-example').addClass('disabled')
+      } else {
+        $('#show-example').removeClass('disabled')
+      }
+      $('#' + targetId + '-instructions').removeClass('hide');
+      if ($('#' + targetId + '-instructions').length === 0) {
+        $('#show-instructions').addClass('disabled')
+      } else {
+        $('#show-instructions').removeClass('disabled')
+      }
+    });
+  });

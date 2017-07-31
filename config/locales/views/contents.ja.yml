@@ -1,0 +1,5 @@
+ja:
+  contents:
+    update:
+      success: コンテンツの更新をしました。
+      failure: コンテンツの更新に失敗しました。

@@ -1,0 +1,215 @@
+sections:
+  -
+    'no': 0
+    title: Protocol Amendment Summary of Changes Table
+    template: |-
+      <p id="subtitle" style="text-align: left;" data-mce-style="text-align: left;">
+      Summary of Changes from Previous Version:
+      </p>
+      <table class="tblBorder" border="1">
+      <tbody>
+      <tr>
+      <td width="183"><p><strong>Affected Section(s)</strong></p></td>
+      <td width="547"><p><strong>Summary of Revisions Made</strong></p></td>
+      <td width="517"><p><strong>Rationale</strong></p></td>
+      </tr>
+      <tr>
+      <td width="183"><p><strong>&nbsp;</strong></p></td>
+      <td width="547"><p><strong>&nbsp;</strong></p></td>
+      <td width="517"><p><strong>&nbsp;</strong></p></td>
+      </tr>
+      <tr><td width="183"><p><strong>&nbsp;</strong></p></td>
+      <td width="547"><p><strong>&nbsp;</strong></p></td>
+      <td width="517"><p><strong>&nbsp;</strong></p></td>
+      </tr>
+      </tbody>
+      </table>
+    instructions: ''
+    example: ''
+    editable: true
+  -
+    'no': 1
+    title: Protocol Summary
+    template: |-
+      <p><em>No text is to be entered in this section; rather it should be included under the relevant
+      subheadings below.</em></p>
+    instructions: ''
+    example: ''
+    editable: false
+  -
+    'no': 1.1
+    title: Synopsis
+    template: |-
+      <div class="mceNonEditable" contenteditable="false">
+      <table class="mce-item-table">
+      <tbody>
+      <tr>
+      <td width="202"><p><strong>Title:</strong></p></td>
+      <td width="577"><p class="mceEditable" contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr style="vertical-align: top;" data-mce-style="vertical-align: top;">
+      <td width="202"><p><strong>Study Description:</strong></p></td>
+      <td width="577"><p class="mceEditable" contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="202"><p><strong>Objectives:</strong></p></td>
+      <td width="577"><p class="mceEditable" contenteditable="true">Primary Objective:&nbsp;</p>
+      <p class="mceEditable" contenteditable="true">Secondary Objectives:&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="202"><p><strong>Endpoints:</strong></p></td>
+      <td width="577"><p class="mceEditable" contenteditable="true">Primary Endpoint:&nbsp;</p>
+      <p class="mceEditable" contenteditable="true">Secondary Endpoints:&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="202"><p><strong>Study Population:</strong></p></td>
+      <td width="577"><p class="mceEditable" contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="202"><p><strong>Phase:</strong></p></td>
+      <td width="577"><p class="mceEditable" contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr style="vertical-align: top;" data-mce-style="vertical-align: top;">
+      <td width="202"><p><strong>Description of Sites/Facilities Enrolling Participants:</strong></p></td>
+      <td width="577"><p class="mceEditable" contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="202"><p><strong>Description of Study Intervention:</strong></p></td>
+      <td width="577"><p class="mceEditable" contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="202"><p><strong>Study Duration:</strong></p></td>
+      <td width="577"><p class="mceEditable" contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="202"><p><strong>Participant Duration:</strong></p></td>
+      <td width="577"><p class="mceEditable" contenteditable="true">&nbsp;</p></td>
+      </tr>
+      </tbody>
+      </table>
+      </div>
+    instructions:
+      <table class="tblTextAlignTop">
+      <tbody>
+      <tr>
+      <td width="324"><p><strong>Title:</strong></p></td>
+      <td width="923"><p><em>Insert full title.</em></p></td>
+      </tr>
+      <tr>
+      <td width="324"><p><strong>Study Description:</strong></p></td>
+      <td width="923"><p><em>Provide a short description of the protocol, including a brief statement
+      of the study hypothesis. This should be only a few sentences in length. A detailed schematic
+      describing all visits and a schedule of assessments should be included in the <strong>Schema
+      and Schedule of Activities, Sections 1.2 and 1.3, </strong>respectively. </em></p></td>
+      </tr>
+      <tr>
+      <td width="324"><p><strong>Objectives:</strong></p><p><strong>&nbsp;</strong></p></td>
+      <td width="923"><p><em>Include the primary and secondary objectives. These objectives should
+      be the same as the objectives contained in the body of the protocol. These align with Primary
+      Purpose in clinicaltrials.gov.</em></p></td>
+      </tr>
+      <tr>
+      <td width="324"><p><strong>Endpoints:</strong></p></td>
+      <td width="923"><p><em>Include the primary endpoint and secondary endpoints. These endpoints
+      should be the same as the endpoints contained in the body of the protocol. These align with
+      Outcome Measures in clinicaltrials.gov. </em></p></td>
+      </tr>
+      <tr>
+      <td width="324"><p><strong>Study Population:</strong></p></td>
+      <td width="923"><p><em>Specify the sample size, gender, age, demographic group, general health
+      status, and geographic location.</em></p></td>
+      </tr>
+      <tr>
+      <td width="324"><p><strong>Phase:</strong></p></td>
+      <td width="923"><p>Insert phase number.&nbsp;<em>Phase applies to drugs and biologics</em>.</p></td>
+      </tr>
+      <tr>
+      <td width="324"><p><strong>Description of Sites/Facilities Enrolling Participants:</strong></p></td>
+      <td width="923"><p><em>Provide a brief description of planned facilities/participating sites
+      enrolling participants. Indicate general number (quantity) of sites only and if the study is
+      intended to include sites outside of the United States.&nbsp; </em></p></td>
+      </tr>
+      <tr>
+      <td width="324"><p><strong>Description of Study Intervention:</strong></p></td>
+      <td width="923">
+      <p><em>Describe the study intervention. If the study intervention is a drug or biologic, include
+      dose and route of administration.&nbsp; For devices, provide a description of each important
+      component, ingredient, property and the principle of operation of the device.</em></p></td>
+      </tr>
+      <tr>
+      <td width="324"><p><strong>Study Duration:</strong></p></td>
+      <td width="923"><p><em>Estimated time (in months) from when the study opens to enrollment until
+      completion of data analyses.</em></p></td>
+      </tr>
+      <tr>
+      <td width="324"><p><strong>Participant Duration:</strong></p></td>
+      <td width="923"><p><em>Time (e.g., in months) it will take for each individual participant to
+      complete all participant visits.</em></p></td>
+      </tr>
+      </tbody>
+      </table>
+    example: ''
+    editable: true
+  -
+    'no': 1.2
+    title: Schema
+    template: ''
+    instructions:
+      <p><em>This section should include a diagram that provides a quick “snapshot” of the study
+      and ideally be limited to 1 page. Below are examples of schematics</em> <em>that show the level
+      of detail needed to convey an overview of the study design. Depending on the nature of your study,
+      one example may be more appropriate than another.&nbsp; Regardless, the examples included here
+      are intended to guide the development of a schematic that is appropriate to the planned study
+      design and will need to be customized for the protocol. Revise with study-specific information
+      and adapt the diagram to illustrate your study design (e.g., changing method of assignment to
+      study group, adding study arms, visits, etc.). The time point(s) indicated in the schematic should
+      correspond to the time point(s) in <strong>Section 1.3, Schedule of Activities</strong>, e.g.,
+      Visit 1, Day 0; Visit 2, Day 30 ± 7; etc.&nbsp;&nbsp; </em></p>
+    example: |-
+      <p><strong>Example #1</strong> <strong>provided as a guide, upload content as needed: Flow
+      diagram</strong>(e.g., randomized controlled trial)</p>
+      <p><img src=&quot;file?id=1&quot;></p>
+      <p><strong>Example #2</strong> <strong>provided as a guide, upload content as needed: Process
+      diagram</strong>(e.g., randomized controlled trial)</p>
+      <p><strong><img src=&quot;file?id=2&quot;></strong></p>
+      <p><strong>Example #3</strong> <strong>provided as a guide, upload content as needed: Timeline
+      diagram</strong>(e.g., randomized controlled trial)</p>
+      <p><img src=&quot;file?id=3&quot; width=&quot;631&quot; height=&quot;512&quot;></p>
+    editable: true
+  -
+    'no': 1.3
+    title: Schedule of Activities (SoA)
+    template: |-
+      <table style="height: 232px;" width="498" data-mce-style="height: 232px;" class="mce-item-table">
+      <tbody>
+      <tr>
+      <td style="width: 43px;" data-mce-style="width: 43px;">&nbsp;</td>
+      <td style="width: 43px;" data-mce-style="width: 43px;">&nbsp;</td>
+      <td style="width: 43px;" data-mce-style="width: 43px;">&nbsp;</td>
+      <td style="width: 43px;" data-mce-style="width: 43px;">&nbsp;</td>
+      <td style="width: 43px;" data-mce-style="width: 43px;">&nbsp;</td>
+      <td style="width: 43px;" data-mce-style="width: 43px;">&nbsp;</td>
+      <td style="width: 44px;" data-mce-style="width: 44px;">&nbsp;</td>
+      <td style="width: 44px;" data-mce-style="width: 44px;">&nbsp;</td>
+      <td style="width: 44px;" data-mce-style="width: 44px;">&nbsp;</td>
+      <td style="width: 44px;" data-mce-style="width: 44px;">&nbsp;</td>
+      </tr>
+      </tbody>
+      </table>
+    instructions: |-
+      <p><em>The schedule of activities must capture the procedures that will be accomplished at each
+      study visit, and all contact, with study participants e.g., telephone contacts. This
+      includes any tests that are used for eligibility, participant randomization or stratification,
+      or decisions on study intervention discontinuation. Only include procedures that contribute to
+      participant eligibility and study objectives and endpoints. Other procedures should
+      be done sparingly and with consideration, as they may add unnecessary complexity and detract
+      from recruitment. </em></p>
+      <p><em>Allowable windows should be stated for all visits. To determine the appropriate windows,
+      consider feasibility and relevance of the visit time points to study endpoints (e.g., pharmacokinetic
+      (PK) studies may allow little or no variation, with required time points measured in minutes or
+      hours, whereas a 6-month follow-up visit might have a window of several weeks).</em></p>
+    example: |-
+      <p>The schedule below is provided as an example, insert table as appropriate.</p>
+      <p>&nbsp;</p>
+      <p><img src="file?id=4"></p>
+    editable: true

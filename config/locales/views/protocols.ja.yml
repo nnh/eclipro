@@ -135,11 +135,15 @@ ja:
       instructions: 説明
       sections: セクション
       title_page: タイトルページ
+      compliance: コンプライアンス声明
     editor:
       editor: エディタ
-      section_title: タイトルページ(読み出し専用)
+      section_title: タイトルページ (読み出し専用)
       principal_investigator: 主任研究員
       draft_number: バージョン
+      compliance: コンプライアンス声明 (読み出し専用)
+      read_only: (読み出し専用)
+      read_only_text: このセクションは編集できません。コンテンツを編集するには、小見出しをクリックしてください。
     create:
       success: プロトコルを作成しました。
     update:

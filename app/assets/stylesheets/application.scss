@@ -43,12 +43,17 @@
 }
 
 i.mce-i-icon-book:before {
-    content: '\f02d';
-    font-family: FontAwesome;
-    font-style: normal;
-    font-weight: normal;
-    text-decoration: inherit;
-  }
+  content: '\f02d';
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+}
+
+li.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
 
 // bootstrap override
 .form-horizontal .form-group {

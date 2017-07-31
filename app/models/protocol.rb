@@ -11,6 +11,8 @@ class Protocol < ApplicationRecord
   has_many :reviewer_users, dependent: :destroy
   has_many :reviewers, through: :reviewer_users, source: :user
 
+  has_many :contents, dependent: :destroy
+
   enum role: %i(co_author author reviewer)
   enum status: %i(draft under_review authorized)
 

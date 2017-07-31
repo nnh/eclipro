@@ -1,7 +1,7 @@
 .row
   .col-md-12
     .tab-content
-      .tab-pane.active#title-page
+      .tab-pane.active#section-title-page
         .row
           .col-md-12
             h4 = "#{t('.editor')}: #{t('.section_title')}"
@@ -9,10 +9,24 @@
             p = "#{t('.principal_investigator')}: #{protocol.principal_investigator.name}"
             p = "#{t('.draft_number')}: #{protocol.version}"
             p = protocol.updated_at
-      .tab-pane#protocol-amendment-summary
+      .tab-pane#section-compliance-content
         .row
           .col-md-12
-            h4 = t('.editor')
-            = form_for Content.new, html: { class: 'form-horizontal', role: 'form' } do |f|
-              = f.text_area :body, class: 'tinymce'
-            | TODO
+            h4 = "#{t('.editor')}: #{t('.compliance')}"
+            - if protocol.compliance == 1
+              = t('protocols.step.two.radio_one')
+            - if protocol.compliance == 2
+              = t('protocols.step.two.radio_two')
+      - Section.all.each do |section|
+        .tab-pane id="section-#{section.no.gsub('.', '-')}-content"
+          .row
+            .col-md-12
+              - if section.editable
+                h4 = "#{t('.editor')}: #{section.title}"
+                - content = protocol.contents.find_by(no: section.no)
+                = form_for content, html: { class: 'form-horizontal', role: 'form' } do |f|
+                  = f.text_area :body, class: 'tinymce'
+                  = f.submit class: 'btn btn-primary mt-m pull-right'
+              - else
+                h4 = "#{t('.editor')}: #{section.title} #{t('.read_only')}"
+                = t('.read_only_text')

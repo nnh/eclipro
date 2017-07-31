@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :comments
-  resources :contents
+  resources :contents, only: :update
   resources :sections
   resources :protocols
 
