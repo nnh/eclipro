@@ -16,9 +16,9 @@
         .tab-pane.active#editor
           .row.mt-l
             .col-md-4
-              = render 'menu'
+              = render 'menu', sections: @sections, examples: @examples, instructions: @instructions
             .col-md-8
-              = render 'editor', protocol: @protocol
+              = render 'editor', protocol: @protocol, contents: @contents, sections: @sections
         .tab-pane#admin
           .row
             .col-md-12

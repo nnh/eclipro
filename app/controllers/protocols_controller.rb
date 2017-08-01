@@ -7,6 +7,10 @@ class ProtocolsController < ApplicationController
   end
 
   def show
+    @contents = @protocol.contents
+    @sections = Section.all
+    @examples = Section.select { |s| s.example.present? }
+    @instructions = Section.select { |s| s.instructions.present? }
   end
 
   def new

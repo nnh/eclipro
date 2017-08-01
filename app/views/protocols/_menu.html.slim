@@ -1,39 +1,36 @@
 .row
   .col-md-12
     ul.nav.nav-pills
-      li#show-example
-        a href="#example" data-toggle="tab" class="nav-border" = t('.example')
-      li#show-instructions
-        a href="#instructions" data-toggle="tab" class="nav-border" = t('.instructions')
-      li.active#show-sections
+      li.active#show-sections.pull-right
         a href="#sections" data-toggle="tab" class="nav-border" = t('.sections')
+      li#show-instructions.pull-right
+        a href="#instructions" data-toggle="tab" class="nav-border" = t('.instructions')
+      li#show-example.pull-right
+        a href="#example" data-toggle="tab" class="nav-border" = t('.example')
 
 .row.mt-l
   .col-md-12
     .tab-content
       .tab-pane#example
-        - examples = Section.select{ |s| s.example.present? } \
-                            .map{ |s| { no: s.no.gsub('.', '-'), example: s.example } }
         - examples.each do |example|
-          .hide id="section-#{example[:no]}-example" = example[:example].html_safe
+          .hide id="section-#{example.no.gsub('.', '-')}-example" = example.example.html_safe
       .tab-pane#instructions
-        - instructions = Section.select{ |s| s.instructions.present? } \
-                                .map{ |s| { no: s.no.gsub('.', '-'), instructions: s.instructions } }
-        - instructions.each do |example|
-          .hide id="section-#{example[:no]}-instructions" = example[:instructions].html_safe
+        - instructions.each do |instruction|
+          .hide id="section-#{instruction.no.gsub('.', '-')}-instructions"
+            = instruction.instructions.html_safe
       .tab-pane.active#sections
         ul.nav.nav-pills.nav-stacked
           li.active#section-title
             a href="#section-title-page" data-toggle="tab" = t('.title_page')
           li#section-0
-            a href="#section-0-content" data-toggle="tab" = Section.find_by(no: '0').title
+            a href="#section-0-content" data-toggle="tab" = sections.find { |s| s.no == '0' }.title
           li#section-compliance
             a href="#section-compliance-content" data-toggle="tab" = t('.compliance')
-          - titles = Section.all.reject{ |s| s.no == '0' } \
-                                .map{ |s| { no: s.no.gsub('.', '-'), title: "#{s.no} #{s.title}" } }
-          - titles.each do |title|
-            li id="section-#{title[:no]}"
-              a href="#section-#{title[:no]}-content" data-toggle="tab" = title[:title]
+          - sections = sections.reject { |s| s.no == '0' }
+          - sections.each do |section|
+            li id="section-#{section.no.gsub('.', '-')}" style="#{'margin-left:20px' if section.no.include?('.')}"
+              a href="#section-#{section.no.gsub('.', '-')}-content" data-toggle="tab"
+                = "#{section.no} #{section.title}"
 
 javascript:
   $(function() {
