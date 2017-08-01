@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731004553) do
+ActiveRecord::Schema.define(version: 20170801013332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,16 +34,14 @@ ActiveRecord::Schema.define(version: 20170731004553) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.bigint "protocol_id"
-    t.bigint "section_id"
     t.bigint "user_id"
     t.text "body"
     t.integer "parent_id"
     t.boolean "resolve"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["protocol_id"], name: "index_comments_on_protocol_id"
-    t.index ["section_id"], name: "index_comments_on_section_id"
+    t.bigint "content_id"
+    t.index ["content_id"], name: "index_comments_on_content_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -142,8 +140,7 @@ ActiveRecord::Schema.define(version: 20170731004553) do
   add_foreign_key "author_users", "users"
   add_foreign_key "co_author_users", "protocols"
   add_foreign_key "co_author_users", "users"
-  add_foreign_key "comments", "protocols"
-  add_foreign_key "comments", "sections"
+  add_foreign_key "comments", "contents"
   add_foreign_key "comments", "users"
   add_foreign_key "contents", "protocols"
   add_foreign_key "principal_investigator_users", "protocols"

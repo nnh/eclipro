@@ -1,0 +1,49 @@
+.modal-dialog
+  .modal-content
+    .modal-header
+      button.close type="button" data-dismiss="modal" aria-label="Close"
+        span aria-hidden="true" x
+      h4.modal-title = t('.title')
+
+    .modal-body
+      .pull-right
+        label.checkbox-inline.mr-s
+          = check_box_tag 'show-resolved'
+          .checkbox-text = t('.show_resolved')
+
+      .mt-xl#comment-list
+        = render 'list', comments: @comments
+
+      .text-right = button_tag t('.comment'), class: 'btn btn-default', id: 'show-comment-form'
+      .hide#new-comment-form
+        = form_for @comment, remote: true, html: { class: 'form-horizontal', role: 'form' } do |f|
+          = f.hidden_field :content_id, value: @comment.content_id
+          = f.hidden_field :user_id, value: @current_user.id
+          = f.text_area :body, class: 'form-control'
+          .text-right
+            = f.submit class: 'btn btn-default'
+            = button_tag t('.cancel'), class: 'btn btn-default ml-s', id: 'hide-comment-form'
+
+javascript:
+  $(function() {
+    $('#show-comment-form').click(() => {
+      $('#new-comment-form').removeClass('hide');
+      $('#show-comment-form').addClass('hide');
+    });
+    $('#hide-comment-form').click((e) => {
+      e.preventDefault();
+      $('#comment_body').val('');
+      $('#new-comment-form').addClass('hide');
+      $('#show-comment-form').removeClass('hide');
+    });
+
+    $('#show-resolved').change(() => {
+      if ($('#show-resolved').is(':checked')) {
+        $('.resolve-comment').removeClass('hide');
+        $('.checkbox-text').text("#{t('.hide_resolved')}");
+      } else {
+        $('.resolve-comment').addClass('hide');
+        $('.checkbox-text').text("#{t('.show_resolved')}");
+      }
+    });
+  });

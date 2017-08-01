@@ -55,6 +55,15 @@ li.disabled {
   opacity: 0.6;
 }
 
+// comment
+.comment {
+  border: 1px solid #ddd;
+}
+
+.resolve-comment {
+  background-color: #bbddff;
+}
+
 // bootstrap override
 .form-horizontal .form-group {
   margin-left: 0px;
@@ -70,4 +79,12 @@ $params: ( z: 0, xs: 5, s: 10, m: 15, l: 20, xl: 25, xxl: 30 );
   .mr-#{$key} { margin-right: #{$val}px; }
   .mb-#{$key} { margin-bottom: #{$val}px; }
   .ml-#{$key} { margin-left: #{$val}px; }
+}
+
+@each $key, $val in $params {
+  .p-#{$key} { padding: #{$val}px; }
+  .pt-#{$key} { padding-top: #{$val}px; }
+  .pr-#{$key} { padding-right: #{$val}px; }
+  .pb-#{$key} { padding-bottom: #{$val}px; }
+  .pl-#{$key} { padding-left: #{$val}px; }
 }

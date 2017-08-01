@@ -1,0 +1,7 @@
+= form_for comment, remote: true, html: { class: 'form-horizontal', role: 'form' } do |f|
+  = f.hidden_field :content_id, value: comment.content_id
+  = f.hidden_field :user_id, value: current_user.id
+  = f.text_area :body, class: 'form-control'
+  .text-right
+    = f.submit class: 'btn btn-default'
+    = button_tag t('.cancel'), class: 'btn btn-default ml-s', id: 'hide-comment-form'

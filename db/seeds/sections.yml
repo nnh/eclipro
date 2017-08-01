@@ -168,13 +168,13 @@ sections:
     example: |-
       <p><strong>Example #1</strong> <strong>provided as a guide, upload content as needed: Flow
       diagram</strong>(e.g., randomized controlled trial)</p>
-      <p><img src=&quot;file?id=1&quot;></p>
+      <p> Image... </p>
       <p><strong>Example #2</strong> <strong>provided as a guide, upload content as needed: Process
       diagram</strong>(e.g., randomized controlled trial)</p>
-      <p><strong><img src=&quot;file?id=2&quot;></strong></p>
+      <p><strong> Image... </strong></p>
       <p><strong>Example #3</strong> <strong>provided as a guide, upload content as needed: Timeline
       diagram</strong>(e.g., randomized controlled trial)</p>
-      <p><img src=&quot;file?id=3&quot; width=&quot;631&quot; height=&quot;512&quot;></p>
+      <p> Image... </p>
     editable: true
   -
     'no': 1.3
@@ -211,5 +211,5 @@ sections:
     example: |-
       <p>The schedule below is provided as an example, insert table as appropriate.</p>
       <p>&nbsp;</p>
-      <p><img src="file?id=4"></p>
+      <p> Image... </p>
     editable: true

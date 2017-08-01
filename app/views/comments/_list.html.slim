@@ -1,0 +1,16 @@
+- comments.each do |comment|
+  - unless comment.new_record?
+    div class="comment p-m mt-s mb-s #{'resolve-comment hide' if comment.resolve?}"
+      .comment-header
+        f.fa.fa-user.mr-xs
+        = comment.user.name
+        .pull-right
+          f.fa.fa-clock-o.mr-xs
+          = comment.created_at
+      .comment-body
+        = comment.body
+      - if comment.parent_id.nil?
+        .comment-footer.text-right
+          = button_tag t('.reply'), type: :button, class: 'btn btn-default'
+          = link_to t('.resolve'), resolve_comment_path(comment, "comment[resolve]": true),
+                    class: 'btn btn-default', method: :put, remote: true

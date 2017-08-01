@@ -148,6 +148,8 @@ en:
       compliance: Statement of Compliance (Read only)
       read_only: (Read only)
       read_only_text: This section is not editable. Please click a subheading to edit content.
+      history: History
+      comment: Comments
     create:
       success: Protocol was successfully created.
     update:

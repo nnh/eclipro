@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :comments
+  resources :comments, only: [:index, :create, :update, :destroy] do
+    member do
+      put :resolve
+    end
+  end
   resources :contents, only: :update
   resources :sections
   resources :protocols
