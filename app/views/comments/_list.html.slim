@@ -7,10 +7,15 @@
         .pull-right
           f.fa.fa-clock-o.mr-xs
           = comment.created_at
+
       .comment-body
         = comment.body
-      - if comment.parent_id.nil?
+
+      - unless comment.resolve?
         .comment-footer.text-right
           = button_tag t('.reply'), type: :button, class: 'btn btn-default'
-          = link_to t('.resolve'), resolve_comment_path(comment, "comment[resolve]": true),
-                    class: 'btn btn-default', method: :put, remote: true
+          - if comment.parent_id.nil?
+            = link_to t('.resolve'), resolve_content_comment_path(content, comment, "comment[resolve]": true),
+                      class: 'btn btn-default', method: :put, remote: true
+
+      .reply-form id="reply-#{comment.id}"

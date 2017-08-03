@@ -1,0 +1,4 @@
+$('.new-comment-form').empty();
+$('.reply-comment-form').empty();
+$('#add-comment-form').addClass('hide');
+$("#reply-#{reply_id}").html('<%= escape_javascript(render "comment_form", comment: comment, parent_id: parent_id ) %>');

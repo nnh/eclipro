@@ -1,2 +1,4 @@
-$('#comment-list').html('<%= escape_javascript(render "list", comments: @comments) %>');
-$('#hide-comment-form').click();
+$('.new-comment-form').empty();
+$('.reply-comment-form').empty();
+$('#add-comment-form').removeClass('hide');
+$('#comment-list').html('<%= escape_javascript(render "list", content: content, comments: comments) %>');

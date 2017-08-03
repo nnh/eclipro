@@ -25,7 +25,7 @@
                 - content = contents.find { |c| c.no == section.no }
                 .mb-xl
                   .pull-right
-                    = link_to t('.comment'), comments_path(content_id: content.id), remote: true, class: 'btn btn-default'
+                    = link_to t('.comment'), content_comments_path(content), remote: true, class: 'btn btn-default'
                   .pull-right
                     / TODO
                     = button_tag t('.history'), type: 'button',

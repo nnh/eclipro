@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:update, :destroy, :resolve]
-  before_action :set_content, only: :index
+  before_action :set_comment, only: [:resolve]
+  before_action :set_content
 
   def index
     @comments = @content.comments
@@ -10,22 +10,20 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.save
-    @comments = @comment.content.comments
-  end
-
-  def update
-    @comment.update(comment_params)
-    @comments = @comment.content.comments
-  end
-
-  def destroy
-    @comment.destroy
-    @comments = @comment.content.comments
+    @comments = @content.comments
   end
 
   def resolve
     @comment.update(comment_params)
-    @comments = @comment.content.comments
+    @comments = @content.comments
+  end
+
+  def add_comment
+    @comment = @content.comments.build
+  end
+
+  def add_reply
+    @comment = @content.comments.build
   end
 
   private
