@@ -1,16 +1,17 @@
 Rails.application.routes.draw do
-  resources :contents, only: :update do
-    resources :comments, only: [:index, :create] do
-      member do
-        put :resolve
-      end
-      collection do
-        get :add_comment, :add_reply
+  # resources :sections
+  resources :protocols do
+    resources :contents, only: :update do
+      resources :comments, only: [:index, :create] do
+        member do
+          put :resolve
+        end
+        collection do
+          get :comment, :reply
+        end
       end
     end
   end
-  # resources :sections
-  resources :protocols
 
   devise_for :users
   patch 'current_user/set_current_user_locale', as: 'set_current_user_locale'

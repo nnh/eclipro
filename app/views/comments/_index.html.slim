@@ -12,10 +12,10 @@
           .checkbox-text = t('.show_resolved')
 
       .mt-xl#comment-list
-        = render 'list', content: content, comments: comments
+        = render 'list', protocol: protocol, content: content, comments: comments
 
       .text-right#add-comment-form
-        = link_to t('.comment'), add_comment_content_comments_path(content),
+        = link_to t('.comment'), comment_protocol_content_comments_path(protocol, content),
                   class: 'btn btn-default', remote: true
 
       .new-comment-form

@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:resolve]
-  before_action :set_content
+  before_action :set_content, :set_protocol
 
   def index
     set_root_comment
@@ -18,11 +18,11 @@ class CommentsController < ApplicationController
     set_root_comment
   end
 
-  def add_comment
+  def comment
     @comment = @content.comments.build
   end
 
-  def add_reply
+  def reply
     @comment = @content.comments.build
     @parent_id = comment_params[:parent_id]
   end
@@ -34,6 +34,10 @@ class CommentsController < ApplicationController
 
     def set_content
       @content = Content.find(params[:content_id])
+    end
+
+    def set_protocol
+      @protocol = Protocol.find(params[:protocol_id])
     end
 
     def set_root_comment

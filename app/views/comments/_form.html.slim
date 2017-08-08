@@ -1,4 +1,4 @@
-= form_for [content, comment], remote: true, html: { class: 'form-horizontal', role: 'form' } do |f|
+= form_for [protocol, content, comment], remote: true, html: { class: 'form-horizontal', role: 'form' } do |f|
   = f.hidden_field :content_id, value: content.id
   = f.hidden_field :user_id, value: current_user.id
   = f.hidden_field :parent_id, value: parent_id

@@ -25,14 +25,14 @@
                 - content = contents.find { |c| c.no == section.no }
                 .mb-xl
                   .pull-right
-                    = link_to t('.comment'), content_comments_path(content), remote: true, class: 'btn btn-default'
+                    = link_to t('.comment'), protocol_content_comments_path(protocol, content), remote: true, class: 'btn btn-default'
                   .pull-right
                     / TODO
                     = button_tag t('.history'), type: 'button',
                                  id: "show-history-#{section.no.gsub('.', '-')}", class: 'btn btn-default'
                   h4 = "#{t('.editor')}: #{section.title}"
 
-                = form_for content, html: { class: 'form-horizontal', role: 'form' } do |f|
+                = form_for [protocol, content], html: { class: 'form-horizontal', role: 'form' } do |f|
                   = f.text_area :body, class: 'tinymce'
                   = f.submit class: 'btn btn-primary mt-m pull-right'
               - else

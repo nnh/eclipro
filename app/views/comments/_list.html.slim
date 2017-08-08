@@ -13,15 +13,15 @@
 
       - unless comment.resolve?
         .comment-footer.text-right
-          = link_to t('.reply'), add_reply_content_comments_path(content, 'comment[parent_id]': comment.id),
+          = link_to t('.reply'), reply_protocol_content_comments_path(protocol, content, 'comment[parent_id]': comment.id),
                     class: 'btn btn-default', remote: true
           - if comment.parent_id.nil?
-            = link_to t('.resolve'), resolve_content_comment_path(content, comment, 'comment[resolve]': true),
+            = link_to t('.resolve'), resolve_protocol_content_comment_path(protocol, content, comment, 'comment[resolve]': true),
                       class: 'btn btn-default', method: :put, remote: true
 
       - replies = Comment.where(parent_id: comment.id)
       - if replies.present?
         .reply-comments.ml-xl
-          = render 'list', content: content, comments: replies
+          = render 'list', protocol: protocol, content: content, comments: replies
 
       .reply-form id="reply-#{comment.id}"
