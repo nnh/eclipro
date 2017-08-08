@@ -7,8 +7,7 @@ class ProtocolsController < ApplicationController
   end
 
   def show
-    @contents = @protocol.contents
-    @sections = Section.all
+    @contents = @protocol.contents.order(:created_at)
     @examples = Section.select { |s| s.example.present? }
     @instructions = Section.select { |s| s.instructions.present? }
   end
@@ -26,7 +25,9 @@ class ProtocolsController < ApplicationController
 
     section_no = Section.pluck(:no)
     section_no.each do |no|
-      @protocol.contents << Content.new(protocol: @protocol, no: no, body: Section.find_by(no: no).template)
+      section = Section.find_by(no: no)
+      @protocol.contents << Content.new(protocol: @protocol, no: no, title: section.title,
+                                        body: section.template, editable: section.editable)
     end
 
     if @protocol.save

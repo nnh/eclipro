@@ -3,3 +3,12 @@ ja:
     update:
       success: コンテンツの更新をしました。
       failure: コンテンツの更新に失敗しました。
+    history:
+      title: 履歴
+    list:
+      title: タイトル
+      version: バージョン
+      modified: 編集者
+      date: 日付
+      revert: 戻す
+      compare: 比較

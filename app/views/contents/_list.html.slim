@@ -1,0 +1,21 @@
+table.table
+  thead
+    tr
+      th = t('.title')
+      th = t('.version')
+      th = t('.modified')
+      th = t('.date')
+      th
+      th
+  tbody
+    - content.versions.each_with_index.reverse_each do |history, index|
+      tr
+        td = "#{content.no} #{content.title}"
+        td = index
+        td = history.whodunnit
+        td = history.created_at
+        / TODO:
+        td = button_tag t('.revert'), type: :button, class: 'btn btn-warning'
+        / TODO:
+        td = link_to t('.compare'), compare_protocol_content_path(protocol, content, index: index),
+                     remote: true, class: 'btn btn-default'

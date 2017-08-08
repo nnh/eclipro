@@ -3,7 +3,7 @@ sections:
     'no': 0
     title: Protocol Amendment Summary of Changes Table
     template: |-
-      <p id="subtitle" style="text-align: left;" data-mce-style="text-align: left;">
+      <p id="subtitle">
       Summary of Changes from Previous Version:
       </p>
       <table class="tblBorder" border="1">
@@ -47,7 +47,7 @@ sections:
       <td width="202"><p><strong>Title:</strong></p></td>
       <td width="577"><p class="mceEditable" contenteditable="true">&nbsp;</p></td>
       </tr>
-      <tr style="vertical-align: top;" data-mce-style="vertical-align: top;">
+      <tr>
       <td width="202"><p><strong>Study Description:</strong></p></td>
       <td width="577"><p class="mceEditable" contenteditable="true">&nbsp;</p></td>
       </tr>
@@ -69,7 +69,7 @@ sections:
       <td width="202"><p><strong>Phase:</strong></p></td>
       <td width="577"><p class="mceEditable" contenteditable="true">&nbsp;</p></td>
       </tr>
-      <tr style="vertical-align: top;" data-mce-style="vertical-align: top;">
+      <tr>
       <td width="202"><p><strong>Description of Sites/Facilities Enrolling Participants:</strong></p></td>
       <td width="577"><p class="mceEditable" contenteditable="true">&nbsp;</p></td>
       </tr>
@@ -180,19 +180,19 @@ sections:
     'no': 1.3
     title: Schedule of Activities (SoA)
     template: |-
-      <table style="height: 232px;" width="498" data-mce-style="height: 232px;" class="mce-item-table">
+      <table height="232" width="498" class="mce-item-table">
       <tbody>
       <tr>
-      <td style="width: 43px;" data-mce-style="width: 43px;">&nbsp;</td>
-      <td style="width: 43px;" data-mce-style="width: 43px;">&nbsp;</td>
-      <td style="width: 43px;" data-mce-style="width: 43px;">&nbsp;</td>
-      <td style="width: 43px;" data-mce-style="width: 43px;">&nbsp;</td>
-      <td style="width: 43px;" data-mce-style="width: 43px;">&nbsp;</td>
-      <td style="width: 43px;" data-mce-style="width: 43px;">&nbsp;</td>
-      <td style="width: 44px;" data-mce-style="width: 44px;">&nbsp;</td>
-      <td style="width: 44px;" data-mce-style="width: 44px;">&nbsp;</td>
-      <td style="width: 44px;" data-mce-style="width: 44px;">&nbsp;</td>
-      <td style="width: 44px;" data-mce-style="width: 44px;">&nbsp;</td>
+      <td width="43">&nbsp;</td>
+      <td width="43">&nbsp;</td>
+      <td width="43">&nbsp;</td>
+      <td width="43">&nbsp;</td>
+      <td width="43">&nbsp;</td>
+      <td width="43">&nbsp;</td>
+      <td width="44">&nbsp;</td>
+      <td width="44">&nbsp;</td>
+      <td width="44">&nbsp;</td>
+      <td width="44">&nbsp;</td>
       </tr>
       </tbody>
       </table>

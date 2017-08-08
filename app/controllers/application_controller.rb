@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :set_locale
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_paper_trail_whodunnit
 
   def set_locale
     I18n.locale = current_user&.locale || extract_locale_from_accept_language_header
@@ -24,5 +25,9 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.permit(:account_update) do |user|
         user.permit(:name, :email, :password, :password_confirmation, :current_password)
       end
+    end
+
+    def user_for_paper_trail
+      user_signed_in? ? current_user.name : 'Unknown'
     end
 end

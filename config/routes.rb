@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   # resources :sections
   resources :protocols do
     resources :contents, only: :update do
+      member do
+        get :history, :compare
+      end
       resources :comments, only: [:index, :create] do
         member do
           put :resolve

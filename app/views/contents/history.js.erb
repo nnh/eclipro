@@ -1,0 +1,2 @@
+$('#history-modal').html('<%= escape_javascript(render "history", protocol: @protocol, content: @content) %>');
+$('#history-modal').modal('show');

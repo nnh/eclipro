@@ -3,3 +3,12 @@ en:
     update:
       success: Content was successfully updated.
       failure: Content update failed.
+    history:
+      title: History
+    list:
+      title: Title
+      version: Version
+      modified: Modified by
+      date: Date
+      revert: Revert
+      compare: Compare

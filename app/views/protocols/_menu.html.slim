@@ -23,14 +23,14 @@
           li.active#section-title
             a href="#section-title-page" data-toggle="tab" = t('.title_page')
           li#section-0
-            a href="#section-0-content" data-toggle="tab" = sections.find { |s| s.no == '0' }.title
+            a href="#section-0-content" data-toggle="tab" = contents.find { |s| s.no == '0' }.title
           li#section-compliance
             a href="#section-compliance-content" data-toggle="tab" = t('.compliance')
-          - sections = sections.reject { |s| s.no == '0' }
-          - sections.each do |section|
-            li id="section-#{section.no.gsub('.', '-')}" style="#{'margin-left:20px' if section.no.include?('.')}"
-              a href="#section-#{section.no.gsub('.', '-')}-content" data-toggle="tab"
-                = "#{section.no} #{section.title}"
+          - contents = contents.reject { |s| s.no == '0' }
+          - contents.each do |content|
+            li id="section-#{content.no.gsub('.', '-')}" style="#{'margin-left:20px' if content.no.include?('.')}"
+              a href="#section-#{content.no.gsub('.', '-')}-content" data-toggle="tab"
+                = "#{content.no} #{content.title}"
 
 javascript:
   $(function() {

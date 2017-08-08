@@ -48,6 +48,7 @@ gem 'cancancan'
 
 gem 'paper_trail'
 gem 'diff-lcs'
+gem 'diffy'
 gem 'tinymce-rails'
 
 group :development, :test do
