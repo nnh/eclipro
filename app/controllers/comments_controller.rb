@@ -3,19 +3,19 @@ class CommentsController < ApplicationController
   before_action :set_content
 
   def index
-    @comments = @content.comments
+    set_root_comment
     @comment = @content.comments.build
   end
 
   def create
     @comment = Comment.new(comment_params)
     @comment.save
-    @comments = @content.comments
+    set_root_comment
   end
 
   def resolve
-    @comment.update(comment_params)
-    @comments = @content.comments
+    resolve_comments(@comment)
+    set_root_comment
   end
 
   def add_comment
@@ -24,6 +24,7 @@ class CommentsController < ApplicationController
 
   def add_reply
     @comment = @content.comments.build
+    @parent_id = comment_params[:parent_id]
   end
 
   private
@@ -33,6 +34,19 @@ class CommentsController < ApplicationController
 
     def set_content
       @content = Content.find(params[:content_id])
+    end
+
+    def set_root_comment
+      @comments = @content.comments
+      @comments = @comments.reject { |comment| comment.parent_id.present? }
+    end
+
+    def resolve_comments(comment)
+      replies = Comment.where(parent_id: comment.id)
+      replies.each do |reply|
+        resolve_comments(reply)
+      end
+      comment.update(comment_params)
     end
 
     def comment_params
