@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :sections
+  # resources :sections
   resources :protocols
 
   devise_for :users
