@@ -38,6 +38,7 @@ gem 'slim-rails'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem "font-awesome-rails"
+gem 'toastr-rails'
 
 gem 'devise'
 gem 'devise-i18n'

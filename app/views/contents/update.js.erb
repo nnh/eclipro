@@ -1,0 +1,8 @@
+<% if flash[:notice].present? %>
+  toastr.success('<%= escape_javascript(flash[:notice]) %>')
+  <% flash[:notice] = nil %>
+<% end %>
+<% if flash[:alert].present? %>
+  toastr.error('<%= escape_javascript(flash[:alert]) %>')
+  <% flash[:alert] = nil %>
+<% end %>

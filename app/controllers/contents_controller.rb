@@ -9,11 +9,11 @@ class ContentsController < ApplicationController
         @content.update!(content_params)
         @protocol.version += 0.001
         @protocol.save!
-        redirect_to @protocol, notice: t('.success')
+        flash[:notice] = t('.success')
       end
     end
   rescue
-    redirect_to @protocol, alert: t('.failure')
+    flash[:alert] = t('.failure')
   end
 
   def history

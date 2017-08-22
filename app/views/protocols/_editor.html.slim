@@ -29,11 +29,9 @@
                   .pull-right
                     = link_to t('.history'), history_protocol_content_path(protocol, content),
                               remote: true, class: 'btn btn-default'
-                    / = button_tag t('.history'), type: 'button',
-                    /              id: "show-history-#{section.no.gsub('.', '-')}", class: 'btn btn-default'
                   h4 = "#{t('.editor')}: #{content.title}"
 
-                = form_for [protocol, content], html: { class: 'form-horizontal', role: 'form' } do |f|
+                = form_for [protocol, content], html: { class: 'form-horizontal', role: 'form', remote: true } do |f|
                   = f.text_area :body, class: 'tinymce'
                   = f.submit class: 'btn btn-primary mt-m pull-right'
               - else
