@@ -6,4 +6,6 @@
       h4.modal-title = t('.title')
 
     .modal-body
-      = render 'list', protocol: protocol, content: content
+      .history-base
+        = render 'list', protocol: protocol, content: content
+      .history-compare

@@ -47,8 +47,7 @@ gem 'omniauth-google-oauth2'
 gem 'cancancan'
 
 gem 'paper_trail'
-gem 'diff-lcs'
-gem 'diffy'
+gem 'htmldiff'
 gem 'tinymce-rails'
 
 group :development, :test do

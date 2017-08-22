@@ -1,1 +1,2 @@
-$('#history-modal').html('<%= escape_javascript(render "compare", protocol: @protocol, content: @content, compare: @compare) %>');
+$('.history-compare').html('<%= escape_javascript(render "compare", protocol: @protocol, content: @content, compare: @compare) %>');
+$('.history-base').hide();

@@ -21,8 +21,8 @@ class ContentsController < ApplicationController
 
   def compare
     body = @content.versions[params[:index].to_i].changeset[:body]
-    before = body[0]
-    after = body[1]
+    @compare = Content.diff(body[0], body[1])
+    @compare.gsub!('contenteditable="true"', '')
   end
 
   private

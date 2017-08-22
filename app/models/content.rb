@@ -1,4 +1,8 @@
 class Content < ApplicationRecord
+  class << self
+    include HTMLDiff
+  end
+
   belongs_to :protocol
   has_many :comments, dependent: :destroy
 

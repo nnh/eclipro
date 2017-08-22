@@ -1,1 +1,11 @@
-= content.body
+.text-right = button_tag t('.back'), type: :button, class: 'btn btn-default', id: 'history-compare-back'
+hr
+= @compare.html_safe
+
+javascript:
+  $(function() {
+    $('#history-compare-back').click(() => {
+      $('.history-compare').empty();
+      $('.history-base').show();
+    });
+  });

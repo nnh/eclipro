@@ -69,6 +69,14 @@ li.disabled {
   vertical-align: top;
 }
 
+del {
+  background-color: #ff9e9e;
+}
+
+ins {
+  background-color: #9eff9e
+}
+
 // bootstrap override
 .form-horizontal .form-group {
   margin-left: 0px;

@@ -12,3 +12,5 @@ en:
       date: Date
       revert: Revert
       compare: Compare
+    compare:
+      back: Back
