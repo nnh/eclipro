@@ -12,5 +12,9 @@ en:
       date: Date
       revert: Revert
       compare: Compare
+      are_you_sure: Would you like to revert to this version?
     compare:
       back: Back
+    revert:
+      success: The content has been reverted to the previous version.
+      failure: Could not revert content to previous version.

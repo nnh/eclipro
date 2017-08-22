@@ -12,5 +12,9 @@ ja:
       date: 日付
       revert: 戻す
       compare: 比較
+      are_you_sure: このバージョンに戻しますか？
     compare:
       back: 戻る
+    revert:
+      success: コンテンツを前のバージョンに戻しました。
+      failure: コンテンツを前のバージョンに戻せませんでした。

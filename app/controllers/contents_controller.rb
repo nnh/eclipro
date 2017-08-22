@@ -25,6 +25,15 @@ class ContentsController < ApplicationController
     @compare.gsub!('contenteditable="true"', '')
   end
 
+  def revert
+    @content = @content.versions[params[:index].to_i].reify
+    if @content.save
+      redirect_to @protocol, notice: t('.success')
+    else
+      redirect_to @protocol, alert: t('.failure')
+    end
+  end
+
   private
     def set_content
       @content = Content.find(params[:id])
