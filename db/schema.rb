@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170808060701) do
+ActiveRecord::Schema.define(version: 20170824020135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "author_users", force: :cascade do |t|
-    t.bigint "protocol_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["protocol_id"], name: "index_author_users_on_protocol_id"
+    t.bigint "content_id"
+    t.index ["content_id"], name: "index_author_users_on_content_id"
     t.index ["user_id"], name: "index_author_users_on_user_id"
   end
 
@@ -86,11 +86,11 @@ ActiveRecord::Schema.define(version: 20170808060701) do
   end
 
   create_table "reviewer_users", force: :cascade do |t|
-    t.bigint "protocol_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["protocol_id"], name: "index_reviewer_users_on_protocol_id"
+    t.bigint "content_id"
+    t.index ["content_id"], name: "index_reviewer_users_on_content_id"
     t.index ["user_id"], name: "index_reviewer_users_on_user_id"
   end
 
@@ -138,7 +138,6 @@ ActiveRecord::Schema.define(version: 20170808060701) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
-  add_foreign_key "author_users", "protocols"
   add_foreign_key "author_users", "users"
   add_foreign_key "co_author_users", "protocols"
   add_foreign_key "co_author_users", "users"
@@ -147,6 +146,5 @@ ActiveRecord::Schema.define(version: 20170808060701) do
   add_foreign_key "contents", "protocols"
   add_foreign_key "principal_investigator_users", "protocols"
   add_foreign_key "principal_investigator_users", "users"
-  add_foreign_key "reviewer_users", "protocols"
   add_foreign_key "reviewer_users", "users"
 end

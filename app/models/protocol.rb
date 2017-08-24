@@ -6,15 +6,9 @@ class Protocol < ApplicationRecord
   has_one :principal_investigator, through: :principal_investigator_user, source: :user
   has_many :co_author_users, dependent: :destroy
   has_many :co_authors, through: :co_author_users, source: :user
-  has_many :author_users, dependent: :destroy
-  has_many :authors, through: :author_users, source: :user
-  has_many :reviewer_users, dependent: :destroy
-  has_many :reviewers, through: :reviewer_users, source: :user
-
   has_many :contents, dependent: :destroy
 
-  enum role: %i(co_author author reviewer)
-  enum status: %i(draft under_review authorized)
+  enum status: %i(in_progress final)
 
   validates :title, presence: true
 
@@ -35,11 +29,17 @@ class Protocol < ApplicationRecord
   end
 
   def author?(user)
-    author_ids.include?(user.id)
+    contents.each do |content|
+      return true if content.author?(user)
+    end
+    false
   end
 
   def reviewer?(user)
-    reviewer_ids.include?(user.id)
+    contents.each do |content|
+      return true if content.reviewer?(user)
+    end
+    false
   end
 
   def principal_investigator?(user)
