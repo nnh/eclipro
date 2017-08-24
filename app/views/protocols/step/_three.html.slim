@@ -1,7 +1,6 @@
 h4.mt-l = t('.step')
 
-= link_to t('.build'), '#', class: 'btn btn-default mt-m'
-/ TODO:
+= link_to t('.build'), build_team_form_protocols_path(protocol_id: protocol.id), class: 'btn btn-default mt-m', remote: true
 
 table.table.mt-m
   thead
@@ -11,14 +10,12 @@ table.table.mt-m
       th = t('.sections')
       th
 
-  tbody
-    tr
-      td TODO
-      td TODO
-      td TODO
-      td TODO delete
+  tbody#team-member-list
+    = render 'protocols/step/team_member', protocol: protocol
 
 .form-group.text-right
    = button_tag t('.prev'), type: 'button', id: 'back-to-two', class: 'btn btn-default'
    = f.submit class: 'btn btn-primary ml-s'
    / TODO: New じゃない時にExport、Finalizeボタン
+
+.modal.fade#team-modal tab-index="1" role="dialog" aria-hidden="true"

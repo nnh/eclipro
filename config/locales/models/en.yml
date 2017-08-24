@@ -20,6 +20,8 @@ en:
       protocol:
         role:
           co_author: CoAuthor
+          author_all: Author(All)
+          reviewer_all: Reviewer(All)
           author: Author
           reviewer: Reviewer
     # errors:

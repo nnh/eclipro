@@ -1,0 +1,2 @@
+$('#team-modal').html('<%= escape_javascript(render "build_team", users: @users, sections: @sections) %>');
+$('#team-modal').modal('show');

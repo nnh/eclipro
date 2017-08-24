@@ -9,6 +9,7 @@ class Protocol < ApplicationRecord
   has_many :contents, dependent: :destroy
 
   enum status: %i(in_progress final)
+  enum role: %i(co_author author_all reviewer_all author reviewer)
 
   validates :title, presence: true
 
@@ -44,5 +45,9 @@ class Protocol < ApplicationRecord
 
   def principal_investigator?(user)
     principal_investigator == user
+  end
+
+  def participant?(user)
+    co_author?(user) || author?(user) || reviewer?(user) || principal_investigator?(user)
   end
 end

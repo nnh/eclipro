@@ -1,0 +1,97 @@
+.modal-dialog
+  .modal-content
+    .modal-header
+      button.close type="button" data-dismiss="modal" aria-label="Close"
+        span aria-hidden="true" x
+      h4.modal-title = t('.title')
+
+    .modal-body
+      p = t('.text')
+
+      = form_tag add_team_protocols_path, html: { class: 'form-horizontal', role: 'form' } do
+        .form-group
+          = label_tag 'add_user_id', t('.user_label'), class: 'control-label'
+          = select_tag 'add_user_id', options_from_collection_for_select(users, :id, :name),
+                       class: 'form-control', include_blank: true
+        .form-group
+          = label_tag 'add_role', t('.role_label'), class: 'control-label'
+          - roles = Protocol.roles.map { |key, _value| [t("activerecord.enum.protocol.role.#{key}"), key] }
+          = select_tag 'add_role', options_for_select(roles), class: 'form-control', include_blank: true
+        .form-group.hide#add-sections
+          - sections.each do |section|
+            div
+              label
+                = check_box_tag 'add_section[]', section.no, false,
+                                class: 'section-checkbox', id: "add-section-#{section.no}"
+                = " #{section.title}"
+        .form-group.pull-right
+          = button_tag t('.cancel'), class: 'btn btn-default', id: 'add-team-cancel-button'
+          = submit_tag t('.add_user'), class: 'btn btn-default', id: 'add-team-button'
+
+javascript:
+  $(function() {
+    function changeButtonState(state) {
+      $('#add-team-button').prop('disabled', state);
+    }
+
+    function checkState() {
+      let selected = $('#add_role').val();
+      if (selected != '' && $('#add_user').val() != '') {
+        if (selected == 'author' || selected == 'reviewer') {
+          if ($('.section-checkbox:checked').length != 0) {
+           changeButtonState(false);
+          } else {
+            changeButtonState(true);
+          }
+        } else {
+          changeButtonState(false);
+        }
+      } else {
+        changeButtonState(true);
+      }
+    }
+
+    $('#add_user').change(() => {
+      checkState();
+    });
+
+    $('#add_role').change(() => {
+      let selected = $('#add_role').val();
+      if (selected == 'author' || selected == 'reviewer') {
+        $('#add-sections').removeClass('hide');
+      } else {
+        $('#add-sections').addClass('hide');
+      }
+      checkState();
+    });
+    changeButtonState(true);
+
+    $('.section-checkbox').change(() => {
+      checkState();
+    });
+
+    $('#add-team-cancel-button').click((e) => {
+      e.preventDefault();
+      $('#team-modal').modal('hide');
+    });
+
+    // 'remote: true' does not work, use this instead.
+    $('#add-team-button').click((e) => {
+      e.preventDefault();
+      let selected_sections = []
+      let checked = $('.section-checkbox:checked');
+      for (let i = 0; i < checked.length; i++) {
+        selected_sections.push($($('.section-checkbox:checked')[i]).val());
+      }
+      $.ajax({
+        type: "post",
+        dataType: 'script',
+        data: {
+          user_id: $('#add_user_id').val(),
+          role: $('#add_role').val(),
+          sections: selected_sections
+        },
+        url: '#{add_team_protocols_path}'
+      });
+    });
+  });

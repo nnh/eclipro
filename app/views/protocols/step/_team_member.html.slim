@@ -1,0 +1,18 @@
+/ - protocol.co_authors.each do |co|
+/   tr
+/     td = co.name
+/     td = t('activerecord.enum.protocol.role.co_author')
+/     td = Section.all.reject { |section| no.include?('.') }.pluck(:no).join(',')
+/     td TODO delete
+/ - protocol.contents.includes(:authors).map { |content| content.authors }.flatten.each do | author |
+/   tr
+/     td = author.name
+/     td = t('activerecord.enum.protocol.role.author')
+/     td = Content.includes(:author_users).where("author_users.user_id=?", author.id).pluck(:no).join(',')
+/     td TODO delete
+/ - protocol.contents.includes(:reviewers).map { |content| content.reviewers }.flatten.each do | reviewer |
+/   tr
+/     td = reviewer.name
+/     td = t('activerecord.enum.protocol.role.reviewer')
+/     td = Content.includes(:reviewer_users).where("reviewer_users.user_id=?", reviewer.id).pluck(:no).join(',')
+/     td TODO delete

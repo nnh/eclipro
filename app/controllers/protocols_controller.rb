@@ -52,10 +52,49 @@ class ProtocolsController < ApplicationController
     redirect_to protocols_url, notice: t('.success')
   end
 
+  def build_team_form
+    if params[:protocol_id].nil?
+      @users = User.all.reject { |user| user == current_user }
+    else
+      @users = User.all.reject { |user| Protocol.find(params[:protocol_id]).participant?(user) }
+    end
+    @sections = Section.all.reject { |section| section.no.include?('.') }
+  end
+
+  def add_team
+    binding.pry
+    user = User.find(params[:user_id])
+    role = params[:role]
+    sections = params[:sections]
+    #
+    # if role == 'co_author'
+    # end
+
+    # if role == 'co_author'
+    #   @protocol.co_authors << user
+    # elsif role.include?('author')
+    #   contents = @protocol.contents.reject { |content| content.no.include?('.') }
+    #   contents.each do |content|
+    #     content.authors << user if role == 'author_all' || sections.include?(content.no)
+    #   end
+    # elsif role.include?('reviewer')
+    #   contents = @protocol.contents.reject { |content| content.no.include?('.') }
+    #   contents.each do |content|
+    #     content.reviewers << user if role == 'reviewer_all' || sections.include?(content.no)
+    #   end
+    # end
+    #
+    # if @protocol.save
+    #   flash[:notice] = t('.success')
+    # else
+    #   flash[:alert] = t('.failure')
+    # end
+  end
+
   private
 
     def set_protocol
-      @protocol = Protocol.find(params[:id])
+      @protocol = Protocol.find(params[:id]) if params[:id] == 1
     end
 
     def protocol_params
@@ -70,7 +109,10 @@ class ProtocolsController < ApplicationController
         :has_ind,
         :compliance,
         sponsors: [],
-        study_agent: []
+        study_agent: [],
+        co_author_user_attributes: [:id, :protocol_id, :user_id],
+        author_users_attributes: [:id, :protocol_id, :user_id],
+        reviewer_users_attributes: [:id, :protocol_id, :user_id]
       )
     end
 end

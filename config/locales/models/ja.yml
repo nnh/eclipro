@@ -20,6 +20,8 @@ ja:
       protocol:
         role:
           co_author: 共著者
+          author_all: 著者（全セクション）
+          reviewer_all: レビューアー（全セクション）
           author: 著者
           reviewer: レビューアー
     # errors:

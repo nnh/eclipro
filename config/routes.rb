@@ -14,6 +14,10 @@ Rails.application.routes.draw do
         end
       end
     end
+    collection do
+      get :build_team_form
+      post :add_team
+    end
   end
 
   devise_for :users
