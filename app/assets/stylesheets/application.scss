@@ -84,6 +84,11 @@ ins {
   margin-right: 0px;
 }
 
+.modal-body {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
 // size
 $params: ( z: 0, xs: 5, s: 10, m: 15, l: 20, xl: 25, xxl: 30 );
 
