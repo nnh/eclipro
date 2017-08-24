@@ -1,6 +1,7 @@
 h4.mt-l = t('.step')
 
 = link_to t('.build'), '#', class: 'btn btn-default mt-m'
+/ TODO:
 
 table.table.mt-m
   thead
@@ -8,13 +9,16 @@ table.table.mt-m
       th = t('.user')
       th = t('.role')
       th = t('.sections')
+      th
 
   tbody
     tr
       td TODO
       td TODO
       td TODO
+      td TODO delete
 
 .form-group.text-right
    = button_tag t('.prev'), type: 'button', id: 'back-to-two', class: 'btn btn-default'
    = f.submit class: 'btn btn-primary ml-s'
+   / TODO: New じゃない時にExport、Finalizeボタン

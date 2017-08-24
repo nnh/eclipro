@@ -34,6 +34,7 @@
                 = form_for [protocol, content], html: { class: 'form-horizontal', role: 'form', remote: true } do |f|
                   = f.text_area :body, class: 'tinymce'
                   = f.submit class: 'btn btn-primary mt-m pull-right'
+                  / TODO: レビュー開始、レビュー中状態、レビュー後状態のボタン設置
               - else
                 h4 = "#{t('.editor')}: #{content.title} #{t('.read_only')}"
                 = t('.read_only_text')
