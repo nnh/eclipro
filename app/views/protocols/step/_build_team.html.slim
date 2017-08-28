@@ -64,7 +64,6 @@ javascript:
       }
       checkState();
     });
-    changeButtonState(true);
 
     $('.section-checkbox').change(() => {
       checkState();
@@ -87,6 +86,7 @@ javascript:
         type: "post",
         dataType: 'script',
         data: {
+          protocol_id: '#{protocol&.id}',
           user_id: $('#add_user').val(),
           role: $('#add_role').val(),
           sections: selected_sections,

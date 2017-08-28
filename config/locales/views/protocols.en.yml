@@ -143,6 +143,8 @@ en:
         role_label: What role will this user perform?
         cancel: Cancel
         add_user: Add User
+      team_member:
+        delete: Delete
     menu:
       example: Example
       instructions: Instructions

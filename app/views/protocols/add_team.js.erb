@@ -1,2 +1,4 @@
-$('#team-member-list').append('<%= escape_javascript(render "protocols/step/team_member", user: @user, role: @role, sections: @sections, protocol: @protocol, index: @index) %>');
+$('#team-member-list').append(
+  '<%= escape_javascript(render "protocols/step/team_member", protocol: @protocol, user: @user, \
+                                role: @role, sections: @sections, id: nil, index: @index) %>');
 $('#team-modal').modal('hide');

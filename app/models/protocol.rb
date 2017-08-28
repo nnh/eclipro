@@ -5,8 +5,14 @@ class Protocol < ApplicationRecord
   has_one :principal_investigator_user, dependent: :destroy
   has_one :principal_investigator, through: :principal_investigator_user, source: :user
   has_many :co_author_users, dependent: :destroy
-  has_many :co_authors, through: :co_author_users, source: :user
+  has_many :co_authors, -> {distinct}, through: :co_author_users, source: :user
   accepts_nested_attributes_for :co_author_users, allow_destroy: true
+  has_many :author_users, dependent: :destroy
+  has_many :authors, -> {distinct}, through: :author_users, source: :user
+  accepts_nested_attributes_for :author_users, allow_destroy: true
+  has_many :reviewer_users, dependent: :destroy
+  has_many :reviewers, -> {distinct}, through: :reviewer_users, source: :user
+  accepts_nested_attributes_for :reviewer_users, allow_destroy: true
   has_many :contents, dependent: :destroy
 
   enum status: %i(in_progress final)
@@ -31,17 +37,11 @@ class Protocol < ApplicationRecord
   end
 
   def author?(user)
-    contents.each do |content|
-      return true if content.author?(user)
-    end
-    false
+    author_ids.include?(user.id)
   end
 
   def reviewer?(user)
-    contents.each do |content|
-      return true if content.reviewer?(user)
-    end
-    false
+    reviewer_ids.include?(user.id)
   end
 
   def principal_investigator?(user)

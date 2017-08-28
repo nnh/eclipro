@@ -140,6 +140,8 @@ ja:
         role_label: このユーザーの役割を選択してください。
         cancel: キャンセル
         add_user: ユーザー追加
+      team_member:
+        delete: 削除
     menu:
       example: 例
       instructions: 説明

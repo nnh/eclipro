@@ -1,2 +1,3 @@
-$('#team-modal').html('<%= escape_javascript(render "protocols/step/build_team", users: @users, sections: @sections) %>');
+$('#team-modal').html(
+  '<%= escape_javascript(render "protocols/step/build_team", protocol: @protocol, users: @users, sections: @sections) %>');
 $('#team-modal').modal('show');

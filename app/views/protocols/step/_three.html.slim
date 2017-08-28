@@ -1,6 +1,7 @@
 h4.mt-l = t('.step')
 
-= button_tag t('.build'), type: :button, class: 'btn btn-default mt-m', id: 'build-team-form-button'
+= link_to t('.build'), build_team_form_protocols_path(protocol_id: protocol.id),
+          class: 'btn btn-default mt-m', remote: true
 
 table.table.mt-m
   thead
@@ -12,38 +13,21 @@ table.table.mt-m
 
   tbody#team-member-list
     - index = 0
+    - co_sections = Section.all.reject { |section| section.no.include?('.') }.pluck(:no).join(',')
     - protocol.co_authors.each do |co|
-      tr
-        td = co.name
-        td = t('activerecord.enum.protocol.role.co_author')
-        td = Section.all.reject { |section| section.no.include?('.') }.pluck(:no).join(',')
-        td
-          = 'TODO delete'
-          = hidden_field_tag "protocol[co_author_users_attributes][#{index}][protocol_id]", protocol.id
-          = hidden_field_tag "protocol[co_author_users_attributes][#{index}][user_id]", co.id
-          = hidden_field_tag "protocol[co_author_users_attributes][#{index}][_destroy]", false
+      - co_author_user = CoAuthorUser.find_by(protocol_id: protocol.id, user_id: co.id)
+      = render 'protocols/step/team_member', user: co, role: 'co_author',
+               sections: co_sections, index: index, protocol: protocol, id: co_author_user.id
       - index += 1
-    - contents.includes(:authors).map { |content| content.authors }.flatten.each do | author |
-      tr
-        td = author.name
-        td = t('activerecord.enum.protocol.role.author')
-        td = Content.includes(:author_users).where("author_users.user_id=?", author.id).pluck(:no).join(',')
-        td
-          = 'TODO delete'
-          = hidden_field_tag "protocol[author_users_attributes][#{index}][protocol_id]", protocol.id
-          = hidden_field_tag "protocol[author_users_attributes][#{index}][user_id]", author.id
-          = hidden_field_tag "protocol[author_users_attributes][#{index}][_destroy]", false
+    - protocol.authors.each do |author|
+      - author_user = AuthorUser.find_by(protocol_id: protocol.id, user_id: author.id)
+      = render 'protocols/step/team_member', user: author, role: 'author',
+               sections: author_user.sections, index: index, protocol: protocol, id: author_user.id
       - index += 1
-    - contents.includes(:reviewers).map { |content| content.reviewers }.flatten.each do | reviewer |
-      tr
-        td = reviewer.name
-        td = t('activerecord.enum.protocol.role.reviewer')
-        td = Content.includes(:reviewer_users).where("reviewer_users.user_id=?", reviewer.id).pluck(:no).join(',')
-        td
-          = 'TODO delete'
-          = hidden_field_tag "protocol[reviewer_users_attributes][#{index}][protocol_id]", protocol.id
-          = hidden_field_tag "protocol[reviewer_users_attributes][#{index}][user_id]", reviewer.id
-          = hidden_field_tag "protocol[reviewer_users_attributes][#{index}][_destroy]", false
+    - protocol.reviewers.each do |reviewer|
+      - reviewer_user = ReviewerUser.find_by(protocol_id: protocol.id, user_id: reviewer.id)
+      = render 'protocols/step/team_member', user: reviewer, role: 'reviewer',
+               sections: reviewer_user.sections, index: index, protocol: protocol, id: reviewer_user.id
       - index += 1
 
 .form-group.text-right

@@ -9,7 +9,7 @@
     = render 'protocols/step/two', f: f, protocol: @protocol
 
   div#step-three
-    = render 'protocols/step/three', f: f, protocol: @protocol, contents: @contents
+    = render 'protocols/step/three', f: f, protocol: @protocol
 
 javascript:
   $(function() {
@@ -91,21 +91,8 @@ javascript:
       $('html, body').animate({ scrollTop: $('label[for=protocol_title]').offset().top });
     }
 
-    $('#build-team-form-button').click((e) => {
-      e.preventDefault();
-      let added_user_ids = [''];
-      $('[id$=_user_id]').each(function() {
-        added_user_ids.push($(this).val());
-      });
-      let added_users_count = $('[id$=_user_id]').length;
-
-      $.ajax({
-        dataType: 'script',
-        data: {
-          protocol_id: '#{@protocol.id}',
-          added_user_ids: added_user_ids
-        },
-        url: '#{build_team_form_protocols_path}'
-      });
+    $(document).on("click", ".add-destroy", function() {
+      $(this).prev().val(true);
+      $(this).parent().parent().hide();
     });
   });

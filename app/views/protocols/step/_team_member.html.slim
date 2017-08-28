@@ -3,7 +3,10 @@ tr
   td = t("activerecord.enum.protocol.role.#{role}")
   td = sections
   td
-    = 'TODO delete'
+    - role = role.gsub('_all', '')
+    = hidden_field_tag "protocol[#{role}_users_attributes][#{index}][id]", id
+    = hidden_field_tag "protocol[#{role}_users_attributes][#{index}][protocol_id]", protocol&.id
     = hidden_field_tag "protocol[#{role}_users_attributes][#{index}][user_id]", user.id
     = hidden_field_tag "protocol[#{role}_users_attributes][#{index}][sections]", sections
     = hidden_field_tag "protocol[#{role}_users_attributes][#{index}][_destroy]", false
+    = button_tag t('.delete'), type: :button, class: 'btn btn-danger add-destroy'

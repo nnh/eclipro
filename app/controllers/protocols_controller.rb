@@ -14,7 +14,6 @@ class ProtocolsController < ApplicationController
 
   def new
     @protocol = Protocol.new
-    @contents = @protocol.contents
   end
 
   def edit
@@ -30,8 +29,6 @@ class ProtocolsController < ApplicationController
       @protocol.contents << Content.new(protocol: @protocol, no: no, title: section.title,
                                         body: section.template, editable: section.editable)
     end
-
-    set_sections_authority
 
     if @protocol.save
       redirect_to @protocol, notice: t('.success')
@@ -56,17 +53,13 @@ class ProtocolsController < ApplicationController
   end
 
   def build_team_form
-    if params[:protocol_id].present?
-      @users = User.all.reject { |user| Protocol.find(params[:protocol_id]).participant?(user) }
-    else
-      @users = User.all.reject { |user| user == current_user }
-    end
-    @users = @users.reject { |user| params[:added_user_ids]&.include?(user.id.to_s) }
+    @protocol = Protocol.find(params[:protocol_id]) if params[:protocol_id].present?
+    @users = User.all.reject { |user| user == current_user }
     @sections = Section.all.reject { |section| section.no.include?('.') }
-    @index = params[:added_users_count].to_i
   end
 
   def add_team
+    @protocol = Protocol.find(params[:protocol_id]) if params[:protocol_id].present?
     @user = User.find(params[:user_id])
     @role = params[:role]
     @index = params[:index]
@@ -97,39 +90,9 @@ class ProtocolsController < ApplicationController
         :compliance,
         sponsors: [],
         study_agent: [],
-        co_author_users_attributes: [:id, :protocol_id, :user_id, :_destroy]
+        co_author_users_attributes: [:id, :protocol_id, :user_id, :_destroy],
+        author_users_attributes: [:id, :protocol_id, :user_id, :sections, :_destroy],
+        reviewer_users_attributes: [:id, :protocol_id, :user_id, :sections, :_destroy]
       )
-    end
-
-    def set_sections_authority
-      if protocol_params[:co_author_user_attributes].present?
-        protocol_params[:co_author_users_attributes].each do |key, value|
-          next if value[:_destroy].present?
-          user = User.find(value[:user_id])
-          @protocol.contents.each do |content|
-            content.authors << user
-          end
-        end
-      end
-
-      if params[:protocol][:author_users_attributes].present?
-        params[:protocol][:author_users_attributes].each do |key, value|
-          next if value[:_destroy].present?
-          user = User.find(value[:user_id])
-          @protocol.contents.each do |content|
-            content.authors << user if value[:sections].split(',').include?(content.no)
-          end
-        end
-      end
-
-      if params[:protocol][:reviewer_users_attributes].present?
-        params[:protocol][:reviewer_users_attributes].each do |key, value|
-          next if value[:_destroy].present?
-          user = User.find(value[:user_id])
-          @protocol.contents.each do |content|
-            content.reviewers << user if value[:sections].split(',').include?(content.no)
-          end
-        end
-      end
     end
 end
