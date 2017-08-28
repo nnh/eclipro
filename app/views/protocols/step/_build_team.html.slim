@@ -10,8 +10,8 @@
 
       = form_tag add_team_protocols_path, html: { class: 'form-horizontal', role: 'form' } do
         .form-group
-          = label_tag 'add_user_id', t('.user_label'), class: 'control-label'
-          = select_tag 'add_user_id', options_from_collection_for_select(users, :id, :name),
+          = label_tag 'add_user', t('.user_label'), class: 'control-label'
+          = select_tag 'add_user', options_from_collection_for_select(users, :id, :name),
                        class: 'form-control', include_blank: true
         .form-group
           = label_tag 'add_role', t('.role_label'), class: 'control-label'
@@ -87,9 +87,10 @@ javascript:
         type: "post",
         dataType: 'script',
         data: {
-          user_id: $('#add_user_id').val(),
+          user_id: $('#add_user').val(),
           role: $('#add_role').val(),
-          sections: selected_sections
+          sections: selected_sections,
+          index: $('#team-member-list tr').length
         },
         url: '#{add_team_protocols_path}'
       });

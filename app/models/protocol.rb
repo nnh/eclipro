@@ -6,6 +6,7 @@ class Protocol < ApplicationRecord
   has_one :principal_investigator, through: :principal_investigator_user, source: :user
   has_many :co_author_users, dependent: :destroy
   has_many :co_authors, through: :co_author_users, source: :user
+  accepts_nested_attributes_for :co_author_users, allow_destroy: true
   has_many :contents, dependent: :destroy
 
   enum status: %i(in_progress final)
