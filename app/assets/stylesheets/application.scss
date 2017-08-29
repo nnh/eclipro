@@ -56,6 +56,11 @@ li.disabled {
   opacity: 0.6;
 }
 
+a.disabled {
+  cursor: not-allowed;
+  color: #cccccc;
+}
+
 // comment
 .comment {
   border: 1px solid #ddd;

@@ -1,9 +1,9 @@
 class ProtocolsController < ApplicationController
   before_action :set_protocol, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   def index
-    # TODO: 権限
-    @protocols = Protocol.all
+    @protocols = Protocol.select { |protocol| can? :read, protocol }
   end
 
   def show
@@ -55,7 +55,7 @@ class ProtocolsController < ApplicationController
   def build_team_form
     @protocol = Protocol.find(params[:protocol_id]) if params[:protocol_id].present?
     @users = User.all.reject { |user| user == current_user }
-    @sections = Section.all.reject { |section| section.no.include?('.') }
+    @sections = Section.parent_items
   end
 
   def add_team
@@ -65,7 +65,7 @@ class ProtocolsController < ApplicationController
     @index = params[:index]
 
     if ['co_author', 'author_all', 'reviewer_all'].include?(@role)
-      @sections = Section.all.reject { |section| section.no.include?('.') }.pluck(:no).join(',')
+      @sections = Section.parent_items.pluck(:no).join(',')
     else
       @sections = params[:sections].join(',')
     end

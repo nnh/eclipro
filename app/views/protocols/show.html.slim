@@ -7,8 +7,10 @@
         li.active
           a href="#editor" data-toggle="tab" = t('.editor')
         li
-          a href="#admin" data-toggle="tab" = t('.admin')
-          / TODO: 権限
+          - if can? :admin, @protocol
+            a href="#admin" data-toggle="tab" = t('.admin')
+          - else
+            a class="disabled" = t('.admin')
 
   .row
     .col-md-12

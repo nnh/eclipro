@@ -51,4 +51,15 @@ class Protocol < ApplicationRecord
   def participant?(user)
     co_author?(user) || author?(user) || reviewer?(user) || principal_investigator?(user)
   end
+
+  def updatable_sections(user)
+    return Section.parent_items if principal_investigator?(user) || co_author?(user)
+    return [] if reviewer?(user)
+    AuthorUser.find_by(protocol: protocol, user: user).sections.split(',')
+  end
+
+  def reviewable_sections(user)
+    return [] unless reviewer?(user)
+    ReviewerUser.find_by(protocol: protocol, user: user).sections.split(',')
+  end
 end

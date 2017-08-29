@@ -13,7 +13,7 @@ table.table.mt-m
 
   tbody#team-member-list
     - index = 0
-    - co_sections = Section.all.reject { |section| section.no.include?('.') }.pluck(:no).join(',')
+    - co_sections = Section.parent_items.pluck(:no).join(',')
     - protocol.co_authors.each do |co|
       - co_author_user = CoAuthorUser.find_by(protocol_id: protocol.id, user_id: co.id)
       = render 'protocols/step/team_member', user: co, role: 'co_author',
