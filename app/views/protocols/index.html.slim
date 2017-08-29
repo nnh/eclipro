@@ -15,7 +15,7 @@
           td = protocol.title
           td = protocol.my_role(current_user)
           td = protocol.principal_investigator&.name
-          td = protocol.status
+          td = t("activerecord.enum.protocol.status.#{protocol.status}")
           td = protocol.version
           td = 'TODO: clone'
 

@@ -24,4 +24,13 @@ en:
           reviewer_all: Reviewer(All)
           author: Author
           reviewer: Reviewer
+        status:
+          in_progress: In Progress
+          final: Final
+      content:
+        status:
+          state_new: New
+          in_progress: In Progress
+          under_review: Under Review
+          final: Final
     # errors:

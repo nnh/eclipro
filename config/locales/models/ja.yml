@@ -24,4 +24,13 @@ ja:
           reviewer_all: レビューアー（全セクション）
           author: 著者
           reviewer: レビューアー
+        status:
+          in_progress: 作成中
+          final: 完成
+      content:
+        status:
+          state_new: 新規
+          in_progress: 作成中
+          under_review: レビュー中
+          final: 完成
     # errors:
