@@ -1,4 +1,6 @@
 .col-md-12
+  / TODO: protocol filter
+
   table.table
     thead
       tr
@@ -17,11 +19,16 @@
           td = protocol.principal_investigator&.name
           td = t("activerecord.enum.protocol.status.#{protocol.status}")
           td = protocol.version
-          td = 'TODO: clone'
+          td
+            = link_to t('.clone'), clone_protocol_path(protocol), class: 'btn btn-default'
 
 javascript:
   $(function() {
-    $('.clickable-tr[data-link]').click((e) => {
+    $('.clickable-tr').click((e) => {
       window.location = $(e.target.parentElement).data('link');
+    });
+
+    $('.clickable-tr .btn').click((e) => {
+      e.stopPropagation();
     });
   });

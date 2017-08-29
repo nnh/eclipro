@@ -1,4 +1,6 @@
 ja:
+  unauthorized:
+    default: あなたはこのページにアクセスする権限がありません。
   activerecord:
     errors:
       messages:

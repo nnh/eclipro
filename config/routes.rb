@@ -18,6 +18,9 @@ Rails.application.routes.draw do
       get :build_team_form
       post :add_team
     end
+    member do
+      get :clone
+    end
   end
 
   devise_for :users

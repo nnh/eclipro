@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:resolve]
   before_action :set_content, :set_protocol
+  load_and_authorize_resource
 
   def index
     set_root_comment

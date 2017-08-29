@@ -1,5 +1,6 @@
 class ContentsController < ApplicationController
   before_action :set_content, :set_protocol
+  load_and_authorize_resource
 
   def update
     content_params[:body].gsub!(/ style="height: .+px;"/, '')

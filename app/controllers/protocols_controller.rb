@@ -3,7 +3,7 @@ class ProtocolsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @protocols = Protocol.select { |protocol| can? :read, protocol }
+    @protocols = Protocol.includes(:principal_investigator).select { |protocol| can? :read, protocol }
   end
 
   def show
@@ -69,6 +69,13 @@ class ProtocolsController < ApplicationController
     else
       @sections = params[:sections].join(',')
     end
+  end
+
+  def clone
+    original = Protocol.find(params[:id])
+    @protocol = original.dup
+    @protocol.title = "#{original.title} - (COPY)"
+    @protocol.short_title = "#{original.short_title} - (COPY)" if original.short_title.present?
   end
 
   private

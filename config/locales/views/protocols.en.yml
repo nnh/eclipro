@@ -7,6 +7,7 @@ en:
       status: Status
       version: Version
       filter: Filter protocols
+      clone: Clone
     new:
       title: New protocol
       back: Back
@@ -170,3 +171,5 @@ en:
     add_team:
       success: User was successfully added.
       failure: User add failed.
+    clone:
+      title: Clone existing Protocol
