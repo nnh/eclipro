@@ -21,19 +21,33 @@
       .tab-pane.active#sections
         ul.nav.nav-pills.nav-stacked
           li.active#section-title
-            a href="#section-title-page" data-toggle="tab" = t('.title_page')
+            a.uneditable href="#section-title-page" data-toggle="tab"
+              = t('.title_page')
+              .pull-right
+                i.fa.fa-asterisk
           li#section-0
-            a href="#section-0-content" data-toggle="tab" = contents.find { |s| s.no == '0' }.title
+            - content = contents.find { |s| s.no == '0' }
+            - editable = (can? :edit, content) || (can? :review, content)
+            a href="#section-0-content" data-toggle="tab" class="#{'uneditable' unless editable}"
+              = content.title
+              .pull-right
+                i.fa class="fa-#{content.status_icon}"
           li#section-compliance
-            a href="#section-compliance-content" data-toggle="tab" = t('.compliance')
+            a.uneditable href="#section-compliance-content" data-toggle="tab"
+              = t('.compliance')
+              .pull-right
+                i.fa.fa-asterisk
           - contents = contents.reject { |s| s.no == '0' }
           - contents.each do |content|
             li id="section-#{content.no.gsub('.', '-')}" style="#{'margin-left:20px' if content.no.include?('.')}"
-              a href="#section-#{content.no.gsub('.', '-')}-content" data-toggle="tab"
+              - editable = (can? :edit, content) || (can? :review, content)
+              a href="#section-#{content.no.gsub('.', '-')}-content" data-toggle="tab" class="#{'uneditable' unless editable}"
                 = "#{content.no} #{content.title}"
+                .pull-right
+                  i.fa class="fa-#{content.status_icon}"
 
-/ TODO: ステータスでアイコンを変える
-/ TODO: ログインユーザーの権限によってフォントカラーを変える
+/ TODO: ステータス更新でアイコンを変える
+/ TODO: セクションprev/next
 
 javascript:
   $(function() {

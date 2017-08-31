@@ -53,13 +53,23 @@ class Protocol < ApplicationRecord
   end
 
   def updatable_sections(user)
-    return Section.parent_items if principal_investigator?(user) || co_author?(user)
+    all_sections = Section.all.pluck(:no)
+    return all_sections if principal_investigator?(user) || co_author?(user)
     return [] if reviewer?(user)
-    AuthorUser.find_by(protocol: protocol, user: user).sections.split(',')
+    select_sections(all_sections, AuthorUser.find_by(protocol: self, user: user).sections.split(','))
   end
 
   def reviewable_sections(user)
     return [] unless reviewer?(user)
-    ReviewerUser.find_by(protocol: protocol, user: user).sections.split(',')
+    select_sections(Section.all.pluck(:no), ReviewerUser.find_by(protocol: self, user: user).sections.split(','))
   end
+
+  private
+    def select_sections(all_sections, origin_sections)
+      sections = []
+      origin_sections.each do |section|
+        sections << all_sections.select { |s| s == section || s.match(/#{section}\.\d{1,2}/) }
+      end
+      sections.flatten!
+    end
 end

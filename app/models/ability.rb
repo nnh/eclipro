@@ -18,6 +18,9 @@ class Ability
     can [:update, :revert], Content do |content|
       content.protocol.updatable_sections(user).include?(content.no)
     end
+    can :review, Content do |content|
+      content.protocol.reviewable_sections(user).include?(content.no)
+    end
 
     can :all, Comment do |comment|
       comment.content.protocol.participant?(user)

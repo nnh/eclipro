@@ -7,6 +7,7 @@ class ContentsController < ApplicationController
     content_params[:body].gsub!(/\r/, '')
     Content.transaction do
       Protocol.transaction do
+        @content.status = 'in_progress'
         @content.update!(content_params)
         @protocol.version += 0.001
         @protocol.save!
