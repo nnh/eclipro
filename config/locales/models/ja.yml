@@ -29,7 +29,7 @@ ja:
           final: 完成
       content:
         status:
-          state_new: 新規
+          status_new: 新規
           in_progress: 作成中
           under_review: レビュー中
           final: 完成

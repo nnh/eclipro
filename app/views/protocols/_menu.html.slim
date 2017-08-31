@@ -46,29 +46,6 @@
                 .pull-right
                   i.fa class="fa-#{content.status_icon}"
 
-/ TODO: ステータス更新でアイコンを変える
+/ TODO: ステータス更新ですぐアイコンを変える
 / TODO: セクションprev/next
-
-javascript:
-  $(function() {
-    $('#show-example').addClass('disabled');
-    $('#show-instructions').addClass('disabled');
-
-    $('li[id^=section-]').click((e) => {
-      let targetId = e.currentTarget.id;
-      $('div[id$=-example]').addClass('hide');
-      $('div[id$=-instructions]').addClass('hide');
-      $('#' + targetId + '-example').removeClass('hide');
-      if ($('#' + targetId + '-example').length === 0) {
-        $('#show-example').addClass('disabled')
-      } else {
-        $('#show-example').removeClass('disabled')
-      }
-      $('#' + targetId + '-instructions').removeClass('hide');
-      if ($('#' + targetId + '-instructions').length === 0) {
-        $('#show-instructions').addClass('disabled')
-      } else {
-        $('#show-instructions').removeClass('disabled')
-      }
-    });
-  });
+/ TODO: メニュークリックごとに新しくページを読み込む

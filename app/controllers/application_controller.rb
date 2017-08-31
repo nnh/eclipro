@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
     I18n.locale = current_user&.locale || extract_locale_from_accept_language_header
   end
 
+  def current_ability
+    @current_ability ||= Ability.new(current_user, params)
+  end
+
   private
 
     def extract_locale_from_accept_language_header

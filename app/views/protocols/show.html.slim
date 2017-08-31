@@ -8,7 +8,7 @@
           a href="#editor" data-toggle="tab" = t('.editor')
         li
           - if can? :admin, @protocol
-            a href="#admin" data-toggle="tab" = t('.admin')
+            a#admin-link href="#admin" data-toggle="tab" = t('.admin')
           - else
             a.disabled = t('.admin')
 
@@ -26,3 +26,59 @@
             .col-md-12
               h3 = t('.edit_title')
               = render 'form'
+
+.modal.fade#no-reviewer-modal tab-index="1" role="dialog" aria-hidden="true"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal" aria-label="Close"
+          span aria-hidden="true" x
+        h4.modal-title = t('.modal_title')
+
+      .modal-body
+        p = t('.modal_text')
+        .pull-right
+          = button_tag t('.add'), type: :button, class: 'btn btn-default', id: 'no-reviewer-modal-add'
+        .pull-right
+          = button_tag t('.cancel'), type: :button, class: 'btn btn-default', id: 'no-reviewer-modal-close'
+
+javascript:
+  $(function() {
+    $('#show-example').addClass('disabled');
+    $('#show-instructions').addClass('disabled');
+
+    $('li[id^=section-]').click((e) => {
+      let targetId = e.currentTarget.id;
+      $('div[id$=-example]').addClass('hide');
+      $('div[id$=-instructions]').addClass('hide');
+      $('#' + targetId + '-example').removeClass('hide');
+      if ($('#' + targetId + '-example').length === 0) {
+        $('#show-example').addClass('disabled')
+      } else {
+        $('#show-example').removeClass('disabled')
+      }
+      $('#' + targetId + '-instructions').removeClass('hide');
+      if ($('#' + targetId + '-instructions').length === 0) {
+        $('#show-instructions').addClass('disabled')
+      } else {
+        $('#show-instructions').removeClass('disabled')
+      }
+    });
+
+    $(document).on('click', '#to-under-review', function(e) {
+      if ('#{!@protocol.has_reviewer? && (can? :admin, @protocol)}') {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        $('#no-reviewer-modal').modal('show');
+      }
+    });
+
+    $('#no-reviewer-modal-close').click(() => {
+      $('#no-reviewer-modal').modal('hide');
+    })
+    $('#no-reviewer-modal-add').click(() => {
+      $('#no-reviewer-modal').modal('hide');
+      $('#admin-link').tab('show');
+      $('#go-to-three').click();
+    })
+  });

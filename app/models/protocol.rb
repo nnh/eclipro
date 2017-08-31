@@ -60,8 +60,14 @@ class Protocol < ApplicationRecord
   end
 
   def reviewable_sections(user)
+    all_sections = Section.all.pluck(:no)
+    return all_sections if principal_investigator?(user)
     return [] unless reviewer?(user)
-    select_sections(Section.all.pluck(:no), ReviewerUser.find_by(protocol: self, user: user).sections.split(','))
+    select_sections(all_sections, ReviewerUser.find_by(protocol: self, user: user).sections.split(','))
+  end
+
+  def has_reviewer?
+    reviewer_ids.size > 0
   end
 
   private

@@ -1,7 +1,7 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user)
+  def initialize(user, params)
     user ||= User.new
 
     can :create, Protocol
@@ -20,6 +20,13 @@ class Ability
     end
     can :review, Content do |content|
       content.protocol.reviewable_sections(user).include?(content.no)
+    end
+    can :change_status, Content do |content|
+      status = params[:content][:status]
+      ((content.status == 'status_new' || content.status == 'in_progress') && (can? :edit, content) && (status == 'under_review')) ||
+        (content.status == 'under_review' && (can? :edit, content) && status == 'in_progress') ||
+        (content.status == 'under_review' && (can? :review, content) && (status == 'in_progress' || status == 'final')) ||
+        (content.status == 'final' && ((can? :review, content) || (can? :edit, content)))
     end
 
     can :all, Comment do |comment|

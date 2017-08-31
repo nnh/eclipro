@@ -22,6 +22,10 @@ ja:
       edit_title: プロトコル編集
       edit: 編集
       back: 戻る
+      modal_title: レビューアーが割り当てられていません。
+      modal_text: あなたはこのセクションにレビューアーを割り当てていません。 今追加しますか？
+      add: レビューアーを追加
+      cancel: キャンセル
     form:
       error_message: '%{count} 件のエラーが発生しました。'
     step:
@@ -159,6 +163,10 @@ ja:
       read_only_text: このセクションは編集できません。コンテンツを編集するには、小見出しをクリックしてください。
       history: 履歴
       comment: コメント
+      ready_for_review: レビュー準備完了
+      rework_needed: 修正が必要
+      review_completed: レビュー完了
+      status: 状態
     create:
       success: プロトコルを作成しました。
     update:

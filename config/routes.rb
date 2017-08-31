@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :contents, only: :update do
       member do
         get :history, :compare, :revert
+        put :change_status
       end
       resources :comments, only: [:index, :create] do
         member do

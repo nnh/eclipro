@@ -28,17 +28,21 @@ javascript:
         }
         $('#step-one').hide();
         $('#step-two').show();
+        $('#step-three').hide();
       }
     });
     $('#go-to-three').click(() => {
+      $('#step-one').hide();
       $('#step-two').hide();
       $('#step-three').show();
     });
     $('#back-to-one').click(() => {
       $('#step-one').show();
       $('#step-two').hide();
+      $('#step-three').hide();
     });
     $('#back-to-two').click(() => {
+      $('#step-one').hide();
       $('#step-two').show();
       $('#step-three').hide();
     });

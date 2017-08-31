@@ -36,6 +36,14 @@ class ContentsController < ApplicationController
     end
   end
 
+  def change_status
+    if @content.update(content_params)
+      redirect_to @protocol, notice: t('.success')
+    else
+      redirect_to @protocol, notice: t('.failure')
+    end
+  end
+
   private
     def set_content
       @content = Content.find(params[:id])
