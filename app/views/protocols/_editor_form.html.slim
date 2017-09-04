@@ -1,0 +1,20 @@
+= form_for [protocol, content], html: { class: 'form-horizontal', role: 'form', remote: true } do |f|
+  = f.text_area :body, class: 'tinymce', id: "section-#{content.no.gsub('.', '-')}-tinymce"
+
+  - if ((content.status == 'status_new' || content.status == 'in_progress') && (can? :edit, content))
+    = link_to t('.ready_for_review'), change_status_protocol_content_path(protocol, content, 'content[status]': 'under_review'),
+              class: 'btn btn-default mt-m pull-right to-under-review', method: :put, remote: true
+    = f.submit class: 'btn btn-primary mt-m pull-right'
+  - if content.status == 'under_review' && (can? :review, content)
+    = link_to t('.review_completed'), change_status_protocol_content_path(protocol, content, 'content[status]': 'final'),
+              class: 'btn btn-default mt-m pull-right', method: :put, remote: true
+  - if content.status == 'under_review' && ((can? :edit, content) || (can? :review, content))
+    = link_to t('.rework_needed'), change_status_protocol_content_path(protocol, content, 'content[status]': 'in_progress'),
+              class: 'btn btn-default mt-m pull-right', method: :put, remote: true
+  - if content.status == 'final' && ((can? :review, content) || (can? :edit, content))
+    = link_to t('.rework_needed'), change_status_protocol_content_path(protocol, content, 'content[status]': 'in_progress'),
+              class: 'btn btn-default mt-m pull-right', method: :put, remote: true
+
+  .pull-left.mt-m
+    - status = t("activerecord.enum.content.status.#{content.status}")
+    = "#{t('.status')}: #{status}"

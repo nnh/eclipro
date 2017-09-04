@@ -38,9 +38,9 @@ class ContentsController < ApplicationController
 
   def change_status
     if @content.update(content_params)
-      redirect_to @protocol, notice: t('.success')
+      flash[:notice] = t('.success')
     else
-      redirect_to @protocol, notice: t('.failure')
+      flash[:alert] = t('.failure')
     end
   end
 

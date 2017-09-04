@@ -163,10 +163,11 @@ ja:
       read_only_text: このセクションは編集できません。コンテンツを編集するには、小見出しをクリックしてください。
       history: 履歴
       comment: コメント
+    editor_form:
+      status: 状態
       ready_for_review: レビュー準備完了
       rework_needed: 修正が必要
       review_completed: レビュー完了
-      status: 状態
     create:
       success: プロトコルを作成しました。
     update:

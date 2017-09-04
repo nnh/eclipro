@@ -65,8 +65,8 @@ javascript:
       }
     });
 
-    $(document).on('click', '#to-under-review', function(e) {
-      if ('#{!@protocol.has_reviewer? && (can? :admin, @protocol)}') {
+    $(document).on('click', '.to-under-review', function(e) {
+      if ('#{!@protocol.has_reviewer? && (can? :admin, @protocol)}' == 'true') {
         e.preventDefault();
         e.stopImmediatePropagation();
         $('#no-reviewer-modal').modal('show');
