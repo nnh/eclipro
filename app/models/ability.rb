@@ -29,7 +29,7 @@ class Ability
         (content.status == 'final' && ((can? :review, content) || (can? :edit, content)))
     end
 
-    can :all, Comment do |comment|
+    can :manage, Comment do |comment|
       comment.content.protocol.participant?(user)
     end
   end

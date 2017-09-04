@@ -4,8 +4,7 @@ en:
       success: Content was successfully updated.
       failure: Content update failed.
     history:
-      title: History
-    list:
+      modal_title: History
       title: Title
       version: Version
       modified: Modified by

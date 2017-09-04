@@ -5,12 +5,11 @@
   = f.text_area :body, class: 'form-control'
   .text-right
     = f.submit class: 'btn btn-default'
-    = button_tag t('.cancel'), class: 'btn btn-default ml-s', id: 'remove-comment-form'
+    = button_tag t('.cancel'), type: :button, class: 'btn btn-default ml-s', id: 'remove-comment-form'
 
 javascript:
-  $('#remove-comment-form').click((e) => {
-    e.preventDefault();
+  $('#remove-comment-form').click(() => {
     $('#add-comment-form').removeClass('hide');
     $('.new-comment-form').empty();
-    $('.reply-comment-form').empty();
+    $('.reply-form').empty();
   });

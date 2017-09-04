@@ -9,5 +9,5 @@ en:
       reply: Reply
       resolve: Resolve
       cancel: Cancel
-    comment_form:
+    form:
       cancel: Cancel

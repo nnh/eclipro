@@ -4,8 +4,7 @@ ja:
       success: コンテンツの更新をしました。
       failure: コンテンツの更新に失敗しました。
     history:
-      title: 履歴
-    list:
+      modal_title: 履歴
       title: タイトル
       version: バージョン
       modified: 編集者

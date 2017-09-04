@@ -1,1 +1,5 @@
-<%= render 'reply_form', protocol: @protocol, content: @content, comment: @comment, parent_id: @parent_id %>
+$('.new-comment-form').empty();
+$('.reply-form').empty();
+$('#add-comment-form').addClass('hide');
+$('#reply-<%= @parent_id %>').html(
+  '<%= j(render "form", protocol: @protocol, content: @content, comment: @comment, parent_id: @parent_id ) %>');
