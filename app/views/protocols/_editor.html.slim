@@ -31,7 +31,7 @@
                               remote: true, class: 'btn btn-default'
                   h4 = "#{t('.editor')}: #{content.title}"
 
-                  div id="section-#{content.no.gsub('.', '-')}-editor"
+                  div.mt-xl id="section-#{content.no.gsub('.', '-')}-editor"
                     = render 'editor_form', protocol: protocol, content: content
               - else
                 h4 = "#{t('.editor')}: #{content.title} #{t('.read_only')}"

@@ -16,7 +16,8 @@ table.table
         td = history.created_at
         td
           = link_to t('.revert'), revert_protocol_content_path(protocol, content, index: index),
-                    class: 'btn btn-warning', id: 'history-revert', data: { confirm: t('.are_you_sure') }
+                    class: 'btn btn-warning', id: 'history-revert',
+                    data: { confirm: t('.are_you_sure') }, remote: true
         td
           = link_to t('.compare'), compare_protocol_content_path(protocol, content, index: index),
                     remote: true, class: 'btn btn-default'

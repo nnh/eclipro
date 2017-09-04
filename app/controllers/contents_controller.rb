@@ -30,9 +30,9 @@ class ContentsController < ApplicationController
   def revert
     @content = @content.versions[params[:index].to_i].reify
     if @content.save
-      redirect_to @protocol, notice: t('.success')
+      flash[:notice] = t('.success')
     else
-      redirect_to @protocol, alert: t('.failure')
+      flash[:alert] = t('.failure')
     end
   end
 
