@@ -1,14 +1,14 @@
 $('#section-<%= @content.no.gsub(".", "-") %>-editor').html(
-  '<%= escape_javascript(render "protocols/editor_form", protocol: @protocol, content: @content) %>');
+  '<%= j(render "protocols/editor_form", protocol: @protocol, content: @content) %>');
 
 tinymce.remove('#section-<%= @content.no.gsub(".", "-") %>-tinymce');
 initTinyMCE('#section-<%= @content.no.gsub(".", "-") %>-tinymce');
 
 <% if flash[:notice].present? %>
-  toastr.success('<%= escape_javascript(flash[:notice]) %>')
+  toastr.success('<%= j(flash[:notice]) %>')
   <% flash[:notice] = nil %>
 <% end %>
 <% if flash[:alert].present? %>
-  toastr.error('<%= escape_javascript(flash[:alert]) %>')
+  toastr.error('<%= j(flash[:alert]) %>')
   <% flash[:alert] = nil %>
 <% end %>

@@ -1,4 +1,4 @@
 $('.new-comment-form').empty();
 $('.reply-comment-form').empty();
 $('#add-comment-form').removeClass('hide');
-$('#comment-list').html('<%= escape_javascript(render "list", protocol: protocol, content: content, comments: comments) %>');
+$('#comment-list').html('<%= j(render "list", protocol: protocol, content: content, comments: comments) %>');

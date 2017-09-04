@@ -3,7 +3,12 @@ class ProtocolsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @protocols = Protocol.includes(:principal_investigator).select { |protocol| can? :read, protocol }
+    if params[:protocol_name_filter].present?
+      @protocols = Protocol.where('title like ?', "%#{params[:protocol_name_filter]}%")
+    else
+      @protocols = Protocol.all
+    end
+    @protocols = @protocols.includes(:principal_investigator).select { |protocol| can? :read, protocol }
   end
 
   def show

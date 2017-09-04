@@ -2,4 +2,4 @@ $('.new-comment-form').empty();
 $('.reply-comment-form').empty();
 $('#add-comment-form').addClass('hide');
 $('.new-comment-form').html(
-  '<%= escape_javascript(render "form", protocol: protocol, content: content, comment: comment, parent_id: parent_id) %>');
+  '<%= j(render "form", protocol: protocol, content: content, comment: comment, parent_id: parent_id) %>');

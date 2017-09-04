@@ -1,0 +1,30 @@
+table.table
+  thead
+    tr
+      th = t('.protocol_title')
+      th = t('.my_role')
+      th = t('.principal_investigator')
+      th = t('.status')
+      th = t('.version')
+      th
+
+  tbody
+    - @protocols.each do |protocol|
+      tr.clickable-tr data-link="#{protocol_path(protocol)}"
+        td = protocol.title
+        td = protocol.my_role(current_user)
+        td = protocol.principal_investigator&.name
+        td = t("activerecord.enum.protocol.status.#{protocol.status}")
+        td = protocol.version
+        td
+          = link_to t('.clone'), clone_protocol_path(protocol), class: 'btn btn-default'
+
+javascript:
+  $(function() {
+    $('.clickable-tr').click((e) => {
+      window.location = $(e.target.parentElement).data('link');
+    });
+    $('.clickable-tr .btn').click((e) => {
+      e.stopPropagation();
+    });
+  });

@@ -6,7 +6,8 @@ en:
       principal_investigator: Principal Investigator
       status: Status
       version: Version
-      filter: Filter protocols
+      filter_placeholder: Filter protocols
+      filter: Filtering
       clone: Clone
     new:
       title: New protocol

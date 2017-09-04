@@ -6,7 +6,8 @@ ja:
       principal_investigator: 主任研究員
       status: 状態
       version: バージョン
-      filter: プロトコルをフィルタリング
+      filter_placeholder: プロトコルをフィルタリング
+      filter: フィルタリング
       clone: 複製
     new:
       title: プロトコル新規作成
