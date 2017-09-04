@@ -46,10 +46,11 @@ html
     .container
       .row
         - flash.each do |key, value|
-          - type = key == 'alert' ? 'danger' : 'success'
-          .alert.alert-dismissible class="alert-#{type}"
-            button.close data-dismiss="alert"
-              span aria-hidden="true" = '×'
-            = value
+          - if value.present?
+            - type = key == 'alert' ? 'danger' : 'success'
+            .alert.alert-dismissible class="alert-#{type}"
+              button.close data-dismiss="alert"
+                span aria-hidden="true" = '×'
+              = value
       .row.mb-l
         = yield
