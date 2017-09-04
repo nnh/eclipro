@@ -1,0 +1,8 @@
+<% if flash[:notice].present? %>
+  toastr.success('<%= j(flash[:notice]) %>')
+  <% flash[:notice] = nil %>
+<% end %>
+<% if flash[:alert].present? %>
+  toastr.error('<%= j(flash[:alert]) %>')
+  <% flash[:alert] = nil %>
+<% end %>

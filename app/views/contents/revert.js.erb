@@ -5,11 +5,4 @@ $('#history-modal').modal('hide');
 tinymce.remove('#form-tinymce');
 initTinyMCE('#form-tinymce');
 
-<% if flash[:notice].present? %>
-  toastr.success('<%= j(flash[:notice]) %>')
-  <% flash[:notice] = nil %>
-<% end %>
-<% if flash[:alert].present? %>
-  toastr.error('<%= j(flash[:alert]) %>')
-  <% flash[:alert] = nil %>
-<% end %>
+<%= render 'shared/flash' %>
