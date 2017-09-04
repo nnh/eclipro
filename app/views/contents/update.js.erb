@@ -1,3 +1,5 @@
+ $('#section-<%= @content.no.gsub(".", "-") %>-icon').html('<i class="fa fa-<%= @content.status_icon%>">');
+
 <% if flash[:notice].present? %>
   toastr.success('<%= j(flash[:notice]) %>')
   <% flash[:notice] = nil %>

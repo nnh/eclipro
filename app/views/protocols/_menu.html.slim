@@ -30,7 +30,7 @@
             - editable = (can? :edit, content) || (can? :review, content)
             a href="#section-0-content" data-toggle="tab" class="#{'uneditable' unless editable}"
               = content.title
-              .pull-right
+              .pull-right id="section-#{content.no.gsub('.', '-')}-icon"
                 i.fa class="fa-#{content.status_icon}"
           li#section-compliance
             a.uneditable href="#section-compliance-content" data-toggle="tab"
@@ -43,9 +43,8 @@
               - editable = (can? :edit, content) || (can? :review, content)
               a href="#section-#{content.no.gsub('.', '-')}-content" data-toggle="tab" class="#{'uneditable' unless editable}"
                 = "#{content.no} #{content.title}"
-                .pull-right
+                .pull-right id="section-#{content.no.gsub('.', '-')}-icon"
                   i.fa class="fa-#{content.status_icon}"
 
-/ TODO: ステータス更新ですぐアイコンを変える
 / TODO: セクションprev/next
 / TODO: メニュークリックごとに新しくページを読み込む
