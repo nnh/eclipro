@@ -5,7 +5,7 @@ class Ability
     user ||= User.new
 
     can :create, Protocol
-    can [:read, :clone], Protocol do |protocol|
+    can [:read, :clone, :show_section], Protocol do |protocol|
       protocol.participant?(user)
     end
     can [:update, :destroy, :build_team_form, :add_team, :admin], Protocol do |protocol|

@@ -160,11 +160,12 @@ ja:
       principal_investigator: 主任研究員
       draft_number: バージョン
       compliance: コンプライアンス声明 (読み出し専用)
+    editor_tab_content:
+      editor: エディタ
       read_only: (読み出し専用)
       read_only_text: このセクションは編集できません。コンテンツを編集するには、小見出しをクリックしてください。
       history: 履歴
       comment: コメント
-    editor_form:
       status: 状態
       ready_for_review: レビュー準備完了
       rework_needed: 修正が必要

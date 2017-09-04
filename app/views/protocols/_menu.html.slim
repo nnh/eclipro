@@ -28,7 +28,7 @@
           li#section-0
             - content = contents.find { |s| s.no == '0' }
             - editable = (can? :edit, content) || (can? :review, content)
-            a href="#section-0-content" data-toggle="tab" class="#{'uneditable' unless editable}"
+            a href="#section-content" data-toggle="tab" data-section-no="#{content.no}" class="section-link #{'uneditable' unless editable}"
               = content.title
               .pull-right id="section-#{content.no.gsub('.', '-')}-icon"
                 i.fa class="fa-#{content.status_icon}"
@@ -41,10 +41,9 @@
           - contents.each do |content|
             li id="section-#{content.no.gsub('.', '-')}" style="#{'margin-left:20px' if content.no.include?('.')}"
               - editable = (can? :edit, content) || (can? :review, content)
-              a href="#section-#{content.no.gsub('.', '-')}-content" data-toggle="tab" class="#{'uneditable' unless editable}"
+              a href="#section-content" data-toggle="tab" data-section-no="#{content.no}" class="section-link #{'uneditable' unless editable}"
                 = "#{content.no} #{content.title}"
                 .pull-right id="section-#{content.no.gsub('.', '-')}-icon"
                   i.fa class="fa-#{content.status_icon}"
 
 / TODO: セクションprev/next
-/ TODO: メニュークリックごとに新しくページを読み込む

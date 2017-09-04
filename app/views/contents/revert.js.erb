@@ -1,9 +1,9 @@
-$('#section-<%= @content.no.gsub(".", "-") %>-editor').html(
-  '<%= j(render "protocols/editor_form", protocol: @protocol, content: @content) %>');
+$('#section-content').html(
+  '<%= j(render "protocols/editor_tab_content", protocol: @protocol, content: @content) %>');
 $('#history-modal').modal('hide');
 
-tinymce.remove('#section-<%= @content.no.gsub(".", "-") %>-tinymce');
-initTinyMCE('#section-<%= @content.no.gsub(".", "-") %>-tinymce');
+tinymce.remove('#form-tinymce');
+initTinyMCE('#form-tinymce');
 
 <% if flash[:notice].present? %>
   toastr.success('<%= j(flash[:notice]) %>')

@@ -1,5 +1,5 @@
 class ProtocolsController < ApplicationController
-  before_action :set_protocol, only: [:show, :edit, :update, :destroy]
+  before_action :set_protocol, only: [:show, :edit, :update, :destroy, :show_section]
   load_and_authorize_resource
 
   def index
@@ -81,6 +81,10 @@ class ProtocolsController < ApplicationController
     @protocol = original.dup
     @protocol.title = "#{original.title} - (COPY)"
     @protocol.short_title = "#{original.short_title} - (COPY)" if original.short_title.present?
+  end
+
+  def show_section
+    @content = @protocol.contents.find_by(no: params[:section_no])
   end
 
   private

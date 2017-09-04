@@ -18,7 +18,7 @@
         .tab-pane.active#editor
           .row.mt-l
             .col-md-4
-              = render 'menu', contents: @contents, examples: @examples, instructions: @instructions
+              = render 'menu', protocol: @protocol, contents: @contents, examples: @examples, instructions: @instructions
             .col-md-8
               = render 'editor', protocol: @protocol, contents: @contents
         .tab-pane#admin
@@ -75,10 +75,21 @@ javascript:
 
     $('#no-reviewer-modal-close').click(() => {
       $('#no-reviewer-modal').modal('hide');
-    })
+    });
     $('#no-reviewer-modal-add').click(() => {
       $('#no-reviewer-modal').modal('hide');
       $('#admin-link').tab('show');
       $('#go-to-three').click();
-    })
+    });
+
+    $('.section-link').click((e) => {
+      $.ajax({
+        dataType: 'script',
+        data: {
+          protocol_id: '#{@protocol&.id}',
+          section_no: $(e.target).data('section-no')
+        },
+        url: '#{show_section_protocol_path}'
+      });
+    });
   });

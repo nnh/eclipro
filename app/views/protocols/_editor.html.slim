@@ -17,25 +17,7 @@
               = t('protocols.step.two.radio_one')
             - if protocol.compliance == 2
               = t('protocols.step.two.radio_two')
-      - contents.each do |content|
-        .tab-pane id="section-#{content.no.gsub('.', '-')}-content"
-          .row
-            .col-md-12
-              - if content.editable
-                .mb-xl
-                  .pull-right
-                    = link_to t('.comment'), protocol_content_comments_path(protocol, content),
-                              remote: true, class: 'btn btn-default'
-                  .pull-right
-                    = link_to t('.history'), history_protocol_content_path(protocol, content),
-                              remote: true, class: 'btn btn-default'
-                  h4 = "#{t('.editor')}: #{content.title}"
-
-                  div.mt-xl id="section-#{content.no.gsub('.', '-')}-editor"
-                    = render 'editor_form', protocol: protocol, content: content
-              - else
-                h4 = "#{t('.editor')}: #{content.title} #{t('.read_only')}"
-                = t('.read_only_text')
+      .tab-pane#section-content
 
     .modal.fade#comment-modal tab-index="1" role="dialog" aria-hidden="true"
     .modal.fade#history-modal tab-index="1" role="dialog" aria-hidden="true"

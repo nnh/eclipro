@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       post :add_team
     end
     member do
-      get :clone
+      get :clone, :show_section
     end
   end
 

@@ -163,11 +163,12 @@ en:
       principal_investigator: Principal Investigator
       draft_number: Draft number
       compliance: Statement of Compliance (Read only)
+    editor_tab_content:
+      editor: Editor
       read_only: (Read only)
       read_only_text: This section is not editable. Please click a subheading to edit content.
       history: History
       comment: Comments
-    editor_form:
       status: Status
       ready_for_review: Ready for Review
       rework_needed: Rework Needed

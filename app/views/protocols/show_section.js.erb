@@ -1,0 +1,6 @@
+$('#section-content').html(
+  '<%= j(render "editor_tab_content", protocol: @protocol, content: @content) %>');
+$('#section-content').tab('show');
+
+tinymce.remove('#form-tinymce');
+initTinyMCE('#form-tinymce');
