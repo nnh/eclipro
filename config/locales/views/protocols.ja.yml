@@ -162,6 +162,8 @@ ja:
       sections: セクション
       title_page: タイトルページ
       compliance: コンプライアンス声明
+      next: 次へ
+      previous: 前へ
     editor:
       editor: エディタ
       section_title: タイトルページ (読み出し専用)

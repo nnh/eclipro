@@ -19,31 +19,40 @@
           .hide id="section-#{instruction.no.gsub('.', '-')}-instructions"
             = instruction.instructions.html_safe
       .tab-pane.active#sections
-        ul.nav.nav-pills.nav-stacked
-          li.active#section-title
+        ul.nav.nav-pills.nav-stacked#section-ul
+          li.active#section-title data-section-no="title"
             a.uneditable href="#section-title-page" data-toggle="tab"
               = t('.title_page')
               .pull-right
                 i.fa.fa-asterisk
-          li#section-0
+          li#section-0 data-section-no="0"
             - content = contents.find { |s| s.no == '0' }
             - editable = (can? :edit, content) || (can? :review, content)
             a href="#section-content" data-toggle="tab" data-section-no="#{content.no}" class="section-link #{'uneditable' unless editable}"
               = content.title
               .pull-right id="section-#{content.no.gsub('.', '-')}-icon"
                 i.fa class="fa-#{content.status_icon}"
-          li#section-compliance
+          li#section-compliance data-section-no="compliance"
             a.uneditable href="#section-compliance-content" data-toggle="tab"
               = t('.compliance')
               .pull-right
                 i.fa.fa-asterisk
           - contents = contents.reject { |s| s.no == '0' }
           - contents.each do |content|
-            li id="section-#{content.no.gsub('.', '-')}" style="#{'margin-left:20px' if content.no.include?('.')}"
+            li id="section-#{content.no.gsub('.', '-')}" data-section-no="#{content.no}" style="#{'margin-left:20px' if content.no.include?('.')}"
               - editable = (can? :edit, content) || (can? :review, content)
               a href="#section-content" data-toggle="tab" data-section-no="#{content.no}" class="section-link #{'uneditable' unless editable}"
                 = "#{content.no} #{content.title}"
                 .pull-right id="section-#{content.no.gsub('.', '-')}-icon"
                   i.fa class="fa-#{content.status_icon}"
 
-/ TODO: セクションprev/next
+.row.mt-l.mb-l
+  .col-md-12
+    .pull-left
+      = button_tag '', type: :button, class: 'btn btn-default', id: 'previous-section-button' do
+        i.fa.fa-arrow-left
+        = t('.previous')
+    .pull-right
+      = button_tag '', type: :button, class: 'btn btn-default', id: 'next-section-button' do
+        = t('.next')
+        i.fa.fa-arrow-right

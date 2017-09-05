@@ -165,6 +165,8 @@ en:
       sections: Sections
       title_page: Title page
       compliance: Statement of Compliance
+      next: Next
+      previous: Previous
     editor:
       editor: Editor
       section_title: Title page (Read only)

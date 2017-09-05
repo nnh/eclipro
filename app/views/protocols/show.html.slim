@@ -92,4 +92,21 @@ javascript:
         url: '#{show_section_protocol_path}'
       });
     });
+
+    $('#previous-section-button').click(() => {
+      move_section('#{previous_section_protocol_path}');
+    });
+    $('#next-section-button').click(() => {
+      move_section('#{next_section_protocol_path}');
+    });
+    function move_section(url) {
+      $.ajax({
+        dataType: 'script',
+        data: {
+          protocol_id: '#{@protocol&.id}',
+          section_no: $($("ul#section-ul li.active")[0]).data('section-no')
+        },
+        url: url
+      });
+    }
   });

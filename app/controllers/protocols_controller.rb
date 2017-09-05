@@ -1,5 +1,5 @@
 class ProtocolsController < ApplicationController
-  before_action :set_protocol, only: [:show, :edit, :update, :destroy, :show_section, :export, :finalize, :reinstate]
+  before_action :set_protocol, except: [:index, :new, :create, :build_team_form, :add_team, :clone]
   load_and_authorize_resource
 
   def index
@@ -85,6 +85,36 @@ class ProtocolsController < ApplicationController
 
   def show_section
     @content = @protocol.contents.find_by(no: params[:section_no])
+  end
+
+  def next_section
+    sections = Section.sorted_section
+    index = sections.index(params[:section_no])
+    if index == sections.size - 1
+      head :ok
+    else
+      index += 1
+      if sections[index] == 'compliance'
+        @content = sections[index]
+      else
+        @content = @protocol.contents.find_by(no: sections[index])
+      end
+    end
+  end
+
+  def previous_section
+    sections = Section.sorted_section
+    index = sections.index(params[:section_no])
+    if index == 0
+      head :ok
+    else
+      index -= 1
+      if sections[index] == 'compliance' ||  sections[index] == 'title'
+        @content = sections[index]
+      else
+        @content = @protocol.contents.find_by(no: sections[index])
+      end
+    end
   end
 
   def export
