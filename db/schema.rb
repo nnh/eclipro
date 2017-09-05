@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170831015141) do
+ActiveRecord::Schema.define(version: 20170905021755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 20170831015141) do
     t.integer "has_ide"
     t.integer "has_ind"
     t.integer "compliance", default: 0
+    t.date "finalized_date"
   end
 
   create_table "reviewer_users", force: :cascade do |t|

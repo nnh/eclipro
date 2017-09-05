@@ -7,6 +7,7 @@ table.table
       th = t('.status')
       th = t('.version')
       th
+      th
 
   tbody
     - @protocols.each do |protocol|
@@ -14,8 +15,14 @@ table.table
         td = protocol.title
         td = protocol.my_role(current_user)
         td = protocol.principal_investigator&.name
-        td = t("activerecord.enum.protocol.status.#{protocol.status}")
-        td = protocol.version
+        td
+          = t("activerecord.enum.protocol.status.#{protocol.status}")
+          - if protocol.status == 'finalized'
+            = " - #{protocol.finalized_date}"
+        td = sprintf('%.3f', protocol.version)
+        td
+          - if protocol.status == 'finalized'
+            = link_to t('.export'), export_protocol_path(protocol), class: 'btn btn-default'
         td
           = link_to t('.clone'), clone_protocol_path(protocol), class: 'btn btn-default'
 

@@ -20,8 +20,8 @@ h4.mt-l = t('.step')
 .form-group
   - sponsors = t('.sponsors')
   = f.label :sponsors, t('.five'), class: 'control-label'
-  = f.select :sponsors, sponsors.map.with_index { |s, i| [s, i] }, { selected: protocol.sponsors },
-                        { multiple: true, class: 'form-control', rows: 5 }
+  = f.select :sponsors, sponsors.map.with_index { |s, i| [s, s] }, { selected: protocol.sponsors, include_hidden: false  },
+                        { multiple: true, class: 'form-control', rows: 5}
 
 .form-group#sponsor-other-form
   = f.label :sponsor_other, t('.five_a'), class: 'control-label'
@@ -65,6 +65,5 @@ h4.mt-l = t('.step')
     = t('.no')
 
 .form-group.text-right
-  = button_tag t('.next'), type: 'button', id: 'go-to-two', class: 'btn btn-default'
-  = f.submit class: 'btn btn-primary ml-s', id: 'step_one_submit_button'
-  / TODO: New じゃない時にExport、Finalizeボタン
+  = button_tag t('.next'), type: :button, id: 'go-to-two', class: 'btn btn-default'
+  = render 'protocols/step/step_buttons', protocol: protocol, f: f

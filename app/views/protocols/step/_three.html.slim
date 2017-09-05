@@ -32,7 +32,6 @@ table.table.mt-m
 
 .form-group.text-right
    = button_tag t('.prev'), type: 'button', id: 'back-to-two', class: 'btn btn-default'
-   = f.submit class: 'btn btn-primary ml-s'
-   / TODO: New じゃない時にExport、Finalizeボタン
+   = render 'protocols/step/step_buttons', protocol: protocol, f: f
 
 .modal.fade#team-modal tab-index="1" role="dialog" aria-hidden="true"

@@ -5,11 +5,17 @@ class Ability
     user ||= User.new
 
     can :create, Protocol
-    can [:read, :clone, :show_section], Protocol do |protocol|
+    can [:read, :clone, :show_section, :export], Protocol do |protocol|
       protocol.participant?(user)
     end
     can [:update, :destroy, :build_team_form, :add_team, :admin], Protocol do |protocol|
       protocol.principal_investigator?(user) || protocol.co_author?(user)
+    end
+    can :finalize, Protocol do |protocol|
+      (protocol.principal_investigator?(user) || protocol.co_author?(user)) && protocol.status != 'finalized'
+    end
+    can :reinstate, Protocol do |protocol|
+      (protocol.principal_investigator?(user) || protocol.co_author?(user)) && protocol.status == 'finalized'
     end
 
     can [:read, :history, :compare], Content do |content|

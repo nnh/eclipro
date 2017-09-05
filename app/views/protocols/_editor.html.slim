@@ -6,8 +6,15 @@
           .col-md-12
             h4 = "#{t('.editor')}: #{t('.section_title')}"
             p = protocol.title
+            p = "#{t('.protocol_number')}: #{protocol.protocol_number}" if protocol.protocol_number.present?
+            p = "#{t('.nct_number')}: #{protocol.nct_number}" if protocol.nct_number.present?
             p = "#{t('.principal_investigator')}: #{protocol.principal_investigator.name}"
-            p = "#{t('.draft_number')}: #{protocol.version}"
+            / TODO: スポンサーの表示
+            - sponsors = protocol.sponsors
+            - sponsors << protocol.sponsor_other if protocol.sponsor_other.present?
+            p = "#{t('.sponsors')}: #{sponsors.join(',')}" if sponsors.present?
+            p = "#{t('.funded_by')}: #{protocol.entity_funding_name}" if protocol.entity_funding_name.present?
+            p = "#{t('.draft_number')}: #{sprintf('%.3f', protocol.version)}"
             p = protocol.updated_at
       .tab-pane#section-compliance-content
         .row

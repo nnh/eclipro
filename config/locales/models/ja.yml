@@ -26,7 +26,7 @@ ja:
           reviewer: レビューアー
         status:
           in_progress: 作成中
-          final: 完成
+          finalized: 完成
       content:
         status:
           status_new: 新規

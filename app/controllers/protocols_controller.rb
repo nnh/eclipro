@@ -1,5 +1,5 @@
 class ProtocolsController < ApplicationController
-  before_action :set_protocol, only: [:show, :edit, :update, :destroy, :show_section]
+  before_action :set_protocol, only: [:show, :edit, :update, :destroy, :show_section, :export, :finalize, :reinstate]
   load_and_authorize_resource
 
   def index
@@ -85,6 +85,33 @@ class ProtocolsController < ApplicationController
 
   def show_section
     @content = @protocol.contents.find_by(no: params[:section_no])
+  end
+
+  def export
+    # TODO
+    redirect_to protocols_path
+  end
+
+  def finalize
+    @protocol.status = 'finalized'
+    @protocol.version = (@protocol.version + 1).floor
+    @protocol.finalized_date = Date.today
+
+    if @protocol.save
+      redirect_to protocols_path, notice: t('.success')
+    else
+      redirect_to protocols_path, notice: t('.failure')
+    end
+  end
+
+  def reinstate
+    @protocol.status = 'in_progress'
+
+    if @protocol.save
+      redirect_to protocols_path, notice: t('.success')
+    else
+      redirect_to protocols_path, notice: t('.failure')
+    end
   end
 
   private

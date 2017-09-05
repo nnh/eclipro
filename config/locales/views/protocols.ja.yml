@@ -1,13 +1,15 @@
 ja:
   protocols:
     index:
+      filter_placeholder: プロトコルをフィルタリング
+      filter: フィルタリング
+    protocols:
       protocol_title: プロトコルタイトル
       my_role: 自分の役割
       principal_investigator: 主任研究員
       status: 状態
       version: バージョン
-      filter_placeholder: プロトコルをフィルタリング
-      filter: フィルタリング
+      export: エクスポート
       clone: 複製
     new:
       title: プロトコル新規作成
@@ -136,6 +138,12 @@ ja:
         user: ユーザー
         role: 役割
         sections: セクション
+      step_buttons:
+        export: エクスポート
+        finalize: 完成
+        finalize_text: このプロトコルを完成させますか？
+        reinstate: 再編集
+        reinstate_text: このプロトコルを再編集しますか？
       build_team:
         title: メンバーを追加
         text: |-
@@ -157,7 +165,11 @@ ja:
     editor:
       editor: エディタ
       section_title: タイトルページ (読み出し専用)
+      protocol_number: プロトコル番号
+      nct_number: 国立臨床試験（NCT）識別番号
       principal_investigator: 主任研究員
+      sponsors: INDスポンサー
+      funded_by: 資金提供
       draft_number: バージョン
       compliance: コンプライアンス声明 (読み出し専用)
     editor_tab_content:
@@ -181,3 +193,9 @@ ja:
       failure: メンバーの追加に失敗しました。
     clone:
       title: 既存のプロトコルを複製
+    finalize:
+      success: プロトコルを完成させました。
+      failure: プロトコルのステータス変更に失敗しました。
+    reinstate:
+      success: プロトコルを編集可能にしました。
+      failure: プロトコルのステータス変更に失敗しました。

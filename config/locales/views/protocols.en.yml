@@ -1,13 +1,15 @@
 en:
   protocols:
     index:
+      filter_placeholder: Filter protocols
+      filter: Filtering
+    protocols:
       protocol_title: Protocol title
       my_role: My role
       principal_investigator: Principal Investigator
       status: Status
       version: Version
-      filter_placeholder: Filter protocols
-      filter: Filtering
+      export: Export
       clone: Clone
     new:
       title: New protocol
@@ -140,6 +142,12 @@ en:
         user: User
         role: Role
         sections: Sections
+      step_buttons:
+        export: Export
+        finalize: Finalize
+        finalize_text: Do you want to finalize this protocol?
+        reinstate: Reinstate
+        reinstate_text: Do you want to reinstate this protocol?
       build_team:
         title: Add Team Member
         text: |-
@@ -160,7 +168,11 @@ en:
     editor:
       editor: Editor
       section_title: Title page (Read only)
+      protocol_number: Protocol Number
+      nct_number: National Clinical Trial (NCT) Identified Number
       principal_investigator: Principal Investigator
+      sponsors: IND Sponsor
+      funded_by: Funded by
       draft_number: Draft number
       compliance: Statement of Compliance (Read only)
     editor_tab_content:
@@ -184,3 +196,9 @@ en:
       failure: User add failed.
     clone:
       title: Clone existing Protocol
+    finalize:
+      success: Protocol was successfully finalized.
+      failure: Protocol status change failed.
+    reinstate:
+      success: Protocol was successfully reinstated.
+      failure: Protocol status change failed.
