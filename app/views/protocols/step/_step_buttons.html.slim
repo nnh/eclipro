@@ -1,6 +1,6 @@
 = f.submit class: 'btn btn-primary ml-s', id: 'step_one_submit_button'
 - unless protocol.new_record? && (can? :admin, protocol)
-  = link_to t('.export'), export_protocol_path(protocol), class: 'btn btn-default ml-s'
+  = link_to t('.export'), export_protocol_path(protocol), class: 'btn btn-default ml-s', target: '_blank'
 
   - if protocol.status == 'finalized'
     = link_to t('.reinstate'), reinstate_protocol_path(protocol), class: 'btn btn-default ml-s',

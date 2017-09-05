@@ -202,3 +202,12 @@ en:
     reinstate:
       success: Protocol was successfully reinstated.
       failure: Protocol status change failed.
+    export:
+      protocol_number: Protocol Number
+      nct_number: National Clinical Trial (NCT) Identified Number
+      principal_investigator: Principal Investigator
+      sponsors: IND Sponsor
+      funded_by: Funded by
+      draft_number: Draft number
+      table_of_contents: Table of Contents
+      compliance: Statement of Compliance

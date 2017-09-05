@@ -88,8 +88,8 @@ class ProtocolsController < ApplicationController
   end
 
   def export
-    # TODO
-    redirect_to protocols_path
+    @contents = @protocol.contents
+    render :export, layout: 'export'
   end
 
   def finalize

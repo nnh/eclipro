@@ -22,7 +22,7 @@ table.table
         td = sprintf('%.3f', protocol.version)
         td
           - if protocol.status == 'finalized'
-            = link_to t('.export'), export_protocol_path(protocol), class: 'btn btn-default'
+            = link_to t('.export'), export_protocol_path(protocol), class: 'btn btn-default', target: '_blank'
         td
           = link_to t('.clone'), clone_protocol_path(protocol), class: 'btn btn-default'
 

@@ -1,0 +1,56 @@
+sass:
+  p
+    font-weight: bold
+    margin-top: 5px
+    margin-bottom: 5px
+  .text-center
+    text-align: center
+  table
+    border-collapse: collapse
+  #subtitle
+    font-size: 16px
+    font-weight: bold
+  .section-title
+    background-color: #4F81BD
+    color: white
+    font-weight: bold
+    padding: 10px
+  .section-sub-title
+    background-color: #DBE5F1
+    padding: 10px
+  .mt-xl
+    margin-top: 25px
+
+h3 = @protocol.title
+p = "#{t('.protocol_number')}: #{@protocol.protocol_number}" if @protocol.protocol_number.present?
+p = "#{t('.nct_number')}: #{@protocol.nct_number}" if @protocol.nct_number.present?
+p = "#{t('.principal_investigator')}: #{@protocol.principal_investigator.name}"
+/ TODO: スポンサーの表示
+- sponsors = @protocol.sponsors
+- sponsors << @protocol.sponsor_other if @protocol.sponsor_other.present?
+p = "#{t('.sponsors')}: #{sponsors.join(',')}" if sponsors.present?
+p = "#{t('.funded_by')}: #{@protocol.entity_funding_name}" if @protocol.entity_funding_name.present?
+p = "#{t('.draft_number')}: #{sprintf('%.3f', @protocol.version)}"
+p = @protocol.updated_at
+
+- section_0 = @contents.find_by(no: '0')
+#section-0.mt-xl
+  = section_0.body.gsub('contenteditable="true"', '').html_safe
+
+#table-of-contents.mt-xl
+  .text-center
+    b = t('.table_of_contents')
+
+#compliance.mt-xl
+  h4.section-title = t('.compliance')
+  - if @protocol.compliance == 1
+    = t('protocols.step.two.radio_one')
+  - if @protocol.compliance == 2
+    = t('protocols.step.two.radio_two')
+
+- contents = @contents.reject { |content| content.no == '0' }
+- contents.each do |content|
+  .mt-xl id="section-#{content.no}"
+    h4 class="#{content.no.include?('.') ? 'section-sub-title' : 'section-title' }"
+      = "#{content.no} #{content.title}"
+    div = content.body.gsub('contenteditable="true"', '').html_safe if content.body.present? && content.editable

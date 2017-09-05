@@ -1,0 +1,11 @@
+doctype html
+html
+  head
+    title
+      | e-Protocol
+    = csrf_meta_tags
+
+  body
+    .container
+      .row.mt-l.mb-l#export
+        = yield
