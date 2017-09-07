@@ -47,7 +47,7 @@ class CommentsController < ApplicationController
     end
 
     def resolve_comments(comment)
-      replies = Comment.find_by(parent_id: comment.id)
+      replies = Comment.where(parent_id: comment.id)
       replies.each do |reply|
         resolve_comments(reply)
       end

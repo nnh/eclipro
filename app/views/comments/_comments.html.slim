@@ -22,6 +22,6 @@
       - replies = Comment.where(parent_id: comment.id)
       - if replies.present?
         .reply-comments.ml-xl
-          = render 'list', protocol: protocol, content: content, comments: replies
+          = render 'comments', protocol: protocol, content: content, comments: replies
 
       .reply-form id="reply-#{comment.id}"

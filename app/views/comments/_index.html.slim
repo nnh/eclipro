@@ -12,7 +12,7 @@
           .checkbox-text = t('.show_resolved')
 
       .mt-xl#comment-list
-        = render 'list', protocol: protocol, content: content, comments: comments
+        = render 'comments', protocol: protocol, content: content, comments: comments
 
       .text-right#add-comment-form
         = link_to t('.comment'), comment_protocol_content_comments_path(protocol, content),
@@ -23,12 +23,22 @@
 javascript:
   $(function() {
     $('#show-resolved').change(() => {
-      if ($('#show-resolved').is(':checked')) {
-        $('.resolve-comment').removeClass('hide');
-        $('.checkbox-text').text("#{t('.hide_resolved')}");
-      } else {
-        $('.resolve-comment').addClass('hide');
-        $('.checkbox-text').text("#{t('.show_resolved')}");
-      }
+      change_resolved_comment();
     });
   });
+
+  function resetFrom() {
+    $('.new-comment-form').empty();
+    $('.reply-form').empty();
+    $('#add-comment-form').removeClass('hide');
+  }
+
+  function change_resolved_comment() {
+    if ($('#show-resolved').is(':checked')) {
+      $('.resolve-comment').removeClass('hide');
+      $('.checkbox-text').text("#{t('.hide_resolved')}");
+    } else {
+      $('.resolve-comment').addClass('hide');
+      $('.checkbox-text').text("#{t('.show_resolved')}");
+    }
+  }

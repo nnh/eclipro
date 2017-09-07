@@ -1,4 +1,3 @@
-$('.new-comment-form').empty();
-$('.reply-form').empty();
-$('#add-comment-form').removeClass('hide');
-$('#comment-list').html('<%= j(render "list", protocol: protocol, content: content, comments: comments) %>');
+resetFrom();
+change_resolved_comment();
+$('#comment-list').html('<%= j(render "comments", protocol: protocol, content: content, comments: comments) %>');
