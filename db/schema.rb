@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170905021755) do
+ActiveRecord::Schema.define(version: 20170907050526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20170905021755) do
     t.string "no"
     t.string "title"
     t.boolean "editable"
+    t.integer "lock_version", default: 0, null: false
     t.index ["protocol_id"], name: "index_contents_on_protocol_id"
   end
 
