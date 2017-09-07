@@ -49,15 +49,15 @@ javascript:
 
     $('li[id^=section-]').click((e) => {
       let targetId = e.currentTarget.id;
-      $('div[id$=-example]').addClass('hide');
-      $('div[id$=-instructions]').addClass('hide');
-      $('#' + targetId + '-example').removeClass('hide');
+      $('div[id$=-example]').hide();
+      $('div[id$=-instructions]').hide();
+      $('#' + targetId + '-example').show();
       if ($('#' + targetId + '-example').length === 0) {
         $('#show-example').addClass('disabled')
       } else {
         $('#show-example').removeClass('disabled')
       }
-      $('#' + targetId + '-instructions').removeClass('hide');
+      $('#' + targetId + '-instructions').show();
       if ($('#' + targetId + '-instructions').length === 0) {
         $('#show-instructions').addClass('disabled')
       } else {

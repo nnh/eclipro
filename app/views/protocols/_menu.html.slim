@@ -13,10 +13,10 @@
     .tab-content
       .tab-pane#example
         - examples.each do |example|
-          .hide id="section-#{example.no.gsub('.', '-')}-example" = example.example.html_safe
+          div id="section-#{example.no.gsub('.', '-')}-example" = example.example.html_safe
       .tab-pane#instructions
         - instructions.each do |instruction|
-          .hide id="section-#{instruction.no.gsub('.', '-')}-instructions"
+          div id="section-#{instruction.no.gsub('.', '-')}-instructions"
             = instruction.instructions.html_safe
       .tab-pane.active#sections
         ul.nav.nav-pills.nav-stacked#section-ul

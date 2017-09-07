@@ -1,12 +1,10 @@
 <% if flash[:notice].present? %>
   toastr.success('<%= j(flash[:notice]) %>')
   <% flash[:notice] = nil %>
-<% end %>
-<% if flash[:alert].present? %>
+<% elsif flash[:alert].present? %>
   toastr.error('<%= j(flash[:alert]) %>')
   <% flash[:alert] = nil %>
-<% end %>
-<% if flash[:warning].present? %>
+<% elsif flash[:warning].present? %>
   toastr.warning('<%= j(flash[:warning]) %>')
   <% flash[:warning] = nil %>
 <% end %>
