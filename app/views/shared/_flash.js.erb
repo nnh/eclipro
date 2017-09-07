@@ -6,3 +6,7 @@
   toastr.error('<%= j(flash[:alert]) %>')
   <% flash[:alert] = nil %>
 <% end %>
+<% if flash[:warning].present? %>
+  toastr.warning('<%= j(flash[:warning]) %>')
+  <% flash[:warning] = nil %>
+<% end %>

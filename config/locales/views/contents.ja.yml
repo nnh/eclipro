@@ -2,6 +2,7 @@ ja:
   contents:
     update:
       success: コンテンツの更新をしました。
+      no_change: コンテンツに変更はありません。
       failure: コンテンツの更新に失敗しました。
     history:
       modal_title: 履歴

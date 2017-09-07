@@ -191,6 +191,7 @@ en:
       success: Protocol was successfully created.
     update:
       success: Protocol was successfully updated.
+      no_change: There is no change in protocol.
     destroy:
       success: Protocol was successfully destroyed.
     add_team:

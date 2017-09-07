@@ -7,11 +7,16 @@ class ContentsController < ApplicationController
     content_params[:body].gsub!(/\r/, '')
     Content.transaction do
       Protocol.transaction do
-        @content.status = 'in_progress'
-        @content.update!(content_params)
-        @protocol.version += 0.001
-        @protocol.save!
-        flash[:notice] = t('.success')
+        @content.assign_attributes(content_params)
+        if @content.changed?
+          @content.status = 'in_progress'
+          @content.save!
+          @protocol.version += 0.001
+          @protocol.save!
+          flash[:notice] = t('.success')
+        else
+          flash[:warning] = t('.no_change')
+        end
       end
     end
   rescue

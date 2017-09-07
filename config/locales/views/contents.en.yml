@@ -2,6 +2,7 @@ en:
   contents:
     update:
       success: Content was successfully updated.
+      no_change: There is no change in contents.
       failure: Content update failed.
     history:
       modal_title: History

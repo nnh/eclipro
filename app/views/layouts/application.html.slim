@@ -47,7 +47,7 @@ html
       .row
         - flash.each do |key, value|
           - if value.present?
-            - type = key == 'alert' ? 'danger' : 'success'
+            - type = flash_type(key)
             .alert.alert-dismissible class="alert-#{type}"
               button.close data-dismiss="alert"
                 span aria-hidden="true" = '×'

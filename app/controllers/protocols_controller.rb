@@ -3,12 +3,11 @@ class ProtocolsController < ApplicationController
   load_and_authorize_resource
 
   def index
+    @protocols = Protocol.includes(:principal_investigator)
     if params[:protocol_name_filter].present?
-      @protocols = Protocol.where('title like ?', "%#{params[:protocol_name_filter]}%")
-    else
-      @protocols = Protocol.all
+      @protocols = @protocols.where('title like ?', "%#{params[:protocol_name_filter]}%")
     end
-    @protocols = @protocols.includes(:principal_investigator).select { |protocol| can? :read, protocol }
+    @protocols = @protocols.select { |protocol| can? :read, protocol }
   end
 
   def show
@@ -28,10 +27,8 @@ class ProtocolsController < ApplicationController
     @protocol = Protocol.new(protocol_params)
     @protocol.principal_investigator = current_user
 
-    section_no = Section.pluck(:no)
-    section_no.each do |no|
-      section = Section.find_by(no: no)
-      @protocol.contents << Content.new(protocol: @protocol, no: no, title: section.title,
+    Section.all.each do |section|
+      @protocol.contents << Content.new(protocol: @protocol, no: section.no, title: section.title,
                                         body: section.template, editable: section.editable)
     end
 
@@ -43,12 +40,16 @@ class ProtocolsController < ApplicationController
   end
 
   def update
-    @protocol.version += 0.001
-
-    if @protocol.update(protocol_params)
-      redirect_to @protocol, notice: t('.success')
+    @protocol.assign_attributes(protocol_params)
+    if @protocol.changed?
+      @protocol.version += 0.001
+      if @protocol.save
+        redirect_to @protocol, notice: t('.success')
+      else
+        render :edit
+      end
     else
-      render :edit
+      redirect_to @protocol, flash: { warning: t('.no_change') }
     end
   end
 

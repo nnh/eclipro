@@ -188,6 +188,7 @@ ja:
       success: プロトコルを作成しました。
     update:
       success: プロトコルを更新しました。
+      no_change: プロトコルに変更はありません。
     destroy:
       success: プロトコルを削除しました。
     add_team:
