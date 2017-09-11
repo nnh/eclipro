@@ -1,8 +1,4 @@
-$('#section-content').html(
-  '<%= j(render "protocols/editor_tab_content", protocol: @protocol, content: @content) %>');
 $('#history-modal').modal('hide');
 
-tinymce.remove('#form-tinymce');
-initTinyMCE('#form-tinymce');
-
+<%= render 'update_content' %>
 <%= render 'shared/flash' %>

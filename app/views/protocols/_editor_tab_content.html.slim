@@ -3,8 +3,10 @@
     - if content.editable
       .mb-xl
         .pull-right
-          = link_to t('.comment'), protocol_content_comments_path(protocol, content),
-                    remote: true, class: 'btn btn-default'
+          - comment_num = " (#{content.comments.count})" if content.comments.present?
+          - btn_class = comment_num.present? ? 'btn-primary' : 'btn-default'
+          = link_to "#{t('.comment')}#{comment_num}",
+                    protocol_content_comments_path(protocol, content), remote: true, class: "btn #{btn_class}"
         .pull-right
           = link_to t('.history'), history_protocol_content_path(protocol, content),
                     remote: true, class: 'btn btn-default'

@@ -32,6 +32,9 @@
               = content.title
               .pull-right id="section-#{content.no.gsub('.', '-')}-icon"
                 i.fa class="fa-#{content.status_icon}"
+              .pull-right id="section-#{content.no.gsub('.', '-')}-comment-icon"
+                - if content.comments.count > 0
+                  i.fa.fa-commenting.mr-s
           li#section-compliance data-section-no="compliance"
             a.uneditable href="#section-compliance-content" data-toggle="tab"
               = t('.compliance')
@@ -45,6 +48,9 @@
                 = "#{content.no} #{content.title}"
                 .pull-right id="section-#{content.no.gsub('.', '-')}-icon"
                   i.fa class="fa-#{content.status_icon}"
+                .pull-right id="section-#{content.no.gsub('.', '-')}-comment-icon"
+                  - if content.comments.count > 0
+                    i.fa.fa-commenting.mr-s
 
 .row.mt-l.mb-l
   .col-md-12

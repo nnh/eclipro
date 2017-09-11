@@ -34,6 +34,7 @@ class ContentsController < ApplicationController
 
   def revert
     @content = @content.versions[params[:index].to_i].reify
+    @content.lock_version += 1
     if @content.save
       flash[:notice] = t('.success')
     else

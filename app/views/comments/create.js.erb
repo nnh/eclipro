@@ -1,1 +1,4 @@
+$('#section-<%= @content.no.gsub(".", "-") %>-comment-icon').html('<i class="fa fa-commenting mr-s">');
+
 <%= render 'save', protocol: @protocol, content: @content, comments: @comments %>
+<%= render 'contents/update_content', protocol: @protocol, content: @content %>

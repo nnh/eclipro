@@ -1,0 +1,5 @@
+$('#section-content').html(
+  '<%= j(render "protocols/editor_tab_content", protocol: @protocol, content: @content) %>');
+
+tinymce.remove('#form-tinymce');
+initTinyMCE('#form-tinymce');
