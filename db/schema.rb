@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170907050526) do
+ActiveRecord::Schema.define(version: 20170911035357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 20170907050526) do
     t.integer "has_ind"
     t.integer "compliance", default: 0
     t.date "finalized_date"
+    t.string "template_name", default: "General", null: false
   end
 
   create_table "reviewer_users", force: :cascade do |t|
@@ -107,6 +108,7 @@ ActiveRecord::Schema.define(version: 20170907050526) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "editable"
+    t.string "template_name", default: "General", null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -51,6 +51,8 @@ ja:
         'yes': はい
         'no': いいえ
         error: タイトルを入力してください
+        template_error: テンプレートを選択してください。
+        template_name: テンプレート (※後から変更することはできません。)
         sponsors:
           - National Cancer Institute
           - National Institute of Allergy and Infectious Diseases

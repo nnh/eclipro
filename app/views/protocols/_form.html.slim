@@ -14,18 +14,8 @@
 javascript:
   $(function() {
     $('#go-to-two').click((e) => {
-      if ($('#protocol_title').val().length === 0) {
-        showError(e);
-      } else {
-        let error_fields = $('.title-error')
-        if (error_fields.length > 0) {
-          let title = $('#protocol_title').val();
-          for (let i = 0; i < error_fields.length; i++) {
-            $(error_fields[i]).replaceWith($(error_fields[i]).html());
-          }
-          $('#protocol_title').val(title);
-          $('#protocol_title_error').hide();
-        }
+      let has_error = checkError(e);
+      if (!has_error) {
         $('#step-one').hide();
         $('#step-two').show();
         $('#step-three').hide();
@@ -48,6 +38,7 @@ javascript:
     });
 
     $('#protocol_title_error').hide();
+    $('#protocol_template_name_error').hide();
     $('#step-two').hide();
     $('#step-three').hide();
     $('#sponsor-other-form').hide();
@@ -81,18 +72,50 @@ javascript:
     });
 
     $('#step_one_submit_button').click((e) => {
+      checkError(e);
+    });
+
+    function checkError(e) {
+      let has_error = false;
+      let error_fields = $('.error-field');
+      if (error_fields.length > 0) {
+        let title = $('#protocol_title').val();
+        let template_name = $('#protocol_template_name').val();
+        for (let i = 0; i < error_fields.length; i++) {
+          $(error_fields[i]).replaceWith($(error_fields[i]).html());
+        }
+        $('#protocol_title').val(title);
+        $('#protocol_title_error').hide();
+        $('#protocol_template_name').val(template_name);
+        $('#protocol_template_name_error').hide();
+      }
       if ($('#protocol_title').val().length === 0) {
         showError(e);
+        has_error = true;
       }
-    });
+      if ($('#protocol_template_name').val().length === 0) {
+        showTemplateError(e);
+        has_error = true;
+      }
+      return has_error;
+    }
 
     function showError(e) {
       e.preventDefault();
-      let div = '<div class="field_with_errors title-error"></div>';
+      let div = '<div class="field_with_errors error-field"></div>';
       $('label[for=protocol_title]').wrap(div);
       $('#protocol_title').wrap(div);
       $('#protocol_title_error').show();
       $('html, body').animate({ scrollTop: $('label[for=protocol_title]').offset().top });
+    }
+
+    function showTemplateError(e) {
+      e.preventDefault();
+      let div = '<div class="field_with_errors error-field"></div>';
+      $('label[for=protocol_template_name]').wrap(div);
+      $('#protocol_template_name').wrap(div);
+      $('#protocol_template_name_error').show();
+      $('html, body').animate({ scrollTop: $('label[for=protocol_template_name]').offset().top });
     }
 
     $(document).on("click", ".add-destroy", function() {

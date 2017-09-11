@@ -16,6 +16,7 @@ en:
         has_ind: Has IND
         compliance: Compliance
         principal_investigator: Principal investigator
+        template_name: Template
     enum:
       protocol:
         role:

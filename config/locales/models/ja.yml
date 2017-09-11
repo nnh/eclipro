@@ -16,6 +16,7 @@ ja:
         has_ind: INDの入手
         compliance: コンプライアンス
         principal_investigator: 主任研究員
+        template_name: テンプレート
     enum:
       protocol:
         role:

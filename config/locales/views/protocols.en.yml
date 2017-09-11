@@ -53,6 +53,8 @@ en:
         'yes': Yes
         'no': No
         error: Title can't be blank
+        template_error: Template can't be blank
+        template_name: Template (*It can not be changed later.)
         sponsors:
           - National Cancer Institute
           - National Institute of Allergy and Infectious Diseases
