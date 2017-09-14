@@ -23,7 +23,7 @@
               label
                 = check_box_tag 'add_section[]', section.no, false,
                                 class: 'section-checkbox', id: "add-section-#{section.no}"
-                = " #{section.title}"
+                = " #{section.no} #{section.title}"
         .form-group.pull-right
           = button_tag t('.cancel'), class: 'btn btn-default', id: 'add-team-cancel-button'
           = submit_tag t('.add_user'), class: 'btn btn-default', id: 'add-team-button'

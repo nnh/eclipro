@@ -41,8 +41,8 @@ class ProtocolsController < ApplicationController
 
   def update
     @protocol.assign_attributes(protocol_params)
-    if @protocol.changed?
-      @protocol.version += 0.001
+    if has_change?
+      @protocol.version += 0.001 if @protocol.changed?
       if @protocol.save
         redirect_to @protocol, notice: t('.success')
       else
@@ -79,7 +79,8 @@ class ProtocolsController < ApplicationController
 
   def clone
     original = Protocol.find(params[:id])
-    @protocol = original.dup
+    @protocol = original.deep_clone(include: [:co_author_users, :author_users, :reviewer_users],
+                                    expect: [{ co_author_users: [:id] }, { author_users: [:id] }, { reviewer_users: [:id] }])
     @protocol.title = "#{original.title} - (COPY)"
     @protocol.short_title = "#{original.short_title} - (COPY)" if original.short_title.present?
   end
@@ -179,5 +180,12 @@ class ProtocolsController < ApplicationController
         author_users_attributes: [:id, :protocol_id, :user_id, :sections, :_destroy],
         reviewer_users_attributes: [:id, :protocol_id, :user_id, :sections, :_destroy]
       )
+    end
+
+    def has_change?
+      @protocol.changed? ||
+        @protocol.co_author_users.any? { |co_author| co_author.changed? || co_author.marked_for_destruction? } ||
+        @protocol.author_users.any? { |author| author.changed? || author.marked_for_destruction? } ||
+        @protocol.reviewer_users.any? { |reviewer| reviewer.changed? || reviewer.marked_for_destruction? }
     end
 end

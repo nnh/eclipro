@@ -51,6 +51,8 @@ gem 'paper_trail'
 gem 'htmldiff'
 gem 'tinymce-rails'
 
+gem 'deep_cloneable'
+
 gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
 
