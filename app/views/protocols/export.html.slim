@@ -1,39 +1,15 @@
-sass:
-  p
-    font-weight: bold
-    margin-top: 5px
-    margin-bottom: 5px
-  .text-center
-    text-align: center
-  table
-    border-collapse: collapse
-  #subtitle
-    font-size: 16px
-    font-weight: bold
-  .section-title
-    background-color: #4F81BD
-    color: white
-    font-weight: bold
-    padding: 10px
-  .section-sub-title
-    background-color: #DBE5F1
-    padding: 10px
-  .mt-xl
-    margin-top: 25px
-
-/ TODO: css調整
-
-h3 = @protocol.title
-p = "#{t('.protocol_number')}: #{@protocol.protocol_number}" if @protocol.protocol_number.present?
-p = "#{t('.nct_number')}: #{@protocol.nct_number}" if @protocol.nct_number.present?
-p = "#{t('.principal_investigator')}: #{@protocol.principal_investigator.name}"
-/ TODO: スポンサーの表示
-- sponsors = @protocol.sponsors
-- sponsors << @protocol.sponsor_other if @protocol.sponsor_other.present?
-p = "#{t('.sponsors')}: #{sponsors.join(',')}" if sponsors.present?
-p = "#{t('.funded_by')}: #{@protocol.entity_funding_name}" if @protocol.entity_funding_name.present?
-p = "#{t('.draft_number')}: #{sprintf('%.3f', @protocol.version)}"
-p = @protocol.updated_at
+.text-center
+  h3 = @protocol.title
+  p = "#{t('.protocol_number')}: #{@protocol.protocol_number}" if @protocol.protocol_number.present?
+  p = "#{t('.nct_number')}: #{@protocol.nct_number}" if @protocol.nct_number.present?
+  p = "#{t('.principal_investigator')}: #{@protocol.principal_investigator.name}"
+  / TODO: スポンサーの表示
+  - sponsors = @protocol.sponsors
+  - sponsors << @protocol.sponsor_other if @protocol.sponsor_other.present?
+  p = "#{t('.sponsors')}: #{sponsors.join(',')}" if sponsors.present?
+  p = "#{t('.funded_by')}: #{@protocol.entity_funding_name}" if @protocol.entity_funding_name.present?
+  p = "#{t('.draft_number')}: #{sprintf('%.3f', @protocol.version)}"
+  p = @protocol.updated_at
 
 - section_0 = @contents.find_by(no: '0')
 #section-0.mt-xl
@@ -41,7 +17,11 @@ p = @protocol.updated_at
 
 #table-of-contents.mt-xl
   .text-center
-    b = t('.table_of_contents')
+    p = t('.table_of_contents')
+
+    .contents-table
+      - @sections.each do |section|
+        p = "#{section.no} #{section.title}"
 
 #compliance.mt-xl
   h4.section-title = t('.compliance')

@@ -120,7 +120,17 @@ class ProtocolsController < ApplicationController
 
   def export
     @contents = @protocol.contents
-    render :export, layout: 'export'
+    @sections = Section.where(template_name: @protocol.template_name)
+    render pdf: 'export',
+           encording: 'UTF-8',
+           layout: 'export.html',
+           template: 'protocols/export',
+           footer: {
+             center: '[page] / [topage]',
+             font_size: 9
+           },
+           viewport_size: '1280x1024',
+           show_as_html: params[:debug].present?
   end
 
   def finalize

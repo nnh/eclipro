@@ -1,0 +1,44 @@
+p {
+  font-weight: bold;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+#subtitle {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.section-title {
+  background-color: #4F81BD;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.section-sub-title {
+  background-color: #DBE5F1;
+  padding: 10px;
+}
+
+.contents-table {
+  display: inline-block;
+  border: 1px solid black;
+  padding: 10px 30px;
+  p {
+    text-align: left;
+    margin: 15px;
+  }
+}
+
+.mt-xl {
+  margin-top: 25px;
+}
