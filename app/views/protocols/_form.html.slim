@@ -93,7 +93,7 @@ javascript:
         showError(e);
         has_error = true;
       }
-      if ($('#protocol_template_name').val().length === 0) {
+      if ('#{@protocol.new_record?}' == 'true' && $('#protocol_template_name').val().length === 0) {
         showTemplateError(e);
         has_error = true;
       }
