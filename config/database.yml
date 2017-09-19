@@ -6,12 +6,12 @@ default: &default
 
 production:
   <<: *default
-  database: e_protocol
+  database: eclipro
 
 development:
   <<: *default
-  database: e_protocol_development
+  database: eclipro_development
 
 test:
   <<: *default
-  database: e_protocol_test
+  database: eclipro_test
