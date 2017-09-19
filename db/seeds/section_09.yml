@@ -1,0 +1,263 @@
+sections:
+  -
+    'no': 9
+    title: Statistical Considerations
+    template_name: General
+    template: |-
+      <p><em>No text is to be entered in this section; rather it should be included under the relevant subheadings below.</em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>The following subsections should describe the statistical tests and analysis plans for the
+      protocol. They should indicate how the study will answer the most important questions with precision
+      and a minimum of bias, while remaining feasible. &nbsp;Many elements below can be found in ICH Guidance
+      for Industry E9 Statistical Principles for Clinical Trials and the CONSORT statement which describes
+      standards for improving the quality of reporting randomized controlled trials. </em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>State whether there will be a formal Statistical Analysis Plan (SAP).&nbsp; A formal SAP
+      should be completed prior to database lock and unblinding of the study data. The SAP generally
+      includes additional statistical analysis detail (e.g., more detail of analysis populations, summary
+      of statistical strategies). If a separate SAP will be developed, subsections below can be summarized. </em></p>
+    instructions: ''
+    example: ''
+    editable: false
+  -
+    'no': 9.1
+    title: Statistical Hypotheses
+    template_name: General
+    template: |-
+      <ul><li class="mceNonEditable" contenteditable="false">Primary Efficacy Endpoint(s):</li></ul>
+      <p>&nbsp;</p>
+      <ul><li class="mceNonEditable" contenteditable="false">Secondary Efficacy Endpoint(s):</li></ul>
+      <p>&nbsp;</p>
+    instructions: |-
+      <p><em>State the formal and testable null and alternative hypotheses for primary and key secondary
+      endpoints, specifying the type of comparison (e.g., superiority, equivalence or non-inferiority,
+      dose response) and time period for which each endpoint will be analyzed.</em></p>
+    example: ''
+    editable: true
+  -
+    'no': 9.2
+    title: Sample Size Determination
+    template_name: General
+    template: ''
+    instructions: |-
+      <p><em>Include number of participants to recruit, screen, and enroll to have adequate power to test
+      the key hypotheses for the study.&nbsp; P</em><em>r</em><em>o</em><em>vide all information needed
+      to validate your calculations and</em> <em>judge the feasibility of enrolling and following the
+      necessary number of participants. In particular, specify all of the following:</em></p>
+      <p><em>&nbsp;</em></p>
+      <ul>
+      <li><em>Outcome measure used for calculations (almost always the primary variable)</em></li>
+      <li><em>Test statistic</em></li>
+      <li><em>Null and alternative hypotheses</em></li>
+      <li><em>Type I error rate (alpha)</em></li>
+      <li><em>Power level (e.g., 80% power)</em></li>
+      <li><em>A</em><em>ssumed event rate for dichotomous outcome (or mean and variance of continuous outcome)
+      for each study arm, justified and referenced by historical data as much as possible</em></li>
+      <li><em>S</em><em>tatistical method used to calculate the sample size, with a reference for it
+      and for any software utilized </em></li>
+      <li><em>Anticipated impact of dr</em><em>o</em><em>p</em><em>ou</em><em>t rates, withdrawal, cross-over
+      to other study arms, missing data, e on study power (see also <strong>9.4.2 Analysis of the Primary
+      Efficacy Endpoint(s) and 9.4.3 Analysis of the Secondary Endpoint(s)</strong>)</em></li>
+      <li><em>M</em><em>e</em><em>thod for adjusting calculations for planned interim analyses, if any
+      (<strong>Section4.6, Planned Interim Analyses</strong>).</em></li>
+      </ul>
+      <p><em>&nbsp;</em></p>
+      <p><em>Further, present calculations from a suitable range of assumptions to gauge the robustness
+      of the proposed sample size.</em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>Discuss whether the sample size provides sufficient power for addressing secondary endpoints
+      or exploratory analyses (e.g., subgroup analyses or moderator analyses involving an interaction term,
+      <strong>Section 9.4.9, Exploratory Analyses</strong>).</em></p>
+    example: ''
+    editable: true
+  -
+    'no': 9.3
+    title: Populations for Analyses
+    template_name: General
+    template: ''
+    instructions: |-
+      <p><em>Clearly identify and describe the analysis datasets (e.g., which participants will be included
+      in each). As a guide, this may include, but is not limited to, any or all of the following:</em></p>
+      <p><em>&nbsp;</em></p>
+      <ul>
+      <li><em>Intention-to-Treat (ITT) Analysis Dataset (i.e., all randomized participants)</em></li>
+      <li><em>Modified Intention-to-Treat Analysis Dataset (e.g., participants who took at least one dose
+      of study intervention and/or have some particular amount of follow-up outcome data)</em></li>
+      <li><em>Safety Analysis Dataset: defines the subset of participants for whom safety analyses will
+      be conducted (e.g., participants who took at least one dose of study intervention)</em></li>
+      <li><em>Per-Protocol Analysis Dataset: defines a subset of the participants in the full analysis
+      (ITT) set who complied with the protocol sufficiently to ensure that these data would be likely to
+      represent the effects of study intervention according to the underlying scientific model (e.g.,
+      participants who took at least 80% of study intervention for 80% of the days within the maintenance period)</em></li>
+      <li><em>Other Datasets that may be used for sensitivity analyses</em></li>
+      </ul>
+    example: ''
+    editable: true
+  -
+    'no': 9.4
+    title: Statistical Analyses
+    template_name: General
+    template: |-
+      <h3 class="mceNonEditable" contenteditable="false">9.4.1 General Approach</h3>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable" contenteditable="false">9.4.2 Analysis of the Primary Efficacy Endpoint(s)</h3>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable" contenteditable="false">9.4.3 Analysis of the Secondary Endpoint(s)</h3>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable" contenteditable="false">9.4.4 Safety Analyses</h3>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable" contenteditable="false">9.4.5 Baseline Descriptive Statistics</h3>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable" contenteditable="false">9.4.6 Planned Interim Analyses</h3>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable" contenteditable="false">9.4.7 Sub-Group Analyses</h3>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable" contenteditable="false">9.4.8 Tabulation of Individual Participant Data</h3>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable" contenteditable="false">9.4.9 Exploratory Analyses</h3>
+      <p>&nbsp;</p>
+    instructions: |-
+      <p><em>No text is to be entered in this section; rather it should be included under the relevant subheadings below.</em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>The following subsections should include a description of the planned statistical methods.</em></p>
+      <p><em>&nbsp;</em></p>
+      <h3 class="mceNonEditable">9.4.1&nbsp;&nbsp;&nbsp;&nbsp; General Approach</h3>
+      <p><em>As a guide, the following should be addressed, as appropriate:</em></p>
+      <p><em>&nbsp;</em></p>
+      <ul>
+      <li><em>For descriptive statistics, describe how categorical and continuous data will be presented
+      (e.g., percentages, means with standard deviations, median, range). </em></li>
+      <li><em>For inferential tests, indicate the p-value and confidence intervals for statistical significance
+      (Type I error) and whether one or two-tailed.</em></li>
+      <li><em>Indicate whether covariates will be pre-specified in the sections below or later in a SAP.</em></li>
+      <li><em>State whether checks of assumptions (e.g., normality) underlying statistical procedures will be
+      performed and whether any corrective procedures will be applied (e.g., transformation or nonparametric tests).</em></li>
+      </ul>
+      <p><em>&nbsp;</em></p>
+      <h3 class="mceNonEditable">9.4.2&nbsp;&nbsp;&nbsp;&nbsp; Analysis of the Primary Efficacy Endpoint(s)</h3>
+      <p><em>For each primary endpoint:</em></p>
+      <p><em>&nbsp;</em></p>
+      <ul>
+      <li><em>Define the measurement or observation and describe how it is calculated, if not readily apparent</em></li>
+      <li><em>Describe the scale (nominal/binary/categorical, ordinal, interval); state if it is measured
+      as a single endpoint/summary measure or repeated measure</em></li>
+      <li><em>Describe the statistical procedure(s) that will be used to analyze the primary endpoint (e.g.,
+      multiple regression, repeated measures mixed models, logistic regression, Analysis of Covariance (ANCOVA)).
+      Describe the covariates and factors in the model. Provide your rationale for covariates and how they
+      will be selected to achieve a parsimonious model. If the decision to specify covariates is deferred
+      for the SAP, indicate here. </em></li>
+      <li><em>Describe how results of statistical procedure(s) will be presented (e.g., adjusted means
+      (Least-squares means (LSMEANS)) with standard errors, odds ratios with 95% confidence intervals,
+      prevalence rates, number-needed-to-treat)</em></li>
+      <li><em>Describe details to check assumptions required for certain types of analyses (e.g., proportional
+      hazards, transformations or, when appropriate, nonparametric tests)</em></li>
+      <li><em>Describe the Populations for which the analysis will be conducted, as discussed in
+      <strong>Section 9.3, Populations for Analyses</strong></em></li>
+      <li><em>Describe how missing data will be handled (e.g., type of imputation technique, if any, and provide
+      justification), and approach to handling outliers, nonadherence and lost to follow-up </em></li>
+      <li><em>If there is more than one primary endpoint or more than one analysis of a particular endpoint, state
+      the statistical adjustment used for Type I error criteria or give reasons why it was considered unnecessary.</em></li>
+      </ul>
+      <p><em>&nbsp;</em></p>
+      <p><em>Note if more than one endpoint: the statistical approach for endpoints with the same analytic
+      issues can be described as a group.</em></p>
+      <p><em>&nbsp;</em></p>
+      <h3 class="mceNonEditable">9.4.3&nbsp;&nbsp;&nbsp;&nbsp; Analysis of the Secondary Endpoint(s)</h3>
+      <p><em>For each secondary endpoint:</em></p>
+      <p><em>&nbsp;</em></p>
+      <ul>
+      <li><em>Note if analysis of secondary endpoint(s) are dependent on findings of primary endpoint </em></li>
+      <li><em>Define the measurement or observation and describe how it is calculated, if not readily apparent</em></li>
+      <li><em>Describe the scale (nominal/binary/categorical, ordinal, and interval); state if it is measured
+      as a single endpoint/summary measure or repeated measure.</em></li>
+      <li><em>Describe the statistical procedure(s) that will be used to analyze the secondary endpoint (e.g.,
+      multiple regression, repeated measures mixed models, logistic regression, ANCOVA). Describe the covariates
+      and factors in the model. Provide rationale for covariates and how they will be selected to achieve
+      a parsimonious model. If decision to specify covariates is deferred for the SAP, indicate here. </em></li>
+      <li><em>Describe how results of statistical procedure(s) will be presented (e.g., adjusted means (LSMEANS) with
+      standard errors, odds ratios with 95% confidence intervals, prevalence rates, and number-needed-to-treat).</em></li>
+      <li><em>Describe details to check assumptions required for certain types of analyses (e.g., proportional
+      hazards, transformations or, when appropriate, nonparametric tests).</em></li>
+      <li><em>Describe the Populations for which the analysis will be conducted as discussed in
+      <strong>Section 9.3, Populations for Analyses.</strong></em></li>
+      <li><em>Describe how missing data will be handled (e.g., type of imputation technique, if any, and
+      provide justification), and approach to handling outliers, nonadherence and lost to follow-up. </em></li>
+      <li><em>If there is more than one primary endpoint or more than one analysis of a particular endpoint, state
+      the statistical adjustment used for Type I error criteria or give reasons why it was considered unnecessary.</em></li>
+      </ul>
+      <p><em>&nbsp;</em></p>
+      <p><em>Note if more than one endpoint: the statistical approach for endpoints with the same analytic
+      issues can be described as a group.</em></p>
+      <p><em>&nbsp;</em></p>
+      <h3 class="mceNonEditable">9.4.4&nbsp;&nbsp;&nbsp;&nbsp; Safety Analyses</h3>
+      <p><em>Describe how safety endpoints will be analyzed (e.g., as summary statistics during treatment
+      and/or as change scores from baselines such as shift tables).&nbsp; If your study is evaluating a
+      formal safety endpoint, all of the factors to be included in <strong>Section 9.4.2, Analysis of the
+      Primary Efficacy Endpoint(s)</strong> should be included here. Describe how AEs will be coded (e.g.,
+      Medical Dictionary for Regulatory Activities (MedDRA)), calculated (e.g., each AE will be counted
+      once only for a given participant), presented (e.g., severity, frequency, and relationship of AEs
+      to study intervention will be presented by System Organ Class (SOC) and preferred term groupings)
+      and what information will be reported about each AE (e.g., start date, stop date, severity, relationship,
+      expectedness, outcome, and duration).&nbsp; Adverse events leading to premature discontinuation from
+      the study intervention and serious treatment-emergent AEs should be presented either in a table or
+      a listing.&nbsp; The information included here should be consistent with the information contained within
+      <strong>Section 8.2, Safety and Other Assessments</strong>.</em></p>
+      <p><em>&nbsp;</em></p>
+      <h3 class="mceNonEditable">9.4.5&nbsp;&nbsp;&nbsp;&nbsp; Baseline Descriptive Statistics</h3>
+      <p><em>Include content in this section if applicable, otherwise note as not-applicable.</em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>Intervention groups should be compared on baseline characteristics, including demographics and
+      laboratory measurements, using descriptive statistics. Discuss planned baseline descriptive statistics,
+      indicate whether inferential statistics will be used.</em></p>
+      <p><em>&nbsp;</em></p>
+      <h3 class="mceNonEditable">9.4.6&nbsp;&nbsp;&nbsp;&nbsp; Planned Interim Analyses</h3>
+      <p><em>Include content in this section if applicable, otherwise note as not-applicable.</em></p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p><em>This section should describe the types of statistical interim analyses and halting guidelines
+      (if any) that are proposed, including their timing and who reviews the interim analyses.&nbsp; In addition,
+      if the interim analyses could result in an adjusted sample size, discuss the statistical algorithm
+      to be used when evaluating results.&nbsp;&nbsp; Pre-specify, to the extent possible, the criteria
+      that would prompt an interim review of safety and efficacy data and trial futility. Describe who
+      performs the statistical analysis and who reviews the analysis.&nbsp; In addition, discuss whether
+      they are unblinded and how the blinding will be preserved. </em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>If statistical rules will be used to halt enrollment into all or a portion of the study (e.g.,
+      for safety or futility), describe the statistical techniques and their operating characteristics.&nbsp; </em>
+      <em>If formal interim analyses will be performed, provide unambiguous and complete instructions so
+      that an independent statistician could perform the analyses.</em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>Describe safety findings that would prompt temporary suspension of enrollment and/or study
+      intervention use until a safety review is convened (either routine or ad hoc). Provide details of
+      the proposed rules for halting study enrollment or study intervention/administration of study product
+      for safety, including whether they pertain to the entire study, specific study arms or participant
+      subgroups, or other components of the study.&nbsp; </em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>S</em><em>tate how endpoints will be monitored, the frequency of monitoring, and the specific
+      definitions of proposed halting guidelines.&nbsp; </em><em>Examples of findings that might trigger
+      a safety review are the number of SAEs overall, the number of occurrences of a particular type of SAE,
+      severe AEs/reactions, or increased frequency of events.</em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>A</em><em>lso discuss the impact of the interim analysis (if being done) on the final efficacy
+      analyses, particularly on Type I error.&nbsp; </em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>This section should be consistent with <strong>Section 7, Study Intervention Discontinuation
+      and Participant Discontinuation/Withdrawal.</strong></em></p>
+      <p><em>&nbsp;</em></p>
+      <h3 class="mceNonEditable">9.4.7&nbsp;&nbsp;&nbsp;&nbsp; Sub-Group Analyses</h3>
+      <p><em>Describe how the primary endpoint will be analyzed based on age, sex, race/ethnicity or other
+      demographic characteristic(s) or provide justification for why such analyses are not warranted (e.g.,
+      study intervention only for use in men or children).</em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>Describe how the secondary endpoint(s) will be analyzed based on age, sex, race/ethnicity or
+      other demographic characteristic(s) or provide justification for why such analyses are not warranted
+      (e.g., study intervention only for use in men or children).</em></p>
+      <p><em>&nbsp;</em></p>
+      <h3 class="mceNonEditable">9.4.8&nbsp;&nbsp;&nbsp;&nbsp; Tabulation of Individual participant Data</h3>
+      <p><em>State whether individual participant data will be listed by measure and time point.</em></p>
+      <p><em>&nbsp;</em></p>
+      <h3 class="mceNonEditable">9.4.9&nbsp;&nbsp;&nbsp;&nbsp; Exploratory Analyses</h3>
+      <p><em>Exploratory analyses cannot be used as confirmatory proof for registration trials</em><em>.
+      All planned exploratory analyses should be specified in the protocol.</em></p>
+    example: ''
+    editable: true

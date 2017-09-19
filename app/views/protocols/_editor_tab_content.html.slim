@@ -10,7 +10,7 @@
         .pull-right
           = link_to t('.history'), history_protocol_content_path(protocol, content),
                     remote: true, class: 'btn btn-default'
-        h4 = "#{t('.editor')}: #{content.title}"
+        h4 = "#{t('.editor')}: #{content.no} #{content.title}"
 
         .mt-xl
           = form_for [protocol, content], html: { class: 'form-horizontal', role: 'form', remote: true } do |f|
@@ -34,5 +34,6 @@
               - status = t("activerecord.enum.content.status.#{content.status}")
               = "#{t('.status')}: #{status}"
     - else
-      h4 = "#{t('.editor')}: #{content.title} #{t('.read_only')}"
-      = t('.read_only_text')
+      h4 = "#{t('.editor')}: #{content.no}  #{content.title} #{t('.read_only')}"
+      h4 = t('.read_only_text')
+      = content.body.html_safe

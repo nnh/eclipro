@@ -27,7 +27,7 @@ class ProtocolsController < ApplicationController
     @protocol = Protocol.new(protocol_params)
     @protocol.principal_investigator = current_user
 
-    Section.where(template_name: protocol_params[:template_name]).each do |section|
+    Section.where(template_name: protocol_params[:template_name]).order(:created_at).each do |section|
       @protocol.contents << Content.new(protocol: @protocol, no: section.no, title: section.title,
                                         body: section.template, editable: section.editable)
     end

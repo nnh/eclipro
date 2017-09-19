@@ -1,0 +1,1092 @@
+sections:
+  -
+    'no': 10
+    title: Supporting Documentation and Operational Considerations
+    template_name: General
+    template: |-
+      <p><em>No text is to be entered in this section; rather it should be included under the relevant subheadings below.</p></em>
+    instructions: ''
+    example: ''
+    editable: false
+  -
+    'no': 10.1
+    title: Regulatory, Ethical, and Study Oversight Considerations
+    template_name: General
+    template: |-
+      <h3 class="mceNonEditable" contenteditable="false">10.1.1 Informed Consent Process</h3>
+      <p>&nbsp;</p>
+      <h4 class="mceNonEditable" contenteditable="false">10.1.1.1 Consent/assent and Other Informational
+      Documents Provided to participants</h4>
+      <p>&nbsp;</p>
+      <h4 class="mceNonEditable" contenteditable="false">10.1.1.2 Consent Procedures and Documentation</h4>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable" contenteditable="false">10.1.2 Study Discontinuation and Closure</h3>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable" contenteditable="false">10.1.3 Confidentiality and Privacy</h3>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable" contenteditable="false">10.1.4 Future Use of Stored Specimens and Data</h3>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable" contenteditable="false">10.1.5 Key Roles and Study Governance</h3>
+      <div class="mceNonEditable" contenteditable="false">
+      <table class="tblBorder" border="1">
+      <tbody>
+      <tr>
+      <td width="275"><p><strong>Principal Investigator</strong></p></td>
+      <td width="264"><p><strong>Medical Monitor</strong></p></td>
+      </tr>
+      <tr>
+      <td width="275"><div class="mceEditable" contenteditable="true">&nbsp;</div></td>
+      <td width="264"><div class="mceEditable" contenteditable="true">&nbsp;</div></td>
+      </tr>
+      <tr>
+      <td width="275"><div class="mceEditable" contenteditable="true">&nbsp;</div></td>
+      <td width="264"><div class="mceEditable" contenteditable="true">&nbsp;</div></td>
+      </tr>
+      <tr>
+      <td width="275"><div class="mceEditable" contenteditable="true">&nbsp;</div></td>
+      <td width="264"><div class="mceEditable" contenteditable="true">&nbsp;</div></td>
+      </tr>
+      <tr>
+      <td width="275"><div class="mceEditable" contenteditable="true">&nbsp;</div></td>
+      <td width="264"><div class="mceEditable" contenteditable="true">&nbsp;</div></td>
+      </tr>
+      <tr>
+      <td width="275"><div class="mceEditable" contenteditable="true">&nbsp;</div></td>
+      <td width="264"><div class="mceEditable" contenteditable="true">&nbsp;</div></td>
+      </tr>
+      </tbody>
+      </table>
+      </div>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable" contenteditable="false">10.1.6 Safety Oversight</h3>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable" contenteditable="false">10.1.7 Clinical Monitoring</h3>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable" contenteditable="false">10.1.8 Quality Assurance and Quality Control</h3>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable" contenteditable="false">10.1.9 Data Handling and Record Keeping</h3>
+      <h4 class="mceNonEditable" contenteditable="false">10.1.9.1 Data Collection and Management Responsibilities</h4>
+      <p>&nbsp;</p>
+      <h4 class="mceNonEditable" contenteditable="false">10.1.9.2 Study Records Retention</h4>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable" contenteditable="false">10.1.10 Protocol Deviations</h3>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable" contenteditable="false">10.1.11 Publication and Data Sharing Policy</h3>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable" contenteditable="false">10.1.12 Conflict of Interest Policy</h3>
+      <p>&nbsp;</p>
+    instructions: |-
+      <p><em>No text is to be entered in this section; rather it should be included under the relevant subheadings below.</em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>The following subsections should include a description of the regulatory and ethical considerations,
+      and context for the conduct of the trial. Of note, the guiding ethical principles being followed
+      by this study are included in the <strong>Statement of Compliance</strong> at the beginning of
+      this protocol. For NIH Intramural Research Program studies only:&nbsp; A statement referencing compliance
+      with NIH Human Research Protections Program policies and procedures is adequate for
+      <strong>Subsection 10.1.1, Informed Consent Process.</strong>&nbsp; </em></p>
+      <p><em>&nbsp;</em></p>
+      <h3 class="mceNonEditable">10.1.1&nbsp;&nbsp;&nbsp;&nbsp; Informed Consent Process</h3>
+      <p><em>No text is to be entered in this section; rather it should be included under the relevant
+      subheadings below.</em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>The following subsections should describe the procedures for obtaining and documenting
+      informed consent of study participants.</em><em>&nbsp; State if a separate screening consent will
+      be used.&nbsp; If a separate screening consent will not be used, the study consent must be signed
+      prior to conducting study screening procedures.</em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>In obtaining and documenting informed consent, the investigator must comply with applicable
+      regulatory requirements (e.g., 45 CFR Part 46, 21 CFR Part 50, 21 CFR Part 56) and should adhere
+      to ICH GCP. Prior to the beginning of the trial, the investigator should have the IRB’s written
+      approval for the protocol and the written informed consent form(s) and any other written information
+      to be provided to the participants. </em></p>
+      <p>&nbsp;</p>
+      <h4>10.1.1.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Consent/assent and Other Informational Documents Provided to participants</h4>
+      <p><em>This section should demonstrate that the consent form contains all required regulatory elements.</em>
+      <em>List all consent and/or assent documents and materials submitted with this protocol.&nbsp;
+      Include consent and/or assent forms, printed or web-based materials, phone scripts and any other related material.</em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>If needed, describe special documents or materials (e.g., Braille, another language, audio recording)</em></p>
+      <p>&nbsp;</p>
+      <h4>10.1.1.2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Consent Procedures and Documentation</h4>
+      <p><em>Describe how informed consent will be administered.&nbsp; Describe any proposed waivers or
+      alterations to informed consent.&nbsp; Describe any special circumstances regarding obtaining consent.&nbsp;
+      Describe plans for obtaining consent from speakers of language other than English.&nbsp; Describe
+      procedures for obtaining surrogate consent for those unable to consent on their own behalf.&nbsp;
+      This section should be consistent with <strong>Section 5.5, Strategies for Recruitment and Retention </strong>
+      when describing consent plans and special considerations for children or other vulnerable participants.
+      Address re-consent processes for children who become adults or emancipated during a study.</em></p>
+      <p><em>&nbsp;</em></p>
+      <h3 class="mceNonEditable">10.1.2&nbsp;&nbsp;&nbsp;&nbsp; Study Discontinuation and Closure</h3>
+      <p><em>List possible reasons for termination or temporary suspension of the study (e.g., study closure
+      based on PI decision, sponsor/funder decision, regulatory or other oversight bodies; review of serious,
+      unexpected, and related AEs; noncompliance; futility).&nbsp; For any study that is prematurely terminated
+      or temporarily suspended, the PI will promptly inform study participants, the IRB, and sponsor and
+      provide the reason(s) for the termination or temporary suspension. </em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>When a study is prematurely terminated, refer to Section <strong>7, Study Intervention Discontinuation
+      and Participant Discontinuation/Withdrawal</strong>, for handling of enrolled study participants.</em></p>
+      <p><em>&nbsp;</em>&nbsp;</p>
+      <h3 class="mceNonEditable">10.1.3&nbsp;&nbsp;&nbsp;&nbsp; Confidentiality and Privacy</h3>
+      <p><em>This section will describe protections for maintaining confidentiality of participant data,
+      including, but not limited to forms, records and samples and participant privacy.</em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>Include procedures for maintaining participant confidentiality, privacy protections, any special
+      data security requirements, and record retention per the sponsor’s requirements. Describe who would have </em>
+      <em>access to records, including the investigator and other study staff, the clinical monitor, funding
+      institutions, representatives of the NIH Institute or Center (IC), IND/IDE sponsor, representatives
+      from the IRB, regulatory agencies, and representatives of the pharmaceutical company supplying product
+      to be tested.&nbsp; In addition, consider inclusion of the following information:</em></p>
+      <p>&nbsp;</p>
+      <ul>
+      <li>Describe whether identifiers will be attached to data/samples, or whether data will be coded or unlinked.</li>
+      <li>If unlinked or coded, and additional information (e.g., age, ethnicity, sex, diagnosis) is available,
+      discuss whether this might make specific individuals or families identifiable.</li>
+      <li>If research data/samples will be coded, describe how access to the “key” for the code will be
+      limited. Include description of security measures (password-protected database, locked drawer, other).&nbsp;
+      List names or positions of persons with access to the key.</li>
+      <li><em>Include a discussion of the circumstances in which data or samples will be shared with other researchers.</em></li>
+      <li><em>Include a discussion of plans to publish participant’s family pedigrees, with a description
+      of measures to minimize the chance of identifying specific families.</em></li>
+      <li><em>Describe any situations in which personally identifiable information will be released to third parties.</em></li>
+      </ul>
+      <ul>
+      <li><em>State who has access to records, data, and samples.&nbsp; Consider if monitors or auditors
+      outside of study investigators will need access.</em></li>
+      </ul>
+      <ul>
+      <li><em>Discuss any additional features to protect confidentiality (e.g., use of a certificate of confidentiality).</em></li>
+      <li><em>Approaches to ensure privacy of study participants</em></li>
+      </ul>
+      <p><em>&nbsp;</em></p>
+      <p><em>For some studies, a Certificate of Confidentiality (CoC) may be necessary. A CoC provides
+      protection to researchers and research institutions from being forced to provide identifying information
+      on study participants to any federal, state or local authority. Authorization comes from NIH through
+      section 301 (d) of the Public Health Service Act (42 U.S.C. 241 (d)) which provides the Secretary of
+      Health and Human Services the authority to protect the privacy of study participants. Refer to the
+      NIH Certificate of Confidentiality Kiosk, for more details. </em></p>
+      <p><em>&nbsp;</em></p>
+      <h3 class="mceNonEditable">10.1.4&nbsp;&nbsp;&nbsp;&nbsp; Future Use of Stored Specimens and Data</h3>
+      <p><em>If intended specimens or residual specimens are retained after the study is complete, include
+      the provisions for consent and the options that are available for the participant to agree to the
+      future use of his/her specimens, images, audio or video recordings. Specify the location(s), if other
+      than the clinical site, where specimens or other data will be maintained, how long specimens or other
+      data will be stored, if the site's IRB will review future studies, and protections of confidentiality
+      for any future studies with the stored specimens or data (e.g., specimens will be coded, bar-coded,
+      de-identified, identifying information will be redacted from audio recording transcripts). Include a
+      statement that genetic testing will or will not be performed. </em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>See also <strong>Section 10.1.3, Confidentiality</strong> <strong>and Privacy </strong>and
+      <strong>Section 10.1.9, Data Handling and Record Keeping</strong>, for further information on future
+      use of study records.</em></p>
+      <p>&nbsp;&nbsp;</p>
+      <h3 class="mceNonEditable">10.1.5&nbsp;&nbsp;&nbsp;&nbsp; Key Roles and Study Governance</h3>
+      <p><em>Provide the name and contact information of the Principal Investigator and the Medical Monitor.</em></p>
+      <table border="1">
+      <tbody>
+      <tr>
+      <td width="441">
+      <p><strong>Principal Investigator</strong></p>
+      </td>
+      <td width="423">
+      <p><strong>Medical Monitor</strong></p>
+      </td>
+      </tr>
+      <tr>
+      <td width="441">
+      <p><em>Name, degree, title</em></p>
+      </td>
+      <td width="423">
+      <p><em>Name, degree, title</em></p>
+      </td>
+      </tr>
+      <tr>
+      <td width="441">
+      <p><em>Institution Name </em></p>
+      </td>
+      <td width="423">
+      <p><em>Institution Name </em></p>
+      </td>
+      </tr>
+      <tr>
+      <td width="441">
+      <p><em>Address</em></p>
+      </td>
+      <td width="423">
+      <p><em>Address</em></p>
+      </td>
+      </tr>
+      <tr>
+      <td width="441">
+      <p><em>Phone Number</em></p>
+      </td>
+      <td width="423">
+      <p><em>Phone Number</em></p>
+      </td>
+      </tr>
+      <tr>
+      <td width="441">
+      <p><em>Email</em></p>
+      </td>
+      <td width="423">
+      <p><em>Email</em></p>
+      </td>
+      </tr>
+      </tbody>
+      </table>
+      <p><em>In addition, briefly describe any study leadership committees (e.g.: Steering Committee,
+      Executive Committee, Subcommittee) and their roles.&nbsp; Note that it is not necessary to list
+      specific members.&nbsp; Also, describe country-specific administrative requirements or functions
+      that materially affect the conduct of the study. The MOP should include a list of study team roles
+      and responsibilities of those involved in the conduct, management, or oversight of the trial.</em></p>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable">10.1.6&nbsp;&nbsp;&nbsp;&nbsp; Safety Oversight</h3>
+      <p><em>Appropriate safety oversight should be used for each trial.&nbsp; This could include a Safety
+      Monitoring Committee (SMC), Data Safety Monitoring Board (DSMB), Safety Assessment Committee, and/or
+      an Independent Safety Monitor (ISM). Independent oversight is an important component to ensure human
+      subjects’ protection and data integrity and should be considered for each study. In this section,
+      the type of safety oversight should be clearly identified along with any known responsibilities for
+      the oversight of safety and data integrity in the study. Describe the composition of the SMC or DSMB,
+      frequency of interim data review, final data analysis and method of reviews. A separate DSMB Charter
+      will provide further detail of DSMB membership, responsibilities and administration of the DSMB. </em></p>
+      <p><em>&nbsp;</em>&nbsp;</p>
+      <h3 class="mceNonEditable">10.1.7&nbsp;&nbsp;&nbsp;&nbsp; Clinical Monitoring</h3>
+      <p><em>Site monitoring is conducted to ensure that the rights and well-being of trial participants
+      are protected, that the reported trial data are accurate, complete, and verifiable, and that the
+      conduct of the trial is in compliance with the currently approved protocol/amendment(s), with ICH GCP,
+      and with applicable regulatory requirement(s).&nbsp;</em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>This section should give a general description of how monitoring of the conduct and progress
+      of the clinical investigation will be conducted (i.e., </em><em>who will conduct the monitoring, the type,
+      frequency, and extent of monitoring, who will be provided reports of monitoring, if independent audits of
+      the monitoring will be conducted).&nbsp; This section may refer to a separate detailed clinical monitoring plan.&nbsp; </em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>A</em><em> separate clinical monitoring plan (CMP) should describe in detail who will conduct
+      the monitoring, at what frequency monitoring will be done, at what level of detail monitoring will
+      be performed, and the distribution of monitoring reports.</em>&nbsp; <em>A CMP ordinarily should focus
+      on preventing or mitigating important and likely risks, identified by a risk assessment, to critical
+      data and processes. The types (e.g., on-site, centralized), frequency (e.g., early, for initial assessment
+      and training versus throughout the study), and extent (e.g., comprehensive (100% data verification) versus
+      targeted or random review of certain data (less than 100% data verification)) of monitoring activities
+      will depend on a range of factors, considered during the risk assessment, including the complexity of
+      the study design, types of study endpoints, clinical complexity of the study population, geography,
+      relative experience of the PI and of the sponsor with the PI, electronic data capture, relative safety
+      of the study intervention, stage of the study, and quantity of data.</em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>If a separate CMP is not used, include all the details noted above in this section of the protocol.</em></p>
+      <p><em>&nbsp;</em></p>
+      <h3 class="mceNonEditable">10.1.8&nbsp;&nbsp;&nbsp;&nbsp; Quality Assurance and Quality Control</h3>
+      <p><em>This section will briefly describe the plans for quality management, the system for assessing
+      the quality of processes within a system.&nbsp; Quality management encompasses quality assurance (QA)</em>
+      <em>&nbsp;and quality control (QC)</em><em>.&nbsp; </em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>Each site, both clinical and laboratory, should have SOPs for quality management that describe:&nbsp; </em></p>
+      <p><em>&nbsp;</em></p>
+      <ul>
+      <li><em>How data and biological specimens (when applicable) will be evaluated for compliance with the
+      protocol, ethical standards, regulatory compliance, and accuracy in relation to source documents. </em></li>
+      <li><em>The documents to be reviewed (e.g., CRFs, clinic notes, product accountability records, specimen
+      tracking logs, questionnaires, audio or video recordings), who is responsible, and the frequency for reviews. </em></li>
+      <li><em>Who will be responsible for addressing QA issues (e.g., correcting procedures that are not in
+      compliance with protocol) and QC issues (e.g., correcting errors in data entry). </em></li>
+      <li><em>Staff training methods and how such training will be tracked.</em></li>
+      <li><em>If applicable, calibration exercises conducted prior to and during the study to train examiners
+      and maintain acceptable intra- and inter-examiner agreement.</em></li>
+      </ul>
+      <p><em>Regular monitoring and an independent audit, if conducted, must be performed according to ICH-GCP.&nbsp;
+      See also <strong>Section 10.1.7, Clinical Monitoring</strong>.</em></p>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable">10.1.9&nbsp;&nbsp;&nbsp;&nbsp; Data Handling and Record Keeping</h3>
+      <p><em>No text is to be entered in this section; rather it should be included under the relevant subheadings below.</em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>Each participating site will maintain appropriate medical and research records for this trial,
+      in compliance with ICH GCP and regulatory and institutional requirements for the protection of confidentiality
+      of participants.&nbsp; As part of participating in a NIH-sponsored or NIH-affiliated study, each site
+      will permit authorized representatives of the NIH, sponsor, and regulatory agencies to examine (and
+      when permitted by applicable law, to copy) clinical records for the purposes of quality assurance reviews,
+      audits, and evaluation of the study safety, progress, and data validity. Describe in this section who will
+      have access to records.&nbsp; </em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>The following subsections should include a description of the data handling and record keeping
+      for the conduct of the trial. </em></p>
+      <p><em>&nbsp;</em></p>
+      <h4>10.1.9.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Data Collection and Management Responsibilities</h4>
+      <p><em>Provide details regarding the type(s) of data capture that will be used for the study and any
+      relevant data standards or common data elements that are being utilized as a part of the trial. Specify
+      whether it will be paper or electronic, distributed or central, batched or ongoing processing, and any
+      related requirements. Indicate expectations for time for submission of CRFs. Further details should be
+      provided in the MOP or the data management plan, including detailed descriptions of source documentation,
+      CRFs, instructions for completing forms, data handling procedures, and procedures for data monitoring.</em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>Source data are all information, original records of clinical findings, observations, or other
+      activities in a clinical trial necessary for the reconstruction and evaluation of the trial.&nbsp;
+      Electronic source data are data initially recorded in electronic form. Examples of source data include,
+      but are not limited to, hospital records, clinical and office charts, laboratory notes, memoranda,
+      participants’ memory aids or evaluation checklists, pharmacy dispensing records, audio recordings of
+      counseling sessions, recorded data from automated instruments, copies or transcriptions certified after
+      verification as being accurate and complete, microfiches, photographic negatives, microfilm or magnetic
+      media, x-rays, and participant files and records kept at the pharmacy, at the laboratories, and medico-technical
+      departments involved in the clinical trial. It is acceptable to use CRFs as source documents.&nbsp;
+      If this is the case, it should be stated in this section what data will be collected on CRFs and what
+      data will be collected from other sources. </em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>It is not acceptable for the CRF to be the only record of a participant’s inclusion in the
+      study.&nbsp; Study participation should be captured in a participant’s medical record.&nbsp; This
+      is to ensure that anyone who would access the patient medical record has adequate knowledge that
+      the patient is participating in a clinical trial.</em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>Describe responsibilities for data handling and record keeping as they specifically relate
+      to the IND/IDE sponsor (if applicable), the award site, clinical site(s), laboratory(ies), and DCC.
+      Information should include the role in data collection, review of data, trial materials, and reports,
+      as well as retention of source documents, files, and records.&nbsp; Describe coding dictionaries
+      to be used and reconciliation processes (if applicable).&nbsp; </em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>If data are to be generated in one location and transferred to another group, describe the
+      responsibilities of each party.</em></p>
+      <p>&nbsp;</p>
+      <p><em>Provide a list of planned data standards, formats, terminologies and their versions, used for
+      the collection, tabulation, analysis of study data</em><em>. Refer to the FDA Guidance for Industry,
+      Providing Regulatory Submissions in Electronic Format — Standardized Study Data, </em><em>Study Data
+      Technical Conformance Guide </em><em>and FDA Guidance for Industry, Providing Regulatory Submissions in
+      Electronic Format - Human Pharmaceutical Product Applications and Related Submissions Using the eCTD Specifications.</em></p>
+      <p>&nbsp;</p>
+      <h4>10.1.9.2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Study Records Retention</h4>
+      <p><em>Specify the length of time for the investigator to maintain all records pertaining to this study.
+      &nbsp;The investigator should use the most conservative rule for document retention – i.e., retention
+      should follow the rule that has the longest period.&nbsp; For NIH, grantees must retain records for a
+      period of three years from the date of Federal Financial Report (FFR) submission. &nbsp;</em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>Indicate whether permission is required (and from whom) prior to destruction of records. If
+      under an IND/IDE, records should not be destroyed without the IND/IDE sponsor’s agreement. Pharmaceutical
+      companies who supply unapproved products should be consulted. </em></p>
+      <p>&nbsp;</p>
+      <p><em>Study intervention records may be described here if not addressed elsewhere in the protocol. </em></p>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable">10.1.10&nbsp; Protocol Deviations</h3>
+      <p><em>Plans for detecting, reviewing, and reporting deviations from the protocol should be described.
+      A statement should be included to indicate that deviations are not allowed, unless a statement is
+      included in the investigator agreement. Provisions for approval of deviations can be described. </em></p>
+      <p>&nbsp;&nbsp;</p>
+      <h3 class="mceNonEditable">10.1.11&nbsp; Publication and Data Sharing Policy</h3>
+      <p><em>The publication and authorship policies should be described in this section.&nbsp; For example,
+      for a study with multiple investigators, this section might state that an Executive Committee will be
+      responsible for developing publication procedures and resolving authorship issues.&nbsp; Please refer
+      to your specific contract, grant, and/or Clinical Trials Agreements.&nbsp; If details of the publication
+      policy will be described in the study’s MOP, refer to it here.&nbsp; The study must comply with:</em></p>
+      <ul>
+      <li><em>The NIH Public Access Policy, the NIH Policy on the Dissemination of NIH-Funded Clinical Trial
+      Information, The Food and Drug Administration Amendments Act of 2007 (FDAAA), Clinical Trials Registration
+      and Results Information Submission rule,</em></li>
+      <li><em>The NIH Data Sharing Policy (if applicable),</em></li>
+      <li><em>The NIH Genomic Data Sharing Policy, (if applicable), and</em></li>
+      <li><em>The NIH Data Sharing Policy and Implementation Guidance,</em></li>
+      <li><em>Any other relevant policies (e.g., NIH IC-specific data sharing or publication policy)</em></li>
+      <p>&nbsp;&nbsp;</p>
+      <h3 class="mceNonEditable">10.1.12&nbsp; Conflict of Interest Policy</h3><p><em>This section should
+      include a description of how the study will manage actual or perceived conflicts of interest</em></p></ul>
+    example: |-
+      <h3 class="mceNonEditable">10.1.1&nbsp;&nbsp;&nbsp;&nbsp; Informed Consent Process</h3>
+      <h4>10.1.1.1&nbsp;&nbsp;&nbsp; Consent/assent and Other Informational Documents Provided to participants</h4>
+      <p>Consent forms describing in detail the study intervention, study procedures, and risks are given
+      to the participant and written documentation of informed consent is required prior to starting
+      intervention/administering study intervention.&nbsp; The following consent materials are submitted
+      with this protocol <span>[insert list]</span>.</p>
+      <p>&nbsp;</p>
+      <h4>10.1.1.2&nbsp;&nbsp;&nbsp; Consent Procedures and Documentation</h4>
+      <p>Informed consent is a process that is initiated prior to the individual’s agreeing to participate
+      in the study and continues throughout the individual’s study participation. Consent forms will
+      be Institutional Review Board (IRB)-approved and the participant will be asked to read and review
+      the document. The investigator will explain the research study to the participant and answer any
+      questions that may arise. A verbal explanation will be provided in terms suited to the participant’s
+      comprehension of the purposes, procedures, and potential risks of the study and of their rights as
+      research participants.&nbsp; Participants will have the opportunity to carefully review the written
+      consent form and ask questions prior to signing. The participants should have the opportunity to discuss
+      the study with their family or surrogates or think about it prior to agreeing to participate. The
+      participant will sign the informed consent document prior to any procedures being done specifically
+      for the study. Participants must be informed that participation is voluntary and that they may withdraw
+      from the study at any time, without prejudice. A copy of the informed consent document will be given
+      to the participants for their records. The informed consent process will be conducted and documented
+      in the source document (including the date), and the form signed, before the participant undergoes any
+      study-specific procedures. The rights and welfare of the participants will be protected by emphasizing
+      to them that the quality of their medical care will not be adversely affected if they decline to participate in this study.</p>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable">10.1.2&nbsp;&nbsp;&nbsp;&nbsp; Study Discontinuation and Closure</h3>
+      <p>This study may be temporarily suspended or prematurely terminated if there is sufficient reasonable
+      cause.&nbsp; Written notification, documenting the reason for study suspension or termination, will
+      be provided by the suspending or terminating party to <span>[study participants, investigator, funding
+      agency, the Investigational New Drug (IND) or Investigational Device Exemption (IDE) sponsor and
+      regulatory authorities]</span>.&nbsp; If the study is prematurely terminated or suspended, the Principal
+      Investigator (PI) will promptly inform study participants, the IRB, and sponsor and will provide the
+      reason(s) for the termination or suspension.&nbsp; Study participants will be contacted, as applicable,
+      and be informed of changes to study visit schedule.</p>
+      <p>&nbsp;</p>
+      <p>Circumstances that may warrant termination or suspension include, but are not limited to:</p>
+      <ul>
+      <li>Determination of unexpected, significant, or unacceptable risk to participants</li>
+      <li>Demonstration of efficacy that would warrant stopping&nbsp;&nbsp;</li>
+      <li>Insufficient compliance to protocol requirements</li>
+      <li>Data that are not sufficiently complete and/or evaluable</li>
+      <li>Determination that the primary endpoint has been met</li>
+      <li>Determination of futility</li>
+      </ul>
+      <p>&nbsp;</p>
+      <p>Study may resume once concerns about safety, protocol compliance, and data quality are addressed,
+      and satisfy the sponsor, IRB and/or Food and Drug Administration (FDA).</p>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable">10.1.3&nbsp;&nbsp;&nbsp;&nbsp; Confidentiality and privacy</h3>
+      <p>Participant confidentiality and privacy is strictly held in trust by the participating investigators,
+      their staff, and the sponsor(s) and their interventions. This confidentiality is extended to cover
+      testing of biological samples and genetic tests in addition to the clinical information relating to
+      participants. Therefore, the study protocol, documentation, data, and all other information generated
+      will be held in strict confidence. No information concerning the study or the data will be released
+      to any unauthorized third party without prior written approval of the sponsor.</p>
+      <p>&nbsp;</p>
+      <p>All research activities will be conducted in as private a setting as possible.</p>
+      <p>&nbsp;</p>
+      <p>The study monitor, other authorized representatives of the sponsor, representatives of the Institutional
+      Review Board (IRB), regulatory agencies or pharmaceutical company supplying study product may inspect
+      all documents and records required to be maintained by the investigator, including but not limited to,
+      medical records (office, clinic, or hospital) and pharmacy records for the participants in this study.
+      The clinical study site will permit access to such records.</p>
+      <p>&nbsp;</p>
+      <p>The study participant’s contact information will be securely stored at each clinical site for
+      internal use during the study. At the end of the study, all records will continue to be kept in a secure
+      location for as long a period as dictated by the reviewing IRB, Institutional policies, or sponsor requirements.</p>
+      <p>&nbsp;</p>
+      <p>Study participant research data, which is for purposes of statistical analysis and scientific
+      reporting, will be transmitted to and stored at the <span>[specify name of Data Coordinating Center]</span>.
+      This will not include the participant’s contact or identifying information. Rather, individual
+      participants and their research data will be identified by a unique study identification number.
+      The study data entry and study management systems used by clinical sites and by <span>[specify name
+      of Data Coordinating Center]</span> research staff will be secured and password protected. At the
+      end of the study, all study databases will be de-identified and archived at the <span>[specify
+      name of Data Coordinating Center]</span>.</p>
+      <p>&nbsp;</p>
+      <p>Certificate of Confidentiality (if applicable)</p>
+      <p>&nbsp;</p>
+      <p>To further protect the privacy of study participants, a Certificate of Confidentiality will be
+      issued by the National Institutes of Health (NIH).  This certificate protects identifiable research
+      information from forced disclosure. It allows the investigator and others who have access to research
+      records to refuse to disclose identifying information on research participation in any civil, criminal,
+      administrative, legislative, or other proceeding, whether at the federal, state, or local level.
+      By protecting researchers and institutions from being compelled to disclose information that would
+      identify research participants, Certificates of Confidentiality help achieve the research objectives
+      and promote participation in studies by helping assure confidentiality and privacy to participants.</p>
+      <p><em>&nbsp;</em></p>
+      <h3 class="mceNonEditable">10.1.4&nbsp;&nbsp;&nbsp;&nbsp; Future Use of Stored Specimens and Data</h3>
+      <p>Data collected for this study will be analyzed and stored at the <span>[specify name of Data
+      Coordinating Center]</span>. After the study is completed, the de-identified, archived data will
+      be transmitted to and stored at the <span>[specify name of Data Repository]</span>, for use by
+      other researchers including those outside of the study. Permission to transmit data to the
+      <span>[specify name of Data Repository]</span> will be included in the informed consent.</p>
+      <p>&nbsp;</p>
+      <p>With the participant’s approval and as approved by local Institutional Review Boards (IRBs),
+      de-identified biological samples will be stored at the <span>[specify name of Biosample Repository]</span>
+      with the same goal as the sharing of data with the <span>[specify name of Data Repository]</span>.
+      These samples could be used for research the causes of <span>[specify condition(s)]</span>, its
+      complications and other conditions for which individuals with <span>[specify condition(s)]</span>
+      are at increased risk, and to improve treatment. The <span>[specify name of Repository]</span>
+      will also be provided with a code-link that will allow linking the biological specimens with the
+      phenotypic data from each participant, maintaining the blinding of the identity of the participant.</p>
+      <p>&nbsp;</p>
+      <p>During the conduct of the study, an individual participant can choose to withdraw consent to
+      have biological specimens stored for future research. However, withdrawal of consent with regard
+      to biosample storage may not be possible after the study is completed.</p>
+      <p>&nbsp;</p>
+      <p>When the study is completed, access to study data and/or samples will be provided through the
+      <span>[specify name of Repository]</span>.</p>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable">10.1.5&nbsp;&nbsp;&nbsp;&nbsp; Key Roles and Study Governance</h3>
+      <p><em>Provide the name and contact information of the Principal Investigator and the Medical Monitor.</em></p>
+      <table class="tblBorder" border="1">
+      <tbody>
+      <tr>
+      <td width="441">
+      <p><strong>Principal Investigator</strong></p>
+      </td>
+      <td width="423">
+      <p><strong>Medical Monitor</strong></p>
+      </td>
+      </tr>
+      <tr>
+      <td width="441">
+      <p>&nbsp;</p>
+      </td>
+      <td width="423">
+      <p>&nbsp;</p>
+      </td>
+      </tr>
+      <tr>
+      <td width="441">
+      <p>&nbsp;</p></td>
+      <td width="423">
+      <p>&nbsp;</p>
+      </td>
+      </tr>
+      <tr>
+      <td width="441">
+      <p>&nbsp;</p>
+      </td>
+      <td width="423">
+      <p>&nbsp;</p>
+      </td>
+      </tr>
+      <tr>
+      <td width="441">
+      <p>&nbsp;</p>
+      </td>
+      <td width="423">
+      <p>&nbsp;</p>
+      </td>
+      </tr>
+      <tr>
+      <td width="441">
+      <p></p>
+      </td>
+      <td width="423">
+      <p></p>
+      </td>
+      </tr>
+      </tbody>
+      </table>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable">10.1.6&nbsp;&nbsp;&nbsp;&nbsp; Safety Oversight</h3>
+      <p>Safety oversight will be under the direction of a Data and Safety Monitoring Board (DSMB) composed
+      of individuals with the appropriate expertise, including <span>[list expertise]</span>. Members of
+      the DSMB should be independent from the study conduct and free of conflict of interest, or measures
+      should be in place to minimize perceived conflict of interest.&nbsp; The DSMB will meet at least
+      semiannually to assess safety and efficacy data on each arm of the study. The DMSB will operate under
+      the rules of an approved charter that will be written and reviewed at the organizational meeting of
+      the DSMB. At this time, each data element that the DSMB needs to assess will be clearly defined. The
+      DSMB will provide its input to <span>[specify the study sponsor/National Institutes of Health staff/other]</span>.</p>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable">10.1.7&nbsp;&nbsp;&nbsp;&nbsp; Clinical Monitoring</h3>
+      <p>&nbsp;</p>
+      <p>Example text when a <strong>separate CMP is being used is provided as a guide</strong>:</p>
+      <p><em>&nbsp;</em></p>
+      <p>Clinical site monitoring is conducted to ensure that the rights and well-being of trial participants
+      are protected, that the reported trial data are accurate, complete, and verifiable, and that the conduct
+      of the trial is in compliance with the currently approved protocol/amendment(s), with International
+      Conference on Harmonisation Good Clinical Practice (ICH GCP), and with applicable regulatory requirement(s).</p>
+      <p>&nbsp;</p>
+      <ul>
+      <li>Monitoring for this study will be performed by <span>[insert text]</span>.</li>
+      <li><span>[Insert brief description of type of monitoring (e.g., on-site, centralized), frequency
+      (e.g., early, for initial assessment and training versus throughout the study), and extent (e.g.,
+      comprehensive (100% data verification) versus targeted or random review of certain data (less than
+      100% data verification or targeted data verification of endpoint, safety and other key data variables)]</span></li>
+      <li><span>[Insert text]</span> will be provided copies of monitoring reports within <span>[x]</span>
+      days of visit.</li>
+      <li>Details of clinical site monitoring are documented in a Clinical Monitoring Plan (CMP). The CMP
+      describes in detail who will conduct the monitoring, at what frequency monitoring will be done, at
+      what level of detail monitoring will be performed, and the distribution of monitoring reports.</li>
+      <li>Independent audits <span>[will/will not]</span> be conducted by <span>[insert text]</span> to ensure
+      monitoring practices are performed consistently across all participating sites and that monitors are following the CMP.</li>
+      </ul>
+      <p>OR</p>
+      <p>&nbsp;</p>
+      <p>Example text when a <strong>separate CMP is <u>not</u> being used is provided as a guide</strong>:</p>
+      <p>&nbsp;</p>
+      <p>Clinical site monitoring is conducted to ensure that the rights and well-being of trial participants
+      are protected, that the reported trial data are accurate, complete, and verifiable, and that the conduct
+      of the trial is in compliance with the currently approved protocol/amendment(s), with International
+      Conference on Harmonisation Good Clinical Practice (ICH GCP), and with applicable regulatory requirement(s).</p>
+      <p><em>&nbsp;</em></p>
+      <ul>
+      <li><span>[Insert detailed description of who will conduct the monitoring, the type of monitoring
+      (e.g., on-site, centralized), frequency (e.g., early, for initial assessment and training versus
+      throughout the study), and extent (e.g., comprehensive (100% data verification) versus targeted or
+      random review of certain data (less than 100% data verification or targeted data verification of endpoint,
+      safety and other key data variables)), and the distribution of monitoring reports]</span></li>
+      <li>Independent audits <span>[will/will not]</span> be conducted by <span>[insert text]</span> to
+      ensure monitoring practices are performed consistently across all participating sites.</li>
+      </ul>
+      <p><em>&nbsp;</em></p>
+      <h3 class="mceNonEditable">10.1.8&nbsp;&nbsp;&nbsp;&nbsp; Quality Assurance and Quality Control</h3>
+      <p>Each clinical site will perform internal quality management of study conduct, data and biological
+      specimen collection, documentation and completion.&nbsp; An individualized quality management plan
+      will be developed to describe a site’s quality management.</p>
+      <p>&nbsp;</p>
+      <p>Quality control (QC) procedures will be implemented beginning with the data entry system and data
+      QC checks that will be run on the database will be generated. Any missing data or data anomalies
+      will be communicated to the site(s) for clarification/resolution.</p>
+      <p>&nbsp;</p>
+      <p>Following written Standard Operating Procedures (SOPs), the monitors will verify that the clinical
+      trial is conducted and data are generated and biological specimens are collected, documented (recorded),
+      and reported in compliance with the protocol, International Conference on Harmonisation Good Clinical
+      Practice (ICH GCP), and applicable regulatory requirements (e.g., Good Laboratory Practices (GLP),
+      Good Manufacturing Practices (GMP)).</p>
+      <p>&nbsp;</p>
+      <p>The investigational site will provide direct access to all trial related sites, source data/documents,
+      and reports for the purpose of monitoring and auditing by the sponsor, and inspection by local and regulatory authorities.</p>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable">10.1.9&nbsp;&nbsp;&nbsp;&nbsp; Data Handling and Record Keeping</h3>
+      <h4>10.1.9.1&nbsp;&nbsp;&nbsp; Data Collection and Management Responsibilities</h4>
+      <p>Data collection is the responsibility of the clinical trial staff at the site under the supervision
+      of the site investigator. The investigator is responsible for ensuring the accuracy, completeness,
+      legibility, and timeliness of the data reported.</p>
+      <p>&nbsp;</p>
+      <p>All source documents should be completed in a neat, legible manner to ensure accurate interpretation of data.&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>Hardcopies of the study visit worksheets will be provided for use as source document worksheets for
+      recording data for each participant enrolled in the study.&nbsp; Data recorded in the electronic case
+      report form (eCRF) derived from source documents should be consistent with the data recorded on the source documents.</p>
+      <p>&nbsp;</p>
+      <p>Clinical data (including AEs, concomitant medications, and expected adverse reactions data) and
+      clinical laboratory data will be entered into <span>[specify name of data capture system]</span>,
+      a 21 CFR Part 11-compliant data capture system provided by the <span>[specify DCC]</span>. The data
+      system includes password protection and internal quality checks, such as automatic range checks,
+      to identify data that appear inconsistent, incomplete, or inaccurate. Clinical data will be entered
+      directly from the source documents.</p>
+      <p>&nbsp;</p>
+      <h4>10.1.9.2&nbsp;&nbsp;&nbsp; Study Records Retention</h4>
+      <p>Study documents should be retained for a minimum of 2 years after the last approval of a marketing
+      application in an International Conference on Harminosation (ICH) region and until there are no
+      pending or contemplated marketing applications in an ICH region or until at least 2 years have
+      elapsed since the formal discontinuation of clinical development of the study intervention. These
+      documents should be retained for a longer period, however, if required by local regulations. No records
+      will be destroyed without the written consent of the sponsor, if applicable. It is the responsibility
+      of the sponsor to inform the investigator when these documents no longer need to be retained.</p>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable">10.1.10&nbsp; Protocol Deviations</h3>
+      <p>A protocol deviation is any noncompliance with the clinical trial protocol, International Conference
+      on Harmonisation Good Clinical Practice (ICH GCP), or MOP requirements. The noncompliance may be either
+      on the part of the participant, the investigator, or the study site staff. As a result of deviations,
+      corrective actions are to be developed by the site and implemented promptly.</p>
+      <p>&nbsp;</p>
+      <p>These practices are consistent with ICH GCP:</p>
+      <ul>
+      <li>4.5 Compliance with Protocol, sections 4.5.1, 4.5.2, and 4.5.3</li>
+      <li>5.1 Quality Assurance and Quality Control, section 5.1.1</li>
+      <li>5.20 Noncompliance, sections 5.20.1, and 5.20.2.</li>
+      </ul>
+      <p>&nbsp;</p>
+      <p>It is the responsibility of the site investigator to use continuous vigilance to identify and
+      report deviations within <span>[specify number]</span> working days of identification of the protocol
+      deviation, or within <span>[specify number]</span> working days of the scheduled protocol-required
+      activity.&nbsp; All deviations must be addressed in study source documents, reported to
+      <span>[specify NIH Institute or Center (IC)]</span> Program Official and <span>[specify Data Coordinating
+      Center or sponsor]</span>.&nbsp; Protocol deviations must be sent to the reviewing IRB per their policies.
+      The site investigator is responsible for knowing and adhering to the reviewing IRB requirements.
+      Further details about the handling of protocol deviations will be included in the MOP.</p>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable">10.1.11&nbsp; Publication and Data Sharing Policy</h3>
+      <p>This study will be conducted in accordance with the following publication and data sharing policies and regulations:</p>
+      <p>&nbsp;</p>
+      <p>National Institutes of Health (NIH) Public Access Policy, which ensures that the public has
+      access to the published results of NIH funded research. It requires scientists to submit final
+      peer-reviewed journal manuscripts that arise from NIH funds to the digital archive
+      <u>PubMed Central</u> upon acceptance for publication.</p>
+      <p>&nbsp;</p>
+      <p>This study will comply with the NIH Data Sharing Policy and Policy on the Dissemination of NIH-Funded
+      Clinical Trial Information and the Clinical Trials Registration and Results Information Submission rule.
+      As such,&nbsp; this trial will be registered at ClinicalTrials.gov, and results information from this
+      trial will be submitted to ClinicalTrials.gov. In addition, every attempt will be made to publish
+      results in peer-reviewed journals.&nbsp; Data from this study may be requested from other researchers
+      x years after the completion of the primary endpoint by contacting <span>[specify person or awardee
+      institution or name of data repository]</span>.</p>
+      <p>&nbsp;</p>
+      <p>In addition, this study will comply with the NIH Genomic Data Sharing Policy, which applies to all
+      NIH-funded research that generates large-scale human or non-human genomic data, as well as the use of
+      these data for subsequent research. Large-scale data include genome-wide association studies (GWAS),
+      single nucleotide polymorphisms (SNP) arrays, and genome sequence, transcriptomic, epigenomic, and gene expression data.</p>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable">10.1.12&nbsp; Conflict of Interest Policy</h3>
+      <p>The independence of this study from any actual or perceived influence, such as by the pharmaceutical
+      industry, is critical. Therefore any actual conflict of interest of persons who have a role in the design,
+      conduct, analysis, publication, or any aspect of this trial will be disclosed and managed. Furthermore,
+      persons who have a perceived conflict of interest will be required to have such conflicts managed in
+      a way that is appropriate to their participation in the design and conduct of this trial.&nbsp; The
+      study leadership in conjunction with the <span>[specify NIH Institute or Center (IC)]</span> has
+      established policies and procedures for all study group members to disclose all conflicts of interest
+      and will establish a mechanism for the management of all reported dualities of interest.</p>
+    editable: true
+  -
+    'no': 10.2
+    title: Additional Considerations
+    template_name: General
+    template: ''
+    instructions: |-
+      <p><em>This section should include a description of any additional considerations not currently
+      covered in this protocol template, such as particular institutional or IRB-related requirements. </em></p>
+    example: ''
+    editable: true
+  -
+    'no': 10.3
+    title: Abbreviations
+    template_name: General
+    template: |-
+      <table class="tblBorder" border="1">
+      <tbody>
+      <tr>
+      <td><p>AE</p></td>
+      <td><p>Adverse Event</p></td>
+      </tr>
+      <tr>
+      <td><p>ANCOVA</p></td>
+      <td><p>Analysis of Covariance</p></td>
+      </tr>
+      <tr>
+      <td><p>CFR</p></td>
+      <td><p>Code of Federal Regulations</p></td>
+      </tr>
+      <tr>
+      <td><p>CLIA</p></td>
+      <td><p>Clinical Laboratory Improvement Amendments</p></td>
+      </tr>
+      <tr>
+      <td><p>CMP</p></td>
+      <td><p>Clinical Monitoring Plan</p></td>
+      </tr>
+      <tr>
+      <td><p>COC</p></td>
+      <td><p>Certificate of Confidentiality</p></td>
+      </tr>
+      <tr>
+      <td><p>CONSORT</p></td>
+      <td><p>Consolidated Standards of Reporting Trials</p></td>
+      </tr>
+      <tr>
+      <td><p>CRF</p></td>
+      <td><p>Case Report Form</p></td>
+      </tr>
+      <tr>
+      <td><p>DCC</p></td>
+      <td><p>Data Coordinating Center</p></td>
+      </tr>
+      <tr>
+      <td><p>DHHS</p></td>
+      <td><p>Department of Health and Human Services</p></td>
+      </tr>
+      <tr>
+      <td><p>DSMB</p></td>
+      <td><p>Data Safety Monitoring Board</p></td>
+      </tr>
+      <tr>
+      <td><p>DRE</p></td>
+      <td><p>Disease-Related Event</p></td>
+      </tr>
+      <tr>
+      <td><p>EC</p></td>
+      <td><p>Ethics Committee</p></td>
+      </tr>
+      <tr>
+      <td><p>eCRF</p></td>
+      <td><p>Electronic Case Report Forms</p></td>
+      </tr>
+      <tr>
+      <td><p>FDA</p></td>
+      <td><p>Food and Drug Administration</p></td>
+      </tr>
+      <tr>
+      <td><p>FDAAA</p></td>
+      <td><p>Food and Drug Administration Amendments Act of 2007</p></td>
+      </tr>
+      <tr>
+      <td><p>FFR</p></td>
+      <td><p>Federal Financial Report</p></td>
+      </tr>
+      <tr>
+      <td><p>GCP</p></td>
+      <td><p>Good Clinical Practice</p></td>
+      </tr>
+      <tr>
+      <td><p>GLP</p></td>
+      <td><p>Good Laboratory Practices</p></td>
+      </tr>
+      <tr>
+      <td><p>GMP</p></td>
+      <td><p>Good Manufacturing Practices</p></td>
+      </tr>
+      <tr>
+      <td><p>GWAS</p></td>
+      <td><p>Genome-Wide Association Studies</p></td>
+      </tr>
+      <tr>
+      <td><p>HIPAA</p></td>
+      <td><p>Health Insurance Portability and Accountability Act</p></td>
+      </tr>
+      <tr>
+      <td><p>IB</p></td>
+      <td><p>Investigator’s Brochure</p></td>
+      </tr>
+      <tr>
+      <td><p>ICH</p></td>
+      <td><p>International Conference on Harmonisation</p></td>
+      </tr>
+      <tr>
+      <td><p>ICMJE</p></td>
+      <td><p>International Committee of Medical Journal Editors</p></td>
+      </tr>
+      <tr>
+      <td><p>IDE</p></td>
+      <td><p>Investigational Device Exemption</p></td>
+      </tr>
+      <tr>
+      <td><p>IND</p></td>
+      <td><p>Investigational New Drug Application</p></td>
+      </tr>
+      <tr>
+      <td><p>IRB</p></td>
+      <td><p>Institutional Review Board</p></td>
+      </tr>
+      <tr>
+      <td><p>ISM</p></td>
+      <td><p>Independent Safety Monitor</p></td>
+      </tr>
+      <tr>
+      <td><p>ISO</p></td>
+      <td><p>International Organization for Standardization</p></td>
+      </tr>
+      <tr>
+      <td><p>ITT</p></td>
+      <td><p>Intention-To-Treat</p></td>
+      </tr>
+      <tr>
+      <td><p>LSMEANS</p></td>
+      <td><p>Least-squares Means</p></td>
+      </tr>
+      <tr>
+      <td><p>MedDRA</p></td>
+      <td><p>Medical Dictionary for Regulatory Activities</p></td>
+      </tr>
+      <tr>
+      <td><p>MOP</p></td>
+      <td><p>Manual of Procedures</p></td>
+      </tr>
+      <tr>
+      <td><p>MSDS</p></td>
+      <td><p>Material Safety Data Sheet</p></td>
+      </tr>
+      <tr>
+      <td><p>NCT</p></td>
+      <td><p>National Clinical Trial</p></td>
+      </tr>
+      <tr>
+      <td><p>NIH</p></td>
+      <td><p>National Institutes of Health</p></td>
+      </tr>
+      <tr>
+      <td><p>NIH IC</p></td>
+      <td><p>NIH Institute or Center</p></td>
+      </tr>
+      <tr>
+      <td><p>OHRP</p></td>
+      <td><p>Office for Human Research Protections</p></td>
+      </tr>
+      <tr>
+      <td><p>PI</p></td>
+      <td><p>Principal Investigator</p></td>
+      </tr>
+      <tr>
+      <td><p>QA</p></td>
+      <td><p>Quality Assurance</p></td>
+      </tr>
+      <tr>
+      <td><p>QC</p></td>
+      <td><p>Quality Control</p></td>
+      </tr>
+      <tr>
+      <td><p>SAE</p></td>
+      <td><p>Serious Adverse Event</p></td>
+      </tr>
+      <tr>
+      <td><p>SAP</p></td>
+      <td><p>Statistical Analysis Plan</p></td>
+      </tr>
+      <tr>
+      <td><p>SMC</p></td>
+      <td><p>Safety Monitoring Committee</p></td>
+      </tr>
+      <tr>
+      <td><p>SOA</p></td>
+      <td><p>Schedule of Activities</p></td>
+      </tr>
+      <tr>
+      <td><p>SOC</p></td>
+      <td><p>System Organ Class</p></td>
+      </tr>
+      <tr>
+      <td><p>SOP</p></td>
+      <td><p>Standard Operating Procedure</p></td>
+      </tr>
+      <tr>
+      <td><p>UP</p></td>
+      <td><p>Unanticipated Problem</p></td>
+      </tr>
+      <tr>
+      <td><p>US</p></td>
+      <td><p>United States</p></td>
+      </tr>
+      </tbody>
+      </table>
+    instructions: |-
+      <p><em>The list below includes abbreviations utilized in this template.  However, this list should
+      be customized for each protocol (i.e., abbreviations not used should be removed and new abbreviations
+      used should be added to this list).</em></p>
+    example: ''
+    editable: true
+  -
+    'no': 10.4
+    title: Protocol Amendment History
+    template_name: General
+    template: |-
+      <table class="tblBorder" border="1">
+      <tbody>
+      <tr>
+      <td width="184"><p><strong>Version</strong></p></td>
+      <td width="178"><p><strong>Date</strong></p></td>
+      <td width="472"><p><strong>Description of Change </strong></p></td>
+      <td width="413"><p><strong>Brief Rationale</strong></p></td>
+      </tr>
+      <tr>
+      <td width="184"><p>&nbsp;</p></td>
+      <td width="178"><p>&nbsp;</p></td>
+      <td width="472"><p>&nbsp;</p></td>
+      <td width="413"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="184"><p>&nbsp;</p></td>
+      <td width="178"><p>&nbsp;</p></td>
+      <td width="472"><p>&nbsp;</p></td>
+      <td width="413"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="184"><p>&nbsp;</p></td>
+      <td width="178"><p>&nbsp;</p></td>
+      <td width="472"><p>&nbsp;</p></td>
+      <td width="413"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="184"><p>&nbsp;</p></td>
+      <td width="178"><p>&nbsp;</p></td>
+      <td width="472"><p>&nbsp;</p></td>
+      <td width="413"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="184"><p>&nbsp;</p></td>
+      <td width="178"><p>&nbsp;</p></td>
+      <td width="472"><p>&nbsp;</p></td>
+      <td width="413"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="184"><p>&nbsp;</p></td>
+      <td width="178"><p>&nbsp;</p></td>
+      <td width="472"><p>&nbsp;</p></td>
+      <td width="413"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="184"><p>&nbsp;</p></td>
+      <td width="178"><p>&nbsp;</p></td>
+      <td width="472"><p>&nbsp;</p></td>
+      <td width="413"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="184"><p>&nbsp;</p></td>
+      <td width="178"><p>&nbsp;</p></td>
+      <td width="472"><p>&nbsp;</p></td>
+      <td width="413"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="184"><p>&nbsp;</p></td>
+      <td width="178"><p>&nbsp;</p></td>
+      <td width="472"><p>&nbsp;</p></td>
+      <td width="413"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="184"><p>&nbsp;</p></td>
+      <td width="178"><p>&nbsp;</p></td>
+      <td width="472"><p>&nbsp;</p></td>
+      <td width="413"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="184"><p>&nbsp;</p></td>
+      <td width="178"><p>&nbsp;</p></td>
+      <td width="472"><p>&nbsp;</p></td>
+      <td width="413"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="184"><p>&nbsp;</p></td>
+      <td width="178"><p>&nbsp;</p></td>
+      <td width="472"><p>&nbsp;</p></td>
+      <td width="413"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="184"><p>&nbsp;</p></td>
+      <td width="178"><p>&nbsp;</p></td>
+      <td width="472"><p>&nbsp;</p></td>
+      <td width="413"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="184"><p>&nbsp;</p></td>
+      <td width="178"><p>&nbsp;</p></td>
+      <td width="472"><p>&nbsp;</p></td>
+      <td width="413"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="184"><p>&nbsp;</p></td>
+      <td width="178"><p>&nbsp;</p></td>
+      <td width="472"><p>&nbsp;</p></td>
+      <td width="413"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="184"><p>&nbsp;</p></td>
+      <td width="178"><p>&nbsp;</p></td>
+      <td width="472"><p>&nbsp;</p></td>
+      <td width="413"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="184"><p>&nbsp;</p></td>
+      <td width="178"><p>&nbsp;</p></td>
+      <td width="472"><p>&nbsp;</p></td>
+      <td width="413"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="184"><p>&nbsp;</p></td>
+      <td width="178"><p>&nbsp;</p></td>
+      <td width="472"><p>&nbsp;</p></td>
+      <td width="413"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="184"><p>&nbsp;</p></td>
+      <td width="178"><p>&nbsp;</p></td>
+      <td width="472"><p>&nbsp;</p></td>
+      <td width="413"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="184"><p>&nbsp;</p></td>
+      <td width="178"><p>&nbsp;</p></td>
+      <td width="472"><p>&nbsp;</p></td>
+      <td width="413"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="184"><p>&nbsp;</p></td>
+      <td width="178"><p>&nbsp;</p></td>
+      <td width="472"><p>&nbsp;</p></td>
+      <td width="413"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="184"><p>&nbsp;</p></td>
+      <td width="178"><p>&nbsp;</p></td>
+      <td width="472"><p>&nbsp;</p></td>
+      <td width="413"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="184"><p>&nbsp;</p></td>
+      <td width="178"><p>&nbsp;</p></td>
+      <td width="472"><p>&nbsp;</p></td>
+      <td width="413"><p>&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="184"><p>&nbsp;</p></td>
+      <td width="178"><p>&nbsp;</p></td>
+      <td width="472"><p>&nbsp;</p></td>
+      <td width="413"><p>&nbsp;</p></td>
+      </tr>
+      </tbody>
+      </table>
+    instructions: |-
+      <p><em>The table is intended to capture changes of IRB-approved versions of the protocol, including
+      a description of the change and rationale. A Summary of Changes table for the current amendment is
+      located in the Protocol Title Page.</em></p>
+    example: ''
+    editable: true

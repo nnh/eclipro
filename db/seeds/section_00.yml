@@ -1,0 +1,30 @@
+sections:
+  -
+    'no': 0
+    title: Protocol Amendment Summary of Changes Table
+    template_name: General
+    template: |-
+      <p id="subtitle">
+      Summary of Changes from Previous Version:
+      </p>
+      <table class="tblBorder" border="1">
+      <tbody>
+      <tr>
+      <td width="183"><p><strong>Affected Section(s)</strong></p></td>
+      <td width="547"><p><strong>Summary of Revisions Made</strong></p></td>
+      <td width="517"><p><strong>Rationale</strong></p></td>
+      </tr>
+      <tr>
+      <td width="183"><p><strong>&nbsp;</strong></p></td>
+      <td width="547"><p><strong>&nbsp;</strong></p></td>
+      <td width="517"><p><strong>&nbsp;</strong></p></td>
+      </tr>
+      <tr><td width="183"><p><strong>&nbsp;</strong></p></td>
+      <td width="547"><p><strong>&nbsp;</strong></p></td>
+      <td width="517"><p><strong>&nbsp;</strong></p></td>
+      </tr>
+      </tbody>
+      </table>
+    instructions: ''
+    example: ''
+    editable: true

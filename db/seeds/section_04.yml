@@ -1,0 +1,77 @@
+sections:
+  -
+    'no': 4
+    title: Study Design
+    template_name: General
+    template: |-
+      <p><em>No text is to be entered in this section; rather it should be included under the relevant subheadings below.</em></p>
+    instructions: ''
+    example: ''
+    editable: false
+  -
+    'no': 4.1
+    title: Overall Design
+    template_name: General
+    template: ''
+    instructions: |-
+      <p><em>The scientific integrity of the trial and the credibility of the data from the trial depend
+      substantially on the trial design.&nbsp; A description of the trial design should be consistent with
+      the <strong>Protocol Synopsis (section 1.1) and Protocol Schema (section 1.2)</strong> and include:</em></p>
+      <p><em>&nbsp;</em></p>
+      <ul>
+      <li><em>A statement of the hypothesis </em></li>
+      <li><em>Phase of the trial</em></li>
+      <li><em>A description of the type/design of trial to be conducted (e.g., randomized, placebo-controlled,
+      double-blinded, parallel design, open-label, dose escalation, dose-ranging, adaptive, cluster randomized,
+      group sequential, multi-regional, superiority or non-inferiority design) </em></li>
+      <li><em>A description of methods to be used to minimize bias</em></li>
+      <li><em>Dose escalation or dose-ranging details should be contained in <strong>Section 6.1.2,
+      Dosing and Administration</strong></em></li>
+      <li><em>The number of study groups/arms and study intervention duration </em></li>
+      <li><em>Indicate if single site or multi-site</em></li>
+      <li><em>Name of study intervention(s)</em></li>
+      <li><em>Note if interim analysis is planned and refer to details in <strong>Section</strong></em>
+      <strong><em>4.6, Planned Interim Analysis</em></strong></li>
+      <li><em>Note if the study includes any stratifications and if so, identify the stratification planned
+      (e.g. sex, race/ethnicity, age, dose) and refer to details </em><strong><em>in </em></strong>
+      <strong><em>Section</em></strong><strong><em>4.7, Sub-Group Analyses</em></strong></li>
+      </ul>
+      <p><em>Name of sub-studies, if any, included in this protocol</em></p>
+    example: ''
+    editable: true
+  -
+    'no': 4.2
+    title: Scientific Rationale for Study Design
+    template_name: General
+    template: ''
+    instructions: |-
+      <p><em>Describe the rationale for the type and selection of control (e.g. placebo, active drug,
+      dose-response, historical) and study design (e.g., non-inferiority as opposed to superiority).
+      Discuss known or potential problems associated with the control group chosen in light of the specific
+      disease and intervention(s) being studied.</em></p>
+    example: ''
+    editable: true
+  -
+    'no': 4.3
+    title: Justification for Dose
+    template_name: General
+    template: ''
+    instructions: |-
+      <p><em>Provide a justification for the route of administration, planned maximum dosage, and dosing
+      regimen, including starting dose, of the study intervention(s) and control product(s). </em></p>
+    example: ''
+    editable: true
+  -
+    'no': 4.4
+    title: End of Study Definition
+    template_name: General
+    template: ''
+    instructions: |-
+      <p><em>A clinical trial is considered completed when participants are no longer being examined
+      or the last participant’s last study visit has occurred. </em></p>
+    example: |-
+      <p>A participant is considered to have completed the study if he or she has completed all phases of the
+      study including the last visit or the last scheduled procedure shown in the Schedule of Activities (SoA), Section 1.3.</p>
+      <p><em>&nbsp;</em></p>
+      <p>The end of the study is defined as completion of the last visit or procedure shown in the SoA in the trial globally.</p>
+    editable: true

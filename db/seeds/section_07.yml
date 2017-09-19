@@ -1,0 +1,117 @@
+sections:
+  -
+    'no': 7
+    title: Study Intervention Discontinuation and Participant Discontinuation/Withdrawal
+    template_name: General
+    template: |-
+      <p><em>No text is to be entered in this section; rather it should be included under the relevant subheadings below.</em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>Participants may withdraw voluntarily from the study or the PI may discontinue a participant
+      from the study.&nbsp; This section should state which adverse events would result in discontinuation
+      of study intervention or participant discontinuation/withdrawal. In addition, participants may discontinue
+      the study intervention, but remain in the study for follow-up, especially for safety and efficacy study
+      endpoints (if applicable). Consider requiring separate documentation for study intervention discontinuation
+      and participant discontinuation/withdrawal from the study. In addition, a dedicated Case Report Form
+      (CRF) page should capture the date and the specific underlying reason for discontinuation of study
+      intervention or participant discontinuation/withdrawal.</em></p>
+    instructions: ''
+    example: ''
+    editable: false
+  -
+    'no': 7.1
+    title: Discontinuation of Study Intervention
+    template_name: General
+    template: ''
+    instructions: |-
+      <p><em>Describe the criteria for discontinuing the study intervention (e.g., halting rules), including
+      any monitoring test(s) and associated clinical decision point(s). Include reasons for temporary discontinuation
+      of the study intervention (e.g., type and quantity of adverse events), clearly stating the length of time,
+      if applicable, and describe the data to be collected at the time of study intervention discontinuation
+      and approaches for restarting administration of or rechallenging with study intervention. &nbsp;</em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>Describe efforts that will be made to continue follow-up of participants who discontinue the
+      study intervention, but remain in the study for follow-up, especially for safety and efficacy study
+      endpoints (if applicable).&nbsp; Reasonable efforts must be made to undertake protocol-specified safety
+      follow-up procedures to capture adverse events (AE), serious adverse events (SAE), and unanticipated problems (UPs).</em></p>
+    example: |-
+      <p>Discontinuation from <span>[study intervention]</span> does not mean discontinuation from the study,
+      and remaining study procedures should be completed as indicated by the study protocol.&nbsp; If a
+      clinically significant finding is identified (including, but not limited to changes from baseline)
+      after enrollment, the investigator or qualified designee will determine if any change in participant
+      management is needed. Any new clinically relevant finding will be reported as an adverse event (AE).</p>
+      <p>&nbsp;</p>
+      <p>The data to be collected at the time of study intervention discontinuation will include the following:</p>
+      <ul>
+      <li><span>[Describe the procedures and data to be collected, as well as any follow-up evaluations]</span></li>
+      </ul>
+    editable: true
+  -
+    'no': 7.2
+    title: Participant Discontinuation/Withdrawal from the Study
+    template_name: General
+    template: ''
+    instructions: |-
+      <p><em>Provide a list of reasons participation may be discontinued. It may be appropriate to provide
+      distinct discontinuation criteria for participants and cohorts. If so, both sets of criteria should
+      be listed separately and the distinction between the two must be stated clearly.&nbsp; Also, note that
+      participants may withdraw voluntarily from the study or discontinue the study intervention at any time.&nbsp;
+      But, investigators should seek to minimize participant discontinuation/withdrawal from study except for safety reasons.</em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>In studies of implantable devices, a discussion should be included of any pertinent information
+      that will be provided to withdrawn or discontinued participants (e.g., whether and how the device can
+      be removed, how to replace batteries, how to obtain replacement parts, who to contact).&nbsp; In addition,
+      it is important to capture the reason for withdrawal or discontinuation, as this may impact inclusion of
+      participant data in the analysis of results (see <strong>Section 9, Statistical Analyses</strong>).</em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>This section should include a discussion of replacement of participants who withdraw or
+      discontinue early, if replacement is allowed.&nbsp; This section should not include a discussion
+      of how these participants will be handled in the analysis of study data.&nbsp; This should be captured
+      in the <strong>Section 9, Statistical Analyses. </strong></em></p>
+    example: |-
+      <p>Participants are free to withdraw from participation in the study at any time upon request.</p>
+      <p>An investigator may discontinue or withdraw a participant from the study for the following reasons:</p>
+      <p>&nbsp;</p>
+      <ul>
+      <li>Pregnancy</li>
+      <li>Significant study intervention non-compliance</li>
+      <li>If any clinical adverse event (AE), laboratory abnormality, or other medical condition or situation
+      occurs such that continued participation in the study would not be in the best interest of the participant</li>
+      <li>Disease progression which requires discontinuation of the study intervention</li>
+      <li>If the participant meets an exclusion criterion (either newly developed or not previously recognized)
+      that precludes further study participation</li>
+      <li>Participant unable to receive <span>[study intervention]</span> for <span>[x days/weeks]</span>.</li>
+      </ul>
+      <p>The reason for participant discontinuation or withdrawal from the study will be recorded on the
+      <span>[specify]</span> Case Report Form (CRF). Subjects who sign the informed consent form and are
+      randomized but do not receive the study intervention may be replaced.&nbsp; Subjects who sign the
+      informed consent form, and are randomized and receive the study intervention, and subsequently withdraw,
+      or are withdrawn or discontinued from the study, <span>[will <em>or</em> will not]</span> be replaced.</p>
+    editable: true
+  -
+    'no': 7.3
+    title: Lost to Follow-Up
+    template_name: General
+    template: ''
+    instructions: |-
+      <p><em>The protocol should describe the nature and duration of study follow-up. Validity of the
+      study is a potential issue when participants are lost to follow-up, as information that is important
+      to the endpoint evaluation is then lost. Participants are considered lost to follow-up when they
+      stop reporting to scheduled study visits and cannot be reached to complete all protocol-required
+      study procedures. Describe the plans to minimize loss to follow-up and missing data.</em></p>
+    example: |-
+      <p>A participant will be considered lost to follow-up if he or she fails to return for
+      <span>[specify number of visits]</span> scheduled visits and is unable to be contacted by the study site staff.</p>
+      <p>&nbsp;</p>
+      <p>The following actions must be taken if a participant fails to return to the clinic for a required study visit:</p>
+      <ul>
+      <li>The site will attempt to contact the participant and reschedule the missed visit
+      <span>[specify time frame]</span> and counsel the participant on the importance of maintaining the
+      assigned visit schedule and ascertain if the participant wishes to and/or should continue in the study.</li>
+      <li>Before a participant is deemed lost to follow-up, the investigator or designee will make every
+      effort to regain contact with the participant (where possible, 3 telephone calls and, if necessary,
+      a certified letter to the participant’s last known mailing address or local equivalent methods).
+      These contact attempts should be documented in the participant’s medical record or study file.</li>
+      <li>Should the participant continue to be unreachable, he or she will be considered to have withdrawn
+      from the study with a primary reason of lost to follow-up.</li>
+      </ul>
+    editable: true

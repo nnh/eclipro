@@ -35,4 +35,5 @@
   .mt-xl id="section-#{content.no}"
     h4 class="#{content.no.include?('.') ? 'section-sub-title' : 'section-title' }"
       = "#{content.no} #{content.title}"
-    div = content.body.gsub('contenteditable="true"', '').html_safe if content.body.present? && content.editable
+    .section-content
+      = content.body.gsub('contenteditable="true"', '').html_safe if content.body.present? && content.editable

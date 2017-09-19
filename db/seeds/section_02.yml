@@ -1,0 +1,109 @@
+sections:
+  -
+    'no': 2
+    title: Introduction
+    template_name: General
+    template: |-
+      <p><em>No text is to be entered in this section; rather it should be included under the relevant
+      subheadings below.</em></p>
+      <p><em>The following subsections should include relevant background information and rationale
+      for the clinical trial.  This should be a brief overview (e.g., approximately 3-7 pages).  Referring
+      to the Investigator’s Brochure (IB) for more detail is also appropriate.</em></p>
+    instructions: ''
+    example: ''
+    editable: false
+  -
+    'no': 2.1
+    title: Study Rationale
+    template_name: General
+    template: ''
+    instructions: |-
+      <p><em>State the problem or question (e.g., describe the population, disease, current standard
+      of care, if one exists, and limitations of knowledge or available therapy) and the reason for
+      conducting the clinical trial</em></p>
+    example: ''
+    editable: true
+  -
+    'no': 2.2
+    title: Background
+    template_name: General
+    template: ''
+    instructions: |-
+      <p><em>This section should include: </em></p>
+      <ul>
+      <li><em>A summary of findings fromnonclinical in vitro or in vivo studies that have potential clinical significance </em></li>
+      <li><em>A summary of relevant clinical research and any history of human use or exposure to the
+      study intervention, including use in other countries, and clinical pharmacology studies</em></li>
+      <li><em>Discussion of important literature and data that are relevant to the trial and that provide
+      background for the trial (reference citations should be listed in <strong>Section 11, References</strong>) </em></li>
+      <li><em>Applicable clinical, epidemiological, or public health background or context of the clinical trial</em></li>
+      <li><em>Importance of the clinical trial and any relevant treatment issues or controversies </em></li>
+      </ul>
+    example: ''
+    editable: true
+  -
+    'no': 2.3
+    title: Risk/Benefit Assessment
+    template_name: General
+    template: |-
+      <h3 class="mceNonEditable" contenteditable="false">2.3.1 Known Potential Risks</h3>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable" contenteditable="false">2.3.2 Known Potential Benefits</h3>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable" contenteditable="false">2.3.3 Assessment of Potential Risks and Benefits</h3>
+      <p>&nbsp;</p>
+    instructions: |-
+      <p><em>No text is to be entered in this section; rather it should be included under the relevant subheadings below.</em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>The following subsections should include a discussion of known risks and benefits, if any, to human participants.&nbsp; </em></p>
+      <p><em>&nbsp;</em></p>
+      <h3 class="mceNonEditable">2.3.1&nbsp;&nbsp;&nbsp;&nbsp; Known Potential Risks</h3>
+      <p><em>Include a discussion of known potential risks from either clinical or nonclinical studies.&nbsp;
+      If a package insert or device labeling from a licensed or approved product is available, it should
+      be used as the primary source of risk information. If the product is investigational, the IB should
+      be the primary source of the risk information. In addition, relevant published literature can also
+      provide relevant risk information. If the risk profile cannot be described from the package insert,
+      device labeling, or the IB, the risk information discussion will result from published literature
+      and should be included and referenced appropriately. </em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>Describe any physical, psychological, social, legal, economic, or any other risks to participants
+      by participating in the study that the Principal Investigator (PI) foresees, addressing each of the following: </em></p>
+      <p>&nbsp;</p>
+      <ul>
+      <li><em>Immediate risks </em></li>
+      <li><em>Long-range risks </em></li>
+      <li><em>If risk is related to proposed procedures included in the protocol, describe alternative
+      procedures that have been considered and explain why alternative procedures are not included </em></li>
+      </ul>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable">2.3.2&nbsp;&nbsp;&nbsp;&nbsp; Known Potential Benefits</h3>
+      <p><em>Include a discussion of known potential benefits from either clinical or nonclinical studies.&nbsp;
+      If a package insert or device labeling from a licensed or approved product is available, it should
+      be used as the primary source of potential benefit information. If the product is investigational,
+      the IB should be the primary source of the potential benefit information. In addition, relevant published
+      literature can also provide potential relevant benefit information. If the potential benefit cannot
+      be described from the package insert, device labeling, or the IB, the potential benefit information
+      discussion will result from published literature and should be included and referenced appropriately.</em></p>
+      <p>&nbsp;</p>
+      <p><em>Describe any physical, psychological, social, legal, or any other potential benefits to individual
+      participants or society in general, as a result of participating in the study, addressing each of the following: </em></p>
+      <p>&nbsp;</p>
+      <ul>
+      <li><em>Immediate potential benefits</em></li>
+      <li><em>Long-range potential benefits</em></li>
+      </ul>
+      <p><em>&nbsp;</em></p>
+      <p><em>Note that payment to participants, whether as an inducement to participate or as compensation
+      for time and inconvenience, is not considered a “benefit.” </em><em>Provision of incidental care
+      is also not to be considered a benefit.</em></p>
+      <p>&nbsp;</p>
+      <h3 class="mceNonEditable">2.3.3&nbsp;&nbsp;&nbsp;&nbsp; Assessment of Potential Risks and Benefits</h3>
+      <p>Include an assessment of known potential risks and benefits, addressing each of the following:</p>
+      <ul>
+      <li><em>Rationale for the necessity of exposing participants to risks and a summary of the ways
+      that risks to participants were minimized in the study design</em></li>
+      <li><em>Justification as to why the risks of participation in the study outweigh the value of
+      the information to be gained</em></li>
+      </ul>
+    example: ''
+    editable: true

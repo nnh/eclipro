@@ -1,0 +1,34 @@
+sections:
+  -
+    'no': 11
+    title: References
+    template_name: General
+    template: ''
+    instructions: |-
+      <p><em>Include a list of relevant literature and citations for all publications referenced in the
+      text of the protocol.&nbsp; Use a consistent, standard, modern format, which might be dependent upon
+      the required format for the anticipated journal for publication (e.g., N Engl J Med, JAMA, etc.).&nbsp;
+      The preferred format is International Committee of Medical Journal Editors (ICMJE). Include citations
+      to product information such as manufacturer’s IB, package insert, and device labeling. </em></p>
+    example: |-
+      <ul>
+      <li><strong>Journal citation</strong><br> Veronesi U, Maisonneuve P, Decensi A. Tamoxifen: an
+      enduring star. J Natl Cancer Inst. 2007 Feb 21;99(4):258-60.</li>
+      <li><strong>Whole book citation</strong><br> Belitz HD, Grosch W, Schieberle P. Food chemistry. 3
+      <sup>rd</sup> ed. Burghagen MM, translator. Berlin: Springer; 2004. 1070 p.</li>
+      <li><strong>Chapter in a book citation</strong><br> Riffenburgh RH. Statistics in medicine. 2
+      <sup>nd</sup> Amsterdam (Netherlands): Elsevier Academic Press; c2006. Chapter 24, Regression and
+      correlation methods; p. 447-86.</li>
+      <li><strong>Web Site citation<br> </strong>Complementary/Integrative Medicine [Internet]. Houston:
+        University of Texas, M.D. Anderson Cancer Center; c2007 [cited 2007 Feb 21]. Available from:
+          http://www.manderson.org/departments/CIMER/.</li>
+      <li><strong>Electronic Mail citation</strong></li>
+      </ul>
+      <p>Backus, Joyce. Physician Internet search behavior: detailed study [Internet]. Message to: Karen
+      Patrias. 2007 Mar 27 [cited 2007 Mar 28]. [2 paragraphs]</p>
+      <ul>
+      <li><strong>References to package insert or investigational brochure or product description</strong></li>
+      </ul>
+      <p>Cite date accessed, version number, and source of product information.</p>
+      <p>&nbsp;</p>
+    editable: true

@@ -11,14 +11,14 @@
 .row.mt-l
   .col-md-12
     .tab-content
-      .tab-pane#example
+      .tab-pane.menu-body#example
         - examples.each do |example|
           div id="section-#{example.no.gsub('.', '-')}-example" = example.example.html_safe
-      .tab-pane#instructions
+      .tab-pane.menu-body#instructions
         - instructions.each do |instruction|
           div id="section-#{instruction.no.gsub('.', '-')}-instructions"
             = instruction.instructions.html_safe
-      .tab-pane.active#sections
+      .tab-pane.active.menu-body#sections
         ul.nav.nav-pills.nav-stacked#section-ul
           li.active#section-title data-section-no="title"
             a.uneditable href="#section-title-page" data-toggle="tab"

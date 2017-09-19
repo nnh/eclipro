@@ -1,0 +1,169 @@
+sections:
+  -
+    'no': 3
+    title: Objectives and Endpoints
+    template_name: General
+    template: |-
+      <div class="mceNonEditable" contenteditable="false" data-mce-selected="1">
+      <table class="tblBorder" border="1">
+      <thead>
+      <tr>
+      <td width="455"><p>OBJECTIVES</p></td>
+      <td width="480"><p>ENDPOINTS</p></td>
+      <td width="311"><p>JUSTIFICATION FOR ENDPOINTS</p></td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr style="background-color: #c8c8c8;" data-mce-style="background-color: #c8c8c8;">
+      <td colspan="3"><p>Primary</p></td>
+      </tr>
+      <tr>
+      <td width="455"><div class="mceEditable" contenteditable="true"><p>&nbsp;</p></div></td>
+      <td width="480"><div class="mceEditable" contenteditable="true"><p>&nbsp;</p></div></td>
+      <td width="311"><div class="mceEditable" contenteditable="true"><p>&nbsp;</p></div></td>
+      </tr>
+      <tr style="background-color: #c8c8c8;" data-mce-style="background-color: #c8c8c8;">
+      <td colspan="3"><p>Secondary</p></td>
+      </tr>
+      <tr>
+      <td width="455"><div class="mceEditable" contenteditable="true"><p>&nbsp;</p></div></td>
+      <td width="480"><div class="mceEditable" contenteditable="true"><p>&nbsp;</p></div></td>
+      <td width="311"><div class="mceEditable" contenteditable="true"><p>&nbsp;</p></div></td>
+      </tr>
+      <tr style="background-color: #c8c8c8;" data-mce-style="background-color: #c8c8c8;">
+      <td colspan="3"><p>Tertiary/Exploratory</p></td></tr>
+      <tr style="vertical-align: top;" data-mce-style="vertical-align: top;">
+      <td width="455"><div class="mceEditable" contenteditable="true"><p>&nbsp;</p></div></td>
+      <td width="480"><div class="mceEditable" contenteditable="true"><p>&nbsp;</p></div></td>
+      <td width="311"><div class="mceEditable" contenteditable="true"><p>&nbsp;</p></div></td>
+      </tr>
+      </tbody>
+      </table>
+      </div>
+    instructions: |-
+      <p><em>For purposes of registration and reporting to ClinicalTrials.gov, the terms Objectives
+      and Endpoints as used in this template align with the terms Primary Purpose and Outcome Measures
+      in ClinicalTrials.gov, respectively. Provide a description of the study objectives and endpoints,
+      as well as a justification for selecting the particular endpoints, in the table format included below</em>
+      .&nbsp;
+      <em>This will provide clear articulation of how the selected primary and secondary endpoint(s) are linked
+      to achieving the primary and secondary objectives and an explanation of why endpoint(s) were chosen.</em>
+      <em>Data points collected in the study should support an objective or have a regulatory purpose.&nbsp;
+      Therefore, careful consideration should be given prospectively to the amount of data needed to support
+      the study’s objectives.</em></p>
+      <p>&nbsp;</p>
+      <p><em>An objective is the purpose for performing the study in terms of the scientific question
+      to be answered. Express each objective as a statement of purpose (e.g., to assess, to determine,
+      to compare, to evaluate) and include the general purpose (e.g., efficacy, effectiveness, safety)
+      and/or specific purpose (e.g., dose-response, superiority to placebo, effect of an intervention
+      on disease incidence, disease severity, or health behavior).</em></p>
+      <p>&nbsp;</p>
+      <p><em>A study endpoint is a specific measurement or observation to assess the effect of the study
+      variable (study intervention). Study endpoints should be prioritized and should correspond to the
+      study objectives and hypotheses being tested. Give succinct, but precise definitions of the study
+      endpoints used to address the study’s primary objective and secondary objectives (e.g., specific
+      laboratory tests that define safety or efficacy, clinical assessments of disease status, assessments
+      of psychological characteristics, patient reported outcomes, behaviors or health outcomes).&nbsp;
+      Include the study visits or time points at which data will be recorded or samples will be obtained.&nbsp;
+      Describe how endpoint(s) will be adjudicated, if applicable.</em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>Primary and secondary endpoints should be adjusted for multiplicity. If a claim is sought
+      for the secondary endpoints, the statistical plan for adjustment for multiplicity should be aligned
+      with those objectives.&nbsp; </em></p>
+      <p>&nbsp;</p>
+      <table class="tblTextAlignTop" border="1">
+      <thead>
+      <tr>
+      <td width="455">
+      <p>OBJECTIVES</p>
+      </td>
+      <td width="480">
+      <p>ENDPOINTS</p>
+      </td>
+      <td width="311">
+      <p>JUSTIFICATION FOR ENDPOINTS</p>
+      </td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td colspan="3">
+      <p>Primary</p>
+      </td>
+      </tr>
+      <tr>
+      <td width="455">
+      <p><em>The primary objective is the main question. This objective generally drives statistical planning
+      for the trial (e.g., calculation of the sample size to provide the appropriate power for statistical testing).</em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>&nbsp;</em></p>
+      </td>
+      <td width="480">
+      <p><em>The primary endpoint(s) should be clearly specified and its importance and role in the analysis
+      and interpretation of study results should be defined. The primary endpoint(s) is the basis for
+      concluding that the study met its objective (e.g., “the study wins”). Often Phase 2 and 3 trials
+      include primary objectives, and therefore primary endpoints, to demonstrate effectiveness.&nbsp;
+      Generally, there should be just one primary endpoint that will provide a clinically relevant, valid,
+      and reliable measure of the primary objective.&nbsp; Additional primary endpoints may require an
+      adjustment to the sample size calculations and p-value threshold.&nbsp; However, this is not always
+      the case.&nbsp; For example, in many trials of medical devices there are primary endpoints for both
+      safety and effectiveness.</em></p>
+      <p><em>&nbsp;</em></p>
+      <p><em>In a trial designed to establish efficacy, a primary endpoint should measure a clinically meaningful
+      therapeutic effect or should have demonstrated ability to predict clinical benefit.&nbsp;</em></p>
+      <p><em>&nbsp;</em></p>
+      </td>
+      <td width="311">
+      <p><em>Briefly explain why the endpoint(s) were chosen.</em></p>
+      </td>
+      </tr>
+      <tr>
+      <td colspan="3">
+      <p>Secondary</p>
+      </td>
+      </tr>
+      <tr>
+      <td width="455">
+      <p><em>The secondary objective(s) are goals that will provide further information on the use of the intervention.</em></p>
+      <p><em>&nbsp;</em></p>
+      </td>
+      <td width="480">
+      <p><em>Secondary endpoints should be clearly specified and may include, for example, endpoints
+      related to efficacy, safety, or both.&nbsp; Secondary endpoints are those that may provide supportive
+      information about the study intervention’s effect on the primary endpoint or demonstrate additional
+      effects on the disease or condition. It is recommended that the list of secondary endpoints be short,
+      because the chance of demonstrating an effect on any secondary endpoint after appropriate correction
+      for multiplicity becomes increasingly small as the number of endpoints increases.&nbsp;</em></p>
+      <p><em>&nbsp;</em></p>
+      </td>
+      <td width="311">
+      <p><em>Briefly explain why the endpoint(s) were chosen.</em></p>
+      </td>
+      </tr>
+      <tr>
+      <td colspan="3">
+      <p>Tertiary/Exploratory</p>
+      </td>
+      </tr>
+      <tr>
+      <td width="455">
+      <p><em>Tertiary/exploratory objective(s) serve as a basis for explaining or supporting findings
+      of primary analyses and for suggesting further hypotheses for later research.</em></p>
+      </td>
+      <td width="480">
+      <p><em>Exploratory endpoints should be specified.</em> <em>Exploratory endpoints may include clinically
+      important events that are expected to occur too infrequently to show a treatment effect or endpoints
+      that for other reasons are thought to be less likely to show an effect but are included to explore
+      new hypotheses.</em>&nbsp;&nbsp;</p>
+      <p>&nbsp;</p>
+      <p><em>Endpoints that are not listed in an alpha conserving plan will be considered exploratory.</em></p>
+      <p>&nbsp;</p>
+      </td>
+      <td width="311">
+      <p><em>Briefly </em><em>explain why the endpoint(s) were chosen.</em></p>
+      </td>
+      </tr>
+      </tbody>
+      </table>
+    example: ''
+    editable: true
