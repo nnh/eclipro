@@ -90,7 +90,8 @@ javascript:
           user_id: $('#add_user').val(),
           role: $('#add_role').val(),
           sections: selected_sections,
-          index: $('#team-member-list tr').length
+          index: $('#team-member-list tr').length,
+          template_name: '#{template_name}'
         },
         url: '#{add_team_protocols_path}'
       });

@@ -53,14 +53,14 @@ class Protocol < ApplicationRecord
   end
 
   def updatable_sections(user)
-    all_sections = Section.all.pluck(:no)
+    all_sections = Section.reject_specified_sections(template_name).pluck(:no)
     return all_sections if principal_investigator?(user) || co_author?(user)
     return [] if reviewer?(user)
     select_sections(all_sections, AuthorUser.find_by(protocol: self, user: user).sections.split(','))
   end
 
   def reviewable_sections(user)
-    all_sections = Section.all.pluck(:no)
+    all_sections = Section.reject_specified_sections(template_name).pluck(:no)
     return all_sections if principal_investigator?(user)
     return [] unless reviewer?(user)
     select_sections(all_sections, ReviewerUser.find_by(protocol: self, user: user).sections.split(','))
@@ -74,7 +74,7 @@ class Protocol < ApplicationRecord
     def select_sections(all_sections, origin_sections)
       sections = []
       origin_sections.each do |section|
-        sections << all_sections.select { |s| s == section || s.match(/#{section}\.\d{1,2}/) }
+        sections << all_sections.select { |s| s == section || s.split('.')[0] == section }
       end
       sections.flatten!
     end

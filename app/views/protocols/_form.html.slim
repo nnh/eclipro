@@ -122,4 +122,16 @@ javascript:
       $(this).prev().val(true);
       $(this).parent().parent().hide();
     });
+
+    $('#build-team-button').click(() => {
+      let template_name = $('#protocol_template_name').val() || '#{@protocol.template_name}';
+      $.ajax({
+        dataType: 'script',
+        data: {
+          protocol_id: '#{@protocol&.id}',
+          template_name: template_name
+        },
+        url: '#{build_team_form_protocols_path}'
+      });
+    });
   });

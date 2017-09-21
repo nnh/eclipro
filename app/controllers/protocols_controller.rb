@@ -12,8 +12,8 @@ class ProtocolsController < ApplicationController
 
   def show
     @contents = @protocol.contents.order(:created_at)
-    @examples = Section.select { |s| s.example.present? }
-    @instructions = Section.select { |s| s.instructions.present? }
+    @examples = Section.where(template_name: @protocol.template_name).select { |s| s.example.present? }
+    @instructions = Section.where(template_name: @protocol.template_name).select { |s| s.instructions.present? }
   end
 
   def new
@@ -27,7 +27,8 @@ class ProtocolsController < ApplicationController
     @protocol = Protocol.new(protocol_params)
     @protocol.principal_investigator = current_user
 
-    Section.where(template_name: protocol_params[:template_name]).order(:created_at).each do |section|
+    sections = Section.reject_specified_sections(@protocol.template_name).sort { |a, b| a.no.to_f <=> b.no.to_f }
+    sections.each do |section|
       @protocol.contents << Content.new(protocol: @protocol, no: section.no, title: section.title,
                                         body: section.template, editable: section.editable)
     end
@@ -61,7 +62,8 @@ class ProtocolsController < ApplicationController
   def build_team_form
     @protocol = Protocol.find(params[:protocol_id]) if params[:protocol_id].present?
     @users = User.all.reject { |user| user == current_user }
-    @sections = Section.parent_items
+    @template_name = params[:template_name]
+    @sections = Section.parent_items(@template_name)
   end
 
   def add_team
@@ -71,7 +73,7 @@ class ProtocolsController < ApplicationController
     @index = params[:index]
 
     if ['co_author', 'author_all', 'reviewer_all'].include?(@role)
-      @sections = Section.parent_items.pluck(:no).join(',')
+      @sections = Section.parent_items(params[:template_name]).pluck(:no).join(',')
     else
       @sections = params[:sections].join(',')
     end
@@ -90,7 +92,7 @@ class ProtocolsController < ApplicationController
   end
 
   def next_section
-    sections = Section.sorted_section
+    sections = Section.sorted_menu(@protocol.template_name)
     index = sections.index(params[:section_no])
     if index == sections.size - 1
       head :ok
@@ -105,7 +107,7 @@ class ProtocolsController < ApplicationController
   end
 
   def previous_section
-    sections = Section.sorted_section
+    sections = Section.sorted_menu(@protocol.template_name)
     index = sections.index(params[:section_no])
     if index == 0
       head :ok
