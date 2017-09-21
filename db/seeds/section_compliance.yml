@@ -1,0 +1,16 @@
+sections:
+  -
+    'no': compliance
+    title: Statement of Compliance
+    template_name: General
+    template: ''
+    instructions: |-
+      <p><em>Provide a statement that the trial will be conducted in compliance with the protocol, International
+      Conference on Harmonisation Good Clinical Practice (ICH GCP) and applicable state, local and federal
+      regulatory requirements. Each engaged institution must have a current Federal-Wide Assurance (FWA) issued
+      by the Office for Human Research Protections (OHRP) and must provide this protocol and the associated
+      informed consent documents and recruitment materials for review and approval by an appropriate Institutional
+      Review Board (IRB) or Ethics Committee (EC) registered with OHRP. Any amendments to the protocol or
+      consent materials must also be approved before implementation.</em></p>
+    example: ''
+    editable: false

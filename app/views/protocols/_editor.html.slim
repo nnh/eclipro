@@ -21,9 +21,9 @@
           .col-md-12
             h4 = "#{t('.editor')}: #{t('.compliance')}"
             - if protocol.compliance == 1
-              = t('protocols.step.two.radio_one')
+              = t('protocols.step.two.radio_one').html_safe
             - if protocol.compliance == 2
-              = t('protocols.step.two.radio_two')
+              = t('protocols.step.two.radio_two').html_safe
       .tab-pane#section-content
 
     .modal.fade#comment-modal tab-index="1" role="dialog" aria-hidden="true"

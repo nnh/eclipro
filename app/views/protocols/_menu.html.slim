@@ -27,14 +27,7 @@
                 i.fa.fa-asterisk
           li#section-0 data-section-no="0"
             - content = contents.find { |s| s.no == '0' }
-            - editable = (can? :edit, content) || (can? :review, content)
-            a href="#section-content" data-toggle="tab" data-section-no="#{content.no}" class="section-link #{'uneditable' unless editable}"
-              = content.title
-              .pull-right id="section-#{content.no.gsub('.', '-')}-icon"
-                i.fa class="fa-#{content.status_icon}"
-              .pull-right id="section-#{content.no.gsub('.', '-')}-comment-icon"
-                - if content.comments.count > 0
-                  i.fa.fa-commenting.mr-s
+            = render 'section_menu', content: content
           li#section-compliance data-section-no="compliance"
             a.uneditable href="#section-compliance-content" data-toggle="tab"
               = t('.compliance')
@@ -43,14 +36,7 @@
           - contents = contents.reject { |s| s.no == '0' }
           - contents.each do |content|
             li id="section-#{content.no.gsub('.', '-')}" data-section-no="#{content.no}" style="#{'margin-left:20px' if content.no.include?('.')}"
-              - editable = (can? :edit, content) || (can? :review, content)
-              a href="#section-content" data-toggle="tab" data-section-no="#{content.no}" class="section-link #{'uneditable' unless editable}"
-                = "#{content.no} #{content.title}"
-                .pull-right id="section-#{content.no.gsub('.', '-')}-icon"
-                  i.fa class="fa-#{content.status_icon}"
-                .pull-right id="section-#{content.no.gsub('.', '-')}-comment-icon"
-                  - if content.comments.count > 0
-                    i.fa.fa-commenting.mr-s
+              = render 'section_menu', content: content
 
 .row.mt-l.mb-l
   .col-md-12

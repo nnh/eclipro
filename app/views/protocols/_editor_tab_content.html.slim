@@ -10,7 +10,8 @@
         .pull-right
           = link_to t('.history'), history_protocol_content_path(protocol, content),
                     remote: true, class: 'btn btn-default'
-        h4 = "#{t('.editor')}: #{content.no} #{content.title}"
+
+        h4 = "#{t('.editor')}: #{content.no unless content.no == '0'} #{content.title}"
 
         .mt-xl
           = form_for [protocol, content], html: { class: 'form-horizontal', role: 'form', remote: true } do |f|
