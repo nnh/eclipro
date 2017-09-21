@@ -35,8 +35,8 @@ sections:
       <li><em>Note if the study includes any stratifications and if so, identify the stratification planned
       (e.g. sex, race/ethnicity, age, dose) and refer to details </em><strong><em>in </em></strong>
       <strong><em>Section</em></strong><strong><em>4.7, Sub-Group Analyses</em></strong></li>
+      <li><em>Name of sub-studies, if any, included in this protocol</em></li>
       </ul>
-      <p><em>Name of sub-studies, if any, included in this protocol</em></p>
     example: ''
     editable: true
   -

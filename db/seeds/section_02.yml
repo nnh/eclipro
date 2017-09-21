@@ -46,18 +46,18 @@ sections:
     title: Risk/Benefit Assessment
     template_name: General
     template: |-
-      <h3 class="mceNonEditable" contenteditable="false">2.3.1 Known Potential Risks</h3>
+      <h3 contenteditable="false">2.3.1 Known Potential Risks</h3>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable" contenteditable="false">2.3.2 Known Potential Benefits</h3>
+      <h3 contenteditable="false">2.3.2 Known Potential Benefits</h3>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable" contenteditable="false">2.3.3 Assessment of Potential Risks and Benefits</h3>
+      <h3 contenteditable="false">2.3.3 Assessment of Potential Risks and Benefits</h3>
       <p>&nbsp;</p>
     instructions: |-
       <p><em>No text is to be entered in this section; rather it should be included under the relevant subheadings below.</em></p>
       <p><em>&nbsp;</em></p>
       <p><em>The following subsections should include a discussion of known risks and benefits, if any, to human participants.&nbsp; </em></p>
       <p><em>&nbsp;</em></p>
-      <h3 class="mceNonEditable">2.3.1&nbsp;&nbsp;&nbsp;&nbsp; Known Potential Risks</h3>
+      <h3>2.3.1&nbsp;&nbsp;&nbsp;&nbsp; Known Potential Risks</h3>
       <p><em>Include a discussion of known potential risks from either clinical or nonclinical studies.&nbsp;
       If a package insert or device labeling from a licensed or approved product is available, it should
       be used as the primary source of risk information. If the product is investigational, the IB should
@@ -76,7 +76,7 @@ sections:
       procedures that have been considered and explain why alternative procedures are not included </em></li>
       </ul>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable">2.3.2&nbsp;&nbsp;&nbsp;&nbsp; Known Potential Benefits</h3>
+      <h3>2.3.2&nbsp;&nbsp;&nbsp;&nbsp; Known Potential Benefits</h3>
       <p><em>Include a discussion of known potential benefits from either clinical or nonclinical studies.&nbsp;
       If a package insert or device labeling from a licensed or approved product is available, it should
       be used as the primary source of potential benefit information. If the product is investigational,
@@ -97,7 +97,7 @@ sections:
       for time and inconvenience, is not considered a “benefit.” </em><em>Provision of incidental care
       is also not to be considered a benefit.</em></p>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable">2.3.3&nbsp;&nbsp;&nbsp;&nbsp; Assessment of Potential Risks and Benefits</h3>
+      <h3>2.3.3&nbsp;&nbsp;&nbsp;&nbsp; Assessment of Potential Risks and Benefits</h3>
       <p>Include an assessment of known potential risks and benefits, addressing each of the following:</p>
       <ul>
       <li><em>Rationale for the necessity of exposing participants to risks and a summary of the ways

@@ -170,29 +170,29 @@ sections:
     title: Adverse Events and Serious Adverse Events
     template_name: General
     template: |-
-      <h3 class="mceNonEditable" contenteditable="false">8.3.1 Definition of Adverse Events (AE)</h3>
+      <h3 contenteditable="false">8.3.1 Definition of Adverse Events (AE)</h3>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable" contenteditable="false">8.3.2 Definition of Serious Adverse Events (SAE)</h3>
+      <h3 contenteditable="false">8.3.2 Definition of Serious Adverse Events (SAE)</h3>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable" contenteditable="false">8.3.3 Classification of an Adverse Event</h3>
+      <h3 contenteditable="false">8.3.3 Classification of an Adverse Event</h3>
       <p>&nbsp;</p>
-      <h4 class="mceNonEditable" contenteditable="false">8.3.3.1 Severity of Event</h4>
+      <h4 contenteditable="false">8.3.3.1 Severity of Event</h4>
       <p>&nbsp;</p>
-      <h4 class="mceNonEditable" contenteditable="false">8.3.3.2 Relationship to Study Intervention</h4>
+      <h4 contenteditable="false">8.3.3.2 Relationship to Study Intervention</h4>
       <p>&nbsp;</p>
-      <h4 class="mceNonEditable" contenteditable="false">8.3.3.3 Expectedness</h4>
+      <h4 contenteditable="false">8.3.3.3 Expectedness</h4>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable" contenteditable="false">8.3.4 Time Period and Frequency for Event Assessment and Follow-Up</h3>
+      <h3 contenteditable="false">8.3.4 Time Period and Frequency for Event Assessment and Follow-Up</h3>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable" contenteditable="false">8.3.5 Adverse Event Reporting</h3>
+      <h3 contenteditable="false">8.3.5 Adverse Event Reporting</h3>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable" contenteditable="false">8.3.6 Serious Adverse Event Reporting</h3>
+      <h3 contenteditable="false">8.3.6 Serious Adverse Event Reporting</h3>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable" contenteditable="false">8.3.7 Reporting Events to Participants</h3>
+      <h3 contenteditable="false">8.3.7 Reporting Events to Participants</h3>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable" contenteditable="false">8.3.8 Events of Special Interest</h3>
+      <h3 contenteditable="false">8.3.8 Events of Special Interest</h3>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable" contenteditable="false">8.3.9 Reporting of Pregnancy</h3>
+      <h3 contenteditable="false">8.3.9 Reporting of Pregnancy</h3>
       <p>&nbsp;</p>
     instructions: |-
       <p><em>No text is to be entered in this section; rather it should be included under the relevant subheadings below.</em></p>
@@ -220,7 +220,7 @@ sections:
       the applicable sources of information, such as the IB, package insert, device labeling, literature
       and other sources that describe the study intervention.&nbsp; </em></p>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable">8.3.1&nbsp;&nbsp;&nbsp;&nbsp; Definition of Adverse Events (AE)</h3>
+      <h3>8.3.1&nbsp;&nbsp;&nbsp;&nbsp; Definition of Adverse Events (AE)</h3>
       <p><em>Provide the definition of an AE being used for the clinical trial.&nbsp; The FDA definition
       of an AE is used in this template since this template is for phase 2 or 3 IND and IDE studies.
       For some studies, definitions from the OHRP Guidance on Reviewing and Reporting Unanticipated Problems
@@ -228,7 +228,7 @@ sections:
       However, it is important to note that FDA regulations require reporting based on the definition included
       in 21 CFR 312.32 (a) for studies performed under an IND, regardless of the definition of AE used in the protocol.</em></p>
       <p><em>&nbsp;</em><em>&nbsp;</em></p>
-      <h3 class="mceNonEditable">8.3.2&nbsp;&nbsp;&nbsp;&nbsp; Definition of Serious Adverse Events (SAE)</h3>
+      <h3>8.3.2&nbsp;&nbsp;&nbsp;&nbsp; Definition of Serious Adverse Events (SAE)</h3>
       <p><em>Provide the definition of an SAE being used for the clinical trial. The FDA definition of
       an SAE is used in this template since this template is for phase 2 or 3 IND and IDE studies.&nbsp;
       It is important to note that FDA regulations require reporting based on the definition included
@@ -243,7 +243,7 @@ sections:
       plan or application (including a supplementary plan or application), or any other unanticipated serious
       problem associated with a device that relates to the rights, safety, or welfare of subjects.”</em></p>
       <p><em>&nbsp;</em><em>&nbsp;</em></p>
-      <h3 class="mceNonEditable">8.3.3&nbsp;&nbsp;&nbsp;&nbsp; Classification of an Adverse Event</h3>
+      <h3>8.3.3&nbsp;&nbsp;&nbsp;&nbsp; Classification of an Adverse Event</h3>
       <p><em>&nbsp;</em></p>
       <p><em>No text is to be entered in this section; rather it should be included under the relevant subheadings below.</em></p>
       <p><em>&nbsp;</em></p>
@@ -274,8 +274,19 @@ sections:
       is assessed based on the awareness of AEs previously observed, not on the basis of what might be
       anticipated from the properties of the study intervention. </em></p>
       <p><em>&nbsp;</em></p>
+      <p><em>An AE or suspected adverse reaction is considered "unexpected" if it is not listed in the IB,
+      package insert, or device labeling or is not listed at the specificity or severity that has been observed;
+      or, if an IB is not required or available, is not consistent with the risk information described in the
+      protocol, as amended. For example, under this definition, hepatic necrosis would be unexpected (by virtue
+      of greater severity) if the IB or package insert referred only to elevated hepatic enzymes or hepatitis.
+      Similarly, cerebral thromboembolism and cerebral vasculitis would be unexpected (by virtue of greater
+      specificity) if the IB or package insert listed only cerebral vascular accidents. "Unexpected," as used
+      in this definition, also refers to AEs or suspected adverse reactions that are mentioned in the IB,
+      package insert, or device labeling as occurring with a class of drugs (or other medical products) or as
+      anticipated from the pharmacological properties or other characteristics of the study intervention, but
+      are not specifically mentioned as occurring with the particular study intervention under investigation.</em></p>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable">8.3.4&nbsp;&nbsp;&nbsp;&nbsp; Time Period and Frequency for Event Assessment and Follow-Up</h3>
+      <h3>8.3.4&nbsp;&nbsp;&nbsp;&nbsp; Time Period and Frequency for Event Assessment and Follow-Up</h3>
       <p><em>Describe how AEs and SAEs will be identified and followed until resolved or considered stable.&nbsp;
       Specify procedures for recording and follow-up of AEs and SAEs that are consistent with the information
       contained within <strong>Section 8.2, Safety and Other Assessments</strong> including what assessment
@@ -296,7 +307,7 @@ sections:
       </ul>
       <p>&nbsp;</p>
       <p><em>&nbsp;</em></p>
-      <h3 class="mceNonEditable">8.3.5&nbsp;&nbsp;&nbsp;&nbsp; Adverse Event Reporting</h3>
+      <h3>8.3.5&nbsp;&nbsp;&nbsp;&nbsp; Adverse Event Reporting</h3>
       <p><em>This section addresses responsibilities of investigators for reporting of AEs.&nbsp; However,
       it is important to recognize that sponsors have additional responsibilities under regulations that
       are not described in this template and should be incorporated into relevant SOPs.&nbsp; </em></p>
@@ -313,7 +324,7 @@ sections:
       which will not be reported per the standard process for reporting, as applicable. Describe how these events
       will be recorded and monitored.</em></p>
       <p><em>&nbsp;</em></p>
-      <h3 class="mceNonEditable">8.3.6&nbsp;&nbsp;&nbsp;&nbsp; Serious Adverse Event Reporting</h3>
+      <h3>8.3.6&nbsp;&nbsp;&nbsp;&nbsp; Serious Adverse Event Reporting</h3>
       <p><em>This section addresses responsibilities of investigators for reporting of SAEs.&nbsp; However,
       it is important to recognize that sponsors have additional responsibilities under regulations that
       are not described in this template and should be incorporated into relevant SOPs.&nbsp; </em></p>
@@ -348,14 +359,16 @@ sections:
       and unexpected. The sponsor must report an adverse event as a suspected adverse reaction only if
       there is evidence to suggest a causal relationship between the drug and the adverse event, such as:</em></p>
       <p><em>&nbsp;</em></p>
-      <p><em>(A) A single occurrence of an event that is uncommon and known to be strongly associated
-      with drug exposure (e.g., angioedema, hepatic injury, Stevens-Johnson Syndrome);</em></p>
-      <p><em>(B) One or more occurrences of an event that is not commonly associated with drug exposure,
-      but is otherwise uncommon in the population exposed to the drug (e.g., tendon rupture);</em></p>
-      <p><em>(C) An aggregate analysis of specific events observed in a clinical trial (such as known
+      <ul style="list-style-type: none">
+      <li><em>(A) A single occurrence of an event that is uncommon and known to be strongly associated
+      with drug exposure (e.g., angioedema, hepatic injury, Stevens-Johnson Syndrome);</em></li>
+      <li><em>(B) One or more occurrences of an event that is not commonly associated with drug exposure,
+      but is otherwise uncommon in the population exposed to the drug (e.g., tendon rupture);</em></li>
+      <li><em>(C) An aggregate analysis of specific events observed in a clinical trial (such as known
       consequences of the underlying disease or condition under investigation or other events that commonly
       occur in the study population independent of drug therapy) that indicates those events occur more
-      frequently in the drug treatment group than in a concurrent or historical control group.”</em></p>
+      frequently in the drug treatment group than in a concurrent or historical control group.”</em></li>
+      </ul>
       <p><em>&nbsp;</em></p>
       <p><em>Furthermore, according to 21 CFR 312.32(c)(2), “the sponsor must also notify FDA of any
       unexpected fatal or life-threatening suspected adverse reaction as soon as possible but in no case
@@ -372,14 +385,14 @@ sections:
       notice of the effect. Thereafter the sponsor shall submit such additional reports concerning the
       effect as FDA requests.”&nbsp; </em></p>
       <p>&nbsp;&nbsp;</p>
-      <h3 class="mceNonEditable">8.3.7&nbsp;&nbsp;&nbsp;&nbsp; Reporting Events to Participants</h3>
+      <h3>8.3.7&nbsp;&nbsp;&nbsp;&nbsp; Reporting Events to Participants</h3>
       <p><em>Include content in this section if applicable, otherwise note as not-applicable.</em></p>
       <p><em>&nbsp;</em></p>
       <p><em>Describe how participants will be informed about AEs and SAEs, and study-related results on
       an individual or aggregate level. In addition, describe plans for detecting and managing incidental
       findings associated with study procedures. &nbsp;&nbsp;</em></p>
       <p><em>&nbsp;</em></p>
-      <h3 class="mceNonEditable">8.3.8&nbsp;&nbsp;&nbsp;&nbsp; Events of Special Interest</h3>
+      <h3>8.3.8&nbsp;&nbsp;&nbsp;&nbsp; Events of Special Interest</h3>
       <p><em>Include content in this section if applicable, otherwise note as not-applicable.</em></p>
       <p><em>&nbsp;</em></p>
       <p><em>Describe any other events that merit reporting to the sponsor, study leadership, IRB, and regulatory
@@ -389,7 +402,7 @@ sections:
       cardiovascular and death events, medical device incidents (including malfunctions), laboratory test
       abnormalities, and study intervention overdose. </em></p>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable">8.3.9&nbsp;&nbsp;&nbsp;&nbsp; Reporting of Pregnancy</h3>
+      <h3>8.3.9&nbsp;&nbsp;&nbsp;&nbsp; Reporting of Pregnancy</h3>
       <p><em>Include content in this section if applicable, otherwise note as not-applicable. Pregnancy is not an
       adverse event, but some studies will require unique considerations if pregnancy was to occur during the study.</em></p>
       <p><em>&nbsp;</em></p>
@@ -398,11 +411,11 @@ sections:
       Provide appropriate modifications to study procedures (e.g., discontinuation of study intervention,
       while continuing safety follow-up, requesting permission to follow pregnant women to pregnancy outcome).</em></p>
     example: |-
-      <h3 class="mceNonEditable">8.3.1&nbsp;&nbsp;&nbsp;&nbsp; Definition of Adverse Events (AE)</h3>
+      <h3>8.3.1&nbsp;&nbsp;&nbsp;&nbsp; Definition of Adverse Events (AE)</h3>
       <p>Adverse event means any untoward medical occurrence associated with the use of an intervention
       in humans, whether or not considered intervention-related (21 CFR 312.32 (a)).</p>
       <p><em>&nbsp;</em></p>
-      <h3 class="mceNonEditable">8.3.2&nbsp;&nbsp;&nbsp;&nbsp; Definition of Serious Adverse Events (SAE)</h3>
+      <h3>8.3.2&nbsp;&nbsp;&nbsp;&nbsp; Definition of Serious Adverse Events (SAE)</h3>
       <p>An adverse event (AE) or suspected adverse reaction is considered "serious" if, in the view of
       either the investigator or sponsor, it results in any of the following outcomes: death, a life-threatening
       adverse event, inpatient hospitalization or prolongation of existing hospitalization, a persistent or
@@ -414,7 +427,7 @@ sections:
       requiring intensive treatment in an emergency room or at home, blood dyscrasias or convulsions that
       do not result in inpatient hospitalization, or the development of drug dependency or drug abuse.</p>
       <p><em>&nbsp;</em></p>
-      <h3 class="mceNonEditable">8.3.3&nbsp;&nbsp;&nbsp;&nbsp; Classification of an Adverse Event</h3>
+      <h3>8.3.3&nbsp;&nbsp;&nbsp;&nbsp; Classification of an Adverse Event</h3>
       <h4>8.3.3.1&nbsp;&nbsp;&nbsp; Severity of Event</h4>
       <p>For adverse events (AEs) not included in the protocol defined grading system, the following
       guidelines will be used to describe severity.</p>
@@ -479,8 +492,8 @@ sections:
       <p><span>[Insert role]</span> will be responsible for determining whether an adverse event (AE)
       is expected or unexpected.&nbsp; An AE will be considered unexpected if the nature, severity, or frequency
       of the event is not consistent with the risk information previously described for the study intervention.</p>
-      <h3 class="mceNonEditable">&nbsp;</h3>
-      <h3 class="mceNonEditable">8.3.4&nbsp;&nbsp;&nbsp;&nbsp; Time Period and Frequency for Event Assessment and Follow-Up</h3>
+      <p>&nbsp;</p>
+      <h3>8.3.4&nbsp;&nbsp;&nbsp;&nbsp; Time Period and Frequency for Event Assessment and Follow-Up</h3>
       <p>The occurrence of an adverse event (AE) or serious adverse event (SAE) may come to the attention
       of study personnel during study visits and interviews of a study participant presenting for medical
       care, or upon review by a study monitor.</p><p>&nbsp;</p>
@@ -504,9 +517,9 @@ sections:
       the occurrence of AE/SAEs since the last visit.&nbsp; Events will be followed for outcome information
       until resolution or stabilization.</p>
       <p><em>&nbsp;</em></p>
-      <h3 class="mceNonEditable">8.3.5&nbsp;&nbsp;&nbsp;&nbsp; Adverse Event Reporting</h3>
+      <h3>8.3.5&nbsp;&nbsp;&nbsp;&nbsp; Adverse Event Reporting</h3>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable">8.3.6&nbsp;&nbsp;&nbsp;&nbsp; Serious Adverse Event Reporting</h3>
+      <h3>8.3.6&nbsp;&nbsp;&nbsp;&nbsp; Serious Adverse Event Reporting</h3>
       <p><em>Example 1, applicable for a drug or biologic protocol:</em></p>
       <p><em>&nbsp;</em></p>
       <p>The study clinician will immediately report to the sponsor any serious adverse event, whether
@@ -540,11 +553,11 @@ sections:
       and shall report the results of such evaluation to the Food and Drug Administration (FDA) and to all
       reviewing IRBs and participating investigators within 10 working days after the sponsor first receives
       notice of the effect. Thereafter, the sponsor shall submit such additional reports concerning the effect as FDA requests.</p>
-      <h3 class="mceNonEditable">8.3.7&nbsp;&nbsp;&nbsp;&nbsp; Reporting Events to Participants</h3>
+      <h3>8.3.7&nbsp;&nbsp;&nbsp;&nbsp; Reporting Events to Participants</h3>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable">8.3.8&nbsp;&nbsp;&nbsp;&nbsp; Events of Special Interest</h3>
+      <h3>8.3.8&nbsp;&nbsp;&nbsp;&nbsp; Events of Special Interest</h3>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable">8.3.9&nbsp;&nbsp;&nbsp;&nbsp; Reporting of Pregnancy</h3>
+      <h3>8.3.9&nbsp;&nbsp;&nbsp;&nbsp; Reporting of Pregnancy</h3>
       <p>&nbsp;</p>
     editable: true
   -
@@ -552,16 +565,16 @@ sections:
     title: Unanticipated Problems
     template_name: General
     template: |-
-      <h3 class="mceNonEditable" contenteditable="false">8.4.1 Definition of Unanticipated Problems (UP)</h3>
+      <h3 contenteditable="false">8.4.1 Definition of Unanticipated Problems (UP)</h3>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable" contenteditable="false">8.4.2 Unanticipated Problem Reporting</h3>
+      <h3 contenteditable="false">8.4.2 Unanticipated Problem Reporting</h3>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable" contenteditable="false">8.4.3 Reporting Unanticipated Problems to Participants</h3>
+      <h3 contenteditable="false">8.4.3 Reporting Unanticipated Problems to Participants</h3>
       <p>&nbsp;</p>
     instructions: |-
       <p><em>No text is to be entered in this section; rather it should be included under the relevant subheadings below.</em></p>
       <p><em>&nbsp;</em></p>
-      <h3 class="mceNonEditable">8.4.1&nbsp;&nbsp;&nbsp;&nbsp; Definition of Unanticipated Problems (UP)</h3>
+      <h3>8.4.1&nbsp;&nbsp;&nbsp;&nbsp; Definition of Unanticipated Problems (UP)</h3>
       <p><em>&nbsp;</em></p>
       <p><em>The reporting of UPs applies to non-exempt human subjects research conducted or supported by
       HHS. Provide the definition of an UP being used for this clinical trial. An incident, experience,
@@ -578,7 +591,7 @@ sections:
       <li><em>Provision of additional information about newly recognized risks to previously enrolled participants</em>.</li>
       </ul>
       <p><em>&nbsp;</em></p>
-      <h3 class="mceNonEditable">8.4.2&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Unanticipated Problem Reporting</h3>
+      <h3>8.4.2&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Unanticipated Problem Reporting</h3>
       <p><em>This section addresses responsibilities of investigators for reporting of UPs.&nbsp; Describe
       the UP reporting procedures, including timeframes. Further details should be included in a MOP or
       SOP including a description and a flow chart of when events are reported to various oversight (e.g.,
@@ -592,12 +605,12 @@ sections:
       by an assurance approved for federal wide use by OHRP, DHHS regulations at 45 CFR 46.103(a) require
       that institutions promptly report any unanticipated problems to OHRP.</em></p>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable">8.4.3&nbsp;&nbsp;&nbsp;&nbsp; Reporting Unanticipated Problems to Participants</h3>
+      <h3>8.4.3&nbsp;&nbsp;&nbsp;&nbsp; Reporting Unanticipated Problems to Participants</h3>
       <p><em>Include content in this section if applicable, otherwise note as not-applicable.</em></p>
       <p><em>&nbsp;</em></p>
       <p><em>Describe how participants will be informed about UPs on an individual or aggregate level.&nbsp; </em></p>
     example: |-
-      <h3 class="mceNonEditable">8.4.1&nbsp;&nbsp;&nbsp;&nbsp; Definition of Unanticipated Problems (UP)</h3>
+      <h3>8.4.1&nbsp;&nbsp;&nbsp;&nbsp; Definition of Unanticipated Problems (UP)</h3>
       <p>The Office for Human Research Protections (OHRP) considers unanticipated problems involving risks
       to participants or others to include, in general, any incident, experience, or outcome that meets
       <strong><u>all</u></strong> of the following criteria:</p>
@@ -621,7 +634,7 @@ sections:
       or any other unanticipated serious problem associated with a device that relates to the rights, safety,
       or welfare of subjects (21 CFR 812.3(s)).</p>
       <p><em>&nbsp;</em></p>
-      <h3 class="mceNonEditable">8.4.2&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Unanticipated Problem Reporting</h3>
+      <h3>8.4.2&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Unanticipated Problem Reporting</h3>
       <p>The investigator will report unanticipated problems (UPs) to the reviewing Institutional Review
       Board (IRB) and to the Data Coordinating Center (DCC)/lead principal investigator (PI). The UP report
       will include the following information:</p>
@@ -656,6 +669,6 @@ sections:
       and to all reviewing IRB's and participating investigators within 10 working days after the sponsor
       first receives notice of the effect. Thereafter the sponsor shall submit such additional reports
       concerning the effect as FDA requests (21 CFR 812.150(b)(1)).</p>
-      <h3 class="mceNonEditable">8.4.3&nbsp;&nbsp;&nbsp;&nbsp; Reporting Unanticipated Problems to Participants</h3>
+      <h3>8.4.3&nbsp;&nbsp;&nbsp;&nbsp; Reporting Unanticipated Problems to Participants</h3>
       <p>&nbsp;</p>
     editable: true

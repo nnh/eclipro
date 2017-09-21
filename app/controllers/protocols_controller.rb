@@ -123,7 +123,7 @@ class ProtocolsController < ApplicationController
 
   def export
     @contents = @protocol.contents
-    @sections = Section.where(template_name: @protocol.template_name)
+    @sections = Section.reject_specified_sections(@protocol.template_name)
     render pdf: 'export',
            encording: 'UTF-8',
            layout: 'export.html',

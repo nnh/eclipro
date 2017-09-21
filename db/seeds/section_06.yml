@@ -31,14 +31,14 @@ sections:
     title: Study Intervention(s) Administration
     template_name: General
     template: |-
-      <h3 class="mceNonEditable" contenteditable="false">6.1.1 Study Intervention Description</h3>
+      <h3 contenteditable="false">6.1.1 Study Intervention Description</h3>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable" contenteditable="false">6.1.2 Dosing and Administration</h3>
+      <h3 contenteditable="false">6.1.2 Dosing and Administration</h3>
       <p>&nbsp;</p>
     instructions: |-
       <p>No text is to be entered in this section; rather it should be included under the relevant subheadings below.&nbsp;</p>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable">6.1.1&nbsp;&nbsp;&nbsp;&nbsp; Study Intervention Description</h3>
+      <h3>6.1.1&nbsp;&nbsp;&nbsp;&nbsp; Study Intervention Description</h3>
       <p><em>Describe the study intervention(s) and control product. Product information can usually be obtained from the:</em></p>
       <ul>
       <li><em>IB for an investigational drug or biologic</em></li>
@@ -67,7 +67,7 @@ sections:
       </li>
       </ul>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable">6.1.2&nbsp;&nbsp;&nbsp;&nbsp; Dosing and Administration</h3>
+      <h3>6.1.2&nbsp;&nbsp;&nbsp;&nbsp; Dosing and Administration</h3>
       <p><em>Describe the procedures for selecting each participant's dose of study intervention and control
       product.&nbsp; For drugs, that includes the timing of dosing (e.g., time of day, interval), the duration
       (e.g., the length of time study participants will be administered the study intervention), the planned
@@ -107,35 +107,35 @@ sections:
     title: Preparation/Handling/Storage/Accountability
     template_name: General
     template: |-
-      <h3 class="mceNonEditable" contenteditable="false">6.2.1 Acquisition and accountability</h3>
+      <h3 contenteditable="false">6.2.1 Acquisition and accountability</h3>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable" contenteditable="false">6.2.2 Formulation, Appearance, Packaging, and Labeling</h3>
+      <h3 contenteditable="false">6.2.2 Formulation, Appearance, Packaging, and Labeling</h3>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable" contenteditable="false">6.2.3 Product Storage and Stability</h3>
+      <h3 contenteditable="false">6.2.3 Product Storage and Stability</h3>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable" contenteditable="false">6.2.4 Preparation</h3>
+      <h3 contenteditable="false">6.2.4 Preparation</h3>
       <p>&nbsp;</p>
     instructions: |-
       <p><em>No text is to be entered in this section; rather it should be included under the relevant subheadings below.&nbsp; </em></p>
       <p><em>&nbsp;</em></p>
-      <h3 class="mceNonEditable">6.2.1&nbsp;&nbsp;&nbsp;&nbsp; Acquisition and accountability</h3>
+      <h3>6.2.1&nbsp;&nbsp;&nbsp;&nbsp; Acquisition and accountability</h3>
       <p><em>State how the study intervention and control product will be provided to the investigator. </em>
       <em>Describe plans about how and by whom the study intervention will be distributed, including participation
       of a drug repository or pharmacy, and plans for disposal of expired or return of unused product. Detailed
       information may be provided in a MOP or a separate SOP.</em></p>
       <p><em>&nbsp;</em></p>
-      <h3 class="mceNonEditable">6.2.2&nbsp;&nbsp;&nbsp;&nbsp; Formulation, Appearance, Packaging, and Labeling</h3>
+      <h3>6.2.2&nbsp;&nbsp;&nbsp;&nbsp; Formulation, Appearance, Packaging, and Labeling</h3>
       <p><em>Describe the formulation, appearance, packaging, and labeling of the study intervention and
       control product, as supplied.&nbsp; Information in this section can usually be obtained from the IB
       or the package insert, or device labeling. This section should include the name of the manufacturer
       of the study intervention and control product.&nbsp; </em></p>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable">6.2.3&nbsp;&nbsp;&nbsp;&nbsp; Product Storage and Stability</h3>
+      <h3>6.2.3&nbsp;&nbsp;&nbsp;&nbsp; Product Storage and Stability</h3>
       <p><em>Describe storage and stability requirements (e.g., protection from light, temperature, humidity)
       for the study intervention and control product.&nbsp; For studies in which multi-dose vials are utilized,
       provide additional information regarding stability and expiration time after initial use (e.g., the seal is broken).</em></p>
       <p><em>&nbsp;</em></p>
-      <h3 class="mceNonEditable">6.2.4&nbsp;&nbsp;&nbsp;&nbsp; Preparation</h3>
+      <h3>6.2.4&nbsp;&nbsp;&nbsp;&nbsp; Preparation</h3>
       <p><em>Describe the preparation of the study intervention and control product, including any preparation
       required by study staff and/or study participants. &nbsp;Include thawing, diluting, mixing, and
       reconstitution/preparation instructions in this section, as appropriate, or within a MOP or SOP.&nbsp;
@@ -204,7 +204,7 @@ sections:
     template_name: General
     template: |-
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable" contenteditable="false">6.5.1 Rescue Medicine</h3>
+      <h3 contenteditable="false">6.5.1 Rescue Medicine</h3>
       <p>&nbsp;</p>
     instructions: |-
       <p><em>Include content in this section if applicable, otherwise note as not-applicable.</em></p>
@@ -217,7 +217,7 @@ sections:
       effects on the study endpoints) and how the independent effects of concomitant and study interventions
       could be ascertained.</em></p>
       <p><em>&nbsp;</em></p>
-      <h3 class="mceNonEditable">6.5.1&nbsp;&nbsp;&nbsp;&nbsp; Rescue Medicine</h3>
+      <h3>6.5.1&nbsp;&nbsp;&nbsp;&nbsp; Rescue Medicine</h3>
       <p><em>Include content in this section if applicable, otherwise note as not-applicable.</em></p>
       <p><em>&nbsp;</em></p>
       <p><em>List all medications, treatments, and/or procedures that may be provided during the study for
@@ -227,7 +227,7 @@ sections:
       only by a properly authorized/licensed clinician. Medications to be reported in the Case Report Form
       (CRF) are concomitant prescription medications, over-the-counter medications and supplements.</p>
       <p><em>&nbsp;</em></p>
-      <h3 class="mceNonEditable">6.5.1&nbsp;&nbsp;&nbsp;&nbsp; Rescue Medicine</h3>
+      <h3>6.5.1&nbsp;&nbsp;&nbsp;&nbsp; Rescue Medicine</h3>
       <p>The study site <span>[will/will not]</span> supply <span>[specify type]</span> rescue medication
       that will be <span>[provided by the sponsor/obtained locally]</span>. The following rescue medications
       may be used <span>[specify name(s)]</span>.</p>

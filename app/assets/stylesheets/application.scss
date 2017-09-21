@@ -65,6 +65,44 @@ a.disabled {
   color: #cccccc;
 }
 
+.nav.nav-stacked > li > a {
+  padding: 5px 10px;
+}
+
+#section-content {
+  p {
+    font-weight: normal;
+  }
+}
+
+.menu-body {
+  p {
+    font-weight: normal;
+  }
+  table {
+    border: solid 1px #000000;
+    border-collapse: collapse;
+    td {
+      border: solid 1px #000000;
+      padding: 3px;
+    }
+  }
+  h3 {
+    font-size: 15px;
+    border-top: solid #4f818d 1px;
+    border-left: solid #4f818d 1px;
+    padding: 3px;
+    color: #4f818d;
+  }
+  h4 {
+    font-size: 13px;
+    border-top: solid #4f818d 1px;
+    border-left: solid #4f818d 1px;
+    padding: 3px;
+    color: #4f818d;
+  }
+}
+
 // comment
 .comment {
   border: 1px solid #ddd;

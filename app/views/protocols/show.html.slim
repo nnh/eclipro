@@ -45,7 +45,8 @@
 javascript:
   $(function() {
     $('#show-example').addClass('disabled');
-    $('#show-instructions').addClass('disabled');
+    $('div[id$=-instructions]').hide();
+    $('#section-title-instructions').show();
 
     $('li[id^=section-]').click((e) => {
       let targetId = e.currentTarget.id;

@@ -4,8 +4,8 @@ sections:
     title: Objectives and Endpoints
     template_name: General
     template: |-
-      <div class="mceNonEditable" contenteditable="false" data-mce-selected="1">
-      <table class="tblBorder" border="1">
+      <div contenteditable="false" data-mce-selected="1">
+      <table border="1">
       <thead>
       <tr>
       <td width="455"><p>OBJECTIVES</p></td>
@@ -18,24 +18,24 @@ sections:
       <td colspan="3"><p>Primary</p></td>
       </tr>
       <tr>
-      <td width="455"><div class="mceEditable" contenteditable="true"><p>&nbsp;</p></div></td>
-      <td width="480"><div class="mceEditable" contenteditable="true"><p>&nbsp;</p></div></td>
-      <td width="311"><div class="mceEditable" contenteditable="true"><p>&nbsp;</p></div></td>
+      <td width="455"><div contenteditable="true"><p>&nbsp;</p></div></td>
+      <td width="480"><div contenteditable="true"><p>&nbsp;</p></div></td>
+      <td width="311"><div contenteditable="true"><p>&nbsp;</p></div></td>
       </tr>
       <tr style="background-color: #c8c8c8;" data-mce-style="background-color: #c8c8c8;">
       <td colspan="3"><p>Secondary</p></td>
       </tr>
       <tr>
-      <td width="455"><div class="mceEditable" contenteditable="true"><p>&nbsp;</p></div></td>
-      <td width="480"><div class="mceEditable" contenteditable="true"><p>&nbsp;</p></div></td>
-      <td width="311"><div class="mceEditable" contenteditable="true"><p>&nbsp;</p></div></td>
+      <td width="455"><div contenteditable="true"><p>&nbsp;</p></div></td>
+      <td width="480"><div contenteditable="true"><p>&nbsp;</p></div></td>
+      <td width="311"><div contenteditable="true"><p>&nbsp;</p></div></td>
       </tr>
       <tr style="background-color: #c8c8c8;" data-mce-style="background-color: #c8c8c8;">
       <td colspan="3"><p>Tertiary/Exploratory</p></td></tr>
       <tr style="vertical-align: top;" data-mce-style="vertical-align: top;">
-      <td width="455"><div class="mceEditable" contenteditable="true"><p>&nbsp;</p></div></td>
-      <td width="480"><div class="mceEditable" contenteditable="true"><p>&nbsp;</p></div></td>
-      <td width="311"><div class="mceEditable" contenteditable="true"><p>&nbsp;</p></div></td>
+      <td width="455"><div contenteditable="true"><p>&nbsp;</p></div></td>
+      <td width="480"><div contenteditable="true"><p>&nbsp;</p></div></td>
+      <td width="311"><div contenteditable="true"><p>&nbsp;</p></div></td>
       </tr>
       </tbody>
       </table>
@@ -71,7 +71,7 @@ sections:
       for the secondary endpoints, the statistical plan for adjustment for multiplicity should be aligned
       with those objectives.&nbsp; </em></p>
       <p>&nbsp;</p>
-      <table class="tblTextAlignTop" border="1">
+      <table border="1">
       <thead>
       <tr>
       <td width="455">
@@ -86,7 +86,7 @@ sections:
       </tr>
       </thead>
       <tbody>
-      <tr>
+      <tr style="background-color: #c8c8c8;">
       <td colspan="3">
       <p>Primary</p>
       </td>
@@ -117,7 +117,7 @@ sections:
       <p><em>Briefly explain why the endpoint(s) were chosen.</em></p>
       </td>
       </tr>
-      <tr>
+      <tr style="background-color: #c8c8c8;">
       <td colspan="3">
       <p>Secondary</p>
       </td>
@@ -140,7 +140,7 @@ sections:
       <p><em>Briefly explain why the endpoint(s) were chosen.</em></p>
       </td>
       </tr>
-      <tr>
+      <tr style="background-color: #c8c8c8;">
       <td colspan="3">
       <p>Tertiary/Exploratory</p>
       </td>

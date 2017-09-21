@@ -14,56 +14,56 @@ sections:
     title: Synopsis
     template_name: General
     template: |-
-      <div class="mceNonEditable" contenteditable="false">
+      <div contenteditable="false">
       <table class="mce-item-table">
       <tbody>
       <tr>
       <td width="202"><p><strong>Title:</strong></p></td>
-      <td width="577"><p class="mceEditable" contenteditable="true">&nbsp;</p></td>
+      <td width="577"><p contenteditable="true">&nbsp;</p></td>
       </tr>
       <tr>
       <td width="202"><p><strong>Study Description:</strong></p></td>
-      <td width="577"><p class="mceEditable" contenteditable="true">&nbsp;</p></td>
+      <td width="577"><p contenteditable="true">&nbsp;</p></td>
       </tr>
       <tr>
       <td width="202"><p><strong>Objectives:</strong></p></td>
-      <td width="577"><p class="mceEditable" contenteditable="true">Primary Objective:&nbsp;</p>
-      <p class="mceEditable" contenteditable="true">Secondary Objectives:&nbsp;</p></td>
+      <td width="577"><p contenteditable="true">Primary Objective:&nbsp;</p>
+      <p contenteditable="true">Secondary Objectives:&nbsp;</p></td>
       </tr>
       <tr>
       <td width="202"><p><strong>Endpoints:</strong></p></td>
-      <td width="577"><p class="mceEditable" contenteditable="true">Primary Endpoint:&nbsp;</p>
-      <p class="mceEditable" contenteditable="true">Secondary Endpoints:&nbsp;</p></td>
+      <td width="577"><p contenteditable="true">Primary Endpoint:&nbsp;</p>
+      <p contenteditable="true">Secondary Endpoints:&nbsp;</p></td>
       </tr>
       <tr>
       <td width="202"><p><strong>Study Population:</strong></p></td>
-      <td width="577"><p class="mceEditable" contenteditable="true">&nbsp;</p></td>
+      <td width="577"><p contenteditable="true">&nbsp;</p></td>
       </tr>
       <tr>
       <td width="202"><p><strong>Phase:</strong></p></td>
-      <td width="577"><p class="mceEditable" contenteditable="true">&nbsp;</p></td>
+      <td width="577"><p contenteditable="true">&nbsp;</p></td>
       </tr>
       <tr>
       <td width="202"><p><strong>Description of Sites/Facilities Enrolling Participants:</strong></p></td>
-      <td width="577"><p class="mceEditable" contenteditable="true">&nbsp;</p></td>
+      <td width="577"><p contenteditable="true">&nbsp;</p></td>
       </tr>
       <tr>
       <td width="202"><p><strong>Description of Study Intervention:</strong></p></td>
-      <td width="577"><p class="mceEditable" contenteditable="true">&nbsp;</p></td>
+      <td width="577"><p contenteditable="true">&nbsp;</p></td>
       </tr>
       <tr>
       <td width="202"><p><strong>Study Duration:</strong></p></td>
-      <td width="577"><p class="mceEditable" contenteditable="true">&nbsp;</p></td>
+      <td width="577"><p contenteditable="true">&nbsp;</p></td>
       </tr>
       <tr>
       <td width="202"><p><strong>Participant Duration:</strong></p></td>
-      <td width="577"><p class="mceEditable" contenteditable="true">&nbsp;</p></td>
+      <td width="577"><p contenteditable="true">&nbsp;</p></td>
       </tr>
       </tbody>
       </table>
       </div>
     instructions:
-      <table class="tblTextAlignTop">
+      <table>
       <tbody>
       <tr>
       <td width="324"><p><strong>Title:</strong></p></td>

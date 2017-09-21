@@ -7,7 +7,7 @@ sections:
       <p id="subtitle">
       Summary of Changes from Previous Version:
       </p>
-      <table class="tblBorder" border="1">
+      <table border="1">
       <tbody>
       <tr>
       <td width="183"><p><strong>Affected Section(s)</strong></p></td>

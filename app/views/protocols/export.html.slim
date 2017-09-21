@@ -20,15 +20,17 @@
     p = t('.table_of_contents')
 
     .contents-table
+      p = t('.compliance')
       - @sections.each do |section|
-        p = "#{section.no} #{section.title}"
+        - unless section.no == '0'
+          p class="#{'ml-xxl' if section.no.include?('.') }" = "#{section.no} #{section.title}"
 
 #compliance.mt-xl
   h4.section-title = t('.compliance')
   - if @protocol.compliance == 1
-    = t('protocols.step.two.radio_one')
+    = t('protocols.step.two.radio_one').html_safe
   - if @protocol.compliance == 2
-    = t('protocols.step.two.radio_two')
+    = t('protocols.step.two.radio_two').html_safe
 
 - contents = @contents.reject { |content| content.no == '0' }
 - contents.each do |content|

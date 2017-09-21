@@ -24,9 +24,9 @@ sections:
     title: Statistical Hypotheses
     template_name: General
     template: |-
-      <ul><li class="mceNonEditable" contenteditable="false">Primary Efficacy Endpoint(s):</li></ul>
+      <ul><li contenteditable="false">Primary Efficacy Endpoint(s):</li></ul>
       <p>&nbsp;</p>
-      <ul><li class="mceNonEditable" contenteditable="false">Secondary Efficacy Endpoint(s):</li></ul>
+      <ul><li contenteditable="false">Secondary Efficacy Endpoint(s):</li></ul>
       <p>&nbsp;</p>
     instructions: |-
       <p><em>State the formal and testable null and alternative hypotheses for primary and key secondary
@@ -98,30 +98,30 @@ sections:
     title: Statistical Analyses
     template_name: General
     template: |-
-      <h3 class="mceNonEditable" contenteditable="false">9.4.1 General Approach</h3>
+      <h3 contenteditable="false">9.4.1 General Approach</h3>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable" contenteditable="false">9.4.2 Analysis of the Primary Efficacy Endpoint(s)</h3>
+      <h3 contenteditable="false">9.4.2 Analysis of the Primary Efficacy Endpoint(s)</h3>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable" contenteditable="false">9.4.3 Analysis of the Secondary Endpoint(s)</h3>
+      <h3 contenteditable="false">9.4.3 Analysis of the Secondary Endpoint(s)</h3>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable" contenteditable="false">9.4.4 Safety Analyses</h3>
+      <h3 contenteditable="false">9.4.4 Safety Analyses</h3>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable" contenteditable="false">9.4.5 Baseline Descriptive Statistics</h3>
+      <h3 contenteditable="false">9.4.5 Baseline Descriptive Statistics</h3>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable" contenteditable="false">9.4.6 Planned Interim Analyses</h3>
+      <h3 contenteditable="false">9.4.6 Planned Interim Analyses</h3>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable" contenteditable="false">9.4.7 Sub-Group Analyses</h3>
+      <h3 contenteditable="false">9.4.7 Sub-Group Analyses</h3>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable" contenteditable="false">9.4.8 Tabulation of Individual Participant Data</h3>
+      <h3 contenteditable="false">9.4.8 Tabulation of Individual Participant Data</h3>
       <p>&nbsp;</p>
-      <h3 class="mceNonEditable" contenteditable="false">9.4.9 Exploratory Analyses</h3>
+      <h3 contenteditable="false">9.4.9 Exploratory Analyses</h3>
       <p>&nbsp;</p>
     instructions: |-
       <p><em>No text is to be entered in this section; rather it should be included under the relevant subheadings below.</em></p>
       <p><em>&nbsp;</em></p>
       <p><em>The following subsections should include a description of the planned statistical methods.</em></p>
       <p><em>&nbsp;</em></p>
-      <h3 class="mceNonEditable">9.4.1&nbsp;&nbsp;&nbsp;&nbsp; General Approach</h3>
+      <h3>9.4.1&nbsp;&nbsp;&nbsp;&nbsp; General Approach</h3>
       <p><em>As a guide, the following should be addressed, as appropriate:</em></p>
       <p><em>&nbsp;</em></p>
       <ul>
@@ -134,7 +134,7 @@ sections:
       performed and whether any corrective procedures will be applied (e.g., transformation or nonparametric tests).</em></li>
       </ul>
       <p><em>&nbsp;</em></p>
-      <h3 class="mceNonEditable">9.4.2&nbsp;&nbsp;&nbsp;&nbsp; Analysis of the Primary Efficacy Endpoint(s)</h3>
+      <h3>9.4.2&nbsp;&nbsp;&nbsp;&nbsp; Analysis of the Primary Efficacy Endpoint(s)</h3>
       <p><em>For each primary endpoint:</em></p>
       <p><em>&nbsp;</em></p>
       <ul>
@@ -162,7 +162,7 @@ sections:
       <p><em>Note if more than one endpoint: the statistical approach for endpoints with the same analytic
       issues can be described as a group.</em></p>
       <p><em>&nbsp;</em></p>
-      <h3 class="mceNonEditable">9.4.3&nbsp;&nbsp;&nbsp;&nbsp; Analysis of the Secondary Endpoint(s)</h3>
+      <h3>9.4.3&nbsp;&nbsp;&nbsp;&nbsp; Analysis of the Secondary Endpoint(s)</h3>
       <p><em>For each secondary endpoint:</em></p>
       <p><em>&nbsp;</em></p>
       <ul>
@@ -189,7 +189,7 @@ sections:
       <p><em>Note if more than one endpoint: the statistical approach for endpoints with the same analytic
       issues can be described as a group.</em></p>
       <p><em>&nbsp;</em></p>
-      <h3 class="mceNonEditable">9.4.4&nbsp;&nbsp;&nbsp;&nbsp; Safety Analyses</h3>
+      <h3>9.4.4&nbsp;&nbsp;&nbsp;&nbsp; Safety Analyses</h3>
       <p><em>Describe how safety endpoints will be analyzed (e.g., as summary statistics during treatment
       and/or as change scores from baselines such as shift tables).&nbsp; If your study is evaluating a
       formal safety endpoint, all of the factors to be included in <strong>Section 9.4.2, Analysis of the
@@ -203,14 +203,14 @@ sections:
       a listing.&nbsp; The information included here should be consistent with the information contained within
       <strong>Section 8.2, Safety and Other Assessments</strong>.</em></p>
       <p><em>&nbsp;</em></p>
-      <h3 class="mceNonEditable">9.4.5&nbsp;&nbsp;&nbsp;&nbsp; Baseline Descriptive Statistics</h3>
+      <h3>9.4.5&nbsp;&nbsp;&nbsp;&nbsp; Baseline Descriptive Statistics</h3>
       <p><em>Include content in this section if applicable, otherwise note as not-applicable.</em></p>
       <p><em>&nbsp;</em></p>
       <p><em>Intervention groups should be compared on baseline characteristics, including demographics and
       laboratory measurements, using descriptive statistics. Discuss planned baseline descriptive statistics,
       indicate whether inferential statistics will be used.</em></p>
       <p><em>&nbsp;</em></p>
-      <h3 class="mceNonEditable">9.4.6&nbsp;&nbsp;&nbsp;&nbsp; Planned Interim Analyses</h3>
+      <h3>9.4.6&nbsp;&nbsp;&nbsp;&nbsp; Planned Interim Analyses</h3>
       <p><em>Include content in this section if applicable, otherwise note as not-applicable.</em></p>
       <p>&nbsp;</p>
       <p>&nbsp;</p>
@@ -244,7 +244,7 @@ sections:
       <p><em>This section should be consistent with <strong>Section 7, Study Intervention Discontinuation
       and Participant Discontinuation/Withdrawal.</strong></em></p>
       <p><em>&nbsp;</em></p>
-      <h3 class="mceNonEditable">9.4.7&nbsp;&nbsp;&nbsp;&nbsp; Sub-Group Analyses</h3>
+      <h3>9.4.7&nbsp;&nbsp;&nbsp;&nbsp; Sub-Group Analyses</h3>
       <p><em>Describe how the primary endpoint will be analyzed based on age, sex, race/ethnicity or other
       demographic characteristic(s) or provide justification for why such analyses are not warranted (e.g.,
       study intervention only for use in men or children).</em></p>
@@ -253,10 +253,10 @@ sections:
       other demographic characteristic(s) or provide justification for why such analyses are not warranted
       (e.g., study intervention only for use in men or children).</em></p>
       <p><em>&nbsp;</em></p>
-      <h3 class="mceNonEditable">9.4.8&nbsp;&nbsp;&nbsp;&nbsp; Tabulation of Individual participant Data</h3>
+      <h3>9.4.8&nbsp;&nbsp;&nbsp;&nbsp; Tabulation of Individual participant Data</h3>
       <p><em>State whether individual participant data will be listed by measure and time point.</em></p>
       <p><em>&nbsp;</em></p>
-      <h3 class="mceNonEditable">9.4.9&nbsp;&nbsp;&nbsp;&nbsp; Exploratory Analyses</h3>
+      <h3>9.4.9&nbsp;&nbsp;&nbsp;&nbsp; Exploratory Analyses</h3>
       <p><em>Exploratory analyses cannot be used as confirmatory proof for registration trials</em><em>.
       All planned exploratory analyses should be specified in the protocol.</em></p>
     example: ''
