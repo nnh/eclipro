@@ -12,6 +12,7 @@
 
         .mt-xl
           = form_for [protocol, content], html: { class: 'form-horizontal', role: 'form', remote: true } do |f|
+            = f.hidden_field :lock_version
             = f.text_area :body, class: 'tinymce', id: "form-tinymce"
 
             - if ((content.status == 'status_new' || content.status == 'in_progress') && (can? :edit, content))

@@ -184,6 +184,8 @@ en:
     update:
       success: Protocol was successfully updated.
       no_change: There is no change in protocol.
+      failure: Protocol update failed.
+      lock_error: Attempted to update a stale object. Please try again after reloading.
     destroy:
       success: Protocol was successfully destroyed.
     add_team:

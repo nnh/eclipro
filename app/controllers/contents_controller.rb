@@ -20,8 +20,12 @@ class ContentsController < ApplicationController
         end
       end
     end
-  rescue
-    flash[:alert] = t('.failure')
+  rescue => e
+    if e.class == ActiveRecord::StaleObjectError
+      flash[:alert] = t('.lock_error')
+    else
+      flash[:alert] = t('.failure')
+    end
   end
 
   def history
@@ -97,6 +101,6 @@ class ContentsController < ApplicationController
     end
 
     def content_params
-      params.require(:content).permit(:body, :status)
+      params.require(:content).permit(:body, :status, :lock_version)
     end
 end

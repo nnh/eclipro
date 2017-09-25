@@ -181,6 +181,8 @@ ja:
     update:
       success: プロトコルを更新しました。
       no_change: プロトコルに変更はありません。
+      failure: プロトコルの更新に失敗しました。
+      lock_error: 失効したプロトコルを更新しようとしました。再読み込みをしてから更新を試してください。
     destroy:
       success: プロトコルを削除しました。
     add_team:

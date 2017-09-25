@@ -4,6 +4,7 @@ en:
       success: Content was successfully updated.
       no_change: There is no change in contents.
       failure: Content update failed.
+      lock_error: Attempted to update a stale object. Please try again after reloading.
     history:
       modal_title: History
       title: Title

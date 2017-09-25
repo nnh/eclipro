@@ -4,6 +4,7 @@ ja:
       success: コンテンツの更新をしました。
       no_change: コンテンツに変更はありません。
       failure: コンテンツの更新に失敗しました。
+      lock_error: 失効したオブジェクトを更新しようとしました。再読み込みをしてから更新を試してください。
     history:
       modal_title: 履歴
       title: タイトル

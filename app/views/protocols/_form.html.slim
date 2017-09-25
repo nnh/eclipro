@@ -1,6 +1,7 @@
 = form_for @protocol, html: { class: 'form-horizontal', role: 'form' } do |f|
   - if @protocol.errors.any?
     = model_errors(@protocol)
+  = f.hidden_field :lock_version
 
   div#step-one
     = render 'protocols/step/one', f: f, protocol: @protocol

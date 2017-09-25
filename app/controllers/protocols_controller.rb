@@ -41,16 +41,21 @@ class ProtocolsController < ApplicationController
   end
 
   def update
-    @protocol.assign_attributes(protocol_params)
-    if has_change?
-      @protocol.version += 0.001 if @protocol.changed?
-      if @protocol.save
+    Protocol.transaction do
+      @protocol.assign_attributes(protocol_params)
+      if has_change?
+        @protocol.version += 0.001
+        @protocol.save!
         redirect_to @protocol, notice: t('.success')
       else
-        render :edit
+        redirect_to @protocol, flash: { warning: t('.no_change') }
       end
+    end
+  rescue => e
+    if e.class == ActiveRecord::StaleObjectError
+      redirect_to @protocol, alert: t('.lock_error')
     else
-      redirect_to @protocol, flash: { warning: t('.no_change') }
+      redirect_to @protocol, alert: t('.failure')
     end
   end
 
@@ -132,6 +137,7 @@ class ProtocolsController < ApplicationController
 
     def protocol_params
       params.require(:protocol).permit(
+        :lock_version,
         :template_name,
         :title,
         :short_title,
