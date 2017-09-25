@@ -1,6 +1,6 @@
 - comments.each do |comment|
   - unless comment.new_record?
-    div class="comment p-m mt-s mb-s #{'resolve-comment hide' if comment.resolve?}"
+    div class="comment p-m mt-s mb-s #{'resolve-comment' if comment.resolve?}"
       .comment-header
         f.fa.fa-user.mr-xs
         = comment.user.name

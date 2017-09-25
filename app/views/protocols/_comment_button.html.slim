@@ -1,0 +1,4 @@
+- comment_num = " (#{content.comments.count})" if content.comments.present?
+- btn_class = comment_num.present? ? 'btn-primary' : 'btn-default'
+= link_to "#{t('.comment')}#{comment_num}",
+          protocol_content_comments_path(protocol, content), remote: true, class: "btn #{btn_class}"

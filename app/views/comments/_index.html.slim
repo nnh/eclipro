@@ -21,24 +21,25 @@
       .new-comment-form
 
 javascript:
-  $(function() {
-    $('#show-resolved').change(() => {
-      change_resolved_comment();
-    });
-  });
-
   function resetFrom() {
     $('.new-comment-form').empty();
     $('.reply-form').empty();
-    $('#add-comment-form').removeClass('hide');
+    $('#add-comment-form').show();
   }
 
   function change_resolved_comment() {
     if ($('#show-resolved').is(':checked')) {
-      $('.resolve-comment').removeClass('hide');
+      $('.resolve-comment').show();
       $('.checkbox-text').text("#{t('.hide_resolved')}");
     } else {
-      $('.resolve-comment').addClass('hide');
+      $('.resolve-comment').hide();
       $('.checkbox-text').text("#{t('.show_resolved')}");
     }
   }
+
+  $(function() {
+    $('#show-resolved').change(() => {
+      change_resolved_comment();
+    });
+    change_resolved_comment();
+  });
