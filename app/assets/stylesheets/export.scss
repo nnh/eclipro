@@ -1,67 +1,69 @@
-p {
-  font-weight: bold;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-.text-center {
-  text-align: center;
-}
-
-table {
-  border: solid 1px #000000;
-  border-collapse: collapse;
-  td {
-    border: solid 1px #000000;
-  }
-}
-
-#subtitle {
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.section-title {
-  background-color: #4F81BD;
-  color: white;
-  font-weight: bold;
-  padding: 10px;
-}
-
-.section-sub-title {
-  background-color: #DBE5F1;
-  padding: 10px;
-}
-
-.contents-table {
-  display: inline-block;
-  border: 1px solid black;
-  padding: 10px 30px;
+.export-content {
   p {
-    text-align: left;
-    margin: 15px;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
-  p.ml-xxl {
-      margin-left: 30px;
-  }
-}
 
-.section-content {
-  padding: 0px 10px;
-  h3 {
-    font-size: 15px;
-    border-top: solid #4f818d 1px;
-    border-left: solid #4f818d 1px;
-    padding: 3px;
+  .text-center {
+    text-align: center;
   }
-  h4 {
-    font-size: 13px;
-    border-top: solid #4f818d 1px;
-    border-left: solid #4f818d 1px;
-    padding: 3px;
-  }
-}
 
-.mt-xl {
-  margin-top: 25px;
+  table {
+    border: solid 1px #000000;
+    border-collapse: collapse;
+    td {
+      border: solid 1px #000000;
+    }
+  }
+
+  #subtitle {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .section-title {
+    background-color: #4F81BD;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+  }
+
+  .section-sub-title {
+    background-color: #DBE5F1;
+    padding: 10px;
+  }
+
+  .contents-table {
+    display: inline-block;
+    border: 1px solid black;
+    padding: 10px 30px;
+    p {
+      text-align: left;
+      margin: 15px;
+    }
+    p.ml-xxl {
+        margin-left: 30px;
+    }
+  }
+
+  .section-content {
+    padding: 0px 10px;
+    h3 {
+      font-size: 15px;
+      border-top: solid #4f818d 1px;
+      border-left: solid #4f818d 1px;
+      padding: 3px;
+    }
+    h4 {
+      font-size: 13px;
+      border-top: solid #4f818d 1px;
+      border-left: solid #4f818d 1px;
+      padding: 3px;
+    }
+  }
+
+  .mt-xl {
+    margin-top: 25px;
+  }
 }

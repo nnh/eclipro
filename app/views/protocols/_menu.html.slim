@@ -35,7 +35,7 @@
                 i.fa.fa-asterisk
           - contents = contents.reject { |s| s.no == '0' }
           - contents.each do |content|
-            li id="section-#{content.no.gsub('.', '-')}" data-section-no="#{content.no}" style="#{'margin-left:20px' if content.no.include?('.')}"
+            li id="section-#{content.no.gsub('.', '-')}" data-section-no="#{content.no}" class="#{'child-list' if content.no.include?('.')}"
               = render 'section_menu', content: content
 
 .row.mt-l.mb-l

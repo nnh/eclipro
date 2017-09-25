@@ -19,6 +19,10 @@
 @import "bootstrap";
 @import "toastr";
 
+html, body {
+  height: 100%;
+}
+
 // protocol index
 .clickable-tr {
   cursor: pointer;
@@ -101,6 +105,9 @@ a.disabled {
     padding: 3px;
     color: #4f818d;
   }
+  li.child-list {
+    margin-left: 20px;
+  }
 }
 
 // comment
@@ -131,8 +138,13 @@ ins {
   margin-right: 0px;
 }
 
-.modal-body, .menu-body {
+.modal-body {
   max-height: 500px;
+  overflow-y: auto;
+}
+
+.menu-body {
+  max-height: calc(100vh - 300px);
   overflow-y: auto;
 }
 
