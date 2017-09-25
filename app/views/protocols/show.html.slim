@@ -87,24 +87,22 @@ javascript:
       $.ajax({
         dataType: 'script',
         data: {
-          protocol_id: '#{@protocol&.id}',
           section_no: $(e.target).data('section-no')
         },
-        url: '#{show_section_protocol_path}'
+        url: '#{protocol_content_path(@protocol)}'
       });
     });
 
     $('#previous-section-button').click(() => {
-      move_section('#{previous_section_protocol_path}');
+      move_section('#{previous_protocol_content_path(@protocol)}');
     });
     $('#next-section-button').click(() => {
-      move_section('#{next_section_protocol_path}');
+      move_section('#{next_protocol_content_path(@protocol)}');
     });
     function move_section(url) {
       $.ajax({
         dataType: 'script',
         data: {
-          protocol_id: '#{@protocol&.id}',
           section_no: $($("ul#section-ul li.active")[0]).data('section-no')
         },
         url: url

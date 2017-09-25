@@ -87,40 +87,6 @@ class ProtocolsController < ApplicationController
     @protocol.short_title = "#{original.short_title} - (COPY)" if original.short_title.present?
   end
 
-  def show_section
-    @content = @protocol.contents.find_by(no: params[:section_no])
-  end
-
-  def next_section
-    sections = Section.sorted_menu(@protocol.template_name)
-    index = sections.index(params[:section_no])
-    if index == sections.size - 1
-      head :ok
-    else
-      index += 1
-      if sections[index] == 'compliance'
-        @content = sections[index]
-      else
-        @content = @protocol.contents.find_by(no: sections[index])
-      end
-    end
-  end
-
-  def previous_section
-    sections = Section.sorted_menu(@protocol.template_name)
-    index = sections.index(params[:section_no])
-    if index == 0
-      head :ok
-    else
-      index -= 1
-      if sections[index] == 'compliance' ||  sections[index] == 'title'
-        @content = sections[index]
-      else
-        @content = @protocol.contents.find_by(no: sections[index])
-      end
-    end
-  end
-
   def export
     @contents = @protocol.contents
     @sections = Section.reject_specified_sections(@protocol.template_name)

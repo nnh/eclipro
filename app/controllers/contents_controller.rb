@@ -1,5 +1,6 @@
 class ContentsController < ApplicationController
-  before_action :set_content, :set_protocol
+  before_action :set_protocol
+  before_action :set_content, except: [:show, :next, :previous]
   load_and_authorize_resource
 
   def update
@@ -47,6 +48,42 @@ class ContentsController < ApplicationController
       flash[:notice] = t('.success')
     else
       flash[:alert] = t('.failure')
+    end
+  end
+
+  def show
+    @content = @protocol.contents.find_by(no: params[:section_no])
+  end
+
+  def next
+    sections = Section.sorted_menu(@protocol.template_name)
+    index = sections.index(params[:section_no])
+    if index == sections.size - 1
+      head :ok
+    else
+      index += 1
+      if sections[index] == 'compliance'
+        @content = sections[index]
+      else
+        @content = @protocol.contents.find_by(no: sections[index])
+      end
+      render :move_section
+    end
+  end
+
+  def previous
+    sections = Section.sorted_menu(@protocol.template_name)
+    index = sections.index(params[:section_no])
+    if index == 0
+      head :ok
+    else
+      index -= 1
+      if sections[index] == 'compliance' ||  sections[index] == 'title'
+        @content = sections[index]
+      else
+        @content = @protocol.contents.find_by(no: sections[index])
+      end
+      render :move_section
     end
   end
 

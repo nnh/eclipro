@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   # resources :sections
   resources :protocols do
-    resources :contents, only: :update do
+    resources :contents, only: [:show, :update] do
       member do
-        get :history, :compare, :revert
+        get :history, :compare, :revert, :next, :previous
         put :change_status
       end
       resources :comments, only: [:index, :create] do
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       post :add_team
     end
     member do
-      get :clone, :show_section, :export, :finalize, :reinstate, :next_section, :previous_section
+      get :clone, :export, :finalize, :reinstate
     end
   end
 

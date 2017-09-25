@@ -1,7 +1,0 @@
-<% if @content == 'compliance' %>
-  $('#section-compliance a').click();
-  $('#section-compliance').tab('show');
-<% else %>
-  $('#section-<%= @content.no.gsub(".", "-") %> a').click();
-  <%= render 'section', protocol: @protocol, content: @content %>
-<% end %>
