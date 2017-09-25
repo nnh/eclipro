@@ -11,7 +11,7 @@ class ProtocolsController < ApplicationController
   end
 
   def show
-    @contents = @protocol.contents.order(:created_at)
+    @contents = @protocol.contents.sort { |a, b| a.no.to_f <=> b.no.to_f }
     @examples = Section.where(template_name: @protocol.template_name).select { |s| s.example.present? }
     @instructions = Section.where(template_name: @protocol.template_name).select { |s| s.instructions.present? }
   end
