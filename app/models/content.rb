@@ -8,7 +8,7 @@ class Content < ApplicationRecord
 
   enum status: %i(status_new in_progress under_review final)
 
-  has_paper_trail on: [:update, :destroy], ignore: [:status]
+  has_paper_trail on: [:update, :destroy], ignore: [:status, :updated_at, :lock_version]
 
   def status_icon
     case status
