@@ -28,7 +28,7 @@ table.table.mt-m
         - index += 1
 
 .form-group.text-right
-   = button_tag t('.prev'), type: 'button', id: 'back-to-two', class: 'btn btn-default'
+   = button_tag t('.prev'), type: :button, class: 'btn btn-default step-button', data: { move: 2 }
    = render 'protocols/step/step_buttons', protocol: protocol, f: f
 
 .modal.fade#team-modal tab-index="1" role="dialog" aria-hidden="true"

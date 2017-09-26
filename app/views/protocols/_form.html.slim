@@ -3,53 +3,35 @@
     = model_errors(@protocol)
   = f.hidden_field :lock_version
 
-  div#step-one
+  div#step-1
     = render 'protocols/step/one', f: f, protocol: @protocol
 
-  div#step-two
+  div#step-2
     = render 'protocols/step/two', f: f, protocol: @protocol
 
-  div#step-three
+  div#step-3
     = render 'protocols/step/three', f: f, protocol: @protocol
 
 javascript:
   $(function() {
-    $('#go-to-two').click((e) => {
-      let has_error = checkError(e);
-      if (!has_error) {
-        $('#step-one').hide();
-        $('#step-two').show();
-        $('#step-three').hide();
-      }
-    });
-    $('#go-to-three').click(() => {
-      $('#step-one').hide();
-      $('#step-two').hide();
-      $('#step-three').show();
-    });
-    $('#back-to-one').click(() => {
-      $('#step-one').show();
-      $('#step-two').hide();
-      $('#step-three').hide();
-    });
-    $('#back-to-two').click(() => {
-      $('#step-one').hide();
-      $('#step-two').show();
-      $('#step-three').hide();
-    });
-
-    $('#protocol_title_error').hide();
-    $('#protocol_template_name_error').hide();
-    $('#step-two').hide();
-    $('#step-three').hide();
+    $('#step-2, #step-3').hide();
+    $('#protocol_title_error, #protocol_template_name_error').hide();
     $('#sponsor-other-form').hide();
-
     if (!$('#protocol_study_agent_1').prop('checked') && !$('#protocol_study_agent_2').prop('checked')) {
       $('#has-ind-form').hide();
     }
     if (!$('#protocol_study_agent_3').prop('checked')) {
       $('#has-ide-form').hide();
     }
+
+    $('.step-button').click((e) => {
+      let has_error = checkError(e);
+      if (!has_error) {
+        $('#step-1, #step-2, #step-3').hide();
+        $('#step-' + $(e.target).data('move')).show();
+        $('html, body').animate({ scrollTop: 60 });
+      }
+    });
 
     $('#protocol_sponsors').change(() => {
       if ($('#protocol_sponsors').children(':selected').last().text() === "#{I18n.t('protocols.step.one.sponsors').last()}") {
@@ -86,37 +68,27 @@ javascript:
           $(error_fields[i]).replaceWith($(error_fields[i]).html());
         }
         $('#protocol_title').val(title);
-        $('#protocol_title_error').hide();
         $('#protocol_template_name').val(template_name);
-        $('#protocol_template_name_error').hide();
+        $('#protocol_template_name_error, #protocol_title_error').hide();
       }
       if ($('#protocol_title').val().length === 0) {
-        showError(e);
+        showError(e, 'protocol_title');
         has_error = true;
       }
       if ('#{@protocol.new_record?}' == 'true' && $('#protocol_template_name').val().length === 0) {
-        showTemplateError(e);
+        showError(e, 'protocol_template_name');
         has_error = true;
       }
       return has_error;
     }
 
-    function showError(e) {
+    function showError(e, target) {
       e.preventDefault();
       let div = '<div class="field_with_errors error-field"></div>';
-      $('label[for=protocol_title]').wrap(div);
-      $('#protocol_title').wrap(div);
-      $('#protocol_title_error').show();
-      $('html, body').animate({ scrollTop: $('label[for=protocol_title]').offset().top });
-    }
-
-    function showTemplateError(e) {
-      e.preventDefault();
-      let div = '<div class="field_with_errors error-field"></div>';
-      $('label[for=protocol_template_name]').wrap(div);
-      $('#protocol_template_name').wrap(div);
-      $('#protocol_template_name_error').show();
-      $('html, body').animate({ scrollTop: $('label[for=protocol_template_name]').offset().top });
+      $('label[for=' + target + ']').wrap(div);
+      $('#' + target).wrap(div);
+      $('#' + target + '_error').show();
+      $('html, body').animate({ scrollTop: $('label[for=' + target + ']').offset().top });
     }
 
     $(document).on("click", ".add-destroy", function() {

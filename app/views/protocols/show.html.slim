@@ -44,29 +44,42 @@
 
 javascript:
   $(function() {
+    $('.instruction-contents, .example-contents').hide();
     $('#show-example').addClass('disabled');
-    $('div[id$=-instructions]').hide();
     $('#section-title-instructions').show();
 
-    $('li[id^=section-]').click((e) => {
-      let targetId = e.currentTarget.id;
-      $('div[id$=-example]').hide();
-      $('div[id$=-instructions]').hide();
-      $('#' + targetId + '-example').show();
-      if ($('#' + targetId + '-example').length === 0) {
-        $('#show-example').addClass('disabled')
+    $('.section-link').click((e) => {
+      let target = $(e.target).data('section-no');
+      let replaced_target = target.toString().replace('.', '-');
+
+      $('.instruction-contents, .example-contents').hide();
+
+      let example_id = '#section-' + replaced_target + '-example';
+      if ($(example_id).length === 0) {
+        $('#show-example').addClass('disabled');
       } else {
-        $('#show-example').removeClass('disabled')
+        $(example_id).show();
+        $('#show-example').removeClass('disabled');
       }
-      $('#' + targetId + '-instructions').show();
-      if ($('#' + targetId + '-instructions').length === 0) {
-        $('#show-instructions').addClass('disabled')
+
+      let instruction_id = '#section-' + replaced_target + '-instructions';
+      if ($(instruction_id).length === 0) {
+        $('#show-instructions').addClass('disabled');
       } else {
-        $('#show-instructions').removeClass('disabled')
+        $(instruction_id).show();
+        $('#show-instructions').removeClass('disabled');
+      }
+
+      if (target != 'title' && target != 'compliance') {
+        $.ajax({
+          dataType: 'script',
+          data: { section_no: target },
+          url: '#{protocol_content_path(@protocol)}'
+        });
       }
     });
 
-    $(document).on('click', '.to-under-review', function(e) {
+    $(document).on('click', '#to-under-review', (e) => {
       if ('#{!@protocol.has_reviewer? && (can? :admin, @protocol)}' == 'true') {
         e.preventDefault();
         e.stopImmediatePropagation();
@@ -80,17 +93,8 @@ javascript:
     $('#no-reviewer-modal-add').click(() => {
       $('#no-reviewer-modal').modal('hide');
       $('#admin-link').tab('show');
-      $('#go-to-three').click();
-    });
-
-    $('.section-link').click((e) => {
-      $.ajax({
-        dataType: 'script',
-        data: {
-          section_no: $(e.target).data('section-no')
-        },
-        url: '#{protocol_content_path(@protocol)}'
-      });
+      $('#step-1, #step-2').hide();
+      $('#step-3').show();
     });
 
     $('#previous-section-button').click(() => {
@@ -102,9 +106,7 @@ javascript:
     function move_section(url) {
       $.ajax({
         dataType: 'script',
-        data: {
-          section_no: $($("ul#section-ul li.active")[0]).data('section-no')
-        },
+        data: { section_no: $("ul#section-ul li.active").first().children().first().data('section-no') },
         url: url
       });
     }

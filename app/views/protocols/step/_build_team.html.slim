@@ -54,7 +54,7 @@ javascript:
     checkState();
     $('#add-sections').hide();
 
-    $('#add_user').change(() => {
+    $('#add_user, .section-checkbox').change(() => {
       checkState();
     });
 
@@ -65,10 +65,6 @@ javascript:
       } else {
         $('#add-sections').hide();
       }
-      checkState();
-    });
-
-    $('.section-checkbox').change(() => {
       checkState();
     });
 
