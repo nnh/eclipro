@@ -1,10 +1,6 @@
-<% if flash[:notice].present? %>
-  toastr.success('<%= j(flash[:notice]) %>')
-  <% flash[:notice] = nil %>
-<% elsif flash[:alert].present? %>
-  toastr.error('<%= j(flash[:alert]) %>')
-  <% flash[:alert] = nil %>
-<% elsif flash[:warning].present? %>
-  toastr.warning('<%= j(flash[:warning]) %>')
-  <% flash[:warning] = nil %>
+<% flash.each do |key, value| %>
+  <% if value.present? %>
+    toastr['<%= flash_type(key) %>']('<%= value %>');
+    <% flash[key] = nil %>
+  <% end %>
 <% end %>

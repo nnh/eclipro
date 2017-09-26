@@ -44,13 +44,10 @@ html
               li = link_to t('.sign_in'), new_user_session_path
 
     .container
-      .row
-        - flash.each do |key, value|
-          - if value.present?
-            - type = flash_type(key)
-            .alert.alert-dismissible class="alert-#{type}"
-              button.close data-dismiss="alert"
-                span aria-hidden="true" = '×'
-              = value
       .row.mb-l
         = yield
+
+- flash.each do |key, value|
+  - if value.present?
+    javascript:
+      toastr['#{flash_type(key)}']('#{value}');

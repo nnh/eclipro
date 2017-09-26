@@ -16,3 +16,8 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
+$(function() {
+  // NOTE: this setting does not apply...
+  toastr.options.closeButton = true;
+});

@@ -19,7 +19,7 @@ module ApplicationHelper
   def flash_type(key)
     case key
       when 'notice' then 'success'
-      when 'alert' then 'danger'
+      when 'alert' then 'error'
       when 'warning' then 'warning'
     end
   end
