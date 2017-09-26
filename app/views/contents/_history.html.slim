@@ -24,7 +24,8 @@
                 td = history.whodunnit
                 td = history.created_at
                 td
-                  = link_to t('.revert'), revert_protocol_content_path(protocol, content, index: index),
+                  = link_to t('.revert'),
+                            revert_protocol_content_path(protocol, content, index: index, lock_version: content.lock_version),
                             class: 'btn btn-warning', id: 'history-revert',
                             data: { confirm: t('.are_you_sure') }, remote: true
                 td

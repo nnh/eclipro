@@ -38,10 +38,19 @@ class ContentsController < ApplicationController
   end
 
   def revert
-    @content = @content.versions[params[:index].to_i].reify
-    @content.lock_version += 1
-    if @content.save
-      flash[:notice] = t('.success')
+    Content.transaction do
+      Protocol.transaction do
+        @content = @content.versions[params[:index].to_i].reify
+        @content.lock_version = params[:lock_version]
+        @content.save!
+        @protocol.version += 0.001
+        @protocol.save!
+        flash[:notice] = t('.success')
+      end
+    end
+  rescue => e
+    if e.class == ActiveRecord::StaleObjectError
+      flash[:alert] = t('.lock_error')
     else
       flash[:alert] = t('.failure')
     end
