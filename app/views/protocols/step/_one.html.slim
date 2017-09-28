@@ -1,8 +1,15 @@
 h4.mt-l = t('.step')
 
+- if protocol.contents.present?
+  = f.fields_for :contents do |c|
+    = c.hidden_field :no, value: c.object.no
+    = c.hidden_field :title, value: c.object.title
+    = c.hidden_field :body, value: c.object.body
+    = c.hidden_field :editable, value: c.object.editable
+
 .form-group
   = f.label :template_name, t('.template_name'), class: 'control-label'
-  - if protocol.new_record?
+  - if protocol.new_record? && action_name != 'clone'
     = f.label :template_name, t('.template_error'), class: 'control-label', id: 'protocol_template_name_error'
     = f.select :template_name, Section.template_names.map { |name| [name, name] },
                                { selected: nil, include_blank: true }, { class: 'form-control' }

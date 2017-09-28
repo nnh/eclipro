@@ -27,10 +27,12 @@ class ProtocolsController < ApplicationController
     @protocol = Protocol.new(protocol_params)
     @protocol.principal_investigator = current_user
 
-    sections = Section.reject_specified_sections(@protocol.template_name).sort { |a, b| a.no.to_f <=> b.no.to_f }
-    sections.each do |section|
-      @protocol.contents << Content.new(protocol: @protocol, no: section.no, title: section.title,
-                                        body: section.template, editable: section.editable)
+    if @protocol.contents.empty?
+      sections = Section.reject_specified_sections(@protocol.template_name).sort { |a, b| a.no.to_f <=> b.no.to_f }
+      sections.each do |section|
+        @protocol.contents << Content.new(protocol: @protocol, no: section.no, title: section.title,
+                                          body: section.template, editable: section.editable)
+      end
     end
 
     if @protocol.save
@@ -86,8 +88,9 @@ class ProtocolsController < ApplicationController
 
   def clone
     original = Protocol.find(params[:id])
-    @protocol = original.deep_clone(include: [:co_author_users, :author_users, :reviewer_users],
-                                    expect: [{ co_author_users: [:id] }, { author_users: [:id] }, { reviewer_users: [:id] }])
+    @protocol = original.deep_clone(include: [:co_author_users, :author_users, :reviewer_users, :contents],
+                                    expect: [{ co_author_users: [:id] }, { author_users: [:id] },
+                                             { reviewer_users: [:id] }, { contents: [:id, :status, :lock_version] }])
     @protocol.title = "#{original.title} - (COPY)"
     @protocol.short_title = "#{original.short_title} - (COPY)" if original.short_title.present?
   end
@@ -152,7 +155,8 @@ class ProtocolsController < ApplicationController
         study_agent: [],
         co_author_users_attributes: [:id, :protocol_id, :user_id, :_destroy],
         author_users_attributes: [:id, :protocol_id, :user_id, :sections, :_destroy],
-        reviewer_users_attributes: [:id, :protocol_id, :user_id, :sections, :_destroy]
+        reviewer_users_attributes: [:id, :protocol_id, :user_id, :sections, :_destroy],
+        contents_attributes: [:no, :title, :body, :editable]
       )
     end
 

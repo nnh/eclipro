@@ -75,7 +75,7 @@ javascript:
         showError(e, 'protocol_title');
         has_error = true;
       }
-      if ('#{@protocol.new_record?}' == 'true' && $('#protocol_template_name').val().length === 0) {
+      if ('#{@protocol.new_record? && action_name != "clone"}' == 'true' && $('#protocol_template_name').val().length === 0) {
         showError(e, 'protocol_template_name');
         has_error = true;
       }

@@ -14,6 +14,7 @@ class Protocol < ApplicationRecord
   has_many :reviewers, -> {distinct}, through: :reviewer_users, source: :user
   accepts_nested_attributes_for :reviewer_users, allow_destroy: true
   has_many :contents, dependent: :destroy
+  accepts_nested_attributes_for :contents, allow_destroy: true
 
   enum status: %i(in_progress finalized)
   enum role: %i(co_author author_all reviewer_all author reviewer)

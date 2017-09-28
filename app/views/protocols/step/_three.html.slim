@@ -12,20 +12,19 @@ table.table.mt-m
 
   tbody#team-member-list
     - index = 0
-    - if protocol.persisted?
-      - co_sections = Section.parent_items(protocol.template_name).pluck(:no).join(',')
-      - protocol.co_author_users.each do |co|
-        = render 'protocols/step/team_member', user: User.find(co.user_id), role: 'co_author',
-                 sections: co_sections, index: index, protocol: protocol, id: co.id
-        - index += 1
-      - protocol.author_users.each do |author|
-        = render 'protocols/step/team_member', user: User.find(author.user_id), role: 'author',
-                 sections: author.sections, index: index, protocol: protocol, id: author.id
-        - index += 1
-      - protocol.reviewer_users.each do |reviewer|
-        = render 'protocols/step/team_member', user: User.find(reviewer.user_id), role: 'reviewer',
-                 sections: reviewer.sections, index: index, protocol: protocol, id: reviewer.id
-        - index += 1
+    - co_sections = Section.parent_items(protocol.template_name).pluck(:no).join(',')
+    - protocol.co_author_users.each do |co|
+      = render 'protocols/step/team_member', user: User.find(co.user_id), role: 'co_author',
+               sections: co_sections, index: index, protocol: protocol, id: co.id
+      - index += 1
+    - protocol.author_users.each do |author|
+      = render 'protocols/step/team_member', user: User.find(author.user_id), role: 'author',
+               sections: author.sections, index: index, protocol: protocol, id: author.id
+      - index += 1
+    - protocol.reviewer_users.each do |reviewer|
+      = render 'protocols/step/team_member', user: User.find(reviewer.user_id), role: 'reviewer',
+               sections: reviewer.sections, index: index, protocol: protocol, id: reviewer.id
+      - index += 1
 
 .form-group.text-right
    = button_tag t('.prev'), type: :button, class: 'btn btn-default step-button', data: { move: 2 }
