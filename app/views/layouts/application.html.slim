@@ -47,7 +47,7 @@ html
       .row.mb-l
         = yield
 
-- flash.each do |key, value|
-  - if value.present?
-    javascript:
-      toastr['#{flash_type(key)}']('#{value}');
+    - flash.each do |key, value|
+      - if value.present?
+        javascript:
+          toastr['#{flash_type(key)}']('#{value}');
