@@ -99,4 +99,5 @@ group :test do
   gem 'launchy'
   gem 'database_rewinder', git: 'https://github.com/amatsuda/database_rewinder', branch: 'master'
   gem 'poltergeist'
+  gem 'rails-controller-testing'
 end

@@ -56,10 +56,14 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.include FactoryGirl::Syntax::Methods
-  config.include Warden::Test::Helpers
+  config.include Warden::Test::Helpers, type: :feature
+  config.include Devise::Test::ControllerHelpers, type: :controller
 
   config.before(:suite) do
     DatabaseRewinder.clean_all
+  end
+  config.before(:each) do
+    Warden.test_mode!
   end
   config.after(:each) do
     Warden.test_reset!
