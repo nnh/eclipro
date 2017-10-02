@@ -61,6 +61,7 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     DatabaseRewinder.clean_all
+    require Rails.root.join('db', 'seeds', 'section')
   end
   config.before(:each) do
     Warden.test_mode!
