@@ -1,0 +1,103 @@
+sections:
+  -
+    'no': 3
+    title: 評価項目
+    template_name: JCCG
+    template: |-
+      <div contenteditable="false">
+      <table class="mce-item-table" width="600">
+      <tbody>
+      <tr>
+      <td width="300" style="text-align: center;"><strong>目的</strong></td>
+      <td width="300" style="text-align: center;"><strong>評価項目</strong></td>
+      </tr>
+      <tr>
+      <td width="300">
+      <p>主要</p>
+      <ul><li contenteditable="true">&nbsp;</li></ul>
+      </td>
+      <td width="300"><ul><li contenteditable="true">&nbsp;</li></ul></td>
+      </tr>
+      <tr>
+      <td width="300"><p>副次的</p><ul><li contenteditable="true">&nbsp;</li></ul></td>
+      <td width="300"><ul><li contenteditable="true">&nbsp;</li></ul></td>
+      </tr>
+      </tbody>
+      </table>
+      <p>&nbsp;</p>
+      <p contenteditable="true">&nbsp;</p>
+      </div>
+    instructions: |-
+      <ul>
+      <li>臨床試験の個別の科学的目的について明確かつ簡潔に列挙し、主要目的と副次的目的を区別する。
+      目的は、臨床試験が答えを出すようにデザインされている疑問に答えるものにする。副次的目的は、
+      臨床試験の副次的評価項目を単に繰り返したものであってはならない。</li>
+      <li>評価項目とは、研究仮説を検証するうえで臨床的に意味があり、客観的に評価できる観察・検査項目又は
+      それらの合成指標である。原則として定量的かつ科学的に評価可能なものを評価項目とする。研究対象者や
+      研究責任者の主観的な感想や意見等の非科学的な評価項目を設定しない。</li>
+      <li>評価項目のうち、主目的に対応するものを主要評価項目とし、それ以外を副次評価項目とする。
+      主要評価項目は１つが望ましい。副次評価項目は、主要評価項目によって得られる情報を補完するため、
+      あるいは副次目的に対応して設定されるが、第一種の過誤の制御をしない場合は、検証的ではなく探索的な
+      位置付けであることに留意する。副次評価項目の設定は必須ではなく、設定する項目は複数でもよい</li>
+      <li>個別の目的の記載は「評価する」「検討する」という曖昧な用語を避け、「比較する」、「推定する」
+      など統計学的な表現を用いるべきである。統計専門家のコンサルテーションもしくはレビューを受けることが望ましい。</li>
+      <li>探索的目的を含むそれぞれの試験の目的に評価項目があることを確認する。また、対応する目的を
+      持っていない評価項目がないことも確認する。</li>
+      <li>評価項目に関する情報は抽象レベルの高い記述にとどめておき、詳細については、「8.評価」もしくは
+      「9.統計」に記述する。</li>
+      <li>三次／探索的評価項目のために追加の試料を収集すれば、今後の研究に役立つその他の評価がされる
+      であろうことを示す三次／探索的目的を追加することが出来る；そうしない場合には、統計解析計画書(SAP)に
+      記載されているその他の評価項目リストを引用する。臨床試験が主要目的に集中できるよう、これらの目的は
+      最小限に留めなければならない。探索的目的は、UMIN-CTRには記載されないことに注意する。</li>
+      <li>目的と評価項目を以下に示すような1つの表にまとめ、全ての評価項目が目的と対になっていることを示す。
+      複数パートの臨床試験では、表の体裁をそれに合わせて変更しても良い。</li>
+      </ul>
+      <p>&nbsp;</p>
+      <table width="600">
+      <tbody>
+      <tr>
+      <td width="300" style="text-align: center;"><strong>目的</strong></td>
+      <td width="300" style="text-align: center;"><strong>評価項目</strong></td>
+      </tr>
+      <tr>
+      <td width="300">
+      <p>主要</p>
+      <ul><li>[試験対象となる状態]の研究対象者の[試験治療名]の有効性を[対照]と比較すること</li></ul>
+      </td>
+      <td width="300"><ul><li>[評価項目]</li></ul></td>
+      </tr>
+      <tr>
+      <td width="300"><p>副次的</p>
+      <ul><li>[試験対象となる状態]の研究対象者の[試験治療名]の安全性を[対照]と比較すること
+      </li></ul></td>
+      <td width="300"><ul><li>有害事象(AE)</li></ul></td>
+      </tr>
+      </tbody>
+      </table>
+    example: |-
+      <div contenteditable="false">
+      <table class="mce-item-table" width="600">
+      <tbody>
+      <tr>
+      <td width="300" style="text-align: center;"><strong>目的</strong></td>
+      <td width="300" style="text-align: center;"><strong>評価項目</strong></td>
+      </tr>
+      <tr>
+      <td width="300">
+      <p>主要</p>
+      <ul><li contenteditable="true">[試験対象となる状態]の研究対象者の[試験治療名]の有効性を[対照]と比較すること</li></ul>
+      </td>
+      <td width="300"><ul><li contenteditable="true">[評価項目]</li></ul></td>
+      </tr>
+      <tr>
+      <td width="300"><p>副次的</p><ul><li contenteditable="true">
+      [試験対象となる状態]の研究対象者の[試験治療名]の安全性を[対照]と比較すること
+      </li></ul></td>
+      <td width="300"><ul><li contenteditable="true">有害事象(AE)</li></ul></td>
+      </tr>
+      </tbody>
+      </table>
+      <p>&nbsp;</p>
+      <p contenteditable="true">&nbsp;</p>
+      </div>
+    editable: true

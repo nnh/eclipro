@@ -1,0 +1,71 @@
+sections:
+  -
+    'no': 4
+    title: 研究デザイン
+    template_name: JCCG
+    template: ''
+    instructions: ''
+    example: ''
+    editable: false
+  -
+    'no': 4.1
+    title: デザイン概要
+    template_name: JCCG
+    template: ''
+    instructions: |-
+      <p>以下の該当する事項などを記載する。</p>
+      <p>非対照、プラセボ対照、実薬対照、用量漸増、用量-反応</p>
+      <p>探索的試験、検証的試験</p>
+      <p>ランダム化、非ランダム化、層別化</p>
+      <p>非盲検、単盲検、二重盲検</p>
+      <p>クロスオーバー、並行群間比較</p>
+      <p>非劣性、同等性、優越性</p>
+    example: |-
+      <div contenteditable="false">
+      <p contenteditable="true">多施設共同非盲検無対照試験</p>
+      <p contenteditable="true">多施設共同非盲検ランダム化比較試験</p>
+      <p contenteditable="true">介入研究（ランダム化、非盲検、並行群間比較）</p>
+      <p contenteditable="true">介入研究（非盲検、非対照）</p>
+      <p contenteditable="true">介入研究（クロスオーバー）</p>
+      <p contenteditable="true">&nbsp;</p>
+      </div>
+    editable: true
+  -
+    'no': 4.2
+    title: デザインの科学的根拠
+    template_name: JCCG
+    template: ''
+    instructions: |-
+      <p>試験デザインならびに選択した対照についての科学的根拠があればそれを示す。科学的文献、
+      科学に関する情報及び十分な実験に基づいていることを記載する。</p>
+    example: ''
+    editable: true
+  -
+    'no': 4.3
+    title: 試験治療の妥当性
+    template_name: JCCG
+    template: ''
+    instructions: |-
+      <p>試験治療の全ての用量の選択について妥当性を示す記述を含める。「6.6. 試験治療変更基準」と相互参照する。</p>
+    example: ''
+    editable: true
+  -
+    'no': 4.4
+    title: 研究期間
+    template_name: JCCG
+    template: |-
+      <div contenteditable="false">
+      <p contenteditable="true">最初の研究対象者の同意取得をもって研究を開始し、最後の研究対象者が最終観察日を
+      完了した時点、中止した時点、または研究対象者が来院しなくなった時点（すなわち、研究責任者または
+      研究分担者が患者と連絡を取れなくなった時点）で終了する。</p>
+      <p contenteditable="true">&nbsp;</p>
+      <p contenteditable="true">各研究対象者の研究期間は、同意取得日から最終観察日または中止判断日までとする。
+      中止判断日とは研究責任者または研究分担者が、当該研究対象者での研究の中止を判断した日とする。</p>
+      <p contenteditable="true">&nbsp;</p>
+      <p contenteditable="true">研究予定期間:2012年11月16日-2022年11月30日(10年間)</p>
+      <p contenteditable="true">登録予定期間:2012年11月16日-2017年11月30日(5年間)</p>
+      <p contenteditable="true">&nbsp;</p>
+      </div>
+    instructions: ''
+    example: ''
+    editable: true

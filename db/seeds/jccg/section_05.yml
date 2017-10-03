@@ -1,0 +1,108 @@
+sections:
+  -
+    'no': 5
+    title: 対象
+    template_name: JCCG
+    template: |-
+      <p>選択除外基準に関しては、厳格に守られる必要があり、例外は認められない。</p>
+    instructions: ''
+    example: ''
+    editable: false
+  -
+    'no': 5.1
+    title: 選択基準
+    template_name: JCCG
+    template: |-
+      <div contenteditable="false">
+      <p>以下の基準を全て満たす患者とする。</p>
+      <ol>
+      <li contenteditable="true">&nbsp;</li>
+      </ol>
+      </div>
+    instructions: |-
+      <p>研究対象集団の選択基準を具体的かつ客観的に箇条書きで記載する。</p>
+      <p>１文に2つ以上の「かつ」でつながれた条件が含まれないように記述する。</p>
+      <p>「原則」や「･･･ならば可能」、「・・・など」等の例外規定は設定しない。</p>
+      <p>文末の表現は統一する。（「～である」ないし体言止め（「～のもの」、「～の患者」）</p>
+      <p>適格性を判断する為の臨床検査値は選択条件に含める。</p>
+      <p>二重否定は使用しない。</p>
+      <p>&nbsp;</p>
+      <p>以下の基準を全て満たす患者とする。</p>
+      <p>&nbsp;</p>
+      <p>適格性の判断に必要となる基準、即ち研究の対象となる集団の疾患又は病態の診断基準及び病期・
+      病型分類等を記述する。用いる基準及び分類の出典を明らかにし（ガイドライン等）、必要に応じて一部を
+      抜粋し記載する。最大1ページ以内とし、当該基準の記載が冗長になる場合は10.3. 補遺に記載する。
+      それぞれの選択基準に対する設定根拠を記載する。</p>
+    example: |-
+      <div contenteditable="false">
+      <p>以下の基準を全て満たす患者とする。</p>
+      <ol>
+      <li contenteditable="true">組織診で●●と診断された患者</li>
+      <li contenteditable="true">ECOG PSが0〜2の患者</li>
+      <li contenteditable="true">同意取得時にXX歳以上である患者</li>
+      <li contenteditable="true">性別</li>
+      <li contenteditable="true">&nbsp;</li>
+      </ol>
+      <p>選択基準設定の根拠：</p>
+      <ol>
+      <li contenteditable="true">&nbsp;</li>
+      <li contenteditable="true">&nbsp;</li>
+      <li contenteditable="true">&nbsp;</li>
+      <li contenteditable="true">&nbsp;</li>
+      </ol>
+      </div>
+    editable: true
+  -
+    'no': 5.2
+    title: 除外基準
+    template_name: JCCG
+    template: |-
+      <div contenteditable="false">
+      <p>以下のいずれかに該当する患者は本研究に組み入れないこととする。</p>
+      <ol>
+      <li contenteditable="true">&nbsp;</li>
+      </ol>
+      </div>
+    instructions: |-
+      <p>除外基準とは「試験治療に対する安全上のリスクが高いと想定される集団」、
+      「評価項目の評価に支障をきたす可能性のある集団」を除外するための条件である。</p>
+      <p>研究対象集団の除外基準を具体的かつ客観的に記載する。</p>
+      <p>1文に2つ以上の「または」でつながれた条件がなるべく含まれないように箇条書きする。</p>
+      <p>「原則」や「･･･ならば可能」等の例外規定は設定しない。</p>
+      <p>文末の表現は統一する。（「～である」ないし体言止め（「～のもの」、「～の患者」）</p>
+      <p>可能な限り具体的な診断基準等を用い、客観的な表現に努めること。つまり「○○により悪化すると思われる心疾患」や
+      「△△と判断される肺疾患」のような表現は避け、可能な限り具体的な疾患または病態を特定する。</p>
+      <p>&nbsp;</p>
+      <p>以下のいずれかに該当する患者は本研究に組み入れないこととする。</p>
+      <p>&nbsp;</p>
+      <p>適格性の判断に必要となる基準を出典を明らかにしつつ記述する。最大1ページ以内とし、
+      当該基準の記載が冗長になる場合は10.3. 補遺に記載する。</p>
+    example: |-
+      <div contenteditable="false">
+      <p>以下のいずれかに該当する患者は本研究に組み入れないこととする。</p>
+      <ol>
+      <li>不安定狭心症を合併、または6か月以内の心筋梗塞の既往を有する患者</li>
+      <li>HIV抗体陽性</li>
+      <li>HBs抗原陽性またはHCV抗体陽性</li>
+      <li>ASTもしくはALTが100IU/L以上</li>
+      <li>妊娠中あるいは妊娠の可能性のある女性</li>
+      <li>[併用禁止薬]を服用中の患者</li>
+      <li>研究責任者、研究分担者が本研究の参加について適切でないと判断した場合</li>
+      </ol>
+      <p>&nbsp;</p>
+      <p>除外基準設定の根拠：</p>
+      <p>(1)〜(5) 安全性への配慮のため </p>
+      <ol start="6">
+      <li>有効性評価への影響を低減するため</li>
+      <li>有効性評価への影響及び安全性への配慮のため</li>
+      </ol>
+      </div>
+    editable: true
+  -
+    'no': 5.3
+    title: 適格性判断に用いる基準
+    template_name: JCCG
+    template: ''
+    instructions: ''
+    example: ''
+    editable: true

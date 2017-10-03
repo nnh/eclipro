@@ -4,8 +4,7 @@ Dir.glob("#{Rails.root}/db/seeds/**/section_*.yml") do |filename|
     records = YAML.load(yml_file)['sections']
     records.each do |record|
       section = Section.where(no: record['no'], template_name: record['template_name']).first_or_create
-      section.update_attributes(record)
-      section.save!
+      section.update_attributes!(record)
     end
   end
 end
