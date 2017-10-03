@@ -1,4 +1,4 @@
-Dir.glob("#{Rails.root}/db/seeds/section_*.yml") do |filename|
+Dir.glob("#{Rails.root}/db/seeds/**/section_*.yml") do |filename|
   puts filename
   File.open(filename) do |yml_file|
     records = YAML.load(yml_file)['sections']

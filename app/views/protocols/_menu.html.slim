@@ -13,6 +13,7 @@
     .tab-content
       .tab-pane.menu-body#example
         - examples.each do |example|
+          - example.example.gsub!('contenteditable="true"', '')
           div.example-contents id="section-#{example.no.gsub('.', '-')}-example" = example.example.html_safe
       .tab-pane.menu-body#instructions
         - instructions.each do |instruction|
@@ -25,9 +26,9 @@
               = t('.title_page')
               .pull-right
                 i.fa.fa-asterisk
-          li#section-0
-            - content = contents.find { |s| s.no == '0' }
-            = render 'section_menu', content: content
+          - if content = contents.find { |s| s.no == '0' }
+            li#section-0
+              = render 'section_menu', content: content
           li#section-compliance
             a.section-link.uneditable href="#section-compliance-content" data-toggle="tab" data-section-no="compliance"
               = t('.compliance')

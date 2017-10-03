@@ -1,0 +1,12 @@
+sections:
+  -
+    'no': title
+    title: JCCG 臨床研究（介入）研究計画書
+    template_name: JCCG
+    template: ''
+    instructions: |-
+      <p>ドラフトに関する版管理は各研究毎の手順にしたがい、Version 1.0未満とする。
+      プロトコル審査委員会初回承認版をVersion 1.0とし、Version 1.0の作成日は、委員会の承認日とする。
+      その後の改訂・改正については各研究毎の手順書に従い版数管理を行う。表紙には現在の版のみを記載する。</p>
+    example: ''
+    editable: false

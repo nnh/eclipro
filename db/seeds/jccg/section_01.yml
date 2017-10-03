@@ -1,0 +1,553 @@
+sections:
+  -
+    'no': 1
+    title: 研究計画書要旨
+    template_name: JCCG
+    template: ''
+    instructions: ''
+    example: ''
+    editable: false
+  -
+    'no': 1.1
+    title: 概要
+    template_name: JCCG
+    template: |-
+      <div contenteditable="false">
+      <p contenteditable="true">&nbsp;</p>
+      <h4>試験の根拠と目的</h4>
+      <p contenteditable="true">&nbsp;</p>
+      <h4>目的および評価項目</h4>
+      <table class="mce-item-table" width="600">
+      <tbody>
+      <tr>
+      <td width="300" style="text-align: center;"><strong>目的</strong></td>
+      <td width="300" style="text-align: center;"><strong>評価項目</strong></td>
+      </tr>
+      <tr>
+      <td width="300"><p>主要</p><ul><li contenteditable="true">&nbsp;</li></ul></td>
+      <td width="300"><ul><li contenteditable="true">&nbsp;</li></ul></td>
+      </tr>
+      <tr>
+      <td width="300"><p>[主な]副次的</p><ul><li contenteditable="true">&nbsp;</li></ul></td>
+      <td width="300"><ul><li contenteditable="true">&nbsp;</li></ul></td>
+      </tr>
+      </tbody>
+      </table>
+      <p>&nbsp;</p>
+      <h4>対象</h4>
+      <p contenteditable="true">&nbsp;</p>
+      <h4>研究デザインの概要</h4>
+      <p contenteditable="true">&nbsp;</p>
+      <h4>目標症例数</h4>
+      <p contenteditable="true">&nbsp;</p>
+      <h4>研究期間</h4>
+      <p contenteditable="true">研究予定期間:20●●年●●月●●日-20●●年●●月●●日(●年間)</p>
+      <p contenteditable="true">登録予定期間:20●●年●●月●●日-20●●年●●月●●日(●年間)</p>
+      <p>&nbsp;</p>
+      <h4>治療群および治療期間</h4>
+      <p contenteditable="true">&nbsp;</p>
+      </div>
+    instructions: |-
+      <p>研究計画書のキーポイントを短く（1〜2ページ）要約する。このセクションは、本文との一貫性を
+      担保するため、本文の作成が終了した後に作成しなければならない。</p>
+      <p>&nbsp;</p>
+      <h4>試験の根拠と目的</h4>
+      <p>臨床試験の根拠と目的を簡潔に（1パラグラフ、２～３行が目安）記載する。本文中の文章と一致させる。
+      本文を修正したら必ずこちらも修正してください。研究の対象疾患（研究対象者）、試験薬、評価する特性
+      （有効性、安全性、臨床効果等）、評価項目、研究デザイン等を含める。</p>
+      <p>&nbsp;</p>
+      <h4>目的および評価項目</h4>
+      <p>主要目的と副次的目的およびそれらに関連する評価項目について記述する。評価項目は詳細な項目名
+      ではなく評価する内容を抽象化したレベルで記述する。主要評価項目は主目的に合った評価項目を１つ
+      記載する。（4.評価項目　参照）</p>
+      <p>&nbsp;</p>
+      <table class="mce-item-table" width="600">
+      <tbody>
+      <tr>
+      <td width="300" style="text-align: center;"><strong>目的</strong></td>
+      <td width="300" style="text-align: center;"><strong>評価項目</strong></td>
+      </tr>
+      <tr>
+      <td width="300"><p>主要</p><ul><li contenteditable="true">&nbsp;</li></ul></td>
+      <td width="300"><ul><li contenteditable="true">&nbsp;</li></ul></td>
+      </tr>
+      <tr>
+      <td width="300"><p>[主な]副次的</p><ul><li contenteditable="true">&nbsp;</li></ul></td>
+      <td width="300"><ul><li contenteditable="true">&nbsp;</li></ul></td>
+      </tr>
+      </tbody>
+      </table>
+      <p>&nbsp;</p>
+      <h4>対象</h4>
+      <p>&nbsp;</p>
+      <h4>研究デザインの概要</h4>
+      <p>&nbsp;</p>
+      <h4>目標症例数</h4>
+      <p>&nbsp;</p>
+      <h4>研究期間</h4>
+      <p>研究予定期間:20●●年●●月●●日-20●●年●●月●●日(●年間)</p>
+      <p>登録予定期間:20●●年●●月●●日-20●●年●●月●●日(●年間)</p>
+      <p>&nbsp;</p>
+      <h4>治療群および治療期間</h4>
+      <p>&nbsp;</p>
+    example: |-
+      <div contenteditable="false">
+      <p contenteditable="true">&nbsp;</p>
+      <h4>試験の根拠と目的</h4>
+      <p>HER2陰性の原発性乳癌を対象として、標準的な治療Ａ単独に比べて、標準的な治療Aと試験薬Bを併用
+      することにより、再発抑制効果が高まることをランダム化比較試験により検証する。</p>
+      <p contenteditable="true">&nbsp;</p>
+      <h4>目的および評価項目</h4>
+      <table class="mce-item-table" width="600">
+      <tbody>
+      <tr>
+      <td width="300" style="text-align: center;"><strong>目的</strong></td>
+      <td width="300" style="text-align: center;"><strong>評価項目</strong></td>
+      </tr>
+      <tr>
+      <td width="300"><p>主要</p><ul><li contenteditable="true">&nbsp;</li></ul></td>
+      <td width="300"><ul><li contenteditable="true">&nbsp;</li></ul></td>
+      </tr>
+      <tr>
+      <td width="300"><p>[主な]副次的</p><ul><li contenteditable="true">&nbsp;</li></ul></td>
+      <td width="300"><ul><li contenteditable="true">&nbsp;</li></ul></td>
+      </tr>
+      </tbody>
+      </table>
+      <p>&nbsp;</p>
+      <h4>対象</h4>
+      <p contenteditable="true">&nbsp;</p>
+      <h4>研究デザインの概要</h4>
+      <p contenteditable="true">多施設共同非盲検無対照試験</p>
+      <p contenteditable="true">多施設共同非盲検ランダム化比較試験</p>
+      <p contenteditable="true">介入研究（ランダム化、非盲検、並行群間比較）</p>
+      <p contenteditable="true">介入研究（非盲検、非対照）</p>
+      <p contenteditable="true">介入研究（クロスオーバー）</p>
+      <p contenteditable="true">&nbsp;</p>
+      <h4>目標症例数</h4>
+      <p contenteditable="true">&nbsp;</p>
+      <h4>研究期間</h4>
+      <p contenteditable="true">研究予定期間:20●●年●●月●●日-20●●年●●月●●日(●年間)</p>
+      <p contenteditable="true">登録予定期間:20●●年●●月●●日-20●●年●●月●●日(●年間)</p>
+      <p>&nbsp;</p>
+      <h4>治療群および治療期間</h4>
+      <p contenteditable="true">&nbsp;</p>
+      </div>
+    editable: true
+  -
+    'no': 1.2
+    title: シェーマ
+    template_name: JCCG
+    template: ''
+    instructions:
+      <p>試験全体の流れが分るようなシェーマを添付して下さい。</p>
+    example: |-
+      <p> TODO: Image... </p>
+    editable: true
+  -
+    'no': 1.3
+    title: スケジュール
+    template_name: JCCG
+    template: |-
+      <div contenteditable="false">
+      <table class="mce-item-table" width="700">
+      <tbody>
+      <tr style="background-color: #c8c8c8;">
+      <td width="170">&nbsp;</td>
+      <td width="130" style="text-align: center;">スクリーニング</td>
+      <td colspan="3" width="300" style="text-align: center;">治療期間</td>
+      <td width="100" style="text-align: center;">追跡期間</td>
+      </tr>
+      <tr style="background-color: #c8c8c8;">
+      <td width="170">評価日</td>
+      <td width="130" style="text-align: center;"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100" style="text-align: center;"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100" style="text-align: center;"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100" style="text-align: center;"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100" style="text-align: center;"><p contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="170">同意取得</td>
+      <td width="130"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="170">身体所見</td>
+      <td width="130"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="170">適格基準確認</td>
+      <td width="130"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="170">臨床検査</td>
+      <td width="130"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="170">バイタルサイン</td>
+      <td width="130"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="170">生理学的検査</td>
+      <td width="130"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="170">画像検査</td>
+      <td width="130"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="170">試料採取</td>
+      <td width="130"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="170">症例登録<span contenteditable="true">[ランダム化]</span></td>
+      <td width="130"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="170">試験治療</td>
+      <td width="130"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="170">AE確認</td>
+      <td width="130"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="170">併用薬確認</td>
+      <td width="130"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="170"><p>最終観察</p></td>
+      <td width="130"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      </tr>
+      </tbody>
+      </table>
+      <p>&nbsp;</p>
+      <p contenteditable="true">&nbsp;</p>
+      </div>
+    instructions: |-
+      <ul>
+      <li>必要不可欠なデータのみを収集するようにする。スケジュールは臨床試験のそれぞれの段階での評価の
+      タイミングを特定する主な記述場所である。本文にスケジュールの記述を繰り返さないこと。</li>
+      <li>有効性あるいは安全性に関するデータを収集するには、受診のタイミングを考慮した許容ウインドウを
+      設定することが必要な場合がある。評価日の欄に±日を加えることで、許容ウインドウをスケジュールに明示することができる。</li>
+      <li>注／脚注はできるだけ少なく、簡潔なものにし、重要な情報を含めるようにする。詳しい説明が必要な
+      場合には、注には、詳細が記述されている研究計画書本文のセクションを参照するようにする。時間ポイント
+      としてDay 0は使ってはならないことに注意。</li>
+      <li>評価の内容が同じであれば、連続する週の評価を一つにまとめ、異なる試験段階（例、スクリーニング、
+      治療期間、追跡）については別々の表に分けることを検討する。複数のパートで構成される臨床試験については、
+      試験のそれぞれのパートにつき1つのスケジュール表を作成することが望ましい。</li>
+      <li>スケジュール表の例を示す。必要に応じて改変を行う。</li>
+      </ul>
+      <p>&nbsp;</p>
+      <table class="mce-item-table" width="700">
+      <tbody>
+      <tr style="background-color: #c8c8c8;">
+      <td width="170">&nbsp;</td>
+      <td width="130" style="text-align: center;">スクリーニング</td>
+      <td colspan="3" width="300" style="text-align: center;">治療期間</td>
+      <td width="100" style="text-align: center;">追跡期間</td>
+      </tr>
+      <tr style="background-color: #c8c8c8;">
+      <td width="170">評価日</td>
+      <td width="130" style="text-align: center;">&nbsp;</td>
+      <td width="100" style="text-align: center;">&nbsp;</td>
+      <td width="100" style="text-align: center;">&nbsp;</td>
+      <td width="100" style="text-align: center;">&nbsp;</td>
+      <td width="100" style="text-align: center;">&nbsp;</td>
+      </tr>
+      <tr>
+      <td width="170">同意取得</td>
+      <td width="130">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      </tr>
+      <tr>
+      <td width="170">身体所見</td>
+      <td width="130">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      </tr>
+      <tr>
+      <td width="170">適格基準確認</td>
+      <td width="130">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      </tr>
+      <tr>
+      <td width="170">臨床検査</td>
+      <td width="130">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      </tr>
+      <tr>
+      <td width="170">バイタルサイン</td>
+      <td width="130">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      </tr>
+      <tr>
+      <td width="170">生理学的検査</td>
+      <td width="130">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      </tr>
+      <tr>
+      <td width="170">画像検査</td>
+      <td width="130">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      </tr>
+      <tr>
+      <td width="170">試料採取</td>
+      <td width="130">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      </tr>
+      <tr>
+      <td width="170">症例登録[ランダム化]</td>
+      <td width="130">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      </tr>
+      <tr>
+      <td width="170">試験治療</td>
+      <td width="130">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      </tr>
+      <tr>
+      <td width="170">AE確認</td>
+      <td width="130">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      </tr>
+      <tr>
+      <td width="170">併用薬確認</td>
+      <td width="130">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      </tr>
+      <tr>
+      <td width="170"><p>最終観察</p></td>
+      <td width="130">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      <td width="100">&nbsp;</td>
+      </tr>
+      </tbody>
+      </table>
+      <p>&nbsp;</p>
+    example: |-
+      <div contenteditable="false">
+      <table class="mce-item-table" width="700">
+      <tbody>
+      <tr style="background-color: #c8c8c8;">
+      <td width="170">&nbsp;</td>
+      <td width="130" style="text-align: center;">スクリーニング</td>
+      <td colspan="3" width="300" style="text-align: center;">治療期間</td>
+      <td width="100" style="text-align: center;">追跡期間</td>
+      </tr>
+      <tr style="background-color: #c8c8c8;">
+      <td width="170">評価日</td>
+      <td width="130" style="text-align: center;"><p contenteditable="true">Day -28 - -1</p></td>
+      <td width="100" style="text-align: center;"><p contenteditable="true">Day1</p></td>
+      <td width="100" style="text-align: center;"><p contenteditable="true">Day2 - 30</p></td>
+      <td width="100" style="text-align: center;"><p contenteditable="true">Day31</p></td>
+      <td width="100" style="text-align: center;"><p contenteditable="true">Day32 - 60</p></td>
+      </tr>
+      <tr>
+      <td width="170">同意取得</td>
+      <td width="130"><p contenteditable="true">X</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="170">身体所見</td>
+      <td width="130"><p contenteditable="true">X</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="170">適格基準確認</td>
+      <td width="130"><p contenteditable="true">X</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="170">臨床検査</td>
+      <td width="130"><p contenteditable="true">X</p></td>
+      <td width="100"><p contenteditable="true">X</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">X</p></td>
+      <td width="100"><p contenteditable="true">X</p></td>
+      </tr>
+      <tr>
+      <td width="170">バイタルサイン</td>
+      <td width="130"><p contenteditable="true">X</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="170">生理学的検査</td>
+      <td width="130"><p contenteditable="true">X</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="170">画像検査</td>
+      <td width="130"><p contenteditable="true">X</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="170">試料採取</td>
+      <td width="130"><p contenteditable="true">X</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="170">症例登録<span contenteditable="true">[ランダム化]</span></td>
+      <td width="130"><p contenteditable="true">X</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="170">試験治療</td>
+      <td width="130"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&lt;--------</p></td>
+      <td width="100"><p contenteditable="true">---------</p></td>
+      <td width="100"><p contenteditable="true">-------&gt;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="170">AE確認</td>
+      <td width="130"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&lt;--------</p></td>
+      <td width="100"><p contenteditable="true">---------</p></td>
+      <td width="100"><p contenteditable="true">---------</p></td>
+      <td width="100"><p contenteditable="true">-------&gt;</p></td>
+      </tr>
+      <tr>
+      <td width="170">併用薬確認</td>
+      <td width="130"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&lt;--------</p></td>
+      <td width="100"><p contenteditable="true">---------</p></td>
+      <td width="100"><p contenteditable="true">-------&gt;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      </tr>
+      <tr>
+      <td width="170"><p>最終観察</p></td>
+      <td width="130"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">&nbsp;</p></td>
+      <td width="100"><p contenteditable="true">X</p></td>
+      </tr>
+      </tbody>
+      </table>
+      <p>&nbsp;</p>
+      <ul>
+      <li contenteditable="true">患者背景：生年月日、性別、既往歴、合併症、アレルギーの有無、PS(ECOG)</li>
+      <li contenteditable="true">身体所見：身長、体重</li>
+      <li contenteditable="true">臨床検査：</li>
+      </ul>
+      <p>&nbsp;</p>
+      <p contenteditable="true">血液学的検査項目：赤血球数、ヘモグロビン、ヘマトクリット、白血球数、血小板数</p>
+      <p contenteditable="true">血液生化学的検査項目：総タンパク、アルブミン、総ビリルビン、AST、ALT、ALP、BUN、Cr</p>
+      <ul><li contenteditable="true">バイタルサイン：血圧、脈拍、体温</li>
+      <li contenteditable="true">画像検査：胸部X線写真</li></ul>
+      <p  contenteditable="true"></p>
+      </div>
+    editable: true
