@@ -1,0 +1,10 @@
+sections:
+  -
+    'no': 11
+    title: 文献
+    template_name: JCCG
+    template: ''
+    instructions: |-
+      <p>文献は引用順に番号をつける。</p>
+    example: ''
+    editable: true

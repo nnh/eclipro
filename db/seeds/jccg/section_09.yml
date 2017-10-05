@@ -1,0 +1,126 @@
+sections:
+  -
+    'no': 9
+    title: 統計
+    template_name: JCCG
+    template: ''
+    instructions: ''
+    example: ''
+    editable: false
+  -
+    'no': 9.1
+    title: 統計学的仮説
+    template_name: JCCG
+    template: ''
+    instructions: ''
+    example: ''
+    editable: true
+  -
+    'no': 9.2
+    title: 症例数設計
+    template_name: JCCG
+    template: ''
+    instructions: |-
+      <ul><li>統計学的な根拠によらず設定する場合も、その根拠を記載する。</li></ul>
+    example: |-
+      <div contenteditable="false">
+      <p contenteditable="true">A群の●年生存割合を○％と仮定し、Ｂ群のそれが▲％上回るかどうかを検出する
+      優越性デザインとした場合、登録Ｘ年、追跡Ｘ年、α＝5％（片側）、検出力80％として、Shoenfeld & Richterの
+      方法を用いて必要症例数を求めると、1群ＸＸＸ例、両群計ＸＸＸ例が必要となる。若干の不適格例を見込んで、
+      予定登録数；各群ＸＸＸ例、合計ＸＸＸ例と設定した。</p>
+      <p contenteditable="true">&nbsp;</p>
+      </div>
+    editable: true
+  -
+    'no': 9.3
+    title: 解析対象集団
+    template_name: JCCG
+    template: ''
+    instructions: |-
+      <p>解析対象集団とは、当該研究に登録された研究対象者のうち、統計解析の対象として、研究目的に関連する
+      仮説を検証するために最も適切な研究対象者集団を指す。複数の解析対象集団を設定する場合はそれぞれについて定義する。</p>
+      <p>解析対象集団には以下のような集団がある</p>
+      <ol>
+      <li>Intention-To-Treat(ITT):</li>
+      <p>臨床試験において、治療方針により得られる効果は、実際に受けた試験治療ではなく、研究対象者を
+      治療しようとする意図（予定した試験治療規定）に基づくことにより最もよく評価できる、ということを主張する原則。</p>
+      <li>最大の解析対象集団　Full Analysis Set (FAS):</li>
+      <p>Intention-To-Treatの原則に可能な限り近づけた研究対象者集団。最大の解析対象集団は、ランダム化が
+      行われた全研究対象者から、除くべき理由のある最低限の研究対象者を除外した集団である</p>
+      <li>実施計画書に適合した対象集団　Per Protocol Set (PPS):</li>
+      <p>データの集合であり、そのデータは基礎となる科学的モデルに従い試験治療の効果をよく示すと十分
+      考えられる程度に研究計画書を遵守した部分集団が得られる。遵守には、試験治療への暴露、測定値の
+      利用可能性及び大きな研究計画書違反がないことが含まれる。</p>
+      <li>４）安全性解析対象集団　SAFety Analysis Set (SAF):</li>
+      <p>安全性の解析対象となる集団である。全登録例のうち、試験治療が１回以上投与された症例を対照とすることが多い。</p>
+      <ol>
+    example: |-
+      <div contenteditable="false">
+      <p contenteditable="true">全ての有効性評価において、最大の解析対象集団（FAS）における解析を主解析とし、
+      参考として研究計画書に適合した対象集団（ＰＰＳ）における解析を行う。安全性の解析は、安全性解析対象集団に
+      おける解析を実施する。対象集団の定義は、以下に示す。</p>
+      <ul>
+      <li contenteditable="true">最大の解析対象集団（FAS：Full Analysis Set）</li>
+      <p contenteditable="true">全登録症例を最大の解析対象集団（FAS）とする。ただし、重大な研究計画書違反
+      （同意未取得、試験手続き上の重大な違反）の症例については除外する。</p>
+      <li contenteditable="true">研究計画書に適合した対象集団（PPS:Per Protocol Set）</li>
+      <p contenteditable="true">FASから試験治療や併用療法など研究計画書の規定に対して、適格・除外基準違反、
+      併用禁止薬・併用禁止療法違反があった症例を除いた集団とする。</p>
+      <li contenteditable="true">安全性解析対象集団</li>
+      <p contenteditable="true">全登録例のうち、試験治療を全く施行されなかった症例を除いた集団</p>
+      </ul>
+      <p contenteditable="true">&nbsp;</p>
+      </div>
+    editable: true
+  -
+    'no': 9.4
+    title: 統計解析
+    template_name: JCCG
+    template: |-
+      <div contenteditable="false">
+      <p contenteditable="true">&nbsp;</p>
+      <h3>9.4.1. 有効性解析</h3>
+      <p contenteditable="true">&nbsp;</p>
+      <p>&nbsp;</p>
+      <h3>9.4.2. 安全性解析</h3>
+      <p>全ての安全性解析は安全性評価対象集団に対して実施する。</p>
+      <p contenteditable="true">&nbsp;</p>
+      <p>&nbsp;</p>
+      <h3>9.4.3. その他の解析</h3>
+      <p contenteditable="true">&nbsp;</p>
+      </div>
+    instructions: |-
+      <p>データ固定前に、統計解析計画書を構築し最終確定し、解析対象集団の設定、ならびに欠測データや
+      使用しないデータ、外れ値の取扱いについて記述する。以下に示したものは、主要評価項目ならびに
+      副次的評価項目について予定した統計解析法のサマリーである。</p>
+      <p>&nbsp;</p>
+      <h3>9.4.1. 有効性解析</h3>
+      <p>&nbsp;</p>
+      <h3>9.4.2. 安全性解析</h3>
+      <p>&nbsp;</p>
+      <h3>9.4.3. その他の解析</h3>
+      <p>&nbsp;</p>
+    example: ''
+    editable: true
+  -
+    'no': 9.5
+    title: 中間解析
+    template_name: JCCG
+    template: |-
+      <div contenteditable="false">
+      <p contenteditable="true">[中間解析のサマリーを挿入]</p>
+      <p>予定している中間解析については統計解析計画書に詳述される。</p>
+      <p contenteditable="true">&nbsp;</p>
+      </div>
+    instructions: |-
+      <ul>
+      <li>中間解析の目的、実施時期、方法及び結果の報告について記載する。中間解析を実施しない場合にはその旨を記載する。</li>
+      <li>中間解析の実施時期は、登録症例数（例：目標登録症例数のXX％が登録された時点からxx年後）、イベント数
+      （例：全体でM人の死亡があった時点）、研究開始又は最終症例登録からの経過時間（例：研究開始ｔ年後）等によって特定しておく。</li>
+      <li>中間解析の手法については、解析対象集団、解析方法及び項目、多重性の調整方法等を記載する。</li>
+      <li>中間解析の結果からとるべきアクション、臨床試験の停止ルールあるいは最終解析のための名目有意水準の調節を記載する。</li>
+      <li>効果安全性評価委員会の役割についても記述する（例えば、臨床試験を継続、変更、あるいは中止するかに
+      ついての勧告をスポンサーに対して行うなど）</li>
+      </ul>
+    example: ''
+    editable: true
