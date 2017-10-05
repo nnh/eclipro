@@ -143,13 +143,13 @@ sections:
     example: |-
       <p><strong>Example #1</strong> <strong>provided as a guide, upload content as needed: Flow
       diagram</strong>(e.g., randomized controlled trial)</p>
-      <p> TODO: Image... </p>
+      <img src="/assets/general/1_2_01.png" />
       <p><strong>Example #2</strong> <strong>provided as a guide, upload content as needed: Process
       diagram</strong>(e.g., randomized controlled trial)</p>
-      <p><strong> TODO: Image... </strong></p>
+      <img src="/assets/general/1_2_02.png" />
       <p><strong>Example #3</strong> <strong>provided as a guide, upload content as needed: Timeline
       diagram</strong>(e.g., randomized controlled trial)</p>
-      <p> TODO: Image... </p>
+      <img src="/assets/general/1_2_03.png" />
     editable: true
   -
     'no': 1.3
@@ -186,6 +186,5 @@ sections:
       hours, whereas a 6-month follow-up visit might have a window of several weeks).</em></p>
     example: |-
       <p>The schedule below is provided as an example, insert table as appropriate.</p>
-      <p>&nbsp;</p>
-      <p> TODO: Image... </p>
+      <img src="/assets/general/1_3_01.png" />
     editable: true
