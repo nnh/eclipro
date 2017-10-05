@@ -75,7 +75,6 @@ sections:
       </tbody>
       </table>
     example: |-
-      <div contenteditable="false">
       <table class="mce-item-table" width="600">
       <tbody>
       <tr>
@@ -99,5 +98,4 @@ sections:
       </table>
       <p>&nbsp;</p>
       <p contenteditable="true">&nbsp;</p>
-      </div>
     editable: true

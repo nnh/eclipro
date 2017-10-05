@@ -23,13 +23,11 @@ sections:
     instructions: |-
       <ul><li>統計学的な根拠によらず設定する場合も、その根拠を記載する。</li></ul>
     example: |-
-      <div contenteditable="false">
       <p contenteditable="true">A群の●年生存割合を○％と仮定し、Ｂ群のそれが▲％上回るかどうかを検出する
       優越性デザインとした場合、登録Ｘ年、追跡Ｘ年、α＝5％（片側）、検出力80％として、Shoenfeld & Richterの
       方法を用いて必要症例数を求めると、1群ＸＸＸ例、両群計ＸＸＸ例が必要となる。若干の不適格例を見込んで、
       予定登録数；各群ＸＸＸ例、合計ＸＸＸ例と設定した。</p>
       <p contenteditable="true">&nbsp;</p>
-      </div>
     editable: true
   -
     'no': 9.3
@@ -55,7 +53,6 @@ sections:
       <p>安全性の解析対象となる集団である。全登録例のうち、試験治療が１回以上投与された症例を対照とすることが多い。</p>
       <ol>
     example: |-
-      <div contenteditable="false">
       <p contenteditable="true">全ての有効性評価において、最大の解析対象集団（FAS）における解析を主解析とし、
       参考として研究計画書に適合した対象集団（ＰＰＳ）における解析を行う。安全性の解析は、安全性解析対象集団に
       おける解析を実施する。対象集団の定義は、以下に示す。</p>
@@ -70,7 +67,6 @@ sections:
       <p contenteditable="true">全登録例のうち、試験治療を全く施行されなかった症例を除いた集団</p>
       </ul>
       <p contenteditable="true">&nbsp;</p>
-      </div>
     editable: true
   -
     'no': 9.4

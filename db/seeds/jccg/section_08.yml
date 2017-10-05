@@ -45,7 +45,6 @@ sections:
     instructions: |-
       <p>安全性の評価に必要な基準を必要に応じて定義する。</p>
     example: |-
-      <div contenteditable="false">
       <p>研究責任者または研究分担者は、研究対象者の有害事象を評価し、徴候（臨床検査値を含む）や症状が診断に
       含まれる場合は、可能な限り個々の徴候や症状ではなく診断名を症例報告書に記録する。有害事象の重症度評価は
       <span contenteditable="true">[Common Terminology Criteria for Adverse Events（CTCAE Ver.4.0）日本語訳JCOG版]</span>を用いる。</p>
@@ -66,7 +65,6 @@ sections:
       <li contenteditable="true">誤嚥、食欲不振、悪心、嘔吐</li>
       </ul>
       <p contenteditable="true">&nbsp;</p>
-      </div>
     editable: true
   -
     'no': 8.3
@@ -280,7 +278,6 @@ sections:
       <p>&nbsp;</p>
       <p contenteditable="true">&nbsp;</p>
     example: |-
-      <div contenteditable="false">
       <h3>8.3.1. 有害事象の定義</h3>
       <ul><li>有害事象：</li></ul>
       <p>実施された研究との因果関係の有無を問わず、研究対象者に生じた全ての好ましくない又は意図しない
@@ -384,7 +381,6 @@ sections:
       <h3>8.3.3. 予期される有害事象</h3>
       <p contenteditable="true">別添「試験薬の添付文書」を参照。</p>
       <p>&nbsp;</p>
-      </div>
     editable: true
   -
     'no': 8.4
@@ -427,7 +423,6 @@ sections:
       <p>「ヒトゲノム・遺伝子解析研究に関する倫理指針」の対象となる解析が本研究に含まれていない場合には、
       その旨記述する。この見出しを削除してはならない。</p>
     example: |-
-      <div contenteditable="false">
       <p contenteditable="true">本研究では、「ヒトゲノム・遺伝子解析研究に関する倫理指針」の対象となる
       遺伝学的評価項目について評価しない。</p>
       <p>&nbsp;</p>
@@ -439,7 +434,6 @@ sections:
       および発送プロセスについての詳細は、[記述箇所を指定]にある。</p>
       <p>&nbsp;</p>
       <p contenteditable="true">&nbsp;</p>
-      </div>
     editable: true
   -
     'no': 8.8
@@ -467,7 +461,6 @@ sections:
       <li>調べるバイオマーカーについて示す。</li>
       </ul>
     example: |-
-      <div contenteditable="false">
       <p contenteditable="true">本研究では、バイオマーカーについて評価しない。</p>
       <p>&nbsp;</p>
       <p contenteditable="true">バイオマーカー研究のための検体採取も本研究の一部である。バイオマーカー研究のために
@@ -486,5 +479,4 @@ sections:
       研究対象者から同意を得た同意の内容を報告する。内容に変更は生じた場合も同様に報告を行う。</p>
       <p>&nbsp;</p>
       <p contenteditable="true">&nbsp;</p>
-      </div>
     editable: true

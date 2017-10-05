@@ -91,7 +91,6 @@ sections:
       <h4>治療群および治療期間</h4>
       <p>&nbsp;</p>
     example: |-
-      <div contenteditable="false">
       <p contenteditable="true">&nbsp;</p>
       <h4>試験の根拠と目的</h4>
       <p>HER2陰性の原発性乳癌を対象として、標準的な治療Ａ単独に比べて、標準的な治療Aと試験薬Bを併用
@@ -132,7 +131,6 @@ sections:
       <p>&nbsp;</p>
       <h4>治療群および治療期間</h4>
       <p contenteditable="true">&nbsp;</p>
-      </div>
     editable: true
   -
     'no': 1.2
@@ -414,7 +412,6 @@ sections:
       </table>
       <p>&nbsp;</p>
     example: |-
-      <div contenteditable="false">
       <table class="mce-item-table" width="700">
       <tbody>
       <tr style="background-color: #c8c8c8;">
@@ -549,5 +546,4 @@ sections:
       <ul><li contenteditable="true">バイタルサイン：血圧、脈拍、体温</li>
       <li contenteditable="true">画像検査：胸部X線写真</li></ul>
       <p  contenteditable="true"></p>
-      </div>
     editable: true

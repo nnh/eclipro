@@ -84,7 +84,6 @@ sections:
       ことが許されている場合（例、用量調節を行うため）、他の担当医師に割り付けがもれないようにする手段に
       ついて記述しなければならない。</p>
     example: |-
-      <div contenteditable="false">
       <p contenteditable="true">研究対象者がすべての適格基準を満たし、除外基準のいずれにも該当しないことを
       確認した時点で、研究責任者又は研究分担者は電子カルテシステムの本研究用テンプレートを用いて症例登録を行う。</p>
       <p>&nbsp;</p>
@@ -107,7 +106,6 @@ sections:
       <p contenteditable="true">本臨床試験はオープンラベル試験である。しかし、参加者が受けるべき特定の治療法は、
       ランダム割り付け封筒によって割り付けられる。臨床試験実施施設は、盲検化されたランダム割り付け封筒を受け取り、
       それぞれの研究対象者に試験投与を開始する直前に、昇順に封筒を開封する。臨床試験実施施設では、開封した日時を記録する。</p>
-      </div>
     editable: true
   -
     'no': 6.4
@@ -134,11 +132,9 @@ sections:
       <p>&nbsp;</p>
       <p>試験治療後に予想される後治療についての制限があれば記載する。</p>
     example: |-
-      <div contenteditable="false">
       <p contenteditable="true">試験治療終了後は、再発または再発以外の癌病変を認めない限り内分泌療法以外の抗癌治療は行わない。<p>
       <p contenteditable="true">  試験治療終了後は、研究責任者の判断により適切な治療に切り替える。</p>
       <p>&nbsp;</p>
-      </div>
     editable: true
   -
     'no': 6.6
@@ -174,7 +170,6 @@ sections:
       結果により得られた知見のほか、当該治療等を継続するために必要な経済的な負担等も含めて研究対象者等に
       説明する必要がある旨を記載する。</p>
     example: |-
-      <div contenteditable="false">
       <p contenteditable="true">試験終了後の治療は担当医の判断により適切な治療を行う。</p>
       <p>&nbsp;</p>
       <p contenteditable="true">試験終了後は、保険適応内で使用できる適切な治療に切り替える。</p>
@@ -182,5 +177,4 @@ sections:
       研究責任者の判断により試験治療を継続する。[試験治療を継続する場合は、研究対象者の費用負担についても記載する]</p>
       <p>&nbsp;</p>
       <p contenteditable="true">&nbsp;</p>
-      </div>
     editable: true

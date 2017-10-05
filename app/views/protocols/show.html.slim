@@ -113,7 +113,7 @@ javascript:
 
     $('.example-copy-button').click((e) => {
       if (window.confirm("#{t('.copy_confirm')}")) {
-        let data = $(e.target).parent().prev().html();
+        let data = '<div contenteditable="false">' + $(e.target).parent().prev().html() + '</div>';
         tinymce.get('form-tinymce').setContent(data);
       }
     })

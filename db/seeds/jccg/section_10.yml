@@ -220,7 +220,6 @@ sections:
       <h4>10.1.10.3. 偶発的所見の取扱い</h4>
       <p>&nbsp;</p>
     example: |-
-      <div contenteditable="false">
       <p contenteditable="true">&nbsp;</p>
       <h3>10.1.1. 規制要件と倫理</h3>
       <p>本試験では研究計画書および以下のものに従って実施する：</p>
@@ -424,7 +423,6 @@ sections:
       研究責任者は、研究対象者に対し、十分な説明を行った上で、意向を確認し、なお開示を希望しない場合は、開示は行わない。</p>
       <p contenteditable="true">&nbsp;</p>
       <p>&nbsp;</p>
-      </div>
     editable: true
   -
     'no': 10.2
@@ -511,7 +509,6 @@ sections:
       </div>
     instructions: ''
     example: |-
-      <div contenteditable="false">
       <p contenteditable="true">&nbsp;</p>
       <h3>10.2.1. 研究主宰者</h3>
       <p>特定非営利活動法人　日本小児がん研究グループ</p>
@@ -593,7 +590,6 @@ sections:
       <p>業務：ヒトゲノム・遺伝子解析研究に係る試料・情報の管理を担送する。</p>
       <p contenteditable="true">&nbsp;</p>
       <p>&nbsp;</p>
-      </div>
     editable: true
   -
     'no': 10.3

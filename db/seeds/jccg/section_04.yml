@@ -21,14 +21,12 @@ sections:
       <p>クロスオーバー、並行群間比較</p>
       <p>非劣性、同等性、優越性</p>
     example: |-
-      <div contenteditable="false">
       <p contenteditable="true">多施設共同非盲検無対照試験</p>
       <p contenteditable="true">多施設共同非盲検ランダム化比較試験</p>
       <p contenteditable="true">介入研究（ランダム化、非盲検、並行群間比較）</p>
       <p contenteditable="true">介入研究（非盲検、非対照）</p>
       <p contenteditable="true">介入研究（クロスオーバー）</p>
       <p contenteditable="true">&nbsp;</p>
-      </div>
     editable: true
   -
     'no': 4.2

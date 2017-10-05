@@ -29,7 +29,6 @@ sections:
       <p>試験薬の研究対象者への投与を中止する判断基準について記述する。試験治療を中止した際に収集すべき
       データについては「1.3. スケジュール」に記載する。</p>
     example: |-
-      <div contenteditable="false">
       <p>以下のいずれかに該当する場合は、研究対象者の試験治療を中止する</p>
       <ul>
       <li contenteditable="true">有害事象により試験薬が休薬となってから28日を超えても再開できない場合</li>
@@ -45,7 +44,6 @@ sections:
       <p>試験治療中止例の研究期間中の観察は引き続き実施する。</p>
       <p>&nbsp;</p>
       <p contenteditable="true">&nbsp;</p>
-      </div>
     editable: true
   -
     'no': 7.2
