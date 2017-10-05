@@ -29,6 +29,7 @@ en:
       modal_text: You have not assigned any reviewers to this section. Would you like to do this now?
       add: Add Reviewers
       cancel: Cancel
+      copy_confirm: The example text will replace all the current text in editor, do you wish to continue?
     form:
       error_message:
         one: '%{count} error prohibited this protocol from being saved.'
@@ -169,6 +170,7 @@ en:
       compliance: Statement of Compliance
       next: Next
       previous: Previous
+      copy: Copy to Editor
     editor:
       editor: Editor
       section_title: Title page (Read only)

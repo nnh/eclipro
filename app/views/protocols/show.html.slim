@@ -110,4 +110,11 @@ javascript:
         url: url
       });
     }
+
+    $('.example-copy-button').click((e) => {
+      if (window.confirm("#{t('.copy_confirm')}")) {
+        let data = $(e.target).parent().prev().html();
+        tinymce.get('form-tinymce').setContent(data);
+      }
+    })
   });

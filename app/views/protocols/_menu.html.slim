@@ -11,10 +11,14 @@
 .row.mt-l
   .col-md-12
     .tab-content
-      .tab-pane.menu-body#example
+      .tab-pane#example
         - examples.each do |example|
           - example.example.gsub!('contenteditable="true"', '')
-          div.example-contents id="section-#{example.no.gsub('.', '-')}-example" = example.example.html_safe
+          div.example-contents id="section-#{example.no.gsub('.', '-')}-example"
+            .menu-body
+              = example.example.html_safe
+            .text-right
+              = button_tag t('.copy'), type: :button, class: 'btn btn-default example-copy-button'
       .tab-pane.menu-body#instructions
         - instructions.each do |instruction|
           div.instruction-contents id="section-#{instruction.no.gsub('.', '-')}-instructions"

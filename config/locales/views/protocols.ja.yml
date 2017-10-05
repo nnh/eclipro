@@ -29,6 +29,7 @@ ja:
       modal_text: あなたはこのセクションにレビューアーを割り当てていません。 今追加しますか？
       add: レビューアーを追加
       cancel: キャンセル
+      copy_confirm: このテキストの例は、エディタの現在のテキストをすべて置き換えます。続行しますか？
     form:
       error_message: '%{count} 件のエラーが発生しました。'
     step:
@@ -166,6 +167,7 @@ ja:
       compliance: コンプライアンス声明
       next: 次へ
       previous: 前へ
+      copy: エディタへコピー
     editor:
       editor: エディタ
       section_title: タイトルページ (読み出し専用)
