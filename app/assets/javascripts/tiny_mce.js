@@ -18,7 +18,46 @@ function initTinyMCE(selector) {
           tooltip: 'Import Reference',
           icon: 'icon-book',
           onclick: function() {
-            editor.insertContent('<div>test</div>');
+            editor.windowManager.open({
+              title: 'Import Reference',
+              body: [
+                {type: 'label', label: 'Import a citation from PubMed.'},
+                {type: 'textbox', name: 'pubmed_id', label: 'Pubmed ID'}
+              ],
+              onsubmit: function(e) {
+                $.ajax({
+                  type: 'GET',
+                  dataType: 'xml',
+                  url: 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi',
+                  data: { db: 'pubmed', retmode: 'xml', id: e.data.pubmed_id },
+                  success: (response) => {
+                    let author_names = []
+                    let authors = $(response).find('AuthorList').children();
+                    for (let i = 0; i < authors.length; i++) {
+                      let author = authors[i];
+                      let author_name = [$(author).find('LastName').text(), $(author).find('Initials').text()].join(' ');
+                      author_names.push(author_name);
+                    }
+                    let title = $(response).find('ArticleTitle').text();
+                    let journal = $(response).find('Journal > ISOAbbreviation').text();
+                    let month = $(response).find('PubDate > Month').text();
+                    let day = $(response).find('PubDate > Day').text();
+                    let date = $(response).find('PubDate > Year').text();
+                    if (month.length > 0) { date += ' ' + month; }
+                    if (day.length > 0) { date += ' ' + day; }
+                    let number = $(response).find('Issue').text();
+                    let page = $(response).find('Pagination > MedlinePgn').text();
+                    let text = $(response).find('Volume').text();;
+                    if (number.length > 0) { text += '(' + number + ')'; }
+                    if (page.length > 0) { text += ':' + page + '.'; }
+                    editor.insertContent(author_names + ' ' + title + ' ' + journal + '. ' + date + ';' + text);
+                  },
+                  error: (xhr, textStatus, errorThrown) => {
+                    toastr['error']('Failed to get the data.');
+                  }
+                });
+              }
+            });
           }
         });
       }
