@@ -50,6 +50,8 @@ gem 'cancancan'
 gem 'paper_trail'
 gem 'htmldiff'
 gem 'tinymce-rails'
+gem 'tinymce-rails-imageupload', github: 'PerfectlyNormal/tinymce-rails-imageupload'
+gem 'paperclip'
 
 gem 'deep_cloneable'
 

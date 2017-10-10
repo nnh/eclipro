@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170911035357) do
+ActiveRecord::Schema.define(version: 20171010005257) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,17 @@ ActiveRecord::Schema.define(version: 20170911035357) do
     t.boolean "editable"
     t.integer "lock_version", default: 0, null: false
     t.index ["protocol_id"], name: "index_contents_on_protocol_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "alt", default: ""
+    t.string "hint", default: ""
+    t.string "file_file_name"
+    t.string "file_content_type"
+    t.integer "file_file_size"
+    t.datetime "file_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "principal_investigator_users", force: :cascade do |t|
