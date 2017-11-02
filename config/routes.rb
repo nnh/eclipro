@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   devise_for :users
   patch 'current_user/set_current_user_locale', as: 'set_current_user_locale'
 
-  post '/tinymce_assets' => 'tinymce_assets#create'
+  resources :images, only: [:create, :show]
 
   root to: 'home#index'
 

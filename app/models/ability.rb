@@ -38,5 +38,13 @@ class Ability
     can :manage, Comment do |comment|
       comment.content.protocol.participant?(user)
     end
+
+    # TODO:
+    can :create, Image do |image|
+      true
+    end
+    can :read, Image do |image|
+      true
+    end
   end
 end

@@ -7,6 +7,7 @@ function initTinyMCE(selector) {
       theme_advanced_toolbar_align: "left",
       theme_advanced_statusbar_location: "bottom",
       theme_advanced_buttons3_add: ["tablecontrols","fullscreen"],
+      uploadimage_form_url: '/images',
       plugins: "print, paste, searchreplace, media, link, hr, anchor, pagebreak, insertdatetime, nonbreaking, template, toc," +
                "visualchars, visualblocks, preview, table, fullscreen, lists, advlist, textcolor, emoticons, charmap, uploadimage",
       toolbar: [
