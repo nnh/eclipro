@@ -1,13 +1,15 @@
 class ImagesController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :protocol
+  load_and_authorize_resource :content, through: :protocol
+  load_and_authorize_resource through: :content
 
   def create
     geometry = Paperclip::Geometry.from_file params[:file]
-    image    = Image.create(image_params)
+    image = @content.images.create(image_params)
 
     render json: {
       image: {
-        url:    image_url(image),
+        url:    protocol_content_image_url(@protocol, @content, image),
         height: geometry.height.to_i,
         width:  geometry.width.to_i
       }

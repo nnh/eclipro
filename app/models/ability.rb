@@ -39,12 +39,11 @@ class Ability
       comment.content.protocol.participant?(user)
     end
 
-    # TODO:
     can :create, Image do |image|
-      true
+     can? :update, image.content
     end
     can :read, Image do |image|
-      true
+      can? :read, image.content
     end
   end
 end

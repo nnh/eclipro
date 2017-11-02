@@ -5,6 +5,7 @@ class Content < ApplicationRecord
 
   belongs_to :protocol
   has_many :comments, dependent: :destroy
+  has_many :images, dependent: :destroy
 
   enum status: %i(status_new in_progress under_review final)
 

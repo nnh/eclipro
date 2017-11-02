@@ -32,6 +32,7 @@
             .pull-left.mt-m
               - status = t("activerecord.enum.content.status.#{content.status}")
               = "#{t('.status')}: #{status}"
+        .tiny-mce-params data-protocol-id="#{protocol.id}" data-content-id="#{content.id}"
     - else
       h4 = "#{t('.editor')}: #{content.no}  #{content.title} #{t('.read_only')}"
       h4 = t('.read_only_text')
