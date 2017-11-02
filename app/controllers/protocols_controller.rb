@@ -96,7 +96,8 @@ class ProtocolsController < ApplicationController
   end
 
   def export
-    @contents = @protocol.contents
+    @section_0 = @protocol.contents.find_by(no: '0')
+    @contents = @protocol.contents.where.not(no: '0').sort { |a, b| a.no.to_f <=> b.no.to_f }
     @sections = Section.reject_specified_sections(@protocol.template_name)
     render pdf: 'export',
            encording: 'UTF-8',

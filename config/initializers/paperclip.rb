@@ -13,7 +13,7 @@ if Rails.env.production?
     path: '/:class/:attachment/:id_partition/:filename'
   })
 else
-  Paperclip::Attachment.default_options[:path] = ":rails_root/tmp/upload_images/:id_partition/:filename"
-  Paperclip::Attachment.default_options[:url] = "./tmp/upload_images/:id_partition/:filename"
+  Paperclip::Attachment.default_options[:path] = ":rails_root/public/upload_images/:id_partition/:filename"
+  Paperclip::Attachment.default_options[:url] = "http://localhost:3000/upload_images/:id_partition/:filename"
   Paperclip::Attachment.default_options[:use_timestamp] = false
 end

@@ -11,9 +11,8 @@
   p = "#{t('.draft_number')}: #{sprintf('%.3f', @protocol.version)}"
   p = @protocol.updated_at
 
-- section_0 = @contents.find_by(no: '0')
 #section-0.mt-xl
-  = section_0.body.gsub('contenteditable="true"', '').html_safe
+  = @section_0.replaced_body.html_safe
 
 #table-of-contents.mt-xl
   .text-center
@@ -38,4 +37,4 @@
     h4 class="#{content.no.include?('.') ? 'section-sub-title' : 'section-title' }"
       = "#{content.no} #{content.title}"
     .section-content
-      = content.body.gsub('contenteditable="true"', '').html_safe if content.body.present? && content.editable
+      = content.replaced_body.html_safe

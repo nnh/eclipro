@@ -19,4 +19,19 @@ class Content < ApplicationRecord
       when 'final' then 'check'
     end
   end
+
+  def replaced_body
+    new_body = body.gsub('contenteditable="true"', '')
+    if new_body.include?('<img src=')
+      image_tags = new_body.scan(/<img src=.+?\/>/)
+      image_tags.each do |image_tag|
+        image_id = image_tag.match(/src=".+?"/)[0].scan(/\d/)[-1]
+        image_url = Image.find(image_id).file.expiring_url(1.minute)
+        new_image_tag = image_tag.gsub(/src=".+?"/, "src=\"#{image_url}\"")
+        new_body.gsub!(image_tag, new_image_tag)
+      end
+    end
+
+    new_body
+  end
 end
