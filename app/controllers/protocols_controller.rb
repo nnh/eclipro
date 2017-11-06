@@ -11,7 +11,7 @@ class ProtocolsController < ApplicationController
   end
 
   def show
-    @contents = @protocol.contents.sort { |a, b| a.no.to_f <=> b.no.to_f }
+    @contents = @protocol.contents.sort_by { |c| c.no.to_f }
     @examples = Section.where(template_name: @protocol.template_name).select { |s| s.example.present? }
     @instructions = Section.where(template_name: @protocol.template_name).select { |s| s.instructions.present? }
   end
@@ -28,7 +28,7 @@ class ProtocolsController < ApplicationController
     @protocol.principal_investigator = current_user
 
     if @protocol.contents.empty?
-      sections = Section.reject_specified_sections(@protocol.template_name).sort { |a, b| a.no.to_f <=> b.no.to_f }
+      sections = Section.reject_specified_sections(@protocol.template_name).sort_by { |c| c.no.to_f }
       sections.each do |section|
         @protocol.contents << Content.new(protocol: @protocol, no: section.no, title: section.title,
                                           body: section.template, editable: section.editable)
@@ -97,7 +97,7 @@ class ProtocolsController < ApplicationController
 
   def export
     @section_0 = @protocol.contents.find_by(no: '0')
-    @contents = @protocol.contents.where.not(no: '0').sort { |a, b| a.no.to_f <=> b.no.to_f }
+    @contents = @protocol.contents.where.not(no: '0').sort_by { |c| c.no.to_f }
     @sections = Section.reject_specified_sections(@protocol.template_name)
     render pdf: 'export',
            encording: 'UTF-8',

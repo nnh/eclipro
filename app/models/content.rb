@@ -1,3 +1,5 @@
+require 'rexml/document'
+
 class Content < ApplicationRecord
   class << self
     include HTMLDiff
@@ -21,17 +23,16 @@ class Content < ApplicationRecord
   end
 
   def replaced_body
-    new_body = body.gsub('contenteditable="true"', '')
-    if new_body.include?('<img src=')
-      image_tags = new_body.scan(/<img src=.+?\/>/)
-      image_tags.each do |image_tag|
-        image_id = image_tag.match(/src=".+?"/)[0].scan(/\d/)[-1]
-        image_url = Image.find(image_id).file.expiring_url(1.minute)
-        new_image_tag = image_tag.gsub(/src=".+?"/, "src=\"#{image_url}\"")
-        new_body.gsub!(image_tag, new_image_tag)
-      end
-    end
+    return '' if body.empty?
+    return body unless editable
 
-    new_body
+    x = REXML::Document.new("<div>#{body}</div>")
+    x.get_elements('*[@contenteditable]').each { |c| c.attributes.delete('contenteditable') }
+    x.get_elements('//img').each do |i|
+      image_id = i.attributes['src'].scan(/\d/)[-1]
+      i.attributes['src'] = Image.find(image_id).file.expiring_url(10.minute)
+    end
+    x = x.to_s
+    x.slice(5, x.length-11)
   end
 end
