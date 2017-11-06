@@ -6,16 +6,14 @@ sections:
     template: |-
       <div contenteditable="false">
       <table border="1">
-      <thead>
-      <tr>
-      <td width="455"><p>OBJECTIVES</p></td>
-      <td width="480"><p>ENDPOINTS</p></td>
-      <td width="311"><p>JUSTIFICATION FOR ENDPOINTS</p></td>
-      </tr>
-      </thead>
       <tbody>
+      <tr>
+      <td width="455"><p><strong>OBJECTIVES</strong></p></td>
+      <td width="480"><p><strong>ENDPOINTS</strong></p></td>
+      <td width="311"><p><strong>JUSTIFICATION FOR ENDPOINTS</strong></p></td>
+      </tr>
       <tr style="background-color: #c8c8c8;">
-      <td colspan="3"><p>Primary</p></td>
+      <td><p>Primary</p></td><td></td><td></td>
       </tr>
       <tr>
       <td width="455"><div contenteditable="true"><p>&nbsp;</p></div></td>
@@ -23,7 +21,7 @@ sections:
       <td width="311"><div contenteditable="true"><p>&nbsp;</p></div></td>
       </tr>
       <tr style="background-color: #c8c8c8;">
-      <td colspan="3"><p>Secondary</p></td>
+      <td><p>Secondary</p></td><td></td><td></td>
       </tr>
       <tr>
       <td width="455"><div contenteditable="true"><p>&nbsp;</p></div></td>
@@ -31,7 +29,7 @@ sections:
       <td width="311"><div contenteditable="true"><p>&nbsp;</p></div></td>
       </tr>
       <tr style="background-color: #c8c8c8;">
-      <td colspan="3"><p>Tertiary/Exploratory</p></td></tr>
+      <td><p>Tertiary/Exploratory</p></td><td></td><td></td></tr>
       <tr style="vertical-align: top;">
       <td width="455"><div contenteditable="true"><p>&nbsp;</p></div></td>
       <td width="480"><div contenteditable="true"><p>&nbsp;</p></div></td>
@@ -72,24 +70,21 @@ sections:
       with those objectives.&nbsp; </em></p>
       <p>&nbsp;</p>
       <table border="1">
-      <thead>
+      <tbody>
       <tr>
       <td width="455">
-      <p>OBJECTIVES</p>
+      <p><strong>OBJECTIVES</strong></p>
       </td>
       <td width="480">
-      <p>ENDPOINTS</p>
+      <p><strong>ENDPOINTS</strong></p>
       </td>
       <td width="311">
-      <p>JUSTIFICATION FOR ENDPOINTS</p>
+      <p><strong>JUSTIFICATION FOR ENDPOINTS</strong></p>
       </td>
       </tr>
-      </thead>
       <tbody>
       <tr style="background-color: #c8c8c8;">
-      <td colspan="3">
-      <p>Primary</p>
-      </td>
+      <td><p>Primary</p></td><td></td><td></td>
       </tr>
       <tr>
       <td width="455">
@@ -118,9 +113,7 @@ sections:
       </td>
       </tr>
       <tr style="background-color: #c8c8c8;">
-      <td colspan="3">
-      <p>Secondary</p>
-      </td>
+      <td><p>Secondary</p></td><td></td><td></td>
       </tr>
       <tr>
       <td width="455">
@@ -141,9 +134,7 @@ sections:
       </td>
       </tr>
       <tr style="background-color: #c8c8c8;">
-      <td colspan="3">
-      <p>Tertiary/Exploratory</p>
-      </td>
+      <td><p>Tertiary/Exploratory</p></td><td></td><td></td>
       </tr>
       <tr>
       <td width="455">

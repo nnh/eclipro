@@ -1,6 +1,7 @@
 = f.submit class: 'btn btn-primary ml-s', id: 'step_one_submit_button'
 - if protocol.persisted? && (can? :admin, protocol)
-  = link_to t('.export'), export_protocol_path(protocol), class: 'btn btn-default ml-s', target: '_blank'
+  = link_to t('.export_pdf'), export_protocol_path(protocol, format: :pdf), class: 'btn btn-default ml-s', target: '_blank'
+  = link_to t('.export_docx'), export_protocol_path(protocol, format: :docx), class: 'btn btn-default ml-s', target: '_blank'
 
   - if protocol.status == 'finalized'
     = link_to t('.reinstate'), reinstate_protocol_path(protocol), class: 'btn btn-default ml-s',
