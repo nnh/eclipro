@@ -23,12 +23,12 @@ class Content < ApplicationRecord
   def replaced_body
     return body if body.empty? || !editable?
 
-    x = REXML::Document.new("<div>#{body}</div>")
-    x.get_elements('*[@contenteditable]').each { |c| c.attributes.delete('contenteditable') }
-    x.get_elements('//img').each do |i|
-      image_id = i.attributes['src'].scan(/\d{1,}/)[-1]
-      i.attributes['src'] = Image.find(image_id).file.expiring_url(10.minute)
+    doc = Nokogiri::HTML(body)
+    doc.xpath('*[@contenteditable]').each { |c| c.delete('contenteditable') }
+    doc.xpath('//img').each do |i|
+      image_id = i['src'].scan(/\d{1,}/)[-1]
+      i['src'] = Image.find(image_id).file.expiring_url(10.minute)
     end
-    x.root.children.join
+    doc.at('body').children.to_s
   end
 end
