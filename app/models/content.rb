@@ -21,7 +21,7 @@ class Content < ApplicationRecord
   end
 
   def replaced_body
-    return body if body.empty? || !editable
+    return body if body.empty? || !editable?
 
     x = REXML::Document.new("<div>#{body}</div>")
     x.get_elements('*[@contenteditable]').each { |c| c.attributes.delete('contenteditable') }
