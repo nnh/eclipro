@@ -23,4 +23,4 @@
 .byebug_history
 
 /public/assets/*
-/public/upload_images/*
+/public/system/*

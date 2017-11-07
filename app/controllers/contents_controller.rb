@@ -10,6 +10,7 @@ class ContentsController < ApplicationController
       Protocol.transaction do
         @content.assign_attributes(content_params)
         if @content.changed?
+          @content.body = helpers.sanitize(@content.body)
           @content.status = 'in_progress'
           @content.save!
           @protocol.version += 0.001

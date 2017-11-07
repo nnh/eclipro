@@ -1,5 +1,3 @@
-require 'rexml/document'
-
 class Content < ApplicationRecord
   class << self
     include HTMLDiff
@@ -23,16 +21,14 @@ class Content < ApplicationRecord
   end
 
   def replaced_body
-    return '' if body.empty?
-    return body unless editable
+    return body if body.empty? || !editable
 
     x = REXML::Document.new("<div>#{body}</div>")
     x.get_elements('*[@contenteditable]').each { |c| c.attributes.delete('contenteditable') }
     x.get_elements('//img').each do |i|
-      image_id = i.attributes['src'].scan(/\d/)[-1]
+      image_id = i.attributes['src'].scan(/\d{1,}/)[-1]
       i.attributes['src'] = Image.find(image_id).file.expiring_url(10.minute)
     end
-    x = x.to_s
-    x.slice(5, x.length-11)
+    x.root.children.join
   end
 end
