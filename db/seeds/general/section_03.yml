@@ -4,7 +4,7 @@ sections:
     title: Objectives and Endpoints
     template_name: General
     template: |-
-      <div contenteditable="false" data-mce-selected="1">
+      <div contenteditable="false">
       <table border="1">
       <thead>
       <tr>
@@ -14,7 +14,7 @@ sections:
       </tr>
       </thead>
       <tbody>
-      <tr style="background-color: #c8c8c8;" data-mce-style="background-color: #c8c8c8;">
+      <tr style="background-color: #c8c8c8;">
       <td colspan="3"><p>Primary</p></td>
       </tr>
       <tr>
@@ -22,7 +22,7 @@ sections:
       <td width="480"><div contenteditable="true"><p>&nbsp;</p></div></td>
       <td width="311"><div contenteditable="true"><p>&nbsp;</p></div></td>
       </tr>
-      <tr style="background-color: #c8c8c8;" data-mce-style="background-color: #c8c8c8;">
+      <tr style="background-color: #c8c8c8;">
       <td colspan="3"><p>Secondary</p></td>
       </tr>
       <tr>
@@ -30,9 +30,9 @@ sections:
       <td width="480"><div contenteditable="true"><p>&nbsp;</p></div></td>
       <td width="311"><div contenteditable="true"><p>&nbsp;</p></div></td>
       </tr>
-      <tr style="background-color: #c8c8c8;" data-mce-style="background-color: #c8c8c8;">
+      <tr style="background-color: #c8c8c8;">
       <td colspan="3"><p>Tertiary/Exploratory</p></td></tr>
-      <tr style="vertical-align: top;" data-mce-style="vertical-align: top;">
+      <tr style="vertical-align: top;">
       <td width="455"><div contenteditable="true"><p>&nbsp;</p></div></td>
       <td width="480"><div contenteditable="true"><p>&nbsp;</p></div></td>
       <td width="311"><div contenteditable="true"><p>&nbsp;</p></div></td>

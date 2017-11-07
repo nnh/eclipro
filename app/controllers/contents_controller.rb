@@ -4,13 +4,12 @@ class ContentsController < ApplicationController
   load_and_authorize_resource
 
   def update
-    content_params[:body].gsub!(/ style="height: .+px;"/, '')
-    content_params[:body].gsub!(/\r/, '')
+    content_params[:body].gsub!(/\R/, '')
     Content.transaction do
       Protocol.transaction do
         @content.assign_attributes(content_params)
         if @content.changed?
-          @content.body = helpers.sanitize(@content.body)
+          @content.body = helpers.sanitize(@content.body).gsub(/\R/, '')
           @content.status = 'in_progress'
           @content.save!
           @protocol.version += 0.001
