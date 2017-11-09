@@ -4,20 +4,17 @@ class ContentsController < ApplicationController
   load_and_authorize_resource
 
   def update
-    content_params[:body].gsub!(/\R/, '')
-    Content.transaction do
-      Protocol.transaction do
-        @content.assign_attributes(content_params)
-        if @content.changed?
-          @content.body = helpers.sanitize(@content.body).gsub(/\R/, '')
-          @content.status = 'in_progress'
-          @content.save!
-          @protocol.version += 0.001
-          @protocol.save!
-          flash[:notice] = t('.success')
-        else
-          flash[:warning] = t('.no_change')
-        end
+    ApplicationRecord.transaction do
+      @content.assign_attributes(content_params)
+      @content.body = helpers.sanitize(@content.body).gsub(/\R/, '')
+      if @content.changed?
+        @content.status = 'in_progress'
+        @content.save!
+        @protocol.version += 0.001
+        @protocol.save!
+        flash[:notice] = t('.success')
+      else
+        flash[:warning] = t('.no_change')
       end
     end
   rescue => e
