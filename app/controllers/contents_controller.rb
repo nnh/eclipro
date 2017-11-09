@@ -8,10 +8,8 @@ class ContentsController < ApplicationController
       @content.assign_attributes(content_params)
       @content.body = helpers.sanitize(@content.body).gsub(/\R/, '')
       if @content.changed?
-        @content.status = 'in_progress'
         @content.save!
-        @protocol.version += 0.001
-        @protocol.save!
+        @protocol.versionup!
         flash[:notice] = t('.success')
       else
         flash[:warning] = t('.no_change')

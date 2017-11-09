@@ -71,6 +71,11 @@ class Protocol < ApplicationRecord
     reviewer_ids.size > 0
   end
 
+  def versionup!
+    self.version += 0.001
+    save!
+  end
+
   private
     def select_sections(all_sections, origin_sections)
       sections = []
