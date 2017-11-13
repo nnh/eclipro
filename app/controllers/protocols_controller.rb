@@ -45,20 +45,17 @@ class ProtocolsController < ApplicationController
   def update
     Protocol.transaction do
       @protocol.assign_attributes(protocol_params)
-      if has_change?
-        @protocol.version += 0.001
-        @protocol.save!
+      if @protocol.has_changes_to_save?
+        @protocol.versionup!
         redirect_to @protocol, notice: t('.success')
       else
-        redirect_to @protocol, flash: { warning: t('.no_change') }
+        redirect_to @protocol, notice: t('.no_change')
       end
     end
+  rescue ActiveRecord::StaleObjectError => e
+    redirect_to @protocol, alert: t('.lock_error')
   rescue => e
-    if e.class == ActiveRecord::StaleObjectError
-      redirect_to @protocol, alert: t('.lock_error')
-    else
-      redirect_to @protocol, alert: t('.failure')
-    end
+    redirect_to @protocol, alert: t('.failure')
   end
 
   def destroy
@@ -158,12 +155,5 @@ class ProtocolsController < ApplicationController
         author_users_attributes: [:id, :protocol_id, :user_id, :sections, :_destroy],
         reviewer_users_attributes: [:id, :protocol_id, :user_id, :sections, :_destroy]
       )
-    end
-
-    def has_change?
-      @protocol.changed? ||
-        @protocol.co_author_users.any? { |co_author| co_author.changed? || co_author.marked_for_destruction? } ||
-        @protocol.author_users.any? { |author| author.changed? || author.marked_for_destruction? } ||
-        @protocol.reviewer_users.any? { |reviewer| reviewer.changed? || reviewer.marked_for_destruction? }
     end
 end

@@ -38,7 +38,7 @@ class Content < ApplicationRecord
   private
 
     def status_update
-      in_progress! if status_new? && persisted? && has_changes_to_save?
+      self.status = 'in_progress' if status_new? && persisted? && has_changes_to_save?
     end
 
     def sanitize_body

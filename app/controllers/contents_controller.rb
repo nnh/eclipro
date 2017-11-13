@@ -6,18 +6,12 @@ class ContentsController < ApplicationController
   def update
     ApplicationRecord.transaction do
       @content.update!(content_params)
-      if @content.saved_changes?
-        flash[:notice] = t('.success')
-      else
-        flash[:warning] = t('.no_change')
-      end
+      flash[:notice] = @content.saved_changes? ? t('.success') : t('.no_change')
     end
+  rescue ActiveRecord::StaleObjectError => e
+    flash[:alert] = t('.lock_error')
   rescue => e
-    if e.class == ActiveRecord::StaleObjectError
-      flash[:alert] = t('.lock_error')
-    else
-      flash[:alert] = t('.failure')
-    end
+    flash[:alert] = t('.failure')
   end
 
   def history
@@ -36,12 +30,10 @@ class ContentsController < ApplicationController
       @content.save!
       flash[:notice] = t('.success')
     end
+  rescue ActiveRecord::StaleObjectError => e
+    flash[:alert] = t('.lock_error')
   rescue => e
-    if e.class == ActiveRecord::StaleObjectError
-      flash[:alert] = t('.lock_error')
-    else
-      flash[:alert] = t('.failure')
-    end
+    flash[:alert] = t('.failure')
   end
 
   def change_status
