@@ -4,10 +4,8 @@ class ContentsController < ApplicationController
   load_and_authorize_resource
 
   def update
-    ApplicationRecord.transaction do
-      @content.update!(content_params)
-      flash[:notice] = @content.saved_changes? ? t('.success') : t('.no_change')
-    end
+    @content.update!(content_params)
+    flash[:notice] = @content.saved_changes? ? t('.success') : t('.no_change')
   rescue ActiveRecord::StaleObjectError => e
     flash[:alert] = t('.lock_error')
   rescue => e
@@ -24,12 +22,10 @@ class ContentsController < ApplicationController
   end
 
   def revert
-    ApplicationRecord.transaction do
-      @content = @content.versions[params[:index].to_i].reify
-      @content.lock_version = params[:lock_version]
-      @content.save!
-      flash[:notice] = t('.success')
-    end
+    @content = @content.versions[params[:index].to_i].reify
+    @content.lock_version = params[:lock_version]
+    @content.save!
+    flash[:notice] = t('.success')
   rescue ActiveRecord::StaleObjectError => e
     flash[:alert] = t('.lock_error')
   rescue => e

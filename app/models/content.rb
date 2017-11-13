@@ -10,7 +10,7 @@ class Content < ApplicationRecord
   enum status: %i(status_new in_progress under_review final)
 
   before_validation :sanitize_body
-  before_save :status_update
+  before_save :update_status
   after_save :update_protocol_version
 
   has_paper_trail on: [:update, :destroy], ignore: [:status, :updated_at, :lock_version]
@@ -37,7 +37,7 @@ class Content < ApplicationRecord
 
   private
 
-    def status_update
+    def update_status
       self.status = 'in_progress' if status_new? && persisted? && has_changes_to_save?
     end
 

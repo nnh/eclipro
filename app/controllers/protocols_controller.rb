@@ -43,15 +43,8 @@ class ProtocolsController < ApplicationController
   end
 
   def update
-    Protocol.transaction do
-      @protocol.assign_attributes(protocol_params)
-      if @protocol.has_changes_to_save?
-        @protocol.versionup!
-        redirect_to @protocol, notice: t('.success')
-      else
-        redirect_to @protocol, notice: t('.no_change')
-      end
-    end
+    @protocol.update!(protocol_params)
+    redirect_to @protocol, notice: @protocol.saved_changes? ? t('.success') : t('.no_change')
   rescue ActiveRecord::StaleObjectError => e
     redirect_to @protocol, alert: t('.lock_error')
   rescue => e
