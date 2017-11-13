@@ -72,8 +72,7 @@ class Protocol < ApplicationRecord
   end
 
   def versionup!
-    self.version += 0.001
-    save!
+    update!(version: version + 0.001)
   end
 
   private

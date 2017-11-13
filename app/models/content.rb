@@ -9,7 +9,9 @@ class Content < ApplicationRecord
 
   enum status: %i(status_new in_progress under_review final)
 
+  before_validation :sanitize_body
   before_save :status_update
+  after_save :update_protocol_version
 
   has_paper_trail on: [:update, :destroy], ignore: [:status, :updated_at, :lock_version]
 
@@ -36,6 +38,14 @@ class Content < ApplicationRecord
   private
 
     def status_update
-      in_progress! if status_new? && persisted?
+      in_progress! if status_new? && persisted? && has_changes_to_save?
+    end
+
+    def sanitize_body
+      self.body = ApplicationController.helpers.sanitize(self.body).gsub(/\R/, '')
+    end
+
+    def update_protocol_version
+      protocol.versionup! if saved_change_to_body? && in_progress?
     end
 end

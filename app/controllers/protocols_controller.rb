@@ -156,8 +156,7 @@ class ProtocolsController < ApplicationController
         study_agent: [],
         co_author_users_attributes: [:id, :protocol_id, :user_id, :_destroy],
         author_users_attributes: [:id, :protocol_id, :user_id, :sections, :_destroy],
-        reviewer_users_attributes: [:id, :protocol_id, :user_id, :sections, :_destroy],
-        contents_attributes: [:no, :title, :body, :editable]
+        reviewer_users_attributes: [:id, :protocol_id, :user_id, :sections, :_destroy]
       )
     end
 
