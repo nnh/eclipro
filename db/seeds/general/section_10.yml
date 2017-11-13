@@ -4,7 +4,7 @@ sections:
     title: Supporting Documentation and Operational Considerations
     template_name: General
     template: |-
-      <p><em>No text is to be entered in this section; rather it should be included under the relevant subheadings below.</p></em>
+      <p><em>No text is to be entered in this section; rather it should be included under the relevant subheadings below.</em></p>
     instructions: ''
     example: ''
     editable: false

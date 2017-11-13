@@ -1,10 +1,6 @@
 class Image < ActiveRecord::Base
-  Paperclip.interpolates :name do |attachment, style|
-    sprintf('%05d', attachment.instance.id)
-  end
+  belongs_to :content
 
-  has_attached_file :file,
-                    url: "/upload_images/:name.:extension",
-                    path: ":rails_root/public/upload_images/:name.:extension"
+  has_attached_file :file
   validates_attachment_content_type :file, content_type: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif']
 end

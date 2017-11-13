@@ -53,6 +53,7 @@ gem 'htmldiff'
 gem 'tinymce-rails', '= 4.6.6'
 gem 'tinymce-rails-imageupload', github: 'PerfectlyNormal/tinymce-rails-imageupload'
 gem 'paperclip'
+gem 'aws-sdk', '< 3.0'
 
 gem 'deep_cloneable'
 

@@ -156,7 +156,7 @@ sections:
     title: Schedule of Activities (SoA)
     template_name: General
     template: |-
-      <table height="232" width="498" class="mce-item-table">
+      <table width="498" class="mce-item-table">
       <tbody>
       <tr>
       <td width="43">&nbsp;</td>

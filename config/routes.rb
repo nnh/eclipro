@@ -2,10 +2,13 @@ Rails.application.routes.draw do
   # resources :sections
   resources :protocols do
     resources :contents, only: [:show, :update] do
+      resources :images, only: [:create, :show]
+
       member do
         get :history, :compare, :revert, :next, :previous
         put :change_status
       end
+
       resources :comments, only: [:index, :create] do
         member do
           put :resolve
@@ -15,10 +18,12 @@ Rails.application.routes.draw do
         end
       end
     end
+
     collection do
       get :build_team_form
       post :add_team
     end
+
     member do
       get :clone, :export, :finalize, :reinstate
     end
@@ -26,8 +31,6 @@ Rails.application.routes.draw do
 
   devise_for :users
   patch 'current_user/set_current_user_locale', as: 'set_current_user_locale'
-
-  post '/tinymce_assets' => 'tinymce_assets#create'
 
   root to: 'home#index'
 

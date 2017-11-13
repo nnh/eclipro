@@ -21,6 +21,8 @@ class Protocol < ApplicationRecord
 
   validates :title, presence: true
 
+  before_save :update_version
+
   def my_role(user)
     if co_author?(user)
       I18n.t('activerecord.enum.protocol.role.co_author')
@@ -71,12 +73,21 @@ class Protocol < ApplicationRecord
     reviewer_ids.size > 0
   end
 
+  def versionup!
+    update!(version: version + 0.001)
+  end
+
   private
+
     def select_sections(all_sections, origin_sections)
       sections = []
       origin_sections.each do |section|
         sections << all_sections.select { |s| s == section || s.split('.')[0] == section }
       end
       sections.flatten!
+    end
+
+    def update_version
+      assign_attributes(version: version + 0.001) if has_changes_to_save?
     end
 end

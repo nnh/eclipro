@@ -4,28 +4,12 @@ class ContentsController < ApplicationController
   load_and_authorize_resource
 
   def update
-    content_params[:body].gsub!(/ style="height: .+px;"/, '')
-    content_params[:body].gsub!(/\r/, '')
-    Content.transaction do
-      Protocol.transaction do
-        @content.assign_attributes(content_params)
-        if @content.changed?
-          @content.status = 'in_progress'
-          @content.save!
-          @protocol.version += 0.001
-          @protocol.save!
-          flash[:notice] = t('.success')
-        else
-          flash[:warning] = t('.no_change')
-        end
-      end
-    end
+    @content.update!(content_params)
+    flash[:notice] = @content.saved_changes? ? t('.success') : t('.no_change')
+  rescue ActiveRecord::StaleObjectError => e
+    flash[:alert] = t('.lock_error')
   rescue => e
-    if e.class == ActiveRecord::StaleObjectError
-      flash[:alert] = t('.lock_error')
-    else
-      flash[:alert] = t('.failure')
-    end
+    flash[:alert] = t('.failure')
   end
 
   def history
@@ -38,22 +22,13 @@ class ContentsController < ApplicationController
   end
 
   def revert
-    Content.transaction do
-      Protocol.transaction do
-        @content = @content.versions[params[:index].to_i].reify
-        @content.lock_version = params[:lock_version]
-        @content.save!
-        @protocol.version += 0.001
-        @protocol.save!
-        flash[:notice] = t('.success')
-      end
-    end
+    @content = @content.versions[params[:index].to_i].reify
+    @content.update!(lock_version: params[:lock_version])
+    flash[:notice] = t('.success')
+  rescue ActiveRecord::StaleObjectError => e
+    flash[:alert] = t('.lock_error')
   rescue => e
-    if e.class == ActiveRecord::StaleObjectError
-      flash[:alert] = t('.lock_error')
-    else
-      flash[:alert] = t('.failure')
-    end
+    flash[:alert] = t('.failure')
   end
 
   def change_status

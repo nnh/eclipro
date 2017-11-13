@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171010005257) do
+ActiveRecord::Schema.define(version: 20171102065254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(version: 20171010005257) do
     t.datetime "file_updated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "content_id"
+    t.index ["content_id"], name: "index_images_on_content_id"
   end
 
   create_table "principal_investigator_users", force: :cascade do |t|
