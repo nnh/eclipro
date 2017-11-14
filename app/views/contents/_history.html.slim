@@ -36,7 +36,7 @@
 
 javascript:
   $(function() {
-    $('#history-revert').on('confirm:complete', (e, answer) => {
+    $('#history-revert').on('confirm:complete', function(e, answer) {
       if (answer) {
         $('#history-modal').modal('hide');
       }

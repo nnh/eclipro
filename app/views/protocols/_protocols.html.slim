@@ -29,10 +29,10 @@ table.table
 
 javascript:
   $(function() {
-    $('.clickable-tr').click((e) => {
+    $('.clickable-tr').click(function(e) {
       window.location = $(e.target.parentElement).data('link');
     });
-    $('.clickable-tr .btn').click((e) => {
+    $('.clickable-tr .btn').click(function(e) {
       e.stopPropagation();
     });
   });

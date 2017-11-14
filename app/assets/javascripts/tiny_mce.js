@@ -32,29 +32,29 @@ function initTinyMCE(selector) {
                   dataType: 'xml',
                   url: 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi',
                   data: { db: 'pubmed', retmode: 'xml', id: e.data.pubmed_id },
-                  success: (response) => {
-                    let author_names = []
-                    let authors = $(response).find('AuthorList').children();
-                    for (let i = 0; i < authors.length; i++) {
-                      let author = authors[i];
-                      let author_name = [$(author).find('LastName').text(), $(author).find('Initials').text()].join(' ');
+                  success: function(response) {
+                    var author_names = [];
+                    var authors = $(response).find('AuthorList').children();
+                    for (var i = 0; i < authors.length; i++) {
+                      var author = authors[i];
+                      var author_name = [$(author).find('LastName').text(), $(author).find('Initials').text()].join(' ');
                       author_names.push(author_name);
                     }
-                    let title = $(response).find('ArticleTitle').text();
-                    let journal = $(response).find('Journal > ISOAbbreviation').text();
-                    let month = $(response).find('PubDate > Month').text();
-                    let day = $(response).find('PubDate > Day').text();
-                    let date = $(response).find('PubDate > Year').text();
+                    var title = $(response).find('ArticleTitle').text();
+                    var journal = $(response).find('Journal > ISOAbbreviation').text();
+                    var month = $(response).find('PubDate > Month').text();
+                    var day = $(response).find('PubDate > Day').text();
+                    var date = $(response).find('PubDate > Year').text();
                     if (month.length > 0) { date += ' ' + month; }
                     if (day.length > 0) { date += ' ' + day; }
-                    let number = $(response).find('Issue').text();
-                    let page = $(response).find('Pagination > MedlinePgn').text();
-                    let text = $(response).find('Volume').text();;
+                    var number = $(response).find('Issue').text();
+                    var page = $(response).find('Pagination > MedlinePgn').text();
+                    var text = $(response).find('Volume').text();;
                     if (number.length > 0) { text += '(' + number + ')'; }
                     if (page.length > 0) { text += ':' + page + '.'; }
                     editor.insertContent(author_names + ' ' + title + ' ' + journal + '. ' + date + ';' + text);
                   },
-                  error: (xhr, textStatus, errorThrown) => {
+                  error: function(xhr, textStatus, errorThrown) {
                     toastr['error']('Failed to get the data.');
                   }
                 });

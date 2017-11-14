@@ -24,8 +24,8 @@ javascript:
       $('#has-ide-form').hide();
     }
 
-    $('.step-button').click((e) => {
-      let has_error = checkError(e);
+    $('.step-button').click(function(e) {
+      var has_error = checkError(e);
       if (!has_error) {
         $('#step-1, #step-2, #step-3').hide();
         $('#step-' + $(e.target).data('move')).show();
@@ -33,7 +33,7 @@ javascript:
       }
     });
 
-    $('#protocol_sponsors').change(() => {
+    $('#protocol_sponsors').change(function() {
       if ($('#protocol_sponsors').children(':selected').last().text() === "#{I18n.t('protocols.step.one.sponsors').last()}") {
         $('#sponsor-other-form').show();
       } else {
@@ -41,7 +41,7 @@ javascript:
       }
     });
 
-    $('.checkbox-form').change(() => {
+    $('.checkbox-form').change(function() {
       if ($('#protocol_study_agent_1').prop('checked') || $('#protocol_study_agent_2').prop('checked')) {
         $('#has-ind-form').show();
       } else {
@@ -54,17 +54,17 @@ javascript:
       }
     });
 
-    $('#step_one_submit_button').click((e) => {
+    $('#step_one_submit_button').click(function(e) {
       checkError(e);
     });
 
     function checkError(e) {
-      let has_error = false;
-      let error_fields = $('.error-field');
+      var has_error = false;
+      var error_fields = $('.error-field');
       if (error_fields.length > 0) {
-        let title = $('#protocol_title').val();
-        let template_name = $('#protocol_template_name').val();
-        for (let i = 0; i < error_fields.length; i++) {
+        var title = $('#protocol_title').val();
+        var template_name = $('#protocol_template_name').val();
+        for (var i = 0; i < error_fields.length; i++) {
           $(error_fields[i]).replaceWith($(error_fields[i]).html());
         }
         $('#protocol_title').val(title);
@@ -84,7 +84,7 @@ javascript:
 
     function showError(e, target) {
       e.preventDefault();
-      let div = '<div class="field_with_errors error-field"></div>';
+      var div = '<div class="field_with_errors error-field"></div>';
       $('label[for=' + target + ']').wrap(div);
       $('#' + target).wrap(div);
       $('#' + target + '_error').show();
@@ -96,8 +96,8 @@ javascript:
       $(this).parent().parent().hide();
     });
 
-    $('#build-team-button').click(() => {
-      let template_name = $('#protocol_template_name').val() || '#{@protocol.template_name}';
+    $('#build-team-button').click(function() {
+      var template_name = $('#protocol_template_name').val() || '#{@protocol.template_name}';
       $.ajax({
         dataType: 'script',
         data: {

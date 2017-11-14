@@ -48,13 +48,13 @@ javascript:
     $('#show-example').addClass('disabled');
     $('#section-title-instructions').show();
 
-    $('.section-link').click((e) => {
-      let target = $(e.target).data('section-no');
-      let replaced_target = target.toString().replace('.', '-');
+    $('.section-link').click(function(e) {
+      var target = $(e.target).data('section-no');
+      var replaced_target = target.toString().replace('.', '-');
 
       $('.instruction-contents, .example-contents').hide();
 
-      let example_id = '#section-' + replaced_target + '-example';
+      var example_id = '#section-' + replaced_target + '-example';
       if ($(example_id).length === 0) {
         $('#show-example').addClass('disabled');
       } else {
@@ -62,7 +62,7 @@ javascript:
         $('#show-example').removeClass('disabled');
       }
 
-      let instruction_id = '#section-' + replaced_target + '-instructions';
+      var instruction_id = '#section-' + replaced_target + '-instructions';
       if ($(instruction_id).length === 0) {
         $('#show-instructions').addClass('disabled');
       } else {
@@ -79,7 +79,7 @@ javascript:
       }
     });
 
-    $(document).on('click', '#to-under-review', (e) => {
+    $(document).on('click', '#to-under-review', function(e) {
       if ('#{!@protocol.has_reviewer? && (can? :admin, @protocol)}' == 'true') {
         e.preventDefault();
         e.stopImmediatePropagation();
@@ -87,10 +87,10 @@ javascript:
       }
     });
 
-    $('#no-reviewer-modal-close').click(() => {
+    $('#no-reviewer-modal-close').click(function() {
       $('#no-reviewer-modal').modal('hide');
     });
-    $('#no-reviewer-modal-add').click(() => {
+    $('#no-reviewer-modal-add').click(function() {
       $('#no-reviewer-modal').modal('hide');
       $('#admin-link').tab('show');
       $('#step-1, #step-2').hide();
@@ -113,7 +113,7 @@ javascript:
 
     $('.example-copy-button').click((e) => {
       if (window.confirm("#{t('.copy_confirm')}")) {
-        let data = '<div contenteditable="false">' + $(e.target).parent().prev().html() + '</div>';
+        var data = '<div contenteditable="false">' + $(e.target).parent().prev().html() + '</div>';
         tinymce.get('form-tinymce').setContent(data);
       }
     })

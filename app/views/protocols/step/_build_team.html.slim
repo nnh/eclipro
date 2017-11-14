@@ -35,7 +35,7 @@ javascript:
     }
 
     function checkState() {
-      let selected = $('#add_role').val();
+      var selected = $('#add_role').val();
       if (selected != '' && $('#add_user').val() != '') {
         if (selected == 'author' || selected == 'reviewer') {
           if ($('.section-checkbox:checked').length != 0) {
@@ -54,12 +54,12 @@ javascript:
     checkState();
     $('#add-sections').hide();
 
-    $('#add_user, .section-checkbox').change(() => {
+    $('#add_user, .section-checkbox').change(function() {
       checkState();
     });
 
-    $('#add_role').change(() => {
-      let selected = $('#add_role').val();
+    $('#add_role').change(function() {
+      var selected = $('#add_role').val();
       if (selected == 'author' || selected == 'reviewer') {
         $('#add-sections').show();
       } else {
@@ -68,16 +68,16 @@ javascript:
       checkState();
     });
 
-    $('#add-team-cancel-button').click(() => {
+    $('#add-team-cancel-button').click(function() {
       $('#team-modal').modal('hide');
     });
 
     // NOTE: 'remote: true' does not work, use this instead.
-    $('#add-team-button').click((e) => {
+    $('#add-team-button').click(function(e) {
       e.preventDefault();
-      let selected_sections = []
-      let checked = $('.section-checkbox:checked');
-      for (let i = 0; i < checked.length; i++) {
+      var selected_sections = []
+      var checked = $('.section-checkbox:checked');
+      for (var i = 0; i < checked.length; i++) {
         selected_sections.push($($('.section-checkbox:checked')[i]).val());
       }
       $.ajax({
