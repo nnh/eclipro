@@ -1,4 +1,4 @@
-- editable = (can? :edit, content) || (can? :review, content)
+- editable = (can? :updatable, content) || (can? :reviewable, content)
 a href="#section-content" data-toggle="tab" data-section-no="#{content.no}" class="section-link #{'uneditable' unless editable}"
   = "#{content.no unless content.no == '0'} #{content.title}"
   .pull-right id="section-#{content.no.gsub('.', '-')}-icon"
