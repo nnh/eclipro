@@ -9,7 +9,8 @@ en:
       principal_investigator: Principal Investigator
       status: Status
       version: Version
-      export: Export
+      export_pdf: Export(.pdf)
+      export_docx: Export(.docx)
       clone: Clone
     new:
       title: New protocol
@@ -146,7 +147,8 @@ en:
         role: Role
         sections: Sections
       step_buttons:
-        export: Export
+        export_pdf: Export(.pdf)
+        export_docx: Export(.docx)
         finalize: Finalize
         finalize_text: Do you want to finalize this protocol?
         reinstate: Reinstate
@@ -201,7 +203,7 @@ en:
     reinstate:
       success: Protocol was successfully reinstated.
       failure: Protocol status change failed.
-    export:
+    document:
       protocol_number: Protocol Number
       nct_number: National Clinical Trial (NCT) Identified Number
       principal_investigator: Principal Investigator

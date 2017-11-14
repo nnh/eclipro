@@ -89,24 +89,34 @@ class ProtocolsController < ApplicationController
     @section_0 = @protocol.contents.find_by(no: '0')
     @contents = @protocol.contents.where.not(no: '0').sort_by { |c| c.no.to_f }
     @sections = Section.reject_specified_sections(@protocol.template_name)
-    render pdf: 'export',
-           encording: 'UTF-8',
-           layout: 'export.html',
-           template: 'protocols/export',
-           footer: {
-             center: '[page] / [topage]',
-             font_size: 9
-           },
-           viewport_size: '1280x1024',
-           show_as_html: params[:debug].present?
+
+    respond_to do |format|
+      format.pdf do
+        render pdf: 'export',
+               encording: 'UTF-8',
+               layout: 'export.html',
+               template: 'protocols/export',
+               footer: {
+                 center: '[page] / [topage]',
+                 font_size: 9
+               },
+               viewport_size: '1280x1024',
+               show_as_html: params[:debug].present? && Rails.env.development?
+      end
+
+      format.docx do |format|
+        view_text = render_to_string template: 'protocols/export', layout: 'export.html'
+        document = PandocRuby.convert(view_text.delete(' '), from: :html, to: :docx)
+        send_data document,
+                  filename: "#{@protocol.title}.docx",
+                  type: '	application/msword',
+                  disposition: 'attachment'
+      end
+    end
   end
 
   def finalize
-    @protocol.status = 'finalized'
-    @protocol.version = (@protocol.version + 1).floor
-    @protocol.finalized_date = Date.today
-
-    if @protocol.save
+    if @protocol.finalized!
       redirect_to protocols_path, notice: t('.success')
     else
       redirect_to protocols_path, notice: t('.failure')
@@ -114,9 +124,7 @@ class ProtocolsController < ApplicationController
   end
 
   def reinstate
-    @protocol.status = 'in_progress'
-
-    if @protocol.save
+    if @protocol.in_progress!
       redirect_to protocols_path, notice: t('.success')
     else
       redirect_to protocols_path, notice: t('.failure')

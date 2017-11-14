@@ -9,7 +9,8 @@ ja:
       principal_investigator: 主任研究員
       status: 状態
       version: バージョン
-      export: エクスポート
+      export_pdf: エクスポート(.pdf)
+      export_docx: エクスポート(.docx)
       clone: 複製
     new:
       title: プロトコル新規作成
@@ -142,7 +143,8 @@ ja:
         role: 役割
         sections: セクション
       step_buttons:
-        export: エクスポート
+        export_pdf: エクスポート(.pdf)
+        export_docx: エクスポート(.docx)
         finalize: 完成
         finalize_text: このプロトコルを完成させますか？
         reinstate: 再編集
@@ -198,7 +200,7 @@ ja:
     reinstate:
       success: プロトコルを編集可能にしました。
       failure: プロトコルのステータス変更に失敗しました。
-    export:
+    document:
       protocol_number: プロトコル番号
       nct_number: 国立臨床試験（NCT）識別番号
       principal_investigator: 主任研究員

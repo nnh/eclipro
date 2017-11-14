@@ -10,12 +10,12 @@ class Section < ApplicationRecord
   end
 
   def self.sorted_menu(template_name)
-    list = reject_specified_sections(template_name).pluck(:no).sort { |a, b| a.to_f <=> b.to_f }
+    list = reject_specified_sections(template_name).pluck(:no)
     list.insert(1, 'compliance') if template_name == 'General'
     list.unshift('title')
   end
 
   def self.reject_specified_sections(template_name)
-    where(template_name: template_name).where.not(no: ['title', 'compliance'])
+    where(template_name: template_name).where.not(no: ['title', 'compliance']).sort_by { |s| s.no.to_f }
   end
 end

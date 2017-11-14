@@ -9,23 +9,29 @@
   p = "#{t('.sponsors')}: #{sponsors.join(',')}" if sponsors.present?
   p = "#{t('.funded_by')}: #{@protocol.entity_funding_name}" if @protocol.entity_funding_name.present?
   p = "#{t('.draft_number')}: #{sprintf('%.3f', @protocol.version)}"
-  p = @protocol.updated_at
+  p = @protocol.finalized_date
 
-#section-0.mt-xl
-  = @section_0.body.html_safe
+- unless @section_0.nil?
+  pre.mt-xl
+  #section-0
+    = @section_0.body.html_safe
 
-#table-of-contents.mt-xl
-  .text-center
-    p = t('.table_of_contents')
+pre.mt-xl
+#table-of-contents
+  p.text-center = t('.table_of_contents')
 
-    .contents-table
-      p = t('.compliance')
-      - @sections.each do |section|
-        - unless section.no == '0'
-          p class="#{'ml-xxl' if section.no.include?('.') }" = "#{section.no} #{section.title}"
+  table.contents-table
+    tbody
+      tr
+        td
+          p = t('.compliance')
+          - @sections.each do |section|
+            - unless section.no == '0'
+              pre = "#{'    ' if section.no.include?('.')}#{section.no} #{section.title}"
 
-#compliance.mt-xl
-  h4.section-title = t('.compliance')
+pre.mt-xl
+#compliance
+  h3.section-title = t('.compliance')
   - if @protocol.compliance == 1
     = t('protocols.step.two.radio_one').html_safe
   - if @protocol.compliance == 2
@@ -33,8 +39,9 @@
 
 - contents = @contents.reject { |content| content.no == '0' }
 - contents.each do |content|
-  .mt-xl id="section-#{content.no}"
-    h4 class="#{content.no.include?('.') ? 'section-sub-title' : 'section-title' }"
+  pre.mt-xl
+  div id="section-#{content.no}"
+    h3 class="#{content.no.include?('.') ? 'section-sub-title' : 'section-title' }"
       = "#{content.no} #{content.title}"
     .section-content
       = content.replaced_body.html_safe

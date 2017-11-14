@@ -35,15 +35,12 @@
   }
 
   .contents-table {
-    display: inline-block;
-    border: 1px solid black;
-    padding: 10px 30px;
-    p {
-      text-align: left;
-      margin: 15px;
-    }
-    p.ml-xxl {
-        margin-left: 30px;
+    width: 100%;
+    td {
+      padding: 10px 30px;
+      p {
+        margin: 15px;
+      }
     }
   }
 

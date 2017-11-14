@@ -59,6 +59,7 @@ gem 'deep_cloneable'
 
 gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
+gem 'pandoc-ruby'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

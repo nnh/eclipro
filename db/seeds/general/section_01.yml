@@ -156,19 +156,19 @@ sections:
     title: Schedule of Activities (SoA)
     template_name: General
     template: |-
-      <table width="498" class="mce-item-table">
+      <table class="mce-item-table">
       <tbody>
       <tr>
-      <td width="43">&nbsp;</td>
-      <td width="43">&nbsp;</td>
-      <td width="43">&nbsp;</td>
-      <td width="43">&nbsp;</td>
-      <td width="43">&nbsp;</td>
-      <td width="43">&nbsp;</td>
-      <td width="44">&nbsp;</td>
-      <td width="44">&nbsp;</td>
-      <td width="44">&nbsp;</td>
-      <td width="44">&nbsp;</td>
+      <td width="43"><p contenteditable="true">&nbsp;</p></td>
+      <td width="43"><p contenteditable="true">&nbsp;</p></td>
+      <td width="43"><p contenteditable="true">&nbsp;</p></td>
+      <td width="43"><p contenteditable="true">&nbsp;</p></td>
+      <td width="43"><p contenteditable="true">&nbsp;</p></td>
+      <td width="43"><p contenteditable="true">&nbsp;</p></td>
+      <td width="44"><p contenteditable="true">&nbsp;</p></td>
+      <td width="44"><p contenteditable="true">&nbsp;</p></td>
+      <td width="44"><p contenteditable="true">&nbsp;</p></td>
+      <td width="44"><p contenteditable="true">&nbsp;</p></td>
       </tr>
       </tbody>
       </table>
