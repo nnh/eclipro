@@ -21,6 +21,7 @@ class Protocol < ApplicationRecord
 
   validates :title, presence: true
 
+  before_validation :set_finalized_date
   before_save :update_version, unless: -> { will_save_change_to_attribute?(:version) }
 
   def my_role(user)
@@ -90,5 +91,9 @@ class Protocol < ApplicationRecord
     def update_version
       assign_attributes(version: version + 0.001) if has_changes_to_save? && attribute_in_database(:status) != 'finalized'
       assign_attributes(version: (version + 1).floor) if finalized?
+    end
+
+    def set_finalized_date
+      assign_attributes(finalized_date: Date.today) if finalized?
     end
 end

@@ -106,8 +106,7 @@ class ProtocolsController < ApplicationController
 
       format.docx do |format|
         view_text = render_to_string template: 'protocols/export', layout: 'export.html'
-        view_text.gsub!(/ /, '')
-        document = PandocRuby.convert(view_text, from: :html, to: :docx)
+        document = PandocRuby.convert(view_text.delete(' '), from: :html, to: :docx)
         send_data document,
                   filename: "#{@protocol.title}.docx",
                   type: '	application/msword',
@@ -117,10 +116,7 @@ class ProtocolsController < ApplicationController
   end
 
   def finalize
-    @protocol.status = 'finalized'
-    @protocol.finalized_date = Date.today
-
-    if @protocol.save
+    if @protocol.finalized!
       redirect_to protocols_path, notice: t('.success')
     else
       redirect_to protocols_path, notice: t('.failure')
@@ -128,9 +124,7 @@ class ProtocolsController < ApplicationController
   end
 
   def reinstate
-    @protocol.status = 'in_progress'
-
-    if @protocol.save
+    if @protocol.in_progress!
       redirect_to protocols_path, notice: t('.success')
     else
       redirect_to protocols_path, notice: t('.failure')
