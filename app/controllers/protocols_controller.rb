@@ -118,7 +118,6 @@ class ProtocolsController < ApplicationController
 
   def finalize
     @protocol.status = 'finalized'
-    @protocol.version = (@protocol.version + 1).floor
     @protocol.finalized_date = Date.today
 
     if @protocol.save
