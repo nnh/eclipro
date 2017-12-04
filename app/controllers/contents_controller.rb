@@ -1,6 +1,6 @@
 class ContentsController < ApplicationController
   before_action :set_protocol
-  before_action :set_content, except: [:show, :next, :previous]
+  before_action :set_content, except: [:next, :previous]
   load_and_authorize_resource
 
   def update
@@ -40,7 +40,6 @@ class ContentsController < ApplicationController
   end
 
   def show
-    @content = @protocol.contents.find_by(no: params[:section_no])
   end
 
   def next

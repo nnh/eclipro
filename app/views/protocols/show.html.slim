@@ -73,8 +73,7 @@ javascript:
       if (target != 'title' && target != 'compliance') {
         $.ajax({
           dataType: 'script',
-          data: { section_no: target },
-          url: '#{protocol_content_path(@protocol)}'
+          url: '/protocols/' + '#{@protocol.id}' + '/contents/' + $(e.target).data('id')
         });
       }
     });
