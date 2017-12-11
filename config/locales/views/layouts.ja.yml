@@ -3,6 +3,7 @@ ja:
     application:
       view_protocols: プロトコルを見る
       create_new_protocols: プロトコルを新規作成
+      help: ヘルプ
       sign_in: ログイン
       sign_out: ログアウト
       edit: 編集
