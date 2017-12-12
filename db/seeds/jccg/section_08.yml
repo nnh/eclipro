@@ -31,146 +31,148 @@ sections:
     title: 安全性の評価
     template_name: JCCG
     template: |-
-      <div contenteditable="false">
-      <p>研究責任者または研究分担者は、研究対象者の有害事象を評価し、徴候（臨床検査値を含む）や症状が診断に
-      含まれる場合は、可能な限り個々の徴候や症状ではなく診断名を症例報告書に記録する。有害事象の重症度評価は
+      <div contenteditable="true">
+      <p contenteditable="false">研究責任者または研究分担者は、研究対象者の有害事象を評価し、徴候（臨床検査値を含む）や
+      症状が診断に含まれる場合は、可能な限り個々の徴候や症状ではなく診断名を症例報告書に記録する。有害事象の重症度評価は
       <span contenteditable="true">[Common Terminology Criteria for Adverse Events（CTCAE Ver.4.0）日本語訳JCOG版]</span>を用いる。</p>
       <p>&nbsp;</p>
-      <p>全ての安全性評価について予定した実施時点を「2.スケジュール」に示す。研究責任者または研究分担者は
+      <p contenteditable="false">全ての安全性評価について予定した実施時点を「2.スケジュール」に示す。研究責任者または研究分担者は
       安全性評価について「2.スケジュール」に従い行った<span contenteditable="true">[身体所見、バイタルサイン、
       心電図、臨床検査、画像検査、研究対象者への質問]</span>についてカルテ等に原資料として記録が無ければならない。</p>
       <p>&nbsp;</p>
-      <p contenteditable="true">&nbsp;</p>
+      <p>&nbsp;</p>
       </div>
     instructions: |-
       <p>安全性の評価に必要な基準を必要に応じて定義する。</p>
     example: |-
-      <p>研究責任者または研究分担者は、研究対象者の有害事象を評価し、徴候（臨床検査値を含む）や症状が診断に
-      含まれる場合は、可能な限り個々の徴候や症状ではなく診断名を症例報告書に記録する。有害事象の重症度評価は
+      <p contenteditable="false">研究責任者または研究分担者は、研究対象者の有害事象を評価し、徴候（臨床検査値を含む）や
+      症状が診断に含まれる場合は、可能な限り個々の徴候や症状ではなく診断名を症例報告書に記録する。有害事象の重症度評価は
       <span contenteditable="true">[Common Terminology Criteria for Adverse Events（CTCAE Ver.4.0）日本語訳JCOG版]</span>を用いる。</p>
       <p>&nbsp;</p>
-      <p>全ての安全性評価について予定した実施時点を「2.スケジュール」に示す。研究責任者または研究分担者は
+      <p contenteditable="false">全ての安全性評価について予定した実施時点を「2.スケジュール」に示す。研究責任者または研究分担者は
       安全性評価について「2.スケジュール」に従い行った<span contenteditable="true">[身体所見、バイタルサイン、
       心電図、臨床検査、画像検査、研究対象者への質問]</span>についてカルテ等に原資料として記録が無ければならない。</p>
       <p>&nbsp;</p>
-      <p contenteditable="true">また本試験にて注目すべき下記の特定の有害事象については発現頻度を評価するため
+      <p>また本試験にて注目すべき下記の特定の有害事象については発現頻度を評価するため
       試験治療開始から試験治療最終日から 30日以内、または最終観察日または中止日までの最悪グレードを症例報告書に
       記録する。発現しなかった有害事象についてはグレード0として記録する。</p>
       <p>&nbsp;</p>
       <ul>
-      <li contenteditable="true">発熱</li>
-      <li contenteditable="true">心筋梗塞、低血圧、心室性不整脈、洞性頻脈</li>
-      <li contenteditable="true">呼吸困難、低酸素症</li>
-      <li contenteditable="true">腹痛、結腸穿孔、直腸穿孔</li>
-      <li contenteditable="true">誤嚥、食欲不振、悪心、嘔吐</li>
+      <li>発熱</li>
+      <li>心筋梗塞、低血圧、心室性不整脈、洞性頻脈</li>
+      <li>呼吸困難、低酸素症</li>
+      <li>腹痛、結腸穿孔、直腸穿孔</li>
+      <li>誤嚥、食欲不振、悪心、嘔吐</li>
       </ul>
-      <p contenteditable="true">&nbsp;</p>
+      <p>&nbsp;</p>
     editable: true
   -
     'no': 8.3
     title: 有害事象
     template_name: JCCG
     template: |-
-      <div contenteditable="false">
-      <h3>8.3.1. 有害事象の定義</h3>
-      <ul><li>有害事象：</li></ul>
-      <p>実施された研究との因果関係の有無を問わず、研究対象者に生じた全ての好ましくない又は意図しない
-      傷病若しくはその徴候（臨床検査値の異常を含む。）をいう。</p>
+      <div contenteditable="true">
+      <h3 contenteditable="false">8.3.1. 有害事象の定義</h3>
+      <ul><li contenteditable="false">有害事象：</li></ul>
+      <p contenteditable="false">実施された研究との因果関係の有無を問わず、研究対象者に生じた全ての好ましくない
+      又は意図しない傷病若しくはその徴候（臨床検査値の異常を含む。）をいう。</p>
       <p>&nbsp;</p>
-      <ul><li>重篤な有害事象：</li></ul>
-      <p>有害事象のうち、以下のものを言う。</p>
+      <ul><li contenteditable="false">重篤な有害事象：</li></ul>
+      <p contenteditable="false">有害事象のうち、以下のものを言う。</p>
       <ol>
-      <li>死に至るもの</li>
-      <li>生命を脅かすもの</li>
-      <li>治療のため入院または入院期間の延長が必要となるもの（有害事象の治療のための緊急入院であり、事前に予定されていた入院は除く）</li>
-      <li>永続的または顕著な障害・機能不全に陥るもの</li>
-      <li>子孫に先天異常を来すもの</li>
-      <li>その他医学的に重要な状態と判断される事象（直ちに生命をおびやかしたり死や入院には至らなくとも、
-      患者を危険にさらすおそれがあったり、又は上記の定義に挙げられているような結果に至らないように処置や
-      治療が必要となるような重要な医学的事象。）</li>
+      <li contenteditable="false">死に至るもの</li>
+      <li contenteditable="false">生命を脅かすもの</li>
+      <li contenteditable="false">治療のため入院または入院期間の延長が必要となるもの
+      （有害事象の治療のための緊急入院であり、事前に予定されていた入院は除く）</li>
+      <li contenteditable="false">永続的または顕著な障害・機能不全に陥るもの</li>
+      <li contenteditable="false">子孫に先天異常を来すもの</li>
+      <li contenteditable="false">その他医学的に重要な状態と判断される事象（直ちに生命をおびやかしたり死や
+      入院には至らなくとも、患者を危険にさらすおそれがあったり、又は上記の定義に挙げられているような結果に
+      至らないように処置や治療が必要となるような重要な医学的事象。）</li>
       </ol>
       <p>&nbsp;</p>
-      <h3>8.3.2. 重篤な有害事象の報告</h3>
-      <p contenteditable="true">&nbsp;</p>
+      <h3 contenteditable="false">8.3.2. 重篤な有害事象の報告</h3>
       <p>&nbsp;</p>
-      <p>初回の重篤な有害事象報告<span contenteditable="true">[及び「xxx」に定義されている重要な非重篤有害事象の報告]</span>
-      の後、研究責任者また研究分担者は事象が確定（死亡、回復、追跡不能）になるまで追跡する。報告手順は下記の通りである。</p>
+      <p>&nbsp;</p>
+      <p contenteditable="false">初回の重篤な有害事象報告<span contenteditable="true">[及び「xxx」に
+      定義されている重要な非重篤有害事象の報告]</span>の後、研究責任者また研究分担者は事象が確定（死亡、
+      回復、追跡不能）になるまで追跡する。報告手順は下記の通りである。</p>
       <p>&nbsp;</p>
       <ol>
-      <li>緊急報告の対象となる有害事象が発生した場合、当該有害事象が発生した施設の研究責任者あるいは
-      研究分担者は直ちに適切な処置、カルテ記載を行う。</li>
-      <li>当該事象の発生を知り得てから24時間以内に研究代表者にSAE報告書を提出するように務める。</li>
-      <li>研究代表者は、必要に応じて当該有害事象が発生した施設の研究責任者、研究分担者に疑義事項の問合せを行い、
-      重篤な有害事象であることを確認する。</li>
-      <li>研究代表者は、内容の緊急性、重要性、影響の程度等を吟味の上、SAE見解書を作成する。また必要に応じて
-      効果安全性評価委員会に見解を求める。SAE見解書の内容に応じて、登録の中断・中止、研究計画書・同意説明文書
-      改訂等が研究代表者の承認のもとに行われることがある。</li>
-      <li>研究代表者はSAE見解書を確定し、報告内容が重篤な有害事象であることが確認された場合は、全実施医療機関に
-      当該SAE報告内容ならびに対応の状況および結果を周知する。これらはSAE報告書が研究代表者に提出されてから72時間
-      以内に可能な限り実施するように務める。</li>
-      <li>当該有害事象が発生した実施施設の研究責任者は重篤な有害事象であることが確認され、SAE見解書が確定された後に、
-      確定した有害事象報告内容を「統一書式12」にて倫理審査委員会に報告する。これらはSAE見解書を確定されてから、
+      <li contenteditable="false">緊急報告の対象となる有害事象が発生した場合、当該有害事象が発生した施設の
+      研究責任者あるいは研究分担者は直ちに適切な処置、カルテ記載を行う。</li>
+      <li contenteditable="false">当該事象の発生を知り得てから24時間以内に研究代表者にSAE報告書を提出するように務める。</li>
+      <li contenteditable="false">研究代表者は、必要に応じて当該有害事象が発生した施設の研究責任者、研究分担者に
+      疑義事項の問合せを行い、重篤な有害事象であることを確認する。</li>
+      <li contenteditable="false">研究代表者は、内容の緊急性、重要性、影響の程度等を吟味の上、SAE見解書を作成する。
+      また必要に応じて効果安全性評価委員会に見解を求める。SAE見解書の内容に応じて、登録の中断・中止、研究計画書・
+      同意説明文書改訂等が研究代表者の承認のもとに行われることがある。</li>
+      <li contenteditable="false">研究代表者はSAE見解書を確定し、報告内容が重篤な有害事象であることが確認された場合は、
+      全実施医療機関に当該SAE報告内容ならびに対応の状況および結果を周知する。これらはSAE報告書が研究代表者に提出されてから
       72時間以内に可能な限り実施するように務める。</li>
-      <li>研究代表者は当該研究との因果関係がある予測できない重篤な有害事象が発生した場合、「人を対象とする
-      医学系研究に関する倫理指針ガイダンス」の定める様式により、当該有害事象が発生した実施施設の長と共同して、
-      厚生労働大臣に報告すると共にホームページに対応の状況及び結果を公表する。</li>
-      <li>研究責任者は緊急報告の対象となる有害事象を報告後、新たな情報が得られた場合は、追加報告を行い、
-      (1)から(8)の内容を繰り返す。</li>
+      <li contenteditable="false">当該有害事象が発生した実施施設の研究責任者は重篤な有害事象であることが確認され、
+      SAE見解書が確定された後に、確定した有害事象報告内容を「統一書式12」にて倫理審査委員会に報告する。
+      これらはSAE見解書を確定されてから、72時間以内に可能な限り実施するように務める。</li>
+      <li contenteditable="false">研究代表者は当該研究との因果関係がある予測できない重篤な有害事象が発生した場合、
+      「人を対象とする医学系研究に関する倫理指針ガイダンス」の定める様式により、当該有害事象が発生した実施施設の長と
+      共同して、厚生労働大臣に報告すると共にホームページに対応の状況及び結果を公表する。</li>
+      <li contenteditable="false">研究責任者は緊急報告の対象となる有害事象を報告後、新たな情報が得られた場合は、
+      追加報告を行い、(1)から(8)の内容を繰り返す。</li>
       </ol>
       <p>&nbsp;</p>
-      <p contenteditable="true">&nbsp;</p>
+      <p>&nbsp;</p>
       <table class="mce-item-table" width="600">
       <tbody>
       <tr>
-      <td width="250"><p contenteditable="true">&nbsp;</p></td>
-      <td width="350"><p contenteditable="true">&nbsp;</p></td>
+      <td width="250"><p>&nbsp;</p></td>
+      <td width="350"><p>&nbsp;</p></td>
       </tr>
       <tr>
-      <td width="250"><p contenteditable="true">&nbsp;</p></td>
-      <td width="350"><p contenteditable="true">&nbsp;</p></td>
+      <td width="250"><p>&nbsp;</p></td>
+      <td width="350"><p>&nbsp;</p></td>
       </tr>
       <tr>
-      <td width="250"><p contenteditable="true">&nbsp;</p></td>
-      <td width="350"><p contenteditable="true">&nbsp;</p></td>
+      <td width="250"><p>&nbsp;</p></td>
+      <td width="350"><p>&nbsp;</p></td>
       </tr>
       <tr>
-      <td width="250"><p contenteditable="true">&nbsp;</p></td>
-      <td width="350"><p contenteditable="true">&nbsp;</p></td>
+      <td width="250"><p>&nbsp;</p></td>
+      <td width="350"><p>&nbsp;</p></td>
       </tr>
       <tr>
-      <td width="250"><p contenteditable="true">&nbsp;</p></td>
-      <td width="350"><p contenteditable="true">&nbsp;</p></td>
+      <td width="250"><p>&nbsp;</p></td>
+      <td width="350"><p>&nbsp;</p></td>
       </tr>
       <tr>
-      <td width="250"><p contenteditable="true">&nbsp;</p></td>
-      <td width="350"><p contenteditable="true">&nbsp;</p></td>
+      <td width="250"><p>&nbsp;</p></td>
+      <td width="350"><p>&nbsp;</p></td>
       </tr>
       <tr>
-      <td width="250"><p contenteditable="true">&nbsp;</p></td>
-      <td width="350"><p contenteditable="true">&nbsp;</p></td>
+      <td width="250"><p>&nbsp;</p></td>
+      <td width="350"><p>&nbsp;</p></td>
       </tr>
       <tr>
-      <td width="250"><p contenteditable="true">&nbsp;</p></td>
-      <td width="350"><p contenteditable="true">&nbsp;</p></td>
+      <td width="250"><p>&nbsp;</p></td>
+      <td width="350"><p>&nbsp;</p></td>
       </tr>
       <tr>
-      <td width="250"><p contenteditable="true">&nbsp;</p></td>
-      <td width="350"><p contenteditable="true">&nbsp;</p></td>
+      <td width="250"><p>&nbsp;</p></td>
+      <td width="350"><p>&nbsp;</p></td>
       </tr>
       <tr>
-      <td width="250"><p contenteditable="true">&nbsp;</p></td>
-      <td width="350"><p contenteditable="true">&nbsp;</p></td>
+      <td width="250"><p>&nbsp;</p></td>
+      <td width="350"><p>&nbsp;</p></td>
       </tr>
       <tr>
-      <td width="250"><p contenteditable="true">&nbsp;</p></td>
-      <td width="350"><p contenteditable="true">&nbsp;</p></td>
+      <td width="250"><p>&nbsp;</p></td>
+      <td width="350"><p>&nbsp;</p></td>
       </tr>
       </tbody>
       </table>
-      <p contenteditable="true">&nbsp;</p>
       <p>&nbsp;</p>
-      <h3>8.3.3. 予期される有害事象</h3>
-      <p contenteditable="true">&nbsp;</p>
+      <p>&nbsp;</p>
+      <h3 contenteditable="false">8.3.3. 予期される有害事象</h3>
+      <p>&nbsp;</p>
       <p>&nbsp;</p>
       </div>
     instructions: |-
@@ -184,7 +186,8 @@ sections:
       <ol>
       <li>死に至るもの</li>
       <li>生命を脅かすもの</li>
-      <li>治療のため入院または入院期間の延長が必要となるもの（有害事象の治療のための緊急入院であり、事前に予定されていた入院は除く）</li>
+      <li>治療のため入院または入院期間の延長が必要となるもの（有害事象の治療のための緊急入院であり、
+      事前に予定されていた入院は除く）</li>
       <li>永続的または顕著な障害・機能不全に陥るもの</li>
       <li>子孫に先天異常を来すもの</li>
       <li>その他医学的に重要な状態と判断される事象（直ちに生命をおびやかしたり死や入院には至らなくとも、
@@ -276,110 +279,112 @@ sections:
       <h3>8.3.3. 予期される有害事象</h3>
       <p>予期される主な事象について1ページ以内に簡潔に記載し、詳細は添付文書への参照とする。</p>
       <p>&nbsp;</p>
-      <p contenteditable="true">&nbsp;</p>
+      <p>&nbsp;</p>
     example: |-
-      <h3>8.3.1. 有害事象の定義</h3>
-      <ul><li>有害事象：</li></ul>
-      <p>実施された研究との因果関係の有無を問わず、研究対象者に生じた全ての好ましくない又は意図しない
-      傷病若しくはその徴候（臨床検査値の異常を含む。）をいう。</p>
+      <h3 contenteditable="false">8.3.1. 有害事象の定義</h3>
+      <ul><li contenteditable="false">有害事象：</li></ul>
+      <p contenteditable="false">実施された研究との因果関係の有無を問わず、研究対象者に生じた全ての好ましくない
+      又は意図しない傷病若しくはその徴候（臨床検査値の異常を含む。）をいう。</p>
       <p>&nbsp;</p>
-      <ul><li>重篤な有害事象：</li></ul>
-      <p>有害事象のうち、以下のものを言う。</p>
+      <ul><li contenteditable="false">重篤な有害事象：</li></ul>
+      <p contenteditable="false">有害事象のうち、以下のものを言う。</p>
       <ol>
-      <li>死に至るもの</li>
-      <li>生命を脅かすもの</li>
-      <li>治療のため入院または入院期間の延長が必要となるもの（有害事象の治療のための緊急入院であり、事前に予定されていた入院は除く）</li>
-      <li>永続的または顕著な障害・機能不全に陥るもの</li>
-      <li>子孫に先天異常を来すもの</li>
-      <li>その他医学的に重要な状態と判断される事象（直ちに生命をおびやかしたり死や入院には至らなくとも、
-      患者を危険にさらすおそれがあったり、又は上記の定義に挙げられているような結果に至らないように処置や
-      治療が必要となるような重要な医学的事象。）</li>
+      <li contenteditable="false">死に至るもの</li>
+      <li contenteditable="false">生命を脅かすもの</li>
+      <li contenteditable="false">治療のため入院または入院期間の延長が必要となるもの
+      （有害事象の治療のための緊急入院であり、事前に予定されていた入院は除く）</li>
+      <li contenteditable="false">永続的または顕著な障害・機能不全に陥るもの</li>
+      <li contenteditable="false">子孫に先天異常を来すもの</li>
+      <li contenteditable="false">その他医学的に重要な状態と判断される事象（直ちに生命をおびやかしたり死や
+      入院には至らなくとも、患者を危険にさらすおそれがあったり、又は上記の定義に挙げられているような結果に
+      至らないように処置や治療が必要となるような重要な医学的事象。）</li>
       </ol>
       <p>&nbsp;</p>
-      <h3>8.3.2. 重篤な有害事象の報告</h3>
-      <p contenteditable="true">試験治療開始から「1.3. スケジュール」に規定されている時点まで、全ての重篤な有害事象を収集する。</p>
-      <p contenteditable="true">試験治療開始から試験治療終了30日時点までの全ての重篤な有害事象を収集する。</p>
-      <p contenteditable="true">試験治療開始から最終観察日または中止日までの全ての重篤な有害事象を収集する。</p>
+      <h3 contenteditable="false">8.3.2. 重篤な有害事象の報告</h3>
+      <p>試験治療開始から「1.3. スケジュール」に規定されている時点まで、全ての重篤な有害事象を収集する。</p>
+      <p>試験治療開始から試験治療終了30日時点までの全ての重篤な有害事象を収集する。</p>
+      <p>試験治療開始から最終観察日または中止日までの全ての重篤な有害事象を収集する。</p>
       <p>&nbsp;</p>
-      <p>初回の重篤な有害事象報告<span contenteditable="true">[及び「xxx」に定義されている重要な非重篤有害事象の報告]</span>
-      の後、研究責任者また研究分担者は事象が確定（死亡、回復、追跡不能）になるまで追跡する。報告手順は下記の通りである。</p>
+      <p contenteditable="false">初回の重篤な有害事象報告<span contenteditable="true">[及び「xxx」に
+      定義されている重要な非重篤有害事象の報告]</span>の後、研究責任者また研究分担者は事象が確定（死亡、
+      回復、追跡不能）になるまで追跡する。報告手順は下記の通りである。</p>
       <p>&nbsp;</p>
       <ol>
-      <li>緊急報告の対象となる有害事象が発生した場合、当該有害事象が発生した施設の研究責任者あるいは
-      研究分担者は直ちに適切な処置、カルテ記載を行う。</li>
-      <li>当該事象の発生を知り得てから24時間以内に研究代表者にSAE報告書を提出するように務める。</li>
-      <li>研究代表者は、必要に応じて当該有害事象が発生した施設の研究責任者、研究分担者に疑義事項の問合せを行い、
-      重篤な有害事象であることを確認する。</li>
-      <li>研究代表者は、内容の緊急性、重要性、影響の程度等を吟味の上、SAE見解書を作成する。また必要に応じて
-      効果安全性評価委員会に見解を求める。SAE見解書の内容に応じて、登録の中断・中止、研究計画書・同意説明文書
-      改訂等が研究代表者の承認のもとに行われることがある。</li>
-      <li>研究代表者はSAE見解書を確定し、報告内容が重篤な有害事象であることが確認された場合は、全実施医療機関に
-      当該SAE報告内容ならびに対応の状況および結果を周知する。これらはSAE報告書が研究代表者に提出されてから72時間
-      以内に可能な限り実施するように務める。</li>
-      <li>当該有害事象が発生した実施施設の研究責任者は重篤な有害事象であることが確認され、SAE見解書が確定された後に、
-      確定した有害事象報告内容を「統一書式12」にて倫理審査委員会に報告する。これらはSAE見解書を確定されてから、
+      <li contenteditable="false">緊急報告の対象となる有害事象が発生した場合、当該有害事象が発生した施設の
+      研究責任者あるいは研究分担者は直ちに適切な処置、カルテ記載を行う。</li>
+      <li contenteditable="false">当該事象の発生を知り得てから24時間以内に研究代表者にSAE報告書を提出するように務める。</li>
+      <li contenteditable="false">研究代表者は、必要に応じて当該有害事象が発生した施設の研究責任者、研究分担者に
+      疑義事項の問合せを行い、重篤な有害事象であることを確認する。</li>
+      <li contenteditable="false">研究代表者は、内容の緊急性、重要性、影響の程度等を吟味の上、SAE見解書を作成する。
+      また必要に応じて効果安全性評価委員会に見解を求める。SAE見解書の内容に応じて、登録の中断・中止、研究計画書・
+      同意説明文書改訂等が研究代表者の承認のもとに行われることがある。</li>
+      <li contenteditable="false">研究代表者はSAE見解書を確定し、報告内容が重篤な有害事象であることが確認された場合は、
+      全実施医療機関に当該SAE報告内容ならびに対応の状況および結果を周知する。これらはSAE報告書が研究代表者に提出されてから
       72時間以内に可能な限り実施するように務める。</li>
-      <li>研究代表者は当該研究との因果関係がある予測できない重篤な有害事象が発生した場合、「人を対象とする
-      医学系研究に関する倫理指針ガイダンス」の定める様式により、当該有害事象が発生した実施施設の長と共同して、
-      厚生労働大臣に報告すると共にホームページに対応の状況及び結果を公表する。</li>
-      <li>研究責任者は緊急報告の対象となる有害事象を報告後、新たな情報が得られた場合は、追加報告を行い、
-      (1)から(8)の内容を繰り返す。</li>
+      <li contenteditable="false">当該有害事象が発生した実施施設の研究責任者は重篤な有害事象であることが確認され、
+      SAE見解書が確定された後に、確定した有害事象報告内容を「統一書式12」にて倫理審査委員会に報告する。
+      これらはSAE見解書を確定されてから、72時間以内に可能な限り実施するように務める。</li>
+      <li contenteditable="false">研究代表者は当該研究との因果関係がある予測できない重篤な有害事象が発生した場合、
+      「人を対象とする医学系研究に関する倫理指針ガイダンス」の定める様式により、当該有害事象が発生した実施施設の長と
+      共同して、厚生労働大臣に報告すると共にホームページに対応の状況及び結果を公表する。</li>
+      <li contenteditable="false">研究責任者は緊急報告の対象となる有害事象を報告後、新たな情報が得られた場合は、
+      追加報告を行い、(1)から(8)の内容を繰り返す。</li>
       </ol>
       <p>&nbsp;</p>
-      <p contenteditable="true">Grade4以上の有害事象の内、以下に該当しない重篤な有害事象を緊急報告の対象とする。</p>
+      <p>Grade4以上の有害事象の内、以下に該当しない重篤な有害事象を緊急報告の対象とする。</p>
       <table class="mce-item-table" width="600">
       <tbody>
       <tr>
-      <td width="250"><p contenteditable="true">SOC*(CTCAE ver4.0)</p></td>
-      <td width="350"><p contenteditable="true">AE term</p></td>
+      <td width="250"><p>SOC*(CTCAE ver4.0)</p></td>
+      <td width="350"><p>AE term</p></td>
       </tr>
       <tr>
-      <td width="250"><p contenteditable="true">血液およびリンパ球障害</p></td>
-      <td width="350"><p contenteditable="true">貧血、骨髄細胞減少</p></td>
+      <td width="250"><p>血液およびリンパ球障害</p></td>
+      <td width="350"><p>貧血、骨髄細胞減少</p></td>
       </tr>
       <tr>
-      <td width="250"><p contenteditable="true">胃腸障害</p></td>
-      <td width="350"><p contenteditable="true">便秘</p></td>
+      <td width="250"><p>胃腸障害</p></td>
+      <td width="350"><p>便秘</p></td>
       </tr>
       <tr>
-      <td width="250"><p contenteditable="true">全身障害および局所症状</p></td>
-      <td width="350"><p contenteditable="true">発熱</p></td>
+      <td width="250"><p>全身障害および局所症状</p></td>
+      <td width="350"><p>発熱</p></td>
       </tr>
       <tr>
-      <td width="250"><p contenteditable="true">感染症および寄生虫症</p></td>
-      <td width="350"><p contenteditable="true">ウィルス性肝炎</p></td>
+      <td width="250"><p>感染症および寄生虫症</p></td>
+      <td width="350"><p>ウィルス性肝炎</p></td>
       </tr>
       <tr>
-      <td width="250"><p contenteditable="true">臨床検査</p></td>
-      <td width="350"><p contenteditable="true">アルカリホスファターゼ増加、CD4 リンパ球減少、コレステロール増加、
-      GGT 増加、リパーゼ増加、リンパ球数減少、好中球数減少、血小板数減少、血清アミラーゼ増加、白血球減少</p></td>
+      <td width="250"><p>臨床検査</p></td>
+      <td width="350"><p>アルカリホスファターゼ増加、CD4 リンパ球減少、コレステロール増加、GGT 増加、
+      リパーゼ増加、リンパ球数減少、好中球数減少、血小板数減少、血清アミラーゼ増加、白血球減少</p></td>
       </tr>
       <tr>
-      <td width="250"><p contenteditable="true">代謝および栄養障害</p></td>
-      <td width="350"><p contenteditable="true">肥満、食欲不振、高尿酸血症、低アルブミン血症</p></td>
+      <td width="250"><p>代謝および栄養障害</p></td>
+      <td width="350"><p>肥満、食欲不振、高尿酸血症、低アルブミン血症</p></td>
       </tr>
       <tr>
-      <td width="250"><p contenteditable="true">筋骨格系および結合組織障害</p></td>
-      <td width="350"><p contenteditable="true">深部結合組織線維化、表在軟部組織線維化</p></td>
+      <td width="250"><p>筋骨格系および結合組織障害</p></td>
+      <td width="350"><p>深部結合組織線維化、表在軟部組織線維化</p></td>
       </tr>
       <tr>
-      <td width="250"><p contenteditable="true">腎および尿路障害</p></td>
-      <td width="350"><p contenteditable="true">慢性腎臓病</p></td>
+      <td width="250"><p>腎および尿路障害</p></td>
+      <td width="350"><p>慢性腎臓病</p></td>
       </tr>
       <tr>
-      <td width="250"><p contenteditable="true">呼吸器、胸郭および縦隔障害</p></td>
-      <td width="350"><p contenteditable="true">副鼻腔障害、睡眠時無呼吸</p></td>
+      <td width="250"><p>呼吸器、胸郭および縦隔障害</p></td>
+      <td width="350"><p>副鼻腔障害、睡眠時無呼吸</p></td>
       </tr>
       <tr>
-      <td width="250"><p contenteditable="true">皮膚および皮下組織障害</p></td>
-      <td width="350"><p contenteditable="true"></p>乏汗症</td>
+      <td width="250"><p>皮膚および皮下組織障害</p></td>
+      <td width="350"><p></p>乏汗症</td>
       </tr>
       </tbody>
       </table>
-      <p contenteditable="true">* SOC：System Organ Class(器官別大分類)</p>
+      <p>* SOC：System Organ Class(器官別大分類)</p>
       <p>&nbsp;</p>
-      <h3>8.3.3. 予期される有害事象</h3>
-      <p contenteditable="true">別添「試験薬の添付文書」を参照。</p>
+      <h3 contenteditable="false">8.3.3. 予期される有害事象</h3>
+      <p>別添「試験薬の添付文書」を参照。</p>
       <p>&nbsp;</p>
     editable: true
   -
@@ -395,9 +400,9 @@ sections:
     title: 薬物動態
     template_name: JCCG
     template: |-
-      <div contenteditable="false">
-      <p>PKパラメータについては本試験では評価しない。</p>
-      <p contenteditable="true">&nbsp;</p>
+      <div contenteditable="true">
+      <p contenteditable="false">PKパラメータについては本試験では評価しない。</p>
+      <p>&nbsp;</p>
       </div>
     instructions: ''
     example: ''
@@ -407,9 +412,9 @@ sections:
     title: 薬力学
     template_name: JCCG
     template: |-
-      <div contenteditable="false">
-      <p>薬力学パラメータについては本試験では評価しない。</p>
-      <p contenteditable="true">&nbsp;</p>
+      <div contenteditable="true">
+      <p contenteditable="false">薬力学パラメータについては本試験では評価しない。</p>
+      <p>&nbsp;</p>
       </div>
     instructions: ''
     example: ''
@@ -423,17 +428,17 @@ sections:
       <p>「ヒトゲノム・遺伝子解析研究に関する倫理指針」の対象となる解析が本研究に含まれていない場合には、
       その旨記述する。この見出しを削除してはならない。</p>
     example: |-
-      <p contenteditable="true">本研究では、「ヒトゲノム・遺伝子解析研究に関する倫理指針」の対象となる
+      <p>本研究では、「ヒトゲノム・遺伝子解析研究に関する倫理指針」の対象となる
       遺伝学的評価項目について評価しない。</p>
       <p>&nbsp;</p>
-      <p contenteditable="true">DNAの単離を行うため、[X] mLの[血液または唾液]検体を、本臨床試験のヒトゲノム・
+      <p>DNAの単離を行うため、[X] mLの[血液または唾液]検体を、本臨床試験のヒトゲノム・
       遺伝子解析研究に参加することに同意した研究対象者から採取する。参加は自由選択である。遺伝子研究への
       参加を希望しない研究対象者であっても、臨床試験には参加することができる。</p>
       <p>&nbsp;</p>
-      <p contenteditable="true">[遺伝子研究に関する情報については付録Xを参照のこと]。これらの検体の採取
+      <p>[遺伝子研究に関する情報については付録Xを参照のこと]。これらの検体の採取
       および発送プロセスについての詳細は、[記述箇所を指定]にある。</p>
       <p>&nbsp;</p>
-      <p contenteditable="true">&nbsp;</p>
+      <p>&nbsp;</p>
     editable: true
   -
     'no': 8.8
@@ -461,22 +466,22 @@ sections:
       <li>調べるバイオマーカーについて示す。</li>
       </ul>
     example: |-
-      <p contenteditable="true">本研究では、バイオマーカーについて評価しない。</p>
+      <p>本研究では、バイオマーカーについて評価しない。</p>
       <p>&nbsp;</p>
-      <p contenteditable="true">バイオマーカー研究のための検体採取も本研究の一部である。バイオマーカー研究のために
+      <p>バイオマーカー研究のための検体採取も本研究の一部である。バイオマーカー研究のために
       以下に示す検体が必要であり、「2.スケジュール」に示したように、研究対象者全員から採取する。</p>
       <p>&nbsp;</p>
-      <p contenteditable="true">可能であれば、研究対象者から採取すべきオプションのバイオマーカー研究のための検体は以下のものである</p>
+      <p>可能であれば、研究対象者から採取すべきオプションのバイオマーカー研究のための検体は以下のものである</p>
       <p>&nbsp;</p>
-      <ul><li contenteditable="true">[血液／唾液]</li></ul>
+      <ul><li>[血液／唾液]</li></ul>
       <p>&nbsp;</p>
-      <p contenteditable="true">○○を測定する中央検査機関は、○○を測定後、残余検体は速やかに廃棄する。</p>
+      <p>○○を測定する中央検査機関は、○○を測定後、残余検体は速やかに廃棄する。</p>
       <p>&nbsp;</p>
-      <p contenteditable="true">○○を測定する中央検査機関は、○○を測定後の残余検体を研究終了後に速やかに廃棄する。</p>
+      <p>○○を測定する中央検査機関は、○○を測定後の残余検体を研究終了後に速やかに廃棄する。</p>
       <p>&nbsp;</p>
-      <p contenteditable="true">○○を測定する中央検査機関は、○○を測定後の残余検体を保管期間は定めず保管する。
+      <p>○○を測定する中央検査機関は、○○を測定後の残余検体を保管期間は定めず保管する。
       この場合、本研究終了後、実施機関の長に、保管試料等の名称、試料等の保管場所、試料等の管理責任者、
       研究対象者から同意を得た同意の内容を報告する。内容に変更は生じた場合も同様に報告を行う。</p>
       <p>&nbsp;</p>
-      <p contenteditable="true">&nbsp;</p>
+      <p>&nbsp;</p>
     editable: true

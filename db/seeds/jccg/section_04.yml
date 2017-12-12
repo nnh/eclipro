@@ -21,12 +21,12 @@ sections:
       <p>クロスオーバー、並行群間比較</p>
       <p>非劣性、同等性、優越性</p>
     example: |-
-      <p contenteditable="true">多施設共同非盲検無対照試験</p>
-      <p contenteditable="true">多施設共同非盲検ランダム化比較試験</p>
-      <p contenteditable="true">介入研究（ランダム化、非盲検、並行群間比較）</p>
-      <p contenteditable="true">介入研究（非盲検、非対照）</p>
-      <p contenteditable="true">介入研究（クロスオーバー）</p>
-      <p contenteditable="true">&nbsp;</p>
+      <p>多施設共同非盲検無対照試験</p>
+      <p>多施設共同非盲検ランダム化比較試験</p>
+      <p>介入研究（ランダム化、非盲検、並行群間比較）</p>
+      <p>介入研究（非盲検、非対照）</p>
+      <p>介入研究（クロスオーバー）</p>
+      <p>&nbsp;</p>
     editable: true
   -
     'no': 4.2
@@ -52,17 +52,17 @@ sections:
     title: 研究期間
     template_name: JCCG
     template: |-
-      <div contenteditable="false">
-      <p contenteditable="true">最初の研究対象者の同意取得をもって研究を開始し、最後の研究対象者が最終観察日を
+      <div contenteditable="true">
+      <p contenteditable="false">最初の研究対象者の同意取得をもって研究を開始し、最後の研究対象者が最終観察日を
       完了した時点、中止した時点、または研究対象者が来院しなくなった時点（すなわち、研究責任者または
       研究分担者が患者と連絡を取れなくなった時点）で終了する。</p>
-      <p contenteditable="true">&nbsp;</p>
-      <p contenteditable="true">各研究対象者の研究期間は、同意取得日から最終観察日または中止判断日までとする。
+      <p>&nbsp;</p>
+      <p contenteditable="false">各研究対象者の研究期間は、同意取得日から最終観察日または中止判断日までとする。
       中止判断日とは研究責任者または研究分担者が、当該研究対象者での研究の中止を判断した日とする。</p>
-      <p contenteditable="true">&nbsp;</p>
-      <p contenteditable="true">研究予定期間:2012年11月16日-2022年11月30日(10年間)</p>
-      <p contenteditable="true">登録予定期間:2012年11月16日-2017年11月30日(5年間)</p>
-      <p contenteditable="true">&nbsp;</p>
+      <p>&nbsp;</p>
+      <p contenteditable="false">研究予定期間:<span contenteditable="true">2012年11月16日-2022年11月30日(10年間)</span></p>
+      <p contenteditable="false">登録予定期間:<span contenteditable="true">2012年11月16日-2017年11月30日(5年間)</span></p>
+      <p>&nbsp;</p>
       </div>
     instructions: ''
     example: ''

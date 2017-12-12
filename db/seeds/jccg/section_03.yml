@@ -4,28 +4,31 @@ sections:
     title: 評価項目
     template_name: JCCG
     template: |-
-      <div contenteditable="false">
+      <div contenteditable="true">
       <table class="mce-item-table" width="600">
       <tbody>
       <tr>
-      <td width="300" style="text-align: center;"><strong>目的</strong></td>
-      <td width="300" style="text-align: center;"><strong>評価項目</strong></td>
+      <td width="300" style="text-align: center;"><span contenteditable="false"><strong>目的</strong></span></td>
+      <td width="300" style="text-align: center;"><span contenteditable="false"><strong>評価項目</strong></span></td>
       </tr>
       <tr>
       <td width="300">
-      <p>主要</p>
-      <ul><li contenteditable="true">&nbsp;</li></ul>
+      <p contenteditable="false">主要</p>
+      <ul><li>&nbsp;</li></ul>
       </td>
-      <td width="300"><ul><li contenteditable="true">&nbsp;</li></ul></td>
+      <td width="300"><ul><li>&nbsp;</li></ul></td>
       </tr>
       <tr>
-      <td width="300"><p>副次的</p><ul><li contenteditable="true">&nbsp;</li></ul></td>
-      <td width="300"><ul><li contenteditable="true">&nbsp;</li></ul></td>
+      <td width="300">
+      <p contenteditable="false">副次的</p>
+      <ul><li>&nbsp;</li></ul>
+      </td>
+      <td width="300"><ul><li>&nbsp;</li></ul></td>
       </tr>
       </tbody>
       </table>
       <p>&nbsp;</p>
-      <p contenteditable="true">&nbsp;</p>
+      <p>&nbsp;</p>
       </div>
     instructions: |-
       <ul>
@@ -67,9 +70,10 @@ sections:
       <td width="300"><ul><li>[評価項目]</li></ul></td>
       </tr>
       <tr>
-      <td width="300"><p>副次的</p>
-      <ul><li>[試験対象となる状態]の研究対象者の[試験治療名]の安全性を[対照]と比較すること
-      </li></ul></td>
+      <td width="300">
+      <p>副次的</p>
+      <ul><li>[試験対象となる状態]の研究対象者の[試験治療名]の安全性を[対照]と比較すること</li></ul>
+      </td>
       <td width="300"><ul><li>有害事象(AE)</li></ul></td>
       </tr>
       </tbody>
@@ -78,24 +82,25 @@ sections:
       <table class="mce-item-table" width="600">
       <tbody>
       <tr>
-      <td width="300" style="text-align: center;"><strong>目的</strong></td>
-      <td width="300" style="text-align: center;"><strong>評価項目</strong></td>
+      <td width="300" style="text-align: center;"><span contenteditable="false"><strong>目的</strong></span></td>
+      <td width="300" style="text-align: center;"><span contenteditable="false"><strong>評価項目</strong></span></td>
       </tr>
       <tr>
       <td width="300">
-      <p>主要</p>
-      <ul><li contenteditable="true">[試験対象となる状態]の研究対象者の[試験治療名]の有効性を[対照]と比較すること</li></ul>
+      <p contenteditable="false">主要</p>
+      <ul><li>[試験対象となる状態]の研究対象者の[試験治療名]の有効性を[対照]と比較すること</li></ul>
       </td>
-      <td width="300"><ul><li contenteditable="true">[評価項目]</li></ul></td>
+      <td width="300"><ul><li>[評価項目]</li></ul></td>
       </tr>
       <tr>
-      <td width="300"><p>副次的</p><ul><li contenteditable="true">
-      [試験対象となる状態]の研究対象者の[試験治療名]の安全性を[対照]と比較すること
-      </li></ul></td>
-      <td width="300"><ul><li contenteditable="true">有害事象(AE)</li></ul></td>
+      <td width="300">
+      <p contenteditable="false">副次的</p>
+      <ul><li>[試験対象となる状態]の研究対象者の[試験治療名]の安全性を[対照]と比較すること</li></ul>
+      </td>
+      <td width="300"><ul><li>有害事象(AE)</li></ul></td>
       </tr>
       </tbody>
       </table>
       <p>&nbsp;</p>
-      <p contenteditable="true">&nbsp;</p>
+      <p>&nbsp;</p>
     editable: true

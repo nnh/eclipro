@@ -13,7 +13,6 @@
     .tab-content
       .tab-pane#example
         - examples.each do |example|
-          - example.example.gsub!('contenteditable="true"', 'contenteditable="false"')
           div.example-contents id="section-#{example.no.gsub('.', '-')}-example"
             .menu-body
               = example.example.html_safe

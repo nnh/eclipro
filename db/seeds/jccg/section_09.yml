@@ -23,11 +23,10 @@ sections:
     instructions: |-
       <ul><li>統計学的な根拠によらず設定する場合も、その根拠を記載する。</li></ul>
     example: |-
-      <p contenteditable="true">A群の●年生存割合を○％と仮定し、Ｂ群のそれが▲％上回るかどうかを検出する
-      優越性デザインとした場合、登録Ｘ年、追跡Ｘ年、α＝5％（片側）、検出力80％として、Shoenfeld & Richterの
-      方法を用いて必要症例数を求めると、1群ＸＸＸ例、両群計ＸＸＸ例が必要となる。若干の不適格例を見込んで、
-      予定登録数；各群ＸＸＸ例、合計ＸＸＸ例と設定した。</p>
-      <p contenteditable="true">&nbsp;</p>
+      <p>A群の●年生存割合を○％と仮定し、Ｂ群のそれが▲％上回るかどうかを検出する優越性デザインとした場合、
+      登録Ｘ年、追跡Ｘ年、α＝5％（片側）、検出力80％として、Shoenfeld & Richterの方法を用いて必要症例数を求めると、
+      1群ＸＸＸ例、両群計ＸＸＸ例が必要となる。若干の不適格例を見込んで、予定登録数；各群ＸＸＸ例、合計ＸＸＸ例と設定した。</p>
+      <p>&nbsp;</p>
     editable: true
   -
     'no': 9.3
@@ -51,39 +50,39 @@ sections:
       利用可能性及び大きな研究計画書違反がないことが含まれる。</p>
       <li>４）安全性解析対象集団　SAFety Analysis Set (SAF):</li>
       <p>安全性の解析対象となる集団である。全登録例のうち、試験治療が１回以上投与された症例を対照とすることが多い。</p>
-      <ol>
+      </ol>
     example: |-
-      <p contenteditable="true">全ての有効性評価において、最大の解析対象集団（FAS）における解析を主解析とし、
-      参考として研究計画書に適合した対象集団（ＰＰＳ）における解析を行う。安全性の解析は、安全性解析対象集団に
-      おける解析を実施する。対象集団の定義は、以下に示す。</p>
+      <p>全ての有効性評価において、最大の解析対象集団（FAS）における解析を主解析とし、参考として研究計画書に
+      適合した対象集団（ＰＰＳ）における解析を行う。安全性の解析は、安全性解析対象集団における解析を実施する。
+      対象集団の定義は、以下に示す。</p>
       <ul>
-      <li contenteditable="true">最大の解析対象集団（FAS：Full Analysis Set）</li>
-      <p contenteditable="true">全登録症例を最大の解析対象集団（FAS）とする。ただし、重大な研究計画書違反
+      <li>最大の解析対象集団（FAS：Full Analysis Set）</li>
+      <p>全登録症例を最大の解析対象集団（FAS）とする。ただし、重大な研究計画書違反
       （同意未取得、試験手続き上の重大な違反）の症例については除外する。</p>
-      <li contenteditable="true">研究計画書に適合した対象集団（PPS:Per Protocol Set）</li>
-      <p contenteditable="true">FASから試験治療や併用療法など研究計画書の規定に対して、適格・除外基準違反、
+      <li>研究計画書に適合した対象集団（PPS:Per Protocol Set）</li>
+      <p>FASから試験治療や併用療法など研究計画書の規定に対して、適格・除外基準違反、
       併用禁止薬・併用禁止療法違反があった症例を除いた集団とする。</p>
-      <li contenteditable="true">安全性解析対象集団</li>
-      <p contenteditable="true">全登録例のうち、試験治療を全く施行されなかった症例を除いた集団</p>
+      <li>安全性解析対象集団</li>
+      <p>全登録例のうち、試験治療を全く施行されなかった症例を除いた集団</p>
       </ul>
-      <p contenteditable="true">&nbsp;</p>
+      <p>&nbsp;</p>
     editable: true
   -
     'no': 9.4
     title: 統計解析
     template_name: JCCG
     template: |-
-      <div contenteditable="false">
-      <p contenteditable="true">&nbsp;</p>
-      <h3>9.4.1. 有効性解析</h3>
-      <p contenteditable="true">&nbsp;</p>
+      <div contenteditable="true">
       <p>&nbsp;</p>
-      <h3>9.4.2. 安全性解析</h3>
-      <p>全ての安全性解析は安全性評価対象集団に対して実施する。</p>
-      <p contenteditable="true">&nbsp;</p>
+      <h3 contenteditable="false">9.4.1. 有効性解析</h3>
       <p>&nbsp;</p>
-      <h3>9.4.3. その他の解析</h3>
-      <p contenteditable="true">&nbsp;</p>
+      <p>&nbsp;</p>
+      <h3 contenteditable="false">9.4.2. 安全性解析</h3>
+      <p contenteditable="false">全ての安全性解析は安全性評価対象集団に対して実施する。</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <h3 contenteditable="false">9.4.3. その他の解析</h3>
+      <p>&nbsp;</p>
       </div>
     instructions: |-
       <p>データ固定前に、統計解析計画書を構築し最終確定し、解析対象集団の設定、ならびに欠測データや
@@ -103,10 +102,10 @@ sections:
     title: 中間解析
     template_name: JCCG
     template: |-
-      <div contenteditable="false">
-      <p contenteditable="true">[中間解析のサマリーを挿入]</p>
-      <p>予定している中間解析については統計解析計画書に詳述される。</p>
-      <p contenteditable="true">&nbsp;</p>
+      <div contenteditable="true">
+      <p>[中間解析のサマリーを挿入]</p>
+      <p contenteditable="false">予定している中間解析については統計解析計画書に詳述される。</p>
+      <p>&nbsp;</p>
       </div>
     instructions: |-
       <ul>

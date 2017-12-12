@@ -12,66 +12,67 @@ sections:
     title: 試験治療の中止
     template_name: JCCG
     template: |-
-      <div contenteditable="false">
-      <p>以下のいずれかに該当する場合は、研究対象者の試験治療を中止する</p>
+      <div contenteditable="true">
+      <p contenteditable="false">以下のいずれかに該当する場合は、研究対象者の試験治療を中止する</p>
       <ul>
-      <li contenteditable="true">&nbsp;</li>
-      <li>研究対象者より試験治療中止の申し出があった場合</li>
-      <li>代諾者より試験治療中止の申し出があった場合</li>
-      <li>研究対象者の試験が中止となった場合</li>
-      <li>その他の理由で研究責任者、研究分担者により試験治療中止が適切と判断された場合</li>
+      <li>&nbsp;</li>
+      <li contenteditable="false">研究対象者より試験治療中止の申し出があった場合</li>
+      <li contenteditable="false">代諾者より試験治療中止の申し出があった場合</li>
+      <li contenteditable="false">研究対象者の試験が中止となった場合</li>
+      <li contenteditable="false">その他の理由で研究責任者、研究分担者により試験治療中止が適切と判断された場合</li>
       </ul>
       <p>&nbsp;</p>
-      <p>試験治療中止例の研究期間中の観察は引き続き実施する。</p>
+      <p contenteditable="false">試験治療中止例の研究期間中の観察は引き続き実施する。</p>
       <p>&nbsp;</p>
-      <p contenteditable="true">&nbsp;</p>
+      <p>&nbsp;</p>
       </div>
     instructions: |-
       <p>試験薬の研究対象者への投与を中止する判断基準について記述する。試験治療を中止した際に収集すべき
       データについては「1.3. スケジュール」に記載する。</p>
     example: |-
-      <p>以下のいずれかに該当する場合は、研究対象者の試験治療を中止する</p>
+      <p contenteditable="false">以下のいずれかに該当する場合は、研究対象者の試験治療を中止する</p>
       <ul>
-      <li contenteditable="true">有害事象により試験薬が休薬となってから28日を超えても再開できない場合</li>
-      <li contenteditable="true">有害事象により試験治療の継続が困難と判断された場合</li>
-      <li contenteditable="true">原疾患の再発を確認した場合</li>
-      <li contenteditable="true">原疾患の増悪を確認した場合</li>
-      <li contenteditable="true">再発以外の癌病変が認められた場合</li>
-      <li>研究対象者より試験治療中止の申し出があった場合</li>
-      <li>代諾者より試験治療中止の申し出があった場合</li>
-      <li>研究対象者の試験が中止となった場合</li>
-      <li>その他の理由で研究責任者、研究分担者により試験治療中止が適切と判断された場合</li>
+      <li>有害事象により試験薬が休薬となってから28日を超えても再開できない場合</li>
+      <li>有害事象により試験治療の継続が困難と判断された場合</li>
+      <li>原疾患の再発を確認した場合</li>
+      <li>原疾患の増悪を確認した場合</li>
+      <li>再発以外の癌病変が認められた場合</li>
+      <li contenteditable="false">研究対象者より試験治療中止の申し出があった場合</li>
+      <li contenteditable="false">代諾者より試験治療中止の申し出があった場合</li>
+      <li contenteditable="false">研究対象者の試験が中止となった場合</li>
+      <li contenteditable="false">その他の理由で研究責任者、研究分担者により試験治療中止が適切と判断された場合</li>
+      </ul>
       <p>&nbsp;</p>
-      <p>試験治療中止例の研究期間中の観察は引き続き実施する。</p>
+      <p contenteditable="false">試験治療中止例の研究期間中の観察は引き続き実施する。</p>
       <p>&nbsp;</p>
-      <p contenteditable="true">&nbsp;</p>
+      <p>&nbsp;</p>
     editable: true
   -
     'no': 7.2
     title: 試験の中止
     template_name: JCCG
     template: |-
-      <div contenteditable="false">
-      <p>以下のいずれかに該当する場合は、研究対象者の試験を中止する</p>
+      <div contenteditable="true">
+      <p contenteditable="false">以下のいずれかに該当する場合は、研究対象者の試験を中止する</p>
       <ul>
-      <li>研究対象者が死亡した場合</li>
-      <li>転居などにより研究対象者が追跡不能となった場合</li>
-      <li>研究対象者による同意撤回の申し出があった場合</li>
-      <li>代諾者による同意撤回の申し出があった場合</li>
-      <li>登録後不適格症例であることが判明した場合</li>
-      <li>その他の重大な研究計画書違反が判明した場合</li>
-      <li>当該実施医療機関における試験が中止された場合</li>
-      <li>試験全体が中止された場合</li>
-      <li>その他の理由で研究責任者、研究分担者により試験中止が適切と判断された場合</li>
+      <li contenteditable="false">研究対象者が死亡した場合</li>
+      <li contenteditable="false">転居などにより研究対象者が追跡不能となった場合</li>
+      <li contenteditable="false">研究対象者による同意撤回の申し出があった場合</li>
+      <li contenteditable="false">代諾者による同意撤回の申し出があった場合</li>
+      <li contenteditable="false">登録後不適格症例であることが判明した場合</li>
+      <li contenteditable="false">その他の重大な研究計画書違反が判明した場合</li>
+      <li contenteditable="false">当該実施医療機関における試験が中止された場合</li>
+      <li contenteditable="false">試験全体が中止された場合</li>
+      <li contenteditable="false">その他の理由で研究責任者、研究分担者により試験中止が適切と判断された場合</li>
       </ul>
       <p>&nbsp;</p>
-      <p>研究対象者は自らの求めによりいつでも同意撤回すなわち臨床試験を辞退することができ、また、安全性、行動、
-      管理に関する理由で研究責任者または研究分担者が判断した場合には、いつでも研究対象者の臨床試験を終了させることができる。</p>
-      <p>研究対象者が同意撤回がなされる前に収集したデータについては引続き使用することが可能である。</p>
-      <p>研究対象者が試験中止を希望した場合には、採取したが検査を行っていない検体については、
+      <p contenteditable="false">研究対象者は自らの求めによりいつでも同意撤回すなわち臨床試験を辞退することができ、また、安全性、
+      行動、管理に関する理由で研究責任者または研究分担者が判断した場合には、いつでも研究対象者の臨床試験を終了させることができる。</p>
+      <p contenteditable="false">研究対象者が同意撤回がなされる前に収集したデータについては引続き使用することが可能である。</p>
+      <p contenteditable="false">研究対象者が試験中止を希望した場合には、採取したが検査を行っていない検体については、
       破棄を研究対象者が請求することができ、研究責任者はこのことを記録しておかなければならない。</p>
       <p>&nbsp;</p>
-      <p contenteditable="true">&nbsp;</p>
+      <p>&nbsp;</p>
       </div>
     instructions: |-
       <p>研究対象者が臨床試験を中止する判断基準について記述する。</p>
@@ -82,18 +83,20 @@ sections:
     title: 追跡不能
     template_name: JCCG
     template: |-
-      <div contenteditable="false">
-      <p>研究対象者が予定していた受診をせず、臨床試験実施施設による連絡がとれない場合に、その研究対象者を追跡不能とみなす。</p>
-      <p>必要な受診日に研究対象者が来診しなかった場合には、以下の対策をとる：</p>
+      <div contenteditable="true">
+      <p contenteditable="false">研究対象者が予定していた受診をせず、臨床試験実施施設による連絡がとれない場合に、
+      その研究対象者を追跡不能とみなす。</p>
+      <p contenteditable="false">必要な受診日に研究対象者が来診しなかった場合には、以下の対策をとる：</p>
       <ul>
-      <li>実施医療機関では、研究対象者への接触を試み、可及的すみやかに再受診の調整を行い、研究対象者には、
+      <li contenteditable="false">実施医療機関では、研究対象者への接触を試み、可及的すみやかに再受診の調整を行い、研究対象者には、
       指定された受診を守ることの重要性を助言し、研究対象者が、臨床試験を継続する意思があるかどうかについて確認する。</li>
-      <li>研究対象者が追跡不能と思われる場合には、研究責任者、研究分担者もしくはその代理人が研究対象者との
+      <li contenteditable="false">研究対象者が追跡不能と思われる場合には、研究責任者、研究分担者もしくはその代理人が研究対象者との
       連絡を再開するためのあらゆる努力を払う。これらの連絡の試みは記録されなければならない。</li>
       </ul>
-      <p>上記の試みに関わらず、研究対象者に連絡がつかない場合には、臨床試験を中止したものとみなし、主な理由は追跡不能とする。</p>
+      <p contenteditable="false">上記の試みに関わらず、研究対象者に連絡がつかない場合には、臨床試験を中止したものとみなし、
+      主な理由は追跡不能とする。</p>
       <p>&nbsp;</p>
-      <p contenteditable="true">&nbsp;</p>
+      <p>&nbsp;</p>
       </div>
     instructions: |-
       <p>欠測データの量を少なくし、欠測データの影響を最小限に留められるよう、追跡不能研究対象者を臨床試験では

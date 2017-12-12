@@ -13,10 +13,10 @@ sections:
     title: 選択基準
     template_name: JCCG
     template: |-
-      <div contenteditable="false">
-      <p>以下の基準を全て満たす患者とする。</p>
+      <div contenteditable="true">
+      <p contenteditable="false">以下の基準を全て満たす患者とする。</p>
       <ol>
-      <li contenteditable="true">&nbsp;</li>
+      <li>&nbsp;</li>
       </ol>
       </div>
     instructions: |-
@@ -34,20 +34,20 @@ sections:
       抜粋し記載する。最大1ページ以内とし、当該基準の記載が冗長になる場合は10.3. 補遺に記載する。
       それぞれの選択基準に対する設定根拠を記載する。</p>
     example: |-
-      <p>以下の基準を全て満たす患者とする。</p>
+      <p contenteditable="false">以下の基準を全て満たす患者とする。</p>
       <ol>
-      <li contenteditable="true">組織診で●●と診断された患者</li>
-      <li contenteditable="true">ECOG PSが0〜2の患者</li>
-      <li contenteditable="true">同意取得時にXX歳以上である患者</li>
-      <li contenteditable="true">性別</li>
-      <li contenteditable="true">&nbsp;</li>
+      <li>組織診で●●と診断された患者</li>
+      <li>ECOG PSが0〜2の患者</li>
+      <li>同意取得時にXX歳以上である患者</li>
+      <li>性別</li>
+      <li>&nbsp;</li>
       </ol>
       <p>選択基準設定の根拠：</p>
       <ol>
-      <li contenteditable="true">&nbsp;</li>
-      <li contenteditable="true">&nbsp;</li>
-      <li contenteditable="true">&nbsp;</li>
-      <li contenteditable="true">&nbsp;</li>
+      <li>&nbsp;</li>
+      <li>&nbsp;</li>
+      <li>&nbsp;</li>
+      <li>&nbsp;</li>
       </ol>
     editable: true
   -
@@ -55,10 +55,10 @@ sections:
     title: 除外基準
     template_name: JCCG
     template: |-
-      <div contenteditable="false">
-      <p>以下のいずれかに該当する患者は本研究に組み入れないこととする。</p>
+      <div contenteditable="true">
+      <p contenteditable="false">以下のいずれかに該当する患者は本研究に組み入れないこととする。</p>
       <ol>
-      <li contenteditable="true">&nbsp;</li>
+      <li>&nbsp;</li>
       </ol>
       </div>
     instructions: |-
@@ -76,7 +76,7 @@ sections:
       <p>適格性の判断に必要となる基準を出典を明らかにしつつ記述する。最大1ページ以内とし、
       当該基準の記載が冗長になる場合は10.3. 補遺に記載する。</p>
     example: |-
-      <p>以下のいずれかに該当する患者は本研究に組み入れないこととする。</p>
+      <p contenteditable="false">以下のいずれかに該当する患者は本研究に組み入れないこととする。</p>
       <ol>
       <li>不安定狭心症を合併、または6か月以内の心筋梗塞の既往を有する患者</li>
       <li>HIV抗体陽性</li>
