@@ -20,18 +20,18 @@ ja:
     enum:
       protocol:
         role:
-          co_author: 共著者
+          co_author: 管理者
           author_all: 著者（全セクション）
           reviewer_all: レビューアー（全セクション）
           author: 著者
           reviewer: レビューアー
         status:
           in_progress: 作成中
-          finalized: 完成
+          finalized: 正式版
       content:
         status:
           status_new: 新規
           in_progress: 作成中
           under_review: レビュー中
-          final: 完成
+          final: 正式版
     # errors:

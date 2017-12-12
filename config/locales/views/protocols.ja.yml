@@ -22,7 +22,7 @@ ja:
     show:
       protocol: プロトコル
       editor: エディタ
-      admin: 管理者
+      admin: 管理
       edit_title: プロトコル編集
       edit: 編集
       back: 戻る
@@ -138,15 +138,15 @@ ja:
       three:
         step: ステップ 3 / 3
         prev: 前へ
-        build: チームを作成する
+        build: メンバーを追加する
         user: ユーザー
         role: 役割
         sections: セクション
       step_buttons:
         export_pdf: エクスポート(.pdf)
         export_docx: エクスポート(.docx)
-        finalize: 完成
-        finalize_text: このプロトコルを完成させますか？
+        finalize: 正式版として承認
+        finalize_text: このプロトコルを正式版として承認しますか？
         reinstate: 再編集
         reinstate_text: このプロトコルを再編集しますか？
       build_team:
@@ -195,7 +195,7 @@ ja:
     clone:
       title: 既存のプロトコルを複製
     finalize:
-      success: プロトコルを完成させました。
+      success: プロトコルを正式版として承認しました。
       failure: プロトコルのステータス変更に失敗しました。
     reinstate:
       success: プロトコルを編集可能にしました。
