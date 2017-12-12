@@ -12,7 +12,7 @@ function initTinyMCE(selector) {
       plugins: "print, paste, searchreplace, media, link, hr, anchor, pagebreak, insertdatetime, nonbreaking, template, toc," +
                "visualchars, visualblocks, preview, table, fullscreen, lists, advlist, textcolor, emoticons, charmap, uploadimage",
       toolbar: [
-        "bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | forecolor backcolor emoticons | fullscreen charmap",
+        "bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | fullscreen charmap",
         "uploadimage reference"
       ],
       setup: function(editor) {
