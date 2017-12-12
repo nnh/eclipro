@@ -96,20 +96,6 @@ javascript:
       $('#step-3').show();
     });
 
-    $('#previous-section-button').click(() => {
-      move_section('#{previous_protocol_content_path(@protocol)}');
-    });
-    $('#next-section-button').click(() => {
-      move_section('#{next_protocol_content_path(@protocol)}');
-    });
-    function move_section(url) {
-      $.ajax({
-        dataType: 'script',
-        data: { section_no: $("ul#section-ul li.active").first().children().first().data('section-no') },
-        url: url
-      });
-    }
-
     $('.example-copy-button').click((e) => {
       if (window.confirm("#{t('.copy_confirm')}")) {
         var data = '<div contenteditable="true">' + $(e.target).parent().prev().html() + '</div>';

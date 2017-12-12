@@ -1,14 +1,13 @@
 class ContentsController < ApplicationController
-  before_action :set_protocol
-  before_action :set_content, except: [:next, :previous]
-  load_and_authorize_resource
+  load_and_authorize_resource :protocol
+  load_and_authorize_resource through: :protocol
 
   def update
     @content.update!(content_params)
     flash[:notice] = @content.saved_changes? ? t('.success') : t('.no_change')
-  rescue ActiveRecord::StaleObjectError => e
+  rescue ActiveRecord::StaleObjectError
     flash[:alert] = t('.lock_error')
-  rescue => e
+  rescue
     flash[:alert] = t('.failure')
   end
 
@@ -25,9 +24,9 @@ class ContentsController < ApplicationController
     @content = @content.versions[params[:index].to_i].reify
     @content.update!(lock_version: params[:lock_version])
     flash[:notice] = t('.success')
-  rescue ActiveRecord::StaleObjectError => e
+  rescue ActiveRecord::StaleObjectError
     flash[:alert] = t('.lock_error')
-  rescue => e
+  rescue
     flash[:alert] = t('.failure')
   end
 
@@ -42,46 +41,7 @@ class ContentsController < ApplicationController
   def show
   end
 
-  def next
-    sections = Section.sorted_menu(@protocol.template_name)
-    index = sections.index(params[:section_no])
-    if index == sections.size - 1
-      head :ok
-    else
-      index += 1
-      if sections[index] == 'compliance'
-        @content = sections[index]
-      else
-        @content = @protocol.contents.find_by(no: sections[index])
-      end
-      render :move_section
-    end
-  end
-
-  def previous
-    sections = Section.sorted_menu(@protocol.template_name)
-    index = sections.index(params[:section_no])
-    if index == 0
-      head :ok
-    else
-      index -= 1
-      if sections[index] == 'compliance' ||  sections[index] == 'title'
-        @content = sections[index]
-      else
-        @content = @protocol.contents.find_by(no: sections[index])
-      end
-      render :move_section
-    end
-  end
-
   private
-    def set_content
-      @content = Content.find(params[:id])
-    end
-
-    def set_protocol
-      @protocol = Protocol.find(params[:protocol_id])
-    end
 
     def content_params
       params.require(:content).permit(:body, :status, :lock_version)

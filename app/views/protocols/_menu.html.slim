@@ -41,14 +41,3 @@
           - contents.each do |content|
             li id="section-#{content.no.gsub('.', '-')}" class="#{'child-list' if content.no.include?('.')}"
               = render 'section_menu', content: content
-
-.row.mt-l.mb-l
-  .col-md-12
-    .pull-left
-      = button_tag '', type: :button, class: 'btn btn-default', id: 'previous-section-button' do
-        i.fa.fa-arrow-left
-        = t('.previous')
-    .pull-right
-      = button_tag '', type: :button, class: 'btn btn-default', id: 'next-section-button' do
-        = t('.next')
-        i.fa.fa-arrow-right
