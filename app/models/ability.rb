@@ -21,7 +21,7 @@ class Ability
       ((can? :create, protocol) && protocol.new_record?) || (can? :update, protocol)
     end
 
-    can [:read, :history, :compare, :next, :previous], Content do |content|
+    can [:read, :history, :compare], Content do |content|
       content.protocol.participant?(user)
     end
     can :updatable, Content do |content|

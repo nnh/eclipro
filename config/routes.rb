@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       resources :images, only: [:create, :show]
 
       member do
-        get :history, :compare, :revert, :next, :previous
+        get :history, :compare, :revert
         put :change_status
       end
 
