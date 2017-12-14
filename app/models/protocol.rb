@@ -60,10 +60,6 @@ class Protocol < ApplicationRecord
     select_sections(all_sections, Participation.find_by(protocol: self, user: user).sections)
   end
 
-  def has_reviewer?
-    participations.reviewer.any?
-  end
-
   def versionup!
     update!(version: version + 0.001)
   end

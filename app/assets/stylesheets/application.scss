@@ -37,7 +37,7 @@ html, body {
   @extend .has-error;
 }
 
-// protocol show
+// content edit
 .nav-border {
   border: 1px solid #337ab7;
 }
@@ -143,7 +143,7 @@ ins {
   overflow-y: auto;
 }
 
-.menu-body {
+.menu {
   max-height: calc(100vh - 200px);
   overflow-y: auto;
 }

@@ -1,9 +1,0 @@
-- editable = (can? :updatable, content) || (can? :reviewable, content)
-a(href="#section-content" data-toggle="tab" data-section-no="#{content.no}"
-  data-id="#{content.id}" class="section-link #{'uneditable' unless editable}")
-  = "#{content.no unless content.no == '0'} #{content.title}"
-  .pull-right id="section-#{content.no.gsub('.', '-')}-icon"
-    i.fa class="fa-#{content.status_icon}"
-  .pull-right id="section-#{content.no.gsub('.', '-')}-comment-icon"
-    - if content.comments.count > 0
-      i.fa.fa-commenting.mr-s

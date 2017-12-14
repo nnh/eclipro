@@ -9,28 +9,18 @@ en:
       principal_investigator: Principal Investigator
       status: Status
       version: Version
+      admin: Admin
       export_pdf: Export(.pdf)
       export_docx: Export(.docx)
       clone: Clone
+      reinstate: Reinstate
+      reinstate_text: Do you want to reinstate this protocol?
     new:
       title: New protocol
       back: Back
     edit:
       title: Edit protocol
-      show: Show
       back: Back
-    show:
-      protocol: Protocol
-      editor: Editor
-      admin: Admin
-      edit_title: Edit protocol
-      edit: Edit
-      back: Back
-      modal_title: No Reviewers Assigned
-      modal_text: You have not assigned any reviewers to this section. Would you like to do this now?
-      add: Add Reviewers
-      cancel: Cancel
-      copy_confirm: The example text will replace all the current text in editor, do you wish to continue?
     form:
       error_message:
         one: '%{count} error prohibited this protocol from being saved.'
@@ -164,29 +154,11 @@ en:
         add_user: Add User
       team_member:
         delete: Delete
-    menu:
-      example: Example
-      instructions: Instructions
-      sections: Sections
-      title_page: Title page
-      compliance: Statement of Compliance
-      copy: Copy to Editor
-    editor:
-      editor: Editor
-      section_title: Title page (Read only)
-      protocol_number: Protocol Number
-      nct_number: National Clinical Trial (NCT) Identified Number
-      principal_investigator: Principal Investigator
-      sponsors: IND Sponsor
-      funded_by: Funded by
-      draft_number: Draft number
-      compliance: Statement of Compliance (Read only)
     create:
       success: Protocol was successfully created.
     update:
       success: Protocol was successfully updated.
       no_change: There is no change in protocol.
-      failure: Protocol update failed.
       lock_error: Attempted to update a stale object. Please try again after reloading.
     destroy:
       success: Protocol was successfully destroyed.

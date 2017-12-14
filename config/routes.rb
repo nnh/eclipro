@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # resources :sections
-  resources :protocols do
+  resources :protocols, except: :show do
     resources :contents, only: [:show, :update] do
       resources :images, only: [:create, :show]
 

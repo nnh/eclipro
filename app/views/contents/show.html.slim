@@ -1,0 +1,31 @@
+.col-md-12
+  h3 = "#{t('.protocol')}: #{@protocol.title}"
+
+.row
+  .col-md-4
+    = render 'menu', protocol: @protocol, contents: @contents,
+                     example: @example, instructions: @instructions, no: @content.no
+  .col-md-8
+    = render 'editor', protocol: @protocol, content: @content
+
+javascript:
+  $(function() {
+    $('.section-link').click(function(e) {
+      if ($(e.target).data('link') != '#{protocol_content_path(params[:protocol_id], params[:id])}' ) {
+        window.location = $(e.target).data('link');
+      }
+    });
+
+    $('.to-under-review').click(function(e) {
+      if ('#{!@content.has_reviewer?}' == 'true') {
+        window.alert("#{t('.no_reviewer')}");
+      }
+    });
+
+    $('.example-copy-button').click((e) => {
+      if (window.confirm("#{t('.copy_confirm')}")) {
+        var data = '<div contenteditable="true">' + $(e.target).parent().prev().html() + '</div>';
+        tinymce.get('form-tinymce').setContent(data);
+      }
+    })
+  });

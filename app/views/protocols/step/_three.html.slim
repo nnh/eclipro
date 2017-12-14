@@ -26,7 +26,7 @@ table.table.mt-m
                sections: reviewer.sections, index: index, protocol: protocol, id: reviewer.id
       - index += 1
 
-.form-group.text-right
+.pull-right
    = button_tag t('.prev'), type: :button, class: 'btn btn-default step-button', data: { move: 2 }
    = render 'protocols/step/step_buttons', protocol: protocol, f: f
 

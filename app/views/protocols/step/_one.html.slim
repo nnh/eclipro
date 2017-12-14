@@ -81,6 +81,6 @@ h4.mt-l = t('.step')
     = f.radio_button :has_ind, 2, checked: protocol.has_ind == 2
     = t('.no')
 
-.form-group.text-right
+.pull-right
   = button_tag t('.next'), type: :button, class: 'btn btn-default step-button', data: { move: '2' }
   = render 'protocols/step/step_buttons', protocol: protocol, f: f
