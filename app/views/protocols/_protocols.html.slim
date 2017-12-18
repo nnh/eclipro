@@ -12,7 +12,7 @@ table.table
 
   tbody
     - @protocols.each do |protocol|
-      tr.clickable-tr data-link="#{protocol_content_path(protocol, protocol.contents.first)}"
+      tr.clickable-tr data-link="#{protocol_content_path(protocol, protocol.contents.first)}#sections"
         td = protocol.title
         td = protocol.my_role(current_user)
         td = protocol.participations.principal_investigator.first.user.name

@@ -1,10 +1,10 @@
 ul.nav.nav-pills
   li.active.pull-right
-    a href="#sections" data-toggle="tab" class="nav-border" = t('.sections')
-  li class="pull-right #{'disabled' unless instructions.present?}"
-    a href="#instructions" data-toggle="tab" class="nav-border" = t('.instructions')
-  li class="pull-right #{'disabled' unless example.present?}"
-    a href="#example" data-toggle="tab" class="nav-border" = t('.example')
+    a href="#sections" class="nav-border" = t('.sections')
+  li class="tab-instructions pull-right #{'disabled' unless instructions.present?}"
+    a href="#instructions" class="nav-border" = t('.instructions')
+  li class="tab-example pull-right #{'disabled' unless example.present?}"
+    a href="#example" class="nav-border" = t('.example')
 
 .tab-content.menu.mt-m
   - if example.present?
@@ -18,12 +18,12 @@ ul.nav.nav-pills
   .tab-pane.active.menu-body#sections
     ul.nav.nav-pills.nav-stacked
       li
-        a.uneditable href="#section-title-page" data-toggle="tab" = t('.title_page')
+        a.uneditable.section-common href="#section-title-page" = t('.title_page')
       - if content = contents.find { |s| s.no == '0' }
         li class="#{'active' if content.no == no }"
           = render 'section_list', content: content
       li
-        a.uneditable href="#section-compliance-content" data-toggle="tab" = t('.compliance')
+        a.uneditable.section-common href="#section-compliance-content" = t('.compliance')
       - contents = contents.reject { |s| s.no == '0' }
       - contents.each do |content|
         li class="#{'child-list' if content.no.include?('.')} #{'active' if content.no == no }"

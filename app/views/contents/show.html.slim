@@ -10,10 +10,23 @@
 
 javascript:
   $(function() {
+    var hash = window.location.hash;
+    hash && $('ul.nav a[href="' + hash + ']').tab('show');
+    $('.nav-pills a').click(function(e) {
+      $(this).tab('show');
+    });
+
     $('.section-link').click(function(e) {
-      if ($(e.target).data('link') != '#{protocol_content_path(params[:protocol_id], params[:id])}' ) {
+      if ($(e.target).data('link') != '#{protocol_content_path(params[:protocol_id], params[:id])}#sections' ) {
         window.location = $(e.target).data('link');
       }
+      if ($('#instructions').length > 0) { $('.tab-instructions').removeClass('disabled'); }
+      if ($('#example').length > 0) { $('.tab-example').removeClass('disabled'); }
+    });
+
+    $('.section-common').click(function(e) {
+      $('.tab-instructions').addClass('disabled');
+      $('.tab-example').addClass('disabled');
     });
 
     $('.to-under-review').click(function(e) {

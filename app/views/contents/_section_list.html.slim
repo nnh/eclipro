@@ -1,7 +1,7 @@
 - editable = (can? :updatable, content) || (can? :reviewable, content)
 
-a(href="#section-content" data-link="#{protocol_content_path(content.protocol, content)}"
-  class="section-link #{'uneditable' unless editable}" data-toggle="tab")
+a(href="#section-content" data-link="#{protocol_content_path(content.protocol, content)}#sections"
+  class="section-link #{'uneditable' unless editable}")
   = "#{content.no unless content.no == '0'} #{content.title}"
 
   - if content.editable?

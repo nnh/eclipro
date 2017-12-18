@@ -314,11 +314,6 @@ GEM
     tilt (2.0.8)
     tinymce-rails (4.6.6)
       railties (>= 3.1.1)
-    toastr-rails (1.0.3)
-      railties (>= 3.1.0)
-    turbolinks (5.0.1)
-      turbolinks-source (~> 5)
-    turbolinks-source (5.0.3)
     tzinfo (1.2.4)
       thread_safe (~> 0.1)
     uglifier (3.2.0)
@@ -388,8 +383,6 @@ DEPENDENCIES
   spring-watcher-listen
   tinymce-rails (= 4.6.6)
   tinymce-rails-imageupload!
-  toastr-rails
-  turbolinks
   tzinfo-data
   uglifier
   web-console
