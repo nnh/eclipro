@@ -101,7 +101,7 @@ class ProtocolsController < ApplicationController
                  font_size: 9
                },
                viewport_size: '1280x1024',
-               show_as_html: params[:debug].present? && Rails.env.development?
+               show_as_html: params[:debug].present?
       end
 
       format.docx do |format|
