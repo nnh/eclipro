@@ -15,7 +15,7 @@
                        class: 'form-control', include_blank: true
         .form-group
           = label_tag 'add_role', t('.role_label'), class: 'control-label'
-          - roles = Protocol.roles.map { |key, _value| [t("activerecord.enum.protocol.role.#{key}"), key] }
+          - roles = Participation.team_roles.map { |key, _value| [t("activerecord.enum.participation.role.#{key}"), key] }
           = select_tag 'add_role', options_for_select(roles), class: 'form-control', include_blank: true
         .form-group#add-sections
           - sections.each do |section|
