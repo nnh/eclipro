@@ -6,16 +6,21 @@ describe Protocol do
   let(:reviewer) { create(:user) }
   let(:pi) { create(:user) }
   let(:other) { create(:user) }
-  let(:protocol) { create(:protocol, principal_investigator: pi, co_authors: [co],
-                          authors: [author], reviewers: [reviewer]) }
+
+  let(:protocol) { create(:protocol) }
   let(:protocol2) { create(:protocol) }
+
+  let!(:participation0) { create(:principal_investigator, protocol: protocol, user: pi) }
+  let!(:participation1) { create(:co_author, protocol: protocol, user: co) }
+  let!(:participation2) { create(:author, protocol: protocol, user: author) }
+  let!(:participation3) { create(:reviewer, protocol: protocol, user: reviewer) }
 
   describe 'role' do
     context 'get current_user role' do
-      it { expect(protocol.my_role(co)).to eq(I18n.t('activerecord.enum.protocol.role.co_author')) }
-      it { expect(protocol.my_role(author)).to eq(I18n.t('activerecord.enum.protocol.role.author')) }
-      it { expect(protocol.my_role(reviewer)).to eq(I18n.t('activerecord.enum.protocol.role.reviewer')) }
-      it { expect(protocol.my_role(pi)).to eq(I18n.t('activerecord.attributes.protocol.principal_investigator')) }
+      it { expect(protocol.my_role(co)).to eq(I18n.t('activerecord.enum.participation.role.co_author')) }
+      it { expect(protocol.my_role(author)).to eq(I18n.t('activerecord.enum.participation.role.author')) }
+      it { expect(protocol.my_role(reviewer)).to eq(I18n.t('activerecord.enum.participation.role.reviewer')) }
+      it { expect(protocol.my_role(pi)).to eq(I18n.t('activerecord.enum.participation.role.principal_investigator')) }
     end
 
     context 'judgment user role' do
