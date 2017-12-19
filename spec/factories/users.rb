@@ -7,5 +7,6 @@ FactoryGirl.define do
     password_confirmation 'password'
 
     name { Faker::Name.name }
+    locale 'en'
   end
 end

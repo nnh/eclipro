@@ -12,11 +12,11 @@ feature 'Header:' do
   end
 
   context 'Before sign in,' do
-    scenario 'user can see "sign in" button and move to sign in page' do
+    scenario 'user can see "Sign in" button and move to sign in page' do
       visit root_path
-      expect(page).to have_content(I18n.t('layouts.application.sign_in'))
+      expect(page).to have_content('Sign in')
 
-      click_on I18n.t('layouts.application.sign_in')
+      click_on 'Sign in'
       expect(current_path).to eq(new_user_session_path)
     end
   end
@@ -30,31 +30,35 @@ feature 'Header:' do
     end
 
     scenario 'user can see headers' do
-      expect(page).to have_content(I18n.t('layouts.application.view_protocols'))
-      expect(page).to have_content(I18n.t('layouts.application.create_new_protocols'))
+      expect(page).to have_content('View protocols')
+      expect(page).to have_content('Create new protocols')
+      expect(page).to have_content('Help')
       expect(page).to have_content(user.name)
       expect(page).to have_content(user.email)
-      expect(page).to have_content(I18n.t('layouts.application.edit'))
-      expect(page).to have_content(I18n.t('layouts.application.sign_out'))
-      expect(page).to have_content(I18n.t('layouts.application.language'))
-      expect(page).to have_content(I18n.t('layouts.application.japanese'))
-      expect(page).to have_content(I18n.t('layouts.application.english'))
+      expect(page).to have_content('Edit')
+      expect(page).to have_content('Sign out')
+      expect(page).to have_content('Language')
+      expect(page).to have_content('日本語')
+      expect(page).to have_content('English')
     end
 
     scenario 'user can move to user edit page' do
-      click_on I18n.t('layouts.application.edit')
+      click_on "#{user.name}(#{user.email})"
+      click_on 'Edit'
       expect(current_path).to match(edit_user_registration_path)
     end
 
     scenario 'user can sign out' do
-      click_on I18n.t('layouts.application.sign_out')
+      click_on "#{user.name}(#{user.email})"
+      click_on 'Sign out'
       expect(current_path).to eq(root_path)
-      expect(page).not_to have_content(I18n.t('layouts.application.view_protocols'))
+      expect(page).not_to have_content('View protocols')
     end
 
     scenario 'user can change language' do
-      click_on I18n.t('layouts.application.japanese')
-      expect(page).to have_content(I18n.t('layouts.application.view_protocols', locale: :ja))
+      click_on 'Language'
+      click_on '日本語'
+      expect(page).to have_content('プロトコルを見る')
     end
   end
 end

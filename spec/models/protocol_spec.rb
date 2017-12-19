@@ -17,10 +17,10 @@ describe Protocol do
 
   describe 'role' do
     context 'get current_user role' do
-      it { expect(protocol.my_role(co)).to eq(I18n.t('activerecord.enum.participation.role.co_author')) }
-      it { expect(protocol.my_role(author)).to eq(I18n.t('activerecord.enum.participation.role.author')) }
-      it { expect(protocol.my_role(reviewer)).to eq(I18n.t('activerecord.enum.participation.role.reviewer')) }
-      it { expect(protocol.my_role(pi)).to eq(I18n.t('activerecord.enum.participation.role.principal_investigator')) }
+      it { expect(protocol.my_role(co)).to eq('CoAuthor') }
+      it { expect(protocol.my_role(author)).to eq('Author') }
+      it { expect(protocol.my_role(reviewer)).to eq('Reviewer') }
+      it { expect(protocol.my_role(pi)).to eq('Principal investigator') }
     end
 
     context 'judgment user role' do
