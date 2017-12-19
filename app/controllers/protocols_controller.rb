@@ -2,11 +2,9 @@ class ProtocolsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @protocols = Protocol.includes(:participations)
     if params[:protocol_name_filter].present?
       @protocols = @protocols.where('title like ?', "%#{params[:protocol_name_filter]}%")
     end
-    @protocols = @protocols.select { |protocol| can? :read, protocol }
   end
 
   def new
@@ -27,7 +25,7 @@ class ProtocolsController < ApplicationController
     end
 
     if @protocol.save
-      redirect_to protocol_content_path(@protocol, @protocol.contents.first), notice: t('.success')
+      redirect_to protocol_content_path(@protocol, @protocol.contents.first, anchor: 'sections'), notice: t('.success')
     else
       render :new
     end

@@ -5,17 +5,15 @@ class Ability
     user ||= User.new
 
     can :create, Protocol
-    can [:read, :clone, :export], Protocol do |protocol|
-      protocol.participant?(user)
-    end
+    can [:read, :clone, :export], Protocol, participations: { user_id: user.id }
     can [:destroy, :build_team_form, :add_team, :admin], Protocol do |protocol|
       protocol.principal_investigator?(user) || protocol.co_author?(user)
     end
     can [:update, :finalize], Protocol do |protocol|
-      (protocol.principal_investigator?(user) || protocol.co_author?(user)) && protocol.status != 'finalized'
+      (protocol.principal_investigator?(user) || protocol.co_author?(user)) && !protocol.finalized?
     end
     can :reinstate, Protocol do |protocol|
-      (protocol.principal_investigator?(user) || protocol.co_author?(user)) && protocol.status == 'finalized'
+      (protocol.principal_investigator?(user) || protocol.co_author?(user)) && protocol.finalized?
     end
     can :create_or_update, Protocol do |protocol|
       ((can? :create, protocol) && protocol.new_record?) || (can? :update, protocol)
@@ -25,18 +23,32 @@ class Ability
       content.protocol.participant?(user)
     end
     can :updatable, Content do |content|
-      content.protocol.updatable_sections(user).include?(content.no) && !content.protocol.finalized?
+      if content.protocol.finalized?
+        false
+      else
+        content.protocol.updatable_sections(user).include?(content.no)
+      end
     end
     can :reviewable, Content do |content|
-      content.protocol.reviewable_sections(user).include?(content.no) && !content.protocol.finalized?
+      if content.protocol.finalized?
+        false
+      else
+        content.protocol.reviewable_sections(user).include?(content.no)
+      end
     end
     can [:update, :revert], Content do |content|
-      content.protocol.updatable_sections(user).include?(content.no) &&
-        (content.status_new? || content.in_progress?) &&
-        !content.protocol.finalized?
+      if content.protocol.finalized? || (!content.status_new? && !content.in_progress?)
+        false
+      else
+        content.protocol.updatable_sections(user).include?(content.no)
+      end
     end
     can :review, Content do |content|
-      content.protocol.reviewable_sections(user).include?(content.no) && content.under_review? && !content.protocol.finalized?
+      if content.protocol.finalized? || !content.under_review?
+        false
+      else
+        content.protocol.reviewable_sections(user).include?(content.no)
+      end
     end
     can :change_status, Content do |content|
       if content.protocol.finalized?
@@ -50,9 +62,11 @@ class Ability
       end
     end
     can :rework, Content do |content|
-      (content.under_review? || content.final?) &&
-        ((can? :updatable, content) || (can? :reviewable, content)) &&
-        !content.protocol.finalized?
+      if content.protocol.finalized? || (!content.under_review? && !content.final?)
+        false
+      else
+        (can? :updatable, content) || (can? :reviewable, content)
+      end
     end
 
     can :manage, Comment do |comment|
@@ -60,7 +74,7 @@ class Ability
     end
 
     can :create, Image do |image|
-     can? :update, image.content
+      can? :update, image.content
     end
     can :read, Image do |image|
       can? :read, image.content
