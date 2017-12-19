@@ -14,7 +14,7 @@ table.table
       tr.clickable-tr data-link="#{protocol_path(protocol)}"
         td = protocol.title
         td = protocol.my_role(current_user)
-        td = protocol.principal_investigator&.name
+        td = protocol.participations.principal_investigator.first.user.name
         td
           = t("activerecord.enum.protocol.status.#{protocol.status}")
           - if protocol.status == 'finalized'

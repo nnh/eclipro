@@ -3,7 +3,7 @@ class ProtocolsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @protocols = Protocol.includes(:principal_investigator)
+    @protocols = Protocol.includes(:participations)
     if params[:protocol_name_filter].present?
       @protocols = @protocols.where('title like ?', "%#{params[:protocol_name_filter]}%")
     end
@@ -25,7 +25,7 @@ class ProtocolsController < ApplicationController
 
   def create
     @protocol = Protocol.new(protocol_params)
-    @protocol.principal_investigator = current_user
+    @protocol.participations.build(user: current_user, role: 'principal_investigator')
 
     if @protocol.contents.empty?
       sections = Section.reject_specified_sections(@protocol.template_name).sort_by { |c| c.no.to_f }
@@ -70,17 +70,17 @@ class ProtocolsController < ApplicationController
     @index = params[:index]
 
     if ['co_author', 'author_all', 'reviewer_all'].include?(@role)
-      @sections = Section.parent_items(params[:template_name]).pluck(:no).join(',')
+      @sections = Section.parent_items(params[:template_name]).pluck(:no)
     else
-      @sections = params[:sections].join(',')
+      @sections = params[:sections].map(&:to_i)
     end
   end
 
   def clone
     original = Protocol.find(params[:id])
-    @protocol = original.deep_clone(include: [:co_author_users, :author_users, :reviewer_users, :contents],
-                                    expect: [{ co_author_users: [:id] }, { author_users: [:id] },
-                                             { reviewer_users: [:id] }, { contents: [:id, :status, :lock_version] }])
+    @protocol = original.deep_clone(include: [:participations, :contents],
+                                    expect: [{ participations: [:id] },
+                                             { contents: %i[id status lock_version] }])
     @protocol.title = "#{original.title} - (COPY)"
     @protocol.short_title = "#{original.short_title} - (COPY)" if original.short_title.present?
   end
@@ -152,9 +152,7 @@ class ProtocolsController < ApplicationController
         :compliance,
         sponsors: [],
         study_agent: [],
-        co_author_users_attributes: [:id, :protocol_id, :user_id, :_destroy],
-        author_users_attributes: [:id, :protocol_id, :user_id, :sections, :_destroy],
-        reviewer_users_attributes: [:id, :protocol_id, :user_id, :sections, :_destroy]
+        participations_attributes: [:id, :protocol_id, :user_id, :role, :_destroy, sections: []]
       )
     end
 end

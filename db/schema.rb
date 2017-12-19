@@ -10,29 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171102065254) do
+ActiveRecord::Schema.define(version: 20171218070143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "author_users", force: :cascade do |t|
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "protocol_id"
-    t.text "sections"
-    t.index ["protocol_id"], name: "index_author_users_on_protocol_id"
-    t.index ["user_id"], name: "index_author_users_on_user_id"
-  end
-
-  create_table "co_author_users", force: :cascade do |t|
-    t.bigint "protocol_id"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["protocol_id"], name: "index_co_author_users_on_protocol_id"
-    t.index ["user_id"], name: "index_co_author_users_on_user_id"
-  end
 
   create_table "comments", force: :cascade do |t|
     t.bigint "user_id"
@@ -72,13 +53,15 @@ ActiveRecord::Schema.define(version: 20171102065254) do
     t.index ["content_id"], name: "index_images_on_content_id"
   end
 
-  create_table "principal_investigator_users", force: :cascade do |t|
-    t.bigint "protocol_id"
+  create_table "participations", force: :cascade do |t|
     t.bigint "user_id"
+    t.bigint "protocol_id"
+    t.integer "role", default: 0, null: false
+    t.integer "sections", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["protocol_id"], name: "index_principal_investigator_users_on_protocol_id"
-    t.index ["user_id"], name: "index_principal_investigator_users_on_user_id"
+    t.index ["protocol_id"], name: "index_participations_on_protocol_id"
+    t.index ["user_id"], name: "index_participations_on_user_id"
   end
 
   create_table "protocols", force: :cascade do |t|
@@ -100,16 +83,6 @@ ActiveRecord::Schema.define(version: 20171102065254) do
     t.integer "compliance", default: 0
     t.date "finalized_date"
     t.string "template_name", default: "General", null: false
-  end
-
-  create_table "reviewer_users", force: :cascade do |t|
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "protocol_id"
-    t.text "sections"
-    t.index ["protocol_id"], name: "index_reviewer_users_on_protocol_id"
-    t.index ["user_id"], name: "index_reviewer_users_on_user_id"
   end
 
   create_table "sections", force: :cascade do |t|
@@ -157,13 +130,7 @@ ActiveRecord::Schema.define(version: 20171102065254) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
-  add_foreign_key "author_users", "users"
-  add_foreign_key "co_author_users", "protocols"
-  add_foreign_key "co_author_users", "users"
   add_foreign_key "comments", "contents"
   add_foreign_key "comments", "users"
   add_foreign_key "contents", "protocols"
-  add_foreign_key "principal_investigator_users", "protocols"
-  add_foreign_key "principal_investigator_users", "users"
-  add_foreign_key "reviewer_users", "users"
 end

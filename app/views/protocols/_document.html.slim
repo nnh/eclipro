@@ -2,7 +2,7 @@
   h3 = @protocol.title
   p = "#{t('.protocol_number')}: #{@protocol.protocol_number}" if @protocol.protocol_number.present?
   p = "#{t('.nct_number')}: #{@protocol.nct_number}" if @protocol.nct_number.present?
-  p = "#{t('.principal_investigator')}: #{@protocol.principal_investigator.name}"
+  p = "#{t('.principal_investigator')}: #{@protocol.participations.principal_investigator.first.user.name}"
   / TODO: スポンサーの表示
   - sponsors = @protocol.sponsors
   - sponsors << @protocol.sponsor_other if @protocol.sponsor_other.present?
