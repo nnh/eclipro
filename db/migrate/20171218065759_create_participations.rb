@@ -4,7 +4,7 @@ class CreateParticipations < ActiveRecord::Migration[5.1]
       t.references :user
       t.references :protocol
       t.integer :role, null: false, default: 0
-      t.integer :sections, array: true, default: []
+      t.integer :sections, array: true, null: false, default: []
 
       t.timestamps
     end
