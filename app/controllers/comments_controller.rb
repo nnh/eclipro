@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
   end
 
   def create
+    @comment = Comment.new(comment_params)
     @comment.save
     set_root_comment
   end

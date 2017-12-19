@@ -9,7 +9,8 @@ ul.nav.nav-pills
 .tab-content.menu.mt-m
   - if example.present?
     .tab-pane.menu-body#example
-      = example.html_safe
+      div
+        = example.html_safe
       .text-right
         = button_tag t('.copy'), type: :button, class: 'btn btn-default example-copy-button'
   - if instructions.present?
