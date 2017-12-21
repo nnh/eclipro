@@ -16,13 +16,13 @@ class Protocol < ApplicationRecord
 
   def my_role(user)
     if co_author?(user)
-      I18n.t('activerecord.enum.participation.role.co_author')
+      Participation.roles_i18n['co_author']
     elsif author?(user)
-      I18n.t('activerecord.enum.participation.role.author')
+      Participation.roles_i18n['author']
     elsif reviewer?(user)
-      I18n.t('activerecord.enum.participation.role.reviewer')
+      Participation.roles_i18n['reviewer']
     elsif principal_investigator?(user)
-      I18n.t('activerecord.enum.participation.role.principal_investigator')
+      Participation.roles_i18n['principal_investigator']
     end
   end
 

@@ -60,6 +60,7 @@ describe Protocol do
     end
   end
 
+  # TODO: move to content spec
   context 'has_reviewer?' do
     it { expect(protocol.contents.first.has_reviewer?).to eq(true) }
     it { expect(protocol2.contents.first.has_reviewer?).to eq(false) }

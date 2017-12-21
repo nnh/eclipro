@@ -39,16 +39,10 @@ $(function() {
   });
 
   $('.section-link').click(function(e) {
-    if ($(e.target).data('link') != '#{protocol_content_path(params[:protocol_id], params[:id], anchor: :sections)}' ) {
-      window.location = $(e.target).data('link');
+    if ($(e.target).data('href') == '#{protocol_content_path(params[:protocol_id], params[:id], anchor: :sections)}' ) {
+      e.preventDefault();
+      e.stopPropagation();
     }
-    if ($('#instructions').length > 0) { $('.tab-instructions').removeClass('disabled'); }
-    if ($('#example').length > 0) { $('.tab-example').removeClass('disabled'); }
-  });
-
-  $('.section-common').click(function(e) {
-    $('.tab-instructions').addClass('disabled');
-    $('.tab-example').addClass('disabled');
   });
 
   $('.to-under-review').click(function(e) {

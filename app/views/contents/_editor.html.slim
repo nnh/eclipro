@@ -1,47 +1,41 @@
-.tab-content
-  .tab-pane#section-title-page
+.section-content
+  .content-has-reviewer data-has-reviewer="#{content.has_reviewer?}" data-message="#{t('.no_reviewer')}"
+  - if content.editable
+    .mb-xl
+      .pull-right#comment-button
+        = render 'comment_button', protocol: protocol, content: content
+      .pull-right
+        = link_to t('.history'), history_protocol_content_path(protocol, content),
+                  remote: true, class: 'btn btn-default'
 
-  .tab-pane#section-compliance-content
-    
-  .tab-pane.active#section-content
-    .content-has-reviewer data-has-reviewer="#{content.has_reviewer?}" data-message="#{t('.no_reviewer')}"
-    - if content.editable
-      .mb-xl
-        .pull-right#comment-button
-          = render 'comment_button', protocol: protocol, content: content
-        .pull-right
-          = link_to t('.history'), history_protocol_content_path(protocol, content),
-                    remote: true, class: 'btn btn-default'
+      h4 = "#{t('.editor')}: #{content.no unless content.no_zero?} #{content.title}"
 
-        h4 = "#{t('.editor')}: #{content.no unless content.no_zero?} #{content.title}"
+      .mt-xl
+        = form_for [protocol, content], html: { class: 'form-horizontal', role: 'form' } do |f|
+          - if content.errors.any?
+            = model_errors(content)
+          = f.hidden_field :lock_version
+          = f.text_area :body, class: 'tinymce', id: "form-tinymce"
 
-        .mt-xl
-          = form_for [protocol, content], html: { class: 'form-horizontal', role: 'form' } do |f|
-            - if content.errors.any?
-              = model_errors(content)
-            = f.hidden_field :lock_version
-            = f.text_area :body, class: 'tinymce', id: "form-tinymce"
+          - if can? :update, content
+            = link_to t('.ready_for_review'), change_status_protocol_content_path(protocol, content, 'content[status]': 'under_review'),
+                      class: 'btn btn-default mt-m pull-right to-under-review', method: :put
+            = f.submit class: 'btn btn-primary mt-m pull-right'
+          - if can? :review, content
+            = link_to t('.review_completed'), change_status_protocol_content_path(protocol, content, 'content[status]': 'final'),
+                      class: 'btn btn-default mt-m pull-right', method: :put
+          - if can? :rework, content
+            = link_to t('.rework_needed'), change_status_protocol_content_path(protocol, content, 'content[status]': 'in_progress'),
+                      class: 'btn btn-default mt-m pull-right', method: :put
 
-            - if can? :update, content
-              = link_to t('.ready_for_review'), change_status_protocol_content_path(protocol, content, 'content[status]': 'under_review'),
-                        class: 'btn btn-default mt-m pull-right to-under-review', method: :put
-              = f.submit class: 'btn btn-primary mt-m pull-right'
-            - if can? :review, content
-              = link_to t('.review_completed'), change_status_protocol_content_path(protocol, content, 'content[status]': 'final'),
-                        class: 'btn btn-default mt-m pull-right', method: :put
-            - if can? :rework, content
-              = link_to t('.rework_needed'), change_status_protocol_content_path(protocol, content, 'content[status]': 'in_progress'),
-                        class: 'btn btn-default mt-m pull-right', method: :put
+          .pull-left.mt-m
+            = "#{t('.status')}: #{content.status_i18n}"
+      .tiny-mce-params data-protocol-id="#{protocol.id}" data-content-id="#{content.id}"
 
-            .pull-left.mt-m
-              - status = t("activerecord.enum.content.status.#{content.status}")
-              = "#{t('.status')}: #{status}"
-        .tiny-mce-params data-protocol-id="#{protocol.id}" data-content-id="#{content.id}"
-
-    - else
-      h4 = "#{t('.editor')}: #{content.no}  #{content.title} #{t('.read_only')}"
-      h4 = t('.read_only_text')
-      = content.body.html_safe
+  - else
+    h4 = "#{t('.editor')}: #{content.no}  #{content.title} #{t('.read_only')}"
+    h4 = t('.read_only_text')
+    = content.body.html_safe
 
 .modal.fade#comment-modal tab-index="1" role="dialog" aria-hidden="true"
 .modal.fade#history-modal tab-index="1" role="dialog" aria-hidden="true"

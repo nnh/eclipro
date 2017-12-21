@@ -20,21 +20,22 @@ ja:
         user_id: ユーザー
         role: 役割
         sections: セクション
-    enum:
-      protocol:
-        status:
-          in_progress: 作成中
-          finalized: 正式版
-      content:
-        status:
-          status_new: 新規
-          in_progress: 作成中
-          under_review: レビュー中
-          final: 正式版
-      participation:
-        role:
-          co_author: 管理者
-          author: 著者
-          reviewer: レビューアー
-          principal_investigator: 主任研究員
-    # errors:
+    errors:
+      select_sections: を1つ以上選択してください。
+  enums:
+    protocol:
+      status:
+        in_progress: 作成中
+        finalized: 正式版
+    content:
+      status:
+        status_new: 新規
+        in_progress: 作成中
+        under_review: レビュー中
+        final: 正式版
+    participation:
+      role:
+        co_author: 管理者
+        author: 著者
+        reviewer: レビューアー
+        principal_investigator: 主任研究員

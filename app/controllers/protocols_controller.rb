@@ -17,7 +17,8 @@ class ProtocolsController < ApplicationController
   end
 
   def create
-    @protocol.participations.build(user: current_user, role: 'principal_investigator')
+    @protocol.participations.build(user: current_user, role: 'principal_investigator',
+                                   sections: Section.parent_items(@protocol.template_name).pluck(:no))
 
     if @protocol.contents.empty?
       sections = Section.reject_specified_sections(@protocol.template_name).sort_by { |c| c.no.to_f }

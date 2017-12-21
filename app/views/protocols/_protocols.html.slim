@@ -17,8 +17,8 @@ table.table
         td = protocol.my_role(current_user)
         td = protocol.participations.principal_investigator.first.user.name
         td
-          = t("activerecord.enum.protocol.status.#{protocol.status}")
-          - if protocol.status == 'finalized'
+          = protocol.status_i18n
+          - if protocol.finalized?
             = " - #{protocol.finalized_date}"
         td = sprintf('%.3f', protocol.version)
         td

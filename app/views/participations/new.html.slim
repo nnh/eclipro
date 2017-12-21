@@ -11,10 +11,9 @@ h3 = t('.title')
 
   .form-group
     = f.label :role, class: 'control-label'
-    = f.select :role, Participation.roles.reject { |role| role == 'principal_investigator' }.map { |key, _value| [key, key] },
-                      {}, class: 'form-control'
+    = f.select :role, Participation.roles_i18n.slice(*Participation.addable_roles).invert, {}, class: 'form-control'
 
-  .form-group
+  .form-group.participation-sections
     = f.label :sections
     = button_tag t('.all_sections'), class: 'btn btn-default check-all-sections ml-s', type: :button
     - sections = Section.parent_items(@protocol.template_name).pluck(:no, :title)
@@ -33,5 +32,14 @@ javascript:
   $(function() {
     $('.check-all-sections').click(function() {
       $('input[type=checkbox]').prop('checked', true);
+    });
+
+    $('#participation_role').change(function() {
+      if ($('#participation_role').val() == $('#participation_role').children().last().val()) {
+        $('input[type=checkbox]').prop('checked', true);
+        $('.participation-sections').hide();
+      } else {
+        $('.participation-sections').show();
+      }
     });
   });

@@ -20,21 +20,22 @@ en:
         user_id: User
         role: Role
         sections: Sections
-    enum:
-      protocol:
-        status:
-          in_progress: In Progress
-          finalized: Finalized
-      content:
-        status:
-          status_new: New
-          in_progress: In Progress
-          under_review: Under Review
-          final: Final
-      participation:
-        role:
-          co_author: CoAuthor
-          author: Author
-          reviewer: Reviewer
-          principal_investigator: Principal investigator
-    # errors:
+    errors:
+      select_sections: please select at least one.
+  enums:
+    protocol:
+      status:
+        in_progress: In Progress
+        finalized: Finalized
+    content:
+      status:
+        status_new: New
+        in_progress: In Progress
+        under_review: Under Review
+        final: Final
+    participation:
+      role:
+        co_author: CoAuthor
+        author: Author
+        reviewer: Reviewer
+        principal_investigator: Principal investigator
