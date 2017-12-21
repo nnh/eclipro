@@ -22,12 +22,7 @@ table.table
             = " - #{protocol.finalized_date}"
         td = sprintf('%.3f', protocol.version)
         td
-          - if can? :admin, protocol
-            - if protocol.finalized?
-              = link_to t('.reinstate'), reinstate_protocol_path(protocol), class: 'btn btn-default',
-                                         data: { confirm: t('.reinstate_text') }
-            - else
-              = link_to t('.admin'), edit_protocol_path(protocol), class: 'btn btn-default'
+          = link_to t('.show'), protocol_path(protocol), class: 'btn btn-default'
         td
           - if protocol.finalized?
             = link_to t('.export_pdf'), export_protocol_path(protocol, format: :pdf), class: 'btn btn-default', target: '_blank'

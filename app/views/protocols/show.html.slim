@@ -1,0 +1,92 @@
+.col-md-12
+  h3 = t('.title')
+
+  table.table.table-striped.mt-xl
+    tbody
+      tr
+        td.col-md-3
+          b = t('.protocol_title')
+        td.col-md-9 = @protocol.title
+      tr
+        td.col-md-3
+          b = t('.protocol_number')
+        td.col-md-9 =  @protocol.protocol_number
+      tr
+        td.col-md-3
+          b = t('.nct_number')
+        td.col-md-9 = @protocol.nct_number
+      tr
+        td.col-md-3
+          b = t('.principal_investigator')
+        td.col-md-9 = @protocol.participations.principal_investigator.first.user.name
+      tr
+        td.col-md-3
+          b = t('.sponsors')
+        td.col-md-9
+          / TODO: スポンサーの表示方法
+          - sponsors = @protocol.sponsors
+          - sponsors << @protocol.sponsor_other if @protocol.sponsor_other.present?
+          = sponsors.join(',') if sponsors.present?
+      tr
+        td.col-md-3
+          b = t('.funded_by')
+        td.col-md-9 = @protocol.entity_funding_name
+      tr
+        td.col-md-3
+          b = t('.draft_number')
+        td.col-md-9 = sprintf('%.3f', @protocol.version)
+      tr
+        td.col-md-3
+          b = t('.updated_at')
+        td.col-md-9 = @protocol.updated_at
+      tr
+        td.col-md-12 colspan="2"
+          b = t('.compliance')
+          .mt-m
+            - if @protocol.compliance == 1
+              = t('protocols.form.radio_one').html_safe
+            - elsif @protocol.compliance == 2
+              = t('protocols.form.radio_two').html_safe
+            - else
+              = t('.no_select')
+
+  - if can? :admin, @protocol
+    = link_to t('.edit'), edit_protocol_path(@protocol), class: 'btn btn-default'
+    = link_to t('.export_pdf'), export_protocol_path(@protocol, format: :pdf), class: 'btn btn-default ml-s', target: '_blank'
+    = link_to t('.export_docx'), export_protocol_path(@protocol, format: :docx), class: 'btn btn-default ml-s', target: '_blank'
+    - unless @protocol.finalized?
+      = link_to t('.finalize'), finalize_protocol_path(@protocol), class: 'btn btn-default ml-s',
+                                data: { confirm: t('.finalize_text') }
+    - if @protocol.finalized?
+      = link_to t('.reinstate'), reinstate_protocol_path(@protocol), class: 'btn btn-default ml-s',
+                                 data: { confirm: t('.reinstate_text') }
+
+  hr
+
+  h4.mt-xl = t('.member')
+
+  table.table.table-striped.mt-xl
+    thead
+      tr
+        td = t('.name')
+        td = t('.role')
+        td = t('.sections')
+        - if can? :admin, @protocol
+          td
+    tbody
+      - all_sections = Section.parent_items(@protocol.template_name).pluck(:no).join(', ')
+      - @protocol.participations.includes(:user).each do |participation|
+        tr
+          td = participation.user.name
+          td = participation.role
+          td
+            - if participation.co_author? || participation.principal_investigator?
+              = all_sections
+            - else
+              = participation.sections.join(', ')
+          - if can? :admin, @protocol
+            td
+              = link_to t('.remove'), '#', class: 'btn btn-danger'
+
+  - if can? :admin, @protocol
+    = link_to t('.add_member'), '#', class: 'btn btn-default'

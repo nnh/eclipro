@@ -1,23 +1,8 @@
 .tab-content
   .tab-pane#section-title-page
-    h4 = "#{t('.editor')}: #{t('.section_title')}"
-    p = protocol.title
-    p = "#{t('.protocol_number')}: #{protocol.protocol_number}" if protocol.protocol_number.present?
-    p = "#{t('.nct_number')}: #{protocol.nct_number}" if protocol.nct_number.present?
-    p = "#{t('.principal_investigator')}: #{protocol.participations.principal_investigator.first.user.name}"
-    / TODO: スポンサーの表示
-    - sponsors = protocol.sponsors
-    - sponsors << protocol.sponsor_other if protocol.sponsor_other.present?
-    p = "#{t('.sponsors')}: #{sponsors.join(',')}" if sponsors.present?
-    p = "#{t('.funded_by')}: #{protocol.entity_funding_name}" if protocol.entity_funding_name.present?
-    p = "#{t('.draft_number')}: #{sprintf('%.3f', protocol.version)}"
-    p = protocol.updated_at
+
   .tab-pane#section-compliance-content
-    h4 = "#{t('.editor')}: #{t('.compliance')}"
-    - if protocol.compliance == 1
-      = t('protocols.step.two.radio_one').html_safe
-    - if protocol.compliance == 2
-      = t('protocols.step.two.radio_two').html_safe
+    
   .tab-pane.active#section-content
     .content-has-reviewer data-has-reviewer="#{content.has_reviewer?}" data-message="#{t('.no_reviewer')}"
     - if content.editable

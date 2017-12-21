@@ -3,20 +3,99 @@
     = model_errors(@protocol)
   = f.hidden_field :lock_version
 
-  div#step-1
-    = render 'protocols/step/one', f: f, protocol: @protocol
+  .form-group
+    = f.label :template_name, t('.template_name'), class: 'control-label'
+    - if @protocol.new_record? && action_name != 'clone'
+      = f.select :template_name, Section.template_names.map { |name| [name, name] },
+                                 { selected: nil, include_blank: true }, { class: 'form-control' }
+    - else
+      br
+      = @protocol.template_name
 
-  div#step-2
-    = render 'protocols/step/two', f: f, protocol: @protocol
+  .form-group
+    = f.label :title, t('.one'), class: 'control-label'
+    = f.text_field :title, class: 'form-control'
 
-  div#step-3
-    = render 'protocols/step/three', f: f, protocol: @protocol
+  .form-group
+    = f.label :short_title, t('.two'), class: 'control-label'
+    = f.text_field :short_title, class: 'form-control'
+
+  .form-group
+    = f.label :protocol_number, t('.three'), class: 'control-label'
+    = f.text_field :protocol_number, class: 'form-control'
+
+  .form-group
+    = f.label :nct_number, t('.four'), class: 'control-label'
+    = f.text_field :nct_number, class: 'form-control'
+
+  .form-group
+    - sponsors = t('.sponsors')
+    = f.label :sponsors, t('.five'), class: 'control-label'
+    = f.select :sponsors, sponsors.map.with_index { |s, i| [s, s] }, { selected: @protocol.sponsors, include_hidden: false },
+                          { multiple: true, class: 'form-control', rows: 5}
+
+  .form-group#sponsor-other-form
+    = f.label :sponsor_other, t('.five_a'), class: 'control-label'
+    = f.text_field :sponsor_other, class: 'form-control'
+
+  .form-group
+    = f.label :entity_funding_name, t('.six'), class: 'control-label'
+    = f.text_field :entity_funding_name, class: 'form-control'
+
+  .form-group
+    = f.label :study_agent, t('.seven'), class: 'control-label'
+    br
+    label.checkbox-inline.mr-m.checkbox-form
+      = f.check_box :study_agent, { multiple: true, checked: @protocol.study_agent&.include?('1') }, 1
+      = t('.drug')
+    label.checkbox-inline.mr-m.checkbox-form
+      = f.check_box :study_agent, { multiple: true, checked: @protocol.study_agent&.include?('2') }, 2
+      = t('.biologic')
+    label.checkbox-inline.mr-m.checkbox-form
+      = f.check_box :study_agent, { multiple: true, checked: @protocol.study_agent&.include?('3') }, 3
+      = t('.device')
+
+  .form-group#has-ide-form
+    = f.label :has_ide, t('.has_ide'), class: 'control-label'
+    br
+    label.radio-inline.mr-m
+      = f.radio_button :has_ide, 1, checked: @protocol.has_ide == 1
+      = t('.yes')
+    label.radio-inline.mr-m
+      = f.radio_button :has_ide, 2, checked: @protocol.has_ide == 2
+      = t('.no')
+
+  .form-group#has-ind-form
+    = f.label :has_ind, t('.has_ind'), class: 'control-label'
+    br
+    label.radio-inline.mr-m
+      = f.radio_button :has_ind, 1, checked: @protocol.has_ind == 1
+      = t('.yes')
+    label.radio-inline.mr-m
+      = f.radio_button :has_ind, 2, checked: @protocol.has_ind == 2
+      = t('.no')
+
+  .form-group
+    = f.label :compliance, t('.compliance').html_safe, class: 'control-label'
+    .compliance-box.mt-m
+      = f.radio_button :compliance, 1, checked: @protocol.compliance == 1
+      br
+      = t('.radio_one').html_safe
+    .mt-m.text-center = t('.or')
+    .compliance-box.mt-m
+      = f.radio_button :compliance, 2, checked: @protocol.compliance == 2
+      br
+      = t('.radio_two').html_safe
+
+  .form-group
+    = f.submit class: 'btn btn-primary'
 
 javascript:
   $(function() {
-    $('#step-2, #step-3').hide();
-    $('#protocol_title_error, #protocol_template_name_error').hide();
-    $('#sponsor-other-form').hide();
+    if ($('#protocol_sponsor_other').val().length == 0) {
+      $('#sponsor-other-form').hide();
+    }
+
     if (!$('#protocol_study_agent_1').prop('checked') && !$('#protocol_study_agent_2').prop('checked')) {
       $('#has-ind-form').hide();
     }
@@ -24,17 +103,8 @@ javascript:
       $('#has-ide-form').hide();
     }
 
-    $('.step-button').click(function(e) {
-      var has_error = checkError(e);
-      if (!has_error) {
-        $('#step-1, #step-2, #step-3').hide();
-        $('#step-' + $(e.target).data('move')).show();
-        $('html, body').animate({ scrollTop: 60 });
-      }
-    });
-
     $('#protocol_sponsors').change(function() {
-      if ($('#protocol_sponsors').children(':selected').last().text() === "#{I18n.t('protocols.step.one.sponsors').last()}") {
+      if ($('#protocol_sponsors').children(':selected').last().text() === $('#protocol_sponsors').children().last().val()) {
         $('#sponsor-other-form').show();
       } else {
         $('#sponsor-other-form').hide();
@@ -52,59 +122,5 @@ javascript:
       } else {
         $('#has-ide-form').hide();
       }
-    });
-
-    $('#step_one_submit_button').click(function(e) {
-      checkError(e);
-    });
-
-    function checkError(e) {
-      var has_error = false;
-      var error_fields = $('.error-field');
-      if (error_fields.length > 0) {
-        var title = $('#protocol_title').val();
-        var template_name = $('#protocol_template_name').val();
-        for (var i = 0; i < error_fields.length; i++) {
-          $(error_fields[i]).replaceWith($(error_fields[i]).html());
-        }
-        $('#protocol_title').val(title);
-        $('#protocol_template_name').val(template_name);
-        $('#protocol_template_name_error, #protocol_title_error').hide();
-      }
-      if ($('#protocol_title').val().length === 0) {
-        showError(e, 'protocol_title');
-        has_error = true;
-      }
-      if ('#{@protocol.new_record? && action_name != "clone"}' == 'true' && $('#protocol_template_name').val().length === 0) {
-        showError(e, 'protocol_template_name');
-        has_error = true;
-      }
-      return has_error;
-    }
-
-    function showError(e, target) {
-      e.preventDefault();
-      var div = '<div class="field_with_errors error-field"></div>';
-      $('label[for=' + target + ']').wrap(div);
-      $('#' + target).wrap(div);
-      $('#' + target + '_error').show();
-      $('html, body').animate({ scrollTop: $('label[for=' + target + ']').offset().top });
-    }
-
-    $(document).on("click", ".add-destroy", function() {
-      $(this).prev().val(true);
-      $(this).parent().parent().hide();
-    });
-
-    $('#build-team-button').click(function() {
-      var template_name = $('#protocol_template_name').val() || '#{@protocol.template_name}';
-      $.ajax({
-        dataType: 'script',
-        data: {
-          protocol_id: '#{@protocol&.id}',
-          template_name: template_name
-        },
-        url: '#{build_team_form_protocols_path}'
-      });
     });
   });
