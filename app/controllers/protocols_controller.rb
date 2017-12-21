@@ -47,26 +47,6 @@ class ProtocolsController < ApplicationController
     redirect_to protocols_path, notice: t('.success')
   end
 
-  def build_team_form
-    @protocol = Protocol.find(params[:protocol_id]) if params[:protocol_id].present?
-    @users = User.all.reject { |user| user == current_user }
-    @template_name = params[:template_name]
-    @sections = Section.parent_items(@template_name)
-  end
-
-  def add_team
-    @protocol = Protocol.find(params[:protocol_id]) if params[:protocol_id].present?
-    @user = User.find(params[:user_id])
-    @role = params[:role]
-    @index = params[:index]
-
-    if ['co_author', 'author_all', 'reviewer_all'].include?(@role)
-      @sections = Section.parent_items(params[:template_name]).pluck(:no)
-    else
-      @sections = params[:sections].map(&:to_i)
-    end
-  end
-
   def clone
     original = Protocol.find(params[:id])
     # TODO: fix clone team member

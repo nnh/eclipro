@@ -5,10 +5,4 @@ class Participation < ApplicationRecord
   enum role: %i[author reviewer co_author principal_investigator]
 
   validates :role, uniqueness: { scope: :protocol_id }, if: -> { principal_investigator? }
-
-  class << self
-    def team_roles
-      %w[co_author author_all reviewer_all author reviewer]
-    end
-  end
 end

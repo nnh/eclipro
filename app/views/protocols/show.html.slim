@@ -86,7 +86,8 @@
               = participation.sections.join(', ')
           - if can? :admin, @protocol
             td
-              = link_to t('.remove'), '#', class: 'btn btn-danger'
+              = link_to t('.remove'), protocol_participation_path(@protocol, participation), method: :delete,
+                                      data: { confirm: t('.remove_member') }, class: 'btn btn-danger'
 
   - if can? :admin, @protocol
-    = link_to t('.add_member'), '#', class: 'btn btn-default'
+    = link_to t('.add_member'), new_protocol_participation_path(@protocol), class: 'btn btn-default'

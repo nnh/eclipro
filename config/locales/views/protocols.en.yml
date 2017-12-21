@@ -46,6 +46,7 @@ en:
       sections: Sections
       remove: Remove
       add_member: Add member
+      remove_member: Are you sure?
     form:
       error_message:
         one: '%{count} error prohibited this protocol from being saved.'
@@ -146,17 +147,6 @@ en:
         All changes to the consent form will be IRB approved; a determination will be made regarding
         whether a new consent needs to be obtained from participants who provided consent, using a
         previously approved consent form.
-    build_team:
-      title: Add Team Member
-      text: |-
-        When using the drop down menu, please only select users that you plan to include on your protocol
-        writing team. Note that your colleagues must register as a user of this tool to be selected as a member of your team.
-      user_label: Select which user you would like to grant access to this protocol
-      role_label: What role will this user perform?
-      cancel: Cancel
-      add_user: Add User
-    team_member:
-      delete: Delete
     create:
       success: Protocol was successfully created.
     update:

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   # resources :sections
   resources :protocols do
+    resources :participations, only: [:new, :create, :destroy]
+
     resources :contents, only: [:show, :update] do
       resources :images, only: [:create, :show]
 
@@ -17,11 +19,6 @@ Rails.application.routes.draw do
           get :comment, :reply
         end
       end
-    end
-
-    collection do
-      get :build_team_form
-      post :add_team
     end
 
     member do

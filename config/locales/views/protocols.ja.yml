@@ -44,6 +44,7 @@ ja:
       sections: セクション
       remove: 削除
       add_member: メンバー追加
+      remove_member: メンバーを削除しますか？
     form:
       error_message: '%{count} 件のエラーが発生しました。'
       one: 1) 臨床試験の名前またはタイトルは何ですか？
@@ -140,18 +141,6 @@ ja:
         All changes to the consent form will be IRB approved; a determination will be made regarding
         whether a new consent needs to be obtained from participants who provided consent, using a
         previously approved consent form.
-    build_team:
-      title: メンバーを追加
-      text: |-
-        ドロップダウンメニューを使用する場合は、プロトコル作成チームに含める予定のユーザーのみを選択してください。
-        プロトコルにアクセスするには、このアプリケーションのユーザーとして登録して、チームメンバーとして登録する
-        必要があります。
-      user_label: このプロトコルへのアクセスを許可するユーザーを選択してください。
-      role_label: このユーザーの役割を選択してください。
-      cancel: キャンセル
-      add_user: ユーザー追加
-    team_member:
-      delete: 削除
     create:
       success: プロトコルを作成しました。
     update:

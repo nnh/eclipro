@@ -16,6 +16,10 @@ ja:
         has_ind: INDの入手
         compliance: コンプライアンス
         template_name: テンプレート
+      participation:
+        user_id: ユーザー
+        role: 役割
+        sections: セクション
     enum:
       protocol:
         status:
@@ -30,8 +34,6 @@ ja:
       participation:
         role:
           co_author: 管理者
-          author_all: 著者（全セクション）
-          reviewer_all: レビューアー（全セクション）
           author: 著者
           reviewer: レビューアー
           principal_investigator: 主任研究員

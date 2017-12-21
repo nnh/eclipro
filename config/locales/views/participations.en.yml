@@ -1,0 +1,14 @@
+en:
+  participations:
+    new:
+      title: Add member
+      add: Add
+      back: Back
+      all_sections: Check all sections
+      error_message:
+        one: '%{count} error prohibited this participation from being saved.'
+        other: '%{count} errors prohibited this participation from being saved.'
+    create:
+      success: User was successfully added.
+    destroy:
+      success: User was successfully removed.
