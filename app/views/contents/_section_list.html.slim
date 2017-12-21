@@ -8,5 +8,5 @@ a(href="#section-content" data-link="#{protocol_content_path(content.protocol, c
     .pull-right id="section-#{content.no.gsub('.', '-')}-icon"
       i.fa class="fa-#{content.status_icon}"
   .pull-right id="section-#{content.no.gsub('.', '-')}-comment-icon"
-    - if content.comments.count > 0
+    - if content.comments_count > 0
       i.fa.fa-commenting.mr-s

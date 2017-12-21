@@ -55,6 +55,9 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
+    after_commit_action (1.1.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
     arel (8.0.0)
     autoprefixer-rails (7.1.6)
       execjs
@@ -104,6 +107,10 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
+    counter_culture (1.9.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      after_commit_action (~> 1.0)
     crass (1.0.2)
     debug_inspector (0.0.3)
     deep_cloneable (2.3.1)
@@ -349,6 +356,7 @@ DEPENDENCIES
   cancancan
   capybara
   coffee-rails
+  counter_culture
   database_rewinder!
   deep_cloneable
   devise
