@@ -71,7 +71,7 @@ class Protocol < ApplicationRecord
       origin_sections.each do |section|
         sections << all_sections.select { |s| s == section.to_s || s.split('.')[0] == section.to_s }
       end
-      sections.flatten!
+      sections.flatten
     end
 
     def update_version

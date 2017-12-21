@@ -26,28 +26,28 @@ class Ability
       if content.protocol.finalized?
         false
       else
-        content.protocol.updatable_sections(user).include?(content.no)
+        user.updatable(content.protocol).include?(content.no)
       end
     end
     can :reviewable, Content do |content|
       if content.protocol.finalized?
         false
       else
-        content.protocol.reviewable_sections(user).include?(content.no)
+        user.reviewable(content.protocol).include?(content.no)
       end
     end
     can [:update, :revert], Content do |content|
       if content.protocol.finalized? || (!content.status_new? && !content.in_progress?)
         false
       else
-        content.protocol.updatable_sections(user).include?(content.no)
+        can? :updatable, content
       end
     end
     can :review, Content do |content|
       if content.protocol.finalized? || !content.under_review?
         false
       else
-        content.protocol.reviewable_sections(user).include?(content.no)
+        can? :reviewable, content
       end
     end
     can :change_status, Content do |content|
