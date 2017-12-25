@@ -81,7 +81,7 @@ class ProtocolsController < ApplicationController
         document = PandocRuby.convert(view_text.delete(' '), from: :html, to: :docx)
         send_data document,
                   filename: "#{@protocol.protocol_number}_v#{@protocol.version}.docx",
-                  type: '	application/msword',
+                  type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
                   disposition: 'attachment'
       end
     end

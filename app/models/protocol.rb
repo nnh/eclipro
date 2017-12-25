@@ -55,7 +55,7 @@ class Protocol < ApplicationRecord
 
   def reviewable_sections(user)
     all_sections = Section.reject_specified_sections(template_name).pluck(:no)
-    return all_sections if principal_investigator?(user)
+    return all_sections if principal_investigator?(user) || co_author?(user)
     return [] unless reviewer?(user)
     select_sections(all_sections, Participation.find_by(protocol: self, user: user).sections)
   end
