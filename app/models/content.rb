@@ -29,8 +29,13 @@ class Content < ApplicationRecord
 
     doc = Nokogiri::HTML(body)
     doc.xpath('//img').each do |i|
-      image_id = i['src'].scan(/\d{1,}/)[-1]
-      i['src'] = Image.find(image_id).file.expiring_url(10.minute)
+      if i['src'].include?("assets/#{protocol.template_name.downcase}")
+        filename = "#{i['src'].split('/')[-1].split('-')[0]}.png"
+        i['src'] = ActionController::Base.helpers.asset_url("#{protocol.template_name.downcase}/#{filename}")
+      else
+        image_id = i['src'].scan(/\d{1,}/)[-1]
+        i['src'] = Image.find(image_id).file.expiring_url(10.minute)
+      end
     end
     doc.at('body').children.to_s
   end
