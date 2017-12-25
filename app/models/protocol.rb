@@ -12,7 +12,7 @@ class Protocol < ApplicationRecord
   validates :title, :protocol_number, presence: true
 
   before_validation :set_finalized_date
-  before_save :update_version, unless: -> { will_save_change_to_attribute?(:version) }
+  before_save :update_version, unless: -> { will_save_change_to_attribute?(:version) || new_record? }
 
   def my_role(user)
     if co_author?(user)
