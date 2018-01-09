@@ -11,7 +11,7 @@ class Protocol < ApplicationRecord
 
   validates :title, :protocol_number, presence: true
 
-  before_validation :set_finalized_date
+  before_validation :set_finalized_date, :set_content_final, :set_content_in_progress
   before_save :update_version, unless: -> { will_save_change_to_attribute?(:version) || new_record? }
 
   def my_role(user)
@@ -81,5 +81,13 @@ class Protocol < ApplicationRecord
 
     def set_finalized_date
       assign_attributes(finalized_date: Date.today) if finalized?
+    end
+
+    def set_content_final
+      contents.each(&:final!) if finalized?
+    end
+
+    def set_content_in_progress
+      contents.each(&:in_progress!) if attribute_in_database(:status) == 'finalized'
     end
 end

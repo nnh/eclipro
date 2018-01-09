@@ -2,6 +2,18 @@
   - if @protocol.errors.any?
     = model_errors(@protocol)
   = f.hidden_field :lock_version
+  - if action_name == 'clone'
+    = f.fields_for :contents do |fc|
+      = fc.hidden_field :no, value: fc.object.no
+      = fc.hidden_field :title, value: fc.object.title
+      = fc.hidden_field :body, value: fc.object.body
+      = fc.hidden_field :editable, value: fc.object.editable
+    = f.fields_for :participations do |fp|
+      - next if fp.object.role == 'principal_investigator'
+      = fp.hidden_field :user_id, value: fp.object.user_id
+      = fp.hidden_field :role, value: fp.object.role
+      - fp.object.sections.each do |section|
+        = fp.hidden_field :sections, value: section, multiple: true
 
   .form-group
     = f.label :template_name, t('.template_name'), class: 'control-label'

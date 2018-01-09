@@ -50,9 +50,8 @@ class ProtocolsController < ApplicationController
 
   def clone
     original = Protocol.find(params[:id])
-    # TODO: fix clone team member
-    @protocol = original.deep_clone(include: [:participations, :contents],
-                                    expect: [{ participations: [:id] },
+    @protocol = original.deep_clone(include: %i[participations contents],
+                                    expect: [{ participations: %i[id] },
                                              { contents: %i[id status lock_version] }])
     @protocol.title = "#{original.title} - (COPY)"
     @protocol.short_title = "#{original.short_title} - (COPY)" if original.short_title.present?
@@ -120,7 +119,8 @@ class ProtocolsController < ApplicationController
         :compliance,
         sponsors: [],
         study_agent: [],
-        participations_attributes: [:id, :protocol_id, :user_id, :role, :_destroy, sections: []]
+        contents_attributes: [:protocol_id, :no, :title, :body, :editable],
+        participations_attributes: [:protocol_id, :user_id, :role, sections: []]
       )
     end
 end

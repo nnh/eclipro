@@ -156,6 +156,7 @@ describe ProtocolsController, type: :controller do
         get :finalize, params: { id: protocol0 }
         protocol0.reload
         expect(protocol0.status).to eq 'finalized'
+        expect(protocol0.contents[0].status).to eq 'final'
       end
     end
     context 'general user' do
@@ -174,6 +175,7 @@ describe ProtocolsController, type: :controller do
         get :reinstate, params: { id: protocol1 }
         protocol1.reload
         expect(protocol1.status).to eq 'in_progress'
+        expect(protocol1.contents[0].status).to eq 'in_progress'
       end
     end
     context 'general user' do
