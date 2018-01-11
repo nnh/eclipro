@@ -19,10 +19,16 @@ ul.nav.nav-pills
       = instructions.html_safe
   .tab-pane.active.menu-body#sections
     ul.nav.nav-pills.nav-stacked
-      - if content = contents.find(&:no_zero?)
-        li class="#{'active' if content.no == no }"
-          = render 'section_list', content: content
-      - contents = contents.reject(&:no_zero?)
       - contents.each do |content|
         li class="#{'child-list' if content.no.include?('.')} #{'active' if content.no == no }"
-          = render 'section_list', content: content
+          - editable = (can? :updatable, content) || (can? :reviewable, content)
+
+          a(href="#{protocol_content_path(content.protocol, content, anchor: :sections)}"
+            class="section-link #{'uneditable' unless editable}")
+            = "#{content.no unless content.no_zero?} #{content.title}"
+
+            .pull-right id="section-#{content.no.gsub('.', '-')}-icon"
+              i.fa class="fa-#{content.status_icon}"
+            .pull-right id="section-#{content.no.gsub('.', '-')}-comment-icon"
+              - if content.comments_count > 0
+                i.fa.fa-commenting.mr-s
