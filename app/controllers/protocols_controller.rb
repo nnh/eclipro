@@ -92,7 +92,7 @@ class ProtocolsController < ApplicationController
 
     respond_to do |format|
       format.pdf do
-        render pdf: 'export',
+        render pdf: "#{@protocol.protocol_number}_v#{@protocol.version}",
                encording: 'UTF-8',
                layout: 'export.html',
                template: 'protocols/export',
@@ -108,7 +108,7 @@ class ProtocolsController < ApplicationController
         view_text = render_to_string template: 'protocols/export', layout: 'export.html'
         document = PandocRuby.convert(view_text.delete(' '), from: :html, to: :docx)
         send_data document,
-                  filename: "#{@protocol.title}.docx",
+                  filename: "#{@protocol.protocol_number}_v#{@protocol.version}.docx",
                   type: '	application/msword',
                   disposition: 'attachment'
       end
