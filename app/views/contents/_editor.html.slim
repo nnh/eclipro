@@ -19,6 +19,7 @@
     - if protocol.compliance == 2
       = t('protocols.step.two.radio_two').html_safe
   .tab-pane.active#section-content
+    .content-has-reviewer data-has-reviewer="#{content.has_reviewer?}" data-message="#{t('.no_reviewer')}"
     - if content.editable
       .mb-xl
         .pull-right#comment-button
@@ -59,8 +60,3 @@
 
 .modal.fade#comment-modal tab-index="1" role="dialog" aria-hidden="true"
 .modal.fade#history-modal tab-index="1" role="dialog" aria-hidden="true"
-
-javascript:
-  $(function() {
-    initTinyMCE('#form-tinymce');
-  });

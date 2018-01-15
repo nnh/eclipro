@@ -7,10 +7,8 @@ class ContentsController < ApplicationController
     @content.update!(content_params)
     redirect_to protocol_content_path(@protocol, @content, anchor: 'sections'),
                 notice: @content.saved_changes? ? t('.success') : t('.no_change')
-  rescue ActiveRecord::StaleObjectError
-    flash.now[:alert] = t('.lock_error')
-    render :show
-  rescue
+  rescue => ex
+    flash.now[:alert] = t('.lock_error') if ex.is_a?(ActiveRecord::StaleObjectError)
     render :show
   end
 
@@ -27,10 +25,8 @@ class ContentsController < ApplicationController
     @content = @content.versions[params[:index].to_i].reify
     @content.update!(lock_version: params[:lock_version])
     redirect_to protocol_content_path(@protocol, @content, anchor: 'sections'), notice: t('.success')
-  rescue ActiveRecord::StaleObjectError
-    flash.now[:alert] = t('.lock_error')
-    render :show
-  rescue
+  rescue => ex
+    flash.now[:alert] = t('.lock_error') if ex.is_a?(ActiveRecord::StaleObjectError)
     render :show
   end
 

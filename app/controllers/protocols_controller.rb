@@ -34,10 +34,8 @@ class ProtocolsController < ApplicationController
   def update
     @protocol.update!(protocol_params)
     redirect_to protocols_path, notice: @protocol.saved_changes? ? t('.success') : t('.no_change')
-  rescue ActiveRecord::StaleObjectError
-    flash.now[:alert] = t('.lock_error')
-    render :edit
-  rescue
+  rescue => ex
+    flash.now[:alert] = t('.lock_error') if ex.is_a?(ActiveRecord::StaleObjectError)
     render :edit
   end
 

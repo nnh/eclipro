@@ -4,13 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
-  def updatable(protocol)
-    @updatable = {} if @updatable.nil?
-    @updatable[protocol.id] ||= protocol.updatable_sections(self)
+  def updatable_sections(protocol)
+    @updatable_sections ||= {}
+    @updatable_sections[protocol.id] ||= protocol.updatable_sections(self)
   end
 
-  def reviewable(protocol)
-    @reviewable = {} if @reviewable.nil?
-    @reviewable[protocol.id] ||= protocol.reviewable_sections(self)
+  def reviewable_sections(protocol)
+    @reviewable_sections ||= {}
+    @reviewable_sections[protocol.id] ||= protocol.reviewable_sections(self)
   end
 end

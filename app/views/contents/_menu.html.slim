@@ -12,7 +12,8 @@ ul.nav.nav-pills
       div
         = example.html_safe
       .text-right
-        = button_tag t('.copy'), type: :button, class: 'btn btn-default example-copy-button'
+        = button_tag t('.copy'), type: :button, class: 'btn btn-default example-copy-button',
+                                 data: { message: t('.copy_confirm') }
   - if instructions.present?
     .tab-pane.menu-body#instructions
       = instructions.html_safe

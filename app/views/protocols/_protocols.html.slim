@@ -12,7 +12,7 @@ table.table
 
   tbody
     - @protocols.each do |protocol|
-      tr.clickable-tr data-link="#{protocol_content_path(protocol, protocol.contents.first)}#sections"
+      tr.clickable-tr data-link="#{protocol_content_path(protocol, protocol.contents.first, anchor: :sections)}"
         td = protocol.title
         td = protocol.my_role(current_user)
         td = protocol.participations.principal_investigator.first.user.name
@@ -34,20 +34,3 @@ table.table
             = link_to t('.export_docx'), export_protocol_path(protocol, format: :docx), class: 'btn btn-default', target: '_blank'
         td
           = link_to t('.clone'), clone_protocol_path(protocol), class: 'btn btn-default'
-
-javascript:
-  $(function() {
-    $('.clickable-tr').click(function(e) {
-      window.location = $(e.target.parentElement).data('link');
-    });
-    $('.clickable-tr .btn').click(function(e) {
-      e.stopPropagation();
-      if ($(e.target).data('confirm') != null) {
-        if (window.confirm($(e.target).data('confirm'))) {
-          return true;
-        } else {
-          return false;
-        }
-      }
-    });
-  });

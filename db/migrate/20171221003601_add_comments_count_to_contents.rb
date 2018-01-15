@@ -3,8 +3,7 @@ class AddCommentsCountToContents < ActiveRecord::Migration[5.1]
     add_column :contents, :comments_count, :integer, null: false, default: 0
 
     Content.all.each do |content|
-      content.comments_count = content.comments.size
-      content.save
+      content.update_column(:comments_count, content.comments.size)
     end
   end
 

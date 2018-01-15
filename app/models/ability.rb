@@ -26,14 +26,14 @@ class Ability
       if content.protocol.finalized?
         false
       else
-        user.updatable(content.protocol).include?(content.no)
+        user.updatable_sections(content.protocol).include?(content.no)
       end
     end
     can :reviewable, Content do |content|
       if content.protocol.finalized?
         false
       else
-        user.reviewable(content.protocol).include?(content.no)
+        user.reviewable_sections(content.protocol).include?(content.no)
       end
     end
     can [:update, :revert], Content do |content|
