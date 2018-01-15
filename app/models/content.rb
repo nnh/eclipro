@@ -39,6 +39,10 @@ class Content < ApplicationRecord
     protocol.participations.reviewer.pluck(:sections).flatten.include?(no.split('.')[0].to_i)
   end
 
+  def no_zero?
+    no == '0'
+  end
+
   private
 
     def update_status

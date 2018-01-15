@@ -26,7 +26,7 @@ pre.mt-xl
         td
           p = t('.compliance')
           - @sections.each do |section|
-            - unless section.no == '0'
+            - unless section.no_zero?
               pre = "#{'    ' if section.no.include?('.')}#{section.no} #{section.title}"
 
 pre.mt-xl
@@ -37,7 +37,7 @@ pre.mt-xl
   - if @protocol.compliance == 2
     = t('protocols.step.two.radio_two').html_safe
 
-- contents = @contents.reject { |content| content.no == '0' }
+- contents = @contents.reject { |content| content.no_zero? }
 - contents.each do |content|
   pre.mt-xl
   div id="section-#{content.no}"

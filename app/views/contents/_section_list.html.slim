@@ -2,7 +2,7 @@
 
 a(href="#section-content" data-link="#{protocol_content_path(content.protocol, content, anchor: :sections)}"
   class="section-link #{'uneditable' unless editable}")
-  = "#{content.no unless content.no == '0'} #{content.title}"
+  = "#{content.no unless content.no_zero?} #{content.title}"
 
   - if content.editable?
     .pull-right id="section-#{content.no.gsub('.', '-')}-icon"
