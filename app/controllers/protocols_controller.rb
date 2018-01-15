@@ -1,30 +1,19 @@
 class ProtocolsController < ApplicationController
-  before_action :set_protocol, except: [:index, :new, :create, :build_team_form, :add_team, :clone]
   load_and_authorize_resource
 
   def index
-    @protocols = Protocol.includes(:participations)
     if params[:protocol_name_filter].present?
       @protocols = @protocols.where('title like ?', "%#{params[:protocol_name_filter]}%")
     end
-    @protocols = @protocols.select { |protocol| can? :read, protocol }
-  end
-
-  def show
-    @contents = @protocol.contents.sort_by { |c| c.no.to_f }
-    @examples = Section.where(template_name: @protocol.template_name).select { |s| s.example.present? }
-    @instructions = Section.where(template_name: @protocol.template_name).select { |s| s.instructions.present? }
   end
 
   def new
-    @protocol = Protocol.new
   end
 
   def edit
   end
 
   def create
-    @protocol = Protocol.new(protocol_params)
     @protocol.participations.build(user: current_user, role: 'principal_investigator')
 
     if @protocol.contents.empty?
@@ -36,7 +25,7 @@ class ProtocolsController < ApplicationController
     end
 
     if @protocol.save
-      redirect_to @protocol, notice: t('.success')
+      redirect_to protocol_content_path(@protocol, @protocol.contents.first, anchor: 'sections'), notice: t('.success')
     else
       render :new
     end
@@ -44,16 +33,15 @@ class ProtocolsController < ApplicationController
 
   def update
     @protocol.update!(protocol_params)
-    redirect_to @protocol, notice: @protocol.saved_changes? ? t('.success') : t('.no_change')
-  rescue ActiveRecord::StaleObjectError => e
-    redirect_to @protocol, alert: t('.lock_error')
-  rescue => e
-    redirect_to @protocol, alert: t('.failure')
+    redirect_to protocols_path, notice: @protocol.saved_changes? ? t('.success') : t('.no_change')
+  rescue => ex
+    flash.now[:alert] = t('.lock_error') if ex.is_a?(ActiveRecord::StaleObjectError)
+    render :edit
   end
 
   def destroy
     @protocol.destroy
-    redirect_to protocols_url, notice: t('.success')
+    redirect_to protocols_path, notice: t('.success')
   end
 
   def build_team_form
@@ -78,6 +66,7 @@ class ProtocolsController < ApplicationController
 
   def clone
     original = Protocol.find(params[:id])
+    # TODO: fix clone team member
     @protocol = original.deep_clone(include: [:participations, :contents],
                                     expect: [{ participations: [:id] },
                                              { contents: %i[id status lock_version] }])
@@ -86,9 +75,8 @@ class ProtocolsController < ApplicationController
   end
 
   def export
-    @section_0 = @protocol.contents.find_by(no: '0')
+    @content_0 = @protocol.contents.find_by(no: '0')
     @contents = @protocol.contents.where.not(no: '0').sort_by { |c| c.no.to_f }
-    @sections = Section.reject_specified_sections(@protocol.template_name)
 
     respond_to do |format|
       format.pdf do
@@ -104,7 +92,7 @@ class ProtocolsController < ApplicationController
                show_as_html: params[:debug].present?
       end
 
-      format.docx do |format|
+      format.docx do
         view_text = render_to_string template: 'protocols/export', layout: 'export.html'
         document = PandocRuby.convert(view_text.delete(' '), from: :html, to: :docx)
         send_data document,
@@ -132,10 +120,6 @@ class ProtocolsController < ApplicationController
   end
 
   private
-
-    def set_protocol
-      @protocol = Protocol.find(params[:id])
-    end
 
     def protocol_params
       params.require(:protocol).permit(

@@ -6,7 +6,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
 # Use sqlite3 as the database for Active Record
@@ -24,7 +23,7 @@ gem 'uglifier'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks'
+# gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder'
 # Use Redis adapter to run Action Cable in production
@@ -39,7 +38,6 @@ gem 'slim-rails'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem "font-awesome-rails"
-gem 'toastr-rails'
 
 gem 'devise'
 gem 'devise-i18n'
@@ -60,6 +58,8 @@ gem 'deep_cloneable'
 gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
 gem 'pandoc-ruby'
+
+gem 'counter_culture'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

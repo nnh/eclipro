@@ -1,4 +1,5 @@
 class Comment < ApplicationRecord
-  belongs_to :content
   belongs_to :user
+  belongs_to :content
+  counter_culture :content
 end

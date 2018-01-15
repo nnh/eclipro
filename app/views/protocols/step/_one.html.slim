@@ -1,12 +1,5 @@
 h4.mt-l = t('.step')
 
-- if protocol.contents.present?
-  = f.fields_for :contents do |c|
-    = c.hidden_field :no, value: c.object.no
-    = c.hidden_field :title, value: c.object.title
-    = c.hidden_field :body, value: c.object.body
-    = c.hidden_field :editable, value: c.object.editable
-
 .form-group
   = f.label :template_name, t('.template_name'), class: 'control-label'
   - if protocol.new_record? && action_name != 'clone'
@@ -81,6 +74,6 @@ h4.mt-l = t('.step')
     = f.radio_button :has_ind, 2, checked: protocol.has_ind == 2
     = t('.no')
 
-.form-group.text-right
+.pull-right
   = button_tag t('.next'), type: :button, class: 'btn btn-default step-button', data: { move: '2' }
   = render 'protocols/step/step_buttons', protocol: protocol, f: f

@@ -9,28 +9,18 @@ ja:
       principal_investigator: 主任研究員
       status: 状態
       version: バージョン
+      admin: 管理
       export_pdf: エクスポート(.pdf)
       export_docx: エクスポート(.docx)
       clone: 複製
+      reinstate: 再編集
+      reinstate_text: このプロトコルを再編集しますか？
     new:
       title: プロトコル新規作成
       back: 戻る
     edit:
       title: プロトコル編集
-      show: 詳細
       back: 戻る
-    show:
-      protocol: プロトコル
-      editor: エディタ
-      admin: 管理
-      edit_title: プロトコル編集
-      edit: 編集
-      back: 戻る
-      modal_title: レビューアーが割り当てられていません。
-      modal_text: あなたはこのセクションにレビューアーを割り当てていません。 今追加しますか？
-      add: レビューアーを追加
-      cancel: キャンセル
-      copy_confirm: このテキストの例は、エディタの現在のテキストをすべて置き換えます。続行しますか？
     form:
       error_message: '%{count} 件のエラーが発生しました。'
     step:
@@ -161,31 +151,11 @@ ja:
         add_user: ユーザー追加
       team_member:
         delete: 削除
-    menu:
-      example: 例
-      instructions: 説明
-      sections: セクション
-      title_page: タイトルページ
-      compliance: コンプライアンス声明
-      next: 次へ
-      previous: 前へ
-      copy: エディタへコピー
-    editor:
-      editor: エディタ
-      section_title: タイトルページ (読み出し専用)
-      protocol_number: プロトコル番号
-      nct_number: 国立臨床試験（NCT）識別番号
-      principal_investigator: 主任研究員
-      sponsors: INDスポンサー
-      funded_by: 資金提供
-      draft_number: バージョン
-      compliance: コンプライアンス声明 (読み出し専用)
     create:
       success: プロトコルを作成しました。
     update:
       success: プロトコルを更新しました。
       no_change: プロトコルに変更はありません。
-      failure: プロトコルの更新に失敗しました。
       lock_error: 失効したプロトコルを更新しようとしました。再読み込みをしてから更新を試してください。
     destroy:
       success: プロトコルを削除しました。

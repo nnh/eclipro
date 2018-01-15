@@ -61,7 +61,7 @@ describe Protocol do
   end
 
   context 'has_reviewer?' do
-    it { expect(protocol.has_reviewer?).to eq(true) }
-    it { expect(protocol2.has_reviewer?).to eq(false) }
+    it { expect(protocol.contents.first.has_reviewer?).to eq(true) }
+    it { expect(protocol2.contents.first.has_reviewer?).to eq(false) }
   end
 end

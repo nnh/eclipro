@@ -1,14 +1,15 @@
 class ContentsController < ApplicationController
   load_and_authorize_resource :protocol
   load_and_authorize_resource through: :protocol
+  before_action :prepare_menu, except: [:history, :compare]
 
   def update
     @content.update!(content_params)
-    flash[:notice] = @content.saved_changes? ? t('.success') : t('.no_change')
-  rescue ActiveRecord::StaleObjectError
-    flash[:alert] = t('.lock_error')
-  rescue
-    flash[:alert] = t('.failure')
+    redirect_to protocol_content_path(@protocol, @content, anchor: 'sections'),
+                notice: @content.saved_changes? ? t('.success') : t('.no_change')
+  rescue => ex
+    flash.now[:alert] = t('.lock_error') if ex.is_a?(ActiveRecord::StaleObjectError)
+    render :show
   end
 
   def history
@@ -23,18 +24,18 @@ class ContentsController < ApplicationController
   def revert
     @content = @content.versions[params[:index].to_i].reify
     @content.update!(lock_version: params[:lock_version])
-    flash[:notice] = t('.success')
-  rescue ActiveRecord::StaleObjectError
-    flash[:alert] = t('.lock_error')
-  rescue
-    flash[:alert] = t('.failure')
+    redirect_to protocol_content_path(@protocol, @content, anchor: 'sections'), notice: t('.success')
+  rescue => ex
+    flash.now[:alert] = t('.lock_error') if ex.is_a?(ActiveRecord::StaleObjectError)
+    render :show
   end
 
   def change_status
     if @content.update(content_params)
-      flash[:notice] = t('.success')
+      redirect_to protocol_content_path(@protocol, @content, anchor: 'sections'), notice: t('.success')
     else
-      flash[:alert] = t('.failure')
+      flash.now[:alert] = t('.failure')
+      render :show
     end
   end
 
@@ -45,5 +46,12 @@ class ContentsController < ApplicationController
 
     def content_params
       params.require(:content).permit(:body, :status, :lock_version)
+    end
+
+    def prepare_menu
+      @contents = @protocol.contents.sort_by { |c| c.no.to_f }
+      section = Section.find_by(template_name: @protocol.template_name, no: @content.no)
+      @example = section.example
+      @instructions = section.instructions
     end
 end

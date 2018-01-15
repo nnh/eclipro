@@ -1,0 +1,9 @@
+.col-md-12
+  h3 = "#{t('.protocol')}: #{@protocol.title}"
+
+.row
+  .col-md-4
+    = render 'menu', protocol: @protocol, contents: @contents,
+                     example: @example, instructions: @instructions, no: @content.no
+  .col-md-8
+    = render 'editor', protocol: @protocol, content: @content

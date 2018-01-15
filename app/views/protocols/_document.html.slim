@@ -11,10 +11,10 @@
   p = "#{t('.draft_number')}: #{sprintf('%.3f', @protocol.version)}"
   p = @protocol.finalized_date
 
-- unless @section_0.nil?
+- unless @content_0.nil?
   pre.mt-xl
   #section-0
-    = @section_0.body.html_safe
+    = @content_0.body.html_safe
 
 pre.mt-xl
 #table-of-contents
@@ -24,10 +24,9 @@ pre.mt-xl
     tbody
       tr
         td
-          p = t('.compliance')
-          - @sections.each do |section|
-            - unless section.no == '0'
-              pre = "#{'    ' if section.no.include?('.')}#{section.no} #{section.title}"
+          pre = t('.compliance')
+          - @contents.each do |content|
+            pre = "#{'    ' if content.no.include?('.')}#{content.no} #{content.title}"
 
 pre.mt-xl
 #compliance
@@ -37,8 +36,7 @@ pre.mt-xl
   - if @protocol.compliance == 2
     = t('protocols.step.two.radio_two').html_safe
 
-- contents = @contents.reject { |content| content.no == '0' }
-- contents.each do |content|
+- @contents.each do |content|
   pre.mt-xl
   div id="section-#{content.no}"
     h3 class="#{content.no.include?('.') ? 'section-sub-title' : 'section-title' }"

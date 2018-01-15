@@ -1,0 +1,62 @@
+.tab-content
+  .tab-pane#section-title-page
+    h4 = "#{t('.editor')}: #{t('.section_title')}"
+    p = protocol.title
+    p = "#{t('.protocol_number')}: #{protocol.protocol_number}" if protocol.protocol_number.present?
+    p = "#{t('.nct_number')}: #{protocol.nct_number}" if protocol.nct_number.present?
+    p = "#{t('.principal_investigator')}: #{protocol.participations.principal_investigator.first.user.name}"
+    / TODO: スポンサーの表示
+    - sponsors = protocol.sponsors
+    - sponsors << protocol.sponsor_other if protocol.sponsor_other.present?
+    p = "#{t('.sponsors')}: #{sponsors.join(',')}" if sponsors.present?
+    p = "#{t('.funded_by')}: #{protocol.entity_funding_name}" if protocol.entity_funding_name.present?
+    p = "#{t('.draft_number')}: #{sprintf('%.3f', protocol.version)}"
+    p = protocol.updated_at
+  .tab-pane#section-compliance-content
+    h4 = "#{t('.editor')}: #{t('.compliance')}"
+    - if protocol.compliance == 1
+      = t('protocols.step.two.radio_one').html_safe
+    - if protocol.compliance == 2
+      = t('protocols.step.two.radio_two').html_safe
+  .tab-pane.active#section-content
+    .content-has-reviewer data-has-reviewer="#{content.has_reviewer?}" data-message="#{t('.no_reviewer')}"
+    - if content.editable
+      .mb-xl
+        .pull-right#comment-button
+          = render 'comment_button', protocol: protocol, content: content
+        .pull-right
+          = link_to t('.history'), history_protocol_content_path(protocol, content),
+                    remote: true, class: 'btn btn-default'
+
+        h4 = "#{t('.editor')}: #{content.no unless content.no_zero?} #{content.title}"
+
+        .mt-xl
+          = form_for [protocol, content], html: { class: 'form-horizontal', role: 'form' } do |f|
+            - if content.errors.any?
+              = model_errors(content)
+            = f.hidden_field :lock_version
+            = f.text_area :body, class: 'tinymce', id: "form-tinymce"
+
+            - if can? :update, content
+              = link_to t('.ready_for_review'), change_status_protocol_content_path(protocol, content, 'content[status]': 'under_review'),
+                        class: 'btn btn-default mt-m pull-right to-under-review', method: :put
+              = f.submit class: 'btn btn-primary mt-m pull-right'
+            - if can? :review, content
+              = link_to t('.review_completed'), change_status_protocol_content_path(protocol, content, 'content[status]': 'final'),
+                        class: 'btn btn-default mt-m pull-right', method: :put
+            - if can? :rework, content
+              = link_to t('.rework_needed'), change_status_protocol_content_path(protocol, content, 'content[status]': 'in_progress'),
+                        class: 'btn btn-default mt-m pull-right', method: :put
+
+            .pull-left.mt-m
+              - status = t("activerecord.enum.content.status.#{content.status}")
+              = "#{t('.status')}: #{status}"
+        .tiny-mce-params data-protocol-id="#{protocol.id}" data-content-id="#{content.id}"
+
+    - else
+      h4 = "#{t('.editor')}: #{content.no}  #{content.title} #{t('.read_only')}"
+      h4 = t('.read_only_text')
+      = content.body.html_safe
+
+.modal.fade#comment-modal tab-index="1" role="dialog" aria-hidden="true"
+.modal.fade#history-modal tab-index="1" role="dialog" aria-hidden="true"

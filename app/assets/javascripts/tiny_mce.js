@@ -55,7 +55,7 @@ function initTinyMCE(selector) {
                     editor.insertContent(author_names + ' ' + title + ' ' + journal + '. ' + date + ';' + text);
                   },
                   error: function(xhr, textStatus, errorThrown) {
-                    toastr['error']('Failed to get the data.');
+                    alert('Failed to get the data.');
                   }
                 });
               }

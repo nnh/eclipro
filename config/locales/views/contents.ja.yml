@@ -1,5 +1,33 @@
 ja:
   contents:
+    show:
+      protocol: プロトコル
+    menu:
+      example: 例
+      instructions: 説明
+      sections: セクション
+      title_page: タイトルページ
+      compliance: コンプライアンス声明
+      copy: エディタへコピー
+      copy_confirm: このテキストの例は、エディタの現在のテキストをすべて置き換えます。続行しますか？
+    editor:
+      editor: エディタ
+      section_title: タイトルページ (読み出し専用)
+      protocol_number: プロトコル番号
+      nct_number: 国立臨床試験（NCT）識別番号
+      principal_investigator: 主任研究員
+      sponsors: INDスポンサー
+      funded_by: 資金提供
+      draft_number: バージョン
+      compliance: コンプライアンス声明 (読み出し専用)
+      read_only: (読み出し専用)
+      read_only_text: このセクションは編集できません。コンテンツを編集するには、小見出しをクリックしてください。
+      history: 履歴
+      status: 状態
+      ready_for_review: レビュー準備完了
+      rework_needed: 修正が必要
+      review_completed: レビュー完了
+      no_reviewer: このセクションにレビューアーが割り当てられていません。管理者に連絡して割り当ててください。
     update:
       success: コンテンツの更新をしました。
       no_change: コンテンツに変更はありません。
@@ -23,14 +51,5 @@ ja:
     change_status:
       success: ステータスを変更しました。
       failure: ステータスを変更できませんでした。
-    section_content:
-      editor: エディタ
-      read_only: (読み出し専用)
-      read_only_text: このセクションは編集できません。コンテンツを編集するには、小見出しをクリックしてください。
-      history: 履歴
-      status: 状態
-      ready_for_review: レビュー準備完了
-      rework_needed: 修正が必要
-      review_completed: レビュー完了
     comment_button:
       comment: コメント

@@ -4,8 +4,8 @@ html
     title
       | eclipro
     = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
     = tinymce_assets
 
   body
@@ -47,10 +47,13 @@ html
               li = link_to t('.sign_in'), new_user_session_path
 
     .container
+      .row
+        - flash.each do |key, value|
+          - type = key == 'notice' ? 'success' : 'danger'
+          .alert.alert-dismissible class="alert-#{type}"
+            button.close data-dismiss="alert"
+              span aria-hidden="true" = '×'
+            = value
+
       .row.mb-l
         = yield
-
-    - flash.each do |key, value|
-      - if value.present?
-        javascript:
-          toastr['#{flash_type(key)}']('#{value}');

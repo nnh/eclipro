@@ -60,10 +60,6 @@ class Protocol < ApplicationRecord
     select_sections(all_sections, Participation.find_by(protocol: self, user: user).sections)
   end
 
-  def has_reviewer?
-    participations.reviewer.any?
-  end
-
   def versionup!
     update!(version: version + 0.001)
   end
@@ -75,7 +71,7 @@ class Protocol < ApplicationRecord
       origin_sections.each do |section|
         sections << all_sections.select { |s| s == section.to_s || s.split('.')[0] == section.to_s }
       end
-      sections.flatten!
+      sections.flatten
     end
 
     def update_version

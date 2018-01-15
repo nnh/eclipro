@@ -8,10 +8,11 @@ table.table
       th = t('.version')
       th
       th
+      th
 
   tbody
     - @protocols.each do |protocol|
-      tr.clickable-tr data-link="#{protocol_path(protocol)}"
+      tr.clickable-tr data-link="#{protocol_content_path(protocol, protocol.contents.first, anchor: :sections)}"
         td = protocol.title
         td = protocol.my_role(current_user)
         td = protocol.participations.principal_investigator.first.user.name
@@ -21,18 +22,15 @@ table.table
             = " - #{protocol.finalized_date}"
         td = sprintf('%.3f', protocol.version)
         td
-          - if protocol.status == 'finalized'
+          - if can? :admin, protocol
+            - if protocol.finalized?
+              = link_to t('.reinstate'), reinstate_protocol_path(protocol), class: 'btn btn-default',
+                                         data: { confirm: t('.reinstate_text') }
+            - else
+              = link_to t('.admin'), edit_protocol_path(protocol), class: 'btn btn-default'
+        td
+          - if protocol.finalized?
             = link_to t('.export_pdf'), export_protocol_path(protocol, format: :pdf), class: 'btn btn-default', target: '_blank'
             = link_to t('.export_docx'), export_protocol_path(protocol, format: :docx), class: 'btn btn-default', target: '_blank'
         td
           = link_to t('.clone'), clone_protocol_path(protocol), class: 'btn btn-default'
-
-javascript:
-  $(function() {
-    $('.clickable-tr').click(function(e) {
-      window.location = $(e.target.parentElement).data('link');
-    });
-    $('.clickable-tr .btn').click(function(e) {
-      e.stopPropagation();
-    });
-  });

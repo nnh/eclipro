@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:resolve]
-  before_action :set_content, :set_protocol
-  load_and_authorize_resource
+  load_and_authorize_resource :protocol
+  load_and_authorize_resource :content, through: :protocol
+  load_and_authorize_resource through: :content
 
   def index
     set_root_comment
@@ -29,21 +29,9 @@ class CommentsController < ApplicationController
   end
 
   private
-    def set_comment
-      @comment = Comment.find(params[:id])
-    end
-
-    def set_content
-      @content = Content.find(params[:content_id])
-    end
-
-    def set_protocol
-      @protocol = Protocol.find(params[:protocol_id])
-    end
 
     def set_root_comment
-      @comments = @content.comments
-      @comments = @comments.reject { |comment| comment.parent_id.present? }
+      @comments = @content.comments.where(parent_id: nil)
     end
 
     def resolve_comments(comment)

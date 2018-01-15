@@ -12,7 +12,7 @@ h4.mt-l = t('.step')
     br
     = t('.radio_two').html_safe
 
-.form-group.text-right
+.pull-right
   = button_tag t('.prev'), type: :button, class: 'btn btn-default step-button', data: { move: 1 }
   = button_tag t('.next'), type: :button, class: 'btn btn-default ml-s step-button', data: { move: 3 }
   = render 'protocols/step/step_buttons', protocol: protocol, f: f
