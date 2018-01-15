@@ -21,12 +21,12 @@ ul.nav.nav-pills
     ul.nav.nav-pills.nav-stacked
       li
         a.uneditable.section-common href="#section-title-page" = t('.title_page')
-      - if content = contents.find { |s| s.no_zero? }
+      - if content = contents.find(&:no_zero?)
         li class="#{'active' if content.no == no }"
           = render 'section_list', content: content
       li
         a.uneditable.section-common href="#section-compliance-content" = t('.compliance')
-      - contents = contents.reject { |s| s.no_zero? }
+      - contents = contents.reject(&:no_zero?)
       - contents.each do |content|
         li class="#{'child-list' if content.no.include?('.')} #{'active' if content.no == no }"
           = render 'section_list', content: content

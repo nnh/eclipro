@@ -75,9 +75,8 @@ class ProtocolsController < ApplicationController
   end
 
   def export
-    @section_0 = @protocol.contents.find_by(no: '0')
+    @content_0 = @protocol.contents.find_by(no: '0')
     @contents = @protocol.contents.where.not(no: '0').sort_by { |c| c.no.to_f }
-    @sections = Section.reject_specified_sections(@protocol.template_name)
 
     respond_to do |format|
       format.pdf do
