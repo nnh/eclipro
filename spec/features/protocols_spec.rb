@@ -38,6 +38,7 @@ feature Protocol, js: true do
 
       select 'General', from: 'protocol[template_name]'
       fill_in 'protocol[title]', with: 'New protocol'
+      fill_in 'protocol[protocol_number]', with: 'NP'
       click_on 'Create Protocol'
       expect(current_path).to eq protocol_content_path(Protocol.last, Protocol.last.contents.first)
       expect(page).to have_content 'New protocol'

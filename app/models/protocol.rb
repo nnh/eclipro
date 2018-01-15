@@ -9,7 +9,7 @@ class Protocol < ApplicationRecord
 
   enum status: %i(in_progress finalized)
 
-  validates :title, :protocol_number, presence: true
+  validates :template_name, :title, :protocol_number, presence: true
 
   before_validation :set_finalized_date, :set_content_final, :set_content_in_progress
   before_save :update_version, unless: -> { will_save_change_to_attribute?(:version) || new_record? }

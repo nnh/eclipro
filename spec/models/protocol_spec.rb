@@ -17,9 +17,19 @@ describe Protocol do
   let!(:reviewer_participation) { create(:reviewer, protocol: protocol, user: reviewer, sections: [2, 3]) }
 
   describe 'validation' do
+    context 'template_name is presence' do
+      it { expect(build(:protocol, template_name: nil)).not_to be_valid }
+      it { expect(build(:protocol, title: 'General')).to be_valid }
+    end
+
     context 'title is presence' do
       it { expect(build(:protocol, title: nil)).not_to be_valid }
       it { expect(build(:protocol, title: 'test')).to be_valid }
+    end
+
+    context 'protocol_number is presence' do
+      it { expect(build(:protocol, title: 'test', protocol_number: nil)).not_to be_valid }
+      it { expect(build(:protocol, title: 'test', protocol_number: 't')).to be_valid }
     end
   end
 

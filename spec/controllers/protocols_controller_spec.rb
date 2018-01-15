@@ -77,7 +77,7 @@ describe ProtocolsController, type: :controller do
       let(:current_user) { general_user }
       it 'can create new protocol' do
         expect do
-          post :create, params: { protocol: { title: 'Test' } }
+          post :create, params: { protocol: { title: 'Test', protocol_number: 'T' } }
         end.to change(Protocol, :count).by(1)
       end
     end
