@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe ContentsController, type: :controller do
-  let(:pi) { create(:user) }
-  let(:co) { create(:user) }
+  let(:principal_investigator) { create(:user) }
+  let(:co_author) { create(:user) }
   let(:author0) { create(:user) }
   let(:author1) { create(:user) }
   let(:reviewer0) { create(:user) }
@@ -10,12 +10,31 @@ describe ContentsController, type: :controller do
 
   let!(:protocol) { create(:protocol) }
   let!(:content) { protocol.contents.find_by(no: '0') }
-  let!(:participation0) { create(:principal_investigator, protocol: protocol, user: pi) }
-  let!(:participation1) { create(:co_author, protocol: protocol, user: co) }
-  let!(:participation2) { create(:author, protocol: protocol, user: author0, sections: [0]) }
-  let!(:participation3) { create(:author, protocol: protocol, user: author1, sections: [1]) }
-  let!(:participation4) { create(:reviewer, protocol: protocol, user: reviewer0, sections: [0]) }
-  let!(:participation5) { create(:reviewer, protocol: protocol, user: reviewer1, sections: [1]) }
+  let!(:participation0) { create(:principal_investigator, protocol: protocol, user: principal_investigator) }
+  let!(:participation1) { create(:co_author, protocol: protocol, user: co_author) }
+  let!(:participation2) { create(:author, protocol: protocol, user: author0, sections: [0, 1, 2]) }
+  let!(:participation3) { create(:author, protocol: protocol, user: author1, sections: [3, 4, 5]) }
+  let!(:participation4) { create(:reviewer, protocol: protocol, user: reviewer0, sections: [0, 1, 2]) }
+  let!(:participation5) { create(:reviewer, protocol: protocol, user: reviewer1, sections: [3, 4, 5]) }
+
+  let!(:status_new) do
+    protocol.contents.find_by(no: '1.1')
+  end
+  let!(:in_progress) do
+    content = protocol.contents.find_by(no: '2.1')
+    content.update_attributes(status: 'in_progress')
+    content
+  end
+  let!(:under_review) do
+    content = protocol.contents.find_by(no: '2.2')
+    content.update_attributes(status: 'under_review')
+    content
+  end
+  let!(:final) do
+    content = protocol.contents.find_by(no: '2.3')
+    content.update_attributes(status: 'final')
+    content
+  end
 
   before(:each) { sign_in(current_user) }
 
@@ -66,18 +85,50 @@ describe ContentsController, type: :controller do
     end
   end
 
-  context 'principal_investigator' do
-    let!(:current_user) { pi }
-    it_should_behave_like 'can update content'
-    it_should_behave_like 'can see history'
-    it_should_behave_like 'can see compare'
+  shared_examples_for 'can see content' do
+    it do
+      get :show, params: { protocol_id: protocol, id: content }
+      expect(response).to render_template :show
+    end
   end
 
-  context 'co_author' do
-    let!(:current_user) { co }
-    it_should_behave_like 'can update content'
-    it_should_behave_like 'can see history'
-    it_should_behave_like 'can see compare'
+  shared_examples_for 'can change status from' do |before, after|
+    it "#{before} to #{after}" do
+      current_content = eval(before)
+      patch :change_status, params: { protocol_id: protocol, id: current_content, content: { status: after } }
+      current_content.reload
+      expect(current_content.status).to eq after
+    end
+  end
+
+  shared_examples_for 'can not change status from' do |before, after|
+    it "#{before} to #{after}" do
+      current_content = eval(after)
+      patch :change_status, params: { protocol_id: protocol, id: current_content, content: { status: after } }
+      expect(response).to redirect_to root_path
+    end
+  end
+
+  %w[principal_investigator co_author].each do |role|
+    context role do
+      let!(:current_user) { eval(role) }
+      it_should_behave_like 'can update content'
+      it_should_behave_like 'can see history'
+      it_should_behave_like 'can see compare'
+      it_should_behave_like 'can see content'
+      it_should_behave_like 'can not change status from', 'status_new', 'in_progress'
+      it_should_behave_like 'can change status from', 'status_new', 'under_review'
+      it_should_behave_like 'can not change status from', 'status_new', 'final'
+      it_should_behave_like 'can not change status from', 'in_progress', 'status_new'
+      it_should_behave_like 'can change status from', 'in_progress', 'under_review'
+      it_should_behave_like 'can not change status from', 'in_progress', 'final'
+      it_should_behave_like 'can not change status from', 'under_review', 'status_new'
+      it_should_behave_like 'can change status from', 'under_review', 'in_progress'
+      it_should_behave_like 'can change status from', 'under_review', 'final'
+      it_should_behave_like 'can not change status from', 'final', 'status_new'
+      it_should_behave_like 'can change status from', 'final', 'in_progress'
+      it_should_behave_like 'can not change status from', 'final', 'under_review'
+    end
   end
 
   context 'author' do
@@ -85,13 +136,19 @@ describe ContentsController, type: :controller do
     it_should_behave_like 'can update content'
     it_should_behave_like 'can see history'
     it_should_behave_like 'can see compare'
-  end
-
-  context 'other section author' do
-    let!(:current_user) { author1 }
-    it_should_behave_like 'can not update content'
-    it_should_behave_like 'can see history'
-    it_should_behave_like 'can see compare'
+    it_should_behave_like 'can see content'
+    it_should_behave_like 'can not change status from', 'status_new', 'in_progress'
+    it_should_behave_like 'can change status from', 'status_new', 'under_review'
+    it_should_behave_like 'can not change status from', 'status_new', 'final'
+    it_should_behave_like 'can not change status from', 'in_progress', 'status_new'
+    it_should_behave_like 'can change status from', 'in_progress', 'under_review'
+    it_should_behave_like 'can not change status from', 'in_progress', 'final'
+    it_should_behave_like 'can not change status from', 'under_review', 'status_new'
+    it_should_behave_like 'can change status from', 'under_review', 'in_progress'
+    it_should_behave_like 'can not change status from', 'under_review', 'final'
+    it_should_behave_like 'can not change status from', 'final', 'status_new'
+    it_should_behave_like 'can change status from', 'final', 'in_progress'
+    it_should_behave_like 'can not change status from', 'final', 'under_review'
   end
 
   context 'reviewer' do
@@ -99,22 +156,40 @@ describe ContentsController, type: :controller do
     it_should_behave_like 'can not update content'
     it_should_behave_like 'can see history'
     it_should_behave_like 'can see compare'
+    it_should_behave_like 'can see content'
+    it_should_behave_like 'can not change status from', 'status_new', 'in_progress'
+    it_should_behave_like 'can not change status from', 'status_new', 'under_review'
+    it_should_behave_like 'can not change status from', 'status_new', 'final'
+    it_should_behave_like 'can not change status from', 'in_progress', 'status_new'
+    it_should_behave_like 'can not change status from', 'in_progress', 'under_review'
+    it_should_behave_like 'can not change status from', 'in_progress', 'final'
+    it_should_behave_like 'can not change status from', 'under_review', 'status_new'
+    it_should_behave_like 'can change status from', 'under_review', 'in_progress'
+    it_should_behave_like 'can change status from', 'under_review', 'final'
+    it_should_behave_like 'can not change status from', 'final', 'status_new'
+    it_should_behave_like 'can change status from', 'final', 'in_progress'
+    it_should_behave_like 'can not change status from', 'final', 'under_review'
   end
 
-  context 'other section reviewer' do
-    let!(:current_user) { reviewer0 }
-    it_should_behave_like 'can not update content'
-    it_should_behave_like 'can see history'
-    it_should_behave_like 'can see compare'
-  end
-
-  describe '#change_status' do
-    xit 'wip' do
-    end
-  end
-
-  describe '#show' do
-    xit 'wip' do
+  %w[author reviewer].each do |role|
+    context "other section #{role}" do
+      let!(:current_user) { eval("#{role}1") }
+      it_should_behave_like 'can not update content'
+      it_should_behave_like 'can see history'
+      it_should_behave_like 'can see compare'
+      it_should_behave_like 'can see content'
+      it_should_behave_like 'can not change status from', 'status_new', 'in_progress'
+      it_should_behave_like 'can not change status from', 'status_new', 'under_review'
+      it_should_behave_like 'can not change status from', 'status_new', 'final'
+      it_should_behave_like 'can not change status from', 'in_progress', 'status_new'
+      it_should_behave_like 'can not change status from', 'in_progress', 'under_review'
+      it_should_behave_like 'can not change status from', 'in_progress', 'final'
+      it_should_behave_like 'can not change status from', 'under_review', 'status_new'
+      it_should_behave_like 'can not change status from', 'under_review', 'in_progress'
+      it_should_behave_like 'can not change status from', 'under_review', 'final'
+      it_should_behave_like 'can not change status from', 'final', 'status_new'
+      it_should_behave_like 'can not change status from', 'final', 'in_progress'
+      it_should_behave_like 'can not change status from', 'final', 'under_review'
     end
   end
 end

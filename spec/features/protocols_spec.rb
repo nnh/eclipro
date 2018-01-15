@@ -11,19 +11,19 @@ feature Protocol, js: true do
   let!(:author_participation0) { create(:author, protocol: protocol0, user: general_user) }
   let!(:author_participation1) { create(:author, protocol: protocol1, user: general_user) }
 
-  before(:each) do
+  background(:each) do
     login_as(current_user, scope: :user)
     visit protocols_path
   end
 
   shared_examples_for 'can see participating protocols' do
-    it 'all' do
+    scenario 'all' do
       expect(page).to have_content protocol0.title
       expect(page).to have_content protocol1.title
       expect(page).not_to have_content protocol2.title
     end
 
-    it 'with filter' do
+    scenario 'with filter' do
       fill_in 'protocol_name_filter', with: 'Test'
       click_on 'Filtering'
       expect(page).to have_content protocol0.title
@@ -32,7 +32,7 @@ feature Protocol, js: true do
   end
 
   shared_examples_for 'can create new protocol' do
-    it do
+    scenario do
       click_on 'Create new protocols'
       expect(current_path).to eq new_protocol_path
 
@@ -46,7 +46,7 @@ feature Protocol, js: true do
   end
 
   shared_examples_for 'can move to show protocol page' do
-    it do
+    scenario do
       within(:xpath, "//tr[td[contains(., '#{protocol0.title}')]]") do
         click_on 'Details'
       end
@@ -55,14 +55,14 @@ feature Protocol, js: true do
   end
 
   shared_examples_for 'can move to show contents page' do
-    it do
+    scenario do
       find(:xpath, "//tr[td[contains(., '#{protocol0.title}')]]").click
       expect(current_path).to eq protocol_content_path(protocol0, protocol0.contents.first)
     end
   end
 
   shared_examples_for 'can clone protocol' do
-    it do
+    scenario do
       within(:xpath, "//tr[td[contains(., '#{protocol0.title}')]]") do
         click_on 'Clone'
       end
@@ -71,7 +71,7 @@ feature Protocol, js: true do
   end
 
   shared_examples_for 'can export protocol (status is finalized)' do
-    it 'pdf' do
+    scenario 'pdf' do
       within(:xpath, "//tr[td[contains(., '#{protocol1.title}')]]") do
         click_on 'Export(.pdf)'
       end
@@ -80,7 +80,7 @@ feature Protocol, js: true do
         expect(page.response_headers['Content-Type']).to eq('application/pdf')
       end
     end
-    it 'docx' do
+    scenario 'docx' do
       within(:xpath, "//tr[td[contains(., '#{protocol1.title}')]]") do
         click_on 'Export(.docx)'
       end
@@ -91,7 +91,7 @@ feature Protocol, js: true do
     end
   end
 
-  context 'admin user' do
+  feature 'admin user' do
     let(:current_user) { admin_user }
     it_should_behave_like 'can see participating protocols'
     it_should_behave_like 'can create new protocol'
@@ -100,7 +100,7 @@ feature Protocol, js: true do
     it_should_behave_like 'can clone protocol'
     it_should_behave_like 'can export protocol (status is finalized)'
 
-    it 'can edit protocol' do
+    scenario 'can edit protocol' do
       visit(protocol_path(protocol0))
       expect(page).to have_link('Edit', count: 2)
 
@@ -113,7 +113,7 @@ feature Protocol, js: true do
       expect(page).to have_content 'Edit protocol'
     end
 
-    it 'can export protocol (in details page)' do
+    scenario 'can export protocol (in details page)' do
       visit(protocol_path(protocol0))
       expect(page).to have_link 'Export(.pdf)'
 
@@ -133,7 +133,7 @@ feature Protocol, js: true do
       end
     end
 
-    it 'can change status to finalized' do
+    scenario 'can change status to finalized' do
       visit(protocol_path(protocol0))
       expect(page).to have_link 'Finalize'
 
@@ -142,7 +142,7 @@ feature Protocol, js: true do
       expect(page).to have_link 'Reinstate'
     end
 
-    it 'can change status to from "finalized" to "in_progress"' do
+    scenario 'can change status to from "finalized" to "in_progress"' do
       visit(protocol_path(protocol1))
       expect(page).to have_link 'Reinstate'
 
@@ -152,7 +152,7 @@ feature Protocol, js: true do
     end
   end
 
-  context 'general user' do
+  feature 'general user' do
     let(:current_user) { general_user }
     it_should_behave_like 'can see participating protocols'
     it_should_behave_like 'can create new protocol'
@@ -161,23 +161,23 @@ feature Protocol, js: true do
     it_should_behave_like 'can clone protocol'
     it_should_behave_like 'can export protocol (status is finalized)'
 
-    it 'can not edit protocol' do
+    scenario 'can not edit protocol' do
       visit(protocol_path(protocol0))
       expect(page).to have_link('Edit', count: 1)
     end
 
-    it 'can not export protocol (in details page)' do
+    scenario 'can not export protocol (in details page)' do
       visit(protocol_path(protocol0))
       expect(page).not_to have_link 'Export(.pdf)'
       expect(page).not_to have_link 'Export(.docx)'
     end
 
-    it 'can not change status to finalized' do
+    scenario 'can not change status to finalized' do
       visit(protocol_path(protocol0))
       expect(page).not_to have_link 'Finalize'
     end
 
-    it 'can not change status to from "finalized" to "in_progress"' do
+    scenario 'can not change status to from "finalized" to "in_progress"' do
       visit(protocol_path(protocol1))
       expect(page).not_to have_link 'Reinstate'
     end
