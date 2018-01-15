@@ -27,19 +27,3 @@ h3 = t('.title')
     = f.submit t('.add'), class: 'btn btn-default'
 
 = link_to t('.back'), protocol_path(@protocol), class: 'btn btn-default'
-
-javascript:
-  $(function() {
-    $('.check-all-sections').click(function() {
-      $('input[type=checkbox]').prop('checked', true);
-    });
-
-    $('#participation_role').change(function() {
-      if ($('#participation_role').val() == $('#participation_role').children().last().val()) {
-        $('input[type=checkbox]').prop('checked', true);
-        $('.participation-sections').hide();
-      } else {
-        $('.participation-sections').show();
-      }
-    });
-  });
