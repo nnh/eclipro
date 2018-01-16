@@ -15,6 +15,8 @@
 //= require rails-ujs
 //= require_tree .
 
+var editorTextIsChanged = false;
+
 $(function() {
   // protocols
   $('.clickable-tr').click(function(e) {
@@ -70,6 +72,14 @@ $(function() {
       var data = '<div contenteditable="true">' + $(e.target).parent().prev().html() + '</div>';
       tinymce.get('form-tinymce').setContent(data);
     }
+  });
+
+  $('input[type=submit]').on('click', function() {
+    editorTextIsChanged = false;
+    $(window).off('beforeunload');
+  });
+  $(window).on('beforeunload', function() {
+    if (editorTextIsChanged && $('.content-submit-button').length > 0) return '';
   });
 
   // participations

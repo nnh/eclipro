@@ -62,6 +62,9 @@ function initTinyMCE(selector) {
             });
           }
         });
+        editor.on('change', function() {
+          editorTextIsChanged = true;
+        });
       }
     });
   } else {
