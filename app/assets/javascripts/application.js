@@ -59,13 +59,6 @@ $(function() {
     $(this).tab('show');
   });
 
-  $('.section-link').click(function(e) {
-    if ($(e.target).data('href') == '#{protocol_content_path(params[:protocol_id], params[:id], anchor: :sections)}' ) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-  });
-
   $('.to-under-review').click(function(e) {
     if (!$('.content-has-reviewer').data('has-reviewer')) {
       window.alert($('.content-has-reviewer').data('message'));

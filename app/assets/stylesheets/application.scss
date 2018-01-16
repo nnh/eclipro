@@ -65,17 +65,31 @@ li.disabled {
   opacity: 0.6;
 }
 
-a.disabled {
-  cursor: not-allowed;
-  color: #cccccc;
+.active-section {
+  border-radius: 3px;
+  background-color: #337ab7;
+  a {
+    color: white;
+    pointer-events: none;
+  }
 }
 
-.nav-pills li a.uneditable {
-  color: #cccccc;
+.child-list {
+  margin-left: 20px;
 }
 
-.nav.nav-stacked > li > a {
-  padding: 5px 10px;
+.section-link {
+  padding: 10px 15px;
+  display: block;
+  width: 100%;
+  &:hover {
+    background-color: #eeeeee;
+    text-decoration: none;
+  }
+}
+
+a.uneditable {
+  color: #cccccc;
 }
 
 .menu-body {
@@ -103,9 +117,6 @@ a.disabled {
     border-left: solid #4f818d 1px;
     padding: 3px;
     color: #4f818d;
-  }
-  li.child-list {
-    margin-left: 20px;
   }
 }
 
