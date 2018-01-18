@@ -32,7 +32,7 @@ feature Protocol, js: true do
   end
 
   shared_examples_for 'can create new protocol' do
-    scenario do
+    scenario '(and automaticaly create contents)' do
       click_on 'Create new protocols'
       expect(current_path).to eq new_protocol_path
 
@@ -42,6 +42,7 @@ feature Protocol, js: true do
       click_on 'Create Protocol'
       expect(current_path).to eq protocol_content_path(Protocol.last, Protocol.last.contents.first)
       expect(page).to have_content 'New protocol'
+      expect(Protocol.last.contents.count). to eq Section.reject_specified_sections('General').count
     end
   end
 
