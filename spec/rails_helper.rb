@@ -68,6 +68,11 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include Warden::Test::Helpers, type: :feature
   config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include ActionDispatch::TestProcess
+
+  FactoryGirl::SyntaxRunner.class_eval do
+    include ActionDispatch::TestProcess
+  end
 
   config.before(:suite) do
     DatabaseRewinder.clean_all
