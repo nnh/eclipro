@@ -16,23 +16,26 @@ en:
         has_ind: Has IND
         compliance: Compliance
         template_name: Template
-    enum:
-      protocol:
-        status:
-          in_progress: In Progress
-          finalized: Finalized
-      content:
-        status:
-          status_new: New
-          in_progress: In Progress
-          under_review: Under Review
-          final: Final
       participation:
-        role:
-          co_author: CoAuthor
-          author_all: Author(All)
-          reviewer_all: Reviewer(All)
-          author: Author
-          reviewer: Reviewer
-          principal_investigator: Principal investigator
-    # errors:
+        user_id: User
+        role: Role
+        sections: Sections
+    errors:
+      select_sections: please select at least one.
+  enums:
+    protocol:
+      status:
+        in_progress: In Progress
+        finalized: Finalized
+    content:
+      status:
+        status_new: New
+        in_progress: In Progress
+        under_review: Under Review
+        final: Final
+    participation:
+      role:
+        co_author: CoAuthor
+        author: Author
+        reviewer: Reviewer
+        principal_investigator: Principal investigator

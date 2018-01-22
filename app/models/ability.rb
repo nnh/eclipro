@@ -79,5 +79,9 @@ class Ability
     can :read, Image do |image|
       can? :read, image.content
     end
+
+    can :manage, Participation do |participation|
+      can? :admin, participation.protocol
+    end
   end
 end

@@ -11,8 +11,10 @@ FactoryGirl.define do
   end
   factory :co_author, parent: :participation do
     role 'co_author'
+    sections [0, 1]
   end
   factory :principal_investigator, parent: :participation do
     role 'principal_investigator'
+    sections [0, 1]
   end
 end

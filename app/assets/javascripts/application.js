@@ -31,24 +31,32 @@ $(function() {
     }
   });
 
+  $('#protocol_sponsors').change(function() {
+    if ($('#protocol_sponsors').children(':selected').last().text() === $('#protocol_sponsors').children().last().val()) {
+      $('.protocol-sponsor-other-form').show();
+    } else {
+      $('.protocol-sponsor-other-form').hide();
+    }
+  });
+
+  $('.protocol-checkbox-form').change(function() {
+    if ($('#protocol_study_agent_1').prop('checked') || $('#protocol_study_agent_2').prop('checked')) {
+      $('.protocol-has-ind-form').show();
+    } else {
+      $('.protocol-has-ind-form').hide();
+    }
+    if ($('#protocol_study_agent_3').prop('checked')) {
+      $('.protocol-has-ide-form').show();
+    } else {
+      $('.protocol-has-ide-form').hide();
+    }
+  });
+
   // contents
   var hash = window.location.hash;
   hash && $('ul.nav a[href="' + hash + ']').tab('show');
   $('.nav-pills a').click(function(e) {
     $(this).tab('show');
-  });
-
-  $('.section-link').click(function(e) {
-    if ($(e.target).data('link') != '#{protocol_content_path(params[:protocol_id], params[:id], anchor: :sections)}' ) {
-      window.location = $(e.target).data('link');
-    }
-    if ($('#instructions').length > 0) { $('.tab-instructions').removeClass('disabled'); }
-    if ($('#example').length > 0) { $('.tab-example').removeClass('disabled'); }
-  });
-
-  $('.section-common').click(function(e) {
-    $('.tab-instructions').addClass('disabled');
-    $('.tab-example').addClass('disabled');
   });
 
   $('.to-under-review').click(function(e) {
@@ -61,6 +69,21 @@ $(function() {
     if (window.confirm($('.example-copy-button').data('message'))) {
       var data = '<div contenteditable="true">' + $(e.target).parent().prev().html() + '</div>';
       tinymce.get('form-tinymce').setContent(data);
+    }
+  });
+
+  // participations
+  $('.check-all-sections').click(function() {
+    $('input[type=checkbox]').prop('checked', true);
+  });
+
+  $('#participation_role').change(function() {
+    if ($('#participation_role').val() == $('#participation_role').children().last().val()) {
+      $('input[type=checkbox]').prop('checked', true);
+      $('.participation-sections').hide();
+    } else {
+      $('input[type=checkbox]').prop('checked', false);
+      $('.participation-sections').show();
     }
   });
 });

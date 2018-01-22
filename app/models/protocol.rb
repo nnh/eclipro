@@ -9,20 +9,20 @@ class Protocol < ApplicationRecord
 
   enum status: %i(in_progress finalized)
 
-  validates :title, :protocol_number, presence: true
+  validates :template_name, :title, :protocol_number, presence: true
 
-  before_validation :set_finalized_date
-  before_save :update_version, unless: -> { will_save_change_to_attribute?(:version) }
+  before_validation :set_finalized_date, :set_content_final, :set_content_in_progress
+  before_save :update_version, unless: -> { will_save_change_to_attribute?(:version) || new_record? }
 
   def my_role(user)
     if co_author?(user)
-      I18n.t('activerecord.enum.participation.role.co_author')
+      Participation.roles_i18n['co_author']
     elsif author?(user)
-      I18n.t('activerecord.enum.participation.role.author')
+      Participation.roles_i18n['author']
     elsif reviewer?(user)
-      I18n.t('activerecord.enum.participation.role.reviewer')
+      Participation.roles_i18n['reviewer']
     elsif principal_investigator?(user)
-      I18n.t('activerecord.enum.participation.role.principal_investigator')
+      Participation.roles_i18n['principal_investigator']
     end
   end
 
@@ -55,7 +55,7 @@ class Protocol < ApplicationRecord
 
   def reviewable_sections(user)
     all_sections = Section.reject_specified_sections(template_name).pluck(:no)
-    return all_sections if principal_investigator?(user)
+    return all_sections if principal_investigator?(user) || co_author?(user)
     return [] unless reviewer?(user)
     select_sections(all_sections, Participation.find_by(protocol: self, user: user).sections)
   end
@@ -81,5 +81,13 @@ class Protocol < ApplicationRecord
 
     def set_finalized_date
       assign_attributes(finalized_date: Date.today) if finalized?
+    end
+
+    def set_content_final
+      contents.each(&:final!) if finalized?
+    end
+
+    def set_content_in_progress
+      contents.each(&:in_progress!) if attribute_in_database(:status) == 'finalized'
     end
 end

@@ -1,0 +1,29 @@
+h3 = t('.title')
+
+= form_for [@protocol, @participation], html: { class: 'form-horizontal', role: 'form' } do |f|
+  - if @participation.errors.any?
+    = model_errors(@participation)
+
+  .form-group
+    = f.label :user_id, class: 'control-label'
+    = f.collection_select :user_id, User.where.not(id: @protocol.participations.pluck(:user_id)),
+                          :id, :name, {}, class: 'form-control'
+
+  .form-group
+    = f.label :role, class: 'control-label'
+    = f.select :role, Participation.roles_i18n.slice(*Participation.addable_roles).invert, {}, class: 'form-control'
+
+  .form-group.participation-sections
+    = f.label :sections
+    = button_tag t('.all_sections'), class: 'btn btn-default check-all-sections ml-s', type: :button
+    - sections = Section.parent_items(@protocol.template_name).pluck(:no, :title)
+    - sections.each do |section|
+      div
+        label
+          = f.check_box :sections, { multiple: true }, section[0].to_i, nil
+          = " #{section[0]} #{section[1]}"
+
+  .form-group
+    = f.submit t('.add'), class: 'btn btn-default'
+
+= link_to t('.back'), protocol_path(@protocol), class: 'btn btn-default'

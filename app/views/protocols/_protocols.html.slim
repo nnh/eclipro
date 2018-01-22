@@ -17,17 +17,12 @@ table.table
         td = protocol.my_role(current_user)
         td = protocol.participations.principal_investigator.first.user.name
         td
-          = t("activerecord.enum.protocol.status.#{protocol.status}")
-          - if protocol.status == 'finalized'
+          = protocol.status_i18n
+          - if protocol.finalized?
             = " - #{protocol.finalized_date}"
         td = sprintf('%.3f', protocol.version)
         td
-          - if can? :admin, protocol
-            - if protocol.finalized?
-              = link_to t('.reinstate'), reinstate_protocol_path(protocol), class: 'btn btn-default',
-                                         data: { confirm: t('.reinstate_text') }
-            - else
-              = link_to t('.admin'), edit_protocol_path(protocol), class: 'btn btn-default'
+          = link_to t('.show'), protocol_path(protocol), class: 'btn btn-default'
         td
           - if protocol.finalized?
             = link_to t('.export_pdf'), export_protocol_path(protocol, format: :pdf), class: 'btn btn-default', target: '_blank'

@@ -9,7 +9,7 @@ en:
       principal_investigator: Principal Investigator
       status: Status
       version: Version
-      admin: Admin
+      show: Details
       export_pdf: Export(.pdf)
       export_docx: Export(.docx)
       clone: Clone
@@ -21,139 +21,132 @@ en:
     edit:
       title: Edit protocol
       back: Back
+    show:
+      title: Protocol details
+      edit: Edit
+      protocol_title: Protocol title
+      protocol_number: Protocol Number
+      nct_number: National Clinical Trial (NCT) Identified Number
+      principal_investigator: Principal Investigator
+      sponsors: IND Sponsor
+      funded_by: Funded by
+      draft_number: Draft number
+      updated_at: Updated at
+      compliance: Statement of Compliance
+      no_select: Compliance is not selected
+      export_pdf: Export(.pdf)
+      export_docx: Export(.docx)
+      finalize: Finalize
+      finalize_text: Do you want to finalize this protocol?
+      reinstate: Reinstate
+      reinstate_text: Do you want to reinstate this protocol?
+      member: Member
+      name: Name
+      role: Role
+      sections: Sections
+      remove: Remove
+      add_member: Add member
+      remove_member: Are you sure?
     form:
       error_message:
         one: '%{count} error prohibited this protocol from being saved.'
         other: '%{count} errors prohibited this protocol from being saved.'
-    step:
-      one:
-        step: Step 1 of 3
-        next: Next
-        one: 1) What is the name or title of the clinical trial?
-        two: 2) If applicable, what is the short title?
-        three: 3) What is the Protocol Identifying Number?
-        four: 4) If available, what is the National Clinical Trial (NCT) Identified Number?
-        five: 5) What is the name of the IND/IDE Sponsor? (Ctrl click to select multiple)
-        five_a: 5a) If "Other" was selected, what is the name of the IND/IDE Sponsor?
-        six: 6) What is the name of the entity funding the clinical trial?
-        seven: 7) Is the study agent a drug, biologic, or device?
-        drug: Drug
-        biologic: Biologic
-        device: Device
-        has_ide: Have you obtained an IDE?
-        has_ind: Have you obtained an IND?
-        'yes': Yes
-        'no': No
-        error: Title can't be blank
-        template_error: Template can't be blank
-        template_name: Template (*It can not be changed later.)
-        sponsors:
-          - National Cancer Institute
-          - National Institute of Allergy and Infectious Diseases
-          - National Institute of Dental and Craniofacial Research
-          - National Institute of Diabetes and Digestive and Kidney Diseases
-          - National Heart, Lung, and Blood Institute
-          - National Institute of Mental Health
-          - National Institute of Neurological Disorders and Stroke
-          - National Library of Medicine
-          - National Institute of Child Health and Human Development
-          - National Institute of General Medical Sciences
-          - National Eye Institute
-          - National Institute of Environmental Health Sciences
-          - National Institute on Alcohol Abuse and Alcoholism
-          - National Institute on Drug Abuse
-          - National Institute on Aging
-          - National Institute of Arthritis and Musculoskeletal and Skin Diseases
-          - National Institute of Nursing Research
-          - National Institute on Deafness and Other Communication Disorders
-          - National Human Genome Research Institute
-          - National Institute of Biomedical Imaging and Bioengineering
-          - National Institute on Minority Health and Health Disparities
-          - Center for Scientific Review
-          - Clinical Center
-          - National Center for Advancing Translational Sciences
-          - Center for Information Technology
-          - John E.Fogarty International Center
-          - National Center for Complementary and Integrative Health
-          - Other
-      two:
-        step: Step 2 of 3
-        prev: Previous
-        next: Next
-        one: |-
-          1) A Statement of Compliance is required for research involving human subjects.
-          The NIH Office of Science Policy recommends using one of the statements of compliance found
-          below.
-          <br><br>
-          Please select the one you prefer:
-        or: OR
-        radio_one: |-
-          The trial will be carried out in accordance with International Conference on Harmonisation
-          Good Clinical Practice (ICH GCP) and the following:
-          <br><br>
-          <ul><li>
-          United States (US) Code of Federal Regulations (CFR) applicable to clinical studies
-          (45 CFR Part 46, 21 CFR Part 50, 21 CFR Part 56, 21 CFR Part 312, and/or 21 CFR Part 812)
-          </li></ul>
-          National Institutes of Health (NIH)-funded investigators and clinical trial site staff who
-          are responsible for the conduct, management, or oversight of NIH-funded clinical trials have
-          completed Human Subjects Protection and ICH GCP Training.
-          <br><br>
-          The protocol, informed consent form(s), recruitment materials, and all participant materials
-          will be submitted to the Institutional Review Board (IRB) for review and approval.
-          Approval of both the protocol and the consent form must be obtained before any participant
-          is enrolled.
-          Any amendment to the protocol will require review and approval by the IRB before the changes
-          are implemented to the study.
-          In addition, all changes to the consent form will be IRB-approved; a determination will be
-          made regarding whether a new consent needs to be obtained from participants who provided
-          consent, using a previously approved consent form.
-        radio_two: |-
-          The trial will be conducted in accordance with International Conference on Harmonisation Good
-          Clinical Practice (ICH GCP), applicable United States (US) Code of Federal Regulations (CFR),
-          and the [specify NIH Institute or Center (IC)] Terms and Conditions of Award.
-          The Principal Investigator will assure that no deviation from, or changes to the protocol
-          will take place without prior agreement from the Investigational New Drug (IND) or Investigational
-          Device Exemption (IDE) sponsor, funding agency and documented approval from the Institutional
-          Review Board (IRB), except where necessary to eliminate an immediate hazard(s) to the trial
-          participants.
-          All personnel involved in the conduct of this study have completed Human Subjects Protection
-          and ICH GCP Training.
-          <br><br>
-          The protocol, informed consent form(s), recruitment materials, and all participant materials
-          will be submitted to the IRB for review and approval.
-          Approval of both the protocol and the consent form must be obtained before any participant
-          is enrolled.
-          Any amendment to the protocol will require review and approval by the IRB before the changes
-          are implemented to the study.
-          All changes to the consent form will be IRB approved; a determination will be made regarding
-          whether a new consent needs to be obtained from participants who provided consent, using a
-          previously approved consent form.
-      three:
-        step: Step 3 of 3
-        prev: Previous
-        build: Build Your Team
-        user: User
-        role: Role
-        sections: Sections
-      step_buttons:
-        export_pdf: Export(.pdf)
-        export_docx: Export(.docx)
-        finalize: Finalize
-        finalize_text: Do you want to finalize this protocol?
-        reinstate: Reinstate
-        reinstate_text: Do you want to reinstate this protocol?
-      build_team:
-        title: Add Team Member
-        text: |-
-          When using the drop down menu, please only select users that you plan to include on your protocol
-          writing team. Note that your colleagues must register as a user of this tool to be selected as a member of your team.
-        user_label: Select which user you would like to grant access to this protocol
-        role_label: What role will this user perform?
-        cancel: Cancel
-        add_user: Add User
-      team_member:
-        delete: Delete
+      one: 1) What is the name or title of the clinical trial?
+      two: 2) If applicable, what is the short title?
+      three: 3) What is the Protocol Identifying Number?
+      four: 4) If available, what is the National Clinical Trial (NCT) Identified Number?
+      five: 5) What is the name of the IND/IDE Sponsor? (Ctrl click to select multiple)
+      five_a: 5a) If "Other" was selected, what is the name of the IND/IDE Sponsor?
+      six: 6) What is the name of the entity funding the clinical trial?
+      seven: 7) Is the study agent a drug, biologic, or device?
+      drug: Drug
+      biologic: Biologic
+      device: Device
+      has_ide: Have you obtained an IDE?
+      has_ind: Have you obtained an IND?
+      'yes': Yes
+      'no': No
+      error: Title can't be blank
+      template_error: Template can't be blank
+      template_name: Template (*It can not be changed later.)
+      sponsors:
+        - National Cancer Institute
+        - National Institute of Allergy and Infectious Diseases
+        - National Institute of Dental and Craniofacial Research
+        - National Institute of Diabetes and Digestive and Kidney Diseases
+        - National Heart, Lung, and Blood Institute
+        - National Institute of Mental Health
+        - National Institute of Neurological Disorders and Stroke
+        - National Library of Medicine
+        - National Institute of Child Health and Human Development
+        - National Institute of General Medical Sciences
+        - National Eye Institute
+        - National Institute of Environmental Health Sciences
+        - National Institute on Alcohol Abuse and Alcoholism
+        - National Institute on Drug Abuse
+        - National Institute on Aging
+        - National Institute of Arthritis and Musculoskeletal and Skin Diseases
+        - National Institute of Nursing Research
+        - National Institute on Deafness and Other Communication Disorders
+        - National Human Genome Research Institute
+        - National Institute of Biomedical Imaging and Bioengineering
+        - National Institute on Minority Health and Health Disparities
+        - Center for Scientific Review
+        - Clinical Center
+        - National Center for Advancing Translational Sciences
+        - Center for Information Technology
+        - John E.Fogarty International Center
+        - National Center for Complementary and Integrative Health
+        - Other
+      compliance: |-
+        8) A Statement of Compliance is required for research involving human subjects.
+        The NIH Office of Science Policy recommends using one of the statements of compliance found
+        below.
+        <br><br>
+        Please select the one you prefer:
+      or: OR
+      radio_one: |-
+        The trial will be carried out in accordance with International Conference on Harmonisation
+        Good Clinical Practice (ICH GCP) and the following:
+        <br><br>
+        <ul><li>
+        United States (US) Code of Federal Regulations (CFR) applicable to clinical studies
+        (45 CFR Part 46, 21 CFR Part 50, 21 CFR Part 56, 21 CFR Part 312, and/or 21 CFR Part 812)
+        </li></ul>
+        National Institutes of Health (NIH)-funded investigators and clinical trial site staff who
+        are responsible for the conduct, management, or oversight of NIH-funded clinical trials have
+        completed Human Subjects Protection and ICH GCP Training.
+        <br><br>
+        The protocol, informed consent form(s), recruitment materials, and all participant materials
+        will be submitted to the Institutional Review Board (IRB) for review and approval.
+        Approval of both the protocol and the consent form must be obtained before any participant
+        is enrolled.
+        Any amendment to the protocol will require review and approval by the IRB before the changes
+        are implemented to the study.
+        In addition, all changes to the consent form will be IRB-approved; a determination will be
+        made regarding whether a new consent needs to be obtained from participants who provided
+        consent, using a previously approved consent form.
+      radio_two: |-
+        The trial will be conducted in accordance with International Conference on Harmonisation Good
+        Clinical Practice (ICH GCP), applicable United States (US) Code of Federal Regulations (CFR),
+        and the [specify NIH Institute or Center (IC)] Terms and Conditions of Award.
+        The Principal Investigator will assure that no deviation from, or changes to the protocol
+        will take place without prior agreement from the Investigational New Drug (IND) or Investigational
+        Device Exemption (IDE) sponsor, funding agency and documented approval from the Institutional
+        Review Board (IRB), except where necessary to eliminate an immediate hazard(s) to the trial
+        participants.
+        All personnel involved in the conduct of this study have completed Human Subjects Protection
+        and ICH GCP Training.
+        <br><br>
+        The protocol, informed consent form(s), recruitment materials, and all participant materials
+        will be submitted to the IRB for review and approval.
+        Approval of both the protocol and the consent form must be obtained before any participant
+        is enrolled.
+        Any amendment to the protocol will require review and approval by the IRB before the changes
+        are implemented to the study.
+        All changes to the consent form will be IRB approved; a determination will be made regarding
+        whether a new consent needs to be obtained from participants who provided consent, using a
+        previously approved consent form.
     create:
       success: Protocol was successfully created.
     update:

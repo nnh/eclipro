@@ -9,148 +9,138 @@ ja:
       principal_investigator: 主任研究員
       status: 状態
       version: バージョン
-      admin: 管理
+      show: 詳細
       export_pdf: エクスポート(.pdf)
       export_docx: エクスポート(.docx)
       clone: 複製
-      reinstate: 再編集
-      reinstate_text: このプロトコルを再編集しますか？
     new:
       title: プロトコル新規作成
       back: 戻る
     edit:
       title: プロトコル編集
       back: 戻る
+    show:
+      title: プロトコル詳細
+      edit: 編集
+      protocol_title: プロトコルタイトル
+      protocol_number: プロトコル番号
+      nct_number: 国立臨床試験（NCT）識別番号
+      principal_investigator: 主任研究員
+      sponsors: INDスポンサー
+      funded_by: 資金提供
+      draft_number: バージョン
+      updated_at: 更新日時
+      compliance: コンプライアンス声明
+      no_select: コンプライアンスが選択されていません。
+      export_pdf: エクスポート(.pdf)
+      export_docx: エクスポート(.docx)
+      finalize: 正式版として承認
+      finalize_text: このプロトコルを正式版として承認しますか？
+      reinstate: 再編集
+      reinstate_text: このプロトコルを再編集しますか？
+      member: メンバー
+      name: 名前
+      role: 役割
+      sections: セクション
+      remove: 削除
+      add_member: メンバー追加
+      remove_member: メンバーを削除しますか？
     form:
       error_message: '%{count} 件のエラーが発生しました。'
-    step:
-      one:
-        step: ステップ 1 / 3
-        next: 次へ
-        one: 1) 臨床試験の名前またはタイトルは何ですか？
-        two: 2) 該当する場合は、短いタイトルは何ですか？
-        three: 3) プロトコル識別番号は何ですか？
-        four: 4) 可能であれば、国立臨床試験（NCT）識別番号は何ですか？
-        five: 5) IND / IDEスポンサーの名前は何ですか？ （Ctrlを押しながらクリックして複数選択）
-        five_a: 5a) 「その他」を選択した場合、そのIND / IDEスポンサーの名前は何ですか？
-        six: 6) 臨床試験に資金を提供している企業の名前は何ですか？
-        seven: 7) 研究薬剤は薬物、生物学的物質、または装置ですか？
-        drug: 薬物
-        biologic: 生物製剤
-        device: 機器
-        has_ide: IDEを入手しましたか？
-        has_ind: INDを入手しましたか？
-        'yes': はい
-        'no': いいえ
-        error: タイトルを入力してください
-        template_error: テンプレートを選択してください。
-        template_name: テンプレート (※後から変更することはできません。)
-        sponsors:
-          - National Cancer Institute
-          - National Institute of Allergy and Infectious Diseases
-          - National Institute of Dental and Craniofacial Research
-          - National Institute of Diabetes and Digestive and Kidney Diseases
-          - National Heart, Lung, and Blood Institute
-          - National Institute of Mental Health
-          - National Institute of Neurological Disorders and Stroke
-          - National Library of Medicine
-          - National Institute of Child Health and Human Development
-          - National Institute of General Medical Sciences
-          - National Eye Institute
-          - National Institute of Environmental Health Sciences
-          - National Institute on Alcohol Abuse and Alcoholism
-          - National Institute on Drug Abuse
-          - National Institute on Aging
-          - National Institute of Arthritis and Musculoskeletal and Skin Diseases
-          - National Institute of Nursing Research
-          - National Institute on Deafness and Other Communication Disorders
-          - National Human Genome Research Institute
-          - National Institute of Biomedical Imaging and Bioengineering
-          - National Institute on Minority Health and Health Disparities
-          - Center for Scientific Review
-          - Clinical Center
-          - National Center for Advancing Translational Sciences
-          - Center for Information Technology
-          - John E.Fogarty International Center
-          - National Center for Complementary and Integrative Health
-          - Other
-      two:
-        step: ステップ 2 / 3
-        prev: 前へ
-        next: 次へ
-        one: |-
-          1) コンプライアンス声明は、人間の被験者に関する研究に必要です。 NIH Office of Science Policyは、以下にあるコンプライアンスのステートメントの1つを使用することを推奨しています。<br>
-          <br>
-          ご希望のものをお選びください：
-        or: もしくは
-        radio_one: |-
-          The trial will be carried out in accordance with International Conference on Harmonisation
-          Good Clinical Practice (ICH GCP) and the following:
-          <br><br>
-          <ul><li>
-          United States (US) Code of Federal Regulations (CFR) applicable to clinical studies
-          (45 CFR Part 46, 21 CFR Part 50, 21 CFR Part 56, 21 CFR Part 312, and/or 21 CFR Part 812)
-          </li></ul>
-          National Institutes of Health (NIH)-funded investigators and clinical trial site staff who
-          are responsible for the conduct, management, or oversight of NIH-funded clinical trials have
-          completed Human Subjects Protection and ICH GCP Training.
-          <br><br>
-          The protocol, informed consent form(s), recruitment materials, and all participant materials
-          will be submitted to the Institutional Review Board (IRB) for review and approval.
-          Approval of both the protocol and the consent form must be obtained before any participant
-          is enrolled.
-          Any amendment to the protocol will require review and approval by the IRB before the changes
-          are implemented to the study.
-          In addition, all changes to the consent form will be IRB-approved; a determination will be
-          made regarding whether a new consent needs to be obtained from participants who provided
-          consent, using a previously approved consent form.
-        radio_two: |-
-          The trial will be conducted in accordance with International Conference on Harmonisation Good
-          Clinical Practice (ICH GCP), applicable United States (US) Code of Federal Regulations (CFR),
-          and the [specify NIH Institute or Center (IC)] Terms and Conditions of Award.
-          The Principal Investigator will assure that no deviation from, or changes to the protocol
-          will take place without prior agreement from the Investigational New Drug (IND) or Investigational
-          Device Exemption (IDE) sponsor, funding agency and documented approval from the Institutional
-          Review Board (IRB), except where necessary to eliminate an immediate hazard(s) to the trial
-          participants.
-          All personnel involved in the conduct of this study have completed Human Subjects Protection
-          and ICH GCP Training.
-          <br><br>
-          The protocol, informed consent form(s), recruitment materials, and all participant materials
-          will be submitted to the IRB for review and approval.
-          Approval of both the protocol and the consent form must be obtained before any participant
-          is enrolled.
-          Any amendment to the protocol will require review and approval by the IRB before the changes
-          are implemented to the study.
-          All changes to the consent form will be IRB approved; a determination will be made regarding
-          whether a new consent needs to be obtained from participants who provided consent, using a
-          previously approved consent form.
-      three:
-        step: ステップ 3 / 3
-        prev: 前へ
-        build: メンバーを追加する
-        user: ユーザー
-        role: 役割
-        sections: セクション
-      step_buttons:
-        export_pdf: エクスポート(.pdf)
-        export_docx: エクスポート(.docx)
-        finalize: 正式版として承認
-        finalize_text: このプロトコルを正式版として承認しますか？
-        reinstate: 再編集
-        reinstate_text: このプロトコルを再編集しますか？
-      build_team:
-        title: メンバーを追加
-        text: |-
-          ドロップダウンメニューを使用する場合は、プロトコル作成チームに含める予定のユーザーのみを選択してください。
-          プロトコルにアクセスするには、このアプリケーションのユーザーとして登録して、チームメンバーとして登録する
-          必要があります。
-        user_label: このプロトコルへのアクセスを許可するユーザーを選択してください。
-        role_label: このユーザーの役割を選択してください。
-        cancel: キャンセル
-        add_user: ユーザー追加
-      team_member:
-        delete: 削除
+      one: 1) 臨床試験の名前またはタイトルは何ですか？
+      two: 2) 該当する場合は、短いタイトルは何ですか？
+      three: 3) プロトコル識別番号は何ですか？
+      four: 4) 可能であれば、国立臨床試験（NCT）識別番号は何ですか？
+      five: 5) IND / IDEスポンサーの名前は何ですか？ （Ctrlを押しながらクリックして複数選択）
+      five_a: 5a) 「その他」を選択した場合、そのIND / IDEスポンサーの名前は何ですか？
+      six: 6) 臨床試験に資金を提供している企業の名前は何ですか？
+      seven: 7) 研究薬剤は薬物、生物学的物質、または装置ですか？
+      drug: 薬物
+      biologic: 生物製剤
+      device: 機器
+      has_ide: IDEを入手しましたか？
+      has_ind: INDを入手しましたか？
+      'yes': はい
+      'no': いいえ
+      error: タイトルを入力してください
+      template_error: テンプレートを選択してください。
+      template_name: テンプレート (※後から変更することはできません。)
+      sponsors:
+        - National Cancer Institute
+        - National Institute of Allergy and Infectious Diseases
+        - National Institute of Dental and Craniofacial Research
+        - National Institute of Diabetes and Digestive and Kidney Diseases
+        - National Heart, Lung, and Blood Institute
+        - National Institute of Mental Health
+        - National Institute of Neurological Disorders and Stroke
+        - National Library of Medicine
+        - National Institute of Child Health and Human Development
+        - National Institute of General Medical Sciences
+        - National Eye Institute
+        - National Institute of Environmental Health Sciences
+        - National Institute on Alcohol Abuse and Alcoholism
+        - National Institute on Drug Abuse
+        - National Institute on Aging
+        - National Institute of Arthritis and Musculoskeletal and Skin Diseases
+        - National Institute of Nursing Research
+        - National Institute on Deafness and Other Communication Disorders
+        - National Human Genome Research Institute
+        - National Institute of Biomedical Imaging and Bioengineering
+        - National Institute on Minority Health and Health Disparities
+        - Center for Scientific Review
+        - Clinical Center
+        - National Center for Advancing Translational Sciences
+        - Center for Information Technology
+        - John E.Fogarty International Center
+        - National Center for Complementary and Integrative Health
+        - Other
+      compliance: |-
+        8) コンプライアンス声明は、人間の被験者に関する研究に必要です。 NIH Office of Science Policyは、以下にあるコンプライアンスのステートメントの1つを使用することを推奨しています。<br>
+        <br>
+        ご希望のものをお選びください：
+      or: もしくは
+      radio_one: |-
+        The trial will be carried out in accordance with International Conference on Harmonisation
+        Good Clinical Practice (ICH GCP) and the following:
+        <br><br>
+        <ul><li>
+        United States (US) Code of Federal Regulations (CFR) applicable to clinical studies
+        (45 CFR Part 46, 21 CFR Part 50, 21 CFR Part 56, 21 CFR Part 312, and/or 21 CFR Part 812)
+        </li></ul>
+        National Institutes of Health (NIH)-funded investigators and clinical trial site staff who
+        are responsible for the conduct, management, or oversight of NIH-funded clinical trials have
+        completed Human Subjects Protection and ICH GCP Training.
+        <br><br>
+        The protocol, informed consent form(s), recruitment materials, and all participant materials
+        will be submitted to the Institutional Review Board (IRB) for review and approval.
+        Approval of both the protocol and the consent form must be obtained before any participant
+        is enrolled.
+        Any amendment to the protocol will require review and approval by the IRB before the changes
+        are implemented to the study.
+        In addition, all changes to the consent form will be IRB-approved; a determination will be
+        made regarding whether a new consent needs to be obtained from participants who provided
+        consent, using a previously approved consent form.
+      radio_two: |-
+        The trial will be conducted in accordance with International Conference on Harmonisation Good
+        Clinical Practice (ICH GCP), applicable United States (US) Code of Federal Regulations (CFR),
+        and the [specify NIH Institute or Center (IC)] Terms and Conditions of Award.
+        The Principal Investigator will assure that no deviation from, or changes to the protocol
+        will take place without prior agreement from the Investigational New Drug (IND) or Investigational
+        Device Exemption (IDE) sponsor, funding agency and documented approval from the Institutional
+        Review Board (IRB), except where necessary to eliminate an immediate hazard(s) to the trial
+        participants.
+        All personnel involved in the conduct of this study have completed Human Subjects Protection
+        and ICH GCP Training.
+        <br><br>
+        The protocol, informed consent form(s), recruitment materials, and all participant materials
+        will be submitted to the IRB for review and approval.
+        Approval of both the protocol and the consent form must be obtained before any participant
+        is enrolled.
+        Any amendment to the protocol will require review and approval by the IRB before the changes
+        are implemented to the study.
+        All changes to the consent form will be IRB approved; a determination will be made regarding
+        whether a new consent needs to be obtained from participants who provided consent, using a
+        previously approved consent form.
     create:
       success: プロトコルを作成しました。
     update:

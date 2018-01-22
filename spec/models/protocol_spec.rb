@@ -10,10 +10,28 @@ describe Protocol do
   let(:protocol) { create(:protocol) }
   let(:protocol2) { create(:protocol) }
 
-  let!(:participation0) { create(:principal_investigator, protocol: protocol, user: pi) }
-  let!(:participation1) { create(:co_author, protocol: protocol, user: co) }
-  let!(:participation2) { create(:author, protocol: protocol, user: author) }
-  let!(:participation3) { create(:reviewer, protocol: protocol, user: reviewer) }
+  let(:sections) { Section.parent_items(protocol.template_name) }
+  let!(:pi_participation) { create(:principal_investigator, protocol: protocol, user: pi, sections: sections) }
+  let!(:co_participation) { create(:co_author, protocol: protocol, user: co, sections: sections) }
+  let!(:author_participation) { create(:author, protocol: protocol, user: author, sections: [0, 1]) }
+  let!(:reviewer_participation) { create(:reviewer, protocol: protocol, user: reviewer, sections: [2, 3]) }
+
+  describe 'validation' do
+    context 'template_name is presence' do
+      it { expect(build(:protocol, template_name: nil)).not_to be_valid }
+      it { expect(build(:protocol, title: 'General')).to be_valid }
+    end
+
+    context 'title is presence' do
+      it { expect(build(:protocol, title: nil)).not_to be_valid }
+      it { expect(build(:protocol, title: 'test')).to be_valid }
+    end
+
+    context 'protocol_number is presence' do
+      it { expect(build(:protocol, title: 'test', protocol_number: nil)).not_to be_valid }
+      it { expect(build(:protocol, title: 'test', protocol_number: 't')).to be_valid }
+    end
+  end
 
   describe 'role' do
     context 'get current_user role' do
@@ -51,17 +69,21 @@ describe Protocol do
     end
   end
 
-  # TODO:
   describe 'get sections' do
-    xit 'updatable' do
+    context 'updatable' do
+      let(:all_sections) { Section.reject_specified_sections(protocol.template_name).pluck(:no) }
+      it { expect(protocol.updatable_sections(co)).to eq all_sections }
+      it { expect(protocol.updatable_sections(author)).to eq ['0', '1', '1.1', '1.2', '1.3'] }
+      it { expect(protocol.updatable_sections(reviewer)).to eq [] }
+      it { expect(protocol.updatable_sections(pi)).to eq all_sections }
     end
 
-    xit 'reviewable' do
+    context 'reviewable' do
+      let(:all_sections) { Section.reject_specified_sections(protocol.template_name).pluck(:no) }
+      it { expect(protocol.reviewable_sections(co)).to eq all_sections }
+      it { expect(protocol.reviewable_sections(author)).to eq [] }
+      it { expect(protocol.reviewable_sections(reviewer)).to eq ['2', '2.1', '2.2', '2.3', '3'] }
+      it { expect(protocol.reviewable_sections(pi)).to eq all_sections }
     end
-  end
-
-  context 'has_reviewer?' do
-    it { expect(protocol.contents.first.has_reviewer?).to eq(true) }
-    it { expect(protocol2.contents.first.has_reviewer?).to eq(false) }
   end
 end

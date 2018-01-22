@@ -43,6 +43,7 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+gem 'enum_help'
 
 gem 'cancancan'
 

@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.save
+    @content.reload
     set_root_comment
   end
 

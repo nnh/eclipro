@@ -1,6 +1,9 @@
 language: ruby
 rvm:
   - 2.4.2
+addons:
+  apt_packages:
+    - pandoc
 bundler_args: --without development --deployment
 cache: bundler
 before_script:
