@@ -1,5 +1,20 @@
 {
   "name": "eclipro",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@rails/webpacker": "^3.2.1",
+    "bootstrap": "^3.3.7",
+    "bootstrap-sass": "^3.3.7",
+    "font-awesome": "^4.7.0",
+    "font-awesome-sass": "^4.7.0",
+    "jquery": "^3.3.1",
+    "tinymce": "^4.7.4"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^2.11.1"
+  },
+  "scripts": {
+    "dev": "bundle install && bundle exec foreman start -f Procfile",
+    "build": "bundle exec rails webpacker:compile"
+  }
 }
