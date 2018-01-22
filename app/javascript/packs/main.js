@@ -10,10 +10,10 @@
 const $ = require('jquery');
 window.$ = window.jQuery = $;
 
+require('jquery-ujs');
 require('bootstrap');
-require('tinymce');
-require('tinymce/themes/modern/theme');
 require('./tiny_mce');
+require('./share').editorTextIsChanged = false;
 
 $(function() {
   // protocols
@@ -31,15 +31,19 @@ $(function() {
     }
   });
 
-  $('#protocol_sponsors').change(function() {
+  function check_sponsor() {
     if ($('#protocol_sponsors').children(':selected').last().text() === $('#protocol_sponsors').children().last().val()) {
       $('.protocol-sponsor-other-form').show();
     } else {
       $('.protocol-sponsor-other-form').hide();
     }
+  }
+  $('#protocol_sponsors').change(function() {
+    check_sponsor();
   });
+  check_sponsor();
 
-  $('.protocol-checkbox-form').change(function() {
+  function check_get() {
     if ($('#protocol_study_agent_1').prop('checked') || $('#protocol_study_agent_2').prop('checked')) {
       $('.protocol-has-ind-form').show();
     } else {
@@ -50,7 +54,11 @@ $(function() {
     } else {
       $('.protocol-has-ide-form').hide();
     }
+  }
+  $('.protocol-checkbox-form').change(function() {
+    check_get();
   });
+  check_get();
 
   // contents
   var hash = window.location.hash;
@@ -70,6 +78,14 @@ $(function() {
       var data = '<div contenteditable="true">' + $(e.target).parent().prev().html() + '</div>';
       tinymce.get('form-tinymce').setContent(data);
     }
+  });
+
+  $('input[type=submit]').on('click', function() {
+    require('./share').editorTextIsChanged = false;
+    $(window).off('beforeunload');
+  });
+  $(window).on('beforeunload', function() {
+    if (require('./share').editorTextIsChanged && $('.content-submit-button').length > 0) return '';
   });
 
   // participations

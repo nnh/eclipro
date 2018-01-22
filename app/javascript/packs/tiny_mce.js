@@ -1,19 +1,67 @@
-function initTinyMCE(selector) {
+const tinyMCE = require('tinymce');
+require('tinymce/themes/modern/theme');
+require('tinymce/plugins/advlist');
+require('tinymce/plugins/anchor');
+require('tinymce/plugins/charmap');
+require('tinymce/plugins/emoticons');
+require('tinymce/plugins/fullscreen');
+require('tinymce/plugins/hr');
+require('tinymce/plugins/image');
+require('tinymce/plugins/insertdatetime');
+require('tinymce/plugins/link');
+require('tinymce/plugins/lists');
+require('tinymce/plugins/media');
+require('tinymce/plugins/nonbreaking');
+require('tinymce/plugins/pagebreak');
+require('tinymce/plugins/paste');
+require('tinymce/plugins/preview');
+require('tinymce/plugins/print');
+require('tinymce/plugins/searchreplace');
+require('tinymce/plugins/table');
+require('tinymce/plugins/template');
+require('tinymce/plugins/textcolor');
+require('tinymce/plugins/toc');
+require('tinymce/plugins/visualblocks');
+require('tinymce/plugins/visualchars');
+
+require.context(
+  'file-loader?name=[path][name].[ext]&context=node_modules/tinymce!tinymce/skins',
+  true,
+  /.*/
+);
+
+function initTinyMCE() {
   if (typeof tinyMCE != 'undefined') {
+    var base_url = '/protocols/' + $('.tiny-mce-params').data('protocol-id') + '/contents/';
     tinyMCE.init({
-      selector: selector,
+      selector: 'textarea.tinymce',
       height: 300,
-      theme_advanced_toolbar_location: "top",
-      theme_advanced_toolbar_align: "left",
-      theme_advanced_statusbar_location: "bottom",
-      theme_advanced_buttons3_add: ["tablecontrols","fullscreen"],
-      uploadimage_form_url: '/protocols/' + $('.tiny-mce-params').data('protocol-id') +
-                            '/contents/' + $('.tiny-mce-params').data('content-id') + '/images.json',
-      plugins: "print, paste, searchreplace, media, link, hr, anchor, pagebreak, insertdatetime, nonbreaking, template, toc," +
-               "visualchars, visualblocks, preview, table, fullscreen, lists, advlist, textcolor, emoticons, charmap, uploadimage",
+      theme_advanced_toolbar_location: 'top',
+      theme_advanced_toolbar_align: 'left',
+      theme_advanced_statusbar_location: 'bottom',
+      theme_advanced_buttons3_add: ['tablecontrols', 'fullscreen'],
+      automatic_uploads: true,
+      images_upload_handler: function (blobInfo, success, failure) {
+        var formData = new FormData();
+        formData.append('file', blobInfo.blob(), blobInfo.filename());
+        $.ajax({
+          url: base_url + $('.tiny-mce-params').data('content-id') + '/images',
+          type: 'POST',
+          dataType: 'json',
+          data: formData,
+          processData: false,
+          contentType: false
+        }).done(function(res) {
+          success(res.image.url);
+        }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
+          alert('The image upload failed.');
+        });
+      },
+      plugins: 'print, paste, searchreplace, media, link, hr, anchor, pagebreak, insertdatetime, nonbreaking, template, toc,' +
+               'visualchars, visualblocks, preview, table, fullscreen, lists, advlist, textcolor, emoticons, charmap image',
       toolbar: [
-        "bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | fullscreen charmap",
-        "uploadimage reference"
+        'bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | fullscreen charmap',
+        'image reference'
       ],
       setup: function(editor) {
         editor.addButton('reference', {
@@ -62,13 +110,18 @@ function initTinyMCE(selector) {
             });
           }
         });
+        editor.on('change', function() {
+          require('./share').editorTextIsChanged = true;
+        });
       }
     });
   } else {
-    setTimeout(initTinyMCE(selector), 50);
+    setTimeout(initTinyMCE(), 50);
   }
 }
 
 $(function() {
-  initTinyMCE("textarea.tinymce");
+  if ($('textarea.tinymce').length > 0) {
+    initTinyMCE();
+  }
 });
