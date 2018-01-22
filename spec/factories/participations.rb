@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :participation do
   end
   factory :author, parent: :participation do

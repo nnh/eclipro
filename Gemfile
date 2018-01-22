@@ -96,7 +96,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :test do
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'rspec-rails'
   gem 'launchy'
   gem 'database_rewinder', git: 'https://github.com/amatsuda/database_rewinder', branch: 'master'

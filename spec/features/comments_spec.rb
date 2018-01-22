@@ -16,7 +16,7 @@ feature Comment, js: true do
   feature 'participating user' do
     scenario 'can comment' do
       click_on 'Comments (1)'
-      sleep 1
+      sleep 2
       click_on 'Comment'
       fill_in 'comment[body]', with: 'new comment'
       click_on 'Create Comment'
