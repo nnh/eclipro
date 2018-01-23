@@ -5,6 +5,7 @@ class Participation < ApplicationRecord
   enum role: %i[author reviewer co_author principal_investigator]
 
   validates :role, uniqueness: { scope: :protocol_id }, if: -> { principal_investigator? }
+  validates :user_id, uniqueness: { scope: :protocol_id }
   validates :sections, length: { minimum: 1, message: I18n.t('activerecord.errors.select_sections') }
 
   class << self
