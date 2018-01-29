@@ -14,8 +14,7 @@ const Rails = require('rails-ujs');
 Rails.start();
 
 require('bootstrap-sass');
-
-const Editor = require('./tiny_mce');
+require('./tiny_mce');
 
 $(function() {
   // protocols
@@ -33,7 +32,7 @@ $(function() {
     }
   });
 
-  function check_sponsor() {
+  function checkSponsor() {
     if ($('#protocol_sponsors').children(':selected').last().text() === $('#protocol_sponsors').children().last().val()) {
       $('.protocol-sponsor-other-form').show();
     } else {
@@ -41,11 +40,11 @@ $(function() {
     }
   }
   $('#protocol_sponsors').change(function() {
-    check_sponsor();
+    checkSponsor();
   });
-  check_sponsor();
+  checkSponsor();
 
-  function check_get() {
+  function checkGet() {
     if ($('#protocol_study_agent_1').prop('checked') || $('#protocol_study_agent_2').prop('checked')) {
       $('.protocol-has-ind-form').show();
     } else {
@@ -58,35 +57,21 @@ $(function() {
     }
   }
   $('.protocol-checkbox-form').change(function() {
-    check_get();
+    checkGet();
   });
-  check_get();
+  checkGet();
 
   // contents
-  var hash = window.location.hash;
+  const hash = window.location.hash;
   hash && $('ul.nav a[href="' + hash + ']').tab('show');
-  $('.nav-pills a').click(function(e) {
+  $('.nav-pills a').click(function() {
     $(this).tab('show');
   });
 
-  $('.to-under-review').click(function(e) {
+  $('.to-under-review').click(function() {
     if (!$('.content-has-reviewer').data('has-reviewer')) {
       window.alert($('.content-has-reviewer').data('message'));
     }
-  });
-
-  $('.example-copy-button').click(function(e) {
-    if (window.confirm($('.example-copy-button').data('message'))) {
-      var data = '<div contenteditable="true">' + $(e.target).parent().prev().html() + '</div>';
-      tinymce.get('form-tinymce').setContent(data);
-    }
-  });
-
-  $('input[type=submit]').on('click', function() {
-    $(window).off('beforeunload');
-  });
-  $(window).on('beforeunload', function() {
-    if (Editor.textIsChanged && $('.content-submit-button').length > 0) return '';
   });
 
   // participations

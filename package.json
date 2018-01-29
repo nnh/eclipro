@@ -12,10 +12,12 @@
     "tinymce": "^4.7.4"
   },
   "devDependencies": {
-    "webpack-dev-server": "^2.11.1"
+    "webpack-dev-server": "^2.11.1",
+    "eslint": "^4.16.0"
   },
   "scripts": {
     "dev": "bundle install && bundle exec foreman start -f Procfile",
-    "build": "bundle exec rails webpacker:compile"
+    "build": "bundle exec rails webpacker:compile",
+    "lint" : "eslint app/javascript"
   }
 }
