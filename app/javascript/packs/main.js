@@ -10,8 +10,10 @@
 const $ = require('jquery');
 window.$ = window.jQuery = $;
 
-require('jquery-ujs');
-require('bootstrap');
+const Rails = require('rails-ujs');
+Rails.start();
+
+require('bootstrap-sass');
 require('./tiny_mce');
 require('./share').editorTextIsChanged = false;
 
