@@ -4,6 +4,11 @@ module.exports = Object.assign({}, environment.toWebpackConfig(), {
   module: {
     loaders: [
       {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      },
+      {
         test: require.resolve('tinymce/tinymce'),
         loaders: [
           'imports-loader?this=>window',
@@ -12,9 +17,7 @@ module.exports = Object.assign({}, environment.toWebpackConfig(), {
       },
       {
         test: /tinymce\/(themes|plugins)\//,
-        loaders: [
-          'imports-loader?this=>window'
-        ]
+        loader: 'imports-loader?this=>window'
       }
     ]
   }

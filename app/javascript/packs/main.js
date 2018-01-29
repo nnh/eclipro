@@ -14,8 +14,8 @@ const Rails = require('rails-ujs');
 Rails.start();
 
 require('bootstrap-sass');
-require('./tiny_mce');
-require('./share').editorTextIsChanged = false;
+
+const Editor = require('./tiny_mce');
 
 $(function() {
   // protocols
@@ -83,11 +83,10 @@ $(function() {
   });
 
   $('input[type=submit]').on('click', function() {
-    require('./share').editorTextIsChanged = false;
     $(window).off('beforeunload');
   });
   $(window).on('beforeunload', function() {
-    if (require('./share').editorTextIsChanged && $('.content-submit-button').length > 0) return '';
+    if (Editor.textIsChanged && $('.content-submit-button').length > 0) return '';
   });
 
   // participations
