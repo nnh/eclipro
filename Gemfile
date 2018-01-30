@@ -21,7 +21,7 @@ gem 'uglifier'
 # gem 'therubyracer', platforms: :ruby
 
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails'
+# gem 'coffee-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 # gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -35,9 +35,6 @@ gem 'jbuilder'
 # gem 'capistrano-rails', group: :development
 
 gem 'slim-rails'
-gem 'jquery-rails'
-gem 'bootstrap-sass'
-gem "font-awesome-rails"
 
 gem 'devise'
 gem 'devise-i18n'
@@ -49,8 +46,6 @@ gem 'cancancan'
 
 gem 'paper_trail'
 gem 'htmldiff'
-gem 'tinymce-rails', '= 4.6.6'
-gem 'tinymce-rails-imageupload', github: 'PerfectlyNormal/tinymce-rails-imageupload'
 gem 'paperclip'
 gem 'aws-sdk', '< 3.0'
 
@@ -61,6 +56,8 @@ gem 'wicked_pdf'
 gem 'pandoc-ruby'
 
 gem 'counter_culture'
+
+gem 'webpacker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -91,6 +88,8 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'awesome_print'
+
+  gem 'foreman'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

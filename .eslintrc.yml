@@ -1,0 +1,10 @@
+extends:
+  - eslint:recommended
+plugins: []
+parserOptions:
+  sourceType: module
+env:
+  browser: true
+  es6: true
+  node: true
+  commonjs: true

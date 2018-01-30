@@ -1,21 +1,20 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
+/* eslint no-console:0 */
+// This file is automatically compiled by Webpack, along with any other files
+// present in this directory. You're encouraged to place your actual application logic in
+// a relevant structure within app/javascript and only use these pack files to reference
+// that code so it'll be compiled.
 //
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, or any plugin's
-// vendor/assets/javascripts directory can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file. JavaScript code in this file should be added after the last require_* statement.
-//
-// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
-// about supported directives.
-//
-//= require jquery
-//= require bootstrap-sprockets
-//= require rails-ujs
-//= require_tree .
+// To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
+// layout file, like app/views/layouts/application.html.erb
 
-var editorTextIsChanged = false;
+const $ = require('jquery');
+window.$ = window.jQuery = $;
+
+const Rails = require('rails-ujs');
+Rails.start();
+
+require('bootstrap-sass');
+require('./tiny_mce');
 
 $(function() {
   // protocols
@@ -33,15 +32,19 @@ $(function() {
     }
   });
 
-  $('#protocol_sponsors').change(function() {
+  function checkSponsor() {
     if ($('#protocol_sponsors').children(':selected').last().text() === $('#protocol_sponsors').children().last().val()) {
       $('.protocol-sponsor-other-form').show();
     } else {
       $('.protocol-sponsor-other-form').hide();
     }
+  }
+  $('#protocol_sponsors').change(function() {
+    checkSponsor();
   });
+  checkSponsor();
 
-  $('.protocol-checkbox-form').change(function() {
+  function checkGet() {
     if ($('#protocol_study_agent_1').prop('checked') || $('#protocol_study_agent_2').prop('checked')) {
       $('.protocol-has-ind-form').show();
     } else {
@@ -52,34 +55,23 @@ $(function() {
     } else {
       $('.protocol-has-ide-form').hide();
     }
+  }
+  $('.protocol-checkbox-form').change(function() {
+    checkGet();
   });
+  checkGet();
 
   // contents
-  var hash = window.location.hash;
+  const hash = window.location.hash;
   hash && $('ul.nav a[href="' + hash + ']').tab('show');
-  $('.nav-pills a').click(function(e) {
+  $('.nav-pills a').click(function() {
     $(this).tab('show');
   });
 
-  $('.to-under-review').click(function(e) {
+  $('.to-under-review').click(function() {
     if (!$('.content-has-reviewer').data('has-reviewer')) {
       window.alert($('.content-has-reviewer').data('message'));
     }
-  });
-
-  $('.example-copy-button').click(function(e) {
-    if (window.confirm($('.example-copy-button').data('message'))) {
-      var data = '<div contenteditable="true">' + $(e.target).parent().prev().html() + '</div>';
-      tinymce.get('form-tinymce').setContent(data);
-    }
-  });
-
-  $('input[type=submit]').on('click', function() {
-    editorTextIsChanged = false;
-    $(window).off('beforeunload');
-  });
-  $(window).on('beforeunload', function() {
-    if (editorTextIsChanged && $('.content-submit-button').length > 0) return '';
   });
 
   // participations
