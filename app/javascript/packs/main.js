@@ -16,6 +16,25 @@ Rails.start();
 require('bootstrap-sass');
 require('./tiny_mce');
 
+// use from xxx.js.erb
+const resetForm = function() {
+  $('.new-comment-form').empty();
+  $('.reply-form').empty();
+  $('.add-comment-form').show();
+}
+window.resetForm = resetForm;
+
+const changeResolvedComment = function() {
+  if ($('.show-resolved').is(':checked')) {
+    $('.resolve-comment').show();
+    $('.checkbox-text').text($('.resolve-message-params').data('hide-text'));
+  } else {
+    $('.resolve-comment').hide();
+    $('.checkbox-text').text($('.resolve-message-params').data('show-text'));
+  }
+}
+window.changeResolvedComment = changeResolvedComment;
+
 $(function() {
   // protocols
   $('.clickable-tr').click(function(e) {
@@ -86,6 +105,35 @@ $(function() {
     } else {
       $('input[type=checkbox]').prop('checked', false);
       $('.participation-sections').show();
+    }
+  });
+
+  // comments
+  $(document).on('keyup', '.comment-form-body', function() {
+    if ($('.comment-form-body').val().length > 0) {
+      $('.comment-submit-button').prop('disabled', false);
+    } else {
+      $('.comment-submit-button').prop('disabled', true);
+    }
+  });
+
+  $(document).on('click', '.remove-comment-form', function() {
+    resetForm();
+  });
+
+  $(document).on('change', '.show-resolved', function() {
+    changeResolvedComment();
+  });
+
+  // history
+  $(document).on('click', '.history-compare-back', function() {
+    $('.history-compare').empty();
+    $('.history-base').show();
+  });
+
+  $('.history-revert').on('confirm:complete', function(e, answer) {
+    if (answer) {
+      $('.history-modal').modal('hide');
     }
   });
 });

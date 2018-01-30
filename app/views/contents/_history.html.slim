@@ -27,18 +27,9 @@
                   - if can? :edit, content
                     = link_to t('.revert'),
                               revert_protocol_content_path(protocol, content, index: index, lock_version: content.lock_version),
-                              class: 'btn btn-warning', id: 'history-revert', data: { confirm: t('.are_you_sure') }
+                              class: 'btn btn-warning history-revert', data: { confirm: t('.are_you_sure') }
                 td
                   = link_to t('.compare'), compare_protocol_content_path(protocol, content, index: index),
                             remote: true, class: 'btn btn-default'
 
       .history-compare
-
-javascript:
-  $(function() {
-    $('#history-revert').on('confirm:complete', function(e, answer) {
-      if (answer) {
-        $('#history-modal').modal('hide');
-      }
-    });
-  });

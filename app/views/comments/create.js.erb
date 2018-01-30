@@ -1,5 +1,5 @@
 $('#section-<%= @content.no.gsub(".", "-") %>-comment-icon').html('<i class="fa fa-commenting mr-s">');
-$('#comment-button').html(
+$('.comment-button').html(
   '<%= j(render "contents/comment_button", protocol: @protocol, content: @content) %>');
 
 <%= render 'save', protocol: @protocol, content: @content, comments: @comments %>

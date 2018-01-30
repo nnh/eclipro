@@ -8,38 +8,15 @@
     .modal-body
       .pull-right
         label.checkbox-inline.mr-s
-          = check_box_tag 'show-resolved'
+          = check_box_tag 'show-resolved', true, false, { class: 'show-resolved' }
           .checkbox-text = t('.show_resolved')
+          .resolve-message-params data-hide-text="#{t('.hide_resolved')}" data-show-text="#{t('.show_resolved')}"
 
-      .mt-xl#comment-list
+      .mt-xl.comment-list
         = render 'comments', protocol: protocol, content: content, comments: comments
 
-      .text-right#add-comment-form
+      .text-right.add-comment-form
         = link_to t('.comment'), comment_protocol_content_comments_path(protocol, content),
                   class: 'btn btn-default', remote: true
 
       .new-comment-form
-
-javascript:
-  function resetFrom() {
-    $('.new-comment-form').empty();
-    $('.reply-form').empty();
-    $('#add-comment-form').show();
-  }
-
-  function change_resolved_comment() {
-    if ($('#show-resolved').is(':checked')) {
-      $('.resolve-comment').show();
-      $('.checkbox-text').text("#{t('.hide_resolved')}");
-    } else {
-      $('.resolve-comment').hide();
-      $('.checkbox-text').text("#{t('.show_resolved')}");
-    }
-  }
-
-  $(function() {
-    $('#show-resolved').change(function() {
-      change_resolved_comment();
-    });
-    change_resolved_comment();
-  });
