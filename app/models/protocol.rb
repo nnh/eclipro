@@ -42,14 +42,14 @@ class Protocol < ApplicationRecord
   end
 
   def updatable_sections(user)
-    all_sections = Section.reject_specified_sections(template_name).pluck(:no)
+    all_sections = Section.by_template(template_name).pluck(:no)
     return all_sections if admin?(user)
     return [] if reviewer?(user)
     select_sections(all_sections, Participation.find_by(protocol: self, user: user).sections)
   end
 
   def reviewable_sections(user)
-    all_sections = Section.reject_specified_sections(template_name).pluck(:no)
+    all_sections = Section.by_template(template_name).pluck(:no)
     return all_sections if admin?(user)
     return [] unless reviewer?(user)
     select_sections(all_sections, Participation.find_by(protocol: self, user: user).sections)

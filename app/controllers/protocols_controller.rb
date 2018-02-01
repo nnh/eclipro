@@ -27,7 +27,7 @@ class ProtocolsController < ApplicationController
                                    sections: Section.parent_items(@protocol.template_name).pluck(:no))
 
     if @protocol.contents.empty?
-      sections = Section.reject_specified_sections(@protocol.template_name).sort_by { |c| c.no.to_f }
+      sections = Section.by_template(@protocol.template_name)
       sections.each do |section|
         @protocol.contents << Content.new(protocol: @protocol, no: section.no, title: section.title,
                                           body: section.template, editable: section.editable)
