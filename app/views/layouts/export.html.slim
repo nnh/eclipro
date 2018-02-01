@@ -2,20 +2,9 @@ doctype html
 html
   head
     = wicked_pdf_stylesheet_link_tag 'export'
+    = javascript_pack_tag 'export'
     meta charset="UTF-8"
 
   body
     .export-content
       = yield
-
-    javascript:
-      $(function() {
-        var vars = {};
-        var x = document.location.search.substring(1).split('&');
-        for (var i in x) { var z = x[i].split('=',2);vars[z[0]] = decodeURIComponent(z[1]); }
-        var x = ['frompage', 'topage', 'page', 'webpage', 'section', 'subsection', 'subsubsection'];
-        for (var i in x) {
-          var y = document.getElementsByClassName(x[i]);
-          for (var j = 0; j < y.length; ++j) y[j].textContent = vars[x[i]];
-        }
-      });
