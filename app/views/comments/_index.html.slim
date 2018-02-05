@@ -16,7 +16,7 @@
         = render 'comments', protocol: protocol, content: content, comments: comments
 
       .text-right.add-comment-form
-        = link_to t('.comment'), comment_protocol_content_comments_path(protocol, content),
-                  class: 'btn btn-default', remote: true
+        = button_tag t('.comment'), type: :button, class: 'btn btn-default add-comment-button'
 
-      .new-comment-form
+      .new-comment-form style="display: none"
+        = render 'form', protocol: protocol, content: content, parent_id: nil

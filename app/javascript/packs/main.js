@@ -16,25 +16,6 @@ Rails.start();
 require('bootstrap-sass');
 require('./tiny_mce');
 
-// use from xxx.js.erb
-const resetForm = function() {
-  $('.new-comment-form').empty();
-  $('.reply-form').empty();
-  $('.add-comment-form').show();
-}
-window.resetForm = resetForm;
-
-const changeResolvedComment = function() {
-  if ($('.show-resolved').is(':checked')) {
-    $('.resolve-comment').show();
-    $('.checkbox-text').text($('.resolve-message-params').data('hide-text'));
-  } else {
-    $('.resolve-comment').hide();
-    $('.checkbox-text').text($('.resolve-message-params').data('show-text'));
-  }
-}
-window.changeResolvedComment = changeResolvedComment;
-
 $(function() {
   // protocols
   $('.clickable-tr').click(function(e) {
@@ -109,20 +90,112 @@ $(function() {
   });
 
   // comments
-  $(document).on('keyup', '.comment-form-body', function() {
-    if ($('.comment-form-body').val().length > 0) {
-      $('.comment-submit-button').prop('disabled', false);
+  const resetForm = function() {
+    $('.reply-form').empty();
+    $('.new-comment-form').hide();
+    $('.new-comment-form').children().val('')
+    $('.comment-submit-button').prop('disabled', true);
+    $('.add-comment-form').show();
+  }
+
+  const changeResolvedComment = function() {
+    if ($('.show-resolved').is(':checked')) {
+      $('.resolve-comment').show();
+      $('.checkbox-text').text($('.resolve-message-params').data('hide-text'));
     } else {
-      $('.comment-submit-button').prop('disabled', true);
+      $('.resolve-comment').hide();
+      $('.checkbox-text').text($('.resolve-message-params').data('show-text'));
+    }
+  }
+
+  $(document).on('click', '.show-comments-button', function() {
+    $.ajax({
+      url: $(this).data('url'),
+      type: 'GET',
+      dataType: 'json'
+    }).done(function(res) {
+      $('.comment-modal').html(res.html);
+      $('.comment-modal').modal('show');
+      changeResolvedComment();
+    });
+  });
+
+  $(document).on('click', '.add-comment-button', function() {
+    resetForm();
+    $('.add-comment-form').hide();
+    $('.new-comment-form').show();
+  })
+
+  $(document).on('keyup', '.comment-form-body', function() {
+    if ($(this).val().length > 0) {
+      $($(this).siblings().children()[0]).prop('disabled', false);
+    } else {
+      $($(this).siblings().children()[0]).prop('disabled', true);
     }
   });
 
-  $(document).on('click', '.remove-comment-form', function() {
+  $(document).on('click', '.comment-cancel-button', function() {
     resetForm();
+  });
+
+  $(document).on('click', '.comment-submit-button', function() {
+    $.ajax({
+      url: $(this).data('url'),
+      type: 'POST',
+      dataType: 'json',
+      data: {
+        comment: {
+          body: $(this).parent().siblings().val(),
+          content_id: $(this).data('content-id'),
+          user_id: $(this).data('user-id'),
+          parent_id: $(this).data('parent-id')
+        }
+      }
+    }).done(function(res) {
+      $(`#section-${res.no}-comment-icon`).html('<i class="fa fa-commenting mr-s">');
+      $('.comment-button').html(res.button);
+      $('.comment-list').html(res.comments);
+      resetForm();
+      changeResolvedComment();
+    });
   });
 
   $(document).on('change', '.show-resolved', function() {
     changeResolvedComment();
+  });
+
+  $(document).on('click', '.reply-button', function() {
+    $.ajax({
+      url: $(this).data('url'),
+      type: 'GET',
+      dataType: 'json',
+      data: {
+        comment: {
+          parent_id: $(this).data('parent-id'),
+        }
+      }
+    }).done(function(res) {
+      resetForm();
+      $(`#reply-${res.parent_id}`).html(res.html);
+      $(`#reply-${res.parent_id}`).show();
+    });
+  });
+
+  $(document).on('click', '.resolve-button', function() {
+    $.ajax({
+      url: $(this).data('url'),
+      type: 'PUT',
+      dataType: 'json',
+      data: {
+        comment: {
+          resolve: true,
+        }
+      }
+    }).done(function(res) {
+      $('.comment-list').html(res.html);
+      resetForm();
+      changeResolvedComment();
+    });
   });
 
   // history

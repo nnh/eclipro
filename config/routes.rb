@@ -16,7 +16,7 @@ Rails.application.routes.draw do
           put :resolve
         end
         collection do
-          get :comment, :reply
+          get :reply
         end
       end
     end

@@ -1,4 +1,5 @@
 - comments_count = " (#{content.comments_count})" if content.comments_count > 0
 - btn_class = comments_count.present? ? 'btn-primary' : 'btn-default'
-= link_to "#{t('.comment')}#{comments_count}",
-          protocol_content_comments_path(protocol, content), remote: true, class: "btn #{btn_class}"
+= button_tag "#{t('.comment')}#{comments_count}", type: :button,
+             class: "btn #{btn_class} show-comments-button",
+             data: { url: protocol_content_comments_path(protocol, content) }
