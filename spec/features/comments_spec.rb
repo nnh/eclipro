@@ -28,7 +28,9 @@ feature Comment, js: true do
     scenario 'can reply' do
       click_on 'Reply'
       sleep 1
-      fill_in 'comment[body]', with: 'new reply'
+      within '.reply-form' do
+        fill_in 'comment[body]', with: 'new reply'
+      end
       sleep 1
       click_on 'Create Comment'
       sleep 1

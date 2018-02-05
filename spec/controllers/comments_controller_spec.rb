@@ -12,7 +12,7 @@ describe CommentsController, type: :controller do
     it 'user can see comments' do
       get :index, xhr: true, params: { protocol_id: protocol.id,
                                        content_id: protocol.contents.find_by(no: '0').id }
-      expect(response).to render_template :index
+      expect(response).to render_template '_index'
       expect(assigns(:comments)).to match_array([comment])
     end
   end
@@ -45,21 +45,13 @@ describe CommentsController, type: :controller do
     end
   end
 
-  describe '#comment' do
-    it 'user can comment (create comment form)' do
-      get :comment, xhr: true, params: { protocol_id: protocol.id,
-                                         content_id: protocol.contents.find_by(no: '0').id }
-      expect(response).to render_template :comment
-    end
-  end
-
   describe '#reply' do
     it 'user can reply' do
       content_id = protocol.contents.find_by(no: '0').id
       get :reply, xhr: true, params: { protocol_id: protocol.id,
                                        content_id: content_id,
                                        comment: attributes_for(:comment, parent_id: comment.id) }
-      expect(response).to render_template :reply
+      expect(response).to render_template '_form'
 
       expect {
         post :create, xhr: true, params: { protocol_id: protocol.id,
