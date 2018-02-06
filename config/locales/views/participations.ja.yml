@@ -2,11 +2,16 @@ ja:
   participations:
     new:
       title: メンバー追加
-      add: 追加
       back: 戻る
+    edit:
+      title: メンバー編集
+      back: 戻る
+    form:
       all_sections: 全セクションをチェックする
       error_message: '%{count} 件のエラーが発生しました。'
     create:
       success: ユーザーを追加しました。
+    update:
+      success: ユーザーを編集しました。
     destroy:
       success: ユーザーを解除しました。

@@ -71,13 +71,15 @@ $(() => {
     $('input[type=checkbox]').prop('checked', true);
   });
 
-  $('#participation_role').change(() => {
+  function checkSections() {
     if ($('#participation_role').val() == $('#participation_role').children().last().val()) {
-      $('input[type=checkbox]').prop('checked', true);
       $('.participation-sections').hide();
     } else {
-      $('input[type=checkbox]').prop('checked', false);
       $('.participation-sections').show();
     }
+  }
+  $('#participation_role').change(function() {
+    checkSections();
   });
+  checkSections();
 });

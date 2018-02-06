@@ -46,6 +46,7 @@ en:
       name: Name
       role: Role
       sections: Sections
+      edit: Edit
       remove: Remove
       add_member: Add member
       remove_member: Are you sure?
