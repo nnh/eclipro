@@ -7,6 +7,7 @@ ja:
       title: メンバー編集
       back: 戻る
     form:
+      save: 保存する
       all_sections: 全セクションをチェックする
       error_message: '%{count} 件のエラーが発生しました。'
     create:

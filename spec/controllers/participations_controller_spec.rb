@@ -14,14 +14,14 @@ describe ParticipationsController, type: :controller do
     context 'admin user' do
       let!(:current_user) { admin_user }
       it 'can move to new participation page' do
-        get :new, params: { protocol_id: protocol.id }
+        get :new, params: { protocol_id: protocol }
         expect(response).to render_template :new
       end
     end
     context 'general user' do
       let!(:current_user) { general_user }
       it 'not admin user can not move to new participation page' do
-        get :new, params: { protocol_id: protocol.id }
+        get :new, params: { protocol_id: protocol }
         expect(response).to redirect_to root_path
       end
     end
@@ -32,8 +32,8 @@ describe ParticipationsController, type: :controller do
       let!(:current_user) { admin_user }
       it 'can create participation' do
         expect do
-          post :create, params: { protocol_id: protocol.id,
-                                  participation: attributes_for(:participation, protocol_id: protocol.id, user_id: new_user.id,
+          post :create, params: { protocol_id: protocol,
+                                  participation: attributes_for(:participation, protocol_id: protocol, user_id: new_user,
                                                                                 role: 'author', sections: [0]) }
         end.to change(Participation, :count).by(1)
       end
@@ -41,8 +41,8 @@ describe ParticipationsController, type: :controller do
     context 'general user' do
       let!(:current_user) { general_user }
       it 'can not create participation' do
-        post :create, params: { protocol_id: protocol.id,
-                                participation: attributes_for(:participation, protocol_id: protocol.id, user_id: new_user.id,
+        post :create, params: { protocol_id: protocol,
+                                participation: attributes_for(:participation, protocol_id: protocol, user_id: new_user,
                                                                               role: 'author', sections: [0]) }
         expect(response).to redirect_to root_path
       end
@@ -54,14 +54,51 @@ describe ParticipationsController, type: :controller do
       let!(:current_user) { admin_user }
       it 'can destroy participation' do
         expect do
-          delete :destroy, params: { id: author_participation.id, protocol_id: protocol.id }
+          delete :destroy, params: { id: author_participation, protocol_id: protocol }
         end.to change(Participation, :count).by(-1)
       end
     end
     context 'general user' do
       let!(:current_user) { general_user }
       it 'can not destroy participation' do
-        delete :destroy, params: { id: author_participation.id, protocol_id: protocol.id }
+        delete :destroy, params: { id: author_participation, protocol_id: protocol }
+        expect(response).to redirect_to root_path
+      end
+    end
+  end
+
+  describe '#edit' do
+    context 'admin user' do
+      let!(:current_user) { admin_user }
+      it 'can move to edit participation page' do
+        get :edit, params: { id: author_participation, protocol_id: protocol }
+        expect(response).to render_template :edit
+      end
+    end
+    context 'general user' do
+      let!(:current_user) { general_user }
+      it 'can not move to edit participation page' do
+        get :edit, params: { id: author_participation, protocol_id: protocol }
+        expect(response).to redirect_to root_path
+      end
+    end
+  end
+
+  describe '#update' do
+    context 'admin user' do
+      let!(:current_user) { admin_user }
+      it 'can update participation' do
+        patch :update, params: { id: author_participation, protocol_id: protocol,
+                                 participation: attributes_for(:participation, sections: [1, 2, 3]) }
+        author_participation.reload
+        expect(author_participation.sections).to eq [1, 2, 3]
+      end
+    end
+    context 'general user' do
+      let!(:current_user) { general_user }
+      it 'can not update participation' do
+        patch :update, params: { id: author_participation, protocol_id: protocol,
+                                 participation: attributes_for(:participation, sections: [1, 2, 3]) }
         expect(response).to redirect_to root_path
       end
     end
