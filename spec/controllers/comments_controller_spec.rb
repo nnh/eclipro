@@ -3,7 +3,7 @@ require 'rails_helper'
 describe CommentsController, type: :controller do
   let(:user) { create(:user) }
   let!(:protocol) { create(:protocol) }
-  let!(:participation) { create(:principal_investigator, protocol: protocol, user: user)}
+  let!(:participation) { create(:admin, protocol: protocol, user: user)}
   let!(:comment) { create(:comment, content: protocol.contents.find_by(no: '0'))}
 
   before(:each) { sign_in(user) }

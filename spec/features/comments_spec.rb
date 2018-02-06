@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 feature Comment, js: true do
-  let(:pi) { create(:user) }
+  let(:user) { create(:user) }
   let(:protocol) { create(:protocol) }
   let(:content) { protocol.contents.find_by(no: '1.1') }
-  let!(:comment) { create(:comment, content: content, user: pi, body: 'test comment') }
-  let!(:pi_participation) { create(:principal_investigator, protocol: protocol, user: pi) }
+  let!(:comment) { create(:comment, content: content, user: user, body: 'test comment') }
+  let!(:admin_participation) { create(:admin, protocol: protocol, user: user) }
 
   background(:each) do
-    login_as(pi, scope: :user)
+    login_as(user, scope: :user)
     visit protocol_content_path(protocol, content)
     click_on 'Comments (1)'
     sleep 1

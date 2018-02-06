@@ -5,7 +5,7 @@ describe ParticipationsController, type: :controller do
   let(:general_user) { create(:user) }
   let(:new_user) { create(:user) }
   let(:protocol) { create(:protocol) }
-  let!(:pi_participation) { create(:principal_investigator, protocol: protocol, user: admin_user) }
+  let!(:admin_participation) { create(:admin, protocol: protocol, user: admin_user) }
   let!(:author_participation) { create(:author, protocol: protocol, user: general_user) }
 
   before(:each) { sign_in(current_user) }

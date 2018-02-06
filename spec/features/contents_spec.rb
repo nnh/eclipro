@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 feature Content, js: true do
-  let(:pi) { create(:user) }
+  let(:admin) { create(:user) }
   let(:author) { create(:user) }
   let(:other_author) { create(:user) }
   let(:reviewer) { create(:user) }
   let(:other_reviewer) { create(:user) }
   let(:protocol) { create(:protocol) }
   let(:content) { protocol.contents.find_by(no: '0') }
-  let!(:pi_participation) { create(:principal_investigator, protocol: protocol, user: pi) }
+  let!(:admin_participation) { create(:admin, protocol: protocol, user: admin) }
   let!(:author_participation0) { create(:author, protocol: protocol, user: author, sections: [0, 1, 2]) }
   let!(:author_participation1) { create(:author, protocol: protocol, user: other_author, sections: [3]) }
   let!(:reviewer_participation0) { create(:reviewer, protocol: protocol, user: reviewer, sections: [0, 1, 2]) }
@@ -184,8 +184,8 @@ feature Content, js: true do
     end
   end
 
-  describe 'principal_investigator (and co_author)' do
-    let(:current_user) { pi }
+  describe 'admin' do
+    let(:current_user) { admin }
     it_should_behave_like 'can see contents'
     it_should_behave_like 'can update content'
     it_should_behave_like 'can change status from "New / In Progress" to "Under Review"'
