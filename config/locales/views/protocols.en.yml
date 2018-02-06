@@ -57,10 +57,11 @@ en:
       two: 2) If applicable, what is the short title?
       three: 3) What is the Protocol Identifying Number?
       four: 4) If available, what is the National Clinical Trial (NCT) Identified Number?
-      five: 5) What is the name of the IND/IDE Sponsor? (Ctrl click to select multiple)
-      five_a: 5a) If "Other" was selected, what is the name of the IND/IDE Sponsor?
-      six: 6) What is the name of the entity funding the clinical trial?
-      seven: 7) Is the study agent a drug, biologic, or device?
+      five: 5) Who is the principal investigator?
+      six: 6) What is the name of the IND/IDE Sponsor? (Ctrl click to select multiple)
+      six_a: 6a) If "Other" was selected, what is the name of the IND/IDE Sponsor?
+      seven: 7) What is the name of the entity funding the clinical trial?
+      eight: 8) Is the study agent a drug, biologic, or device?
       drug: Drug
       biologic: Biologic
       device: Device
@@ -101,7 +102,7 @@ en:
         - National Center for Complementary and Integrative Health
         - Other
       compliance: |-
-        8) A Statement of Compliance is required for research involving human subjects.
+        9) A Statement of Compliance is required for research involving human subjects.
         The NIH Office of Science Policy recommends using one of the statements of compliance found
         below.
         <br><br>

@@ -18,7 +18,7 @@
       tr
         td.col-md-3
           b = t('.principal_investigator')
-        td.col-md-9 = @protocol.participations.principal_investigator.first.user.name
+        td.col-md-9 = @protocol.principal_investigator
       tr
         td.col-md-3
           b = t('.sponsors')
@@ -80,11 +80,11 @@
           td = participation.user.name
           td = participation.role_i18n
           td
-            - if participation.co_author? || participation.principal_investigator?
+            - if participation.admin?
               = all_sections
             - else
               = participation.sections.join(', ')
-          - if (can? :admin, @protocol) && participation.role != 'principal_investigator' && participation.user != current_user
+          - if (can? :admin, @protocol) && participation.user != current_user
             td
               = link_to t('.remove'), protocol_participation_path(@protocol, participation), method: :delete,
                                       data: { confirm: t('.remove_member') }, class: 'btn btn-danger'

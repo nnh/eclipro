@@ -11,7 +11,7 @@ h3 = t('.title')
 
   .form-group
     = f.label :role, class: 'control-label'
-    = f.select :role, Participation.roles_i18n.slice(*Participation.addable_roles).invert, {}, class: 'form-control'
+    = f.select :role, Participation.roles_i18n.invert, {}, class: 'form-control'
 
   .form-group.participation-sections
     = f.label :sections

@@ -9,7 +9,6 @@
       = fc.hidden_field :body, value: fc.object.body
       = fc.hidden_field :editable, value: fc.object.editable
     = f.fields_for :participations do |fp|
-      - next if fp.object.role == 'principal_investigator'
       = fp.hidden_field :user_id, value: fp.object.user_id
       = fp.hidden_field :role, value: fp.object.role
       - fp.object.sections.each do |section|
@@ -41,21 +40,25 @@
     = f.text_field :nct_number, class: 'form-control'
 
   .form-group
+    = f.label :principal_investigator, t('.five'), class: 'control-label'
+    = f.text_field :principal_investigator, class: 'form-control'
+
+  .form-group
     - sponsors = t('.sponsors')
-    = f.label :sponsors, t('.five'), class: 'control-label'
+    = f.label :sponsors, t('.six'), class: 'control-label'
     = f.select :sponsors, sponsors.map.with_index { |s, i| [s, s] }, { selected: @protocol.sponsors, include_hidden: false },
                           { multiple: true, class: 'form-control', rows: 5}
 
   .form-group.protocol-sponsor-other-form
-    = f.label :sponsor_other, t('.five_a'), class: 'control-label'
+    = f.label :sponsor_other, t('.six_a'), class: 'control-label'
     = f.text_field :sponsor_other, class: 'form-control'
 
   .form-group
-    = f.label :entity_funding_name, t('.six'), class: 'control-label'
+    = f.label :entity_funding_name, t('.seven'), class: 'control-label'
     = f.text_field :entity_funding_name, class: 'form-control'
 
   .form-group
-    = f.label :study_agent, t('.seven'), class: 'control-label'
+    = f.label :study_agent, t('.eight'), class: 'control-label'
     br
     label.checkbox-inline.mr-m.protocol-checkbox-form
       = f.check_box :study_agent, { multiple: true, checked: @protocol.study_agent&.include?('1') }, 1

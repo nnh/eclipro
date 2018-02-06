@@ -6,10 +6,6 @@ class ProtocolSerializer < BaseSerializer
     object.my_role(@instance_options[:user])
   end
 
-  def principal_investigator
-    object.participations.principal_investigator.first.user.name
-  end
-
   def status
     object.finalized? ? "#{object.status_i18n} - #{object.finalized_date}" : object.status_i18n
   end
