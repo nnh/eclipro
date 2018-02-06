@@ -13,12 +13,17 @@ class ContentsController < ApplicationController
   end
 
   def history
+    html = render_to_string partial: 'history', formats: :html,
+                            locals: { protocol: @protocol, content: @content }
+    render json: { html: html }
   end
 
   def compare
     body = @content.versions[params[:index].to_i].changeset[:body]
-    @compare = Content.diff(body[0], body[1])
-    @compare.gsub!('contenteditable="true"', '')
+    compare = Content.diff(body[0], body[1])
+    compare.gsub!('contenteditable="true"', '')
+
+    render json: { html: render_to_string(partial: 'compare', formats: :html, locals: { compare: compare }) }
   end
 
   def revert

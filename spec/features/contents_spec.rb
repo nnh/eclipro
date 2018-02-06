@@ -150,9 +150,9 @@ feature Content, js: true do
       click_on 'History'
       sleep 1
       expect(page).to have_css 'div.history-base'
-      expect(page).to have_link 'Compare'
+      expect(page).to have_button 'Compare'
 
-      first(:link, 'Compare').click
+      first(:button, 'Compare').click
       sleep 1
       within 'div.history-compare' do
         expect(page).to have_content in_progress.body

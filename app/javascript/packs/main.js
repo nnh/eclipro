@@ -218,6 +218,31 @@ $(function() {
   });
 
   // history
+  $('.history-button').click(function() {
+    $.ajax({
+      url: $(this).data('url'),
+      type: 'GET',
+      dataType: 'json'
+    }).done(function(res) {
+      $('.history-modal').html(res.html);
+      $('.history-modal').modal('show');
+    });
+  });
+
+  $(document).on('click', '.compare-button', function() {
+    $.ajax({
+      url: $(this).data('url'),
+      type: 'GET',
+      dataType: 'json',
+      data: {
+        index: $(this).data('index')
+      }
+    }).done(function(res) {
+      $('.history-compare').html(res.html);
+      $('.history-base').hide();
+    })
+  });
+
   $(document).on('click', '.history-compare-back', function() {
     $('.history-compare').empty();
     $('.history-base').show();

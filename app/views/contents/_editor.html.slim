@@ -5,8 +5,8 @@
       .pull-right.comment-button
         = render 'comment_button', protocol: protocol, content: content
       .pull-right
-        = link_to t('.history'), history_protocol_content_path(protocol, content),
-                  remote: true, class: 'btn btn-default'
+        = button_tag t('.history'), type: :button, class: 'btn btn-default history-button',
+                     data: { url:  history_protocol_content_path(protocol, content) }
 
       h4 = "#{t('.editor')}: #{content.no unless content.no_zero?} #{content.title}"
 

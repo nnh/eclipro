@@ -29,7 +29,7 @@
                               revert_protocol_content_path(protocol, content, index: index, lock_version: content.lock_version),
                               class: 'btn btn-warning history-revert', data: { confirm: t('.are_you_sure') }
                 td
-                  = link_to t('.compare'), compare_protocol_content_path(protocol, content, index: index),
-                            remote: true, class: 'btn btn-default'
+                  = button_tag t('.compare'), type: :button, class: 'btn btn-default compare-button',
+                               data: { url: compare_protocol_content_path(protocol, content), index: index }
 
       .history-compare
