@@ -32,6 +32,25 @@ $(function() {
     }
   });
 
+  function filtering() {
+    $.ajax({
+      url: $('.filter-form').data('url'),
+      type: 'GET',
+      dataType: 'json',
+      data: {
+        protocol_name_filter: $('.filter-form').val()
+      }
+    }).done(function(res) {
+      $('#protocol-index').html(res.html);
+    });
+  }
+  $('.filter-button').click(function() {
+    filtering();
+  });
+  $('.filter-form').keypress(function(e) {
+    if (e.keyCode == 13) filtering();
+  });
+
   function checkSponsor() {
     if ($('#protocol_sponsors').children(':selected').last().text() === $('#protocol_sponsors').children().last().val()) {
       $('.protocol-sponsor-other-form').show();
@@ -90,7 +109,7 @@ $(function() {
   });
 
   // comments
-  const resetForm = function() {
+  function resetForm() {
     $('.reply-form').empty();
     $('.new-comment-form').hide();
     $('.new-comment-form').children().val('')
@@ -98,7 +117,7 @@ $(function() {
     $('.add-comment-form').show();
   }
 
-  const changeResolvedComment = function() {
+  function changeResolvedComment() {
     if ($('.show-resolved').is(':checked')) {
       $('.resolve-comment').show();
       $('.checkbox-text').text($('.resolve-message-params').data('hide-text'));

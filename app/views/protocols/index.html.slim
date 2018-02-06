@@ -1,9 +1,9 @@
 .col-md-12
-  = form_tag protocols_path, method: :get, class: 'form-horizontal', remote: true do
-    .input-group
-      = text_field_tag 'protocol_name_filter', '', class: 'form-control', placeholder: t('.filter_placeholder')
-      .input-group-btn
-        = button_tag t('.filter'), class: 'btn btn-default', name: nil
+  .input-group
+    = text_field_tag 'protocol_name_filter', '', class: 'form-control filter-form',
+                     placeholder: t('.filter_placeholder'), data: { url: protocols_path }
+    .input-group-btn
+      = button_tag t('.filter'), type: :button, class: 'btn btn-default filter-button'
 
   #protocol-index.mt-xl
     = render 'protocols', protocols: @protocols

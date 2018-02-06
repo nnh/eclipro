@@ -2,8 +2,12 @@ class ProtocolsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    if params[:protocol_name_filter].present?
-      @protocols = @protocols.where('title like ?', "%#{params[:protocol_name_filter]}%")
+    respond_to do |format|
+      format.html
+      format.js do
+        @protocols = @protocols.where('title like ?', "%#{params[:protocol_name_filter]}%")
+        render json: { html: render_to_string(partial: 'protocols', formats: :html) }
+      end
     end
   end
 
