@@ -19,8 +19,6 @@
           - if comment.parent_id.nil?
             = button_tag t('.resolve'), type: :button, class: 'btn btn-default resolve-button',
                                         data: { url: resolve_protocol_content_comment_path(protocol, content, comment) }
-            / = link_to t('.resolve'), resolve_protocol_content_comment_path(protocol, content, comment, 'comment[resolve]': true),
-            /           class: 'btn btn-default', method: :put, remote: true
 
       - replies = Comment.where(parent_id: comment.id)
       - if replies.present?
