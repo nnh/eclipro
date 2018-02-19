@@ -21,7 +21,7 @@ class ImagesController < ApplicationController
   end
 
   def show
-    download_url = @image.file.expiring_url(10.minute)
+    download_url = @image.file.expiring_url(10.minutes)
     open(download_url, 'rb') do |data|
       send_data data.read, filename: @image.file_file_name, type: @image.file_content_type
     end

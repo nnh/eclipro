@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Header:' do
-  context 'Always,' do
+  feature 'Always,' do
     scenario 'user can move to root' do
       visit root_path
       expect(page).to have_content('eclipro')
@@ -11,7 +11,7 @@ feature 'Header:' do
     end
   end
 
-  context 'Before sign in,' do
+  feature 'Before sign in,' do
     scenario 'user can see "Sign in" button and move to sign in page' do
       visit root_path
       expect(page).to have_content('Sign in')
@@ -21,10 +21,10 @@ feature 'Header:' do
     end
   end
 
-  context 'After sign in,' do
+  feature 'After sign in,' do
     let(:user) { create(:user) }
 
-    before(:each) do
+    background(:each) do
       login_as(user, scope: :user)
       visit root_path
     end
