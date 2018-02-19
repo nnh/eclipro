@@ -45,6 +45,7 @@ $(() => {
       theme_advanced_statusbar_location: 'bottom',
       theme_advanced_buttons3_add: ['tablecontrols', 'fullscreen'],
       automatic_uploads: true,
+      content_css: '/packs/tiny_mce_style.css',
       images_upload_handler: (blobInfo, success, failure) => {
         const formData = new FormData();
         formData.append('file', blobInfo.blob(), blobInfo.filename());
@@ -65,7 +66,7 @@ $(() => {
                'visualchars, visualblocks, preview, table, fullscreen, lists, advlist, textcolor, emoticons, charmap image',
       toolbar: [
         'bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | fullscreen charmap',
-        'image reference'
+        'image reference container blank'
       ],
       setup: (editor) => {
         editor.addButton('reference', {
@@ -108,6 +109,27 @@ $(() => {
                 });
               }
             });
+          }
+        });
+        editor.addButton('container', {
+          tooltip: 'Insert container (red: Japanese, blue: English)',
+          icon: 'icon-double-arrow',
+          onclick: function() {
+            editor.insertContent(
+              `<div class="container" contenteditable='true'>
+                <div class="japanese"><p>&nbsp;</p></div>
+                <div class="english"><p>&nbsp;</p></div>
+                <div class="space"><p>&nbsp;</p></div>
+              </div>`
+            );
+          }
+        });
+        editor.addButton('blank', {
+          tooltip: 'Insert blank after selected container',
+          icon: 'icon-arrow',
+          onclick: function() {
+            let node = tinymce.get('form-tinymce').selection.getNode();
+            $(node).closest('.container').append('<div class="space"><p>&nbsp;</p></div>');
           }
         });
         editor.on('change', () => {

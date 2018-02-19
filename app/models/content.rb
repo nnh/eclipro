@@ -37,6 +37,7 @@ class Content < ApplicationRecord
         i['src'] = Image.find(image_id).file.expiring_url(10.minutes)
       end
     end
+    # doc.xpath("//div[@class='japanese']").remove
     doc.at('body').children.to_s
   end
 

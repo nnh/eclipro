@@ -1,10 +1,17 @@
 const { environment } = require('@rails/webpacker')
 const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+
+environment.plugins.append(
+  'ExtractTextPlugin',
+  new ExtractTextPlugin("[name].css")
+)
 
 module.exports = Object.assign({}, environment.toWebpackConfig(), {
   entry: {
     main: './app/javascript/packs/main.js',
-    export: './app/javascript/packs/export.js'
+    export: './app/javascript/packs/export.js',
+    tiny_mce_style: './app/javascript/packs/tiny_mce_style.css'
   },
   module: {
     loaders: [
@@ -23,6 +30,13 @@ module.exports = Object.assign({}, environment.toWebpackConfig(), {
       {
         test: /tinymce\/(themes|plugins)\//,
         loader: 'imports-loader?this=>window'
+      },
+      {
+        test: /tiny_mce_style.css/,
+        exclude: /node_modules/,
+        use: ExtractTextPlugin.extract({
+          use: ['css-loader']
+        })
       }
     ]
   },
