@@ -6,6 +6,7 @@ class Protocol < ApplicationRecord
   accepts_nested_attributes_for :participations, allow_destroy: true
   has_many :contents, dependent: :destroy
   accepts_nested_attributes_for :contents, allow_destroy: true
+  has_one :reference_docx, dependent: :destroy
 
   enum status: %i(in_progress finalized)
 

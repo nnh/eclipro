@@ -83,5 +83,13 @@ class Ability
     can :manage, Participation do |participation|
       can? :admin, participation.protocol
     end
+
+    can :manage, ReferenceDocx do |docx|
+      # TODO: 他ブランチで役割変更をしているので後で修正
+      docx.protocol.principal_investigator?(user)
+    end
+    can :read, ReferenceDocx do |docx|
+      docx.protocol.participant?(user)
+    end
   end
 end

@@ -1,0 +1,8 @@
+ja:
+  reference_docxes:
+    create:
+      success: ファイルをアップロードしました。
+    update:
+      success: ファイルを更新しました。
+    destroy:
+      success: ファイルを削除しました。

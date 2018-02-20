@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180206021637) do
+ActiveRecord::Schema.define(version: 20180220012741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,17 @@ ActiveRecord::Schema.define(version: 20180206021637) do
     t.string "principal_investigator"
   end
 
+  create_table "reference_docxes", force: :cascade do |t|
+    t.bigint "protocol_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "file_file_name"
+    t.string "file_content_type"
+    t.integer "file_file_size"
+    t.datetime "file_updated_at"
+    t.index ["protocol_id"], name: "index_reference_docxes_on_protocol_id"
+  end
+
   create_table "sections", force: :cascade do |t|
     t.string "no"
     t.string "title"
@@ -135,4 +146,5 @@ ActiveRecord::Schema.define(version: 20180206021637) do
   add_foreign_key "comments", "contents"
   add_foreign_key "comments", "users"
   add_foreign_key "contents", "protocols"
+  add_foreign_key "reference_docxes", "protocols"
 end

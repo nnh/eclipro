@@ -1,0 +1,8 @@
+ja:
+  reference_docxes:
+    create:
+      success: File was successfully uploaded.
+    update:
+      success: File was successfully updated.
+    destroy:
+      success: File was successfully destroyed.

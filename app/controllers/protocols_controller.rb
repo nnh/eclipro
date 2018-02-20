@@ -13,6 +13,7 @@ class ProtocolsController < ApplicationController
   end
 
   def show
+    @reference_docx = @protocol.reference_docx || @protocol.build_reference_docx
   end
 
   def new
@@ -82,7 +83,13 @@ class ProtocolsController < ApplicationController
 
       format.docx do
         view_text = render_to_string template: 'protocols/export', layout: 'export.html'
-        document = PandocRuby.convert(view_text.delete(' '), from: :html, to: :docx)
+        if @protocol.reference_docx
+          file_download
+          document = PandocRuby.convert(view_text.delete(' '), from: :html, to: :docx,
+                                                               reference_doc: Rails.root.join('tmp', "#{@protocol.id}_reference.docx"))
+        else
+          document = PandocRuby.convert(view_text.delete(' '), from: :html, to: :docx)
+        end
         send_data document,
                   filename: "#{@protocol.protocol_number}_v#{@protocol.version}.docx",
                   type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
@@ -128,5 +135,14 @@ class ProtocolsController < ApplicationController
         contents_attributes: [:protocol_id, :no, :title, :body, :editable],
         participations_attributes: [:protocol_id, :user_id, :role, sections: []]
       )
+    end
+
+    def file_download
+      file_path = Rails.root.join('tmp', "#{@protocol.id}_reference.docx")
+      tmp_file = File.open(file_path, 'wb')
+      open(@protocol.reference_docx.file.expiring_url(10.minutes), 'rb') do |data|
+        tmp_file.write(data.read)
+      end
+      tmp_file.close
     end
 end

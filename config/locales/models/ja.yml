@@ -21,8 +21,15 @@ ja:
         user_id: ユーザー
         role: 役割
         sections: セクション
+      reference_docx:
+        file: ファイル
     errors:
       select_sections: を1つ以上選択してください。
+      models:
+        reference_docx:
+          attributes:
+            file:
+              spoofed_media_type: 拡張子が一致しません。
   enums:
     protocol:
       status:
