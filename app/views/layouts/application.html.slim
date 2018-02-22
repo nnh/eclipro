@@ -5,7 +5,6 @@ html
       | eclipro
     = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all'
-    = javascript_pack_tag 'main'
 
   body
     nav.navbar.navbar-default
@@ -56,3 +55,5 @@ html
 
       .row.mb-l
         = yield
+
+  = javascript_pack_tag 'main'

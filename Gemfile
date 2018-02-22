@@ -36,6 +36,8 @@ gem 'jbuilder'
 
 gem 'slim-rails'
 
+gem 'active_model_serializers'
+
 gem 'devise'
 gem 'devise-i18n'
 gem 'omniauth'

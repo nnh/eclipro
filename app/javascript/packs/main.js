@@ -7,29 +7,26 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
-const $ = require('jquery');
-window.$ = window.jQuery = $;
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-const Rails = require('rails-ujs');
+import $ from 'jquery'
+import 'bootstrap-sass'
+
+import Rails from 'rails-ujs'
 Rails.start();
 
-require('bootstrap-sass');
-require('./tiny_mce');
+import './tiny_mce'
+import { Protocols } from './protocols'
 
 $(function() {
   // protocols
-  $('.clickable-tr').click(function(e) {
+  $(document).on('click', '.clickable-tr', function(e) {
     window.location = $(e.target.parentElement).data('link');
   });
-  $('.clickable-tr .btn').click(function(e) {
+  $(document).on('click', '.clickable-tr .btn', function(e) {
     e.stopPropagation();
-    if ($(e.target).data('confirm') != null) {
-      if (window.confirm($(e.target).data('confirm'))) {
-        return true;
-      } else {
-        return false;
-      }
-    }
+    return true;
   });
 
   function filtering() {
@@ -41,7 +38,10 @@ $(function() {
         protocol_name_filter: $('.filter-form').val()
       }
     }).done(function(res) {
-      $('#protocol-index').html(res.html);
+      ReactDOM.render(
+        <Protocols data={res.data} headers={$('#protocols-table').data('headers')} buttons={$('#protocols-table').data('buttons')} />,
+        document.querySelector('#protocols-table')
+      );
     });
   }
   $('.filter-button').click(function() {
@@ -50,6 +50,9 @@ $(function() {
   $('.filter-form').keypress(function(e) {
     if (e.keyCode == 13) filtering();
   });
+  if ($('.filter-button').length > 0) {
+    filtering();
+  }
 
   function checkSponsor() {
     if ($('#protocol_sponsors').children(':selected').last().text() === $('#protocol_sponsors').children().last().val()) {

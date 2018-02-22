@@ -3,16 +3,20 @@ ja:
     index:
       filter_placeholder: プロトコルをフィルタリング
       filter: フィルタリング
-    protocols:
-      protocol_title: プロトコルタイトル
-      my_role: 自分の役割
-      principal_investigator: 主任研究員
-      status: 状態
-      version: バージョン
-      show: 詳細
-      export_pdf: エクスポート(.pdf)
-      export_docx: エクスポート(.docx)
-      clone: 複製
+      headers:
+        - プロトコルタイトル
+        - 自分の役割
+        - 主任研究員
+        - 状態
+        - バージョン
+        - ''
+        - ''
+        - ''
+      buttons:
+        - 詳細
+        - エクスポート(.pdf)
+        - エクスポート(.docx)
+        - 複製
     new:
       title: プロトコル新規作成
       back: 戻る
