@@ -29,5 +29,10 @@ module.exports = Object.assign({}, environment.toWebpackConfig(), {
         loader: 'imports-loader?this=>window'
       }
     ]
+  },
+  resolve: {
+    alias: {
+      jquery: 'jquery/src/jquery'
+    }
   }
 })

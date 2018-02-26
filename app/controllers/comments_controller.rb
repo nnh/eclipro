@@ -5,9 +5,8 @@ class CommentsController < ApplicationController
 
   def index
     set_root_comment
-    html = render_to_string partial: 'index', formats: :html,
-                            locals: { protocol: @protocol, content: @content, comments: @comments }
-    render json: { html: html }
+    render json: ActiveModel::Serializer::CollectionSerializer.new(@comments,
+                                                                   each_serializer: CommentSerializer)
   end
 
   def create
@@ -16,28 +15,21 @@ class CommentsController < ApplicationController
     @content.reload
 
     set_root_comment
-    button = render_to_string partial: 'contents/comment_button', formats: :html,
-                              locals: { protocol: @protocol, content: @content }
-    comments = render_to_string partial: 'comments', formats: :html,
-                                locals: { protocol: @protocol, content: @content, comments: @comments }
-    render json: { no: @content.no.tr('.', '-'), button: button, comments: comments }
+    render json: { no: @content.no.tr('.', '-'), count: @content.comments.count,
+                   comments: ActiveModel::Serializer::CollectionSerializer.new(@comments,
+                                                                               each_serializer: CommentSerializer)}
   end
 
   def resolve
     resolve_comments(@comment)
-
     set_root_comment
-    html = render_to_string partial: 'comments', formats: :html,
-                            locals: { protocol: @protocol, content: @content, comments: @comments }
-    render json: { html: html }
+    render json: ActiveModel::Serializer::CollectionSerializer.new(@comments,
+                                                                   each_serializer: CommentSerializer)
   end
 
   def reply
-    parent_id = comment_params[:parent_id]
-
-    html = render_to_string partial: 'form', formats: :html,
-                            locals: { protocol: @protocol, content: @content, parent_id: parent_id }
-    render json: { parent_id: parent_id, html: html }
+    render json: { content_id: @content.id, current_user_id: current_user.id,
+                   parent_id: comment_params[:parent_id], url: protocol_content_comments_path(@protocol, @content) }
   end
 
   private

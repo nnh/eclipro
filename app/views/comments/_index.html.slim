@@ -1,22 +1,22 @@
-.modal-dialog
-  .modal-content
-    .modal-header
-      button.close type="button" data-dismiss="modal" aria-label="Close"
-        span aria-hidden="true" x
-      h4.modal-title = t('.title')
+.modal.fade.comment-modal tab-index="1" role="dialog" aria-hidden="true"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal" aria-label="Close"
+          span aria-hidden="true" x
+        h4.modal-title = t('.title')
 
-    .modal-body
-      .pull-right
-        label.checkbox-inline.mr-s
-          = check_box_tag 'show-resolved', true, false, { class: 'show-resolved' }
-          .checkbox-text = t('.show_resolved')
-          .resolve-message-params data-hide-text="#{t('.hide_resolved')}" data-show-text="#{t('.show_resolved')}"
+      .modal-body
+        .pull-right
+          label.checkbox-inline.mr-s
+            = check_box_tag 'show-resolved', true, false, { class: 'show-resolved' }
+            .checkbox-text = t('.show_resolved')
+            .resolve-message-params data-hide-text="#{t('.hide_resolved')}" data-show-text="#{t('.show_resolved')}"
 
-      .mt-xl.comment-list
-        = render 'comments', protocol: protocol, content: content, comments: comments
+        .mt-xl#comment-index data-buttons="#{t('.buttons')}"
 
-      .text-right.add-comment-form
-        = button_tag t('.comment'), type: :button, class: 'btn btn-default add-comment-button'
+        .text-right.add-comment-form
+          = button_tag t('.comment'), type: :button, class: 'btn btn-default add-comment-button'
 
-      .new-comment-form style="display: none"
-        = render 'form', protocol: protocol, content: content, parent_id: nil
+        #new-comment-form(style="display: none" data-buttons="#{t('.form_buttons')}" data-content-id="#{@content.id}"
+          data-current-user-id="#{current_user.id}" data-url="#{protocol_content_comments_path(@protocol, @content)}")

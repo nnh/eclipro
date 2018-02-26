@@ -1,6 +1,0 @@
-= text_area_tag 'comment[body]', '', class: 'form-control mt-s mb-s comment-form-body', rows: 3
-.text-right
-  = button_tag t('.create'), type: :button, class: 'btn btn-default comment-submit-button', disabled: true,
-                             data: { content_id: content.id, user_id: current_user.id, parent_id: parent_id,
-                                     url: protocol_content_comments_path(protocol, content) }
-  = button_tag t('.cancel'), type: :button, class: 'btn btn-default ml-s comment-cancel-button'

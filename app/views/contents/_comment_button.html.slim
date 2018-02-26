@@ -2,4 +2,4 @@
 - btn_class = comments_count.present? ? 'btn-primary' : 'btn-default'
 = button_tag "#{t('.comment')}#{comments_count}", type: :button,
              class: "btn #{btn_class} show-comments-button",
-             data: { url: protocol_content_comments_path(protocol, content) }
+             data: { url: protocol_content_comments_path(protocol, content), text: t('.comment') }

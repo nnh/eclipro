@@ -12,7 +12,6 @@ describe CommentsController, type: :controller do
     it 'user can see comments' do
       get :index, xhr: true, params: { protocol_id: protocol.id,
                                        content_id: protocol.contents.find_by(no: '0').id }
-      expect(response).to render_template '_index'
       expect(assigns(:comments)).to match_array([comment])
     end
   end
@@ -51,7 +50,7 @@ describe CommentsController, type: :controller do
       get :reply, xhr: true, params: { protocol_id: protocol.id,
                                        content_id: content_id,
                                        comment: attributes_for(:comment, parent_id: comment.id) }
-      expect(response).to render_template '_form'
+      expect(response).to have_http_status 200
 
       expect {
         post :create, xhr: true, params: { protocol_id: protocol.id,

@@ -5,10 +5,9 @@ en:
       comment: Comment
       show_resolved: Show Resolved
       hide_resolved: Hide Resolved
-    comments:
-      reply: Reply
-      resolve: Resolve
-      cancel: Cancel
-    form:
-      create: Create Comment
-      cancel: Cancel
+      buttons:
+        - Reply
+        - Resolve
+      form_buttons:
+        - Create Comment
+        - Cancel

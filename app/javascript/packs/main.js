@@ -20,6 +20,7 @@ Rails.start();
 import './tiny_mce'
 import { Protocols } from './protocols'
 import { HistoryIndex, HistoryCompare } from './history'
+import { CommentIndex, CommentForm } from './comments'
 
 $(function() {
   // protocols
@@ -116,9 +117,11 @@ $(function() {
 
   // comments
   function resetForm() {
-    $('.reply-form').empty();
-    $('.new-comment-form').hide();
-    $('.new-comment-form').children().val('')
+    $('.reply-form').each((i, element) => {
+      ReactDOM.unmountComponentAtNode(element);
+    });
+    $('#new-comment-form').hide();
+    $('#new-comment-form').children().val('')
     $('.comment-submit-button').prop('disabled', true);
     $('.add-comment-form').show();
   }
@@ -139,7 +142,19 @@ $(function() {
       type: 'GET',
       dataType: 'json'
     }).done(function(res) {
-      $('.comment-modal').html(res.html);
+      ReactDOM.render(
+        <CommentIndex data={res} buttons={$('#comment-index').data('buttons')} />,
+        document.querySelector('#comment-index')
+      );
+      let target = $('#new-comment-form')
+      let data = {
+        content_id: target.data('content-id'), current_user_id: target.data('current-user-id'),
+        parent_id: null, url: target.data('url')
+      }
+      ReactDOM.render(
+        <CommentForm data={data} buttons={target.data('buttons')} />,
+        document.querySelector('#new-comment-form')
+      );
       $('.comment-modal').modal('show');
       changeResolvedComment();
     });
@@ -148,7 +163,7 @@ $(function() {
   $(document).on('click', '.add-comment-button', function() {
     resetForm();
     $('.add-comment-form').hide();
-    $('.new-comment-form').show();
+    $('#new-comment-form').show();
   })
 
   $(document).on('keyup', '.comment-form-body', function() {
@@ -178,8 +193,11 @@ $(function() {
       }
     }).done(function(res) {
       $(`#section-${res.no}-comment-icon`).html('<i class="fa fa-commenting mr-s">');
-      $('.comment-button').html(res.button);
-      $('.comment-list').html(res.comments);
+      $('.show-comments-button').html(`${$('.show-comments-button').data('text')} (${res.count})`);
+      ReactDOM.render(
+        <CommentIndex data={res.comments} buttons={$('#comment-index').data('buttons')} />,
+        document.querySelector('#comment-index')
+      );
       resetForm();
       changeResolvedComment();
     });
@@ -201,8 +219,10 @@ $(function() {
       }
     }).done(function(res) {
       resetForm();
-      $(`#reply-${res.parent_id}`).html(res.html);
-      $(`#reply-${res.parent_id}`).show();
+      ReactDOM.render(
+        <CommentForm data={res} buttons={$('#new-comment-form ').data('buttons')} />,
+        document.querySelector(`#reply-${res.parent_id}`)
+      );
     });
   });
 
@@ -217,7 +237,10 @@ $(function() {
         }
       }
     }).done(function(res) {
-      $('.comment-list').html(res.html);
+      ReactDOM.render(
+        <CommentIndex data={res} buttons={$('#comment-index').data('buttons')} />,
+        document.querySelector('#comment-index')
+      );
       resetForm();
       changeResolvedComment();
     });
