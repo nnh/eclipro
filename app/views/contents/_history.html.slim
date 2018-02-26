@@ -1,35 +1,11 @@
-.modal-dialog
-  .modal-content
-    .modal-header
-      button.close type="button" data-dismiss="modal" aria-label="Close"
-        span aria-hidden="true" x
-      h4.modal-title = t('.modal_title')
+.modal.fade.history-modal tab-index="1" role="dialog" aria-hidden="true"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal" aria-label="Close"
+          span aria-hidden="true" x
+        h4.modal-title = t('.modal_title')
 
-    .modal-body
-      .history-base
-        table.table
-          thead
-            tr
-              th = t('.title')
-              th = t('.version')
-              th = t('.modified')
-              th = t('.date')
-              th
-              th
-          tbody
-            - content.versions.each_with_index.reverse_each do |history, index|
-              tr
-                td = "#{content.no} #{content.title}"
-                td = index
-                td = history.whodunnit
-                td = history.created_at
-                td
-                  - if can? :edit, content
-                    = link_to t('.revert'),
-                              revert_protocol_content_path(protocol, content, index: index, lock_version: content.lock_version),
-                              class: 'btn btn-warning history-revert', data: { confirm: t('.are_you_sure') }
-                td
-                  = button_tag t('.compare'), type: :button, class: 'btn btn-default compare-button',
-                               data: { url: compare_protocol_content_path(protocol, content), index: index }
-
-      .history-compare
+      .modal-body
+        #history-index data-headers="#{t('.headers')}" data-buttons="#{t('.buttons')}"
+        #history-compare data-text="#{t('.back')}"

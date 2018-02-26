@@ -19,6 +19,7 @@ Rails.start();
 
 import './tiny_mce'
 import { Protocols } from './protocols'
+import { HistoryIndex, HistoryCompare } from './history'
 
 $(function() {
   // protocols
@@ -39,8 +40,9 @@ $(function() {
         protocol_name_filter: $('.filter-form').val()
       }
     }).done(function(res) {
+      let target = $('#protocols-table')
       ReactDOM.render(
-        <Protocols data={res.data} headers={$('#protocols-table').data('headers')} buttons={$('#protocols-table').data('buttons')} />,
+        <Protocols data={res} headers={target.data('headers')} buttons={target.data('buttons')} />,
         document.querySelector('#protocols-table')
       );
     });
@@ -228,7 +230,11 @@ $(function() {
       type: 'GET',
       dataType: 'json'
     }).done(function(res) {
-      $('.history-modal').html(res.html);
+      let target = $('#history-index');
+      ReactDOM.render(
+        <HistoryIndex data={res} headers={target.data('headers')} buttons={target.data('buttons')} />,
+        document.querySelector('#history-index')
+      );
       $('.history-modal').modal('show');
     });
   });
@@ -237,19 +243,19 @@ $(function() {
     $.ajax({
       url: $(this).data('url'),
       type: 'GET',
-      dataType: 'json',
-      data: {
-        index: $(this).data('index')
-      }
+      dataType: 'json'
     }).done(function(res) {
-      $('.history-compare').html(res.html);
-      $('.history-base').hide();
-    })
+      ReactDOM.render(
+        <HistoryCompare data={res.data} text={$('#history-compare').data('text')}/>,
+        document.querySelector('#history-compare')
+      );
+      $('#history-index').hide();
+    });
   });
 
   $(document).on('click', '.history-compare-back', function() {
-    $('.history-compare').empty();
-    $('.history-base').show();
+    ReactDOM.unmountComponentAtNode(document.querySelector('#history-compare'));
+    $('#history-index').show();
   });
 
   $('.history-revert').on('confirm:complete', function(e, answer) {

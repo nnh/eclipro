@@ -6,8 +6,8 @@ class ProtocolsController < ApplicationController
       format.html
       format.js do
         @protocols = @protocols.where('title like ?', "%#{params[:protocol_name_filter]}%")
-        render json: { data: ActiveModel::Serializer::CollectionSerializer.new(@protocols,
-                                                                               each_serializer: ProtocolSerializer, user: current_user).as_json }
+        render json: ActiveModel::Serializer::CollectionSerializer.new(@protocols,
+                                                                       each_serializer: ProtocolSerializer, user: current_user).as_json
       end
     end
   end
