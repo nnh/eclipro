@@ -13,7 +13,7 @@ class ContentsController < ApplicationController
   end
 
   def history
-    render json: @content, include: [:versions], user: current_user
+    render json: @content, user: current_user
   end
 
   def compare

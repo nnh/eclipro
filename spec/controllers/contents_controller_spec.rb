@@ -56,14 +56,14 @@ describe ContentsController, type: :controller do
   shared_examples_for 'can see history' do
     it do
       get :history, xhr: true, params: { protocol_id: protocol, id: content }
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
   shared_examples_for 'can see compare' do
     it do
       get :history, xhr: true, params: { protocol_id: protocol, id: content }
-      response.should be_success
+      expect(response).to be_success
     end
   end
 

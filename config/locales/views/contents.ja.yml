@@ -21,6 +21,7 @@ ja:
       rework_needed: 修正が必要
       review_completed: レビュー完了
       no_reviewer: このセクションにレビューアーが割り当てられていません。管理者に連絡して割り当ててください。
+      comment: コメント
     update:
       success: コンテンツの更新をしました。
       no_change: コンテンツに変更はありません。
@@ -47,5 +48,3 @@ ja:
     change_status:
       success: ステータスを変更しました。
       failure: ステータスを変更できませんでした。
-    comment_button:
-      comment: コメント

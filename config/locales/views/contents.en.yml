@@ -21,6 +21,7 @@ en:
       rework_needed: Rework Needed
       review_completed: Review Completed
       no_reviewer: Reviewer is not assigned to this section. Please contact the administrator and assign a reviewer.
+      comment: Comments
     update:
       success: Content was successfully updated.
       no_change: There is no change in contents.
@@ -45,5 +46,3 @@ en:
     change_status:
       success: Protocol status was successfully changed.
       failure: Failed to change the protocol status.
-    comment_button:
-      comment: Comments

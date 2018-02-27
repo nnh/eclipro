@@ -1,6 +1,4 @@
-const $ = require('jquery');
-
-$(function() {
+$(() => {
   const vars = {};
   const locations = document.location.search.substring(1).split('&');
   for (let i in locations) {

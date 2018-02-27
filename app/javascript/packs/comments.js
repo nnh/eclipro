@@ -37,7 +37,7 @@ class CommentIndex extends React.Component {
           <div className='reply-form' id={`reply-${data.id}`}></div>
         </div>
       );
-    })
+    });
 
     return (
       <div>{body}</div>

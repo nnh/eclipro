@@ -1,11 +1,7 @@
-class CommentSerializer < ActiveModel::Serializer
+class CommentSerializer < BaseSerializer
   attributes :id, :body, :resolve, :created_at, :reply_url, :resolve_url
   has_one :user
   has_many :replies
-
-  def url_helpers
-    Rails.application.routes.url_helpers
-  end
 
   def content
     object.content
@@ -13,10 +9,6 @@ class CommentSerializer < ActiveModel::Serializer
 
   def protocol
     content.protocol
-  end
-
-  def created_at
-    object.created_at.strftime('%Y-%m-%d %H:%M:%S UTC')
   end
 
   def reply_url
