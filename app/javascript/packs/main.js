@@ -16,9 +16,9 @@ import Rails from 'rails-ujs'
 Rails.start();
 
 import './tiny_mce'
-import { Protocols } from './protocols'
+import { Protocol } from './protocol'
 import { HistoryIndex, HistoryCompare } from './history'
-import { CommentIndex, CommentForm } from './comments'
+import { CommentIndex, CommentForm } from './comment'
 
 $(() => {
   // protocols
@@ -39,10 +39,10 @@ $(() => {
         protocol_name_filter: $('.filter-form').val()
       }
     }).done((res) => {
-      let target = $('.protocols-table')
+      let target = $('.protocols-table');
       ReactDOM.render(
-        <Protocols data={res} headers={target.data('headers')} buttons={target.data('buttons')} />,
-        document.querySelector('.protocols-table')
+        React.createElement(Protocol, { data: res, headers: target.data('headers'), buttons: target.data('buttons') }),
+        $('.protocols-table')[0]
       );
     });
   }
@@ -119,7 +119,7 @@ $(() => {
       ReactDOM.unmountComponentAtNode(element);
     });
     $('.new-comment-form').hide();
-    $('.new-comment-form').children().val('')
+    $('.new-comment-form').children().val('');
     $('.comment-submit-button').prop('disabled', true);
     $('.add-comment-form').show();
   }
@@ -141,17 +141,17 @@ $(() => {
       dataType: 'json'
     }).done((res) => {
       ReactDOM.render(
-        <CommentIndex data={res} buttons={$('.comment-index').data('buttons')} />,
-        document.querySelector('.comment-index')
+        React.createElement(CommentIndex, { data: res, buttons: $('.comment-index').data('buttons') }),
+        $('.comment-index')[0]
       );
-      let target = $('.new-comment-form')
+      let target = $('.new-comment-form');
       let data = {
         content_id: target.data('content-id'), current_user_id: target.data('current-user-id'),
         parent_id: null, url: target.data('url')
       }
       ReactDOM.render(
-        <CommentForm data={data} buttons={target.data('buttons')} />,
-        document.querySelector('.new-comment-form')
+        React.createElement(CommentForm, { data: data, buttons: target.data('buttons') }),
+        $('.new-comment-form')[0]
       );
       $('.comment-modal').modal('show');
       changeResolvedComment();
@@ -194,8 +194,8 @@ $(() => {
       $('.show-comments-button').html(`${$('.show-comments-button').data('text')} (${res.count})`);
       $('.show-comments-button').removeClass().addClass('btn btn-primary show-comments-button');
       ReactDOM.render(
-        <CommentIndex data={res.comments} buttons={$('.comment-index').data('buttons')} />,
-        document.querySelector('.comment-index')
+        React.createElement(CommentIndex, { data: res.comments, buttons: $('.comment-index').data('buttons') }),
+        $('.comment-index')[0]
       );
       resetForm();
       changeResolvedComment();
@@ -219,8 +219,8 @@ $(() => {
     }).done((res) => {
       resetForm();
       ReactDOM.render(
-        <CommentForm data={res} buttons={$('.new-comment-form ').data('buttons')} />,
-        document.querySelector(`#reply-${res.parent_id}`)
+        React.createElement(CommentForm, { data: res, buttons: $('.new-comment-form ').data('buttons')}),
+        $(`#reply-${res.parent_id}`)[0]
       );
     });
   });
@@ -237,8 +237,8 @@ $(() => {
       }
     }).done((res) => {
       ReactDOM.render(
-        <CommentIndex data={res} buttons={$('.comment-index').data('buttons')} />,
-        document.querySelector('.comment-index')
+        React.createElement(CommentIndex, { data: res, buttons: $('.comment-index').data('buttons') }),
+        $('.comment-index')[0]
       );
       resetForm();
       changeResolvedComment();
@@ -254,8 +254,8 @@ $(() => {
     }).done((res) => {
       let target = $('.history-index');
       ReactDOM.render(
-        <HistoryIndex data={res} headers={target.data('headers')} buttons={target.data('buttons')} />,
-        document.querySelector('.history-index')
+        React.createElement(HistoryIndex, { data: res, headers: target.data('headers'), buttons: target.data('buttons') }),
+        $('.history-index')[0]
       );
       $('.history-modal').modal('show');
     });
@@ -268,15 +268,15 @@ $(() => {
       dataType: 'json'
     }).done((res) => {
       ReactDOM.render(
-        <HistoryCompare data={res.data} text={$('.history-compare').data('text')} />,
-        document.querySelector('.history-compare')
+        React.createElement(HistoryCompare, { data: res.data, text: $('.history-compare').data('text') }),
+        $('.history-compare')[0]
       );
       $('.history-index').hide();
     });
   });
 
   $(document).on('click', '.history-compare-back', () => {
-    ReactDOM.unmountComponentAtNode(document.querySelector('.history-compare'));
+    ReactDOM.unmountComponentAtNode($('.history-compare')[0]);
     $('.history-index').show();
   });
 

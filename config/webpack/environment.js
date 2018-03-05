@@ -33,6 +33,7 @@ module.exports = Object.assign({}, environment.toWebpackConfig(), {
   resolve: {
     alias: {
       jquery: 'jquery/src/jquery'
-    }
+    },
+    extensions: ['.js', '.jsx']
   }
 })

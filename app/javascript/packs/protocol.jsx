@@ -1,6 +1,6 @@
 import React from 'react'
 
-export class Protocols extends React.Component {
+export class Protocol extends React.Component {
   render() {
     let head =
       <tr>
