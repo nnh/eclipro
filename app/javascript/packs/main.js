@@ -18,7 +18,7 @@ Rails.start();
 import './tiny_mce'
 import { Protocol } from './protocol'
 import { HistoryIndex, HistoryCompare } from './history'
-import { CommentIndex, CommentForm } from './comment'
+import './comment'
 
 $(() => {
   // protocols
@@ -111,138 +111,6 @@ $(() => {
       $('input[type=checkbox]').prop('checked', false);
       $('.participation-sections').show();
     }
-  });
-
-  // comments
-  function resetForm() {
-    $('.reply-form').each((i, element) => {
-      ReactDOM.unmountComponentAtNode(element);
-    });
-    $('.new-comment-form').hide();
-    $('.new-comment-form').children().val('');
-    $('.comment-submit-button').prop('disabled', true);
-    $('.add-comment-form').show();
-  }
-
-  function changeResolvedComment() {
-    if ($('.show-resolved').is(':checked')) {
-      $('.resolve-comment').show();
-      $('.checkbox-text').text($('.resolve-message-params').data('hide-text'));
-    } else {
-      $('.resolve-comment').hide();
-      $('.checkbox-text').text($('.resolve-message-params').data('show-text'));
-    }
-  }
-
-  $(document).on('click', '.show-comments-button', (e) => {
-    $.ajax({
-      url: $(e.target).data('url'),
-      type: 'GET',
-      dataType: 'json'
-    }).done((res) => {
-      ReactDOM.render(
-        React.createElement(CommentIndex, { data: res, buttons: $('.comment-index').data('buttons') }),
-        $('.comment-index')[0]
-      );
-      let target = $('.new-comment-form');
-      let data = {
-        content_id: target.data('content-id'), current_user_id: target.data('current-user-id'),
-        parent_id: null, url: target.data('url')
-      }
-      ReactDOM.render(
-        React.createElement(CommentForm, { data: data, buttons: target.data('buttons') }),
-        $('.new-comment-form')[0]
-      );
-      $('.comment-modal').modal('show');
-      changeResolvedComment();
-    });
-  });
-
-  $(document).on('click', '.add-comment-button', () => {
-    resetForm();
-    $('.add-comment-form').hide();
-    $('.new-comment-form').show();
-  })
-
-  $(document).on('keyup', '.comment-form-body', (e) => {
-    if ($(e.target).val().length > 0) {
-      $($(e.target).siblings().children()[0]).prop('disabled', false);
-    } else {
-      $($(e.target).siblings().children()[0]).prop('disabled', true);
-    }
-  });
-
-  $(document).on('click', '.comment-cancel-button', () => {
-    resetForm();
-  });
-
-  $(document).on('click', '.comment-submit-button', (e) => {
-    $.ajax({
-      url: $(e.target).data('url'),
-      type: 'POST',
-      dataType: 'json',
-      data: {
-        comment: {
-          body: $(e.target).parent().siblings().val(),
-          content_id: $(e.target).data('content-id'),
-          user_id: $(e.target).data('user-id'),
-          parent_id: $(e.target).data('parent-id')
-        }
-      }
-    }).done((res) => {
-      $(`#section-${res.no}-comment-icon`).html('<i class="fa fa-commenting mr-s">');
-      $('.show-comments-button').html(`${$('.show-comments-button').data('text')} (${res.count})`);
-      $('.show-comments-button').removeClass().addClass('btn btn-primary show-comments-button');
-      ReactDOM.render(
-        React.createElement(CommentIndex, { data: res.comments, buttons: $('.comment-index').data('buttons') }),
-        $('.comment-index')[0]
-      );
-      resetForm();
-      changeResolvedComment();
-    });
-  });
-
-  $(document).on('change', '.show-resolved', () => {
-    changeResolvedComment();
-  });
-
-  $(document).on('click', '.reply-button', (e) => {
-    $.ajax({
-      url: $(e.target).data('url'),
-      type: 'GET',
-      dataType: 'json',
-      data: {
-        comment: {
-          parent_id: $(e.target).data('parent-id'),
-        }
-      }
-    }).done((res) => {
-      resetForm();
-      ReactDOM.render(
-        React.createElement(CommentForm, { data: res, buttons: $('.new-comment-form ').data('buttons')}),
-        $(`#reply-${res.parent_id}`)[0]
-      );
-    });
-  });
-
-  $(document).on('click', '.resolve-button', (e) => {
-    $.ajax({
-      url: $(e.target).data('url'),
-      type: 'PUT',
-      dataType: 'json',
-      data: {
-        comment: {
-          resolve: true,
-        }
-      }
-    }).done((res) => {
-      ReactDOM.render(
-        React.createElement(CommentIndex, { data: res, buttons: $('.comment-index').data('buttons') }),
-        $('.comment-index')[0]
-      );
-      resetForm();
-      changeResolvedComment();
-    });
   });
 
   // history
