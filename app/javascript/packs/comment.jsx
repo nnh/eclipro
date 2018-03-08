@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import $ from 'jquery'
 
 class CommentIndex extends React.Component {
   render() {

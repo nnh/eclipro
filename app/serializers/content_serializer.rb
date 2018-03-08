@@ -3,7 +3,7 @@ class ContentSerializer < BaseSerializer
   has_many :versions
 
   class VersionSerializer < BaseSerializer
-    attributes :whodunnit, :created_at, :revert_url, :compare_url
+    attributes :id, :whodunnit, :created_at, :revert_url, :compare_url
 
     def revert_url
       content = Content.find(object.item_id)

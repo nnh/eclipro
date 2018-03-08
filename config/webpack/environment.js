@@ -9,7 +9,16 @@ environment.plugins.set(
   })
 )
 
+environment.plugins.set(
+  'Dedupe',
+  new webpack.optimize.DedupePlugin()
+)
+
 module.exports = Object.assign({}, environment.toWebpackConfig(), {
+  entry: {
+    main: './app/javascript/packs/main.js',
+    export: './app/javascript/packs/export.js'
+  },
   module: {
     loaders: [
       {

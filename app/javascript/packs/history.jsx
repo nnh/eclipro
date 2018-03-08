@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 
 class HistoryIndex extends React.Component {
   render() {
@@ -14,24 +15,28 @@ class HistoryIndex extends React.Component {
     let body = [];
 
     for (let i = this.props.data.versions.length - 1; i >= 0; i--) {
-      let version = this.props.data.versions[i]
+      let version = this.props.data.versions[i];
       body.push(
-        <tr key={`history_${i}`} >
+        <tr key={`history_${version.id}`} >
           <td>{this.props.data.no} {this.props.data.title}</td>
           <td>{i}</td>
           <td>{version.whodunnit}</td>
           <td>{version.created_at}</td>
           <td>
-            {
-              version.revert_url.length > 0 ?
-                <a href={`${version.revert_url}&index=${i}`}
-                   className='btn btn-warning history-revert' data-confirm={this.props.buttons[2]}>
-                  {this.props.buttons[0]}
-                </a> : ''
-            }
+            {(() => {
+              if (version.revert_url.length > 0) {
+                return (
+                  <a href={`${version.revert_url}&index=${i}`} className='btn btn-warning'
+                     data-confirm={this.props.buttons[2]} onClick={(e) => { this.onRevert(e) }}>
+                    {this.props.buttons[0]}
+                  </a>
+                );
+              }
+            })()}
           </td>
           <td>
-            <button className='btn btn-default compare-button' data-url={`${version.compare_url}?index=${i}`}>
+            <button className='btn btn-default'
+                    data-url={`${version.compare_url}?index=${i}`} onClick={(e) => { this.onCompare(e) }}>
               {this.props.buttons[1]}
             </button>
           </td>
@@ -46,6 +51,24 @@ class HistoryIndex extends React.Component {
       </table>
     );
   }
+
+  onRevert(e) {
+    $('.history-modal').modal('hide');
+  }
+
+  onCompare(e) {
+    $.ajax({
+      url: $(e.target).data('url'),
+      type: 'GET',
+      dataType: 'json'
+    }).done((res) => {
+      ReactDOM.render(
+        <HistoryCompare data={res.data} text={$('.history-compare').data('text')} />,
+        $('.history-compare')[0]
+      );
+      $('.history-index').hide();
+    });
+  }
 }
 
 class HistoryCompare extends React.Component {
@@ -53,15 +76,35 @@ class HistoryCompare extends React.Component {
     return (
       <div>
         <div className='text-right'>
-          <button className='btn btn-default history-compare-back'>
+          <button className='btn btn-default' onClick={(e) => this.onClick(e) }>
             {this.props.text}
           </button>
         </div>
         <hr />
         <div dangerouslySetInnerHTML={{__html: this.props.data}}></div>
       </div>
-    )
+    );
+  }
+
+  onClick(e) {
+    ReactDOM.unmountComponentAtNode($('.history-compare')[0]);
+    $('.history-index').show();
   }
 }
 
-export { HistoryIndex, HistoryCompare }
+$(() => {
+  $('.history-button').click((e) => {
+    $.ajax({
+      url: $(e.target).data('url'),
+      type: 'GET',
+      dataType: 'json'
+    }).done((res) => {
+      let target = $('.history-index');
+      ReactDOM.render(
+        <HistoryIndex data={res} headers={target.data('headers')} buttons={target.data('buttons')} />,
+        $('.history-index')[0]
+      );
+      $('.history-modal').modal('show');
+    });
+  });
+});

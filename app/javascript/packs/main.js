@@ -8,8 +8,6 @@
 // layout file, like app/views/layouts/application.html.erb
 
 import 'es6-shim'
-import React from 'react'
-import ReactDOM from 'react-dom'
 import 'bootstrap-sass'
 
 import Rails from 'rails-ujs'
@@ -17,7 +15,7 @@ Rails.start();
 
 import './tiny_mce'
 import './protocol'
-import { HistoryIndex, HistoryCompare } from './history'
+import './history'
 import './comment'
 
 $(() => {
@@ -76,47 +74,6 @@ $(() => {
     } else {
       $('input[type=checkbox]').prop('checked', false);
       $('.participation-sections').show();
-    }
-  });
-
-  // history
-  $('.history-button').click((e) => {
-    $.ajax({
-      url: $(e.target).data('url'),
-      type: 'GET',
-      dataType: 'json'
-    }).done((res) => {
-      let target = $('.history-index');
-      ReactDOM.render(
-        React.createElement(HistoryIndex, { data: res, headers: target.data('headers'), buttons: target.data('buttons') }),
-        $('.history-index')[0]
-      );
-      $('.history-modal').modal('show');
-    });
-  });
-
-  $(document).on('click', '.compare-button', (e) => {
-    $.ajax({
-      url: $(e.target).data('url'),
-      type: 'GET',
-      dataType: 'json'
-    }).done((res) => {
-      ReactDOM.render(
-        React.createElement(HistoryCompare, { data: res.data, text: $('.history-compare').data('text') }),
-        $('.history-compare')[0]
-      );
-      $('.history-index').hide();
-    });
-  });
-
-  $(document).on('click', '.history-compare-back', () => {
-    ReactDOM.unmountComponentAtNode($('.history-compare')[0]);
-    $('.history-index').show();
-  });
-
-  $('.history-revert').on('confirm:complete', (e, answer) => {
-    if (answer) {
-      $('.history-modal').modal('hide');
     }
   });
 });
