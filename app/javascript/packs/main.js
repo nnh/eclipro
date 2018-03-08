@@ -16,46 +16,12 @@ import Rails from 'rails-ujs'
 Rails.start();
 
 import './tiny_mce'
-import { Protocol } from './protocol'
+import './protocol'
 import { HistoryIndex, HistoryCompare } from './history'
 import './comment'
 
 $(() => {
-  // protocols
-  $(document).on('click', '.clickable-tr', (e) => {
-    window.location = $(e.target.parentElement).data('link');
-  });
-  $(document).on('click', '.clickable-tr .btn', (e) => {
-    e.stopPropagation();
-    return true;
-  });
-
-  function filtering() {
-    $.ajax({
-      url: $('.filter-form').data('url'),
-      type: 'GET',
-      dataType: 'json',
-      data: {
-        protocol_name_filter: $('.filter-form').val()
-      }
-    }).done((res) => {
-      let target = $('.protocols-table');
-      ReactDOM.render(
-        React.createElement(Protocol, { data: res, headers: target.data('headers'), buttons: target.data('buttons') }),
-        $('.protocols-table')[0]
-      );
-    });
-  }
-  $('.filter-button').click(() => {
-    filtering();
-  });
-  $('.filter-form').keypress((e) => {
-    if (e.keyCode == 13) filtering();
-  });
-  if ($('.filter-button').length > 0) {
-    filtering();
-  }
-
+  // protocol form
   function checkSponsor() {
     if ($('#protocol_sponsors').children(':selected').last().text() === $('#protocol_sponsors').children().last().val()) {
       $('.protocol-sponsor-other-form').show();
