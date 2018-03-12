@@ -1,19 +1,6 @@
 const { environment } = require('@rails/webpacker')
 const webpack = require('webpack')
 
-environment.plugins.set(
-  'Provide',
-  new webpack.ProvidePlugin({
-    jQuery: 'jquery',
-    $: 'jquery'
-  })
-)
-
-environment.plugins.set(
-  'Dedupe',
-  new webpack.optimize.DedupePlugin()
-)
-
 module.exports = Object.assign({}, environment.toWebpackConfig(), {
   entry: {
     main: './app/javascript/packs/main.js',

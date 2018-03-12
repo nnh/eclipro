@@ -2,9 +2,10 @@ doctype html
 html
   head
     = wicked_pdf_stylesheet_link_tag 'export'
-    = javascript_pack_tag 'export'
     meta charset="UTF-8"
 
   body
     .export-content
       = yield
+
+    = javascript_pack_tag 'export'

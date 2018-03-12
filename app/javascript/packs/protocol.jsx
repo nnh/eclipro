@@ -1,9 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import $ from 'jquery'
 
 class Protocol extends React.Component {
   render() {
-    let head =
+    const head =
       <tr>
         {
           this.props.headers.map((header, index) => {
@@ -12,9 +13,8 @@ class Protocol extends React.Component {
         }
       </tr>
 
-    let body = [];
-    this.props.data.map((data) => {
-      body.push(
+    const body = this.props.data.map((data) => {
+      return (
         <tr key={`protocols_${data.id}`} className='clickable-tr'
             data-link={data.section_url} onClick={(e) => { this.onTrClick(e) }}>
           <td>{data.title}</td>
@@ -80,7 +80,7 @@ $(() => {
         protocol_name_filter: $('.filter-form').val()
       }
     }).done((res) => {
-      let target = $('.protocols-table');
+      const target = $('.protocols-table');
       ReactDOM.render(
         <Protocol data={res} headers={target.data('headers')} buttons={target.data('buttons')} />,
         $('.protocols-table')[0]

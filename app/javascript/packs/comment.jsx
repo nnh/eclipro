@@ -1,12 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import $ from 'jquery'
 
 class CommentIndex extends React.Component {
   render() {
-    let body = [];
-
-    this.props.data.map((data) => {
-      body.push(
+    const body = this.props.data.map((data) => {
+      return(
         <div className={`comment p-m mt-s mb-s${data.resolve ? ' resolve-comment' : '' }`} key={`comment_${data.id}`} >
           <div>
             <i className='fa fa-user mr-xs'></i>
@@ -188,8 +187,8 @@ $(() => {
   $(document).on('click', '.add-comment-button', () => {
     resetForm();
 
-    let target = $('.new-comment-form');
-    let data = {
+    const target = $('.new-comment-form');
+    const data = {
       content_id: target.data('content-id'),
       current_user_id: target.data('current-user-id'),
       parent_id: null,

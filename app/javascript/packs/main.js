@@ -8,6 +8,10 @@
 // layout file, like app/views/layouts/application.html.erb
 
 import 'es6-shim'
+
+import $ from 'jquery'
+window.$ = window.jquery = $;
+
 import 'bootstrap-sass'
 
 import Rails from 'rails-ujs'
