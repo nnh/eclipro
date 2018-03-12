@@ -3,18 +3,20 @@ en:
     index:
       filter_placeholder: Filter protocols
       filter: Filtering
-    protocols:
-      protocol_title: Protocol title
-      my_role: My role
-      principal_investigator: Principal Investigator
-      status: Status
-      version: Version
-      show: Details
-      export_pdf: Export(.pdf)
-      export_docx: Export(.docx)
-      clone: Clone
-      reinstate: Reinstate
-      reinstate_text: Do you want to reinstate this protocol?
+      headers:
+        - Protocol title
+        - My role
+        - Principal Investigator
+        - Status
+        - Version
+        - ''
+        - ''
+        - ''
+      buttons:
+        - Details
+        - Export(.pdf)
+        - Export(.docx)
+        - Clone
     new:
       title: New protocol
       back: Back

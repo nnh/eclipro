@@ -5,9 +5,9 @@ ja:
       comment: コメントする
       show_resolved: 解決済みコメントを表示する
       hide_resolved: 解決済みコメントを隠す
-    comments:
-      reply: 返信
-      resolve: 解決
-      cancel: キャンセル
-    form:
-      cancel: キャンセル
+      buttons:
+        - 返信
+        - 解決
+      form_buttons:
+        - 作成する
+        - キャンセル

@@ -9,16 +9,17 @@ feature Comment, js: true do
 
   background(:each) do
     login_as(pi, scope: :user)
-    visit protocol_content_path(protocol, content, anchor: :sections)
+    visit protocol_content_path(protocol, content)
     click_on 'Comments (1)'
+    sleep 1
   end
 
   feature 'participating user' do
     scenario 'can comment' do
-      click_on 'Comments (1)'
-      sleep 2
       click_on 'Comment'
+      sleep 1
       fill_in 'comment[body]', with: 'new comment'
+      sleep 1
       click_on 'Create Comment'
       sleep 1
       expect(page.body).to have_content 'new comment'
@@ -27,7 +28,10 @@ feature Comment, js: true do
     scenario 'can reply' do
       click_on 'Reply'
       sleep 1
-      fill_in 'comment[body]', with: 'new reply'
+      within '.reply-form' do
+        fill_in 'comment[body]', with: 'new reply'
+      end
+      sleep 1
       click_on 'Create Comment'
       sleep 1
       expect(page.body).to have_content 'new reply'

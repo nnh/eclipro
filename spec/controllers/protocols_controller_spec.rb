@@ -28,8 +28,7 @@ describe ProtocolsController, type: :controller do
     context 'all user' do
       let(:current_user) { general_user }
       it 'can see participating protocols with filter' do
-        get :index, params: { protocol_name_filter: 'test' }
-        expect(response).to render_template :index
+        get :index, xhr: true, params: { protocol_name_filter: 'test' }
         expect(assigns(:protocols)).to match_array([protocol0])
       end
     end

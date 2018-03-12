@@ -1,29 +1,28 @@
-const $ = require('jquery');
-const tinyMCE = require('tinymce');
-require('tinymce/themes/modern/theme');
-require('tinymce/plugins/advlist');
-require('tinymce/plugins/anchor');
-require('tinymce/plugins/charmap');
-require('tinymce/plugins/emoticons');
-require('tinymce/plugins/fullscreen');
-require('tinymce/plugins/hr');
-require('tinymce/plugins/image');
-require('tinymce/plugins/insertdatetime');
-require('tinymce/plugins/link');
-require('tinymce/plugins/lists');
-require('tinymce/plugins/media');
-require('tinymce/plugins/nonbreaking');
-require('tinymce/plugins/pagebreak');
-require('tinymce/plugins/paste');
-require('tinymce/plugins/preview');
-require('tinymce/plugins/print');
-require('tinymce/plugins/searchreplace');
-require('tinymce/plugins/table');
-require('tinymce/plugins/template');
-require('tinymce/plugins/textcolor');
-require('tinymce/plugins/toc');
-require('tinymce/plugins/visualblocks');
-require('tinymce/plugins/visualchars');
+import tinyMCE from 'tinymce'
+import 'tinymce/themes/modern/theme'
+import 'tinymce/plugins/advlist'
+import 'tinymce/plugins/anchor'
+import 'tinymce/plugins/charmap'
+import 'tinymce/plugins/emoticons'
+import 'tinymce/plugins/fullscreen'
+import 'tinymce/plugins/hr'
+import 'tinymce/plugins/image'
+import 'tinymce/plugins/insertdatetime'
+import 'tinymce/plugins/link'
+import 'tinymce/plugins/lists'
+import 'tinymce/plugins/media'
+import 'tinymce/plugins/nonbreaking'
+import 'tinymce/plugins/pagebreak'
+import 'tinymce/plugins/paste'
+import 'tinymce/plugins/preview'
+import 'tinymce/plugins/print'
+import 'tinymce/plugins/searchreplace'
+import 'tinymce/plugins/table'
+import 'tinymce/plugins/template'
+import 'tinymce/plugins/textcolor'
+import 'tinymce/plugins/toc'
+import 'tinymce/plugins/visualblocks'
+import 'tinymce/plugins/visualchars'
 
 require.context(
   'file-loader?name=[path][name].[ext]&context=node_modules/tinymce!tinymce/skins',
@@ -31,7 +30,7 @@ require.context(
   /.*/
 );
 
-$(function() {
+$(() => {
   let textIsChanged = false;
 
   if ($('textarea.tinymce').length > 0) {
@@ -46,7 +45,7 @@ $(function() {
       theme_advanced_statusbar_location: 'bottom',
       theme_advanced_buttons3_add: ['tablecontrols', 'fullscreen'],
       automatic_uploads: true,
-      images_upload_handler: function (blobInfo, success, failure) {
+      images_upload_handler: (blobInfo, success, failure) => {
         const formData = new FormData();
         formData.append('file', blobInfo.blob(), blobInfo.filename());
         $.ajax({
@@ -56,9 +55,9 @@ $(function() {
           data: formData,
           processData: false,
           contentType: false
-        }).done(function(res) {
+        }).done((res) => {
           success(res.image.url);
-        }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
+        }).fail((XMLHttpRequest, textStatus, errorThrown) => {
           failure(`The image upload failed.\n${errorThrown}`);
         });
       },
@@ -68,24 +67,24 @@ $(function() {
         'bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | fullscreen charmap',
         'image reference'
       ],
-      setup: function(editor) {
+      setup: (editor) => {
         editor.addButton('reference', {
           tooltip: 'Import Reference',
           icon: 'icon-book',
-          onclick: function() {
+          onclick: () => {
             editor.windowManager.open({
               title: 'Import Reference',
               body: [
                 {type: 'label', label: 'Import a citation from PubMed.'},
                 {type: 'textbox', name: 'pubmed_id', label: 'Pubmed ID'}
               ],
-              onsubmit: function(e) {
+              onsubmit: (e) => {
                 $.ajax({
                   type: 'GET',
                   dataType: 'xml',
                   url: PUBMED_URL,
                   data: { db: 'pubmed', retmode: 'xml', id: e.data.pubmed_id },
-                  success: function(response) {
+                  success: (response) => {
                     const author_names = [];
                     const authors = $(response).find('AuthorList').children();
                     for (let i = 0; i < authors.length; i++) {
@@ -103,7 +102,7 @@ $(function() {
                     if (page.length > 0) { text += `:${page}.`; }
                     editor.insertContent(`${author_names} ${title} ${journal}.${date};${text}`);
                   },
-                  error: function(xhr, textStatus, errorThrown) {
+                  error: (xhr, textStatus, errorThrown) => {
                     alert(`Failed to get the data.\n${errorThrown}`);
                   }
                 });
@@ -111,21 +110,21 @@ $(function() {
             });
           }
         });
-        editor.on('change', function() {
+        editor.on('change', () => {
           textIsChanged = true;
         });
       }
     });
   }
 
-  $('input[type=submit]').on('click', function() {
+  $('input[type=submit]').on('click', () => {
     $(window).off('beforeunload');
   });
-  $(window).on('beforeunload', function() {
+  $(window).on('beforeunload', () => {
     if (textIsChanged && $('.content-submit-button').length > 0) return '';
   });
 
-  $('.example-copy-button').click(function(e) {
+  $('.example-copy-button').click((e) => {
     if (window.confirm($('.example-copy-button').data('message'))) {
       const data = '<div contenteditable="true">' + $(e.target).parent().prev().html() + '</div>';
       tinyMCE.get('form-tinymce').setContent(data);

@@ -1,10 +1,15 @@
 const { environment } = require('@rails/webpacker')
+const webpack = require('webpack')
 
 module.exports = Object.assign({}, environment.toWebpackConfig(), {
+  entry: {
+    main: './app/javascript/packs/main.js',
+    export: './app/javascript/packs/export.js'
+  },
   module: {
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
       },
@@ -20,5 +25,11 @@ module.exports = Object.assign({}, environment.toWebpackConfig(), {
         loader: 'imports-loader?this=>window'
       }
     ]
+  },
+  resolve: {
+    alias: {
+      jquery: 'jquery/src/jquery'
+    },
+    extensions: ['.js', '.jsx']
   }
 })

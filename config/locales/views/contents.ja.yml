@@ -21,6 +21,7 @@ ja:
       rework_needed: 修正が必要
       review_completed: レビュー完了
       no_reviewer: このセクションにレビューアーが割り当てられていません。管理者に連絡して割り当ててください。
+      comment: コメント
     update:
       success: コンテンツの更新をしました。
       no_change: コンテンツに変更はありません。
@@ -28,14 +29,17 @@ ja:
       lock_error: 失効したオブジェクトを更新しようとしました。再読み込みをしてから更新を試してください。
     history:
       modal_title: 履歴
-      title: タイトル
-      version: バージョン
-      modified: 編集者
-      date: 日付
-      revert: 戻す
-      compare: 比較
-      are_you_sure: このバージョンに戻しますか？
-    compare:
+      headers:
+        - タイトル
+        - バージョン
+        - 編集者
+        - 日付
+        - ''
+        - ''
+      buttons:
+        - 戻す
+        - 比較
+        - このバージョンに戻しますか？
       back: 戻る
     revert:
       success: コンテンツを前のバージョンに戻しました。
@@ -44,5 +48,3 @@ ja:
     change_status:
       success: ステータスを変更しました。
       failure: ステータスを変更できませんでした。
-    comment_button:
-      comment: コメント

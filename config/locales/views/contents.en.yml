@@ -21,6 +21,7 @@ en:
       rework_needed: Rework Needed
       review_completed: Review Completed
       no_reviewer: Reviewer is not assigned to this section. Please contact the administrator and assign a reviewer.
+      comment: Comments
     update:
       success: Content was successfully updated.
       no_change: There is no change in contents.
@@ -28,14 +29,15 @@ en:
       lock_error: Attempted to update a stale object. Please try again after reloading.
     history:
       modal_title: History
-      title: Title
-      version: Version
-      modified: Modified by
-      date: Date
-      revert: Revert
-      compare: Compare
-      are_you_sure: Would you like to revert to this version?
-    compare:
+      headers:
+        - Title
+        - Version
+        - Modified by
+        - Date
+      buttons:
+        - Revert
+        - Compare
+        - Would you like to revert to this version?
       back: Back
     revert:
       success: The content has been reverted to the previous version.
@@ -44,5 +46,3 @@ en:
     change_status:
       success: Protocol status was successfully changed.
       failure: Failed to change the protocol status.
-    comment_button:
-      comment: Comments

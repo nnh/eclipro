@@ -5,28 +5,31 @@ class CommentsController < ApplicationController
 
   def index
     set_root_comment
-    @comment = @content.comments.build
+    render json: ActiveModel::Serializer::CollectionSerializer.new(@comments,
+                                                                   each_serializer: CommentSerializer)
   end
 
   def create
     @comment = Comment.new(comment_params)
     @comment.save
     @content.reload
+
     set_root_comment
+    render json: { no: @content.no.tr('.', '-'), count: @content.comments.count,
+                   comments: ActiveModel::Serializer::CollectionSerializer.new(@comments,
+                                                                               each_serializer: CommentSerializer)}
   end
 
   def resolve
     resolve_comments(@comment)
     set_root_comment
-  end
-
-  def comment
-    @comment = @content.comments.build
+    render json: ActiveModel::Serializer::CollectionSerializer.new(@comments,
+                                                                   each_serializer: CommentSerializer)
   end
 
   def reply
-    @comment = @content.comments.build
-    @parent_id = comment_params[:parent_id]
+    render json: { content_id: @content.id, current_user_id: current_user.id,
+                   parent_id: comment_params[:parent_id], url: protocol_content_comments_path(@protocol, @content) }
   end
 
   private

@@ -13,12 +13,15 @@ class ContentsController < ApplicationController
   end
 
   def history
+    render json: @content, user: current_user
   end
 
   def compare
     body = @content.versions[params[:index].to_i].changeset[:body]
-    @compare = Content.diff(body[0], body[1])
-    @compare.gsub!('contenteditable="true"', '')
+    compare = Content.diff(body[0], body[1])
+    compare.gsub!('contenteditable="true"', '')
+
+    render json: { data: compare }
   end
 
   def revert

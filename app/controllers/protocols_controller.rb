@@ -2,8 +2,13 @@ class ProtocolsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    if params[:protocol_name_filter].present?
-      @protocols = @protocols.where('title like ?', "%#{params[:protocol_name_filter]}%")
+    respond_to do |format|
+      format.html
+      format.js do
+        @protocols = @protocols.where('title like ?', "%#{params[:protocol_name_filter]}%")
+        render json: ActiveModel::Serializer::CollectionSerializer.new(@protocols,
+                                                                       each_serializer: ProtocolSerializer, user: current_user)
+      end
     end
   end
 

@@ -7,31 +7,23 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
-const $ = require('jquery');
-window.$ = window.jQuery = $;
+import 'es6-shim'
 
-const Rails = require('rails-ujs');
+import $ from 'jquery'
+window.$ = window.jquery = $;
+
+import 'bootstrap-sass'
+
+import Rails from 'rails-ujs'
 Rails.start();
 
-require('bootstrap-sass');
-require('./tiny_mce');
+import './tiny_mce'
+import './protocol'
+import './history'
+import './comment'
 
-$(function() {
-  // protocols
-  $('.clickable-tr').click(function(e) {
-    window.location = $(e.target.parentElement).data('link');
-  });
-  $('.clickable-tr .btn').click(function(e) {
-    e.stopPropagation();
-    if ($(e.target).data('confirm') != null) {
-      if (window.confirm($(e.target).data('confirm'))) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-  });
-
+$(() => {
+  // protocol form
   function checkSponsor() {
     if ($('#protocol_sponsors').children(':selected').last().text() === $('#protocol_sponsors').children().last().val()) {
       $('.protocol-sponsor-other-form').show();
@@ -39,7 +31,7 @@ $(function() {
       $('.protocol-sponsor-other-form').hide();
     }
   }
-  $('#protocol_sponsors').change(function() {
+  $('#protocol_sponsors').change(() => {
     checkSponsor();
   });
   checkSponsor();
@@ -56,7 +48,7 @@ $(function() {
       $('.protocol-has-ide-form').hide();
     }
   }
-  $('.protocol-checkbox-form').change(function() {
+  $('.protocol-checkbox-form').change(() => {
     checkGet();
   });
   checkGet();
@@ -64,22 +56,22 @@ $(function() {
   // contents
   const hash = window.location.hash;
   hash && $('ul.nav a[href="' + hash + ']').tab('show');
-  $('.nav-pills a').click(function() {
+  $('.nav-pills a').click(() => {
     $(this).tab('show');
   });
 
-  $('.to-under-review').click(function() {
+  $('.to-under-review').click(() => {
     if (!$('.content-has-reviewer').data('has-reviewer')) {
       window.alert($('.content-has-reviewer').data('message'));
     }
   });
 
   // participations
-  $('.check-all-sections').click(function() {
+  $('.check-all-sections').click(() => {
     $('input[type=checkbox]').prop('checked', true);
   });
 
-  $('#participation_role').change(function() {
+  $('#participation_role').change(() => {
     if ($('#participation_role').val() == $('#participation_role').children().last().val()) {
       $('input[type=checkbox]').prop('checked', true);
       $('.participation-sections').hide();
