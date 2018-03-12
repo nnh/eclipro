@@ -1,4 +1,4 @@
-$(() => {
+window.onload = () => {
   const vars = {};
   const locations = document.location.search.substring(1).split('&');
   for (let i in locations) {
@@ -11,4 +11,4 @@ $(() => {
     for (let j = 0; j < elements.length; ++j)
       elements[j].textContent = vars[classNames[i]];
   }
-});
+}
