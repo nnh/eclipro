@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20171221003601) do
     t.bigint "user_id"
     t.bigint "protocol_id"
     t.integer "role", default: 0, null: false
-    t.integer "sections", default: [], array: true
+    t.integer "sections", default: [], null: false, array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["protocol_id"], name: "index_participations_on_protocol_id"
