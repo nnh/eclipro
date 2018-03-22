@@ -63,7 +63,9 @@ $(() => {
   $('.upload-field').change(function() {
     checkFile();
   });
-  checkFile();
+  if ($('.upload-field').length) {
+    checkFile();
+  }
 
   // contents
   const hash = window.location.hash;

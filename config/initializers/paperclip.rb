@@ -17,3 +17,7 @@ else
   Paperclip::Attachment.default_options[:url] = "http://localhost:3000/system/:id_partition/:filename"
   Paperclip::Attachment.default_options[:use_timestamp] = false
 end
+
+if Rails.env.test?
+  Paperclip::Attachment.default_options[:url] = ":rails_root/public/system/:id_partition/:filename"
+end
