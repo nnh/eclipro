@@ -12,8 +12,10 @@ class ReferenceDocxesController < ApplicationController
   end
 
   def show
-    send_file(@reference_docx.file.expiring_url(10.minutes),
-              filename: @reference_docx.file_file_name, type: @reference_docx.file_content_type)
+    download_url = @reference_docx.file.expiring_url(10.minutes)
+    open(download_url, 'rb') do |data|
+      send_data data.read, filename: @reference_docx.file_file_name, type: @reference_docx.file_content_type
+    end
   end
 
   def update

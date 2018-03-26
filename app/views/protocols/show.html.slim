@@ -52,11 +52,11 @@
       - if can? :admin, @protocol
         tr
           td.col-md-3
-            b references.docx
+            b reference.docx
           td.col-md-9
             - if @reference_docx.persisted?
               .mb-m
-                = link_to t('.check'), @reference_docx.file.url, class: 'btn btn-default'
+                = link_to t('.check'),  protocol_reference_docx_path(@protocol, @reference_docx), class: 'btn btn-default'
                 = link_to t('.delete'), protocol_reference_docx_path(@protocol, @reference_docx),
                                         class: 'btn btn-danger ml-m', method: :delete, data: { confirm: t('.confirm') }
             = form_for [@protocol, @reference_docx], html: { class: 'form-horizontal' } do |f|
