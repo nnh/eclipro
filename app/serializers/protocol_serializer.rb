@@ -1,6 +1,6 @@
 class ProtocolSerializer < BaseSerializer
   attributes :id, :title, :my_role, :principal_investigator, :status, :version,
-             :show_url, :export_pdf_url, :export_docx_url, :clone_url, :section_url
+             :show_url, :export_url, :clone_url, :section_url
 
   def my_role
     object.my_role(@instance_options[:user])
@@ -14,12 +14,8 @@ class ProtocolSerializer < BaseSerializer
     url_helpers.protocol_path(object)
   end
 
-  def export_pdf_url
-    object.finalized? ? url_helpers.export_protocol_path(object, format: :pdf) : ''
-  end
-
-  def export_docx_url
-    object.finalized? ? url_helpers.export_protocol_path(object, format: :docx) : ''
+  def export_url
+    object.finalized? ? url_helpers.select_protocol_path(object) : ''
   end
 
   def clone_url

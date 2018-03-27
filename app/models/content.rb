@@ -24,7 +24,7 @@ class Content < ApplicationRecord
     end
   end
 
-  def replaced_body
+  def replaced_body(type)
     return body if body.empty? || !editable?
 
     doc = Nokogiri::HTML(body)
@@ -37,7 +37,11 @@ class Content < ApplicationRecord
         i['src'] = Image.find(image_id).file.expiring_url(10.minutes)
       end
     end
-    # doc.xpath("//div[@class='japanese']").remove
+    if type == 'english'
+      doc.xpath("//div[@class='japanese']").remove
+    elsif type == 'japanese'
+      doc.xpath("//div[@class='english']").remove
+    end
     doc.at('body').children.to_s
   end
 

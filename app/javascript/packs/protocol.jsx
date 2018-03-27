@@ -27,26 +27,17 @@ class Protocol extends React.Component {
           </td>
           <td>
             {(() => {
-              if (data.export_pdf_url.length > 0) {
+              if (data.export_url.length > 0) {
                 return (
-                  <a href={data.export_pdf_url} className='btn btn-default' target='_blank' onClick={(e) => { this.onClick(e) }}>
+                  <a href={data.export_url} className='btn btn-default' onClick={(e) => { this.onClick(e) }}>
                     {this.props.buttons[1]}
-                  </a>
-                );
-              }
-            })()}
-            {(() => {
-              if (data.export_docx_url.length > 0) {
-                return (
-                  <a href={data.export_docx_url} className='btn btn-default ml-s' target='_blank' onClick={(e) => { this.onClick(e) }}>
-                    {this.props.buttons[2]}
                   </a>
                 );
               }
             })()}
           </td>
           <td>
-            <a href={data.clone_url} className='btn btn-default' onClick={(e) => { this.onClick(e) }}>{this.props.buttons[3]}</a>
+            <a href={data.clone_url} className='btn btn-default' onClick={(e) => { this.onClick(e) }}>{this.props.buttons[2]}</a>
           </td>
         </tr>
       );

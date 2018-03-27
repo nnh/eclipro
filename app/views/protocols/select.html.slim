@@ -1,0 +1,23 @@
+.col-md-12
+  h3 = t('.title')
+
+  .form-group.mt-xl
+    .radio-inline
+      = radio_button_tag :export_type, 'english', checked: true
+      = label_tag :export_type_english, t('.english_only'), class: 'control-label'
+    .radio-inline
+      = radio_button_tag :export_type, 'japanese'
+      = label_tag :export_type_japanese, t('.japanese_only'), class: 'control-label'
+    .radio-inline
+      = radio_button_tag :export_type, 'both'
+      = label_tag :export_type_both,  t('.both'), class: 'control-label'
+  .form-group.mt-xl
+    - pdf_url = export_protocol_path(@protocol, format: :pdf)
+    = link_to t('.export_pdf'), "#{pdf_url}?type=english", data: { url: pdf_url },
+              class: 'btn btn-default export-pdf-button', target: '_blank'
+    - docx_url = export_protocol_path(@protocol, format: :docx)
+    = link_to t('.export_docx'), "#{docx_url}?type=english", data: { url: docx_url },
+              class: 'btn btn-default ml-s export-docx-button', target: '_blank'
+
+  .pull-left.mt-xl
+    = link_to t('.back'), :back, class: 'btn btn-default'

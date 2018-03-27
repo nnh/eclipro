@@ -14,8 +14,7 @@ ja:
         - ''
       buttons:
         - 詳細
-        - エクスポート(.pdf)
-        - エクスポート(.docx)
+        - エクスポート
         - 複製
     new:
       title: プロトコル新規作成
@@ -36,8 +35,7 @@ ja:
       updated_at: 更新日時
       compliance: コンプライアンス声明
       no_select: コンプライアンスが選択されていません。
-      export_pdf: エクスポート(.pdf)
-      export_docx: エクスポート(.docx)
+      export: エクスポート
       finalize: 正式版として承認
       finalize_text: このプロトコルを正式版として承認しますか？
       reinstate: 再編集
@@ -179,3 +177,11 @@ ja:
       draft_number: バージョン
       table_of_contents: 目次
       compliance: コンプライアンス
+    select:
+      title: エクスポート
+      japanese_only: 日本語のみ出力
+      english_only: 英語のみ出力
+      both: 両方出力
+      export_pdf: エクスポート(.pdf)
+      export_docx: エクスポート(.docx)
+      back: 戻る
