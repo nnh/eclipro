@@ -32,6 +32,7 @@ require.context(
 
 $(() => {
   let textIsChanged = false;
+  const cssPath = `${(process.env.RAILS_ENV == 'test') ? '/packs-test' : '/packs'}/tiny_mce_style.css`;
 
   if ($('textarea.tinymce').length > 0) {
     const CREATE_URL = `/protocols/${$('.tiny-mce-params').data('protocol-id')}/contents/${$('.tiny-mce-params').data('content-id')}/images`;
@@ -45,7 +46,7 @@ $(() => {
       theme_advanced_statusbar_location: 'bottom',
       theme_advanced_buttons3_add: ['tablecontrols', 'fullscreen'],
       automatic_uploads: true,
-      content_css: '/packs/tiny_mce_style.css',
+      content_css: cssPath,
       images_upload_handler: (blobInfo, success, failure) => {
         const formData = new FormData();
         formData.append('file', blobInfo.blob(), blobInfo.filename());
