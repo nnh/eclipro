@@ -71,24 +71,43 @@ feature Protocol, js: true do
     end
   end
 
-  shared_examples_for 'can export protocol (status is finalized)' do
-    scenario 'pdf' do
+  shared_examples_for 'moves to export page (status is finalized)' do
+    scenario do
       within(:xpath, "//tr[td[contains(., '#{protocol1.title}')]]") do
-        click_on 'Export(.pdf)'
+        click_on 'Export'
       end
+      expect(current_path).to eq select_protocol_path(protocol1)
+    end
+  end
+
+  shared_examples_for 'exports protocol' do
+    scenario 'pdf' do
+      visit select_protocol_path(protocol1)
+      click_on 'Export(.pdf)'
+
       handle = page.driver.browser.window_handles.last
       page.driver.browser.within_window(handle) do
         expect(page.response_headers['Content-Type']).to eq('application/pdf')
       end
     end
     scenario 'docx' do
-      within(:xpath, "//tr[td[contains(., '#{protocol1.title}')]]") do
-        click_on 'Export(.docx)'
-      end
+      visit select_protocol_path(protocol1)
+      click_on 'Export(.docx)'
+
       handle = page.driver.browser.window_handles.last
       page.driver.browser.within_window(handle) do
         expect(page.response_headers['Content-Type']).to eq('application/vnd.openxmlformats-officedocument.wordprocessingml.document')
       end
+    end
+    scenario 'selects export_type' do
+      visit select_protocol_path(protocol1)
+      base_href = export_protocol_path(protocol1, format: 'pdf')
+      choose 'export_type_english'
+      expect(page).to have_link(nil, href: "#{base_href}?type=english")
+      choose 'export_type_japanese'
+      expect(page).to have_link(nil, href: "#{base_href}?type=japanese")
+      choose 'export_type_both'
+      expect(page).to have_link(nil, href: "#{base_href}?type=both")
     end
   end
 
@@ -99,7 +118,8 @@ feature Protocol, js: true do
     it_should_behave_like 'can move to show protocol page'
     it_should_behave_like 'can move to show contents page'
     it_should_behave_like 'can clone protocol'
-    it_should_behave_like 'can export protocol (status is finalized)'
+    it_should_behave_like 'moves to export page (status is finalized)'
+    it_should_behave_like 'exports protocol'
 
     scenario 'can edit protocol' do
       visit(protocol_path(protocol0))
@@ -116,22 +136,10 @@ feature Protocol, js: true do
 
     scenario 'can export protocol (in details page)' do
       visit(protocol_path(protocol0))
-      expect(page).to have_link 'Export(.pdf)'
+      expect(page).to have_link 'Export'
 
-      click_on 'Export(.pdf)'
-      handle = page.driver.browser.window_handles.last
-      page.driver.browser.within_window(handle) do
-        expect(page.response_headers['Content-Type']).to eq('application/pdf')
-      end
-
-      visit(protocol_path(protocol0))
-      expect(page).to have_link 'Export(.docx)'
-
-      click_on 'Export(.docx)'
-      handle = page.driver.browser.window_handles.last
-      page.driver.browser.within_window(handle) do
-        expect(page.response_headers['Content-Type']).to eq('application/vnd.openxmlformats-officedocument.wordprocessingml.document')
-      end
+      click_on 'Export'
+      expect(current_path).to eq select_protocol_path(protocol0)
     end
 
     scenario 'can change status to finalized' do
@@ -160,7 +168,8 @@ feature Protocol, js: true do
     it_should_behave_like 'can move to show protocol page'
     it_should_behave_like 'can move to show contents page'
     it_should_behave_like 'can clone protocol'
-    it_should_behave_like 'can export protocol (status is finalized)'
+    it_should_behave_like 'moves to export page (status is finalized)'
+    it_should_behave_like 'exports protocol'
 
     scenario 'can not edit protocol' do
       visit(protocol_path(protocol0))

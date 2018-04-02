@@ -185,4 +185,14 @@ describe ProtocolsController, type: :controller do
       end
     end
   end
+
+  describe '#select' do
+    context 'all user' do
+      let(:current_user) { general_user }
+      it 'renders the select template' do
+        get :select, params: { id: protocol0 }
+        expect(response).to render_template :select
+      end
+    end
+  end
 end
