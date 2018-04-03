@@ -21,6 +21,17 @@ class ParticipationsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @participation.update(participation_params)
+      redirect_to @protocol, notice: t('.success')
+    else
+      render :edit
+    end
+  end
+
   private
 
     def participation_params

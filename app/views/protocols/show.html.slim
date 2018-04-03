@@ -73,6 +73,7 @@
         td = t('.sections')
         - if can? :admin, @protocol
           td
+          td
     tbody
       - all_sections = Section.parent_items(@protocol.template_name).pluck(:no).join(', ')
       - @protocol.participations.includes(:user).each do |participation|
@@ -85,6 +86,8 @@
             - else
               = participation.sections.join(', ')
           - if (can? :admin, @protocol) && participation.user != current_user
+            td
+              = link_to t('.edit'), edit_protocol_participation_path(@protocol, participation), class: 'btn btn-default'
             td
               = link_to t('.remove'), protocol_participation_path(@protocol, participation), method: :delete,
                                       data: { confirm: t('.remove_member') }, class: 'btn btn-danger'

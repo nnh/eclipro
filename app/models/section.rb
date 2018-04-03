@@ -14,4 +14,8 @@ class Section < ApplicationRecord
       where(template_name: template_name).where.not(no: ['title', 'compliance']).sort_by { |s| s.no.to_f }
     end
   end
+
+  def no_value
+    no.to_i
+  end
 end

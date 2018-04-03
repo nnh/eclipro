@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
   # resources :sections
   resources :protocols do
-    resources :participations, only: [:new, :create, :destroy]
+    resources :participations, except: %i[index show]
 
-    resources :contents, only: [:show, :update] do
-      resources :images, only: [:create, :show]
+    resources :contents, only: %i[show update] do
+      resources :images, only: %i[create show]
 
       member do
         get :history, :compare, :revert
         put :change_status
       end
 
-      resources :comments, only: [:index, :create] do
+      resources :comments, only: %i[index create] do
         member do
           put :resolve
         end

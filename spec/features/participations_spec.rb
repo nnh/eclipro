@@ -6,7 +6,7 @@ feature Participation do
   let!(:new_user) { create(:user) }
   let(:protocol) { create(:protocol) }
   let!(:admin_participation) { create(:admin, protocol: protocol, user: admin_user) }
-  let!(:author_participation) { create(:author, protocol: protocol, user: general_user) }
+  let!(:author_participation) { create(:author, protocol: protocol, user: general_user, sections: [0]) }
 
   background(:each) do
     login_as(current_user, scope: :user)
@@ -37,7 +37,7 @@ feature Participation do
       visit new_protocol_participation_path(protocol)
       select new_user.name, from: 'participation[user_id]'
       select 'Admin', from: 'participation[role]'
-      click_on 'Add'
+      click_on 'Save'
 
       expect(current_path).to eq(protocol_path(protocol))
       expect(page).to have_content(new_user.name)
@@ -53,6 +53,27 @@ feature Participation do
       expect(page).not_to have_content(general_user.name)
       expect(page).not_to have_link('Remove')
     end
+
+    scenario 'can move to edit participation page' do
+      within(:xpath, "//tr[td[contains(., '#{general_user.name}')]]") do
+        expect(page).to have_link('Edit')
+        click_on 'Edit'
+      end
+      expect(current_path).to eq(edit_protocol_participation_path(protocol, author_participation))
+    end
+
+    scenario 'can edit participation' do
+      visit edit_protocol_participation_path(protocol, author_participation)
+
+      select 'Reviewer', from: 'participation[role]'
+      check 'participation_sections_1'
+      check 'participation_sections_2'
+      click_on 'Save'
+
+      expect(page).not_to have_content('Author')
+      expect(page).to have_content('Reviewer')
+      expect(page).to have_content('0, 1, 2')
+    end
   end
 
   feature 'general user' do
@@ -65,6 +86,12 @@ feature Participation do
 
     scenario 'can not remove participation' do
       expect(page).not_to have_link('Remove')
+    end
+
+    scenario 'can not move to edit participation page' do
+      within(:xpath, "//tr[td[contains(., '#{admin_user.name}')]]") do
+        expect(page).not_to have_link('Edit')
+      end
     end
   end
 end

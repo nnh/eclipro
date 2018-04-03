@@ -1,0 +1,28 @@
+= form_for [@protocol, @participation], html: { class: 'form-horizontal', role: 'form' } do |f|
+  - if @participation.errors.any?
+    = model_errors(@participation)
+
+  .form-group
+    = f.label :user_id, class: 'control-label'
+    - if @participation.new_record?
+      = f.collection_select :user_id, User.where.not(id: @protocol.participations.pluck(:user_id)),
+                            :id, :name, {}, class: 'form-control'
+    - else
+      br
+      = @participation.user.name
+
+  .form-group
+    = f.label :role, class: 'control-label'
+    = f.select :role, Participation.roles_i18n.invert, {}, class: 'form-control'
+
+  .form-group.participation-sections
+    = f.label :sections
+    = button_tag t('.all_sections'), class: 'btn btn-default check-all-sections ml-s', type: :button
+    = f.collection_check_boxes :sections, Section.parent_items(@protocol.template_name), :no_value, :title, include_hidden: false do |fs|
+      div
+        label
+          = fs.check_box
+          = " #{fs.object.no} #{fs.object.title}"
+
+  .form-group
+    = f.submit t('.save'), class: 'btn btn-default'

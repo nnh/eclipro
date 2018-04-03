@@ -46,6 +46,7 @@ ja:
       name: 名前
       role: 役割
       sections: セクション
+      edit: 編集
       remove: 削除
       add_member: メンバー追加
       remove_member: メンバーを削除しますか？

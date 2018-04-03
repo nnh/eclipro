@@ -103,7 +103,7 @@ feature Protocol, js: true do
 
     scenario 'can edit protocol' do
       visit(protocol_path(protocol0))
-      expect(page).to have_link('Edit', count: 2)
+      expect(page).to have_link('Edit', count: 3)
 
       all(:link, 'Edit')[1].click
       expect(current_path).to eq edit_protocol_path(protocol0)
