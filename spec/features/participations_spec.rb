@@ -5,7 +5,7 @@ feature Participation do
   let(:general_user) { create(:user) }
   let!(:new_user) { create(:user) }
   let(:protocol) { create(:protocol) }
-  let!(:pi_participation) { create(:principal_investigator, protocol: protocol, user: admin_user) }
+  let!(:admin_participation) { create(:admin, protocol: protocol, user: admin_user) }
   let!(:author_participation) { create(:author, protocol: protocol, user: general_user) }
 
   background(:each) do
@@ -16,7 +16,7 @@ feature Participation do
   shared_examples_for 'can see participation users' do
     scenario do
       expect(page).to have_content(admin_user.name)
-      expect(page).to have_content('Principal investigator')
+      expect(page).to have_content('Admin')
       expect(page).to have_content(general_user.name)
       expect(page).to have_content('Author')
     end
@@ -36,12 +36,12 @@ feature Participation do
     scenario 'can create new participation' do
       visit new_protocol_participation_path(protocol)
       select new_user.name, from: 'participation[user_id]'
-      select 'CoAuthor', from: 'participation[role]'
+      select 'Admin', from: 'participation[role]'
       click_on 'Add'
 
       expect(current_path).to eq(protocol_path(protocol))
       expect(page).to have_content(new_user.name)
-      expect(page).to have_content('CoAuthor')
+      expect(page).to have_content('Admin')
     end
 
     scenario 'can remove participation, can not remove own participation' do

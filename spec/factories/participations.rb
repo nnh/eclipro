@@ -9,12 +9,8 @@ FactoryBot.define do
     role 'reviewer'
     sections [0, 1]
   end
-  factory :co_author, parent: :participation do
-    role 'co_author'
-    sections [0, 1]
-  end
-  factory :principal_investigator, parent: :participation do
-    role 'principal_investigator'
+  factory :admin, parent: :participation do
+    role 'admin'
     sections [0, 1]
   end
 end

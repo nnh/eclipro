@@ -6,8 +6,8 @@ describe ProtocolsController, type: :controller do
   let(:protocol0) { create(:protocol, title: 'test') }
   let(:protocol1) { create(:protocol, title: 'abcde', status: 'finalized') }
   let(:protocol2) { create(:protocol) }
-  let!(:pi_participation0) { create(:principal_investigator, protocol: protocol0, user: admin_user) }
-  let!(:pi_participation1) { create(:principal_investigator, protocol: protocol1, user: admin_user) }
+  let!(:admin_participation0) { create(:admin, protocol: protocol0, user: admin_user) }
+  let!(:admin_participation1) { create(:admin, protocol: protocol1, user: admin_user) }
   let!(:author_participation0) { create(:author, protocol: protocol0, user: general_user) }
   let!(:author_participation1) { create(:author, protocol: protocol1, user: general_user) }
 

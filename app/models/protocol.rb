@@ -15,19 +15,17 @@ class Protocol < ApplicationRecord
   before_save :update_version, unless: -> { will_save_change_to_attribute?(:version) || new_record? }
 
   def my_role(user)
-    if co_author?(user)
-      Participation.roles_i18n['co_author']
+    if admin?(user)
+      Participation.roles_i18n['admin']
     elsif author?(user)
       Participation.roles_i18n['author']
     elsif reviewer?(user)
       Participation.roles_i18n['reviewer']
-    elsif principal_investigator?(user)
-      Participation.roles_i18n['principal_investigator']
     end
   end
 
-  def co_author?(user)
-    participations.co_author.exists?(user: user)
+  def admin?(user)
+    participations.admin.exists?(user: user)
   end
 
   def author?(user)
@@ -38,24 +36,20 @@ class Protocol < ApplicationRecord
     participations.reviewer.exists?(user: user)
   end
 
-  def principal_investigator?(user)
-    participations.principal_investigator.exists?(user: user)
-  end
-
   def participant?(user)
     participations.exists?(user: user)
   end
 
   def updatable_sections(user)
     all_sections = Section.reject_specified_sections(template_name).pluck(:no)
-    return all_sections if principal_investigator?(user) || co_author?(user)
+    return all_sections if admin?(user)
     return [] if reviewer?(user)
     select_sections(all_sections, Participation.find_by(protocol: self, user: user).sections)
   end
 
   def reviewable_sections(user)
     all_sections = Section.reject_specified_sections(template_name).pluck(:no)
-    return all_sections if principal_investigator?(user) || co_author?(user)
+    return all_sections if admin?(user)
     return [] unless reviewer?(user)
     select_sections(all_sections, Participation.find_by(protocol: self, user: user).sections)
   end

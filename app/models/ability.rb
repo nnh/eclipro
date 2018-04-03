@@ -7,13 +7,13 @@ class Ability
     can :create, Protocol
     can [:read, :clone, :export], Protocol, participations: { user_id: user.id }
     can [:destroy, :build_team_form, :add_team, :admin], Protocol do |protocol|
-      protocol.principal_investigator?(user) || protocol.co_author?(user)
+      protocol.admin?(user)
     end
     can [:update, :finalize], Protocol do |protocol|
-      (protocol.principal_investigator?(user) || protocol.co_author?(user)) && !protocol.finalized?
+      protocol.admin?(user) && !protocol.finalized?
     end
     can :reinstate, Protocol do |protocol|
-      (protocol.principal_investigator?(user) || protocol.co_author?(user)) && protocol.finalized?
+      protocol.admin?(user) && protocol.finalized?
     end
     can :create_or_update, Protocol do |protocol|
       ((can? :create, protocol) && protocol.new_record?) || (can? :update, protocol)

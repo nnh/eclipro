@@ -16,6 +16,7 @@ en:
         has_ind: Has IND
         compliance: Compliance
         template_name: Template
+        principal_investigator: Principal investigator
       participation:
         user_id: User
         role: Role
@@ -35,7 +36,6 @@ en:
         final: Final
     participation:
       role:
-        co_author: CoAuthor
+        admin: Admin
         author: Author
         reviewer: Reviewer
-        principal_investigator: Principal investigator

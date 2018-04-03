@@ -16,6 +16,7 @@ ja:
         has_ind: INDの入手
         compliance: コンプライアンス
         template_name: テンプレート
+        principal_investigator: 主任研究員
       participation:
         user_id: ユーザー
         role: 役割
@@ -35,7 +36,6 @@ ja:
         final: 正式版
     participation:
       role:
-        co_author: 管理者
+        admin: 管理者
         author: 著者
         reviewer: レビューアー
-        principal_investigator: 主任研究員

@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 describe ContentsController, type: :controller do
-  let(:principal_investigator) { create(:user) }
-  let(:co_author) { create(:user) }
+  let(:admin) { create(:user) }
   let(:author0) { create(:user) }
   let(:author1) { create(:user) }
   let(:reviewer0) { create(:user) }
@@ -10,8 +9,7 @@ describe ContentsController, type: :controller do
 
   let!(:protocol) { create(:protocol) }
   let!(:content) { protocol.contents.find_by(no: '0') }
-  let!(:participation0) { create(:principal_investigator, protocol: protocol, user: principal_investigator) }
-  let!(:participation1) { create(:co_author, protocol: protocol, user: co_author) }
+  let!(:participation1) { create(:admin, protocol: protocol, user: admin) }
   let!(:participation2) { create(:author, protocol: protocol, user: author0, sections: [0, 1, 2]) }
   let!(:participation3) { create(:author, protocol: protocol, user: author1, sections: [3, 4, 5]) }
   let!(:participation4) { create(:reviewer, protocol: protocol, user: reviewer0, sections: [0, 1, 2]) }
@@ -109,26 +107,24 @@ describe ContentsController, type: :controller do
     end
   end
 
-  %w[principal_investigator co_author].each do |role|
-    context role do
-      let!(:current_user) { eval(role) }
-      it_should_behave_like 'can update content'
-      it_should_behave_like 'can see history'
-      it_should_behave_like 'can see compare'
-      it_should_behave_like 'can see content'
-      it_should_behave_like 'can not change status from', 'status_new', 'in_progress'
-      it_should_behave_like 'can change status from', 'status_new', 'under_review'
-      it_should_behave_like 'can not change status from', 'status_new', 'final'
-      it_should_behave_like 'can not change status from', 'in_progress', 'status_new'
-      it_should_behave_like 'can change status from', 'in_progress', 'under_review'
-      it_should_behave_like 'can not change status from', 'in_progress', 'final'
-      it_should_behave_like 'can not change status from', 'under_review', 'status_new'
-      it_should_behave_like 'can change status from', 'under_review', 'in_progress'
-      it_should_behave_like 'can change status from', 'under_review', 'final'
-      it_should_behave_like 'can not change status from', 'final', 'status_new'
-      it_should_behave_like 'can change status from', 'final', 'in_progress'
-      it_should_behave_like 'can not change status from', 'final', 'under_review'
-    end
+  context 'admin' do
+    let!(:current_user) { admin }
+    it_should_behave_like 'can update content'
+    it_should_behave_like 'can see history'
+    it_should_behave_like 'can see compare'
+    it_should_behave_like 'can see content'
+    it_should_behave_like 'can not change status from', 'status_new', 'in_progress'
+    it_should_behave_like 'can change status from', 'status_new', 'under_review'
+    it_should_behave_like 'can not change status from', 'status_new', 'final'
+    it_should_behave_like 'can not change status from', 'in_progress', 'status_new'
+    it_should_behave_like 'can change status from', 'in_progress', 'under_review'
+    it_should_behave_like 'can not change status from', 'in_progress', 'final'
+    it_should_behave_like 'can not change status from', 'under_review', 'status_new'
+    it_should_behave_like 'can change status from', 'under_review', 'in_progress'
+    it_should_behave_like 'can change status from', 'under_review', 'final'
+    it_should_behave_like 'can not change status from', 'final', 'status_new'
+    it_should_behave_like 'can change status from', 'final', 'in_progress'
+    it_should_behave_like 'can not change status from', 'final', 'under_review'
   end
 
   context 'author' do
