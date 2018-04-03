@@ -18,12 +18,11 @@
   .form-group.participation-sections
     = f.label :sections
     = button_tag t('.all_sections'), class: 'btn btn-default check-all-sections ml-s', type: :button
-    - sections = Section.parent_items(@protocol.template_name).pluck(:no, :title)
-    - sections.each do |section|
+    = f.collection_check_boxes :sections, Section.parent_items(@protocol.template_name), :no, :title, include_hidden: false do |fs|
       div
         label
-          = f.check_box :sections, { multiple: true }, section[0].to_i, nil
-          = " #{section[0]} #{section[1]}"
+          = fs.check_box(checked: @participation.sections.include?(fs.object.no.to_i))
+          = " #{fs.object.no} #{fs.object.title}"
 
   .form-group
     = f.submit t('.save'), class: 'btn btn-default'
