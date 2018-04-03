@@ -85,8 +85,7 @@ class Ability
     end
 
     can :manage, ReferenceDocx do |docx|
-      # TODO: 他ブランチで役割変更をしているので後で修正
-      docx.protocol.principal_investigator?(user)
+      docx.protocol.admin?(user)
     end
     can :read, ReferenceDocx do |docx|
       docx.protocol.participant?(user)

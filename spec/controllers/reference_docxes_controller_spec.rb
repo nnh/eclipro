@@ -7,12 +7,12 @@ describe ReferenceDocxesController, type: :controller do
   let!(:exist_protocol) { create(:protocol) }
   let!(:reference_docx) { create(:reference_docx, protocol: exist_protocol) }
 
-  let!(:participation0) { create(:principal_investigator, protocol: new_protocol, user: admin) }
-  let!(:participation1) { create(:principal_investigator, protocol: exist_protocol, user: admin) }
+  let!(:participation0) { create(:admin, protocol: new_protocol, user: admin) }
+  let!(:participation1) { create(:admin, protocol: exist_protocol, user: admin) }
   let!(:participation2) { create(:author, protocol: new_protocol, user: user) }
   let!(:participation3) { create(:author, protocol: exist_protocol, user: user) }
 
-  let!(:content_type) {'application/vnd.openxmlformats-officedocument.wordprocessingml.document' }
+  let!(:content_type) { 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' }
 
   before(:each) { sign_in(current_user) }
 

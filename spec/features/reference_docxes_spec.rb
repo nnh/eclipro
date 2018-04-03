@@ -5,8 +5,8 @@ feature ReferenceDocx, js: true do
   let(:general_user) { create(:user) }
   let(:protocol0) { create(:protocol, title: 'Test protocol') }
   let(:protocol1) { create(:protocol, title: 'Test protocol 2') }
-  let!(:pi_participation0) { create(:principal_investigator, protocol: protocol0, user: admin_user) }
-  let!(:pi_participation1) { create(:principal_investigator, protocol: protocol1, user: admin_user) }
+  let!(:admin_participation0) { create(:admin, protocol: protocol0, user: admin_user) }
+  let!(:admin_participation1) { create(:admin, protocol: protocol1, user: admin_user) }
   let!(:author_participation0) { create(:author, protocol: protocol0, user: general_user) }
   let!(:author_participation1) { create(:author, protocol: protocol1, user: general_user) }
   let!(:reference_docx) { create(:reference_docx, protocol: protocol1) }
