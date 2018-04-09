@@ -63,9 +63,7 @@ class Protocol < ApplicationRecord
     reference_docx_file_path = Rails.root.join('tmp', "#{Time.now.to_i}_reference.docx")
     if reference_docx
       File.open(reference_docx_file_path, 'wb') do |tmp_file|
-        open(reference_docx.file.expiring_url(10.minutes), 'rb') do |data|
-          tmp_file.write(data.read)
-        end
+        tmp_file.write(reference_docx.file_download)
         yield reference_docx_file_path
       end
     else
