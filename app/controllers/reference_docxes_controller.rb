@@ -3,7 +3,6 @@ class ReferenceDocxesController < ApplicationController
   load_and_authorize_resource through: :protocol, singleton: true
 
   def create
-    @reference_docx = @protocol.build_reference_docx(reference_docx_params)
     if @reference_docx.save
       redirect_to @protocol, notice: t('.success')
     else
