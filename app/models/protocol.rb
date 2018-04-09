@@ -59,6 +59,22 @@ class Protocol < ApplicationRecord
     update!(version: version + 0.001)
   end
 
+  def with_reference_doc
+    reference_docx_file_path = Rails.root.join('tmp', "#{Time.now.to_i}_reference.docx")
+    if reference_docx
+      File.open(reference_docx_file_path, 'wb') do |tmp_file|
+        open(reference_docx.file.expiring_url(10.minutes), 'rb') do |data|
+          tmp_file.write(data.read)
+        end
+        yield reference_docx_file_path
+      end
+    else
+      yield nil
+    end
+  ensure
+    FileUtils.rm_f reference_docx_file_path
+  end
+
   private
 
     def select_sections(all_sections, origin_sections)

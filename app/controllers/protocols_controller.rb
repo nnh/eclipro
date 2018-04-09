@@ -83,13 +83,10 @@ class ProtocolsController < ApplicationController
 
       format.docx do
         view_text = render_to_string template: 'protocols/export', layout: 'export.html'
-        if @protocol.reference_docx
-          file_download
-          document = PandocRuby.convert(view_text.delete(' '), from: :html, to: :docx,
-                                                               reference_doc: Rails.root.join('tmp', "#{@protocol.id}_reference.docx"))
-          FileUtils.rm reference_docx_file_path
-        else
-          document = PandocRuby.convert(view_text.delete(' '), from: :html, to: :docx)
+        document = @protocol.with_reference_doc do |path|
+          opts = { from: :html, to: :docx }
+          opts[:reference_doc] = path if path
+          PandocRuby.convert(view_text.delete(' '), opts)
         end
         send_data document,
                   filename: "#{@protocol.protocol_number}_v#{@protocol.version}.docx",
@@ -136,17 +133,5 @@ class ProtocolsController < ApplicationController
         contents_attributes: [:protocol_id, :no, :title, :body, :editable],
         participations_attributes: [:protocol_id, :user_id, :role, sections: []]
       )
-    end
-
-    def file_download
-      tmp_file = File.open(reference_docx_file_path, 'wb')
-      open(@protocol.reference_docx.file.expiring_url(10.minutes), 'rb') do |data|
-        tmp_file.write(data.read)
-      end
-      tmp_file.close
-    end
-
-    def reference_docx_file_path
-      Rails.root.join('tmp', "#{@protocol.id}_reference.docx")
     end
 end
