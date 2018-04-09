@@ -50,6 +50,10 @@ en:
       remove: Remove
       add_member: Add member
       remove_member: Are you sure?
+      upload: Upload file
+      check: File check (Download)
+      delete: Delete
+      confirm: Are you sure?
     form:
       error_message:
         one: '%{count} error prohibited this protocol from being saved.'

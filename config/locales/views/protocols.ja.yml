@@ -50,6 +50,10 @@ ja:
       remove: 削除
       add_member: メンバー追加
       remove_member: メンバーを削除しますか？
+      upload: アップロード
+      check: ファイル確認 (ダウンロード)
+      delete: 削除
+      confirm: 削除しますか？
     form:
       error_message: '%{count} 件のエラーが発生しました。'
       one: 1) 臨床試験の名前またはタイトルは何ですか？

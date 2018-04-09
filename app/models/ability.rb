@@ -83,5 +83,12 @@ class Ability
     can :manage, Participation do |participation|
       can? :admin, participation.protocol
     end
+
+    can :manage, ReferenceDocx do |docx|
+      docx.protocol.admin?(user)
+    end
+    can :read, ReferenceDocx do |docx|
+      docx.protocol.participant?(user)
+    end
   end
 end

@@ -53,6 +53,20 @@ $(() => {
   });
   checkGet();
 
+  function checkFile() {
+    if ($('.upload-field').val().length > 0) {
+      $('.upload-button').prop('disabled', false);
+    } else {
+      $('.upload-button').prop('disabled', true);
+    }
+  }
+  $('.upload-field').change(function() {
+    checkFile();
+  });
+  if ($('.upload-field').length) {
+    checkFile();
+  }
+
   // contents
   const hash = window.location.hash;
   hash && $('ul.nav a[href="' + hash + ']').tab('show');

@@ -6,6 +6,7 @@ class Protocol < ApplicationRecord
   accepts_nested_attributes_for :participations, allow_destroy: true
   has_many :contents, dependent: :destroy
   accepts_nested_attributes_for :contents, allow_destroy: true
+  has_one :reference_docx, dependent: :destroy
 
   enum status: %i(in_progress finalized)
 
@@ -56,6 +57,20 @@ class Protocol < ApplicationRecord
 
   def versionup!
     update!(version: version + 0.001)
+  end
+
+  def with_reference_doc
+    reference_docx_file_path = Rails.root.join('tmp', "#{Time.now.to_i}_reference.docx")
+    if reference_docx
+      File.open(reference_docx_file_path, 'wb') do |tmp_file|
+        tmp_file.write(reference_docx.file_download)
+        yield reference_docx_file_path
+      end
+    else
+      yield nil
+    end
+  ensure
+    FileUtils.rm_f reference_docx_file_path
   end
 
   private

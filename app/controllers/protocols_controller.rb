@@ -13,6 +13,7 @@ class ProtocolsController < ApplicationController
   end
 
   def show
+    @reference_docx = @protocol.reference_docx || @protocol.build_reference_docx
   end
 
   def new
@@ -82,7 +83,11 @@ class ProtocolsController < ApplicationController
 
       format.docx do
         view_text = render_to_string template: 'protocols/export', layout: 'export.html'
-        document = PandocRuby.convert(view_text.delete(' '), from: :html, to: :docx)
+        document = @protocol.with_reference_doc do |path|
+          opts = { from: :html, to: :docx }
+          opts[:reference_doc] = path if path
+          PandocRuby.convert(view_text.delete(' '), opts)
+        end
         send_data document,
                   filename: "#{@protocol.protocol_number}_v#{@protocol.version}.docx",
                   type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
