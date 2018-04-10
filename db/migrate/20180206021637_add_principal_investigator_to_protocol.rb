@@ -4,6 +4,7 @@ class AddPrincipalInvestigatorToProtocol < ActiveRecord::Migration[5.1]
 
     Protocol.all.each do |protocol|
       pi_participation = protocol.participations.where.not(role: Participation.roles.keys).first
+      next if pi_participation.nil?
       pi_participation.update_column(:role, 'admin')
       protocol.update_column(:principal_investigator, pi_participation.user.name)
     end

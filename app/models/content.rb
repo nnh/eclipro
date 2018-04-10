@@ -34,7 +34,7 @@ class Content < ApplicationRecord
         i['src'] = ActionController::Base.helpers.asset_url("#{protocol.template_name.downcase}/#{filename}")
       else
         image_id = i['src'].scan(/\d{1,}/)[-1]
-        i['src'] = Image.find(image_id).file.expiring_url(10.minutes)
+        i['src'] = Image.find(image_id).file.expiring_url(10.minutes.to_i)
       end
     end
     doc.at('body').children.to_s

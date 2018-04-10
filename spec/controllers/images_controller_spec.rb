@@ -34,7 +34,7 @@ describe ImagesController, type: :controller do
     context 'participating user' do
       let!(:current_user) { admin }
       it 'can see image' do
-        expect(controller).to receive(:open).with(image.file.expiring_url(10.minute), 'rb')
+        expect(controller).to receive(:open).with(image.file.expiring_url(10.minutes.to_i), 'rb')
         get :show, xhr: true, params: { protocol_id: protocol, content_id: content, id: image }
       end
     end
