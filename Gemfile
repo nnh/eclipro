@@ -48,8 +48,8 @@ gem 'cancancan'
 
 gem 'paper_trail'
 gem 'htmldiff'
+gem 'aws-sdk-s3'
 gem 'paperclip'
-gem 'aws-sdk', '< 3.0'
 
 gem 'deep_cloneable'
 

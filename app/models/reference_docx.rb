@@ -7,6 +7,6 @@ class ReferenceDocx < ApplicationRecord
                                                    'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
 
   def file_download
-    open(file.expiring_url(10.minutes), 'rb') { |data| data.read }
+    open(file.expiring_url(10.minutes.to_i), 'rb') { |data| data.read }
   end
 end
