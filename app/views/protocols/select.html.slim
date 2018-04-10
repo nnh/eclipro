@@ -8,7 +8,7 @@
                                    class: 'btn btn-default', target: '_blank'
     = link_to t('.english_only'), export_protocol_path(@protocol, format: :pdf, language: 'en'),
                                   class: 'btn btn-default ml-m', target: '_blank'
-    = link_to t('.both'), export_protocol_path(@protocol, format: :pdf, language: 'both'),
+    = link_to t('.both'), export_protocol_path(@protocol, format: :pdf),
                           class: 'btn btn-default ml-m', target: '_blank'
 
   hr
@@ -20,7 +20,7 @@
                                   class: 'btn btn-default', target: '_blank'
     = link_to t('.english_only'), export_protocol_path(@protocol, format: :docx, language: 'en'),
                                  class: 'btn btn-default ml-m', target: '_blank'
-    = link_to t('.both'), export_protocol_path(@protocol, format: :docx, type: 'both'),
+    = link_to t('.both'), export_protocol_path(@protocol, format: :docx),
                          class: 'btn btn-default ml-m', target: '_blank'
 
   .mt-xl
