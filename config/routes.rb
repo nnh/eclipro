@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     end
 
     member do
-      get :clone, :export, :finalize, :reinstate
+      get :clone, :export, :finalize, :reinstate, :select
     end
   end
 

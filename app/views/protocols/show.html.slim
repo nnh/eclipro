@@ -67,8 +67,7 @@
 
   - if can? :admin, @protocol
     = link_to t('.edit'), edit_protocol_path(@protocol), class: 'btn btn-default'
-    = link_to t('.export_pdf'), export_protocol_path(@protocol, format: :pdf), class: 'btn btn-default ml-s', target: '_blank'
-    = link_to t('.export_docx'), export_protocol_path(@protocol, format: :docx), class: 'btn btn-default ml-s', target: '_blank'
+    = link_to t('.export'), select_protocol_path(@protocol), class: 'btn btn-default ml-s'
     - unless @protocol.finalized?
       = link_to t('.finalize'), finalize_protocol_path(@protocol), class: 'btn btn-default ml-s',
                                 data: { confirm: t('.finalize_text') }

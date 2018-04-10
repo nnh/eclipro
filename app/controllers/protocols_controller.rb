@@ -63,6 +63,9 @@ class ProtocolsController < ApplicationController
     @protocol.short_title = "#{original.short_title} - (COPY)" if original.short_title.present?
   end
 
+  def select
+  end
+
   def export
     @content_0 = @protocol.contents.find_by(no: '0')
     @contents = @protocol.contents.where.not(no: '0').sort_by { |c| c.no.to_f }

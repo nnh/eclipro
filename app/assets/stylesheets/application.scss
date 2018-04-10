@@ -72,6 +72,22 @@ i.mce-i-icon-book:before {
   text-decoration: inherit;
 }
 
+i.mce-i-icon-double-arrow:before {
+  content: '\f103';
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+}
+
+i.mce-i-icon-arrow:before {
+  content: '\f107';
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+}
+
 li.disabled {
   pointer-events: none;
   opacity: 0.6;
@@ -125,8 +141,8 @@ a.uneditable {
   }
   h4 {
     font-size: 13px;
-    border-top: solid #4f818d 1px;
-    border-left: solid #4f818d 1px;
+    border-top: dashed #4f818d 1px;
+    border-left: dashed #4f818d 1px;
     padding: 3px;
     color: #4f818d;
   }

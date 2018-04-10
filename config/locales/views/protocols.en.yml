@@ -14,8 +14,7 @@ en:
         - ''
       buttons:
         - Details
-        - Export(.pdf)
-        - Export(.docx)
+        - Export
         - Clone
     new:
       title: New protocol
@@ -36,8 +35,7 @@ en:
       updated_at: Updated at
       compliance: Statement of Compliance
       no_select: Compliance is not selected
-      export_pdf: Export(.pdf)
-      export_docx: Export(.docx)
+      export: Export
       finalize: Finalize
       finalize_text: Do you want to finalize this protocol?
       reinstate: Reinstate
@@ -183,3 +181,11 @@ en:
       draft_number: Draft number
       table_of_contents: Table of Contents
       compliance: Statement of Compliance
+    select:
+      title: Export
+      japanese_only: Output in Japanese only
+      english_only: Output in English only
+      both: Both outputs
+      export_pdf: pdf file
+      export_docx: docx file
+      back: Back

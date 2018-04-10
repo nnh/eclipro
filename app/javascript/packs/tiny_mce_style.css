@@ -1,0 +1,37 @@
+.ja {
+  border: 1px dashed red;
+  margin: 5px;
+  padding: 5px;
+  width: 100%;
+}
+
+.en {
+  border: 1px dashed blue;
+  margin: 5px;
+  padding: 5px;
+  width: 100%;
+}
+
+table {
+  border: solid 1px #000000;
+  border-collapse: collapse;
+  td {
+    border: solid 1px #000000;
+  }
+}
+
+h3 {
+  font-size: 15px;
+  border-top: solid #4f818d 1px;
+  border-left: solid #4f818d 1px;
+  padding: 3px;
+  color: #4f818d;
+}
+
+h4 {
+  font-size: 13px;
+  border-top: dashed #4f818d 1px;
+  border-left: dashed #4f818d 1px;
+  padding: 3px;
+  color: #4f818d;
+}

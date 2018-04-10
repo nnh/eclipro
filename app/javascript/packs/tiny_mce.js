@@ -32,6 +32,7 @@ require.context(
 
 $(() => {
   let textIsChanged = false;
+  const cssPath = `${(process.env.RAILS_ENV == 'test') ? '/packs-test' : '/packs'}/tiny_mce_style.css`;
 
   if ($('textarea.tinymce').length > 0) {
     const CREATE_URL = `/protocols/${$('.tiny-mce-params').data('protocol-id')}/contents/${$('.tiny-mce-params').data('content-id')}/images`;
@@ -45,6 +46,7 @@ $(() => {
       theme_advanced_statusbar_location: 'bottom',
       theme_advanced_buttons3_add: ['tablecontrols', 'fullscreen'],
       automatic_uploads: true,
+      content_css: cssPath,
       images_upload_handler: (blobInfo, success, failure) => {
         const formData = new FormData();
         formData.append('file', blobInfo.blob(), blobInfo.filename());
@@ -65,7 +67,7 @@ $(() => {
                'visualchars, visualblocks, preview, table, fullscreen, lists, advlist, textcolor, emoticons, charmap image',
       toolbar: [
         'bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | fullscreen charmap',
-        'image reference'
+        'image reference container blank'
       ],
       setup: (editor) => {
         editor.addButton('reference', {
@@ -108,6 +110,27 @@ $(() => {
                 });
               }
             });
+          }
+        });
+        editor.addButton('container', {
+          tooltip: 'Insert container (red: Japanese, blue: English)',
+          icon: 'icon-double-arrow',
+          onclick: function() {
+            editor.insertContent(
+              `<div class="container" contenteditable='true'>
+                <div class="ja"><p>&nbsp;</p></div>
+                <div class="en"><p>&nbsp;</p></div>
+                <div class="space"><p>&nbsp;</p></div>
+              </div>`
+            );
+          }
+        });
+        editor.addButton('blank', {
+          tooltip: 'Insert blank after selected container',
+          icon: 'icon-arrow',
+          onclick: function() {
+            let node = tinymce.get('form-tinymce').selection.getNode();
+            $(node).closest('.container').append('<div class="space"><p>&nbsp;</p></div>');
           }
         });
         editor.on('change', () => {
