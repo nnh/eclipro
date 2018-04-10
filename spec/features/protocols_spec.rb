@@ -83,7 +83,7 @@ feature Protocol, js: true do
   shared_examples_for 'exports protocol' do
     scenario 'pdf' do
       visit select_protocol_path(protocol1)
-      click_on 'Export(.pdf)'
+      all('.btn', text: 'Output in Japanese only').first.click
 
       handle = page.driver.browser.window_handles.last
       page.driver.browser.within_window(handle) do
@@ -92,22 +92,12 @@ feature Protocol, js: true do
     end
     scenario 'docx' do
       visit select_protocol_path(protocol1)
-      click_on 'Export(.docx)'
+      all('.btn', text: 'Output in Japanese only').last.click
 
       handle = page.driver.browser.window_handles.last
       page.driver.browser.within_window(handle) do
         expect(page.response_headers['Content-Type']).to eq('application/vnd.openxmlformats-officedocument.wordprocessingml.document')
       end
-    end
-    scenario 'selects export_type' do
-      visit select_protocol_path(protocol1)
-      base_href = export_protocol_path(protocol1, format: 'pdf')
-      choose 'export_type_english'
-      expect(page).to have_link(nil, href: "#{base_href}?type=english")
-      choose 'export_type_japanese'
-      expect(page).to have_link(nil, href: "#{base_href}?type=japanese")
-      choose 'export_type_both'
-      expect(page).to have_link(nil, href: "#{base_href}?type=both")
     end
   end
 
