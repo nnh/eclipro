@@ -42,4 +42,4 @@ pre.mt-xl
     h3 class="#{content.no.include?('.') ? 'section-sub-title' : 'section-title' }"
       = "#{content.no} #{content.title}"
     .section-content
-      = content.replaced_body(params[:type]).html_safe
+      = content.replaced_body(params[:language]).html_safe

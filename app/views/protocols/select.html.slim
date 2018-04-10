@@ -4,11 +4,11 @@
   .mt-xl
     b = t('.export_pdf')
   .mt-m
-    = link_to t('.japanese_only'), export_protocol_path(@protocol, format: :pdf, type: 'japanese'),
+    = link_to t('.japanese_only'), export_protocol_path(@protocol, format: :pdf, language: 'ja'),
                                    class: 'btn btn-default', target: '_blank'
-    = link_to t('.english_only'), export_protocol_path(@protocol, format: :pdf, type: 'english'),
+    = link_to t('.english_only'), export_protocol_path(@protocol, format: :pdf, language: 'en'),
                                   class: 'btn btn-default ml-m', target: '_blank'
-    = link_to t('.both'), export_protocol_path(@protocol, format: :pdf, type: 'both'),
+    = link_to t('.both'), export_protocol_path(@protocol, format: :pdf, language: 'both'),
                           class: 'btn btn-default ml-m', target: '_blank'
 
   hr
@@ -16,9 +16,9 @@
   .mt-xl
     b = t('.export_docx')
   .mt-m
-    = link_to t('.japanese_only'), export_protocol_path(@protocol, format: :docx, type: 'japanese'),
+    = link_to t('.japanese_only'), export_protocol_path(@protocol, format: :docx, language: 'ja'),
                                   class: 'btn btn-default', target: '_blank'
-    = link_to t('.english_only'), export_protocol_path(@protocol, format: :docx, type: 'english'),
+    = link_to t('.english_only'), export_protocol_path(@protocol, format: :docx, language: 'en'),
                                  class: 'btn btn-default ml-m', target: '_blank'
     = link_to t('.both'), export_protocol_path(@protocol, format: :docx, type: 'both'),
                          class: 'btn btn-default ml-m', target: '_blank'
