@@ -118,8 +118,8 @@ $(() => {
           onclick: function() {
             editor.insertContent(
               `<div class="container" contenteditable='true'>
-                <div class="japanese"><p>&nbsp;</p></div>
-                <div class="english"><p>&nbsp;</p></div>
+                <div class="ja"><p>&nbsp;</p></div>
+                <div class="en"><p>&nbsp;</p></div>
                 <div class="space"><p>&nbsp;</p></div>
               </div>`
             );

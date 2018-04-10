@@ -67,12 +67,6 @@ $(() => {
     checkFile();
   }
 
-  // protocol export
-  $("input[name='export_type']").change((e) => {
-    $('.export-pdf-button').attr('href', `${$('.export-pdf-button').data('url')}?type=${$(e.target).val()}`);
-    $('.export-docx-button').attr('href', `${$('.export-docx-button').data('url')}?type=${$(e.target).val()}`);
-  });
-
   // contents
   const hash = window.location.hash;
   hash && $('ul.nav a[href="' + hash + ']').tab('show');

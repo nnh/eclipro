@@ -182,6 +182,6 @@ ja:
       japanese_only: 日本語のみ出力
       english_only: 英語のみ出力
       both: 両方出力
-      export_pdf: エクスポート(.pdf)
-      export_docx: エクスポート(.docx)
+      export_pdf: pdfファイル
+      export_docx: docxファイル
       back: 戻る

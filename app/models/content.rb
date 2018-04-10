@@ -38,9 +38,9 @@ class Content < ApplicationRecord
       end
     end
     if type == 'english'
-      doc.xpath("//div[@class='japanese']").remove
+      doc.xpath("//div[@class='ja']").remove
     elsif type == 'japanese'
-      doc.xpath("//div[@class='english']").remove
+      doc.xpath("//div[@class='en']").remove
     end
     doc.at('body').children.to_s
   end

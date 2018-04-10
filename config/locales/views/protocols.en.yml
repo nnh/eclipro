@@ -186,6 +186,6 @@ en:
       japanese_only: Output in Japanese only
       english_only: Output in English only
       both: Both outputs
-      export_pdf: Export(.pdf)
-      export_docx: Export(.docx)
+      export_pdf: pdf file
+      export_docx: docx file
       back: Back
