@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180220012741) do
+ActiveRecord::Schema.define(version: 20180423024257) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,11 +33,12 @@ ActiveRecord::Schema.define(version: 20180220012741) do
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "no"
+    t.integer "no", default: 0, null: false
     t.string "title"
     t.boolean "editable"
     t.integer "lock_version", default: 0, null: false
     t.integer "comments_count", default: 0, null: false
+    t.integer "seq", default: 0, null: false
     t.index ["protocol_id"], name: "index_contents_on_protocol_id"
   end
 
@@ -99,7 +100,7 @@ ActiveRecord::Schema.define(version: 20180220012741) do
   end
 
   create_table "sections", force: :cascade do |t|
-    t.string "no"
+    t.integer "no", default: 0, null: false
     t.string "title"
     t.text "template"
     t.text "instructions"
@@ -108,6 +109,7 @@ ActiveRecord::Schema.define(version: 20180220012741) do
     t.datetime "updated_at", null: false
     t.boolean "editable"
     t.string "template_name", default: "General", null: false
+    t.integer "seq", default: 0, null: false
   end
 
   create_table "users", force: :cascade do |t|

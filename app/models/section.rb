@@ -1,5 +1,5 @@
 class Section < ApplicationRecord
-  validates :no, uniqueness: { scope: :template_name }
+  validates :no, uniqueness: { scope: %i[template_name seq] }
 
   scope :by_template, ->(template_name) { where(template_name: template_name).sort_by { |s| s.no.to_f } }
 
