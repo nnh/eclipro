@@ -70,7 +70,7 @@ class CommentForm extends React.Component {
         }
       }
     }).done((res) => {
-      $(`#section-${res.no}-comment-icon`).html('<i class="fa fa-commenting mr-s">');
+      $(`#section-${res.id}-comment-icon`).html('<i class="fa fa-commenting mr-s">');
       $('.show-comments-button').html(`${$('.show-comments-button').data('text')} (${res.count})`);
       $('.show-comments-button').removeClass().addClass('btn btn-primary show-comments-button');
       ReactDOM.render(

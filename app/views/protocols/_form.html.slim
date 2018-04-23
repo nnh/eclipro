@@ -5,6 +5,7 @@
   - if action_name == 'clone'
     = f.fields_for :contents do |fc|
       = fc.hidden_field :no, value: fc.object.no
+      = fc.hidden_field :seq, value: fc.object.seq
       = fc.hidden_field :title, value: fc.object.title
       = fc.hidden_field :body, value: fc.object.body
       = fc.hidden_field :editable, value: fc.object.editable

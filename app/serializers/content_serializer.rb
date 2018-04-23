@@ -1,5 +1,5 @@
 class ContentSerializer < BaseSerializer
-  attributes :id, :no, :title
+  attributes :id, :no_seq, :title
   has_many :versions
 
   class VersionSerializer < BaseSerializer

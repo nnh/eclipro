@@ -27,10 +27,14 @@ class ProtocolsController < ApplicationController
                                    sections: Section.parent_items(@protocol.template_name).pluck(:no))
 
     if @protocol.contents.empty?
-      sections = Section.by_template(@protocol.template_name)
+      sections = Section.where(template_name: @protocol.template_name)
       sections.each do |section|
-        @protocol.contents << Content.new(protocol: @protocol, no: section.no, title: section.title,
-                                          body: section.template, editable: section.editable)
+        @protocol.contents << Content.new(protocol: @protocol, no: section.no, seq: section.seq,
+                                          title: section.title, body: section.template, editable: section.editable)
+      end
+    else
+      @protocol.contents.each do |content|
+        content.protocol = @protocol
       end
     end
 
@@ -67,8 +71,8 @@ class ProtocolsController < ApplicationController
   end
 
   def export
-    @content_0 = @protocol.contents.find_by(no: '0')
-    @contents = @protocol.contents.where.not(no: '0').sort_by { |c| c.no.to_f }
+    @content_0 = @protocol.contents.find_by(no: 0)
+    @contents = @protocol.contents.where.not(no: 0)
 
     respond_to do |format|
       format.pdf do
@@ -133,7 +137,7 @@ class ProtocolsController < ApplicationController
         :compliance,
         sponsors: [],
         study_agent: [],
-        contents_attributes: [:protocol_id, :no, :title, :body, :editable],
+        contents_attributes: [:protocol_id, :no, :seq, :title, :body, :editable],
         participations_attributes: [:protocol_id, :user_id, :role, sections: []]
       )
     end

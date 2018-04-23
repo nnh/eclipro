@@ -4,7 +4,7 @@ class Protocol < ApplicationRecord
 
   has_many :participations, dependent: :destroy
   accepts_nested_attributes_for :participations, allow_destroy: true
-  has_many :contents, dependent: :destroy
+  has_many :contents, -> { order(:no, :seq) }, dependent: :destroy
   accepts_nested_attributes_for :contents, allow_destroy: true
   has_one :reference_docx, dependent: :destroy
 
@@ -42,17 +42,13 @@ class Protocol < ApplicationRecord
   end
 
   def updatable_sections(user)
-    all_sections = Section.by_template(template_name).pluck(:no)
-    return all_sections if admin?(user)
     return [] if reviewer?(user)
-    select_sections(all_sections, Participation.find_by(protocol: self, user: user).sections)
+    Participation.find_by(protocol: self, user: user).sections
   end
 
   def reviewable_sections(user)
-    all_sections = Section.by_template(template_name).pluck(:no)
-    return all_sections if admin?(user)
-    return [] unless reviewer?(user)
-    select_sections(all_sections, Participation.find_by(protocol: self, user: user).sections)
+    return [] if author?(user)
+    Participation.find_by(protocol: self, user: user).sections
   end
 
   def versionup!
@@ -74,15 +70,6 @@ class Protocol < ApplicationRecord
   end
 
   private
-
-    def select_sections(all_sections, origin_sections)
-      sections = []
-      origin_sections.each do |section|
-        sections << all_sections.select { |s| s == section.to_s || s.split('.')[0] == section.to_s }
-      end
-      sections.flatten
-    end
-
     def update_version
       assign_attributes(version: version + 0.001) if has_changes_to_save? && attribute_in_database(:status) != 'finalized'
       assign_attributes(version: (version + 1).floor) if finalized?

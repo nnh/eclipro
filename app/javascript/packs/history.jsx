@@ -16,7 +16,7 @@ class HistoryIndex extends React.Component {
     const body = this.props.data.versions.map((version, index) => {
       return (
         <tr key={`history_${version.id}`} >
-          <td>{this.props.data.no} {this.props.data.title}</td>
+          <td>{this.props.data.no_seq} {this.props.data.title}</td>
           <td>{index}</td>
           <td>{version.whodunnit}</td>
           <td>{version.created_at}</td>

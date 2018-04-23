@@ -19,15 +19,15 @@ ul.nav.nav-pills
       = instructions.html_safe
   .tab-pane.active.menu-body#sections
     - contents.each do |content|
-      div class="#{'child-list' if content.no.include?('.')} #{'active-section' if content.no == no }"
+      div class="#{'child-list' unless content.seq.zero?} #{'active-section' if content.no_seq == no_seq }"
         - editable = (can? :updatable, content) || (can? :reviewable, content)
 
         a(href="#{protocol_content_path(content.protocol, content, anchor: :sections)}"
           class="section-link #{'uneditable' unless editable}")
-          = "#{content.no unless content.no_zero?} #{content.title}"
+          = "#{content.no_seq unless content.no.zero?} #{content.title}"
 
-          .pull-right id="section-#{content.no.gsub('.', '-')}-icon"
+          .pull-right id="section-#{content.no_seq.gsub('.', '-')}-icon"
             i.fa class="fa-#{content.status_icon}"
-          .pull-right id="section-#{content.no.gsub('.', '-')}-comment-icon"
+          .pull-right id="section-#{content.no_seq.gsub('.', '-')}-comment-icon"
             - if content.comments_count > 0
               i.fa.fa-commenting.mr-s

@@ -1,19 +1,17 @@
 class Section < ApplicationRecord
+  include NoValueModule
+
   validates :no, uniqueness: { scope: %i[template_name seq] }
 
-  scope :by_template, ->(template_name) { where(template_name: template_name).sort_by { |s| s.no.to_f } }
+  default_scope { order(:no, :seq) }
 
   class << self
     def template_names
-      all.pluck(:template_name).uniq!
+      pluck(:template_name).uniq!
     end
 
     def parent_items(template_name)
-      by_template(template_name).select { |section| section.no.exclude?('.') }
+      where(seq: 0, template_name: template_name)
     end
-  end
-
-  def no_value
-    no.to_i
   end
 end
