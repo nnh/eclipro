@@ -1,6 +1,7 @@
 sections:
   -
     'no': 2
+    seq: 0
     title: 緒言
     template_name: JCCG
     template: ''
@@ -9,7 +10,8 @@ sections:
     example: ''
     editable: false
   -
-    'no': 2.1
+    'no': 2
+    seq: 1
     title: 目的
     template_name: JCCG
     template: ''
@@ -21,7 +23,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 2.2
+    'no': 2
+    seq: 2
     title: 背景
     template_name: JCCG
     template: |-
@@ -58,7 +61,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 2.3
+    'no': 2
+    seq: 3
     title: ベネフィット・リスク評価
     template_name: JCCG
     template: ''

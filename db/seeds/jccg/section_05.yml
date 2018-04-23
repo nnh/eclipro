@@ -1,6 +1,7 @@
 sections:
   -
     'no': 5
+    seq: 0
     title: 対象
     template_name: JCCG
     template: |-
@@ -9,7 +10,8 @@ sections:
     example: ''
     editable: false
   -
-    'no': 5.1
+    'no': 5
+    seq: 1
     title: 選択基準
     template_name: JCCG
     template: |-
@@ -51,7 +53,8 @@ sections:
       </ol>
     editable: true
   -
-    'no': 5.2
+    'no': 5
+    seq: 2
     title: 除外基準
     template_name: JCCG
     template: |-
@@ -95,7 +98,8 @@ sections:
       </ol>
     editable: true
   -
-    'no': 5.3
+    'no': 5
+    seq: 3
     title: 適格性判断に用いる基準
     template_name: JCCG
     template: ''

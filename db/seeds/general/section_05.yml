@@ -1,6 +1,7 @@
 sections:
   -
     'no': 5
+    seq: 0
     title: Study Population
     template_name: General
     template: |-
@@ -38,7 +39,8 @@ sections:
     example: ''
     editable: false
   -
-    'no': 5.1
+    'no': 5
+    seq: 1
     title: Inclusion Criteria
     template_name: General
     template: ''
@@ -71,7 +73,8 @@ sections:
       </ol>
     editable: true
   -
-    'no': 5.2
+    'no': 5
+    seq: 2
     title: Exclusion Criteria
     template_name: General
     template: ''
@@ -106,7 +109,8 @@ sections:
       </ol>
     editable: true
   -
-    'no': 5.3
+    'no': 5
+    seq: 3
     title: Lifestyle Considerations
     template_name: General
     template: ''
@@ -137,7 +141,8 @@ sections:
       </ul>
     editable: true
   -
-    'no': 5.4
+    'no': 5
+    seq: 4
     title: Screen Failures
     template_name: General
     template: ''
@@ -159,7 +164,8 @@ sections:
       number as for the initial screening.</p>
     editable: true
   -
-    'no': 5.5
+    'no': 5
+    seq: 5
     title: Strategies for Recruitment and Retention Comments History
     template_name: General
     template: ''

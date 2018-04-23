@@ -1,6 +1,7 @@
 sections:
   -
     'no': 4
+    seq: 0
     title: Study Design
     template_name: General
     template: |-
@@ -9,7 +10,8 @@ sections:
     example: ''
     editable: false
   -
-    'no': 4.1
+    'no': 4
+    seq: 1
     title: Overall Design
     template_name: General
     template: ''
@@ -40,7 +42,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 4.2
+    'no': 4
+    seq: 2
     title: Scientific Rationale for Study Design
     template_name: General
     template: ''
@@ -52,7 +55,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 4.3
+    'no': 4
+    seq: 3
     title: Justification for Dose
     template_name: General
     template: ''
@@ -62,7 +66,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 4.4
+    'no': 4
+    seq: 4
     title: End of Study Definition
     template_name: General
     template: ''

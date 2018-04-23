@@ -1,6 +1,7 @@
 sections:
   -
     'no': 8
+    seq: 0
     title: 評価
     template_name: JCCG
     template: ''
@@ -8,7 +9,8 @@ sections:
     example: ''
     editable: false
   -
-    'no': 8.1
+    'no': 8
+    seq: 1
     title: 有効性の評価
     template_name: JCCG
     template: ''
@@ -27,7 +29,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 8.2
+    'no': 8
+    seq: 2
     title: 安全性の評価
     template_name: JCCG
     template: |-
@@ -67,7 +70,8 @@ sections:
       <p>&nbsp;</p>
     editable: true
   -
-    'no': 8.3
+    'no': 8
+    seq: 3
     title: 有害事象
     template_name: JCCG
     template: |-
@@ -388,7 +392,8 @@ sections:
       <p>&nbsp;</p>
     editable: true
   -
-    'no': 8.4
+    'no': 8
+    seq: 4
     title: 過量投与の治療
     template_name: JCCG
     template: ''
@@ -396,7 +401,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 8.5
+    'no': 8
+    seq: 5
     title: 薬物動態
     template_name: JCCG
     template: |-
@@ -408,7 +414,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 8.6
+    'no': 8
+    seq: 6
     title: 薬力学
     template_name: JCCG
     template: |-
@@ -420,7 +427,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 8.7
+    'no': 8
+    seq: 7
     title: ヒトゲノム・遺伝子解析研究
     template_name: JCCG
     template: ''
@@ -441,7 +449,8 @@ sections:
       <p>&nbsp;</p>
     editable: true
   -
-    'no': 8.8
+    'no': 8
+    seq: 8
     title: バイオマーカー
     template_name: JCCG
     template: ''

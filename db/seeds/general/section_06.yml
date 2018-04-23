@@ -1,6 +1,7 @@
 sections:
   -
     'no': 6
+    seq: 0
     title: Study Intervention
     template_name: General
     template: |-
@@ -27,7 +28,8 @@ sections:
     example: ''
     editable: false
   -
-    'no': 6.1
+    'no': 6
+    seq: 1
     title: Study Intervention(s) Administration
     template_name: General
     template: |-
@@ -103,7 +105,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 6.2
+    'no': 6
+    seq: 2
     title: Preparation/Handling/Storage/Accountability
     template_name: General
     template: |-
@@ -143,7 +146,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 6.3
+    'no': 6
+    seq: 3
     title: 'Measures to Minimize Bias: Randomization and Blinding'
     template_name: General
     template: ''
@@ -187,7 +191,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 6.4
+    'no': 6
+    seq: 4
     title: Study Intervention Compliance
     template_name: General
     template: ''
@@ -199,7 +204,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 6.5
+    'no': 6
+    seq: 5
     title: Concomitant Therapy
     template_name: General
     template: |-

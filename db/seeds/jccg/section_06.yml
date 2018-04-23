@@ -1,6 +1,7 @@
 sections:
   -
     'no': 6
+    seq: 0
     title: 治療
     template_name: JCCG
     template: |-
@@ -10,7 +11,8 @@ sections:
     example: ''
     editable: false
   -
-    'no': 6.1
+    'no': 6
+    seq: 1
     title: 試験治療
     template_name: JCCG
     template: |-
@@ -47,7 +49,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 6.2
+    'no': 6
+    seq: 2
     title: 試験薬準備
     template_name: JCCG
     template: ''
@@ -56,7 +59,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 6.3
+    'no': 6
+    seq: 3
     title: 症例登録、層別化および割付
     template_name: JCCG
     template: ''
@@ -108,7 +112,8 @@ sections:
       それぞれの研究対象者に試験投与を開始する直前に、昇順に封筒を開封する。臨床試験実施施設では、開封した日時を記録する。</p>
     editable: true
   -
-    'no': 6.4
+    'no': 6
+    seq: 4
     title: 治療方法の遵守
     template_name: JCCG
     template: ''
@@ -118,7 +123,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 6.5
+    'no': 6
+    seq: 5
     title: 併用療法
     template_name: JCCG
     template: ''
@@ -137,7 +143,8 @@ sections:
       <p>&nbsp;</p>
     editable: true
   -
-    'no': 6.6
+    'no': 6
+    seq: 6
     title: 試験治療変更基準
     template_name: JCCG
     template: |-
@@ -156,7 +163,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 6.7
+    'no': 6
+    seq: 7
     title: 試験終了後の治療
     template_name: JCCG
     template: ''

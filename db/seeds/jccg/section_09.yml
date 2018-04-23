@@ -1,6 +1,7 @@
 sections:
   -
     'no': 9
+    seq: 0
     title: 統計
     template_name: JCCG
     template: ''
@@ -8,7 +9,8 @@ sections:
     example: ''
     editable: false
   -
-    'no': 9.1
+    'no': 9
+    seq: 1
     title: 統計学的仮説
     template_name: JCCG
     template: ''
@@ -16,7 +18,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 9.2
+    'no': 9
+    seq: 2
     title: 症例数設計
     template_name: JCCG
     template: ''
@@ -29,7 +32,8 @@ sections:
       <p>&nbsp;</p>
     editable: true
   -
-    'no': 9.3
+    'no': 9
+    seq: 3
     title: 解析対象集団
     template_name: JCCG
     template: ''
@@ -68,7 +72,8 @@ sections:
       <p>&nbsp;</p>
     editable: true
   -
-    'no': 9.4
+    'no': 9
+    seq: 4
     title: 統計解析
     template_name: JCCG
     template: |-
@@ -98,7 +103,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 9.5
+    'no': 9
+    seq: 5
     title: 中間解析
     template_name: JCCG
     template: |-
