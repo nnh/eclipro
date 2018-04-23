@@ -42,7 +42,7 @@ feature Protocol, js: true do
       click_on 'Create Protocol'
       expect(current_path).to eq protocol_content_path(Protocol.last, Protocol.last.contents.first)
       expect(page).to have_content 'New protocol'
-      expect(Protocol.last.contents.count). to eq Section.by_template('General').count
+      expect(Protocol.last.contents.count). to eq Section.where(template_name: 'General').count
     end
   end
 

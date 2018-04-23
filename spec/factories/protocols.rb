@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :content do
     protocol nil
-    no ''
+    no 0
+    seq 0
     title ''
     body ''
     editable true
@@ -17,10 +18,10 @@ FactoryBot.define do
     end
 
     after(:create) do |protocol|
-      sections = Section.by_template('General')
+      sections = Section.where(template_name: 'General')
       sections.each do |section|
-        FactoryBot.create(:content, protocol: protocol, no: section.no, title: section.title,
-                                    body: section.template, editable: section.editable)
+        FactoryBot.create(:content, protocol: protocol, no: section.no, seq: section.seq,
+                                    title: section.title, body: section.template, editable: section.editable)
       end
     end
   end

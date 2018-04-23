@@ -60,17 +60,17 @@ describe Protocol do
 
   describe 'get sections' do
     context 'updatable' do
-      let(:all_sections) { Section.by_template(protocol.template_name).pluck(:no) }
+      let(:all_sections) { Section.parent_items(protocol.template_name).pluck(:no) }
       it { expect(protocol.updatable_sections(admin)).to eq all_sections }
-      it { expect(protocol.updatable_sections(author)).to eq ['0', '1', '1.1', '1.2', '1.3'] }
+      it { expect(protocol.updatable_sections(author)).to eq [0, 1] }
       it { expect(protocol.updatable_sections(reviewer)).to eq [] }
     end
 
     context 'reviewable' do
-      let(:all_sections) { Section.by_template(protocol.template_name).pluck(:no) }
+      let(:all_sections) { Section.parent_items(protocol.template_name).pluck(:no) }
       it { expect(protocol.reviewable_sections(admin)).to eq all_sections }
       it { expect(protocol.reviewable_sections(author)).to eq [] }
-      it { expect(protocol.reviewable_sections(reviewer)).to eq ['2', '2.1', '2.2', '2.3', '3'] }
+      it { expect(protocol.reviewable_sections(reviewer)).to eq [2, 3] }
     end
   end
 end

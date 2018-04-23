@@ -3,7 +3,7 @@ require 'rails_helper'
 feature Comment, js: true do
   let(:user) { create(:user) }
   let(:protocol) { create(:protocol) }
-  let(:content) { protocol.contents.find_by(no: '1.1') }
+  let(:content) { protocol.contents.find_by(no: 1, seq: 1) }
   let!(:comment) { create(:comment, content: content, user: user, body: 'test comment') }
   let!(:admin_participation) { create(:admin, protocol: protocol, user: user) }
 

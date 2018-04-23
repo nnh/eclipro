@@ -4,7 +4,7 @@ describe ImagesController, type: :controller do
   let(:admin) { create(:user) }
   let(:user) { create(:user) }
   let(:protocol) { create(:protocol) }
-  let(:content) { protocol.contents.find_by(no: '1.1') }
+  let(:content) { protocol.contents.find_by(no: 1, seq: 1) }
   let(:image) { content.images.create(file: fixture_file_upload('test.png', 'image/png')) }
   let!(:participation) { create(:admin, protocol: protocol, user: admin) }
 
