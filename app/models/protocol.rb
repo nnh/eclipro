@@ -42,13 +42,13 @@ class Protocol < ApplicationRecord
   end
 
   def updatable_sections(user)
-    return [] if reviewer?(user)
-    Participation.find_by(protocol: self, user: user).sections
+    return participations.none if reviewer?(user)
+    participations.find_by!(user: user).sections
   end
 
   def reviewable_sections(user)
-    return [] if author?(user)
-    Participation.find_by(protocol: self, user: user).sections
+    return participations.none if author?(user)
+    participations.find_by!(user: user).sections
   end
 
   def versionup!
@@ -67,6 +67,10 @@ class Protocol < ApplicationRecord
     end
   ensure
     FileUtils.rm_f reference_docx_file_path
+  end
+
+  def sections
+    Section.where(template_name: template_name)
   end
 
   private

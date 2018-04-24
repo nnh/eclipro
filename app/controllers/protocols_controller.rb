@@ -27,8 +27,7 @@ class ProtocolsController < ApplicationController
                                    sections: Section.parent_items(@protocol.template_name).pluck(:no))
 
     if @protocol.contents.empty?
-      sections = Section.where(template_name: @protocol.template_name)
-      sections.each do |section|
+      @protocol.sections.each do |section|
         @protocol.contents << Content.new(protocol: @protocol, no: section.no, seq: section.seq,
                                           title: section.title, body: section.template, editable: section.editable)
       end

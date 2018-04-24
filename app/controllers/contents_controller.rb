@@ -53,8 +53,7 @@ class ContentsController < ApplicationController
 
     def prepare_menu
       @contents = @protocol.contents
-      section = Section.find_by(template_name: @protocol.template_name,
-                                no: @content.no, seq: @content.seq)
+      section = @protocol.sections.find_by(no: @content.no, seq: @content.seq)
       @example = section.example
       @instructions = section.instructions
     end
