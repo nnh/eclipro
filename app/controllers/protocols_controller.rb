@@ -71,7 +71,7 @@ class ProtocolsController < ApplicationController
   end
 
   def export
-    @content_0 = @protocol.contents.find_by(no: 0)
+    @content_0 = @protocol.contents.root
     @contents = @protocol.contents.where.not(no: 0)
 
     respond_to do |format|

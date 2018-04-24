@@ -7,7 +7,7 @@ feature Content, js: true do
   let(:reviewer) { create(:user) }
   let(:other_reviewer) { create(:user) }
   let(:protocol) { create(:protocol) }
-  let(:content) { protocol.contents.find_by(no: 0) }
+  let(:content) { protocol.contents.root }
   let!(:admin_participation) { create(:admin, protocol: protocol, user: admin) }
   let!(:author_participation0) { create(:author, protocol: protocol, user: author, sections: [0, 1, 2]) }
   let!(:author_participation1) { create(:author, protocol: protocol, user: other_author, sections: [3]) }

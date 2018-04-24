@@ -8,7 +8,7 @@ describe ContentsController, type: :controller do
   let(:reviewer1) { create(:user) }
 
   let!(:protocol) { create(:protocol) }
-  let!(:content) { protocol.contents.find_by(no: 0) }
+  let!(:content) { protocol.contents.root }
   let!(:participation1) { create(:admin, protocol: protocol, user: admin) }
   let!(:participation2) { create(:author, protocol: protocol, user: author0, sections: [0, 1, 2]) }
   let!(:participation3) { create(:author, protocol: protocol, user: author1, sections: [3, 4, 5]) }
