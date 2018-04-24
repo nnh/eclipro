@@ -1,6 +1,7 @@
 sections:
   -
     'no': 3
+    seq: 0
     title: 評価項目
     template_name: JCCG
     template: |-

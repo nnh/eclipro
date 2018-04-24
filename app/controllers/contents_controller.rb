@@ -52,8 +52,8 @@ class ContentsController < ApplicationController
     end
 
     def prepare_menu
-      @contents = @protocol.contents.sort_by { |c| c.no.to_f }
-      section = Section.find_by(template_name: @protocol.template_name, no: @content.no)
+      @contents = @protocol.contents
+      section = @protocol.sections.find_by(no: @content.no, seq: @content.seq)
       @example = section.example
       @instructions = section.instructions
     end

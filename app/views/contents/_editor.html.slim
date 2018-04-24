@@ -12,7 +12,7 @@
         = button_tag t('.history'), type: :button, class: 'btn btn-default history-button',
                      data: { url:  history_protocol_content_path(protocol, content) }
 
-      h4 = "#{t('.editor')}: #{content.no unless content.no_zero?} #{content.title}"
+      h4 = "#{t('.editor')}: #{content.no_seq unless content.no.zero?} #{content.title}"
 
       .mt-xl
         = form_for [protocol, content], html: { class: 'form-horizontal', role: 'form' } do |f|
@@ -37,7 +37,7 @@
       .tiny-mce-params data-protocol-id="#{protocol.id}" data-content-id="#{content.id}"
 
   - else
-    h4 = "#{t('.editor')}: #{content.no}  #{content.title} #{t('.read_only')}"
+    h4 = "#{t('.editor')}: #{content.no_seq} #{content.title} #{t('.read_only')}"
     h4 = t('.read_only_text')
     = content.body.html_safe
 

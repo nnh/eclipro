@@ -1,6 +1,7 @@
 sections:
   -
     'no': 0
+    seq: 0
     title: Protocol Amendment Summary of Changes Table
     template_name: General
     template: |-

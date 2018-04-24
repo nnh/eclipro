@@ -42,17 +42,13 @@ class Protocol < ApplicationRecord
   end
 
   def updatable_sections(user)
-    all_sections = Section.reject_specified_sections(template_name).pluck(:no)
-    return all_sections if admin?(user)
-    return [] if reviewer?(user)
-    select_sections(all_sections, Participation.find_by(protocol: self, user: user).sections)
+    return participations.none if reviewer?(user)
+    participations.find_by!(user: user).sections
   end
 
   def reviewable_sections(user)
-    all_sections = Section.reject_specified_sections(template_name).pluck(:no)
-    return all_sections if admin?(user)
-    return [] unless reviewer?(user)
-    select_sections(all_sections, Participation.find_by(protocol: self, user: user).sections)
+    return participations.none if author?(user)
+    participations.find_by!(user: user).sections
   end
 
   def versionup!
@@ -73,16 +69,11 @@ class Protocol < ApplicationRecord
     FileUtils.rm_f reference_docx_file_path
   end
 
+  def sections
+    Section.where(template_name: template_name)
+  end
+
   private
-
-    def select_sections(all_sections, origin_sections)
-      sections = []
-      origin_sections.each do |section|
-        sections << all_sections.select { |s| s == section.to_s || s.split('.')[0] == section.to_s }
-      end
-      sections.flatten
-    end
-
     def update_version
       assign_attributes(version: version + 0.001) if has_changes_to_save? && attribute_in_database(:status) != 'finalized'
       assign_attributes(version: (version + 1).floor) if finalized?

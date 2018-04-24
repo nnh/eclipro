@@ -1,6 +1,7 @@
 sections:
   -
     'no': 2
+    seq: 0
     title: Introduction
     template_name: General
     template: |-
@@ -13,7 +14,8 @@ sections:
     example: ''
     editable: false
   -
-    'no': 2.1
+    'no': 2
+    seq: 1
     title: Study Rationale
     template_name: General
     template: ''
@@ -24,7 +26,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 2.2
+    'no': 2
+    seq: 2
     title: Background
     template_name: General
     template: ''
@@ -42,7 +45,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 2.3
+    'no': 2
+    seq: 3
     title: Risk/Benefit Assessment
     template_name: General
     template: |-

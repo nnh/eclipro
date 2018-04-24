@@ -1,6 +1,7 @@
 sections:
   -
     'no': 8
+    seq: 0
     title: Study Assessments and Procedures
     template_name: General
     template: |-
@@ -9,7 +10,8 @@ sections:
     example: ''
     editable: false
   -
-    'no': 8.1
+    'no': 8
+    seq: 1
     title: Efficacy Assessments
     template_name: General
     template: ''
@@ -86,7 +88,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 8.2
+    'no': 8
+    seq: 2
     title: Safety and Other Assessments
     template_name: General
     template: ''
@@ -166,7 +169,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 8.3
+    'no': 8
+    seq: 3
     title: Adverse Events and Serious Adverse Events
     template_name: General
     template: |-
@@ -561,7 +565,8 @@ sections:
       <p>&nbsp;</p>
     editable: true
   -
-    'no': 8.4
+    'no': 8
+    seq: 4
     title: Unanticipated Problems
     template_name: General
     template: |-

@@ -1,6 +1,7 @@
 sections:
   -
     'no': 10
+    seq: 0
     title: Supporting Documentation and Operational Considerations
     template_name: General
     template: |-
@@ -9,7 +10,8 @@ sections:
     example: ''
     editable: false
   -
-    'no': 10.1
+    'no': 10
+    seq: 1
     title: Regulatory, Ethical, and Study Oversight Considerations
     template_name: General
     template: |-
@@ -679,7 +681,8 @@ sections:
       and will establish a mechanism for the management of all reported dualities of interest.</p>
     editable: true
   -
-    'no': 10.2
+    'no': 10
+    seq: 2
     title: Additional Considerations
     template_name: General
     template: ''
@@ -689,7 +692,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 10.3
+    'no': 10
+    seq: 3
     title: Abbreviations
     template_name: General
     template: |-
@@ -904,7 +908,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 10.4
+    'no': 10
+    seq: 4
     title: Protocol Amendment History
     template_name: General
     template: |-

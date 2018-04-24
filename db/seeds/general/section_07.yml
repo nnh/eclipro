@@ -1,6 +1,7 @@
 sections:
   -
     'no': 7
+    seq: 0
     title: Study Intervention Discontinuation and Participant Discontinuation/Withdrawal
     template_name: General
     template: |-
@@ -18,7 +19,8 @@ sections:
     example: ''
     editable: false
   -
-    'no': 7.1
+    'no': 7
+    seq: 1
     title: Discontinuation of Study Intervention
     template_name: General
     template: ''
@@ -46,7 +48,8 @@ sections:
       </ul>
     editable: true
   -
-    'no': 7.2
+    'no': 7
+    seq: 2
     title: Participant Discontinuation/Withdrawal from the Study
     template_name: General
     template: ''
@@ -88,7 +91,8 @@ sections:
       or are withdrawn or discontinued from the study, <span>[will <em>or</em> will not]</span> be replaced.</p>
     editable: true
   -
-    'no': 7.3
+    'no': 7
+    seq: 3
     title: Lost to Follow-Up
     template_name: General
     template: ''

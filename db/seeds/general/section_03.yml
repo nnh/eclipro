@@ -1,6 +1,7 @@
 sections:
   -
     'no': 3
+    seq: 0
     title: Objectives and Endpoints
     template_name: General
     template: |-

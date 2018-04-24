@@ -42,7 +42,7 @@ feature Protocol, js: true do
       click_on 'Create Protocol'
       expect(current_path).to eq protocol_content_path(Protocol.last, Protocol.last.contents.first)
       expect(page).to have_content 'New protocol'
-      expect(Protocol.last.contents.count). to eq Section.reject_specified_sections('General').count
+      expect(Protocol.last.contents.count). to eq Section.where(template_name: 'General').count
     end
   end
 
@@ -68,6 +68,10 @@ feature Protocol, js: true do
         click_on 'Clone'
       end
       expect(current_path).to eq(clone_protocol_path(protocol0))
+
+      fill_in 'protocol[title]', with: 'Clone protocol'
+      click_on 'Create Protocol'
+      expect(page).to have_content 'Clone protocol'
     end
   end
 

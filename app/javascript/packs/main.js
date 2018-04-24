@@ -70,8 +70,8 @@ $(() => {
   // contents
   const hash = window.location.hash;
   hash && $('ul.nav a[href="' + hash + ']').tab('show');
-  $('.nav-pills a').click(() => {
-    $(this).tab('show');
+  $('.nav-pills a').click((e) => {
+    $(e.target).tab('show');
   });
 
   $('.to-under-review').click(() => {

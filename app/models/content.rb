@@ -2,6 +2,7 @@ class Content < ApplicationRecord
   class << self
     include HTMLDiff
   end
+  include SectionModule
 
   belongs_to :protocol
   has_many :comments, dependent: :destroy
@@ -46,11 +47,7 @@ class Content < ApplicationRecord
   end
 
   def has_reviewer?
-    protocol.participations.reviewer.pluck(:sections).flatten.include?(no.split('.')[0].to_i)
-  end
-
-  def no_zero?
-    no == '0'
+    protocol.participations.reviewer.pluck(:sections).flatten.include?(no)
   end
 
   private

@@ -26,7 +26,7 @@ pre.mt-xl
         td
           pre = t('.compliance')
           - @contents.each do |content|
-            pre = "#{'    ' if content.no.include?('.')}#{content.no} #{content.title}"
+            pre = "#{'    ' unless content.seq.zero?}#{content.no_seq} #{content.title}"
 
 pre.mt-xl
 #compliance
@@ -38,8 +38,8 @@ pre.mt-xl
 
 - @contents.each do |content|
   pre.mt-xl
-  div id="section-#{content.no}"
-    h3 class="#{content.no.include?('.') ? 'section-sub-title' : 'section-title' }"
-      = "#{content.no} #{content.title}"
+  div id="section-#{content.no_seq.gsub('.', '-')}"
+    h3 class="#{content.seq.zero? ? 'section-title' : 'section-sub-title' }"
+      = "#{content.no_seq} #{content.title}"
     .section-content
       = content.replaced_body(params[:language]).html_safe

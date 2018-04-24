@@ -1,6 +1,7 @@
 sections:
   -
     'no': 4
+    seq: 0
     title: 研究デザイン
     template_name: JCCG
     template: ''
@@ -8,7 +9,8 @@ sections:
     example: ''
     editable: false
   -
-    'no': 4.1
+    'no': 4
+    seq: 1
     title: デザイン概要
     template_name: JCCG
     template: ''
@@ -29,7 +31,8 @@ sections:
       <p>&nbsp;</p>
     editable: true
   -
-    'no': 4.2
+    'no': 4
+    seq: 2
     title: デザインの科学的根拠
     template_name: JCCG
     template: ''
@@ -39,7 +42,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 4.3
+    'no': 4
+    seq: 3
     title: 試験治療の妥当性
     template_name: JCCG
     template: ''
@@ -48,7 +52,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 4.4
+    'no': 4
+    seq: 4
     title: 研究期間
     template_name: JCCG
     template: |-

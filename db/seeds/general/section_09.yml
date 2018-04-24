@@ -1,6 +1,7 @@
 sections:
   -
     'no': 9
+    seq: 0
     title: Statistical Considerations
     template_name: General
     template: |-
@@ -20,7 +21,8 @@ sections:
     example: ''
     editable: false
   -
-    'no': 9.1
+    'no': 9
+    seq: 1
     title: Statistical Hypotheses
     template_name: General
     template: |-
@@ -35,7 +37,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 9.2
+    'no': 9
+    seq: 2
     title: Sample Size Determination
     template_name: General
     template: ''
@@ -71,7 +74,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 9.3
+    'no': 9
+    seq: 3
     title: Populations for Analyses
     template_name: General
     template: ''
@@ -94,7 +98,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 9.4
+    'no': 9
+    seq: 4
     title: Statistical Analyses
     template_name: General
     template: |-

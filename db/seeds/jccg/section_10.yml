@@ -1,6 +1,7 @@
 sections:
   -
     'no': 10
+    seq: 0
     title: 運用事項および補遺
     template_name: JCCG
     template: ''
@@ -8,7 +9,8 @@ sections:
     example: ''
     editable: false
   -
-    'no': 10.1
+    'no': 10
+    seq: 1
     title: 試験管理
     template_name: JCCG
     template: |-
@@ -424,7 +426,8 @@ sections:
       <p>&nbsp;</p>
     editable: true
   -
-    'no': 10.2
+    'no': 10
+    seq: 2
     title: 実施体制
     template_name: JCCG
     template: |-
@@ -591,7 +594,8 @@ sections:
       <p>&nbsp;</p>
     editable: true
   -
-    'no': 10.3
+    'no': 10
+    seq: 3
     title: 補遺
     template_name: JCCG
     template: |-

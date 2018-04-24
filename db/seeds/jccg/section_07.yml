@@ -1,6 +1,7 @@
 sections:
   -
     'no': 7
+    seq: 0
     title: 中止基準
     template_name: JCCG
     template: ''
@@ -8,7 +9,8 @@ sections:
     example: ''
     editable: false
   -
-    'no': 7.1
+    'no': 7
+    seq: 1
     title: 試験治療の中止
     template_name: JCCG
     template: |-
@@ -48,7 +50,8 @@ sections:
       <p>&nbsp;</p>
     editable: true
   -
-    'no': 7.2
+    'no': 7
+    seq: 2
     title: 試験の中止
     template_name: JCCG
     template: |-
@@ -79,7 +82,8 @@ sections:
     example: ''
     editable: true
   -
-    'no': 7.3
+    'no': 7
+    seq: 3
     title: 追跡不能
     template_name: JCCG
     template: |-

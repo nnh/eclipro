@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :content do
     protocol nil
-    no ''
+    no 0
+    seq 0
     title ''
     body ''
     editable true
@@ -17,10 +18,9 @@ FactoryBot.define do
     end
 
     after(:create) do |protocol|
-      sections = Section.reject_specified_sections('General').sort_by { |c| c.no.to_f }
-      sections.each do |section|
-        FactoryBot.create(:content, protocol: protocol, no: section.no, title: section.title,
-                                    body: section.template, editable: section.editable)
+      protocol.sections.each do |section|
+        FactoryBot.create(:content, protocol: protocol, no: section.no, seq: section.seq,
+                                    title: section.title, body: section.template, editable: section.editable)
       end
     end
   end

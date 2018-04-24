@@ -1,6 +1,7 @@
 sections:
   -
     'no': 11
+    seq: 0
     title: References
     template_name: General
     template: ''

@@ -8,7 +8,7 @@ describe ContentsController, type: :controller do
   let(:reviewer1) { create(:user) }
 
   let!(:protocol) { create(:protocol) }
-  let!(:content) { protocol.contents.find_by(no: '0') }
+  let!(:content) { protocol.contents.root }
   let!(:participation1) { create(:admin, protocol: protocol, user: admin) }
   let!(:participation2) { create(:author, protocol: protocol, user: author0, sections: [0, 1, 2]) }
   let!(:participation3) { create(:author, protocol: protocol, user: author1, sections: [3, 4, 5]) }
@@ -16,20 +16,20 @@ describe ContentsController, type: :controller do
   let!(:participation5) { create(:reviewer, protocol: protocol, user: reviewer1, sections: [3, 4, 5]) }
 
   let!(:status_new) do
-    protocol.contents.find_by(no: '1.1')
+    protocol.contents.find_by(no: 1, seq: 1)
   end
   let!(:in_progress) do
-    content = protocol.contents.find_by(no: '2.1')
+    content = protocol.contents.find_by(no: 2, seq: 1)
     content.update_attributes(status: 'in_progress')
     content
   end
   let!(:under_review) do
-    content = protocol.contents.find_by(no: '2.2')
+    content = protocol.contents.find_by(no: 2, seq: 2)
     content.update_attributes(status: 'under_review')
     content
   end
   let!(:final) do
-    content = protocol.contents.find_by(no: '2.3')
+    content = protocol.contents.find_by(no: 2, seq: 3)
     content.update_attributes(status: 'final')
     content
   end
