@@ -1,7 +1,8 @@
-module NoValueModule
+module SectionModule
   extend ActiveSupport::Concern
 
   included do
+    default_scope { order(:no, :seq) }
     scope :root, -> { find_by(no: 0) }
   end
 

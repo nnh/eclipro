@@ -28,12 +28,8 @@ class ProtocolsController < ApplicationController
 
     if @protocol.contents.empty?
       @protocol.sections.each do |section|
-        @protocol.contents << Content.new(protocol: @protocol, no: section.no, seq: section.seq,
-                                          title: section.title, body: section.template, editable: section.editable)
-      end
-    else
-      @protocol.contents.each do |content|
-        content.protocol = @protocol
+        @protocol.contents.build(no: section.no, seq: section.seq, title: section.title,
+                                 body: section.template, editable: section.editable)
       end
     end
 

@@ -68,6 +68,10 @@ feature Protocol, js: true do
         click_on 'Clone'
       end
       expect(current_path).to eq(clone_protocol_path(protocol0))
+
+      fill_in 'protocol[title]', with: 'Clone protocol'
+      click_on 'Create Protocol'
+      expect(page).to have_content 'Clone protocol'
     end
   end
 

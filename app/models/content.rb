@@ -2,7 +2,7 @@ class Content < ApplicationRecord
   class << self
     include HTMLDiff
   end
-  include NoValueModule
+  include SectionModule
 
   belongs_to :protocol
   has_many :comments, dependent: :destroy

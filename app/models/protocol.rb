@@ -4,7 +4,7 @@ class Protocol < ApplicationRecord
 
   has_many :participations, dependent: :destroy
   accepts_nested_attributes_for :participations, allow_destroy: true
-  has_many :contents, -> { order(:no, :seq) }, dependent: :destroy
+  has_many :contents, dependent: :destroy
   accepts_nested_attributes_for :contents, allow_destroy: true
   has_one :reference_docx, dependent: :destroy
 
