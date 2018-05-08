@@ -3,7 +3,12 @@ module SectionModule
 
   included do
     default_scope { order(:no, :seq) }
-    scope :root, -> { find_by(no: 0) }
+  end
+
+  module ClassMethods
+    def root
+      find_by(no: 0)
+    end
   end
 
   def no_seq
