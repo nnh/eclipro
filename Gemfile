@@ -105,3 +105,7 @@ group :test do
   gem 'poltergeist'
   gem 'rails-controller-testing'
 end
+
+group :production do
+  gem 'newrelic_rpm'
+end

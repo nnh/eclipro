@@ -166,6 +166,7 @@ GEM
     multi_json (1.13.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
+    newrelic_rpm (5.1.0.344)
     nio4r (2.3.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
@@ -364,6 +365,7 @@ DEPENDENCIES
   launchy
   letter_opener
   listen
+  newrelic_rpm
   omniauth
   omniauth-google-oauth2
   pandoc-ruby
