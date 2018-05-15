@@ -20,17 +20,17 @@ describe ContentsController, type: :controller do
   end
   let!(:in_progress) do
     content = protocol.contents.find_by(no: 2, seq: 1)
-    content.update_attributes(status: 'in_progress')
+    content.update(status: 'in_progress')
     content
   end
   let!(:under_review) do
     content = protocol.contents.find_by(no: 2, seq: 2)
-    content.update_attributes(status: 'under_review')
+    content.update(status: 'under_review')
     content
   end
   let!(:final) do
     content = protocol.contents.find_by(no: 2, seq: 3)
-    content.update_attributes(status: 'final')
+    content.update(status: 'final')
     content
   end
 
@@ -54,14 +54,14 @@ describe ContentsController, type: :controller do
   shared_examples_for 'can see history' do
     it do
       get :history, xhr: true, params: { protocol_id: protocol, id: content }
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 
   shared_examples_for 'can see compare' do
     it do
       get :history, xhr: true, params: { protocol_id: protocol, id: content }
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 
