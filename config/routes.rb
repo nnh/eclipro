@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  # resources :sections
+  resources :sections, only: %i[index show edit update]
+
   resources :protocols do
     resources :reference_docxes, only: %i[create show update destroy]
     resources :participations, except: %i[index show]

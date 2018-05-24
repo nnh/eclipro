@@ -90,5 +90,8 @@ class Ability
     can :read, ReferenceDocx do |docx|
       docx.protocol.participant?(user)
     end
+
+    # TODO: set ability
+    can :manage, Section
   end
 end
