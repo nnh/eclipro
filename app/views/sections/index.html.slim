@@ -1,0 +1,24 @@
+.col-md-12
+  h3 = t('.title')
+
+  table.table.table-striped.mt-xl
+    thead
+      tr
+        th = t('.template_name')
+        th = t('.section_no')
+        th = t('.section_title')
+        th
+        th
+    tbody
+      - @divided_sections.each do |sections|
+        - sections.each_with_index do |section, index|
+          tr
+            - if index.zero?
+              td rowspan="#{sections.count}"
+                = section.template_name
+            td = section.no_seq
+            td = section.title
+            td = link_to t('.show'), section_path(section), class: 'btn btn-default'
+            td
+              - if can? :edit, section
+                = link_to t('.edit'), edit_section_path(section), class: 'btn btn-default'

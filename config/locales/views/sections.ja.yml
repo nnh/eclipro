@@ -1,0 +1,31 @@
+ja:
+  sections:
+    index:
+      title: セクション一覧
+      template_name: テンプレート名
+      section_no: セクションNo.
+      section_title: セクションタイトル
+      show: 詳細
+      edit: 編集
+    edit:
+      title: セクション編集
+      section_no: セクションNo.
+      'true': 可能
+      'false': 不可
+      back: 戻る
+    show:
+      title: セクション詳細
+      template_name: テンプレート名
+      section_no: セクションNo.
+      section_title: セクションタイトル
+      editable: 編集
+      'true': 可能
+      'false': 不可
+      template: テンプレート
+      instructions: 指示
+      example: 例
+      nothing: (なし)
+      edit: 編集
+      back: 戻る
+    update:
+      success: セクションを更新しました。

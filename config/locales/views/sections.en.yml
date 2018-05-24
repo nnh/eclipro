@@ -1,0 +1,31 @@
+en:
+  sections:
+    index:
+      title: Section list
+      template_name: Template name
+      section_no: Section No.
+      section_title: Section title
+      show: Details
+      edit: Edit
+    edit:
+      title: Edit section
+      section_no: Section No.
+      'true': 'True'
+      'false': 'False'
+      back: Back
+    show:
+      title: Section details
+      template_name: Template name
+      section_no: Section No.
+      section_title: Section title
+      editable: Editable
+      'true': 'True'
+      'false': 'False'
+      template: Template
+      instructions: Instructions
+      example: Example
+      nothing: (Nothing)
+      edit: Edit
+      back: Back
+    update:
+      success: Section was successfully updated.

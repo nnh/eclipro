@@ -2,6 +2,7 @@ ja:
   activerecord: &activerecord
     models:
       protocol: プロトコル
+      section: セクション
     attributes:
       protocol:
         title: タイトル
@@ -23,6 +24,13 @@ ja:
         sections: セクション
       reference_docx:
         file: ファイル
+      section:
+        template_name: テンプレート名
+        title: セクションタイトル
+        editable: 編集
+        template: テンプレート
+        instructions: 指示
+        example: 例
     errors:
       select_sections: を1つ以上選択してください。
 

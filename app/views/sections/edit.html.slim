@@ -1,0 +1,48 @@
+.col-md-12
+  h3 = t('.title')
+
+  = form_for @section, html: { class: 'form-horizontal', role: 'form' } do |f|
+    - if @section.errors.any?
+      = model_errors(@document)
+
+    .form-group
+      = f.label :template_name, class: 'control-label'
+      br
+      = @section.template_name
+
+    .form-group
+      = f.label t('.section_no'), class: 'control-label'
+      br
+      = @section.no_seq
+
+    .form-group
+      = f.label :title, class: 'control-label'
+      = f.text_field :title, class: 'form-control'
+
+    .form-group
+      = f.label :editable, class: 'control-label mr-m'
+      br
+      label.radio-inline.mr-m
+        = f.radio_button :editable, :true, checked: @section.editable
+        = t('.true')
+      label.radio-inline
+        = f.radio_button :editable, :false, checked: !@section.editable
+        = t('.false')
+
+    .form-group
+      = f.label :template, class: 'control-label'
+      = f.text_area :template, class: 'form-control tinymce'
+
+    .form-group
+      = f.label :instructions, class: 'control-label'
+      = f.text_area :instructions, class: 'form-control tinymce'
+
+    .form-group
+      = f.label :example, class: 'control-label'
+      = f.text_area :example, class: 'form-control tinymce'
+
+    .form-group
+      = f.submit class: 'btn btn-default'
+
+  div
+    = link_to t('.back'), sections_path, class: 'btn btn-default'

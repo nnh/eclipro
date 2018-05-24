@@ -21,7 +21,7 @@
     "webpack-dev-server": "2.11.2"
   },
   "scripts": {
-    "dev": "bundle install && bundle exec foreman start -f Procfile",
+    "dev": "bundle install && bundle exec foreman start -f Procfile.dev",
     "build": "bundle exec rails webpacker:compile",
     "lint": "eslint app/javascript"
   }

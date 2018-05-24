@@ -3,6 +3,7 @@ en:
     application:
       view_protocols: View protocols
       create_new_protocols: Create new protocols
+      section_list: Section list
       help: Help
       sign_in: Sign in
       sign_out: Sign out

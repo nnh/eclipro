@@ -1,0 +1,37 @@
+.col-md-12
+  h3 = t('.title')
+
+  table.table.table-striped.mt-xl
+    tbody
+      tr
+        td.col-md-2
+          b = t('.template_name')
+        td.col-md-10 = @section.template_name
+      tr
+        td.col-md-2
+          b = t('.section_no')
+        td.col-md-10 = @section.no_seq
+      tr
+        td.col-md-2
+          b = t('.section_title')
+        td.col-md-10 = @section.title
+      tr
+        td.col-md-2
+          b = t('.editable')
+        td.col-md-10 = @section.editable ? t('.true') : t('.false')
+      tr
+        td.col-md-2
+          b = t('.template')
+        td.col-md-10 = @section.template.empty? ? t('.nothing') : @section.template.html_safe
+      tr
+        td.col-md-2
+          b = t('.instructions')
+        td.col-md-10 = @section.instructions.empty? ? t('.nothing') : @section.instructions.html_safe
+      tr
+        td.col-md-2
+          b = t('.example')
+        td.col-md-10 = @section.example.empty? ? t('.nothing') : @section.example.html_safe
+
+  - if can? :edit, @section
+    = link_to t('.edit'), edit_section_path(@section), class: 'btn btn-default mr-m'
+  = link_to t('.back'), sections_path, class: 'btn btn-default mr-m'

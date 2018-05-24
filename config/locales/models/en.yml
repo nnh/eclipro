@@ -2,6 +2,7 @@ en:
   activerecord: &activerecord
     models:
       protocol: Protocol
+      section: Section
     attributes:
       protocol:
         title: Title
@@ -23,6 +24,13 @@ en:
         sections: Sections
       reference_docx:
         file: File
+      section:
+        template_name: Template name
+        title: Section title
+        editable: Editable
+        template: Template
+        instructions: Instructions
+        example: Example
     errors:
       select_sections: please select at least one.
 

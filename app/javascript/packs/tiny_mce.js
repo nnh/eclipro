@@ -128,8 +128,8 @@ $(() => {
         editor.addButton('blank', {
           tooltip: 'Insert blank after selected container',
           icon: 'icon-arrow',
-          onclick: function() {
-            let node = tinymce.get('form-tinymce').selection.getNode();
+          onclick: () => {
+            const node = editor.selection.getNode();
             $(node).closest('.container').append('<div class="space"><p>&nbsp;</p></div>');
           }
         });
