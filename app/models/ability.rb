@@ -91,7 +91,6 @@ class Ability
       docx.protocol.participant?(user)
     end
 
-    # TODO: set ability
-    can :manage, Section
+    can :manage, Section if user.system_admin?
   end
 end

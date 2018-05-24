@@ -1,15 +1,13 @@
 require 'rails_helper'
 
 describe SectionsController, type: :controller do
-  let(:admin) { create(:user) }
-  let(:user) { create(:user) }
+  let(:system_admin_user) { create(:user, system_admin: true) }
+  let(:general_user) { create(:user) }
 
   before(:each) { sign_in(current_user) }
 
-  # TODO: ability
-
-  context 'editable user' do
-    let(:current_user) { admin }
+  context 'system admin user' do
+    let(:current_user) { system_admin_user }
     let(:section) { create(:section) }
 
     describe 'GET #index' do
@@ -44,36 +42,36 @@ describe SectionsController, type: :controller do
     end
   end
 
-  context 'not editable user' do
-    let(:current_user) { user }
+  context 'general user' do
+    let(:current_user) { general_user }
     let!(:section) { create(:section) }
 
     describe 'GET #index' do
-      it 'show @sections' do
+      it 'redirect_to root_path (not show @sections)' do
         get :index
-        expect(assigns(:sections).count).to eq(Section.all.count)
+        expect(response).to redirect_to root_path
       end
     end
 
     describe 'GET #show' do
-      it 'show @section' do
+      it 'redirect_to root_path (not show @section)' do
         get :show, params: { id: section }
-        expect(assigns(:section)).to eq section
+        expect(response).to redirect_to root_path
       end
     end
 
-    # describe 'GET #edit' do
-    #   it 'redirect_to root_path (not renders edit template)' do
-    #     get :edit, params: { id: section }
-    #     expect(response).to redirect_to root_path
-    #   end
-    # end
+    describe 'GET #edit' do
+      it 'redirect_to root_path (not renders edit template)' do
+        get :edit, params: { id: section }
+        expect(response).to redirect_to root_path
+      end
+    end
 
-    # describe 'PATCH #update' do
-      # it 'redirect_to root_path (not updates @section)' do
-        # patch :update, params: { id: section, section: { title: 'edited title' } }
-        # expect(response).to redirect_to root_path
-      # end
-    # end
+    describe 'PATCH #update' do
+      it 'redirect_to root_path (not updates @section)' do
+        patch :update, params: { id: section, section: { title: 'edited title' } }
+        expect(response).to redirect_to root_path
+      end
+    end
   end
 end

@@ -17,7 +17,8 @@ html
             - if user_signed_in?
               li = link_to t('.view_protocols'), protocols_path
               li = link_to t('.create_new_protocols'), new_protocol_path
-              li = link_to t('.section_list'), sections_path
+              - if current_user.system_admin?
+                li = link_to t('.section_list'), sections_path
             li = link_to t('.help'),
                  'https://docs.google.com/document/d/e/2PACX-1vRC2HhdHbtB6M94VMRe9M9U_n05ZGKejh_cot9yc8S78bqX0NThv1_cluiUkBYLeNuiF9D2oLFr1Gs5/pub',
                  target: '_blank'

@@ -18,7 +18,7 @@
       tr
         td.col-md-2
           b = t('.editable')
-        td.col-md-10 = @section.editable ? t('.true') : t('.false')
+        td.col-md-10 = @section.editable? ? t('.true') : t('.false')
       tr
         td.col-md-2
           b = t('.template')
@@ -32,6 +32,5 @@
           b = t('.example')
         td.col-md-10 = @section.example.empty? ? t('.nothing') : @section.example.html_safe
 
-  - if can? :edit, @section
-    = link_to t('.edit'), edit_section_path(@section), class: 'btn btn-default mr-m'
+  = link_to t('.edit'), edit_section_path(@section), class: 'btn btn-default mr-m'
   = link_to t('.back'), sections_path, class: 'btn btn-default mr-m'

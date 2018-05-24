@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature Section, js: true do
-  let(:admin_user) { create(:user) }
+  let(:system_admin_user) { create(:user, system_admin: true) }
   let(:general_user) { create(:user) }
   let!(:section) { create(:section) }
 
@@ -10,10 +10,8 @@ feature Section, js: true do
     visit sections_path
   end
 
-  # TODO: ability
-
-  feature 'editable user' do
-    let!(:current_user) { admin_user }
+  feature 'system admin user' do
+    let!(:current_user) { system_admin_user }
 
     scenario 'show sections' do
       expect(page).to have_content(Section.all.sample.title)
@@ -39,27 +37,21 @@ feature Section, js: true do
     end
   end
 
-  feature 'not editable user' do
+  feature 'general user' do
     let!(:current_user) { general_user }
 
-    scenario 'show sections' do
-      expect(page).to have_content(Section.all.sample.title)
+    scenario 'not show sections' do
+      expect(current_path).to eq root_path
     end
 
-    scenario 'show section' do
-      within(:xpath, "//tr[td[contains(., '#{section.title}')]]") do
-        click_on 'Details'
-      end
-      expect(current_path).to eq section_path(section)
+    scenario 'not show section' do
+      visit section_path(section)
+      expect(current_path).to eq root_path
     end
 
-    # scenario 'can not update section' do
-    #   within(:xpath, "//tr[td[contains(., '#{section.title}')]]") do
-    #     expect(page).not_to have_content('Edit')
-    #   end
-    #
-    #   visit edit_section_path(section)
-    #   expect(current_path).to eq root_path
-    # end
+    scenario 'not update section' do
+      visit edit_section_path(section)
+      expect(current_path).to eq root_path
+    end
   end
 end

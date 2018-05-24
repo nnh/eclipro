@@ -19,6 +19,4 @@
             td = section.no_seq
             td = section.title
             td = link_to t('.show'), section_path(section), class: 'btn btn-default'
-            td
-              - if can? :edit, section
-                = link_to t('.edit'), edit_section_path(section), class: 'btn btn-default'
+            td = link_to t('.edit'), edit_section_path(section), class: 'btn btn-default'
