@@ -14,14 +14,15 @@
     "rails-ujs": "^5.1.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "tinymce": "^4.7.4"
+    "tinymce": "^4.7.4",
+    "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
     "eslint": "^4.16.0",
     "webpack-dev-server": "2.11.2"
   },
   "scripts": {
-    "dev": "bundle install && bundle exec foreman start -f Procfile",
+    "dev": "bundle install && bundle exec foreman start -f Procfile.dev",
     "build": "bundle exec rails webpacker:compile",
     "lint": "eslint app/javascript"
   }
