@@ -13,7 +13,7 @@
             .checkbox-text = t('.show_resolved')
             .resolve-message-params data-hide-text="#{t('.hide_resolved')}" data-show-text="#{t('.show_resolved')}"
 
-        .mt-xl.comment-index data-buttons="#{t('.buttons')}"
+        .mt-xl.comment-index data-buttons="#{t('.buttons')}" data-csrf="#{form_authenticity_token}"
 
         .text-right.add-comment-form
           = button_tag t('.comment'), type: :button, class: 'btn btn-default add-comment-button'

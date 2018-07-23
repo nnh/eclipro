@@ -27,11 +27,6 @@ class CommentsController < ApplicationController
                                                                    each_serializer: CommentSerializer)
   end
 
-  def reply
-    render json: { content_id: @content.id, current_user_id: current_user.id,
-                   parent_id: comment_params[:parent_id], url: protocol_content_comments_path(@protocol, @content) }
-  end
-
   private
 
     def set_root_comment

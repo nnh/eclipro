@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import $ from 'jquery'
+import 'whatwg-fetch'
 
 class CommentIndex extends React.Component {
   render() {
@@ -17,7 +17,7 @@ class CommentIndex extends React.Component {
           </div>
           <div>{data.body}</div>
           <div className='text-right'>
-            {data.reply_url.length > 0 ? <ReplyButton url={data.reply_url} parentId={data.id} text={this.props.buttons[0]} /> : null}
+            {data.replyable ? <ReplyButton parentId={data.id} text={this.props.buttons[0]} /> : null}
             {data.resolve_url.length > 0 ? <ResolveButton url={data.resolve_url} text={this.props.buttons[1]} /> : null}
           </div>
           <div className='ml-xl'>
@@ -29,7 +29,7 @@ class CommentIndex extends React.Component {
     });
 
     return (
-      <div>{body}</div>
+      [body]
     );
   }
 }
@@ -48,34 +48,44 @@ class CommentForm extends React.Component {
           <button className='btn btn-default' disabled={!this.state.text} onClick={(e) => { this.onSubmit(e) }}
                   data-content-id={this.props.data.content_id} data-user-id={this.props.data.current_user_id}
                   data-parent-id={this.props.data.parent_id} data-url={this.props.data.url}>
-            {this.props.buttons[0]}
+            {this.props.data.buttons[0]}
           </button>
-          <button className='btn btn-default ml-s' onClick={(e) => { this.onCancel(e) }}>{this.props.buttons[1]}</button>
+          <button className='btn btn-default ml-s' onClick={(e) => { this.onCancel(e) }}>{this.props.data.buttons[1]}</button>
         </div>
       </div>
     );
   }
 
   onSubmit(e) {
-    $.ajax({
-      url: $(e.target).data('url'),
-      type: 'POST',
-      dataType: 'json',
-      data: {
+    fetch(e.target.dataset.url, {
+      mode: 'cors',
+      credentials: 'include',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': document.querySelector('.comment-index').dataset.csrf
+      },
+      body: JSON.stringify({
         comment: {
-          body: $(e.target).parent().siblings().val(),
-          content_id: $(e.target).data('content-id'),
-          user_id: $(e.target).data('user-id'),
-          parent_id: $(e.target).data('parent-id')
+          body: e.target.parentElement.previousSibling.value,
+          content_id: e.target.dataset.contentId,
+          user_id: e.target.dataset.userId,
+          parent_id: e.target.dataset.parentId
         }
+      })
+    }).then((response) => {
+      return response.json();
+    }).then((json) => {
+      document.querySelector(`#section-${json.id}-comment-icon`).innerHTML = '<i class="fa fa-commenting mr-s">';
+      const commentButton = document.querySelector('.show-comments-button');
+      commentButton.innerHTML = `${commentButton.dataset.text} (${json.count})`;
+      if (commentButton.classList.contains('btn-default')) {
+        commentButton.classList.remove('btn-default');
+        commentButton.classList.add('btn-primary');
       }
-    }).done((res) => {
-      $(`#section-${res.id}-comment-icon`).html('<i class="fa fa-commenting mr-s">');
-      $('.show-comments-button').html(`${$('.show-comments-button').data('text')} (${res.count})`);
-      $('.show-comments-button').removeClass().addClass('btn btn-primary show-comments-button');
       ReactDOM.render(
-        <CommentIndex data={res.comments} buttons={$('.comment-index').data('buttons')} />,
-        $('.comment-index')[0]
+        <CommentIndex data={json.comments} buttons={JSON.parse(document.querySelector('.comment-index').dataset.buttons)} />,
+        document.querySelector('.comment-index')
       );
       resetForm();
       changeResolvedComment();
@@ -87,7 +97,7 @@ class CommentForm extends React.Component {
   }
 
   onKeyUp(e) {
-    this.setState({ text: $(e.target).val() });
+    this.setState({ text: e.target.value });
   }
 }
 
@@ -101,19 +111,25 @@ class ResolveButton extends React.Component {
   }
 
   onClick(e) {
-    $.ajax({
-      url: $(e.target).data('url'),
-      type: 'PUT',
-      dataType: 'json',
-      data: {
+    fetch(e.target.dataset.url, {
+      mode: 'cors',
+      credentials: 'include',
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': document.querySelector('.comment-index').dataset.csrf
+      },
+      body: JSON.stringify({
         comment: {
           resolve: true
         }
-      }
-    }).done((res) => {
+      })
+    }).then((response) => {
+      return response.json();
+    }).then((json) => {
       ReactDOM.render(
-        <CommentIndex data={res} buttons={$('.comment-index').data('buttons')} />,
-        $('.comment-index')[0]
+        <CommentIndex data={json} buttons={JSON.parse(document.querySelector('.comment-index').dataset.buttons)} />,
+        document.querySelector('.comment-index')
       );
       resetForm();
       changeResolvedComment();
@@ -124,84 +140,83 @@ class ResolveButton extends React.Component {
 class ReplyButton extends React.Component {
   render() {
     return (
-      <button className='btn btn-default' onClick={(e) => { this.onClick(e) }}
-              data-url={this.props.url} data-parent-id={this.props.parentId}>
+      <button className='btn btn-default' onClick={(e) => { this.onClick(e) }} data-parent-id={this.props.parentId}>
         {this.props.text}
       </button>
     );
   }
 
   onClick(e) {
-    $.ajax({
-      url: $(e.target).data('url'),
-      type: 'GET',
-      dataType: 'json',
-      data: {
-        comment: {
-          parent_id: $(e.target).data('parent-id')
-        }
-      }
-    }).done((res) => {
-      resetForm();
-      ReactDOM.render(
-        <CommentForm data={res} buttons={$('.new-comment-form').data('buttons')} />,
-        $(`#reply-${res.parent_id}`)[0]
-      );
-    });
+    resetForm();
+    const parentId = e.target.dataset.parentId;
+    ReactDOM.render(
+      <CommentForm data={createData(parentId)} />,
+      document.querySelector(`#reply-${parentId}`)
+    );
   }
 }
 
 function resetForm() {
-  $('.reply-form, .new-comment-form').each((i, element) => { ReactDOM.unmountComponentAtNode(element); });
-  $('.new-comment-form').hide();
-  $('.add-comment-form').show();
+  Array.from(document.querySelectorAll('.reply-form, .new-comment-form'), (element) => {
+    ReactDOM.unmountComponentAtNode(element);
+  });
+  document.querySelector('.new-comment-form').style.display = 'none';
+  document.querySelector('.add-comment-form').style.display = 'block';
 }
 
 function changeResolvedComment() {
-  if ($('.show-resolved').is(':checked')) {
-    $('.resolve-comment').show();
-    $('.checkbox-text').text($('.resolve-message-params').data('hide-text'));
+  if (document.querySelector('.show-resolved').checked) {
+    for (const target of document.querySelectorAll('.resolve-comment')) { target.style.display = 'block'; }
+    document.querySelector('.checkbox-text').innerText = document.querySelector('.resolve-message-params').dataset.hideText;
   } else {
-    $('.resolve-comment').hide();
-    $('.checkbox-text').text($('.resolve-message-params').data('show-text'));
+    for (const target of document.querySelectorAll('.resolve-comment')) { target.style.display = 'none'; }
+    document.querySelector('.checkbox-text').innerText = document.querySelector('.resolve-message-params').dataset.showText;
   }
 }
 
-$(() => {
-  $('.show-comments-button').click((e) => {
-    $.ajax({
-      url: $(e.target).data('url'),
-      type: 'GET',
-      dataType: 'json'
-    }).done((res) => {
+function createData(parentId = null) {
+  const dataset = document.querySelector('.new-comment-form').dataset;
+  return {
+    content_id: dataset.contentId,
+    current_user_id: dataset.currentUserId,
+    parent_id: parentId,
+    url: dataset.url,
+    buttons: JSON.parse(dataset.buttons)
+  };
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.querySelector('.show-comments-button') == null) return;
+
+  document.querySelector('.show-comments-button').addEventListener('click', (e) => {
+    const target = document.querySelector('.comment-index');
+    fetch(e.target.dataset.url, {
+      mode: 'cors',
+      credentials: 'include'
+    }).then((response) => {
+      return response.json();
+    }).then((json) => {
       ReactDOM.render(
-        <CommentIndex data={res} buttons={$('.comment-index').data('buttons')} />,
-        $('.comment-index')[0]
+        <CommentIndex data={json} buttons={JSON.parse(target.dataset.buttons)} />,
+        target
       );
 
+      // TODO
       $('.comment-modal').modal('show');
       changeResolvedComment();
     });
   });
 
-  $(document).on('click', '.add-comment-button', () => {
+  document.querySelector('.add-comment-button').addEventListener('click', () => {
     resetForm();
-
-    const target = $('.new-comment-form');
-    const data = {
-      content_id: target.data('content-id'),
-      current_user_id: target.data('current-user-id'),
-      parent_id: null,
-      url: target.data('url')
-    };
     ReactDOM.render(
-      <CommentForm data={data} buttons={target.data('buttons')} />,
-      $('.new-comment-form')[0]
+      <CommentForm data={createData()} />,
+      document.querySelector('.new-comment-form')
     );
 
-    $('.add-comment-form').hide();
-    $('.new-comment-form').show();
+    document.querySelector('.add-comment-form').style.display = 'none';
+    document.querySelector('.new-comment-form').style.display = 'block';
   });
 
-  $(document).on('change', '.show-resolved', changeResolvedComment);
+  document.querySelector('.show-resolved').addEventListener('change', changeResolvedComment);
 });
