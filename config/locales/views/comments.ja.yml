@@ -4,7 +4,6 @@ ja:
       title: セクションコメント
       comment: コメントする
       show_resolved: 解決済みコメントを表示する
-      hide_resolved: 解決済みコメントを隠す
       buttons:
         - 返信
         - 解決

@@ -6,8 +6,7 @@
         - comments_count = " (#{content.comments_count})" if content.comments_count > 0
         - btn_class = comments_count.present? ? 'btn-primary' : 'btn-default'
         = button_tag "#{t('.comment')}#{comments_count}", type: :button,
-                     class: "btn #{btn_class} show-comments-button",
-                     data: { url: protocol_content_comments_path(protocol, content), text: t('.comment') }
+                     class: "btn #{btn_class} show-comments-button", data: { text: t('.comment') }
       .pull-right
         = button_tag t('.history'), type: :button, class: 'btn btn-default history-button',
                      data: { url:  history_protocol_content_path(protocol, content) }

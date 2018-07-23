@@ -13,6 +13,7 @@
     "prop-types": "^15.6.0",
     "rails-ujs": "^5.1.4",
     "react": "^16.2.0",
+    "react-bootstrap": "^0.32.1",
     "react-dom": "^16.2.0",
     "tinymce": "^4.7.4",
     "whatwg-fetch": "^2.0.4"

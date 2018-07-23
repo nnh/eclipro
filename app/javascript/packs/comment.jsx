@@ -1,6 +1,44 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import 'whatwg-fetch'
+import Modal from './modal'
+
+class CommentBase extends React.Component {
+  render() {
+    return(
+      <div>
+        <div className='pull-right negative-mt-xl'>
+          <label className='checkbox-inline mr-s'>
+            <input type='checkbox' className='show-resolved' onChange={() => { this.showResolved() }} />
+            {this.props.showResolved}
+          </label>
+        </div>
+        <div className='mt-xl comment-index'></div>
+        <div className='text-right add-comment-form'>
+          <button name='button' type='button' className='btn btn-default' onClick={() => { this.addComment() }}>
+            {this.props.button}
+          </button>
+        </div>
+        <div className='new-comment-form hidden'></div>
+      </div>
+    );
+  }
+
+  showResolved() {
+    changeResolvedComment();
+  }
+
+  addComment() {
+    resetForm();
+    ReactDOM.render(
+      <CommentForm data={createData()} />,
+      document.querySelector('.new-comment-form')
+    );
+
+    document.querySelector('.new-comment-form').classList.remove('hidden');
+    document.querySelector('.add-comment-form').classList.add('hidden');
+  }
+}
 
 class CommentIndex extends React.Component {
   render() {
@@ -28,9 +66,7 @@ class CommentIndex extends React.Component {
       );
     });
 
-    return (
-      [body]
-    );
+    return body;
   }
 }
 
@@ -63,7 +99,7 @@ class CommentForm extends React.Component {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-CSRF-Token': document.querySelector('.comment-index').dataset.csrf
+        'X-CSRF-Token': document.querySelector('.comment-modal').dataset.csrf
       },
       body: JSON.stringify({
         comment: {
@@ -77,14 +113,14 @@ class CommentForm extends React.Component {
       return response.json();
     }).then((json) => {
       document.querySelector(`#section-${json.id}-comment-icon`).innerHTML = '<i class="fa fa-commenting mr-s">';
+
       const commentButton = document.querySelector('.show-comments-button');
       commentButton.innerHTML = `${commentButton.dataset.text} (${json.count})`;
-      if (commentButton.classList.contains('btn-default')) {
-        commentButton.classList.remove('btn-default');
-        commentButton.classList.add('btn-primary');
-      }
+      commentButton.classList.remove('btn-default');
+      commentButton.classList.add('btn-primary');
+
       ReactDOM.render(
-        <CommentIndex data={json.comments} buttons={JSON.parse(document.querySelector('.comment-index').dataset.buttons)} />,
+        <CommentIndex data={json.comments} buttons={JSON.parse(document.querySelector('.comment-modal').dataset.buttons)} />,
         document.querySelector('.comment-index')
       );
       resetForm();
@@ -117,7 +153,7 @@ class ResolveButton extends React.Component {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        'X-CSRF-Token': document.querySelector('.comment-index').dataset.csrf
+        'X-CSRF-Token': document.querySelector('.comment-modal').dataset.csrf
       },
       body: JSON.stringify({
         comment: {
@@ -128,7 +164,7 @@ class ResolveButton extends React.Component {
       return response.json();
     }).then((json) => {
       ReactDOM.render(
-        <CommentIndex data={json} buttons={JSON.parse(document.querySelector('.comment-index').dataset.buttons)} />,
+        <CommentIndex data={json} buttons={JSON.parse(document.querySelector('.comment-modal').dataset.buttons)} />,
         document.querySelector('.comment-index')
       );
       resetForm();
@@ -157,40 +193,42 @@ class ReplyButton extends React.Component {
 }
 
 function resetForm() {
-  Array.from(document.querySelectorAll('.reply-form, .new-comment-form'), (element) => {
-    ReactDOM.unmountComponentAtNode(element);
-  });
-  document.querySelector('.new-comment-form').style.display = 'none';
-  document.querySelector('.add-comment-form').style.display = 'block';
+  Array.from(document.querySelectorAll('.reply-form, .new-comment-form'), (element) => { ReactDOM.unmountComponentAtNode(element); });
+  document.querySelector('.new-comment-form').classList.add('hidden');
+  document.querySelector('.add-comment-form').classList.remove('hidden');
 }
 
 function changeResolvedComment() {
   if (document.querySelector('.show-resolved').checked) {
-    for (const target of document.querySelectorAll('.resolve-comment')) { target.style.display = 'block'; }
-    document.querySelector('.checkbox-text').innerText = document.querySelector('.resolve-message-params').dataset.hideText;
+    Array.from(document.querySelectorAll('.resolve-comment'), (element) => { element.classList.remove('hidden') });
   } else {
-    for (const target of document.querySelectorAll('.resolve-comment')) { target.style.display = 'none'; }
-    document.querySelector('.checkbox-text').innerText = document.querySelector('.resolve-message-params').dataset.showText;
+    Array.from(document.querySelectorAll('.resolve-comment'), (element) => { element.classList.add('hidden') });
   }
 }
 
 function createData(parentId = null) {
-  const dataset = document.querySelector('.new-comment-form').dataset;
+  const dataset = document.querySelector('.comment-modal').dataset;
   return {
     content_id: dataset.contentId,
     current_user_id: dataset.currentUserId,
     parent_id: parentId,
     url: dataset.url,
-    buttons: JSON.parse(dataset.buttons)
+    buttons: JSON.parse(dataset.formButtons)
   };
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   if (document.querySelector('.show-comments-button') == null) return;
 
-  document.querySelector('.show-comments-button').addEventListener('click', (e) => {
-    const target = document.querySelector('.comment-index');
-    fetch(e.target.dataset.url, {
+  const target = document.querySelector('.comment-modal');
+
+  const event = () => {
+    ReactDOM.render(
+      <CommentBase showResolved={target.dataset.showResolved} button={target.dataset.commentText} />,
+      document.querySelector('.comment-modal-body')
+    )
+
+    fetch(target.dataset.url, {
       mode: 'cors',
       credentials: 'include'
     }).then((response) => {
@@ -198,25 +236,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }).then((json) => {
       ReactDOM.render(
         <CommentIndex data={json} buttons={JSON.parse(target.dataset.buttons)} />,
-        target
+        document.querySelector('.comment-index')
       );
-
-      // TODO
-      $('.comment-modal').modal('show');
       changeResolvedComment();
     });
-  });
+  }
 
-  document.querySelector('.add-comment-button').addEventListener('click', () => {
-    resetForm();
-    ReactDOM.render(
-      <CommentForm data={createData()} />,
-      document.querySelector('.new-comment-form')
-    );
-
-    document.querySelector('.add-comment-form').style.display = 'none';
-    document.querySelector('.new-comment-form').style.display = 'block';
-  });
-
-  document.querySelector('.show-resolved').addEventListener('change', changeResolvedComment);
+  ReactDOM.render(
+    <Modal title={target.dataset.title} selector={document.querySelector('.show-comments-button')}
+           className='comment-modal-body' event={event} />,
+    target
+  );
 });
