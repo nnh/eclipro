@@ -2,11 +2,7 @@
   .content-has-reviewer data-has-reviewer="#{content.has_reviewer?}" data-message="#{t('.no_reviewer')}"
   - if content.editable
     .mb-xl
-      .pull-right.comment-button
-        - comments_count = " (#{content.comments_count})" if content.comments_count > 0
-        - btn_class = comments_count.present? ? 'btn-primary' : 'btn-default'
-        = button_tag "#{t('.comment')}#{comments_count}", type: :button,
-                     class: "btn #{btn_class} show-comments-button", data: { text: t('.comment') }
+      .pull-right.comment-button data-text="#{t('.comment')}" data-count="#{content.comments_count}"
       .pull-right
         = button_tag t('.history'), type: :button, class: 'btn btn-default history-button',
                      data: { url:  history_protocol_content_path(protocol, content) }

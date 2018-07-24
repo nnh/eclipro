@@ -1,95 +1,143 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import 'whatwg-fetch'
-import Modal from './modal'
+import { Button, Modal } from 'react-bootstrap'
 
 class CommentBase extends React.Component {
-  render() {
-    return(
-      <div>
-        <div className='pull-right negative-mt-xl'>
-          <label className='checkbox-inline mr-s'>
-            <input type='checkbox' className='show-resolved' onChange={() => { this.showResolved() }} />
-            {this.props.showResolved}
-          </label>
-        </div>
-        <div className='mt-xl comment-index'></div>
-        <div className='text-right add-comment-form'>
-          <button name='button' type='button' className='btn btn-default' onClick={() => { this.addComment() }}>
-            {this.props.button}
-          </button>
-        </div>
-        <div className='new-comment-form hidden'></div>
-      </div>
-    );
+  constructor(props) {
+    super(props);
+    this.state = {
+      comments: [],
+      showResolved: false
+    };
+    this.getComments();
   }
 
-  showResolved() {
-    changeResolvedComment();
+  getComments() {
+    fetch(this.props.data.url, {
+      mode: 'cors',
+      credentials: 'include'
+    }).then((response) => {
+      return response.json();
+    }).then((json) => {
+      this.setState({ comments: json });
+    });
   }
 
-  addComment() {
-    resetForm();
+  setComments = (comments, count) => {
+    this.setState({ comments: comments });
+    this.props.setCommentCount(count);
+    this.resetForm();
+  }
+
+  addCommentForm() {
+    this.resetForm();
     ReactDOM.render(
-      <CommentForm data={createData()} />,
+      <CommentForm parentId={null} node={'.new-comment-form'} setComments={this.setComments} resetForm={this.resetForm} />,
       document.querySelector('.new-comment-form')
     );
 
     document.querySelector('.new-comment-form').classList.remove('hidden');
     document.querySelector('.add-comment-form').classList.add('hidden');
   }
+
+  resetForm() {
+    Array.from(document.querySelectorAll('.reply-form, .new-comment-form'), (element) => { ReactDOM.unmountComponentAtNode(element); });
+    document.querySelector('.new-comment-form').classList.add('hidden');
+    document.querySelector('.add-comment-form').classList.remove('hidden');
+  }
+
+  toggleShowResolved() {
+    this.setState({ showResolved: !this.state.showResolved });
+  }
+
+  render() {
+    return(
+      <span>
+        <div className='pull-right'>
+          <label className='checkbox-inline mr-s'>
+            <input type='checkbox' className='show-resolved' onChange={() => { this.toggleShowResolved() }} />
+            {this.props.data.showResolved}
+          </label>
+        </div>
+        <div className='mt-xl comment-index'>
+          {
+            this.state.comments.map((comment) => {
+              return <Comment data={comment} buttons={JSON.parse(this.props.data.buttons)}
+                              key={`comment_${comment.id}`} showResolved={this.state.showResolved}
+                              setComments={this.setComments} resetForm={this.resetForm} />
+            })
+          }
+        </div>
+        <div className='text-right add-comment-form'>
+          <Button onClick={() => { this.addCommentForm() }}>{this.props.data.commentText}</Button>
+        </div>
+        <div className='new-comment-form hidden'></div>
+      </span>
+    );
+  }
 }
 
-class CommentIndex extends React.Component {
-  render() {
-    const body = this.props.data.map((data) => {
-      return(
-        <div className={`comment p-m mt-s mb-s${data.resolve ? ' resolve-comment' : '' }`} key={`comment_${data.id}`} >
-          <div>
-            <i className='fa fa-user mr-xs'></i>
-            {data.user.name}
-            <div className='pull-right'>
-              <i className='fa fa-clock-o mr-xs'></i>
-              {data.created_at}
-            </div>
-          </div>
-          <div>{data.body}</div>
-          <div className='text-right'>
-            {data.replyable ? <ReplyButton parentId={data.id} text={this.props.buttons[0]} /> : null}
-            {data.resolve_url.length > 0 ? <ResolveButton url={data.resolve_url} text={this.props.buttons[1]} /> : null}
-          </div>
-          <div className='ml-xl'>
-            {data.replies.length > 0 ? <CommentIndex data={data.replies} buttons={this.props.buttons} /> : null}
-          </div>
-          <div className='reply-form' id={`reply-${data.id}`}></div>
-        </div>
-      );
-    });
+class Comment extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-    return body;
+  render() {
+    return(
+      <div className={`comment p-m mt-s mb-s${this.props.data.resolve ? ' resolve-comment' : '' }${this.props.data.resolve && !this.props.showResolved ? ' hidden' : ''}`} >
+        <div>
+          <i className='fa fa-user mr-xs'></i>
+          {this.props.data.user.name}
+          <div className='pull-right'>
+            <i className='fa fa-clock-o mr-xs'></i>
+            {this.props.data.created_at}
+          </div>
+        </div>
+        <div>{this.props.data.body}</div>
+        <div className='text-right'>
+          {
+            this.props.data.replyable ?
+              <ReplyButton text={this.props.buttons[0]} parentId={this.props.data.id}
+                           setComments={this.props.setComments} resetForm={this.props.resetForm} /> : null
+          }
+          {
+            this.props.data.resolve_url.length > 0 ?
+              <ResolveButton url={this.props.data.resolve_url} text={this.props.buttons[1]} setComments={this.props.setComments} /> : null
+          }
+        </div>
+        <div className='ml-xl'>
+          {
+            this.props.data.replies.length > 0 ?
+              this.props.data.replies.map((reply) => {
+                return <Comment data={reply} buttons={this.props.buttons} key={`comment_${reply.id}`}
+                                showResolved={this.props.showResolved} setComments={this.props.setComments} resetForm={this.props.resetForm} />
+              }) : null
+          }
+        </div>
+        <div className='reply-form' id={`reply-${this.props.data.id}`}></div>
+      </div>
+    );
   }
 }
 
 class CommentForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { text: '' };
+    this.state = {
+      text: '',
+      data: this.getData()
+    };
   }
 
-  render() {
-    return (
-      <div>
-        <textarea name='comment[body]' className='form-control mt-s mb-s' rows='3' onKeyUp={(e) => { this.onKeyUp(e) }}></textarea>
-        <div className='text-right'>
-          <button className='btn btn-default' disabled={!this.state.text} onClick={(e) => { this.onSubmit(e) }}
-                  data-content-id={this.props.data.content_id} data-user-id={this.props.data.current_user_id}
-                  data-parent-id={this.props.data.parent_id} data-url={this.props.data.url}>
-            {this.props.data.buttons[0]}
-          </button>
-          <button className='btn btn-default ml-s' onClick={(e) => { this.onCancel(e) }}>{this.props.data.buttons[1]}</button>
-        </div>
-      </div>
-    );
+  getData() {
+    const data = document.querySelector('.comment-modal').dataset;
+    return {
+      content_id: data.contentId,
+      current_user_id: data.currentUserId,
+      url: data.url,
+      buttons: JSON.parse(data.formButtons)
+    };
   }
 
   onSubmit(e) {
@@ -113,37 +161,38 @@ class CommentForm extends React.Component {
       return response.json();
     }).then((json) => {
       document.querySelector(`#section-${json.id}-comment-icon`).innerHTML = '<i class="fa fa-commenting mr-s">';
-
-      const commentButton = document.querySelector('.show-comments-button');
-      commentButton.innerHTML = `${commentButton.dataset.text} (${json.count})`;
-      commentButton.classList.remove('btn-default');
-      commentButton.classList.add('btn-primary');
-
-      ReactDOM.render(
-        <CommentIndex data={json.comments} buttons={JSON.parse(document.querySelector('.comment-modal').dataset.buttons)} />,
-        document.querySelector('.comment-index')
-      );
-      resetForm();
-      changeResolvedComment();
+      this.props.setComments(json.comments, json.count);
     });
   }
 
   onCancel(e) {
-    resetForm();
+    this.props.resetForm();
   }
 
   onKeyUp(e) {
     this.setState({ text: e.target.value });
   }
+
+  render() {
+    return (
+      <div className='comment-form'>
+        <textarea name='comment[body]' className='form-control mt-s mb-s' rows='3' onKeyUp={(e) => { this.onKeyUp(e) }}></textarea>
+        <div className='text-right'>
+          <Button disabled={!this.state.text} onClick={(e) => { this.onSubmit(e) }}
+                  data-content-id={this.state.data.content_id} data-user-id={this.state.data.current_user_id}
+                  data-parent-id={this.props.parentId} data-url={this.state.data.url}>
+            {this.state.data.buttons[0]}
+          </Button>
+          <Button className='ml-s' onClick={(e) => { this.onCancel(e) }}>{this.state.data.buttons[1]}</Button>
+        </div>
+      </div>
+    );
+  }
 }
 
 class ResolveButton extends React.Component {
   render() {
-    return (
-      <button className='btn btn-default' onClick={(e) => { this.onClick(e) }} data-url={this.props.url}>
-        {this.props.text}
-      </button>
-    );
+    return <Button onClick={(e) => { this.onClick(e) }} data-url={this.props.url}>{this.props.text}</Button>;
   }
 
   onClick(e) {
@@ -163,88 +212,76 @@ class ResolveButton extends React.Component {
     }).then((response) => {
       return response.json();
     }).then((json) => {
-      ReactDOM.render(
-        <CommentIndex data={json} buttons={JSON.parse(document.querySelector('.comment-modal').dataset.buttons)} />,
-        document.querySelector('.comment-index')
-      );
-      resetForm();
-      changeResolvedComment();
+      this.props.setComments(json.comments, json.count);
     });
   }
 }
 
 class ReplyButton extends React.Component {
   render() {
-    return (
-      <button className='btn btn-default' onClick={(e) => { this.onClick(e) }} data-parent-id={this.props.parentId}>
-        {this.props.text}
-      </button>
-    );
+    return <Button onClick={(e) => { this.onClick(e) }}>{this.props.text}</Button>;
   }
 
   onClick(e) {
-    resetForm();
-    const parentId = e.target.dataset.parentId;
+    this.props.resetForm();
     ReactDOM.render(
-      <CommentForm data={createData(parentId)} />,
-      document.querySelector(`#reply-${parentId}`)
+      <CommentForm parentId={this.props.parentId} node={`#reply-${this.props.parentId}`}
+                   setComments={this.props.setComments} resetForm={this.props.resetForm} />,
+      document.querySelector(`#reply-${this.props.parentId}`)
     );
   }
 }
 
-function resetForm() {
-  Array.from(document.querySelectorAll('.reply-form, .new-comment-form'), (element) => { ReactDOM.unmountComponentAtNode(element); });
-  document.querySelector('.new-comment-form').classList.add('hidden');
-  document.querySelector('.add-comment-form').classList.remove('hidden');
-}
-
-function changeResolvedComment() {
-  if (document.querySelector('.show-resolved').checked) {
-    Array.from(document.querySelectorAll('.resolve-comment'), (element) => { element.classList.remove('hidden') });
-  } else {
-    Array.from(document.querySelectorAll('.resolve-comment'), (element) => { element.classList.add('hidden') });
+class ShowCommentButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      show: false,
+      count: props.buttonData.count,
+      style: props.buttonData.count > 0 ? 'primary' : 'default'
+    };
   }
-}
 
-function createData(parentId = null) {
-  const dataset = document.querySelector('.comment-modal').dataset;
-  return {
-    content_id: dataset.contentId,
-    current_user_id: dataset.currentUserId,
-    parent_id: parentId,
-    url: dataset.url,
-    buttons: JSON.parse(dataset.formButtons)
-  };
-}
+  handleClose() {
+    this.setState({ show: false });
+  }
 
-document.addEventListener('DOMContentLoaded', () => {
-  if (document.querySelector('.show-comments-button') == null) return;
+  handleShow() {
+    this.setState({ show: true });
+  }
 
-  const target = document.querySelector('.comment-modal');
-
-  const event = () => {
-    ReactDOM.render(
-      <CommentBase showResolved={target.dataset.showResolved} button={target.dataset.commentText} />,
-      document.querySelector('.comment-modal-body')
-    )
-
-    fetch(target.dataset.url, {
-      mode: 'cors',
-      credentials: 'include'
-    }).then((response) => {
-      return response.json();
-    }).then((json) => {
-      ReactDOM.render(
-        <CommentIndex data={json} buttons={JSON.parse(target.dataset.buttons)} />,
-        document.querySelector('.comment-index')
-      );
-      changeResolvedComment();
+  setCommentCount = (count) => {
+    this.setState({
+      count: count,
+      style: 'primary'
     });
   }
 
-  ReactDOM.render(
-    <Modal title={target.dataset.title} selector={document.querySelector('.show-comments-button')}
-           className='comment-modal-body' event={event} />,
-    target
-  );
+  render() {
+    return (
+      <span>
+        <Button className='show-comments-button' bsStyle={this.state.style} onClick={() => { this.handleShow() }}>
+          {`${this.props.buttonData.text}${this.state.count > 0 ? ` (${this.state.count})` : ''}`}
+        </Button>
+        <Modal show={this.state.show} onHide={(e) => { this.handleClose(e) }}>
+          <Modal.Header closeButton>
+            <Modal.Title>{this.props.modalData.title}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <CommentBase data={this.props.modalData} setCommentCount={this.setCommentCount} />
+          </Modal.Body>
+        </Modal>
+      </span>
+    );
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const button = document.querySelector('.comment-button');
+  if (button) {
+    ReactDOM.render(
+      <ShowCommentButton buttonData={button.dataset} modalData={document.querySelector('.comment-modal').dataset} />,
+      button
+    );
+  }
 });
