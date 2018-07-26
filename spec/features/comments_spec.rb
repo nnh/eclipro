@@ -28,13 +28,14 @@ feature Comment, js: true do
     scenario 'can reply' do
       click_on 'Reply'
       sleep 1
-      within '.reply-form' do
-        fill_in 'comment[body]', with: 'new reply'
-      end
+      fill_in 'comment[body]', with: 'new reply'
       sleep 1
       click_on 'Create Comment'
       sleep 1
       expect(page.body).to have_content 'new reply'
+      within first('.comment') do
+        expect(page.body).to have_css '.comment'
+      end
     end
 
     scenario 'can resolve' do
