@@ -104,11 +104,14 @@ $(() => {
 document.addEventListener('DOMContentLoaded', () => {
   const button = document.querySelector('.comment-button');
   if (button) {
+    const buttonData = JSON.parse(button.dataset.button);
+    const modalData = JSON.parse(button.dataset.modal);
+
     ReactDOM.render(
       React.createElement(ShowCommentButton,
                          {
-                           buttonData: button.dataset,
-                           modalData: document.querySelector('.comment-modal').dataset,
+                           buttonData: buttonData,
+                           modalData: modalData,
                            onCommentSubmitted: (json) => {
                              document.querySelector(`#section-${json.id}-comment-icon`).innerHTML = '<i class="fa fa-commenting mr-s">';
                            }

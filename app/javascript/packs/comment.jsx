@@ -27,10 +27,10 @@ class Comment extends React.Component {
         </div>
         <div>{this.props.data.body}</div>
         <div className='text-right'>
-          { this.props.data.replyable && (<Button onClick={() => { this.showForm(true) }}>{this.props.buttons[0]}</Button>) }
+          { this.props.data.replyable && (<Button onClick={() => { this.showForm(true) }}>{this.props.modalData.buttons[0]}</Button>) }
           {
             this.props.data.resolve_url.length > 0 &&
-              (<ResolveButton url={this.props.data.resolve_url} text={this.props.buttons[1]} setComments={this.props.setComments} />)
+              (<ResolveButton url={this.props.data.resolve_url} text={this.props.modalData.buttons[1]} setComments={this.props.setComments} />)
           }
         </div>
         <CommentForm show={this.state.showForm} parentId={this.props.data.id} key={`comment_form_key_${this.props.data.id}`}
@@ -40,7 +40,7 @@ class Comment extends React.Component {
           {
             this.props.data.replies.length > 0 &&
               this.props.data.replies.map((reply) => {
-                return <Comment data={reply} buttons={this.props.buttons} key={`comment_${reply.id}`}
+                return <Comment data={reply} key={`comment_${reply.id}`}
                                 showResolved={this.props.showResolved} setComments={this.props.setComments}
                                 modalData={this.props.modalData} onCommentSubmitted={this.props.onCommentSubmitted} />
               })
@@ -56,8 +56,7 @@ class CommentForm extends React.Component {
     super(props);
     this.state = {
       show: props.show ? true : false,
-      text: '',
-      data: this.getData()
+      text: ''
     };
   }
 
@@ -65,17 +64,8 @@ class CommentForm extends React.Component {
     this.setState({ show: nextProps.show });
   }
 
-  getData() {
-    return {
-      content_id: this.props.modalData.contentId,
-      current_user_id: this.props.modalData.currentUserId,
-      url: this.props.modalData.url,
-      buttons: JSON.parse(this.props.modalData.formButtons)
-    };
-  }
-
   onSubmit(e) {
-    fetchWithXCSRF(e.target.dataset.url, {
+    fetchWithXCSRF(this.props.modalData.url, {
       mode: 'cors',
       credentials: 'include',
       method: 'POST',
@@ -84,10 +74,10 @@ class CommentForm extends React.Component {
       },
       body: JSON.stringify({
         comment: {
-          body: e.target.parentElement.previousSibling.value,
-          content_id: e.target.dataset.contentId,
-          user_id: e.target.dataset.userId,
-          parent_id: e.target.dataset.parentId
+          body: this.state.text,
+          content_id: this.props.modalData.contentId,
+          user_id: this.props.modalData.currentUserId,
+          parent_id: this.props.parentId
         }
       })
     }).then((response) => {
@@ -116,12 +106,10 @@ class CommentForm extends React.Component {
       <div>
         <textarea name='comment[body]' className='form-control mt-s mb-s' rows='3' onKeyUp={(e) => { this.onKeyUp(e) }}></textarea>
         <div className='text-right'>
-          <Button disabled={!this.state.text} onClick={(e) => { this.onSubmit(e) }}
-                  data-content-id={this.state.data.content_id} data-user-id={this.state.data.current_user_id}
-                  data-parent-id={this.props.parentId} data-url={this.state.data.url}>
-            {this.state.data.buttons[0]}
+          <Button disabled={!this.state.text} onClick={(e) => { this.onSubmit(e) }}>
+            {this.props.modalData.formButtons[0]}
           </Button>
-          <Button className='ml-s' onClick={() => { this.onCancel() }}>{this.state.data.buttons[1]}</Button>
+          <Button className='ml-s' onClick={() => { this.onCancel() }}>{this.props.modalData.formButtons[1]}</Button>
         </div>
       </div>
     ) : null;
@@ -130,11 +118,11 @@ class CommentForm extends React.Component {
 
 class ResolveButton extends React.Component {
   render() {
-    return <Button onClick={(e) => { this.onClick(e) }} data-url={this.props.url}>{this.props.text}</Button>;
+    return <Button onClick={(e) => { this.onClick(e) }}>{this.props.text}</Button>;
   }
 
   onClick(e) {
-    fetchWithXCSRF(e.target.dataset.url, {
+    fetchWithXCSRF(this.props.url, {
       mode: 'cors',
       credentials: 'include',
       method: 'PUT',
@@ -227,7 +215,7 @@ class ShowCommentButton extends React.Component {
             <div className='mt-xl'>
               {
                 this.state.comments.map((comment) => {
-                  return <Comment data={comment} buttons={JSON.parse(this.props.modalData.buttons)} key={`comment_${comment.id}`}
+                  return <Comment data={comment} key={`comment_${comment.id}`}
                                   showResolved={this.state.showResolved} setComments={this.setComments}
                                   modalData={this.props.modalData} onCommentSubmitted={this.props.onCommentSubmitted} />
                 })

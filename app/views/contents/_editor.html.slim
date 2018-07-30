@@ -2,7 +2,15 @@
   .content-has-reviewer data-has-reviewer="#{content.has_reviewer?}" data-message="#{t('.no_reviewer')}"
   - if content.editable
     .mb-xl
-      .pull-right.comment-button data-text="#{t('.comment')}" data-count="#{content.comments_count}"
+      .pull-right.comment-button(data-button={ text: t('.comment'), count: content.comments_count }.to_json
+        data-modal={ title: t('.modal_title'),
+                     showResolved: t('.show_resolved'),
+                     buttons: t('.buttons'),
+                     commentText: t('.comment_button'),
+                     formButtons: t('.form_buttons'),
+                     contentId: @content.id,
+                     currentUserId: current_user.id,
+                     url: protocol_content_comments_path(@protocol, @content) }.to_json)
       .pull-right
         = button_tag t('.history'), type: :button, class: 'btn btn-default history-button',
                      data: { url:  history_protocol_content_path(protocol, content) }
@@ -36,5 +44,4 @@
     h4 = t('.read_only_text')
     = content.body.html_safe
 
-= render 'comments/index'
 = render 'history'
