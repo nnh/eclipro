@@ -8,10 +8,15 @@ feature Comment, js: true do
   let!(:admin_participation) { create(:admin, protocol: protocol, user: user) }
 
   background(:each) do
+    ActionController::Base.allow_forgery_protection = true
     login_as(user, scope: :user)
     visit protocol_content_path(protocol, content)
     click_on 'Comments (1)'
     sleep 1
+  end
+
+  after do
+    ActionController::Base.allow_forgery_protection = false
   end
 
   feature 'participating user' do

@@ -17,10 +17,13 @@ import 'bootstrap-sass'
 import Rails from 'rails-ujs'
 Rails.start();
 
+import React from 'react'
+import ReactDOM from 'react-dom'
+
 import './tiny_mce'
 import './protocol'
 import './history'
-import './comment'
+import { ShowCommentButton } from './comment'
 
 $(() => {
   // protocol form
@@ -96,4 +99,22 @@ $(() => {
     checkSections();
   });
   checkSections();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const button = document.querySelector('.comment-button');
+  if (button) {
+    ReactDOM.render(
+      React.createElement(ShowCommentButton,
+                         {
+                           buttonData: button.dataset,
+                           modalData: document.querySelector('.comment-modal').dataset,
+                           onCommentSubmitted: (json) => {
+                             document.querySelector(`#section-${json.id}-comment-icon`).innerHTML = '<i class="fa fa-commenting mr-s">';
+                           }
+                         },
+                         null),
+      button
+    );
+  }
 });

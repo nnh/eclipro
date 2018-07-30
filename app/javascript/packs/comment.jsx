@@ -2,68 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import 'whatwg-fetch'
 import { Button, Modal } from 'react-bootstrap'
-
-class CommentBase extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      comments: [],
-      showResolved: false,
-      showForm: false
-    };
-    this.getComments();
-  }
-
-  getComments() {
-    fetch(this.props.data.url, {
-      mode: 'cors',
-      credentials: 'include'
-    }).then((response) => {
-      return response.json();
-    }).then((json) => {
-      this.setState({ comments: json });
-    });
-  }
-
-  setComments = (comments, count) => {
-    this.setState({ comments: comments });
-    this.props.setCommentCount(count);
-  }
-
-  showForm = (show) => {
-    this.setState({ showForm: show })
-  }
-
-  toggleShowResolved() {
-    this.setState({ showResolved: !this.state.showResolved });
-  }
-
-  render() {
-    return(
-      <span>
-        <div className='pull-right'>
-          <label className='checkbox-inline mr-s'>
-            <input type='checkbox' onChange={() => { this.toggleShowResolved() }} />
-            {this.props.data.showResolved}
-          </label>
-        </div>
-        <div className='mt-xl'>
-          {
-            this.state.comments.map((comment) => {
-              return <Comment data={comment} buttons={JSON.parse(this.props.data.buttons)} key={`comment_${comment.id}`}
-                              showResolved={this.state.showResolved} setComments={this.setComments} />
-            })
-          }
-        </div>
-        <div className='text-right'>
-          { !this.state.showForm && (<Button onClick={() => { this.showForm(true) }}>{this.props.data.commentText}</Button>) }
-        </div>
-        <CommentForm show={this.state.showForm} parentId={null} key='comment_form_key_null'
-                     showForm={this.showForm} setComments={this.setComments} />
-      </span>
-    );
-  }
-}
+import fetchWithXCSRF from './fetch_with_x_csrf'
 
 class Comment extends React.Component {
   constructor(props) {
@@ -95,13 +34,15 @@ class Comment extends React.Component {
           }
         </div>
         <CommentForm show={this.state.showForm} parentId={this.props.data.id} key={`comment_form_key_${this.props.data.id}`}
-                     showForm={this.showForm} setComments={this.props.setComments} />
+                     showForm={this.showForm} setComments={this.props.setComments}
+                     modalData={this.props.modalData} onCommentSubmitted={this.props.onCommentSubmitted} />
         <div className='ml-xl'>
           {
             this.props.data.replies.length > 0 &&
               this.props.data.replies.map((reply) => {
                 return <Comment data={reply} buttons={this.props.buttons} key={`comment_${reply.id}`}
-                                showResolved={this.props.showResolved} setComments={this.props.setComments} />
+                                showResolved={this.props.showResolved} setComments={this.props.setComments}
+                                modalData={this.props.modalData} onCommentSubmitted={this.props.onCommentSubmitted} />
               })
           }
         </div>
@@ -125,23 +66,21 @@ class CommentForm extends React.Component {
   }
 
   getData() {
-    const data = document.querySelector('.comment-modal').dataset;
     return {
-      content_id: data.contentId,
-      current_user_id: data.currentUserId,
-      url: data.url,
-      buttons: JSON.parse(data.formButtons)
+      content_id: this.props.modalData.contentId,
+      current_user_id: this.props.modalData.currentUserId,
+      url: this.props.modalData.url,
+      buttons: JSON.parse(this.props.modalData.formButtons)
     };
   }
 
   onSubmit(e) {
-    fetch(e.target.dataset.url, {
+    fetchWithXCSRF(e.target.dataset.url, {
       mode: 'cors',
       credentials: 'include',
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-Token': document.querySelector('.comment-modal').dataset.csrf
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         comment: {
@@ -154,7 +93,7 @@ class CommentForm extends React.Component {
     }).then((response) => {
       return response.json();
     }).then((json) => {
-      document.querySelector(`#section-${json.id}-comment-icon`).innerHTML = '<i class="fa fa-commenting mr-s">';
+      this.props.onCommentSubmitted(json);
       this.props.setComments(json.comments, json.count);
       this.onCancel();
     });
@@ -195,13 +134,12 @@ class ResolveButton extends React.Component {
   }
 
   onClick(e) {
-    fetch(e.target.dataset.url, {
+    fetchWithXCSRF(e.target.dataset.url, {
       mode: 'cors',
       credentials: 'include',
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-Token': document.querySelector('.comment-modal').dataset.csrf
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         comment: {
@@ -222,8 +160,12 @@ class ShowCommentButton extends React.Component {
     this.state = {
       show: false,
       count: props.buttonData.count,
-      style: props.buttonData.count > 0 ? 'primary' : 'default'
+      style: props.buttonData.count > 0 ? 'primary' : 'default',
+      comments: [],
+      showResolved: false,
+      showForm: false
     };
+    this.getComments();
   }
 
   handleClose() {
@@ -241,6 +183,30 @@ class ShowCommentButton extends React.Component {
     });
   }
 
+  getComments() {
+    fetch(this.props.modalData.url, {
+      mode: 'cors',
+      credentials: 'include'
+    }).then((response) => {
+      return response.json();
+    }).then((json) => {
+      this.setState({ comments: json });
+    });
+  }
+
+  setComments = (comments, count) => {
+    this.setState({ comments: comments });
+    this.setCommentCount(count);
+  }
+
+  showForm = (show) => {
+    this.setState({ showForm: show })
+  }
+
+  toggleShowResolved() {
+    this.setState({ showResolved: !this.state.showResolved });
+  }
+
   render() {
     return (
       <span>
@@ -252,7 +218,27 @@ class ShowCommentButton extends React.Component {
             <Modal.Title>{this.props.modalData.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <CommentBase data={this.props.modalData} setCommentCount={this.setCommentCount} />
+            <div className='pull-right'>
+              <label className='checkbox-inline mr-s'>
+                <input type='checkbox' onChange={() => { this.toggleShowResolved() }} />
+                {this.props.modalData.showResolved}
+              </label>
+            </div>
+            <div className='mt-xl'>
+              {
+                this.state.comments.map((comment) => {
+                  return <Comment data={comment} buttons={JSON.parse(this.props.modalData.buttons)} key={`comment_${comment.id}`}
+                                  showResolved={this.state.showResolved} setComments={this.setComments}
+                                  modalData={this.props.modalData} onCommentSubmitted={this.props.onCommentSubmitted} />
+                })
+              }
+            </div>
+            <div className='text-right'>
+              { !this.state.showForm && (<Button onClick={() => { this.showForm(true) }}>{this.props.modalData.commentText}</Button>) }
+            </div>
+            <CommentForm show={this.state.showForm} parentId={null} key='comment_form_key_null'
+                         showForm={this.showForm} setComments={this.setComments}
+                         modalData={this.props.modalData} onCommentSubmitted={this.props.onCommentSubmitted} />
           </Modal.Body>
         </Modal>
       </span>
@@ -260,12 +246,4 @@ class ShowCommentButton extends React.Component {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const button = document.querySelector('.comment-button');
-  if (button) {
-    ReactDOM.render(
-      <ShowCommentButton buttonData={button.dataset} modalData={document.querySelector('.comment-modal').dataset} />,
-      button
-    );
-  }
-});
+export { ShowCommentButton }
