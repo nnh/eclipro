@@ -8,10 +8,11 @@ class Comment extends React.Component {
   constructor(props) {
     super(props);
     this.state = { showForm: false }
+    this.showForm = this.showForm.bind(this);
   }
 
-  showForm = (show) => {
-    this.setState({ showForm: show })
+  showForm(show) {
+    this.setState({ showForm: show });
   }
 
   render() {
@@ -27,7 +28,7 @@ class Comment extends React.Component {
         </div>
         <div>{this.props.data.body}</div>
         <div className='text-right'>
-          { this.props.data.replyable && (<Button onClick={() => { this.showForm(true) }}>{this.props.modalData.buttons[0]}</Button>) }
+          { this.props.data.replyable && (<Button onClick={this.showForm.bind(this, true)}>{this.props.modalData.buttons[0]}</Button>) }
           {
             this.props.data.resolve_url.length > 0 &&
               (<ResolveButton url={this.props.data.resolve_url} text={this.props.modalData.buttons[1]} setComments={this.props.setComments} />)
@@ -58,13 +59,17 @@ class CommentForm extends React.Component {
       show: props.show ? true : false,
       text: ''
     };
+
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onCancel = this.onCancel.bind(this);
+    this.onKeyUp = this.onKeyUp.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({ show: nextProps.show });
   }
 
-  onSubmit(e) {
+  onSubmit() {
     fetchWithXCSRF(this.props.modalData.url, {
       mode: 'cors',
       credentials: 'include',
@@ -104,12 +109,12 @@ class CommentForm extends React.Component {
   render() {
     return this.state.show ? (
       <div>
-        <textarea name='comment[body]' className='form-control mt-s mb-s' rows='3' onKeyUp={(e) => { this.onKeyUp(e) }}></textarea>
+        <textarea name='comment[body]' className='form-control mt-s mb-s' rows='3' onKeyUp={this.onKeyUp}></textarea>
         <div className='text-right'>
-          <Button disabled={!this.state.text} onClick={(e) => { this.onSubmit(e) }}>
+          <Button disabled={!this.state.text} onClick={this.onSubmit}>
             {this.props.modalData.formButtons[0]}
           </Button>
-          <Button className='ml-s' onClick={() => { this.onCancel() }}>{this.props.modalData.formButtons[1]}</Button>
+          <Button className='ml-s' onClick={this.onCancel}>{this.props.modalData.formButtons[1]}</Button>
         </div>
       </div>
     ) : null;
@@ -117,11 +122,16 @@ class CommentForm extends React.Component {
 }
 
 class ResolveButton extends React.Component {
-  render() {
-    return <Button onClick={(e) => { this.onClick(e) }}>{this.props.text}</Button>;
+  constructor(props) {
+    super(props);
+    this.onClick = this.onClick.bind(this);
   }
 
-  onClick(e) {
+  render() {
+    return <Button onClick={this.onClick}>{this.props.text}</Button>;
+  }
+
+  onClick() {
     fetchWithXCSRF(this.props.url, {
       mode: 'cors',
       credentials: 'include',
@@ -153,6 +163,13 @@ class ShowCommentButton extends React.Component {
       showResolved: false,
       showForm: false
     };
+    this.handleClose = this.handleClose.bind(this);
+    this.handleShow = this.handleShow.bind(this);
+    this.setCommentCount = this.setCommentCount.bind(this);
+    this.setComments = this.setComments.bind(this);
+    this.showForm = this.showForm.bind(this);
+    this.toggleShowResolved = this.toggleShowResolved.bind(this);
+
     this.getComments();
   }
 
@@ -164,7 +181,7 @@ class ShowCommentButton extends React.Component {
     this.setState({ show: true });
   }
 
-  setCommentCount = (count) => {
+  setCommentCount(count) {
     this.setState({
       count: count,
       style: 'primary'
@@ -182,13 +199,13 @@ class ShowCommentButton extends React.Component {
     });
   }
 
-  setComments = (comments, count) => {
+  setComments(comments, count) {
     this.setState({ comments: comments });
     this.setCommentCount(count);
   }
 
-  showForm = (show) => {
-    this.setState({ showForm: show })
+  showForm(show) {
+    this.setState({ showForm: show });
   }
 
   toggleShowResolved() {
@@ -198,17 +215,17 @@ class ShowCommentButton extends React.Component {
   render() {
     return (
       <span>
-        <Button bsStyle={this.state.style} onClick={() => { this.handleShow() }}>
+        <Button bsStyle={this.state.style} onClick={this.handleShow}>
           {`${this.props.buttonData.text}${this.state.count > 0 ? ` (${this.state.count})` : ''}`}
         </Button>
-        <Modal show={this.state.show} onHide={() => { this.handleClose() }}>
+        <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>{this.props.modalData.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div className='pull-right'>
               <label className='checkbox-inline mr-s'>
-                <input type='checkbox' onChange={() => { this.toggleShowResolved() }} />
+                <input type='checkbox' onChange={this.toggleShowResolved} />
                 {this.props.modalData.showResolved}
               </label>
             </div>
@@ -222,7 +239,7 @@ class ShowCommentButton extends React.Component {
               }
             </div>
             <div className='text-right'>
-              { !this.state.showForm && (<Button onClick={() => { this.showForm(true) }}>{this.props.modalData.commentText}</Button>) }
+              { !this.state.showForm && (<Button onClick={this.showForm.bind(this, true)}>{this.props.modalData.commentText}</Button>) }
             </div>
             <CommentForm show={this.state.showForm} parentId={null} key='comment_form_key_null'
                          showForm={this.showForm} setComments={this.setComments}
