@@ -1,8 +1,5 @@
-.col-md-12
-  .input-group
-    = text_field_tag 'protocol_name_filter', '', class: 'form-control filter-form',
-                     placeholder: t('.filter_placeholder'), data: { url: protocols_path }
-    .input-group-btn
-      = button_tag t('.filter'), type: :button, class: 'btn btn-default filter-button'
-
-  .mt-xl.protocols-table data-headers="#{t('.headers')}" data-buttons="#{t('.buttons')}"
+.col-md-12.protocol-index(data-form={ placeholder: t('.filter_placeholder'),
+                                      text: t('.filter'),
+                                      url: protocols_path,
+                                      headers: t('.headers'),
+                                      buttons: t('.buttons') }.to_json )

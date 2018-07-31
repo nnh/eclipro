@@ -21,7 +21,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import './tiny_mce'
-import './protocol'
+import { ProtocolIndex } from './protocol'
 import { ShowCommentButton } from './comment'
 import { ShowHistoryButton } from './history'
 
@@ -130,6 +130,23 @@ document.addEventListener('DOMContentLoaded', () => {
                           { text: historyButton.dataset.text, modalData: historyModalData },
                           null),
       historyButton
+    );
+  }
+
+  const protocolIndex = document.querySelector('.protocol-index');
+  if (protocolIndex) {
+    const formData = JSON.parse(protocolIndex.dataset.form);
+    ReactDOM.render(
+      React.createElement(ProtocolIndex,
+                          {
+                            placeholder: formData.placeholder,
+                            text: formData.text,
+                            url: formData.url,
+                            headers: formData.headers,
+                            buttons: formData.buttons
+                          },
+                          null),
+      protocolIndex
     );
   }
 });
