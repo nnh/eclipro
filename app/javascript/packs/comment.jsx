@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import 'whatwg-fetch'
 import { Button, Modal } from 'react-bootstrap'
-import fetchWithXCSRF from './fetch_with_x_csrf'
+import fetchByJSON from './fetch_by_json'
 
 class Comment extends React.Component {
   constructor(props) {
@@ -30,8 +30,8 @@ class Comment extends React.Component {
         <div className='text-right'>
           { this.props.data.replyable && (<Button onClick={this.showForm.bind(this, true)}>{this.props.modalData.buttons[0]}</Button>) }
           {
-            this.props.data.resolve_url.length > 0 &&
-              (<ResolveButton url={this.props.data.resolve_url} text={this.props.modalData.buttons[1]} setComments={this.props.setComments} />)
+            this.props.data.resolve_url &&
+              <ResolveButton url={this.props.data.resolve_url} text={this.props.modalData.buttons[1]} setComments={this.props.setComments} />
           }
         </div>
         <CommentForm show={this.state.showForm} parentId={this.props.data.id} key={`comment_form_key_${this.props.data.id}`}
@@ -39,7 +39,7 @@ class Comment extends React.Component {
                      modalData={this.props.modalData} onCommentSubmitted={this.props.onCommentSubmitted} />
         <div className='ml-xl'>
           {
-            this.props.data.replies.length > 0 &&
+            this.props.data.replies &&
               this.props.data.replies.map((reply) => {
                 return <Comment data={reply} key={`comment_${reply.id}`}
                                 showResolved={this.props.showResolved} setComments={this.props.setComments}
@@ -70,23 +70,13 @@ class CommentForm extends React.Component {
   }
 
   onSubmit() {
-    fetchWithXCSRF(this.props.modalData.url, {
-      mode: 'cors',
-      credentials: 'include',
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        comment: {
-          body: this.state.text,
-          content_id: this.props.modalData.contentId,
-          user_id: this.props.modalData.currentUserId,
-          parent_id: this.props.parentId
-        }
-      })
-    }).then((response) => {
-      return response.json();
+    fetchByJSON(this.props.modalData.url, 'POST', {
+      comment: {
+        body: this.state.text,
+        content_id: this.props.modalData.contentId,
+        user_id: this.props.modalData.currentUserId,
+        parent_id: this.props.parentId
+      }
     }).then((json) => {
       this.props.onCommentSubmitted(json);
       this.props.setComments(json.comments, json.count);
@@ -132,20 +122,10 @@ class ResolveButton extends React.Component {
   }
 
   onClick() {
-    fetchWithXCSRF(this.props.url, {
-      mode: 'cors',
-      credentials: 'include',
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        comment: {
-          resolve: true
-        }
-      })
-    }).then((response) => {
-      return response.json();
+    fetchByJSON(this.props.url, 'PUT', {
+      comment: {
+        resolve: true
+      }
     }).then((json) => {
       this.props.setComments(json.comments, json.count);
     });
@@ -158,14 +138,12 @@ class ShowCommentButton extends React.Component {
     this.state = {
       show: false,
       count: props.buttonData.count,
-      style: props.buttonData.count > 0 ? 'primary' : 'default',
       comments: [],
       showResolved: false,
       showForm: false
     };
     this.handleClose = this.handleClose.bind(this);
     this.handleShow = this.handleShow.bind(this);
-    this.setCommentCount = this.setCommentCount.bind(this);
     this.setComments = this.setComments.bind(this);
     this.showForm = this.showForm.bind(this);
     this.toggleShowResolved = this.toggleShowResolved.bind(this);
@@ -181,13 +159,6 @@ class ShowCommentButton extends React.Component {
     this.setState({ show: true });
   }
 
-  setCommentCount(count) {
-    this.setState({
-      count: count,
-      style: 'primary'
-    });
-  }
-
   getComments() {
     fetch(this.props.modalData.url, {
       mode: 'cors',
@@ -200,8 +171,10 @@ class ShowCommentButton extends React.Component {
   }
 
   setComments(comments, count) {
-    this.setState({ comments: comments });
-    this.setCommentCount(count);
+    this.setState({
+      comments: comments,
+      count: count
+    });
   }
 
   showForm(show) {
@@ -215,7 +188,7 @@ class ShowCommentButton extends React.Component {
   render() {
     return (
       <span>
-        <Button bsStyle={this.state.style} onClick={this.handleShow}>
+        <Button bsStyle={this.state.count != 0 ? 'primary' : 'default'} onClick={this.handleShow}>
           {`${this.props.buttonData.text}${this.state.count > 0 ? ` (${this.state.count})` : ''}`}
         </Button>
         <Modal show={this.state.show} onHide={this.handleClose}>
