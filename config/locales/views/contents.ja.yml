@@ -22,7 +22,7 @@ ja:
       review_completed: レビュー完了
       no_reviewer: このセクションにレビューアーが割り当てられていません。管理者に連絡して割り当ててください。
       comment: コメント
-      modal_title: セクションコメント
+      comment_modal_title: セクションコメント
       comment_button: コメントする
       show_resolved: 解決済みコメントを表示する
       buttons:
@@ -31,13 +31,7 @@ ja:
       form_buttons:
         - 作成する
         - キャンセル
-    update:
-      success: コンテンツの更新をしました。
-      no_change: コンテンツに変更はありません。
-      failure: コンテンツの更新に失敗しました。
-      lock_error: 失効したオブジェクトを更新しようとしました。再読み込みをしてから更新を試してください。
-    history:
-      modal_title: 履歴
+      history_modal_title: 履歴
       headers:
         - タイトル
         - バージョン
@@ -45,11 +39,16 @@ ja:
         - 日付
         - ''
         - ''
-      buttons:
+      history_buttons:
         - 戻す
         - 比較
         - このバージョンに戻しますか？
       back: 戻る
+    update:
+      success: コンテンツの更新をしました。
+      no_change: コンテンツに変更はありません。
+      failure: コンテンツの更新に失敗しました。
+      lock_error: 失効したオブジェクトを更新しようとしました。再読み込みをしてから更新を試してください。
     revert:
       success: コンテンツを前のバージョンに戻しました。
       failure: コンテンツを前のバージョンに戻せませんでした。
