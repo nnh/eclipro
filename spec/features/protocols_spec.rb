@@ -85,14 +85,14 @@ feature Protocol, js: true do
   end
 
   shared_examples_for 'exports protocol' do
-    # scenario 'pdf' do
-    #   visit select_protocol_path(protocol1)
-    #   new_window = window_opened_by { all('.btn', text: 'Output in Japanese only').first.click }
-    #   within_window new_window do
-    #     sleep 5
-    #     expect(current_url).to have_content('.pdf')
-    #   end
-    # end
+    skip 'pdf (not work with headless)' do
+      visit select_protocol_path(protocol1)
+      new_window = window_opened_by { all('.btn', text: 'Output in Japanese only').first.click }
+      within_window new_window do
+        sleep 5
+        expect(current_url).to have_content('.pdf')
+      end
+    end
     scenario 'docx' do
       visit select_protocol_path(protocol1)
       all('.btn', text: 'Output in Japanese only').last.click

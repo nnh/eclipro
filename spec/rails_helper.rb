@@ -34,9 +34,8 @@ Capybara.register_driver :headless_chrome do |app|
     app,
     browser: :chrome,
     desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(
-      login_prefs: { browser: 'ALL' },
       chrome_options: {
-        args: %w[headless disable-gpu no-sandbox disable-dev-shm-usage window-size=1920,1080],
+        args: %w[headless no-sandbox disable-dev-shm-usage window-size=1920,1080],
         prefs: { 'intl.accept_languages': 'en' }
       }
     )
@@ -48,7 +47,7 @@ Capybara.register_driver :headless_chrome do |app|
     cmd: 'Page.setDownloadBehavior',
     params: {
       behavior: 'allow',
-      downloadPath: DownloadHelpers::PATH.to_s,
+      downloadPath: DownloadHelpers::PATH.to_s
     }
   )
   driver
