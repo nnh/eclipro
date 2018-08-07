@@ -17,11 +17,11 @@
     b = t('.export_docx')
   .mt-m
     = link_to t('.japanese_only'), export_protocol_path(@protocol, format: :docx, language: 'ja'),
-                                  class: 'btn btn-default', target: '_blank'
+                                  class: 'btn btn-default'
     = link_to t('.english_only'), export_protocol_path(@protocol, format: :docx, language: 'en'),
-                                 class: 'btn btn-default ml-m', target: '_blank'
+                                 class: 'btn btn-default ml-m'
     = link_to t('.both'), export_protocol_path(@protocol, format: :docx),
-                         class: 'btn btn-default ml-m', target: '_blank'
+                         class: 'btn btn-default ml-m'
 
   .mt-xl
     = link_to t('.back'), :back, class: 'btn btn-default'

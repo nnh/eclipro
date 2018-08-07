@@ -34,7 +34,8 @@ feature ReferenceDocx, js: true do
       expect(page).to have_content('File check (Download)')
 
       click_on 'File check (Download)'
-      expect(page.response_headers['Content-Disposition']).to include('reference.docx')
+      wait_for_download
+      expect(downloads('*.docx').size).to eq 1
     end
 
     scenario 'update reference.docx' do
@@ -44,14 +45,15 @@ feature ReferenceDocx, js: true do
       click_on 'Upload file'
 
       click_on 'File check (Download)'
-      expect(page.response_headers['Content-Disposition']).to include('reference2.docx')
+      wait_for_download
+      expect(downloads('*.docx').size).to eq 1
     end
 
     scenario 'delete reference.docx' do
       visit protocol_path(protocol1)
       expect(page).to have_content('Delete')
 
-      click_on 'Delete'
+      accept_confirm { click_on 'Delete' }
       expect(page).not_to have_content('Delete')
     end
   end
