@@ -1,7 +1,9 @@
 language: ruby
 addons:
+  chrome: stable
   apt_packages:
     - pandoc
+    - chromium-chromedriver
 bundler_args: --without development --deployment
 cache: bundler
 before_script:

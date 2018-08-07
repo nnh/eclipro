@@ -59,6 +59,8 @@ GEM
     after_commit_action (1.1.0)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
+    archive-zip (0.11.0)
+      io-like (~> 0.3.0)
     arel (9.0.0)
     awesome_print (1.8.0)
     aws-partitions (1.86.0)
@@ -97,8 +99,12 @@ GEM
       xpath (~> 3.0)
     case_transform (0.2)
       activesupport
+    childprocess (0.9.0)
+      ffi (~> 1.0, >= 1.0.11)
+    chromedriver-helper (1.2.0)
+      archive-zip (~> 0.10)
+      nokogiri (~> 1.8)
     climate_control (0.2.0)
-    cliver (0.3.2)
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
     counter_culture (1.11.0)
@@ -144,6 +150,7 @@ GEM
     htmldiff (0.0.1)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
+    io-like (0.3.0)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -208,10 +215,6 @@ GEM
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
     pg (1.0.0)
-    poltergeist (1.18.0)
-      capybara (>= 2.1, < 4)
-      cliver (~> 0.3.1)
-      websocket-driver (>= 0.2.0)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -290,6 +293,7 @@ GEM
       rspec-support (~> 3.7.0)
     rspec-support (3.7.1)
     ruby_dep (1.5.0)
+    rubyzip (1.2.1)
     sass (3.5.6)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -301,6 +305,9 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    selenium-webdriver (3.14.0)
+      childprocess (~> 0.5)
+      rubyzip (~> 1.2)
     slim (3.0.9)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 1.3.3, < 2.1)
@@ -364,6 +371,7 @@ DEPENDENCIES
   byebug
   cancancan
   capybara
+  chromedriver-helper
   counter_culture
   database_rewinder!
   deep_cloneable
@@ -386,7 +394,6 @@ DEPENDENCIES
   paper_trail
   paperclip
   pg
-  poltergeist
   pry-byebug
   pry-doc
   pry-rails
@@ -397,6 +404,7 @@ DEPENDENCIES
   rollbar
   rspec-rails
   sass-rails
+  selenium-webdriver
   slim-rails
   spring
   spring-watcher-listen
