@@ -53,16 +53,16 @@ class ProtocolIndex extends React.Component {
 
   filtering() {
     fetchWithCors(`${this.props.url}.json?protocol_name_filter=${this.state.word}`).then((json) => {
-      this.setState({ data: json });
+      this.setState({ data: json || [] });
     });
   }
 
   render() {
     const head = <tr>{this.props.headers.map((header, index) => <th key={`header_${index}`}>{header}</th>)}</tr>;
 
-    const body = this.state.data ? this.state.data.map((protocol) =>
+    const body = this.state.data.map((protocol) =>
       <Protocol data={protocol} buttons={this.props.buttons} key={`protocol_${protocol.id}`} />
-    ) : null;
+    );
 
     return (
       <div>

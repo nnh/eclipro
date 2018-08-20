@@ -33,7 +33,7 @@ class History extends React.Component {
 
   onClick() {
     fetchWithCors(`${this.props.version.compare_url}?index=${this.props.index}`).then((json) => {
-      this.props.onShowCompare(true, json.data);
+      this.props.onShowCompare(true, json.data || '');
     });
   }
 }
@@ -57,7 +57,7 @@ class HistoryCompare extends React.Component {
   }
 
   onClick() {
-    this.props.onShowCompare(false, null);
+    this.props.onShowCompare(false, '');
   }
 }
 
@@ -66,8 +66,8 @@ class ShowHistoryButton extends React.Component {
     super(props);
     this.state = {
       show: false,
-      content: null,
-      compare: null,
+      content: { versions: [] },
+      compare: '',
       showCompare: false
     }
     this.handleClose = this.handleClose.bind(this);
@@ -87,7 +87,7 @@ class ShowHistoryButton extends React.Component {
 
   getContent() {
     fetchWithCors(this.props.modalData.url).then((json) => {
-      this.setState({ content: json })
+      this.setState({ content: json || { versions: [] } })
     });
   }
 
@@ -100,17 +100,21 @@ class ShowHistoryButton extends React.Component {
 
   render() {
     const head =
-      <tr>
-        {this.props.modalData.headers.map((header, index) => <th key={`header_index_${index}`}>{header}</th>)}
-      </tr>;
+      <tr>{this.props.modalData.headers.map((header, index) => <th key={`header_index_${index}`}>{header}</th>)}</tr>;
 
-    const histories = this.state.content ? (this.state.content.versions.map((version, index) =>
+    const histories = this.state.content.versions.map((version, index) =>
       <History content={this.state.content} version={version} index={index} buttons={this.props.modalData.buttons}
                key={`history_${version.id}`} onShowCompare={this.onShowCompare} />
-    )) : [];
+    )
 
-    const compare = this.state.compare ?
-      <HistoryCompare data={this.state.compare} text={this.props.modalData.backText} onShowCompare={this.onShowCompare} /> : null;
+    const content = this.state.compare && this.state.showCompare ?
+      <HistoryCompare data={this.state.compare} text={this.props.modalData.backText} onShowCompare={this.onShowCompare} />
+      : (
+        <table className='table'>
+          <thead>{head}</thead>
+          <tbody>{histories.reverse()}</tbody>
+        </table>
+      );
 
     return (
       <span>
@@ -120,16 +124,7 @@ class ShowHistoryButton extends React.Component {
             <Modal.Title>{this.props.modalData.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {
-              this.state.showCompare ?
-                <div>{compare}</div> :
-                <div>
-                  <table className='table'>
-                    <thead>{head}</thead>
-                    <tbody>{histories.reverse()}</tbody>
-                  </table>
-                </div>
-            }
+            <div>{content}</div>
           </Modal.Body>
         </Modal>
       </span>
