@@ -104,7 +104,8 @@ group :test do
   gem 'rspec-rails'
   gem 'launchy'
   gem 'database_rewinder', git: 'https://github.com/amatsuda/database_rewinder', branch: 'master'
-  gem 'poltergeist'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
   gem 'rails-controller-testing'
 end
 

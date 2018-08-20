@@ -168,7 +168,7 @@ feature Content, js: true do
       sleep 1
       expect(page).to have_link 'Revert'
 
-      first(:link, 'Revert').click
+      accept_confirm { first(:link, 'Revert').click }
       sleep 1
       expect(page).to have_content 'before body'
     end

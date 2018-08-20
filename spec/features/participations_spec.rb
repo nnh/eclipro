@@ -48,7 +48,7 @@ feature Participation do
       expect(page).to have_link('Remove')
 
       within(:xpath, "//tr[td[contains(., '#{general_user.name}')]]") do
-        click_on 'Remove'
+        accept_confirm { click_on 'Remove' }
       end
       expect(page).not_to have_content(general_user.name)
       expect(page).not_to have_link('Remove')
