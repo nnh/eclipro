@@ -40,7 +40,7 @@ class History extends React.Component {
     }).then((response) => {
       return response.json();
     }).then((json) => {
-      this.props.showCompare(true, json.data);
+      this.props.onShowCompare(true, json.data);
     });
   }
 }
@@ -64,7 +64,7 @@ class HistoryCompare extends React.Component {
   }
 
   onClick() {
-    this.props.showCompare(false, null);
+    this.props.onShowCompare(false, null);
   }
 }
 
@@ -79,7 +79,7 @@ class ShowHistoryButton extends React.Component {
     }
     this.handleClose = this.handleClose.bind(this);
     this.handleShow = this.handleShow.bind(this);
-    this.showCompare = this.showCompare.bind(this);
+    this.onShowCompare = this.onShowCompare.bind(this);
 
     this.getContent();
   }
@@ -103,7 +103,7 @@ class ShowHistoryButton extends React.Component {
     });
   }
 
-  showCompare(show, compare) {
+  onShowCompare(show, compare) {
     this.setState({
       showCompare: show,
       compare: compare
@@ -118,11 +118,11 @@ class ShowHistoryButton extends React.Component {
 
     const histories = this.state.content ? (this.state.content.versions.map((version, index) => {
       return <History content={this.state.content} version={version} index={index} buttons={this.props.modalData.buttons}
-                      key={`history_${version.id}`} showCompare={this.showCompare} />;
+                      key={`history_${version.id}`} onShowCompare={this.onShowCompare} />;
     })) : [];
 
     const compare = this.state.compare ?
-      <HistoryCompare data={this.state.compare} text={this.props.modalData.backText} showCompare={this.showCompare} /> : null;
+      <HistoryCompare data={this.state.compare} text={this.props.modalData.backText} onShowCompare={this.onShowCompare} /> : null;
 
     return (
       <span>
