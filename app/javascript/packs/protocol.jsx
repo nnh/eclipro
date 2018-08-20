@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Button } from 'react-bootstrap'
-import fetchWithCors from './fetch_with_cors'
+import { fetchWithCors } from './custom_fetch'
 
 class Protocol extends React.Component {
   constructor(props) {

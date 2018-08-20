@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Button, Modal } from 'react-bootstrap'
-import fetchWithCors from './fetch_with_cors'
+import { fetchWithCors } from './custom_fetch'
 
 class History extends React.Component {
   constructor(props) {

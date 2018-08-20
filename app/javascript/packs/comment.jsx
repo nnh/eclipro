@@ -1,8 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import 'whatwg-fetch'
 import { Button, Modal } from 'react-bootstrap'
-import fetchByJSON from './fetch_by_json'
+import { fetchByJSON } from './custom_fetch'
 
 class Comment extends React.Component {
   constructor(props) {
