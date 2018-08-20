@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import 'whatwg-fetch'
 import { Button, Modal } from 'react-bootstrap'
+import fetchWithCors from './fetch_with_cors'
 
 class History extends React.Component {
   constructor(props) {
@@ -25,21 +25,14 @@ class History extends React.Component {
           }
         </td>
         <td>
-          <Button data-url={`${this.props.version.compare_url}?index=${this.props.index}`} onClick={this.onClick}>
-            {this.props.buttons[1]}
-          </Button>
+          <Button onClick={this.onClick}>{this.props.buttons[1]}</Button>
         </td>
       </tr>
     );
   }
 
-  onClick(e) {
-    fetch(e.target.dataset.url, {
-      mode: 'cors',
-      credentials: 'include'
-    }).then((response) => {
-      return response.json();
-    }).then((json) => {
+  onClick() {
+    fetchWithCors(`${this.props.version.compare_url}?index=${this.props.index}`).then((json) => {
       this.props.onShowCompare(true, json.data);
     });
   }
@@ -93,12 +86,7 @@ class ShowHistoryButton extends React.Component {
   }
 
   getContent() {
-    fetch(this.props.modalData.url, {
-      mode: 'cors',
-      credentials: 'include'
-    }).then((response) => {
-      return response.json();
-    }).then((json) => {
+    fetchWithCors(this.props.modalData.url).then((json) => {
       this.setState({ content: json })
     });
   }
@@ -113,13 +101,13 @@ class ShowHistoryButton extends React.Component {
   render() {
     const head =
       <tr>
-        {this.props.modalData.headers.map((header, index) => { return <th key={`header_index_${index}`}>{header}</th>; })}
+        {this.props.modalData.headers.map((header, index) => <th key={`header_index_${index}`}>{header}</th>)}
       </tr>;
 
-    const histories = this.state.content ? (this.state.content.versions.map((version, index) => {
-      return <History content={this.state.content} version={version} index={index} buttons={this.props.modalData.buttons}
-                      key={`history_${version.id}`} onShowCompare={this.onShowCompare} />;
-    })) : [];
+    const histories = this.state.content ? (this.state.content.versions.map((version, index) =>
+      <History content={this.state.content} version={version} index={index} buttons={this.props.modalData.buttons}
+               key={`history_${version.id}`} onShowCompare={this.onShowCompare} />
+    )) : [];
 
     const compare = this.state.compare ?
       <HistoryCompare data={this.state.compare} text={this.props.modalData.backText} onShowCompare={this.onShowCompare} /> : null;
@@ -132,13 +120,16 @@ class ShowHistoryButton extends React.Component {
             <Modal.Title>{this.props.modalData.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <div className={this.state.showCompare ? 'hidden' : ''}>
-              <table className='table'>
-                <thead>{head}</thead>
-                <tbody>{histories.reverse()}</tbody>
-              </table>
-            </div>
-            <div className={this.state.showCompare ? '' : 'hidden'}>{compare}</div>
+            {
+              this.state.showCompare ?
+                <div>{compare}</div> :
+                <div>
+                  <table className='table'>
+                    <thead>{head}</thead>
+                    <tbody>{histories.reverse()}</tbody>
+                  </table>
+                </div>
+            }
           </Modal.Body>
         </Modal>
       </span>

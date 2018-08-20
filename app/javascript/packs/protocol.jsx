@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import 'whatwg-fetch'
 import { Button } from 'react-bootstrap'
+import fetchWithCors from './fetch_with_cors'
 
 class Protocol extends React.Component {
   constructor(props) {
@@ -9,13 +9,13 @@ class Protocol extends React.Component {
     this.onTrClick = this.onTrClick.bind(this);
   }
 
-  onTrClick(e) {
-    window.location = e.target.parentElement.dataset.link;
+  onTrClick() {
+    window.location = this.props.data.section_url;
   }
 
   render() {
     return (
-      <tr className='clickable-tr' data-link={this.props.data.section_url} onClick={this.onTrClick}>
+      <tr className='clickable-tr' onClick={this.onTrClick}>
         <td>{this.props.data.title}</td>
         <td>{this.props.data.my_role}</td>
         <td>{this.props.data.principal_investigator}</td>
@@ -52,22 +52,17 @@ class ProtocolIndex extends React.Component {
   }
 
   filtering() {
-    fetch(`${this.props.url}.json?protocol_name_filter=${this.state.word}`, {
-      mode: 'cors',
-      credentials: 'include'
-    }).then((response) => {
-      return response.json();
-    }).then((json) => {
+    fetchWithCors(`${this.props.url}.json?protocol_name_filter=${this.state.word}`).then((json) => {
       this.setState({ data: json });
     });
   }
 
   render() {
-    const head = <tr>{this.props.headers.map((header, index) => { return <th key={`header_${index}`}>{header}</th>; })}</tr>;
+    const head = <tr>{this.props.headers.map((header, index) => <th key={`header_${index}`}>{header}</th>)}</tr>;
 
-    const body = this.state.data ? this.state.data.map((protocol) => {
-      return <Protocol data={protocol} buttons={this.props.buttons} key={`protocol_${protocol.id}`} />;
-    }) : null;
+    const body = this.state.data ? this.state.data.map((protocol) =>
+      <Protocol data={protocol} buttons={this.props.buttons} key={`protocol_${protocol.id}`} />
+    ) : null;
 
     return (
       <div>
