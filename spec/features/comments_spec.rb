@@ -8,10 +8,15 @@ feature Comment, js: true do
   let!(:admin_participation) { create(:admin, protocol: protocol, user: user) }
 
   background(:each) do
+    ActionController::Base.allow_forgery_protection = true
     login_as(user, scope: :user)
     visit protocol_content_path(protocol, content)
     click_on 'Comments (1)'
     sleep 1
+  end
+
+  after do
+    ActionController::Base.allow_forgery_protection = false
   end
 
   feature 'participating user' do
@@ -28,13 +33,14 @@ feature Comment, js: true do
     scenario 'can reply' do
       click_on 'Reply'
       sleep 1
-      within '.reply-form' do
-        fill_in 'comment[body]', with: 'new reply'
-      end
+      fill_in 'comment[body]', with: 'new reply'
       sleep 1
       click_on 'Create Comment'
       sleep 1
       expect(page.body).to have_content 'new reply'
+      within first('.comment') do
+        expect(page.body).to have_css '.comment'
+      end
     end
 
     scenario 'can resolve' do

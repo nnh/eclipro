@@ -16,9 +16,6 @@ Rails.application.routes.draw do
         member do
           put :resolve
         end
-        collection do
-          get :reply
-        end
       end
     end
 

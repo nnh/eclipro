@@ -1,5 +1,5 @@
 class CommentSerializer < BaseSerializer
-  attributes :id, :body, :resolve, :created_at, :reply_url, :resolve_url
+  attributes :id, :body, :resolve, :created_at, :replyable, :resolve_url
   has_one :user
   has_many :replies
 
@@ -11,12 +11,8 @@ class CommentSerializer < BaseSerializer
     content.protocol
   end
 
-  def reply_url
-    if object.resolve?
-      ''
-    else
-      url_helpers.reply_protocol_content_comments_path(protocol, content)
-    end
+  def replyable
+    object.resolve? ? false : true
   end
 
   def resolve_url

@@ -22,6 +22,15 @@ en:
       review_completed: Review Completed
       no_reviewer: Reviewer is not assigned to this section. Please contact the administrator and assign a reviewer.
       comment: Comments
+      modal_title: Section Comments
+      comment_button: Comment
+      show_resolved: Show Resolved
+      buttons:
+        - Reply
+        - Resolve
+      form_buttons:
+        - Create Comment
+        - Cancel
     update:
       success: Content was successfully updated.
       no_change: There is no change in contents.

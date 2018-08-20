@@ -23,19 +23,15 @@ class CommentsController < ApplicationController
   def resolve
     resolve_comments(@comment)
     set_root_comment
-    render json: ActiveModel::Serializer::CollectionSerializer.new(@comments,
-                                                                   each_serializer: CommentSerializer)
-  end
-
-  def reply
-    render json: { content_id: @content.id, current_user_id: current_user.id,
-                   parent_id: comment_params[:parent_id], url: protocol_content_comments_path(@protocol, @content) }
+    render json: { count: @content.comments.count,
+                   comments: ActiveModel::Serializer::CollectionSerializer.new(@comments,
+                                                                               each_serializer: CommentSerializer)}
   end
 
   private
 
     def set_root_comment
-      @comments = @content.comments.where(parent_id: nil)
+      @comments = @content.comments.where(parent_id: nil).order(created_at: :asc)
     end
 
     def resolve_comments(comment)

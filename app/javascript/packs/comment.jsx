@@ -1,35 +1,53 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import $ from 'jquery'
+import 'whatwg-fetch'
+import { Button, Modal } from 'react-bootstrap'
+import fetchByJSON from './fetch_by_json'
 
-class CommentIndex extends React.Component {
+class Comment extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { showForm: false }
+    this.onShowForm = this.onShowForm.bind(this);
+  }
+
+  onShowForm(show) {
+    this.setState({ showForm: show });
+  }
+
   render() {
-    const body = this.props.data.map((data) => {
-      return(
-        <div className={`comment p-m mt-s mb-s${data.resolve ? ' resolve-comment' : '' }`} key={`comment_${data.id}`} >
-          <div>
-            <i className='fa fa-user mr-xs'></i>
-            {data.user.name}
-            <div className='pull-right'>
-              <i className='fa fa-clock-o mr-xs'></i>
-              {data.created_at}
-            </div>
+    return(
+      <div className={`comment p-m mt-s mb-s${this.props.data.resolve ? ' resolve-comment' : '' }${this.props.data.resolve && !this.props.showResolved ? ' hidden' : ''}`} >
+        <div>
+          <i className='fa fa-user mr-xs' />
+          {this.props.data.user.name}
+          <div className='pull-right'>
+            <i className='fa fa-clock-o mr-xs' />
+            {this.props.data.created_at}
           </div>
-          <div>{data.body}</div>
-          <div className='text-right'>
-            {data.reply_url.length > 0 ? <ReplyButton url={data.reply_url} parentId={data.id} text={this.props.buttons[0]} /> : null}
-            {data.resolve_url.length > 0 ? <ResolveButton url={data.resolve_url} text={this.props.buttons[1]} /> : null}
-          </div>
-          <div className='ml-xl'>
-            {data.replies.length > 0 ? <CommentIndex data={data.replies} buttons={this.props.buttons} /> : null}
-          </div>
-          <div className='reply-form' id={`reply-${data.id}`}></div>
         </div>
-      );
-    });
-
-    return (
-      <div>{body}</div>
+        <div>{this.props.data.body}</div>
+        <div className='text-right'>
+          { this.props.data.replyable && (<Button onClick={this.onShowForm.bind(this, true)}>{this.props.modalData.buttons[0]}</Button>) }
+          {
+            this.props.data.resolve_url &&
+              <ResolveButton url={this.props.data.resolve_url} text={this.props.modalData.buttons[1]} onCommentsChanged={this.props.onCommentsChanged} />
+          }
+        </div>
+        <CommentForm show={this.state.showForm} parentId={this.props.data.id} key={`comment_form_key_${this.props.data.id}`}
+                     onShowForm={this.onShowForm} onCommentsChanged={this.props.onCommentsChanged}
+                     modalData={this.props.modalData} onCommentSubmitted={this.props.onCommentSubmitted} />
+        <div className='ml-xl'>
+          {
+            this.props.data.replies &&
+              this.props.data.replies.map((reply) => {
+                return <Comment data={reply} key={`comment_${reply.id}`}
+                                showResolved={this.props.showResolved} onCommentsChanged={this.props.onCommentsChanged}
+                                modalData={this.props.modalData} onCommentSubmitted={this.props.onCommentSubmitted} />
+              })
+          }
+        </div>
+      </div>
     );
   }
 }
@@ -37,171 +55,173 @@ class CommentIndex extends React.Component {
 class CommentForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { text: '' };
+    this.state = {
+      show: props.show ? true : false,
+      text: ''
+    };
+
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onCancel = this.onCancel.bind(this);
+    this.onKeyUp = this.onKeyUp.bind(this);
   }
 
-  render() {
-    return (
-      <div>
-        <textarea name='comment[body]' className='form-control mt-s mb-s' rows='3' onKeyUp={(e) => { this.onKeyUp(e) }}></textarea>
-        <div className='text-right'>
-          <button className='btn btn-default' disabled={!this.state.text} onClick={(e) => { this.onSubmit(e) }}
-                  data-content-id={this.props.data.content_id} data-user-id={this.props.data.current_user_id}
-                  data-parent-id={this.props.data.parent_id} data-url={this.props.data.url}>
-            {this.props.buttons[0]}
-          </button>
-          <button className='btn btn-default ml-s' onClick={(e) => { this.onCancel(e) }}>{this.props.buttons[1]}</button>
-        </div>
-      </div>
-    );
+  componentWillReceiveProps(nextProps) {
+    this.setState({ show: nextProps.show });
   }
 
-  onSubmit(e) {
-    $.ajax({
-      url: $(e.target).data('url'),
-      type: 'POST',
-      dataType: 'json',
-      data: {
-        comment: {
-          body: $(e.target).parent().siblings().val(),
-          content_id: $(e.target).data('content-id'),
-          user_id: $(e.target).data('user-id'),
-          parent_id: $(e.target).data('parent-id')
-        }
+  onSubmit() {
+    fetchByJSON(this.props.modalData.url, 'POST', {
+      comment: {
+        body: this.state.text,
+        content_id: this.props.modalData.contentId,
+        user_id: this.props.modalData.currentUserId,
+        parent_id: this.props.parentId
       }
-    }).done((res) => {
-      $(`#section-${res.id}-comment-icon`).html('<i class="fa fa-commenting mr-s">');
-      $('.show-comments-button').html(`${$('.show-comments-button').data('text')} (${res.count})`);
-      $('.show-comments-button').removeClass().addClass('btn btn-primary show-comments-button');
-      ReactDOM.render(
-        <CommentIndex data={res.comments} buttons={$('.comment-index').data('buttons')} />,
-        $('.comment-index')[0]
-      );
-      resetForm();
-      changeResolvedComment();
+    }).then((json) => {
+      this.props.onCommentSubmitted(json);
+      this.props.onCommentsChanged(json.comments, json.count);
+      this.onCancel();
     });
   }
 
-  onCancel(e) {
-    resetForm();
+  onCancel() {
+    this.setState({
+      text: '',
+      show: false
+    });
+    this.props.onShowForm(false);
   }
 
   onKeyUp(e) {
-    this.setState({ text: $(e.target).val() });
+    this.setState({ text: e.target.value });
+  }
+
+  render() {
+    return this.state.show ? (
+      <div>
+        <textarea name='comment[body]' className='form-control mt-s mb-s' rows='3' onKeyUp={this.onKeyUp} />
+        <div className='text-right'>
+          <Button disabled={!this.state.text} onClick={this.onSubmit}>
+            {this.props.modalData.formButtons[0]}
+          </Button>
+          <Button className='ml-s' onClick={this.onCancel}>{this.props.modalData.formButtons[1]}</Button>
+        </div>
+      </div>
+    ) : null;
   }
 }
 
 class ResolveButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onClick = this.onClick.bind(this);
+  }
+
   render() {
-    return (
-      <button className='btn btn-default' onClick={(e) => { this.onClick(e) }} data-url={this.props.url}>
-        {this.props.text}
-      </button>
-    );
+    return <Button onClick={this.onClick}>{this.props.text}</Button>;
   }
 
-  onClick(e) {
-    $.ajax({
-      url: $(e.target).data('url'),
-      type: 'PUT',
-      dataType: 'json',
-      data: {
-        comment: {
-          resolve: true
-        }
+  onClick() {
+    fetchByJSON(this.props.url, 'PUT', {
+      comment: {
+        resolve: true
       }
-    }).done((res) => {
-      ReactDOM.render(
-        <CommentIndex data={res} buttons={$('.comment-index').data('buttons')} />,
-        $('.comment-index')[0]
-      );
-      resetForm();
-      changeResolvedComment();
+    }).then((json) => {
+      this.props.onCommentsChanged(json.comments, json.count);
     });
   }
 }
 
-class ReplyButton extends React.Component {
-  render() {
-    return (
-      <button className='btn btn-default' onClick={(e) => { this.onClick(e) }}
-              data-url={this.props.url} data-parent-id={this.props.parentId}>
-        {this.props.text}
-      </button>
-    );
-  }
-
-  onClick(e) {
-    $.ajax({
-      url: $(e.target).data('url'),
-      type: 'GET',
-      dataType: 'json',
-      data: {
-        comment: {
-          parent_id: $(e.target).data('parent-id')
-        }
-      }
-    }).done((res) => {
-      resetForm();
-      ReactDOM.render(
-        <CommentForm data={res} buttons={$('.new-comment-form').data('buttons')} />,
-        $(`#reply-${res.parent_id}`)[0]
-      );
-    });
-  }
-}
-
-function resetForm() {
-  $('.reply-form, .new-comment-form').each((i, element) => { ReactDOM.unmountComponentAtNode(element); });
-  $('.new-comment-form').hide();
-  $('.add-comment-form').show();
-}
-
-function changeResolvedComment() {
-  if ($('.show-resolved').is(':checked')) {
-    $('.resolve-comment').show();
-    $('.checkbox-text').text($('.resolve-message-params').data('hide-text'));
-  } else {
-    $('.resolve-comment').hide();
-    $('.checkbox-text').text($('.resolve-message-params').data('show-text'));
-  }
-}
-
-$(() => {
-  $('.show-comments-button').click((e) => {
-    $.ajax({
-      url: $(e.target).data('url'),
-      type: 'GET',
-      dataType: 'json'
-    }).done((res) => {
-      ReactDOM.render(
-        <CommentIndex data={res} buttons={$('.comment-index').data('buttons')} />,
-        $('.comment-index')[0]
-      );
-
-      $('.comment-modal').modal('show');
-      changeResolvedComment();
-    });
-  });
-
-  $(document).on('click', '.add-comment-button', () => {
-    resetForm();
-
-    const target = $('.new-comment-form');
-    const data = {
-      content_id: target.data('content-id'),
-      current_user_id: target.data('current-user-id'),
-      parent_id: null,
-      url: target.data('url')
+class ShowCommentButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      show: false,
+      count: props.buttonData.count,
+      comments: [],
+      showResolved: false,
+      showForm: false
     };
-    ReactDOM.render(
-      <CommentForm data={data} buttons={target.data('buttons')} />,
-      $('.new-comment-form')[0]
+    this.handleClose = this.handleClose.bind(this);
+    this.handleShow = this.handleShow.bind(this);
+    this.onCommentsChanged = this.onCommentsChanged.bind(this);
+    this.onShowForm = this.onShowForm.bind(this);
+    this.toggleShowResolved = this.toggleShowResolved.bind(this);
+
+    this.getComments();
+  }
+
+  handleClose() {
+    this.setState({ show: false });
+  }
+
+  handleShow() {
+    this.setState({ show: true });
+  }
+
+  getComments() {
+    fetch(this.props.modalData.url, {
+      mode: 'cors',
+      credentials: 'include'
+    }).then((response) => {
+      return response.json();
+    }).then((json) => {
+      this.setState({ comments: json });
+    });
+  }
+
+  onCommentsChanged(comments, count) {
+    this.setState({
+      comments: comments,
+      count: count
+    });
+  }
+
+  onShowForm(show) {
+    this.setState({ showForm: show });
+  }
+
+  toggleShowResolved() {
+    this.setState({ showResolved: !this.state.showResolved });
+  }
+
+  render() {
+    return (
+      <span>
+        <Button bsStyle={this.state.count != 0 ? 'primary' : 'default'} onClick={this.handleShow}>
+          {`${this.props.buttonData.text}${this.state.count > 0 ? ` (${this.state.count})` : ''}`}
+        </Button>
+        <Modal show={this.state.show} onHide={this.handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>{this.props.modalData.title}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <div className='pull-right'>
+              <label className='checkbox-inline mr-s'>
+                <input type='checkbox' onChange={this.toggleShowResolved} />
+                {this.props.modalData.showResolved}
+              </label>
+            </div>
+            <div className='mt-xl'>
+              {
+                this.state.comments.map((comment) => {
+                  return <Comment data={comment} key={`comment_${comment.id}`}
+                                  showResolved={this.state.showResolved} onCommentsChanged={this.onCommentsChanged}
+                                  modalData={this.props.modalData} onCommentSubmitted={this.props.onCommentSubmitted} />
+                })
+              }
+            </div>
+            <div className='text-right'>
+              { !this.state.showForm && (<Button onClick={this.onShowForm.bind(this, true)}>{this.props.modalData.commentText}</Button>) }
+            </div>
+            <CommentForm show={this.state.showForm} parentId={null} key='comment_form_key_null'
+                         onShowForm={this.onShowForm} onCommentsChanged={this.onCommentsChanged}
+                         modalData={this.props.modalData} onCommentSubmitted={this.props.onCommentSubmitted} />
+          </Modal.Body>
+        </Modal>
+      </span>
     );
+  }
+}
 
-    $('.add-comment-form').hide();
-    $('.new-comment-form').show();
-  });
-
-  $(document).on('change', '.show-resolved', changeResolvedComment);
-});
+export { ShowCommentButton }
