@@ -8,10 +8,10 @@ class Comment extends React.Component {
   constructor(props) {
     super(props);
     this.state = { showForm: false }
-    this.showForm = this.showForm.bind(this);
+    this.onShowForm = this.onShowForm.bind(this);
   }
 
-  showForm(show) {
+  onShowForm(show) {
     this.setState({ showForm: show });
   }
 
@@ -19,30 +19,30 @@ class Comment extends React.Component {
     return(
       <div className={`comment p-m mt-s mb-s${this.props.data.resolve ? ' resolve-comment' : '' }${this.props.data.resolve && !this.props.showResolved ? ' hidden' : ''}`} >
         <div>
-          <i className='fa fa-user mr-xs'></i>
+          <i className='fa fa-user mr-xs' />
           {this.props.data.user.name}
           <div className='pull-right'>
-            <i className='fa fa-clock-o mr-xs'></i>
+            <i className='fa fa-clock-o mr-xs' />
             {this.props.data.created_at}
           </div>
         </div>
         <div>{this.props.data.body}</div>
         <div className='text-right'>
-          { this.props.data.replyable && (<Button onClick={this.showForm.bind(this, true)}>{this.props.modalData.buttons[0]}</Button>) }
+          { this.props.data.replyable && (<Button onClick={this.onShowForm.bind(this, true)}>{this.props.modalData.buttons[0]}</Button>) }
           {
             this.props.data.resolve_url &&
-              <ResolveButton url={this.props.data.resolve_url} text={this.props.modalData.buttons[1]} setComments={this.props.setComments} />
+              <ResolveButton url={this.props.data.resolve_url} text={this.props.modalData.buttons[1]} onCommentsChanged={this.props.onCommentsChanged} />
           }
         </div>
         <CommentForm show={this.state.showForm} parentId={this.props.data.id} key={`comment_form_key_${this.props.data.id}`}
-                     showForm={this.showForm} setComments={this.props.setComments}
+                     onShowForm={this.onShowForm} onCommentsChanged={this.props.onCommentsChanged}
                      modalData={this.props.modalData} onCommentSubmitted={this.props.onCommentSubmitted} />
         <div className='ml-xl'>
           {
             this.props.data.replies &&
               this.props.data.replies.map((reply) => {
                 return <Comment data={reply} key={`comment_${reply.id}`}
-                                showResolved={this.props.showResolved} setComments={this.props.setComments}
+                                showResolved={this.props.showResolved} onCommentsChanged={this.props.onCommentsChanged}
                                 modalData={this.props.modalData} onCommentSubmitted={this.props.onCommentSubmitted} />
               })
           }
@@ -79,7 +79,7 @@ class CommentForm extends React.Component {
       }
     }).then((json) => {
       this.props.onCommentSubmitted(json);
-      this.props.setComments(json.comments, json.count);
+      this.props.onCommentsChanged(json.comments, json.count);
       this.onCancel();
     });
   }
@@ -89,7 +89,7 @@ class CommentForm extends React.Component {
       text: '',
       show: false
     });
-    this.props.showForm(false);
+    this.props.onShowForm(false);
   }
 
   onKeyUp(e) {
@@ -99,7 +99,7 @@ class CommentForm extends React.Component {
   render() {
     return this.state.show ? (
       <div>
-        <textarea name='comment[body]' className='form-control mt-s mb-s' rows='3' onKeyUp={this.onKeyUp}></textarea>
+        <textarea name='comment[body]' className='form-control mt-s mb-s' rows='3' onKeyUp={this.onKeyUp} />
         <div className='text-right'>
           <Button disabled={!this.state.text} onClick={this.onSubmit}>
             {this.props.modalData.formButtons[0]}
@@ -127,7 +127,7 @@ class ResolveButton extends React.Component {
         resolve: true
       }
     }).then((json) => {
-      this.props.setComments(json.comments, json.count);
+      this.props.onCommentsChanged(json.comments, json.count);
     });
   }
 }
@@ -144,8 +144,8 @@ class ShowCommentButton extends React.Component {
     };
     this.handleClose = this.handleClose.bind(this);
     this.handleShow = this.handleShow.bind(this);
-    this.setComments = this.setComments.bind(this);
-    this.showForm = this.showForm.bind(this);
+    this.onCommentsChanged = this.onCommentsChanged.bind(this);
+    this.onShowForm = this.onShowForm.bind(this);
     this.toggleShowResolved = this.toggleShowResolved.bind(this);
 
     this.getComments();
@@ -170,14 +170,14 @@ class ShowCommentButton extends React.Component {
     });
   }
 
-  setComments(comments, count) {
+  onCommentsChanged(comments, count) {
     this.setState({
       comments: comments,
       count: count
     });
   }
 
-  showForm(show) {
+  onShowForm(show) {
     this.setState({ showForm: show });
   }
 
@@ -206,16 +206,16 @@ class ShowCommentButton extends React.Component {
               {
                 this.state.comments.map((comment) => {
                   return <Comment data={comment} key={`comment_${comment.id}`}
-                                  showResolved={this.state.showResolved} setComments={this.setComments}
+                                  showResolved={this.state.showResolved} onCommentsChanged={this.onCommentsChanged}
                                   modalData={this.props.modalData} onCommentSubmitted={this.props.onCommentSubmitted} />
                 })
               }
             </div>
             <div className='text-right'>
-              { !this.state.showForm && (<Button onClick={this.showForm.bind(this, true)}>{this.props.modalData.commentText}</Button>) }
+              { !this.state.showForm && (<Button onClick={this.onShowForm.bind(this, true)}>{this.props.modalData.commentText}</Button>) }
             </div>
             <CommentForm show={this.state.showForm} parentId={null} key='comment_form_key_null'
-                         showForm={this.showForm} setComments={this.setComments}
+                         onShowForm={this.onShowForm} onCommentsChanged={this.onCommentsChanged}
                          modalData={this.props.modalData} onCommentSubmitted={this.props.onCommentSubmitted} />
           </Modal.Body>
         </Modal>
