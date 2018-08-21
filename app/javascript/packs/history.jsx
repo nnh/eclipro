@@ -1,82 +1,54 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import $ from 'jquery'
+import { Button, Modal } from 'react-bootstrap'
+import { fetchWithCors } from './custom_fetch'
 
-class HistoryIndex extends React.Component {
+class History extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onClick = this.onClick.bind(this);
+  }
+
   render() {
-    const head =
-      <tr>
-        {
-          this.props.headers.map((header, index) => {
-            return <th key={`header_index_${index}`}>{header}</th>
-          })
-        }
-      </tr>
-
-    const body = this.props.data.versions.map((version, index) => {
-      return (
-        <tr key={`history_${version.id}`} >
-          <td>{this.props.data.no_seq} {this.props.data.title}</td>
-          <td>{index}</td>
-          <td>{version.whodunnit}</td>
-          <td>{version.created_at}</td>
-          <td>
-            {(() => {
-              if (version.revert_url.length > 0) {
-                return (
-                  <a href={`${version.revert_url}&index=${index}`} className='btn btn-warning'
-                     data-confirm={this.props.buttons[2]} onClick={(e) => { this.onRevert(e) }}>
-                    {this.props.buttons[0]}
-                  </a>
-                );
-              }
-            })()}
-          </td>
-          <td>
-            <button className='btn btn-default'
-                    data-url={`${version.compare_url}?index=${index}`} onClick={(e) => { this.onCompare(e) }}>
-              {this.props.buttons[1]}
-            </button>
-          </td>
-        </tr>
-      );
-    });
-
     return (
-      <table className='table'>
-        <thead>{head}</thead>
-        <tbody>{body.reverse()}</tbody>
-      </table>
+      <tr>
+        <td>{this.props.content.no_seq} {this.props.content.title}</td>
+        <td>{this.props.index}</td>
+        <td>{this.props.version.whodunnit}</td>
+        <td>{this.props.version.created_at}</td>
+        <td>
+          {
+            this.props.version.revert_url && (
+              <Button bsStyle='warning' href={`${this.props.version.revert_url}&index=${this.props.index}`} data-confirm={this.props.buttons[2]} >
+                {this.props.buttons[0]}
+              </Button>)
+          }
+        </td>
+        <td>
+          <Button onClick={this.onClick}>{this.props.buttons[1]}</Button>
+        </td>
+      </tr>
     );
   }
 
-  onRevert(e) {
-    $('.history-modal').modal('hide');
-  }
-
-  onCompare(e) {
-    $.ajax({
-      url: $(e.target).data('url'),
-      type: 'GET',
-      dataType: 'json'
-    }).done((res) => {
-      ReactDOM.render(
-        <HistoryCompare data={res.data} text={$('.history-compare').data('text')} />,
-        $('.history-compare')[0]
-      );
-      $('.history-index').hide();
+  onClick() {
+    fetchWithCors(`${this.props.version.compare_url}?index=${this.props.index}`).then((json) => {
+      this.props.onShowCompare(true, json.data || '');
     });
   }
 }
 
 class HistoryCompare extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onClick = this.onClick.bind(this);
+  }
+
   render() {
     return (
       <div>
         <div className='text-right'>
-          <button className='btn btn-default' onClick={(e) => this.onClick(e) }>
-            {this.props.text}
-          </button>
+          <Button onClick={this.onClick}>{this.props.text}</Button>
         </div>
         <hr />
         <div dangerouslySetInnerHTML={{__html: this.props.data}}></div>
@@ -84,25 +56,78 @@ class HistoryCompare extends React.Component {
     );
   }
 
-  onClick(e) {
-    ReactDOM.unmountComponentAtNode($('.history-compare')[0]);
-    $('.history-index').show();
+  onClick() {
+    this.props.onShowCompare(false, '');
   }
 }
 
-$(() => {
-  $('.history-button').click((e) => {
-    $.ajax({
-      url: $(e.target).data('url'),
-      type: 'GET',
-      dataType: 'json'
-    }).done((res) => {
-      const target = $('.history-index');
-      ReactDOM.render(
-        <HistoryIndex data={res} headers={target.data('headers')} buttons={target.data('buttons')} />,
-        $('.history-index')[0]
-      );
-      $('.history-modal').modal('show');
+class ShowHistoryButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      show: false,
+      content: { versions: [] },
+      compare: '',
+      showCompare: false
+    }
+    this.handleClose = this.handleClose.bind(this);
+    this.handleShow = this.handleShow.bind(this);
+    this.onShowCompare = this.onShowCompare.bind(this);
+
+    this.getContent();
+  }
+
+  handleClose() {
+    this.setState({ show: false });
+  }
+
+  handleShow() {
+    this.setState({ show: true });
+  }
+
+  getContent() {
+    fetchWithCors(this.props.modalData.url).then((json) => {
+      this.setState({ content: json || { versions: [] } })
     });
-  });
-});
+  }
+
+  onShowCompare(show, compare) {
+    this.setState({
+      showCompare: show,
+      compare: compare
+    });
+  }
+
+  render() {
+    const head =
+      <tr>{this.props.modalData.headers.map((header, index) => <th key={`header_index_${index}`}>{header}</th>)}</tr>;
+
+    const histories = this.state.content.versions.map((version, index) =>
+      <History content={this.state.content} version={version} index={index} buttons={this.props.modalData.buttons}
+               key={`history_${version.id}`} onShowCompare={this.onShowCompare} />
+    )
+
+    const content = this.state.compare && this.state.showCompare ?
+      <HistoryCompare data={this.state.compare} text={this.props.modalData.backText} onShowCompare={this.onShowCompare} />
+      : (
+        <table className='table'>
+          <thead>{head}</thead>
+          <tbody>{histories.reverse()}</tbody>
+        </table>
+      );
+
+    return (
+      <span>
+        <Button onClick={this.handleShow}>{ this.props.text }</Button>
+        <Modal show={this.state.show} onHide={this.handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>{this.props.modalData.title}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>{content}</Modal.Body>
+        </Modal>
+      </span>
+    );
+  }
+}
+
+export { ShowHistoryButton }

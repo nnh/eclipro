@@ -204,5 +204,3 @@ $params: ( z: 0, xs: 5, s: 10, m: 15, l: 20, xl: 25, xxl: 30 );
   .pb-#{$key} { padding-bottom: #{$val}px; }
   .pl-#{$key} { padding-left: #{$val}px; }
 }
-
-.negative-mt-xl { margin-top: -25px; }

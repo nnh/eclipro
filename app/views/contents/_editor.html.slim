@@ -3,7 +3,7 @@
   - if content.editable
     .mb-xl
       .pull-right.comment-button(data-button={ text: t('.comment'), count: content.comments_count }.to_json
-        data-modal={ title: t('.modal_title'),
+        data-modal={ title: t('.comment_modal_title'),
                      showResolved: t('.show_resolved'),
                      buttons: t('.buttons'),
                      commentText: t('.comment_button'),
@@ -11,9 +11,12 @@
                      contentId: @content.id,
                      currentUserId: current_user.id,
                      url: protocol_content_comments_path(@protocol, @content) }.to_json)
-      .pull-right
-        = button_tag t('.history'), type: :button, class: 'btn btn-default history-button',
-                     data: { url:  history_protocol_content_path(protocol, content) }
+      .pull-right.history-button(data-text="#{t('.history')}"
+        data-modal={ title: t('.history_modal_title'),
+                     headers: t('.headers'),
+                     buttons: t('.history_buttons'),
+                     backText: t('.back'),
+                     url: history_protocol_content_path(@protocol, @content) }.to_json)
 
       h4 = "#{t('.editor')}: #{content.no_seq unless content.no.zero?} #{content.title}"
 
@@ -43,5 +46,3 @@
     h4 = "#{t('.editor')}: #{content.no_seq} #{content.title} #{t('.read_only')}"
     h4 = t('.read_only_text')
     = content.body.html_safe
-
-= render 'history'

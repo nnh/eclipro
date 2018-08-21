@@ -1,8 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import 'whatwg-fetch'
 import { Button, Modal } from 'react-bootstrap'
-import fetchByJSON from './fetch_by_json'
+import { fetchByJSON } from './custom_fetch'
 
 class Comment extends React.Component {
   constructor(props) {
@@ -39,12 +38,11 @@ class Comment extends React.Component {
                      modalData={this.props.modalData} onCommentSubmitted={this.props.onCommentSubmitted} />
         <div className='ml-xl'>
           {
-            this.props.data.replies &&
-              this.props.data.replies.map((reply) => {
-                return <Comment data={reply} key={`comment_${reply.id}`}
-                                showResolved={this.props.showResolved} onCommentsChanged={this.props.onCommentsChanged}
-                                modalData={this.props.modalData} onCommentSubmitted={this.props.onCommentSubmitted} />
-              })
+            this.props.data.replies.map((reply) =>
+              <Comment data={reply} key={`comment_${reply.id}`}
+                       showResolved={this.props.showResolved} onCommentsChanged={this.props.onCommentsChanged}
+                       modalData={this.props.modalData} onCommentSubmitted={this.props.onCommentSubmitted} />
+            )
           }
         </div>
       </div>
@@ -204,11 +202,11 @@ class ShowCommentButton extends React.Component {
             </div>
             <div className='mt-xl'>
               {
-                this.state.comments.map((comment) => {
-                  return <Comment data={comment} key={`comment_${comment.id}`}
-                                  showResolved={this.state.showResolved} onCommentsChanged={this.onCommentsChanged}
-                                  modalData={this.props.modalData} onCommentSubmitted={this.props.onCommentSubmitted} />
-                })
+                this.state.comments.map((comment) =>
+                  <Comment data={comment} key={`comment_${comment.id}`}
+                           showResolved={this.state.showResolved} onCommentsChanged={this.onCommentsChanged}
+                           modalData={this.props.modalData} onCommentSubmitted={this.props.onCommentSubmitted} />
+                )
               }
             </div>
             <div className='text-right'>

@@ -21,9 +21,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import './tiny_mce'
-import './protocol'
-import './history'
+import { ProtocolIndex } from './protocol'
 import { ShowCommentButton } from './comment'
+import { ShowHistoryButton } from './history'
 
 $(() => {
   // protocol form
@@ -102,22 +102,51 @@ $(() => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  const button = document.querySelector('.comment-button');
-  if (button) {
-    const buttonData = JSON.parse(button.dataset.button);
-    const modalData = JSON.parse(button.dataset.modal);
+  const commentButton = document.querySelector('.comment-button');
+  if (commentButton) {
+    const commentButtonData = JSON.parse(commentButton.dataset.button);
+    const commentModalData = JSON.parse(commentButton.dataset.modal);
 
     ReactDOM.render(
       React.createElement(ShowCommentButton,
                          {
-                           buttonData: buttonData,
-                           modalData: modalData,
+                           buttonData: commentButtonData,
+                           modalData: commentModalData,
                            onCommentSubmitted: (json) => {
                              document.querySelector(`#section-${json.id}-comment-icon`).innerHTML = '<i class="fa fa-commenting mr-s">';
                            }
                          },
                          null),
-      button
+      commentButton
+    );
+  }
+
+  const historyButton = document.querySelector('.history-button');
+  if (historyButton) {
+    const historyModalData = JSON.parse(historyButton.dataset.modal);
+
+    ReactDOM.render(
+      React.createElement(ShowHistoryButton,
+                          { text: historyButton.dataset.text, modalData: historyModalData },
+                          null),
+      historyButton
+    );
+  }
+
+  const protocolIndex = document.querySelector('.protocol-index');
+  if (protocolIndex) {
+    const formData = JSON.parse(protocolIndex.dataset.form);
+    ReactDOM.render(
+      React.createElement(ProtocolIndex,
+                          {
+                            placeholder: formData.placeholder,
+                            text: formData.text,
+                            url: formData.url,
+                            headers: formData.headers,
+                            buttons: formData.buttons
+                          },
+                          null),
+      protocolIndex
     );
   }
 });

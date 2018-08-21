@@ -24,7 +24,7 @@ feature Protocol, js: true do
     end
 
     scenario 'with filter' do
-      fill_in 'protocol_name_filter', with: 'Test'
+      find('.form-control').set('Test')
       click_on 'Filtering'
       expect(page).to have_content protocol0.title
       expect(page).not_to have_content protocol1.title

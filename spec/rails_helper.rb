@@ -56,6 +56,7 @@ Capybara.ignore_hidden_elements = false
 Capybara.configure do |config|
   config.default_driver = :headless_chrome
 end
+Capybara.default_max_wait_time = 10
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
