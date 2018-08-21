@@ -10,18 +10,18 @@ export function fetchWithCors(url) {
 }
 
 export function fetchByJSON(url, method, body) {
-  const addOpts = {
+  const opts = {
     method: method,
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(body)
   };
-  return fetchWithXCSRF(url, Object.assign({}, baseOpts, addOpts)).then((r) => r.json());
+  return fetchWithXCSRF(url, opts);
 }
 
 export function fetchWithXCSRF(url, opts) {
   const token = document.querySelector('meta[name=csrf-token]').content;
-  const newOpts = Object.assign({}, opts, { headers: Object.assign({}, opts.headers, { 'X-CSRF-Token': token }) });
-  return fetch(url, newOpts);
+  const newOpts = Object.assign({}, baseOpts, opts, { headers: Object.assign({}, opts.headers, { 'X-CSRF-Token': token }) });
+  return fetch(url, newOpts).then((r) => r.json());
 }

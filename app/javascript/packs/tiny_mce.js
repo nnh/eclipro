@@ -23,6 +23,7 @@ import 'tinymce/plugins/textcolor'
 import 'tinymce/plugins/toc'
 import 'tinymce/plugins/visualblocks'
 import 'tinymce/plugins/visualchars'
+import { fetchWithXCSRF } from './custom_fetch'
 
 require.context(
   'file-loader?name=[path][name].[ext]&context=node_modules/tinymce!tinymce/skins',
@@ -30,13 +31,14 @@ require.context(
   /.*/
 );
 
-$(() => {
+document.addEventListener('DOMContentLoaded', () => {
   let textIsChanged = false;
-  const cssPath = `${(process.env.RAILS_ENV == 'test') ? '/packs-test' : '/packs'}/tiny_mce_style.css`;
 
-  if ($('textarea.tinymce').length > 0) {
-    const CREATE_URL = `/protocols/${$('.tiny-mce-params').data('protocol-id')}/contents/${$('.tiny-mce-params').data('content-id')}/images`;
-    const PUBMED_URL = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi';
+  if (document.querySelector('textarea.tinymce')) {
+    const cssPath = `${(process.env.RAILS_ENV == 'test') ? '/packs-test' : '/packs'}/tiny_mce_style.css`;
+    const dataset = document.querySelector('.tiny-mce-params').dataset;
+    const createUrl = `/protocols/${dataset.protocolId}/contents/${dataset.contentId}/images`;
+    const pubmedUrl = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi';
 
     tinyMCE.init({
       selector: 'textarea.tinymce',
@@ -50,17 +52,16 @@ $(() => {
       images_upload_handler: (blobInfo, success, failure) => {
         const formData = new FormData();
         formData.append('file', blobInfo.blob(), blobInfo.filename());
-        $.ajax({
-          url: CREATE_URL,
-          type: 'POST',
-          dataType: 'json',
-          data: formData,
-          processData: false,
-          contentType: false
-        }).done((res) => {
-          success(res.image.url);
-        }).fail((XMLHttpRequest, textStatus, errorThrown) => {
-          failure(`The image upload failed.\n${errorThrown}`);
+        fetchWithXCSRF(createUrl, {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json'
+          },
+          body: formData
+        }).then((json) => {
+          success(json.image.url);
+        }).catch((error) => {
+          failure(`The image upload failed.\n${error}`);
         });
       },
       plugins: 'print, paste, searchreplace, media, link, hr, anchor, pagebreak, insertdatetime, nonbreaking, template, toc,' +
@@ -81,32 +82,59 @@ $(() => {
                 {type: 'textbox', name: 'pubmed_id', label: 'Pubmed ID'}
               ],
               onsubmit: (e) => {
-                $.ajax({
-                  type: 'GET',
-                  dataType: 'xml',
-                  url: PUBMED_URL,
-                  data: { db: 'pubmed', retmode: 'xml', id: e.data.pubmed_id },
-                  success: (response) => {
-                    const author_names = [];
-                    const authors = $(response).find('AuthorList').children();
-                    for (let i = 0; i < authors.length; i++) {
-                      const author = authors[i];
-                      const author_name = [$(author).find('LastName').text(), $(author).find('Initials').text()].join(' ');
-                      author_names.push(author_name);
-                    }
-                    const title = $(response).find('ArticleTitle').text();
-                    const journal = $(response).find('Journal > ISOAbbreviation').text();
-                    const date = ['PubDate > Year', 'PubDate > Month', 'PubDate > Day'].map((m) => $(response).find(m).text()).filter((t) => t.length > 0).join(' ');
-                    const number = $(response).find('Issue').text();
-                    const page = $(response).find('Pagination > MedlinePgn').text();
-                    let text = $(response).find('Volume').text();
-                    if (number.length > 0) { text += `(${number})`; }
-                    if (page.length > 0) { text += `:${page}.`; }
-                    editor.insertContent(`${author_names} ${title} ${journal}.${date};${text}`);
-                  },
-                  error: (xhr, textStatus, errorThrown) => {
-                    alert(`Failed to get the data.\n${errorThrown}`);
+                fetch(`${pubmedUrl}?db=pubmed&retmode=xml&id=${e.data.pubmed_id}`, {
+                }).then((response) => {
+                  return response.text();
+                }).then((text) => {
+                  return new window.DOMParser().parseFromString(text, 'application/xml');
+                }).then((data) => {
+                  const authorNames = [];
+                  const authors = data.getElementsByTagName('AuthorList')[0].getElementsByTagName('Author');
+                  for (let i = 0; i < authors.length; i++) {
+                    const author = authors[i];
+
+                    let lastName = '';
+                    const lastNameData = author.getElementsByTagName('LastName')[0];
+                    if (lastNameData) { lastName = lastNameData.innerHTML; }
+
+                    let initials = '';
+                    const initialsData = author.getElementsByTagName('Initials')[0];
+                    if (initialsData) { initials = initialsData.innerHTML; }
+
+                    authorNames.push([lastName, initials].filter((text) => text).join(' '));
                   }
+
+                  let title = '';
+                  const articleTitle = data.getElementsByTagName('ArticleTitle')[0];
+                  if (articleTitle) { title = articleTitle.innerHTML; }
+
+                  let journal = '';
+                  const jornalData = data.getElementsByTagName('Journal')[0].getElementsByTagName('ISOAbbreviation')[0];
+                  if (jornalData) { journal = jornalData.innerHTML; }
+
+                  const date = ['Year', 'Month', 'Day'].map((m) => {
+                    const d = data.getElementsByTagName('PubDate')[0].getElementsByTagName(m)[0];
+                    if (d != undefined) return d.innerHTML;
+                  }).filter((f) => f).join(' ');
+
+                  let number = '';
+                  const issue = data.getElementsByTagName('Issue')[0];
+                  if (issue) { number = issue.innerHTML; }
+
+                  let page = '';
+                  const pagination = data.getElementsByTagName('Pagination')[0].getElementsByTagName('MedlinePgn')[0];
+                  if (pagination) { page = pagination.innerHTML; }
+
+                  let text = '';
+                  const volume = data.getElementsByTagName('Volume')[0];
+                  if (volume) { text = volume.innerHTML; }
+
+                  if (number) { text += `(${number})`; }
+                  if (page) { text += `:${page}.`; }
+
+                  editor.insertContent(`${authorNames} ${title} ${journal}.${date};${text}`);
+                }).catch((error) => {
+                  alert(`Failed to get the data.\n${error}`);
                 });
               }
             });
@@ -115,7 +143,7 @@ $(() => {
         editor.addButton('container', {
           tooltip: 'Insert container (red: Japanese, blue: English)',
           icon: 'icon-double-arrow',
-          onclick: function() {
+          onclick: () => {
             editor.insertContent(
               `<div class="container" contenteditable='true'>
                 <div class="ja"><p>&nbsp;</p></div>
@@ -128,9 +156,11 @@ $(() => {
         editor.addButton('blank', {
           tooltip: 'Insert blank after selected container',
           icon: 'icon-arrow',
-          onclick: function() {
-            let node = tinymce.get('form-tinymce').selection.getNode();
-            $(node).closest('.container').append('<div class="space"><p>&nbsp;</p></div>');
+          onclick: () => {
+            const div = document.createElement('div');
+            div.classList.add('space');
+            div.innerHTML = '<p>&nbsp;</p>';
+            tinymce.get('form-tinymce').selection.getNode().closest('.container').append(div);
           }
         });
         editor.on('change', () => {
@@ -140,18 +170,25 @@ $(() => {
     });
   }
 
-  $('input[type=submit]').on('click', () => {
-    $(window).off('beforeunload');
-  });
-  $(window).on('beforeunload', () => {
-    if (textIsChanged && $('.content-submit-button').length > 0) return '';
-  });
+  const submitButton = document.querySelector('input[type=submit]');
+  if (submitButton) {
+    const event = (e) => {
+      if (textIsChanged && document.querySelector('.content-submit-button')) { e.returnValue = ''; }
+    };
+    submitButton.addEventListener('click', () => {
+      window.removeEventListener('beforeunload', event);
+    });
+    window.addEventListener('beforeunload', event);
+  }
 
-  $('.example-copy-button').click((e) => {
-    if (window.confirm($('.example-copy-button').data('message'))) {
-      const data = '<div contenteditable="true">' + $(e.target).parent().prev().html() + '</div>';
-      tinyMCE.get('form-tinymce').setContent(data);
-      textIsChanged = true;
-    }
-  });
+  const copyButton = document.querySelector('.example-copy-button');
+  if (copyButton) {
+    copyButton.addEventListener('click', (e) => {
+      if (window.confirm(copyButton.dataset.message)) {
+        const data = `<div contenteditable="true">${e.target.parentElement.previousSibling.innerHTML}</div>`;
+        tinyMCE.get('form-tinymce').setContent(data);
+        textIsChanged = true;
+      }
+    });
+  }
 });
