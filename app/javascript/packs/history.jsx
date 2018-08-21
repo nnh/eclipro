@@ -123,9 +123,7 @@ class ShowHistoryButton extends React.Component {
           <Modal.Header closeButton>
             <Modal.Title>{this.props.modalData.title}</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
-            <div>{content}</div>
-          </Modal.Body>
+          <Modal.Body>{content}</Modal.Body>
         </Modal>
       </span>
     );

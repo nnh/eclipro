@@ -12,7 +12,6 @@ feature Comment, js: true do
     login_as(user, scope: :user)
     visit protocol_content_path(protocol, content)
     click_on 'Comments (1)'
-    sleep 1
   end
 
   after do
@@ -22,31 +21,23 @@ feature Comment, js: true do
   feature 'participating user' do
     scenario 'can comment' do
       click_on 'Comment'
-      sleep 1
-      fill_in 'comment[body]', with: 'new comment'
-      sleep 1
+      find('.form-control').set('new comment')
       click_on 'Create Comment'
-      sleep 1
-      expect(page.body).to have_content 'new comment'
+      expect(find('.modal-body')).to have_content 'new comment'
     end
 
     scenario 'can reply' do
       click_on 'Reply'
-      sleep 1
+      find('.form-control').set('new reply')
       fill_in 'comment[body]', with: 'new reply'
-      sleep 1
       click_on 'Create Comment'
-      sleep 1
-      expect(page.body).to have_content 'new reply'
-      within first('.comment') do
-        expect(page.body).to have_css '.comment'
-      end
+      expect(find('.modal-body')).to have_content 'new reply'
+      expect(first('.comment')).to have_css '.comment'
     end
 
     scenario 'can resolve' do
       click_on 'Resolve'
-      sleep 1
-      expect(page.body).to have_css 'div.resolve-comment'
+      expect(find('.modal-body')).to have_css 'div.resolve-comment'
     end
   end
 end

@@ -148,13 +148,11 @@ feature Content, js: true do
       expect(page).to have_link 'History'
 
       click_on 'History'
-      sleep 1
-      expect(page).to have_content "#{in_progress.no_seq} #{in_progress.title}"
-      expect(page).to have_button 'Compare'
+      expect(find('.modal-body')).to have_content "#{in_progress.no_seq} #{in_progress.title}"
+      expect(find('.modal-body')).to have_button 'Compare'
 
       first(:button, 'Compare').click
-      sleep 1
-      expect(page).to have_content in_progress.body
+      expect(find('.modal-body')).to have_content in_progress.body
     end
   end
 
@@ -163,11 +161,9 @@ feature Content, js: true do
       visit protocol_content_path(protocol, in_progress)
 
       click_on 'History'
-      sleep 1
-      expect(page).to have_link 'Revert'
+      expect(find('.modal-body')).to have_link 'Revert'
 
       accept_confirm { first(:link, 'Revert').click }
-      sleep 1
       expect(page).to have_content 'before body'
     end
   end
@@ -177,8 +173,7 @@ feature Content, js: true do
       visit protocol_content_path(protocol, in_progress)
 
       click_on 'History'
-      sleep 1
-      expect(page).not_to have_link 'Revert'
+      expect(find('.modal-body')).not_to have_link 'Revert'
     end
   end
 

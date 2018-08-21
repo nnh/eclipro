@@ -24,7 +24,6 @@ feature Protocol, js: true do
     end
 
     scenario 'with filter' do
-      sleep 1
       find('.form-control').set('Test')
       click_on 'Filtering'
       expect(page).to have_content protocol0.title
