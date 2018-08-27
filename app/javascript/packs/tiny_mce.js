@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.querySelector('textarea.tinymce')) {
     const cssPath = `${(process.env.RAILS_ENV == 'test') ? '/packs-test' : '/packs'}/tiny_mce_style.css`;
     const dataset = document.querySelector('.tiny-mce-params').dataset;
-    const createUrl = `/protocols/${dataset.protocolId}/contents/${dataset.contentId}/images`;
+    const createPath = `/protocols/${dataset.protocolId}/contents/${dataset.contentId}/images`;
     const pubmedUrl = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi';
 
     tinyMCE.init({
@@ -49,20 +49,21 @@ document.addEventListener('DOMContentLoaded', () => {
       theme_advanced_buttons3_add: ['tablecontrols', 'fullscreen'],
       automatic_uploads: true,
       content_css: cssPath,
-      images_upload_handler: (blobInfo, success, failure) => {
+      images_upload_handler: async (blobInfo, success, failure) => {
         const formData = new FormData();
         formData.append('file', blobInfo.blob(), blobInfo.filename());
-        fetchWithXCSRF(createUrl, {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json'
-          },
-          body: formData
-        }).then((json) => {
+        try {
+          const json = await fetchWithXCSRF(createPath, {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json'
+            },
+            body: formData
+          });
           success(json.image.url);
-        }).catch((error) => {
+        } catch(error) {
           failure(`The image upload failed.\n${error}`);
-        });
+        }
       },
       plugins: 'print, paste, searchreplace, media, link, hr, anchor, pagebreak, insertdatetime, nonbreaking, template, toc,' +
                'visualchars, visualblocks, preview, table, fullscreen, lists, advlist, textcolor, emoticons, charmap image',
@@ -88,6 +89,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }).then((text) => {
                   return new window.DOMParser().parseFromString(text, 'application/xml');
                 }).then((data) => {
+                  const error = data.getElementsByTagName('ERROR');
+                  if (error.length) {
+                    alert(`Failed to get the data.\n${error[0].innerHTML}`);
+                    return;
+                  }
+
                   const authorNames = [];
                   const authors = data.getElementsByTagName('AuthorList')[0].getElementsByTagName('Author');
                   for (let i = 0; i < authors.length; i++) {
@@ -170,10 +177,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  const submitButton = document.querySelector('input[type=submit]');
+  const submitButton = document.querySelector('.content-submit-button');
   if (submitButton) {
     const event = (e) => {
-      if (textIsChanged && document.querySelector('.content-submit-button')) { e.returnValue = ''; }
+      if (textIsChanged) { e.returnValue = ''; }
     };
     submitButton.addEventListener('click', () => {
       window.removeEventListener('beforeunload', event);
