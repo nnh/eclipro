@@ -24,7 +24,7 @@ import 'tinymce/plugins/toc'
 import 'tinymce/plugins/visualblocks'
 import 'tinymce/plugins/visualchars'
 import { fetchWithXCSRF } from './custom_fetch'
-import parsePubmed from './parse_pubmed'
+import insertPubmed from './insert_pubmed'
 
 require.context(
   'file-loader?name=[path][name].[ext]&context=node_modules/tinymce!tinymce/skins',
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 {type: 'textbox', name: 'pubmed_id', label: 'Pubmed ID'}
               ],
               onsubmit: (e) => {
-                editor.insertContent(parsePubmed(e.data.pubmed_id));
+                insertPubmed(editor, e.data.pubmed_id);
               }
             });
           }
