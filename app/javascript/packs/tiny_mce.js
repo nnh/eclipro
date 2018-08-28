@@ -82,8 +82,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 {type: 'label', label: 'Import a citation from PubMed.'},
                 {type: 'textbox', name: 'pubmed_id', label: 'Pubmed ID'}
               ],
-              onsubmit: (e) => {
-                insertPubmed(editor, e.data.pubmed_id);
+              onsubmit: async (e) => {
+                try {
+                  const result = await insertPubmed(e.data.pubmed_id);
+                  result.content ? editor.insertContent(result.content) : alert(`Failed to get the data.\n${result.error}`);
+                } catch (error) {
+                  alert(`Failed to get the data.\n${error}`);
+                }
               }
             });
           }

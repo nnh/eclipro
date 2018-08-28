@@ -1,7 +1,7 @@
 import 'whatwg-fetch'
 import cheerio from 'cheerio'
 
-export default async function insertPubmed(editor, pmid) {
+export default async function insertPubmed(pmid) {
   try {
     const response = await fetch(`https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&retmode=xml&id=${pmid}`);
     const responseText = await response.text();
@@ -9,8 +9,7 @@ export default async function insertPubmed(editor, pmid) {
 
     const error = data('eFetchResult > ERROR');
     if (error.length) {
-      alert(`Failed to get the data.\n${error.text()}`);
-      return;
+      return { error: error.text() };
     }
 
     const authorNames = [];
@@ -39,8 +38,8 @@ export default async function insertPubmed(editor, pmid) {
     const page = data('MedlinePgn').text();
     if (page.length) { text += `:${page}.`; }
 
-    editor.insertContent(`${authorNames.join(', ')} ${title} ${journal}.${date};${text}`);
+    return { content: `${authorNames.join(', ')} ${title} ${journal}.${date};${text}` };
   } catch (error) {
-    alert(`Failed to get the data.\n${error}`);
+    return { error: error };
   }
 }
