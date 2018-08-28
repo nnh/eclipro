@@ -24,7 +24,7 @@ import 'tinymce/plugins/toc'
 import 'tinymce/plugins/visualblocks'
 import 'tinymce/plugins/visualchars'
 import { fetchWithXCSRF } from './custom_fetch'
-import insertPubmed from './insert_pubmed'
+import getPubmedData from './get_pubmed_data'
 
 require.context(
   'file-loader?name=[path][name].[ext]&context=node_modules/tinymce!tinymce/skins',
@@ -84,8 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
               ],
               onsubmit: async (e) => {
                 try {
-                  const result = await insertPubmed(e.data.pubmed_id);
-                  result.content ? editor.insertContent(result.content) : alert(`Failed to get the data.\n${result.error}`);
+                  const result = await getPubmedData(e.data.pubmed_id);
+                  editor.insertContent(result);
                 } catch (error) {
                   alert(`Failed to get the data.\n${error}`);
                 }
