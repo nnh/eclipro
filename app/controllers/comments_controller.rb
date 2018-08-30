@@ -5,8 +5,7 @@ class CommentsController < ApplicationController
 
   def index
     set_root_comment
-    render json: ActiveModel::Serializer::CollectionSerializer.new(@comments,
-                                                                   each_serializer: CommentSerializer)
+    render json: ActiveModel::Serializer::CollectionSerializer.new(@comments, serializer: CommentSerializer)
   end
 
   def create
@@ -16,16 +15,14 @@ class CommentsController < ApplicationController
 
     set_root_comment
     render json: { id: @content.no_seq.gsub('.', '-'), count: @content.comments.count,
-                   comments: ActiveModel::Serializer::CollectionSerializer.new(@comments,
-                                                                               each_serializer: CommentSerializer)}
+                   comments: ActiveModel::Serializer::CollectionSerializer.new(@comments, serializer: CommentSerializer) }
   end
 
   def resolve
     resolve_comments(@comment)
     set_root_comment
     render json: { count: @content.comments.count,
-                   comments: ActiveModel::Serializer::CollectionSerializer.new(@comments,
-                                                                               each_serializer: CommentSerializer)}
+                   comments: ActiveModel::Serializer::CollectionSerializer.new(@comments, serializer: CommentSerializer) }
   end
 
   private

@@ -20,8 +20,10 @@ import Header from './header'
 import { ProtocolIndex } from './protocol'
 import { ShowCommentButton } from './comment'
 import { ShowHistoryButton } from './history'
+import ContentTabs from './content_tabs'
 
 document.addEventListener('DOMContentLoaded', () => {
+  // header
   const header = document.querySelector('.ecripro-header');
   const headerData = header.dataset;
   if (header) {
@@ -29,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
       React.createElement(
         Header,
         {
-          rootUrl: headerData.rootUrl,
           signedIn: headerData.signedIn,
           protocolUrl: headerData.protocolUrl,
           protocolText: headerData.protocolText,
@@ -51,6 +52,24 @@ document.addEventListener('DOMContentLoaded', () => {
         null
       ),
       header
+    );
+  }
+
+  // protocol index
+  const protocolIndex = document.querySelector('.protocol-index');
+  if (protocolIndex) {
+    const formData = JSON.parse(protocolIndex.dataset.form);
+    ReactDOM.render(
+      React.createElement(ProtocolIndex,
+                          {
+                            placeholder: formData.placeholder,
+                            text: formData.text,
+                            url: formData.url,
+                            headers: formData.headers,
+                            buttons: formData.buttons
+                          },
+                          null),
+      protocolIndex
     );
   }
 
@@ -86,6 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
     checkGet();
   }
 
+  // protocol show
   const uploadField = document.querySelector('.upload-field');
   if (uploadField) {
     function checkFile() {
@@ -100,47 +120,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // contents
-  const navs = document.querySelectorAll('.nav-pills a');
-  const panes = document.querySelectorAll('.tab-pane');
-  if (navs.length) {
-    navs.forEach((nav) => {
-      nav.addEventListener('click', () => {
-        navs.forEach((n) => n.parentElement.classList.remove('active'));
-        nav.parentElement.classList.add('active');
-
-        panes.forEach((pane) => pane.classList.remove('active'));
-        document.querySelector(nav.getAttribute('href')).classList.add('active');
-      });
-    });
-  }
-
   const toUnderReviewButton = document.querySelector('.to-under-review');
   if (toUnderReviewButton) {
     toUnderReviewButton.addEventListener('click', () => {
       const hasReviewerData = document.querySelector('.content-has-reviewer').dataset;
       if (hasReviewerData.hasReviewer === 'false') window.alert(hasReviewerData.message);
     });
-  }
-
-  // participations
-  const allSectionsCheckbox = document.querySelector('.check-all-sections');
-  if (allSectionsCheckbox) {
-    allSectionsCheckbox.addEventListener('click', () =>
-      document.querySelectorAll('input[type=checkbox]').forEach((checkbox) => checkbox.checked = true)
-    );
-  }
-
-  const roleForm = document.querySelector('#participation_role');
-  if (roleForm) {
-    function checkSections() {
-      if (roleForm.value === roleForm.lastChild.value) {
-        document.querySelector('.participation-sections').style.display = 'none';
-      } else {
-        document.querySelector('.participation-sections').style.display = 'block';
-      }
-    }
-    roleForm.addEventListener('change', () => checkSections());
-    checkSections();
   }
 
   const commentButton = document.querySelector('.comment-button');
@@ -171,20 +156,46 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   }
 
-  const protocolIndex = document.querySelector('.protocol-index');
-  if (protocolIndex) {
-    const formData = JSON.parse(protocolIndex.dataset.form);
+  const contentTabs = document.querySelector('.content-tabs');
+  if (contentTabs) {
+    const menuData = contentTabs.dataset;
     ReactDOM.render(
-      React.createElement(ProtocolIndex,
+      React.createElement(ContentTabs,
                           {
-                            placeholder: formData.placeholder,
-                            text: formData.text,
-                            url: formData.url,
-                            headers: formData.headers,
-                            buttons: formData.buttons
+                            sectionsText: menuData.sectionsText,
+                            instructionsText: menuData.instructionsText,
+                            exampleText: menuData.exampleText,
+                            sections: '',
+                            instructions: menuData.instructions,
+                            example: menuData.example,
+                            copyText: menuData.copyText,
+                            copyConfirm: menuData.copyConfirm,
+                            noSeq: menuData.noSeq,
+                            contents: JSON.parse(menuData.contents)
                           },
                           null),
-      protocolIndex
+      contentTabs
     );
+  }
+
+  // participations
+  const allSectionsCheckbox = document.querySelector('.check-all-sections');
+  if (allSectionsCheckbox) {
+    allSectionsCheckbox.addEventListener('click', () =>
+      document.querySelectorAll('input[type=checkbox]').forEach((checkbox) => checkbox.checked = true)
+    );
+  }
+
+  const roleForm = document.querySelector('#participation_role');
+  if (roleForm) {
+    function checkSections() {
+      if (roleForm.value === roleForm.lastChild.value) {
+        document.querySelector('.participation-sections').style.display = 'none';
+      } else {
+        document.querySelector('.participation-sections').style.display = 'block';
+      }
+    }
+    roleForm.addEventListener('change', () => checkSections());
+    checkSections();
   }
 });

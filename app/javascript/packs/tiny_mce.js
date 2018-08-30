@@ -116,32 +116,16 @@ document.addEventListener('DOMContentLoaded', () => {
             tinymce.get('form-tinymce').selection.getNode().closest('.container').append(div);
           }
         });
-        editor.on('change', () => {
-          textIsChanged = true;
-        });
+        editor.on('change', () => textIsChanged = true);
+        editor.addCommand('changeText', () => textIsChanged = true);
       }
     });
   }
 
   const submitButton = document.querySelector('.content-submit-button');
   if (submitButton) {
-    const event = (e) => {
-      if (textIsChanged) { e.returnValue = ''; }
-    };
-    submitButton.addEventListener('click', () => {
-      window.removeEventListener('beforeunload', event);
-    });
+    const event = (e) => { if (textIsChanged) e.returnValue = ''; };
+    submitButton.addEventListener('click', () => window.removeEventListener('beforeunload', event));
     window.addEventListener('beforeunload', event);
-  }
-
-  const copyButton = document.querySelector('.example-copy-button');
-  if (copyButton) {
-    copyButton.addEventListener('click', (e) => {
-      if (window.confirm(copyButton.dataset.message)) {
-        const data = `<div contenteditable="true">${e.target.parentElement.previousSibling.innerHTML}</div>`;
-        tinyMCE.get('form-tinymce').setContent(data);
-        textIsChanged = true;
-      }
-    });
   }
 });

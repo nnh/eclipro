@@ -9,7 +9,7 @@ class Header extends React.Component {
       <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href={this.props.rootUrl}>eclipro</a>
+            <a href='/'>eclipro</a>
           </Navbar.Brand>
         </Navbar.Header>
         <Nav>

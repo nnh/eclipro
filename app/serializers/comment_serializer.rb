@@ -26,7 +26,7 @@ class CommentSerializer < BaseSerializer
   def replies
     comments = Comment.where(parent_id: object.id)
     if comments.any?
-      ActiveModel::Serializer::CollectionSerializer.new(comments, each_serializer: CommentSerializer)
+      ActiveModel::Serializer::CollectionSerializer.new(comments, serializer: CommentSerializer)
     else
       []
     end

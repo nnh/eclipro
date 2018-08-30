@@ -2,8 +2,18 @@
   h3 = "#{t('.protocol')}: #{@protocol.title}"
 
 .row
-  .col-md-4
-    = render 'menu', protocol: @protocol, contents: @contents,
-                     example: @example, instructions: @instructions, no_seq: @content.no_seq
+  .col-md-4.content-tabs(
+    data-sections-text=t('.sections')
+    data-instructions-text=t('.instructions')
+    data-example-text=t('.example')
+    data-sections=''
+    data-instructions=@instructions
+    data-example=@example
+    data-copy-text=t('.copy')
+    data-copy-confirm=t('.copy_confirm')
+    data-no-seq=@content.no_seq
+    data-contents=@contents.to_json
+  )
+
   .col-md-8
     = render 'editor', protocol: @protocol, content: @content
