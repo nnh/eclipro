@@ -9,11 +9,6 @@
 
 import 'es6-shim'
 
-import $ from 'jquery'
-window.$ = window.jquery = $;
-
-import 'bootstrap-sass'
-
 import Rails from 'rails-ujs'
 Rails.start();
 
@@ -21,100 +16,144 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import './tiny_mce'
+import Header from './header'
 import { ProtocolIndex } from './protocol'
 import { ShowCommentButton } from './comment'
 import { ShowHistoryButton } from './history'
 
-$(() => {
+document.addEventListener('DOMContentLoaded', () => {
+  const header = document.querySelector('.ecripro-header');
+  const headerData = header.dataset;
+  if (header) {
+    ReactDOM.render(
+      React.createElement(
+        Header,
+        {
+          rootUrl: headerData.rootUrl,
+          signedIn: headerData.signedIn,
+          protocolUrl: headerData.protocolUrl,
+          protocolText: headerData.protocolText,
+          newProtocolUrl: headerData.newProtocolUrl,
+          newProtocolText: headerData.newProtocolText,
+          helpText: headerData.helpText,
+          currentUserText: headerData.currentUserText,
+          editUrl: headerData.editUrl,
+          editText: headerData.editText,
+          signOutUrl: headerData.signOutUrl,
+          signOutText: headerData.signOutText,
+          languageText: headerData.languageText,
+          japaneseText: headerData.japaneseText,
+          englishText: headerData.englishText,
+          languageUrl: headerData.languageUrl,
+          signInUrl: headerData.signInUrl,
+          signInText: headerData.signInText
+        },
+        null
+      ),
+      header
+    );
+  }
+
   // protocol form
-  function checkSponsor() {
-    if ($('#protocol_sponsors').children(':selected').last().text() === $('#protocol_sponsors').children().last().val()) {
-      $('.protocol-sponsor-other-form').show();
-    } else {
-      $('.protocol-sponsor-other-form').hide();
+  const sponsors = document.querySelector('#protocol_sponsors');
+  if (sponsors) {
+    function checkSponsor() {
+      if (sponsors.selectedOptions.length && sponsors.selectedOptions[sponsors.selectedOptions.length - 1].value === sponsors.lastChild.value) {
+        document.querySelector('.protocol-sponsor-other-form').style.display = 'block';
+      } else {
+        document.querySelector('.protocol-sponsor-other-form').style.display = 'none';
+      }
     }
-  }
-  $('#protocol_sponsors').change(() => {
+    sponsors.addEventListener('change', () => checkSponsor());
     checkSponsor();
-  });
-  checkSponsor();
-
-  function checkGet() {
-    if ($('#protocol_study_agent_1').prop('checked') || $('#protocol_study_agent_2').prop('checked')) {
-      $('.protocol-has-ind-form').show();
-    } else {
-      $('.protocol-has-ind-form').hide();
-    }
-    if ($('#protocol_study_agent_3').prop('checked')) {
-      $('.protocol-has-ide-form').show();
-    } else {
-      $('.protocol-has-ide-form').hide();
-    }
   }
-  $('.protocol-checkbox-form').change(() => {
+
+  const checkboxes = document.querySelectorAll('.protocol-checkbox-form');
+  if (checkboxes.length) {
+    function checkGet() {
+      if (document.querySelector('#protocol_study_agent_1').checked || document.querySelector('#protocol_study_agent_2').checked) {
+        document.querySelector('.protocol-has-ind-form').style.display = 'block';
+      } else {
+        document.querySelector('.protocol-has-ind-form').style.display = 'none';
+      }
+      if (document.querySelector('#protocol_study_agent_3').checked) {
+        document.querySelector('.protocol-has-ide-form').style.display = 'block';
+      } else {
+        document.querySelector('.protocol-has-ide-form').style.display = 'none';
+      }
+    }
+    checkboxes.forEach((checkbox) => checkbox.addEventListener('change', () => checkGet()));
     checkGet();
-  });
-  checkGet();
-
-  function checkFile() {
-    if ($('.upload-field').val().length > 0) {
-      $('.upload-button').prop('disabled', false);
-    } else {
-      $('.upload-button').prop('disabled', true);
-    }
   }
-  $('.upload-field').change(function() {
-    checkFile();
-  });
-  if ($('.upload-field').length) {
+
+  const uploadField = document.querySelector('.upload-field');
+  if (uploadField) {
+    function checkFile() {
+      if (uploadField.value) {
+        document.querySelector('.upload-button').disabled = '';
+      } else {
+        document.querySelector('.upload-button').disabled = true;
+      }
+    }
+    uploadField.addEventListener('change', () => checkFile());
     checkFile();
   }
 
   // contents
-  const hash = window.location.hash;
-  hash && $('ul.nav a[href="' + hash + ']').tab('show');
-  $('.nav-pills a').click((e) => {
-    $(e.target).tab('show');
-  });
+  const navs = document.querySelectorAll('.nav-pills a');
+  const panes = document.querySelectorAll('.tab-pane');
+  if (navs.length) {
+    navs.forEach((nav) => {
+      nav.addEventListener('click', () => {
+        navs.forEach((n) => n.parentElement.classList.remove('active'));
+        nav.parentElement.classList.add('active');
 
-  $('.to-under-review').click(() => {
-    if (!$('.content-has-reviewer').data('has-reviewer')) {
-      window.alert($('.content-has-reviewer').data('message'));
-    }
-  });
+        panes.forEach((pane) => pane.classList.remove('active'));
+        document.querySelector(nav.getAttribute('href')).classList.add('active');
+      });
+    });
+  }
+
+  const toUnderReviewButton = document.querySelector('.to-under-review');
+  if (toUnderReviewButton) {
+    toUnderReviewButton.addEventListener('click', () => {
+      const hasReviewerData = document.querySelector('.content-has-reviewer').dataset;
+      if (hasReviewerData.hasReviewer === 'false') window.alert(hasReviewerData.message);
+    });
+  }
 
   // participations
-  $('.check-all-sections').click(() => {
-    $('input[type=checkbox]').prop('checked', true);
-  });
-
-  function checkSections() {
-    if ($('#participation_role').val() == $('#participation_role').children().last().val()) {
-      $('.participation-sections').hide();
-    } else {
-      $('.participation-sections').show();
-    }
+  const allSectionsCheckbox = document.querySelector('.check-all-sections');
+  if (allSectionsCheckbox) {
+    allSectionsCheckbox.addEventListener('click', () =>
+      document.querySelectorAll('input[type=checkbox]').forEach((checkbox) => checkbox.checked = true)
+    );
   }
-  $('#participation_role').change(function() {
-    checkSections();
-  });
-  checkSections();
-});
 
-document.addEventListener('DOMContentLoaded', () => {
+  const roleForm = document.querySelector('#participation_role');
+  if (roleForm) {
+    function checkSections() {
+      if (roleForm.value === roleForm.lastChild.value) {
+        document.querySelector('.participation-sections').style.display = 'none';
+      } else {
+        document.querySelector('.participation-sections').style.display = 'block';
+      }
+    }
+    roleForm.addEventListener('change', () => checkSections());
+    checkSections();
+  }
+
   const commentButton = document.querySelector('.comment-button');
   if (commentButton) {
     const commentButtonData = JSON.parse(commentButton.dataset.button);
     const commentModalData = JSON.parse(commentButton.dataset.modal);
-
     ReactDOM.render(
       React.createElement(ShowCommentButton,
                          {
                            buttonData: commentButtonData,
                            modalData: commentModalData,
-                           onCommentSubmitted: (json) => {
-                             document.querySelector(`#section-${json.id}-comment-icon`).innerHTML = '<i class="fa fa-commenting mr-s">';
-                           }
+                           onCommentSubmitted: (json) =>
+                             document.querySelector(`#section-${json.id}-comment-icon`).innerHTML = '<i class="fa fa-commenting mr-s">'
                          },
                          null),
       commentButton
@@ -124,7 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const historyButton = document.querySelector('.history-button');
   if (historyButton) {
     const historyModalData = JSON.parse(historyButton.dataset.modal);
-
     ReactDOM.render(
       React.createElement(ShowHistoryButton,
                           { text: historyButton.dataset.text, modalData: historyModalData },
