@@ -1,21 +1,5 @@
 ja:
   protocols:
-    index:
-      filter_placeholder: プロトコルをフィルタリング
-      filter: フィルタリング
-      headers:
-        - プロトコルタイトル
-        - 自分の役割
-        - 主任研究員
-        - 状態
-        - バージョン
-        - ''
-        - ''
-        - ''
-      buttons:
-        - 詳細
-        - エクスポート
-        - 複製
     new:
       title: プロトコル新規作成
       back: 戻る

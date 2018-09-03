@@ -38,3 +38,18 @@ ja:
       compare: 比較
       confirm: このバージョンに戻しますか？
       back: 戻る
+    protocol:
+      placeholder: プロトコルをフィルタリング
+      filtering: フィルタリング
+      headers:
+        - プロトコルタイトル
+        - 自分の役割
+        - 主任研究員
+        - 状態
+        - バージョン
+        - ''
+        - ''
+        - ''
+      details: 詳細
+      export: エクスポート
+      clone: 複製

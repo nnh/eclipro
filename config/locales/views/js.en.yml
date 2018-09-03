@@ -38,3 +38,18 @@ en:
       compare: Compare
       confirm: Would you like to revert to this version?
       back: Back
+    protocol:
+      placeholder: Filter protocols
+      filtering: Filtering
+      headers:
+        - Protocol title
+        - My role
+        - Principal Investigator
+        - Status
+        - Version
+        - ''
+        - ''
+        - ''
+      details: Details
+      export: Export
+      clone: Clone

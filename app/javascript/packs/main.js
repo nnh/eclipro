@@ -45,19 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // protocol index
   const protocolIndex = document.querySelector('.protocol-index');
   if (protocolIndex) {
-    const formData = JSON.parse(protocolIndex.dataset.form);
     ReactDOM.render(
-      React.createElement(
-        ProtocolIndex,
-        {
-          placeholder: formData.placeholder,
-          text: formData.text,
-          url: formData.url,
-          headers: formData.headers,
-          buttons: formData.buttons
-        },
-        null
-      ),
+      React.createElement(ProtocolIndex, { url: protocolIndex.dataset.url }, null),
       protocolIndex
     );
   }
