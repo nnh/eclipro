@@ -20,16 +20,6 @@ en:
       rework_needed: Rework Needed
       review_completed: Review Completed
       no_reviewer: Reviewer is not assigned to this section. Please contact the administrator and assign a reviewer.
-      comment: Comments
-      comment_modal_title: Section Comments
-      comment_button: Comment
-      show_resolved: Show Resolved
-      buttons:
-        - Reply
-        - Resolve
-      form_buttons:
-        - Create Comment
-        - Cancel
       history_modal_title: History
       headers:
         - Title

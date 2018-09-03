@@ -44,14 +44,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const commentButton = document.querySelector('.comment-button');
     if (commentButton) {
-      const commentButtonData = JSON.parse(commentButton.dataset.button);
-      const commentModalData = JSON.parse(commentButton.dataset.modal);
+      const commentButtonData = commentButton.dataset;
       ReactDOM.render(
         React.createElement(
           ShowCommentButton,
           {
-            buttonData: commentButtonData,
-            modalData: commentModalData,
+            count: commentButtonData.count,
+            contentId: commentButtonData.contentId,
+            currentUserId: commentButtonData.currentUserId,
+            url: commentButtonData.url,
             onCommentSubmitted: (json) => {
               const c = contents.find(e => e.no_seq === json.no_seq);
               c.comments_count = json.count;

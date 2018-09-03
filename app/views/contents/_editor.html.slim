@@ -2,15 +2,12 @@
   .content-has-reviewer data-has-reviewer="#{content.has_reviewer?}" data-message="#{t('.no_reviewer')}"
   - if content.editable
     .mb-xl
-      .pull-right.comment-button(data-button={ text: t('.comment'), count: content.comments_count }.to_json
-        data-modal={ title: t('.comment_modal_title'),
-                     showResolved: t('.show_resolved'),
-                     buttons: t('.buttons'),
-                     commentText: t('.comment_button'),
-                     formButtons: t('.form_buttons'),
-                     contentId: @content.id,
-                     currentUserId: current_user.id,
-                     url: protocol_content_comments_path(@protocol, @content) }.to_json)
+      .pull-right.comment-button(
+        data-count=content.comments_count
+        data-content-id=@content.id
+        data-current-user-id=current_user.id
+        data-url=protocol_content_comments_path(@protocol, @content)
+      )
       .pull-right.history-button(data-text="#{t('.history')}"
         data-modal={ title: t('.history_modal_title'),
                      headers: t('.headers'),

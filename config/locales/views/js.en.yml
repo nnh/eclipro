@@ -1,0 +1,11 @@
+en:
+  js:
+    comment:
+      comments: Comments
+      modal_title: Section Comments
+      show_resolved: Show Resolved
+      reply: Reply
+      resolve: Resolve
+      comment: Comment
+      create: Create Comment
+      cancel: Cancel

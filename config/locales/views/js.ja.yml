@@ -1,0 +1,11 @@
+ja:
+  js:
+    comment:
+      comments: コメント
+      modal_title: セクションコメント
+      show_resolved: 解決済みコメントを表示する
+      reply: 返信
+      resolve: 解決
+      comment: コメントする
+      create: 作成する
+      cancel: キャンセル

@@ -20,16 +20,6 @@ ja:
       rework_needed: 修正が必要
       review_completed: レビュー完了
       no_reviewer: このセクションにレビューアーが割り当てられていません。管理者に連絡して割り当ててください。
-      comment: コメント
-      comment_modal_title: セクションコメント
-      comment_button: コメントする
-      show_resolved: 解決済みコメントを表示する
-      buttons:
-        - 返信
-        - 解決
-      form_buttons:
-        - 作成する
-        - キャンセル
       history_modal_title: 履歴
       headers:
         - タイトル
