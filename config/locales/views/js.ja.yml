@@ -25,3 +25,16 @@ ja:
       language: 言語
       japanese: 日本語
       english: English
+    history:
+      history: 履歴
+      headers:
+        - タイトル
+        - バージョン
+        - 編集者
+        - 日付
+        - ''
+        - ''
+      revert: 戻す
+      compare: 比較
+      confirm: このバージョンに戻しますか？
+      back: 戻る

@@ -62,13 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const historyButton = document.querySelector('.history-button');
     if (historyButton) {
-      const historyModalData = JSON.parse(historyButton.dataset.modal);
       ReactDOM.render(
-        React.createElement(
-          ShowHistoryButton,
-          { text: historyButton.dataset.text, modalData: historyModalData },
-          null
-        ),
+        React.createElement(ShowHistoryButton, { url: historyButton.dataset.url }, null),
         historyButton
       );
     }

@@ -25,3 +25,16 @@ en:
       language: Language
       japanese: 日本語
       english: English
+    history:
+      history: History
+      headers:
+        - Title
+        - Version
+        - Modified by
+        - Date
+        - ''
+        - ''
+      revert: Revert
+      compare: Compare
+      confirm: Would you like to revert to this version?
+      back: Back

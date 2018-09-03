@@ -9,25 +9,11 @@ ja:
       section_title: タイトルページ (読み出し専用)
       read_only: (読み出し専用)
       read_only_text: このセクションは編集できません。コンテンツを編集するには、小見出しをクリックしてください。
-      history: 履歴
       status: 状態
       ready_for_review: レビュー準備完了
       rework_needed: 修正が必要
       review_completed: レビュー完了
       no_reviewer: このセクションにレビューアーが割り当てられていません。管理者に連絡して割り当ててください。
-      history_modal_title: 履歴
-      headers:
-        - タイトル
-        - バージョン
-        - 編集者
-        - 日付
-        - ''
-        - ''
-      history_buttons:
-        - 戻す
-        - 比較
-        - このバージョンに戻しますか？
-      back: 戻る
     update:
       success: コンテンツの更新をしました。
       no_change: コンテンツに変更はありません。

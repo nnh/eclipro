@@ -1,5 +1,5 @@
 .section-content
-  .content-has-reviewer data-has-reviewer="#{content.has_reviewer?}" data-message="#{t('.no_reviewer')}"
+  .content-has-reviewer data-has-reviewer="#{content.has_reviewer?}" data-message=t('.no_reviewer')
   - if content.editable
     .mb-xl
       .pull-right.comment-button(
@@ -8,12 +8,7 @@
         data-current-user-id=current_user.id
         data-url=protocol_content_comments_path(@protocol, @content)
       )
-      .pull-right.history-button(data-text="#{t('.history')}"
-        data-modal={ title: t('.history_modal_title'),
-                     headers: t('.headers'),
-                     buttons: t('.history_buttons'),
-                     backText: t('.back'),
-                     url: history_protocol_content_path(@protocol, @content) }.to_json)
+      .pull-right.history-button data-url=history_protocol_content_path(@protocol, @content)
 
       h4 = "#{t('.editor')}: #{content.no_seq unless content.no.zero?} #{content.title}"
 
@@ -37,7 +32,7 @@
 
           .pull-left.mt-m
             = "#{t('.status')}: #{content.status_i18n}"
-      .tiny-mce-params data-protocol-id="#{protocol.id}" data-content-id="#{content.id}"
+      .tiny-mce-params data-protocol-id=protocol.id data-content-id=content.id
 
   - else
     h4 = "#{t('.editor')}: #{content.no_seq} #{content.title} #{t('.read_only')}"
