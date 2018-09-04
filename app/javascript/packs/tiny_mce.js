@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const div = document.createElement('div');
             div.classList.add('space');
             div.innerHTML = '<p>&nbsp;</p>';
-            tinymce.get('form-tinymce').selection.getNode().closest('.container').append(div);
+            editor.selection.getNode().closest('.container').append(div);
           }
         });
         editor.on('change', () => textIsChanged = true);

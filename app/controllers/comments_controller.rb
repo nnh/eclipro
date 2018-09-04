@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
     @content.reload
 
     set_root_comment
-    render json: { id: @content.no_seq.gsub('.', '-'), count: @content.comments.count,
+    render json: { no_seq: @content.no_seq, count: @content.comments.count,
                    comments: ActiveModel::Serializer::CollectionSerializer.new(@comments, serializer: CommentSerializer) }
   end
 

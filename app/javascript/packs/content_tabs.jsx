@@ -1,6 +1,5 @@
 import React from 'react'
 import { Tab, Nav, NavItem, Button } from 'react-bootstrap'
-import tinyMCE from 'tinymce'
 
 class SectionLink extends React.Component {
   render() {
@@ -10,12 +9,8 @@ class SectionLink extends React.Component {
       <div className={`${content.seq === 0 ? '' : 'child-list'} ${content.no_seq === this.props.noSeq ? 'active-section' : ''}`}>
         <a href={content.content_url} className={`section-link${content.editable ? '' : ' uneditable'}`}>
           {`${content.no === 0 ? '' : content.no_seq} ${content.title}`}
-          <div className='pull-right' id={`section-${content.no_seq.replace('.', '-')}-icon`}>
-            <i className={`fa fa-${content.status_icon}`} />
-          </div>
-          <div className='pull-right' id={`section-${content.no_seq.replace('.', '-')}-comment-icon`}>
-            {content.comments_count.length && <i className='fa fa-commenting mr-s' />}
-          </div>
+          <div className='pull-right'><i className={`fa fa-${content.status_icon}`} /></div>
+          {content.comments_count && <div className='pull-right'><i className='fa fa-commenting mr-s' /></div>}
         </a>
       </div>
     );
@@ -25,14 +20,13 @@ class SectionLink extends React.Component {
 export default class ContentTabs extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { contents : props.contents }
     this.onClick = this.onClick.bind(this);
   }
 
   onClick(e) {
     if (confirm(this.props.copyConfirm)) {
-      const form = tinyMCE.get('form-tinymce');
-      form.setContent(`<div contenteditable="true">${e.target.parentElement.previousSibling.innerHTML}</div>`);
-      form.execCommand('changeText');
+      this.props.onCopy(e);
     }
   }
 
@@ -41,10 +35,10 @@ export default class ContentTabs extends React.Component {
       <Tab.Container id='content-tab' defaultActiveKey='sections'>
         <div>
           <div className='clearfix'>
-            <Nav bsStyle='pills' className='pull-right'>
-              <NavItem eventKey='example' className='nav-border' disabled={this.props.example ? false : true}>{this.props.exampleText}</NavItem>
-              <NavItem eventKey='instructions' className='nav-border' disabled={this.props.instructions ? false : true}>{this.props.instructionsText}</NavItem>
-              <NavItem eventKey='sections' className='nav-border'>{this.props.sectionsText}</NavItem>
+            <Nav bsStyle='tabs' className='container-fluid'>
+              <NavItem eventKey='sections'>{this.props.sectionsText}</NavItem>
+              <NavItem eventKey='instructions' disabled={this.props.instructions ? false : true}>{this.props.instructionsText}</NavItem>
+              <NavItem eventKey='example' disabled={this.props.example ? false : true}>{this.props.exampleText}</NavItem>
             </Nav>
           </div>
           <div>
@@ -64,7 +58,7 @@ export default class ContentTabs extends React.Component {
                 <div dangerouslySetInnerHTML={{__html: this.props.instructions}}></div>
               </Tab.Pane>
               <Tab.Pane eventKey='sections' className='menu menu-body mt-m'>
-                {this.props.contents.map((content) => <SectionLink key={`section-link-${content.id}`} content={content} noSeq={this.props.noSeq} />)}
+                {this.state.contents.map((content) => <SectionLink key={`section-link-${content.id}`} content={content} noSeq={this.props.noSeq} />)}
               </Tab.Pane>
             </Tab.Content>
           </div>

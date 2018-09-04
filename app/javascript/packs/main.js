@@ -77,13 +77,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const sponsors = document.querySelector('#protocol_sponsors');
   if (sponsors) {
     function checkSponsor() {
-      if (sponsors.selectedOptions.length && sponsors.selectedOptions[sponsors.selectedOptions.length - 1].value === sponsors.lastChild.value) {
+      if (Array.from(sponsors.selectedOptions).includes(sponsors.lastChild)) {
         document.querySelector('.protocol-sponsor-other-form').style.display = 'block';
       } else {
         document.querySelector('.protocol-sponsor-other-form').style.display = 'none';
       }
     }
-    sponsors.addEventListener('change', () => checkSponsor());
+    sponsors.addEventListener('change', checkSponsor);
     checkSponsor();
   }
 
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.protocol-has-ide-form').style.display = 'none';
       }
     }
-    checkboxes.forEach((checkbox) => checkbox.addEventListener('change', () => checkGet()));
+    checkboxes.forEach((checkbox) => checkbox.addEventListener('change', checkGet));
     checkGet();
   }
 
@@ -115,67 +115,75 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.upload-button').disabled = true;
       }
     }
-    uploadField.addEventListener('change', () => checkFile());
+    uploadField.addEventListener('change', checkFile);
     checkFile();
   }
 
   // contents
-  const toUnderReviewButton = document.querySelector('.to-under-review');
-  if (toUnderReviewButton) {
-    toUnderReviewButton.addEventListener('click', () => {
-      const hasReviewerData = document.querySelector('.content-has-reviewer').dataset;
-      if (hasReviewerData.hasReviewer === 'false') window.alert(hasReviewerData.message);
-    });
-  }
-
-  const commentButton = document.querySelector('.comment-button');
-  if (commentButton) {
-    const commentButtonData = JSON.parse(commentButton.dataset.button);
-    const commentModalData = JSON.parse(commentButton.dataset.modal);
-    ReactDOM.render(
-      React.createElement(ShowCommentButton,
-                         {
-                           buttonData: commentButtonData,
-                           modalData: commentModalData,
-                           onCommentSubmitted: (json) =>
-                             document.querySelector(`#section-${json.id}-comment-icon`).innerHTML = '<i class="fa fa-commenting mr-s">'
-                         },
-                         null),
-      commentButton
-    );
-  }
-
-  const historyButton = document.querySelector('.history-button');
-  if (historyButton) {
-    const historyModalData = JSON.parse(historyButton.dataset.modal);
-    ReactDOM.render(
-      React.createElement(ShowHistoryButton,
-                          { text: historyButton.dataset.text, modalData: historyModalData },
-                          null),
-      historyButton
-    );
-  }
-
-  const contentTabs = document.querySelector('.content-tabs');
-  if (contentTabs) {
-    const menuData = contentTabs.dataset;
-    ReactDOM.render(
+  const contentTabsElm = document.querySelector('.content-tabs');
+  if (contentTabsElm) {
+    const menuData = contentTabsElm.dataset;
+    const contents = JSON.parse(menuData.contents);
+    const contentTabs = ReactDOM.render(
       React.createElement(ContentTabs,
                           {
                             sectionsText: menuData.sectionsText,
                             instructionsText: menuData.instructionsText,
                             exampleText: menuData.exampleText,
-                            sections: '',
                             instructions: menuData.instructions,
                             example: menuData.example,
                             copyText: menuData.copyText,
                             copyConfirm: menuData.copyConfirm,
                             noSeq: menuData.noSeq,
-                            contents: JSON.parse(menuData.contents)
+                            contents: contents,
+                            onCopy: (e) => {
+                              const form = tinyMCE.get('form-tinymce');
+                              form.setContent(`<div contenteditable="true">${e.target.parentElement.previousSibling.innerHTML}</div>`);
+                              form.execCommand('changeText');
+                            }
                           },
                           null),
-      contentTabs
+      contentTabsElm
     );
+
+    const toUnderReviewButton = document.querySelector('.to-under-review');
+    if (toUnderReviewButton) {
+      toUnderReviewButton.addEventListener('click', () => {
+        const hasReviewerData = document.querySelector('.content-has-reviewer').dataset;
+        if (hasReviewerData.hasReviewer === 'false') window.alert(hasReviewerData.message);
+      });
+    }
+
+    const commentButton = document.querySelector('.comment-button');
+    if (commentButton) {
+      const commentButtonData = JSON.parse(commentButton.dataset.button);
+      const commentModalData = JSON.parse(commentButton.dataset.modal);
+      ReactDOM.render(
+        React.createElement(ShowCommentButton,
+                           {
+                             buttonData: commentButtonData,
+                             modalData: commentModalData,
+                             onCommentSubmitted: (json) => {
+                               const c = contents.find(e => e.no_seq === json.no_seq);
+                               c.comments_count = json.count;
+                               contentTabs.setState({ contents: contents });
+                             }
+                           },
+                           null),
+        commentButton
+      );
+    }
+
+    const historyButton = document.querySelector('.history-button');
+    if (historyButton) {
+      const historyModalData = JSON.parse(historyButton.dataset.modal);
+      ReactDOM.render(
+        React.createElement(ShowHistoryButton,
+                            { text: historyButton.dataset.text, modalData: historyModalData },
+                            null),
+        historyButton
+      );
+    }
   }
 
   // participations
@@ -195,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.participation-sections').style.display = 'block';
       }
     }
-    roleForm.addEventListener('change', () => checkSections());
+    roleForm.addEventListener('change', checkSections);
     checkSections();
   }
 });
