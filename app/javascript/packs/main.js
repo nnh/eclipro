@@ -14,13 +14,9 @@ Rails.start();
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-
-import './tiny_mce'
 import Header from './header'
 import { ProtocolIndex } from './protocol'
-import { ShowCommentButton } from './comment'
-import { ShowHistoryButton } from './history'
-import ContentTabs from './content_tabs'
+import './content_show'
 
 document.addEventListener('DOMContentLoaded', () => {
   // header
@@ -60,15 +56,17 @@ document.addEventListener('DOMContentLoaded', () => {
   if (protocolIndex) {
     const formData = JSON.parse(protocolIndex.dataset.form);
     ReactDOM.render(
-      React.createElement(ProtocolIndex,
-                          {
-                            placeholder: formData.placeholder,
-                            text: formData.text,
-                            url: formData.url,
-                            headers: formData.headers,
-                            buttons: formData.buttons
-                          },
-                          null),
+      React.createElement(
+        ProtocolIndex,
+        {
+          placeholder: formData.placeholder,
+          text: formData.text,
+          url: formData.url,
+          headers: formData.headers,
+          buttons: formData.buttons
+        },
+        null
+      ),
       protocolIndex
     );
   }
@@ -117,73 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     uploadField.addEventListener('change', checkFile);
     checkFile();
-  }
-
-  // contents
-  const contentTabsElm = document.querySelector('.content-tabs');
-  if (contentTabsElm) {
-    const menuData = contentTabsElm.dataset;
-    const contents = JSON.parse(menuData.contents);
-    const contentTabs = ReactDOM.render(
-      React.createElement(ContentTabs,
-                          {
-                            sectionsText: menuData.sectionsText,
-                            instructionsText: menuData.instructionsText,
-                            exampleText: menuData.exampleText,
-                            instructions: menuData.instructions,
-                            example: menuData.example,
-                            copyText: menuData.copyText,
-                            copyConfirm: menuData.copyConfirm,
-                            noSeq: menuData.noSeq,
-                            contents: contents,
-                            onCopy: (e) => {
-                              const form = tinyMCE.get('form-tinymce');
-                              form.setContent(`<div contenteditable="true">${e.target.parentElement.previousSibling.innerHTML}</div>`);
-                              form.execCommand('changeText');
-                            }
-                          },
-                          null),
-      contentTabsElm
-    );
-
-    const toUnderReviewButton = document.querySelector('.to-under-review');
-    if (toUnderReviewButton) {
-      toUnderReviewButton.addEventListener('click', () => {
-        const hasReviewerData = document.querySelector('.content-has-reviewer').dataset;
-        if (hasReviewerData.hasReviewer === 'false') window.alert(hasReviewerData.message);
-      });
-    }
-
-    const commentButton = document.querySelector('.comment-button');
-    if (commentButton) {
-      const commentButtonData = JSON.parse(commentButton.dataset.button);
-      const commentModalData = JSON.parse(commentButton.dataset.modal);
-      ReactDOM.render(
-        React.createElement(ShowCommentButton,
-                           {
-                             buttonData: commentButtonData,
-                             modalData: commentModalData,
-                             onCommentSubmitted: (json) => {
-                               const c = contents.find(e => e.no_seq === json.no_seq);
-                               c.comments_count = json.count;
-                               contentTabs.setState({ contents: contents });
-                             }
-                           },
-                           null),
-        commentButton
-      );
-    }
-
-    const historyButton = document.querySelector('.history-button');
-    if (historyButton) {
-      const historyModalData = JSON.parse(historyButton.dataset.modal);
-      ReactDOM.render(
-        React.createElement(ShowHistoryButton,
-                            { text: historyButton.dataset.text, modalData: historyModalData },
-                            null),
-        historyButton
-      );
-    }
   }
 
   // participations

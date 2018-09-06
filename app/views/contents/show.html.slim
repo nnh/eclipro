@@ -12,6 +12,7 @@
     data-copy-confirm=t('.copy_confirm')
     data-no-seq=@content.no_seq
     data-contents=@contents.to_json
+    data-editable="#{(can? :update, @content) ? true : ''}"
   )
 
   .col-md-8

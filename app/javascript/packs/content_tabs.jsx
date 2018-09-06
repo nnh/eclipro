@@ -48,9 +48,7 @@ export default class ContentTabs extends React.Component {
                   this.props.example &&
                     <div>
                       <div dangerouslySetInnerHTML={{__html: this.props.example}}></div>
-                      <div className='text-right'>
-                        <Button onClick={this.onClick}>{this.props.copyText}</Button>
-                      </div>
+                      {this.props.editable && (<div className='text-right'><Button onClick={this.onClick}>{this.props.copyText}</Button></div>)}
                     </div>
                 }
               </Tab.Pane>
