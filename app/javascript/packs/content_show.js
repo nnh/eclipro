@@ -17,13 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
       React.createElement(
         ContentTabs,
         {
-          sectionsText: menuData.sectionsText,
-          instructionsText: menuData.instructionsText,
-          exampleText: menuData.exampleText,
           instructions: menuData.instructions,
           example: menuData.example,
-          copyText: menuData.copyText,
-          copyConfirm: menuData.copyConfirm,
           noSeq: menuData.noSeq,
           editable: menuData.editable,
           contents: contents,

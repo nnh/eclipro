@@ -2,13 +2,8 @@ ja:
   contents:
     show:
       protocol: プロトコル
-      example: 例
-      instructions: 説明
-      sections: セクション
       title_page: タイトルページ
       compliance: コンプライアンス声明
-      copy: エディタへコピー
-      copy_confirm: このテキストの例は、エディタの現在のテキストをすべて置き換えます。続行しますか？
     editor:
       editor: エディタ
       section_title: タイトルページ (読み出し専用)

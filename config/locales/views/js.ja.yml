@@ -9,3 +9,9 @@ ja:
       comment: コメントする
       create: 作成する
       cancel: キャンセル
+    content_tabs:
+      example: 例
+      instructions: 説明
+      sections: セクション
+      copy: エディタへコピー
+      copy_confirm: このテキストの例は、エディタの現在のテキストをすべて置き換えます。続行しますか？

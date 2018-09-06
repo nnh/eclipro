@@ -2,13 +2,8 @@ en:
   contents:
     show:
       protocol: Protocol
-      example: Example
-      instructions: Instructions
-      sections: Sections
       title_page: Title page
       compliance: Statement of Compliance
-      copy: Copy to Editor
-      copy_confirm: The example text will replace all the current text in editor, do you wish to continue?
     editor:
       editor: Editor
       section_title: Title page (Read only)

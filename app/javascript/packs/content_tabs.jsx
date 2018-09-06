@@ -25,7 +25,7 @@ export default class ContentTabs extends React.Component {
   }
 
   onClick(e) {
-    if (confirm(this.props.copyConfirm)) {
+    if (confirm(I18n.t('js.content_tabs.copy_confirm'))) {
       this.props.onCopy(e);
     }
   }
@@ -36,9 +36,9 @@ export default class ContentTabs extends React.Component {
         <div>
           <div className='clearfix'>
             <Nav bsStyle='tabs' className='container-fluid'>
-              <NavItem eventKey='sections'>{this.props.sectionsText}</NavItem>
-              <NavItem eventKey='instructions' disabled={this.props.instructions ? false : true}>{this.props.instructionsText}</NavItem>
-              <NavItem eventKey='example' disabled={this.props.example ? false : true}>{this.props.exampleText}</NavItem>
+              <NavItem eventKey='sections'>{I18n.t('js.content_tabs.sections')}</NavItem>
+              <NavItem eventKey='instructions' disabled={this.props.instructions ? false : true}>{I18n.t('js.content_tabs.instructions')}</NavItem>
+              <NavItem eventKey='example' disabled={this.props.example ? false : true}>{I18n.t('js.content_tabs.example')}</NavItem>
             </Nav>
           </div>
           <div>
@@ -48,7 +48,10 @@ export default class ContentTabs extends React.Component {
                   this.props.example &&
                     <div>
                       <div dangerouslySetInnerHTML={{__html: this.props.example}}></div>
-                      {this.props.editable && (<div className='text-right'><Button onClick={this.onClick}>{this.props.copyText}</Button></div>)}
+                      {
+                        this.props.editable &&
+                          (<div className='text-right'><Button onClick={this.onClick}>{I18n.t('js.content_tabs.copy')}</Button></div>)
+                      }
                     </div>
                 }
               </Tab.Pane>
