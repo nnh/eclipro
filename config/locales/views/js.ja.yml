@@ -15,3 +15,13 @@ ja:
       sections: セクション
       copy: エディタへコピー
       copy_confirm: このテキストの例は、エディタの現在のテキストをすべて置き換えます。続行しますか？
+    header:
+      view_protocols: プロトコルを見る
+      new_protocols: プロトコルを新規作成
+      help: ヘルプ
+      sign_in: ログイン
+      sign_out: ログアウト
+      edit: 編集
+      language: 言語
+      japanese: 日本語
+      english: English

@@ -15,3 +15,13 @@ en:
       sections: Sections
       copy: Copy to Editor
       copy_confirm: The example text will replace all the current text in editor, do you wish to continue?
+    header:
+      view_protocols: View protocols
+      new_protocols: Create new protocols
+      help: Help
+      sign_in: Sign in
+      sign_out: Sign out
+      edit: Edit
+      language: Language
+      japanese: 日本語
+      english: English

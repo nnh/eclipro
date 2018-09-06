@@ -29,21 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
         {
           signedIn: headerData.signedIn,
           protocolUrl: headerData.protocolUrl,
-          protocolText: headerData.protocolText,
           newProtocolUrl: headerData.newProtocolUrl,
-          newProtocolText: headerData.newProtocolText,
-          helpText: headerData.helpText,
-          currentUserText: headerData.currentUserText,
+          currentUser: headerData.currentUser,
           editUrl: headerData.editUrl,
-          editText: headerData.editText,
           signOutUrl: headerData.signOutUrl,
-          signOutText: headerData.signOutText,
-          languageText: headerData.languageText,
-          japaneseText: headerData.japaneseText,
-          englishText: headerData.englishText,
           languageUrl: headerData.languageUrl,
-          signInUrl: headerData.signInUrl,
-          signInText: headerData.signInText
+          signInUrl: headerData.signInUrl
         },
         null
       ),

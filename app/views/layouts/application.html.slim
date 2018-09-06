@@ -16,21 +16,12 @@ html
     .ecripro-header(
       data-signed-in="#{user_signed_in?}"
       data-protocol-url=protocols_path
-      data-protocol-text=t('.view_protocols')
       data-new-protocol-url=new_protocol_path
-      data-new-protocol-text=t('.create_new_protocols')
-      data-help-text=t('.help')
-      data-current-user-text="#{current_user&.name}(#{current_user&.email})"
+      data-current-user="#{current_user&.name}(#{current_user&.email})"
       data-edit-url=edit_user_registration_path(current_user)
-      data-edit-text=t('.edit')
       data-sign-out-url=destroy_user_session_path
-      data-sign-out-text=t('.sign_out')
-      data-language-text=t('.language')
-      data-japanese-text=t('.japanese')
-      data-english-text=t('.english')
       data-language-url=set_current_user_locale_path(current_user)
       data-sign-in-url=new_user_session_path
-      data-sign-in-text=t('.sign_in')
     )
 
     .container
