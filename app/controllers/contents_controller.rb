@@ -52,7 +52,8 @@ class ContentsController < ApplicationController
     end
 
     def prepare_menu
-      @contents = @protocol.contents
+      @contents = ActiveModel::Serializer::CollectionSerializer.new(@protocol.contents, serializer: ContentMenuSerializer,
+                                                                    ability: Ability.new(current_user, params))
       section = @protocol.sections.find_by(no: @content.no, seq: @content.seq)
       @example = section.example
       @instructions = section.instructions

@@ -32,13 +32,9 @@ require.context(
   /.*/
 );
 
-document.addEventListener('DOMContentLoaded', () => {
-  let textIsChanged = false;
-
-  if (document.querySelector('textarea.tinymce')) {
-    const cssPath = `${(process.env.RAILS_ENV == 'test') ? '/packs-test' : '/packs'}/tiny_mce_style.css`;
-    const dataset = document.querySelector('.tiny-mce-params').dataset;
-    const createPath = `/protocols/${dataset.protocolId}/contents/${dataset.contentId}/images`;
+export default class EcliproTinyMCE {
+  constructor(dataset) {
+    this.textIsChanged = false;
 
     tinyMCE.init({
       selector: 'textarea.tinymce',
@@ -48,12 +44,12 @@ document.addEventListener('DOMContentLoaded', () => {
       theme_advanced_statusbar_location: 'bottom',
       theme_advanced_buttons3_add: ['tablecontrols', 'fullscreen'],
       automatic_uploads: true,
-      content_css: cssPath,
+      content_css: `${(process.env.RAILS_ENV == 'test') ? '/packs-test' : '/packs'}/tiny_mce_style.css`,
       images_upload_handler: async (blobInfo, success, failure) => {
         const formData = new FormData();
         formData.append('file', blobInfo.blob(), blobInfo.filename());
         try {
-          const json = await fetchWithXCSRF(createPath, {
+          const json = await fetchWithXCSRF(`/protocols/${dataset.protocolId}/contents/${dataset.contentId}/images`, {
             method: 'POST',
             headers: {
               'Accept': 'application/json'
@@ -113,35 +109,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const div = document.createElement('div');
             div.classList.add('space');
             div.innerHTML = '<p>&nbsp;</p>';
-            tinymce.get('form-tinymce').selection.getNode().closest('.container').append(div);
+            editor.selection.getNode().closest('.container').append(div);
           }
         });
-        editor.on('change', () => {
-          textIsChanged = true;
-        });
+        editor.on('change', () => this.textIsChanged = true);
       }
-    });
+    }).then((editors) => this.editor = editors[0]);
   }
 
-  const submitButton = document.querySelector('.content-submit-button');
-  if (submitButton) {
-    const event = (e) => {
-      if (textIsChanged) { e.returnValue = ''; }
-    };
-    submitButton.addEventListener('click', () => {
-      window.removeEventListener('beforeunload', event);
-    });
-    window.addEventListener('beforeunload', event);
+  getTextIsChanged() {
+    return this.textIsChanged;
   }
 
-  const copyButton = document.querySelector('.example-copy-button');
-  if (copyButton) {
-    copyButton.addEventListener('click', (e) => {
-      if (window.confirm(copyButton.dataset.message)) {
-        const data = `<div contenteditable="true">${e.target.parentElement.previousSibling.innerHTML}</div>`;
-        tinyMCE.get('form-tinymce').setContent(data);
-        textIsChanged = true;
-      }
-    });
+  setContent(content) {
+    this.editor.setContent(`<div contenteditable="true">${content}</div>`);
+    this.textIsChanged = true
   }
-});
+}

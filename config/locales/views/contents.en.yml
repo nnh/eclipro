@@ -2,7 +2,6 @@ en:
   contents:
     show:
       protocol: Protocol
-    menu:
       example: Example
       instructions: Instructions
       sections: Sections
