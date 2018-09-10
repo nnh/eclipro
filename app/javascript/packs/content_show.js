@@ -29,14 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
       contentTabsElm
     );
 
-    const toUnderReviewButton = document.querySelector('.to-under-review');
-    if (toUnderReviewButton) {
-      toUnderReviewButton.addEventListener('click', () => {
-        const hasReviewerData = document.querySelector('.content-has-reviewer').dataset;
-        if (hasReviewerData.hasReviewer === 'false') window.alert(hasReviewerData.message);
-      });
-    }
-
     const commentButton = document.querySelector('.comment-button');
     if (commentButton) {
       const commentButtonData = commentButton.dataset;

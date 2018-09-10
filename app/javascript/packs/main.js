@@ -120,4 +120,12 @@ document.addEventListener('DOMContentLoaded', () => {
     roleForm.addEventListener('change', checkSections);
     checkSections();
   }
+
+  // alert
+  document.querySelectorAll('a[data-alert]').forEach((element) => {
+    element.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert(element.dataset.alert);
+    });
+  });
 });
