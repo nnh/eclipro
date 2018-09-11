@@ -10,7 +10,7 @@ class SectionLink extends React.Component {
         <a href={content.content_url} className={`section-link${content.editable ? '' : ' uneditable'}`}>
           {`${content.no === 0 ? '' : content.no_seq} ${content.title}`}
           <div className='pull-right'><i className={`fa fa-${content.status_icon}`} /></div>
-          {content.comments_count && <div className='pull-right'><i className='fa fa-commenting mr-s' /></div>}
+          {content.comments_count.length && <div className='pull-right'><i className='fa fa-commenting mr-s' /></div>}
         </a>
       </div>
     );
@@ -24,9 +24,9 @@ export default class ContentTabs extends React.Component {
     this.onClick = this.onClick.bind(this);
   }
 
-  onClick(e) {
+  onClick() {
     if (confirm(I18n.t('js.content_tabs.copy_confirm'))) {
-      this.props.onCopy(e);
+      this.props.onCopy();
     }
   }
 

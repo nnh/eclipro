@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
           noSeq: menuData.noSeq,
           editable: menuData.editable,
           contents: contents,
-          onCopy: (e) => { if (ecliproTinyMCE) ecliproTinyMCE.setContent(menuData.example); }
+          onCopy: () => ecliproTinyMCE && ecliproTinyMCE.setContent(menuData.example)
         },
         null
       ),
