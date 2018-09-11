@@ -1,11 +1,11 @@
 FactoryBot.define do
   factory :content do
-    protocol nil
-    no 0
-    seq 0
-    title ''
-    body ''
-    editable true
+    protocol { nil }
+    no { 0 }
+    seq { 0 }
+    title { '' }
+    body { '' }
+    editable { true }
   end
 
   factory :protocol do

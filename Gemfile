@@ -47,6 +47,7 @@ gem 'enum_help'
 gem 'cancancan'
 
 gem 'paper_trail'
+gem 'paper_trail-association_tracking'
 gem 'htmldiff'
 gem 'aws-sdk-s3'
 gem 'paperclip'
