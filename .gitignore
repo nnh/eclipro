@@ -23,6 +23,7 @@
 .byebug_history
 
 /public/assets/*
+/public/javascripts/*
 /public/system/*
 /public/packs
 /public/packs-test
