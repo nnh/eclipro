@@ -71,4 +71,6 @@ Rails.application.configure do
     Bullet.console = true
     Bullet.add_footer = true
   end
+
+  config.middleware.use I18n::JS::Middleware
 end
