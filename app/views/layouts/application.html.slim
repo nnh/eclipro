@@ -6,7 +6,6 @@ html
     = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'i18n'
-    = javascript_include_tag 'translations', skip_pipeline: true
     javascript:
       I18n.defaultLocale = "#{I18n.default_locale}";
       I18n.locale = "#{I18n.locale}";

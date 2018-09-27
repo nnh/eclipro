@@ -18,6 +18,8 @@ import Header from './header'
 import { ProtocolIndex } from './protocol'
 import './content_show'
 
+import '../../../public/assets/translations'
+
 document.addEventListener('DOMContentLoaded', () => {
   // header
   const header = document.querySelector('.ecripro-header');

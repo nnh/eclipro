@@ -2,5 +2,5 @@ fallbacks: true
 export_i18n_js: false
 
 translations:
-  - file: 'public/javascripts/translations.js'
+  - file: 'public/assets/translations.js'
     only: '*.js'
