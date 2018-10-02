@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Button, Modal } from 'react-bootstrap'
 import { fetchWithCors } from './custom_fetch'
+import I18n from './i18n'
 
 class History extends React.Component {
   constructor(props) {
@@ -19,13 +20,13 @@ class History extends React.Component {
         <td>
           {
             this.props.version.revert_url && (
-              <Button bsStyle='warning' href={`${this.props.version.revert_url}&index=${this.props.index}`} data-confirm={this.props.buttons[2]} >
-                {this.props.buttons[0]}
+              <Button bsStyle='warning' href={`${this.props.version.revert_url}&index=${this.props.index}`} data-confirm={I18n.t('js.history.confirm')} >
+                {I18n.t('js.history.revert')}
               </Button>)
           }
         </td>
         <td>
-          <Button onClick={this.onClick}>{this.props.buttons[1]}</Button>
+          <Button onClick={this.onClick}>{I18n.t('js.history.compare')}</Button>
         </td>
       </tr>
     );
@@ -48,7 +49,7 @@ class HistoryCompare extends React.Component {
     return (
       <div>
         <div className='text-right'>
-          <Button onClick={this.onClick}>{this.props.text}</Button>
+          <Button onClick={this.onClick}>{I18n.t('js.history.back')}</Button>
         </div>
         <hr />
         <div dangerouslySetInnerHTML={{__html: this.props.data}}></div>
@@ -86,7 +87,7 @@ class ShowHistoryButton extends React.Component {
   }
 
   getContent() {
-    fetchWithCors(this.props.modalData.url).then((json) => {
+    fetchWithCors(this.props.url).then((json) => {
       this.setState({ content: json || { versions: [] } })
     });
   }
@@ -100,15 +101,15 @@ class ShowHistoryButton extends React.Component {
 
   render() {
     const head =
-      <tr>{this.props.modalData.headers.map((header, index) => <th key={`header_index_${index}`}>{header}</th>)}</tr>;
+      <tr>{I18n.t('js.history.headers').map((header, index) => <th key={`header_index_${index}`}>{header}</th>)}</tr>;
 
     const histories = this.state.content.versions.map((version, index) =>
-      <History content={this.state.content} version={version} index={index} buttons={this.props.modalData.buttons}
+      <History content={this.state.content} version={version} index={index}
                key={`history_${version.id}`} onShowCompare={this.onShowCompare} />
     )
 
     const content = this.state.compare && this.state.showCompare ?
-      <HistoryCompare data={this.state.compare} text={this.props.modalData.backText} onShowCompare={this.onShowCompare} />
+      <HistoryCompare data={this.state.compare} onShowCompare={this.onShowCompare} />
       : (
         <table className='table'>
           <thead>{head}</thead>
@@ -118,10 +119,10 @@ class ShowHistoryButton extends React.Component {
 
     return (
       <span>
-        <Button onClick={this.handleShow}>{ this.props.text }</Button>
+        <Button onClick={this.handleShow}>{I18n.t('js.history.history')}</Button>
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>{this.props.modalData.title}</Modal.Title>
+            <Modal.Title>{I18n.t('js.history.history')}</Modal.Title>
           </Modal.Header>
           <Modal.Body>{content}</Modal.Body>
         </Modal>

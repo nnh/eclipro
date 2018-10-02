@@ -2,45 +2,18 @@ en:
   contents:
     show:
       protocol: Protocol
-      example: Example
-      instructions: Instructions
-      sections: Sections
       title_page: Title page
       compliance: Statement of Compliance
-      copy: Copy to Editor
-      copy_confirm: The example text will replace all the current text in editor, do you wish to continue?
     editor:
       editor: Editor
       section_title: Title page (Read only)
       read_only: (Read only)
       read_only_text: This section is not editable. Please click a subheading to edit content.
-      history: History
       status: Status
       ready_for_review: Ready for Review
       rework_needed: Rework Needed
       review_completed: Review Completed
       no_reviewer: Reviewer is not assigned to this section. Please contact the administrator and assign a reviewer.
-      comment: Comments
-      comment_modal_title: Section Comments
-      comment_button: Comment
-      show_resolved: Show Resolved
-      buttons:
-        - Reply
-        - Resolve
-      form_buttons:
-        - Create Comment
-        - Cancel
-      history_modal_title: History
-      headers:
-        - Title
-        - Version
-        - Modified by
-        - Date
-      history_buttons:
-        - Revert
-        - Compare
-        - Would you like to revert to this version?
-      back: Back
     update:
       success: Content was successfully updated.
       no_change: There is no change in contents.

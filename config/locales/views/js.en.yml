@@ -1,0 +1,55 @@
+en:
+  js:
+    comment:
+      comments: Comments
+      modal_title: Section Comments
+      show_resolved: Show Resolved
+      reply: Reply
+      resolve: Resolve
+      comment: Comment
+      create: Create Comment
+      cancel: Cancel
+    content_tabs:
+      example: Example
+      instructions: Instructions
+      sections: Sections
+      copy: Copy to Editor
+      copy_confirm: The example text will replace all the current text in editor, do you wish to continue?
+    header:
+      view_protocols: View protocols
+      new_protocols: Create new protocols
+      help: Help
+      sign_in: Sign in
+      sign_out: Sign out
+      edit: Edit
+      language: Language
+      japanese: 日本語
+      english: English
+    history:
+      history: History
+      headers:
+        - Title
+        - Version
+        - Modified by
+        - Date
+        - ''
+        - ''
+      revert: Revert
+      compare: Compare
+      confirm: Would you like to revert to this version?
+      back: Back
+    protocol:
+      placeholder: Filter protocols
+      filtering: Filtering
+      headers:
+        - Protocol title
+        - My role
+        - Principal Investigator
+        - Status
+        - Version
+        - ''
+        - ''
+        - ''
+      details: Details
+      export: Export
+      clone: Clone

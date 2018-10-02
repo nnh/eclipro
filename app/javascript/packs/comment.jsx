@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Button, Modal } from 'react-bootstrap'
 import { fetchByJSON } from './custom_fetch'
+import I18n from './i18n'
 
 class Comment extends React.Component {
   constructor(props) {
@@ -27,21 +28,23 @@ class Comment extends React.Component {
         </div>
         <div>{this.props.data.body}</div>
         <div className='text-right'>
-          { this.props.data.replyable && (<Button onClick={this.onShowForm.bind(this, true)}>{this.props.modalData.buttons[0]}</Button>) }
+          { this.props.data.replyable && (<Button onClick={this.onShowForm.bind(this, true)}>{I18n.t('js.comment.reply')}</Button>) }
           {
             this.props.data.resolve_url &&
-              <ResolveButton url={this.props.data.resolve_url} text={this.props.modalData.buttons[1]} onCommentsChanged={this.props.onCommentsChanged} />
+              <ResolveButton url={this.props.data.resolve_url} onCommentsChanged={this.props.onCommentsChanged} />
           }
         </div>
         <CommentForm show={this.state.showForm} parentId={this.props.data.id} key={`comment_form_key_${this.props.data.id}`}
+                     url={this.props.url} contentId={this.props.contentId} currentUserId={this.props.currentUserId}
                      onShowForm={this.onShowForm} onCommentsChanged={this.props.onCommentsChanged}
-                     modalData={this.props.modalData} onCommentSubmitted={this.props.onCommentSubmitted} />
+                     onCommentSubmitted={this.props.onCommentSubmitted} />
         <div className='ml-xl'>
           {
             this.props.data.replies.map((reply) =>
               <Comment data={reply} key={`comment_${reply.id}`}
                        showResolved={this.props.showResolved} onCommentsChanged={this.props.onCommentsChanged}
-                       modalData={this.props.modalData} onCommentSubmitted={this.props.onCommentSubmitted} />
+                       url={this.props.url} contentId={this.props.contentId} currentUserId={this.props.currentUserId}
+                       onCommentSubmitted={this.props.onCommentSubmitted} />
             )
           }
         </div>
@@ -68,11 +71,11 @@ class CommentForm extends React.Component {
   }
 
   onSubmit() {
-    fetchByJSON(this.props.modalData.url, 'POST', {
+    fetchByJSON(this.props.url, 'POST', {
       comment: {
         body: this.state.text,
-        content_id: this.props.modalData.contentId,
-        user_id: this.props.modalData.currentUserId,
+        content_id: this.props.contentId,
+        user_id: this.props.currentUserId,
         parent_id: this.props.parentId
       }
     }).then((json) => {
@@ -99,10 +102,8 @@ class CommentForm extends React.Component {
       <div>
         <textarea name='comment[body]' className='form-control mt-s mb-s' rows='3' onKeyUp={this.onKeyUp} />
         <div className='text-right'>
-          <Button disabled={!this.state.text} onClick={this.onSubmit}>
-            {this.props.modalData.formButtons[0]}
-          </Button>
-          <Button className='ml-s' onClick={this.onCancel}>{this.props.modalData.formButtons[1]}</Button>
+          <Button disabled={!this.state.text} onClick={this.onSubmit}>{I18n.t('js.comment.create')}</Button>
+          <Button className='ml-s' onClick={this.onCancel}>{I18n.t('js.comment.cancel')}</Button>
         </div>
       </div>
     ) : null;
@@ -116,7 +117,7 @@ class ResolveButton extends React.Component {
   }
 
   render() {
-    return <Button onClick={this.onClick}>{this.props.text}</Button>;
+    return <Button onClick={this.onClick}>{I18n.t('js.comment.resolve')}</Button>;
   }
 
   onClick() {
@@ -135,7 +136,7 @@ class ShowCommentButton extends React.Component {
     super(props);
     this.state = {
       show: false,
-      count: props.buttonData.count,
+      count: props.count,
       comments: [],
       showResolved: false,
       showForm: false
@@ -158,7 +159,7 @@ class ShowCommentButton extends React.Component {
   }
 
   getComments() {
-    fetch(this.props.modalData.url, {
+    fetch(this.props.url, {
       mode: 'cors',
       credentials: 'include'
     }).then((response) => {
@@ -187,34 +188,36 @@ class ShowCommentButton extends React.Component {
     return (
       <span>
         <Button bsStyle={this.state.count != 0 ? 'primary' : 'default'} onClick={this.handleShow}>
-          {`${this.props.buttonData.text}${this.state.count > 0 ? ` (${this.state.count})` : ''}`}
+          {`${I18n.t('js.comment.comments')}${this.state.count > 0 ? ` (${this.state.count})` : ''}`}
         </Button>
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>{this.props.modalData.title}</Modal.Title>
+            <Modal.Title>{I18n.t('js.comment.modal_title')}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div className='pull-right'>
               <label className='checkbox-inline mr-s'>
                 <input type='checkbox' onChange={this.toggleShowResolved} />
-                {this.props.modalData.showResolved}
+                {I18n.t('js.comment.show_resolved')}
               </label>
             </div>
             <div className='mt-xl'>
               {
                 this.state.comments.map((comment) =>
                   <Comment data={comment} key={`comment_${comment.id}`}
+                           url={this.props.url} contentId={this.props.contentId} currentUserId={this.props.currentUserId}
                            showResolved={this.state.showResolved} onCommentsChanged={this.onCommentsChanged}
-                           modalData={this.props.modalData} onCommentSubmitted={this.props.onCommentSubmitted} />
+                           onCommentSubmitted={this.props.onCommentSubmitted} />
                 )
               }
             </div>
             <div className='text-right'>
-              { !this.state.showForm && (<Button onClick={this.onShowForm.bind(this, true)}>{this.props.modalData.commentText}</Button>) }
+              { !this.state.showForm && (<Button onClick={this.onShowForm.bind(this, true)}>{I18n.t('js.comment.comment')}</Button>) }
             </div>
             <CommentForm show={this.state.showForm} parentId={null} key='comment_form_key_null'
                          onShowForm={this.onShowForm} onCommentsChanged={this.onCommentsChanged}
-                         modalData={this.props.modalData} onCommentSubmitted={this.props.onCommentSubmitted} />
+                         url={this.props.url} contentId={this.props.contentId} currentUserId={this.props.currentUserId}
+                         onCommentSubmitted={this.props.onCommentSubmitted} />
           </Modal.Body>
         </Modal>
       </span>

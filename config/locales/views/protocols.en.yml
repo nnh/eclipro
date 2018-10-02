@@ -1,21 +1,5 @@
 en:
   protocols:
-    index:
-      filter_placeholder: Filter protocols
-      filter: Filtering
-      headers:
-        - Protocol title
-        - My role
-        - Principal Investigator
-        - Status
-        - Version
-        - ''
-        - ''
-        - ''
-      buttons:
-        - Details
-        - Export
-        - Clone
     new:
       title: New protocol
       back: Back

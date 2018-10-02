@@ -2,47 +2,18 @@ ja:
   contents:
     show:
       protocol: プロトコル
-      example: 例
-      instructions: 説明
-      sections: セクション
       title_page: タイトルページ
       compliance: コンプライアンス声明
-      copy: エディタへコピー
-      copy_confirm: このテキストの例は、エディタの現在のテキストをすべて置き換えます。続行しますか？
     editor:
       editor: エディタ
       section_title: タイトルページ (読み出し専用)
       read_only: (読み出し専用)
       read_only_text: このセクションは編集できません。コンテンツを編集するには、小見出しをクリックしてください。
-      history: 履歴
       status: 状態
       ready_for_review: レビュー準備完了
       rework_needed: 修正が必要
       review_completed: レビュー完了
       no_reviewer: このセクションにレビューアーが割り当てられていません。管理者に連絡して割り当ててください。
-      comment: コメント
-      comment_modal_title: セクションコメント
-      comment_button: コメントする
-      show_resolved: 解決済みコメントを表示する
-      buttons:
-        - 返信
-        - 解決
-      form_buttons:
-        - 作成する
-        - キャンセル
-      history_modal_title: 履歴
-      headers:
-        - タイトル
-        - バージョン
-        - 編集者
-        - 日付
-        - ''
-        - ''
-      history_buttons:
-        - 戻す
-        - 比較
-        - このバージョンに戻しますか？
-      back: 戻る
     update:
       success: コンテンツの更新をしました。
       no_change: コンテンツに変更はありません。

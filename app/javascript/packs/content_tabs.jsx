@@ -1,5 +1,6 @@
 import React from 'react'
 import { Tab, Nav, NavItem, Button } from 'react-bootstrap'
+import I18n from './i18n'
 
 class SectionLink extends React.Component {
   render() {
@@ -10,7 +11,7 @@ class SectionLink extends React.Component {
         <a href={content.content_url} className={`section-link${content.editable ? '' : ' uneditable'}`}>
           {`${content.no === 0 ? '' : content.no_seq} ${content.title}`}
           <div className='pull-right'><i className={`fa fa-${content.status_icon}`} /></div>
-          {content.comments_count && <div className='pull-right'><i className='fa fa-commenting mr-s' /></div>}
+          {content.comments_count.length && <div className='pull-right'><i className='fa fa-commenting mr-s' /></div>}
         </a>
       </div>
     );
@@ -24,9 +25,9 @@ export default class ContentTabs extends React.Component {
     this.onClick = this.onClick.bind(this);
   }
 
-  onClick(e) {
-    if (confirm(this.props.copyConfirm)) {
-      this.props.onCopy(e);
+  onClick() {
+    if (confirm(I18n.t('js.content_tabs.copy_confirm'))) {
+      this.props.onCopy();
     }
   }
 
@@ -36,9 +37,9 @@ export default class ContentTabs extends React.Component {
         <div>
           <div className='clearfix'>
             <Nav bsStyle='tabs' className='container-fluid'>
-              <NavItem eventKey='sections'>{this.props.sectionsText}</NavItem>
-              <NavItem eventKey='instructions' disabled={this.props.instructions ? false : true}>{this.props.instructionsText}</NavItem>
-              <NavItem eventKey='example' disabled={this.props.example ? false : true}>{this.props.exampleText}</NavItem>
+              <NavItem eventKey='sections'>{I18n.t('js.content_tabs.sections')}</NavItem>
+              <NavItem eventKey='instructions' disabled={this.props.instructions ? false : true}>{I18n.t('js.content_tabs.instructions')}</NavItem>
+              <NavItem eventKey='example' disabled={this.props.example ? false : true}>{I18n.t('js.content_tabs.example')}</NavItem>
             </Nav>
           </div>
           <div>
@@ -48,7 +49,10 @@ export default class ContentTabs extends React.Component {
                   this.props.example &&
                     <div>
                       <div dangerouslySetInnerHTML={{__html: this.props.example}}></div>
-                      {this.props.editable && (<div className='text-right'><Button onClick={this.onClick}>{this.props.copyText}</Button></div>)}
+                      {
+                        this.props.editable &&
+                          (<div className='text-right'><Button onClick={this.onClick}>{I18n.t('js.content_tabs.copy')}</Button></div>)
+                      }
                     </div>
                 }
               </Tab.Pane>

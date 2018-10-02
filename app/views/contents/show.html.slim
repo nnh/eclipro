@@ -3,13 +3,8 @@
 
 .row
   .col-md-4.content-tabs(
-    data-sections-text=t('.sections')
-    data-instructions-text=t('.instructions')
-    data-example-text=t('.example')
     data-instructions=@instructions
     data-example=@example
-    data-copy-text=t('.copy')
-    data-copy-confirm=t('.copy_confirm')
     data-no-seq=@content.no_seq
     data-contents=@contents.to_json
     data-editable="#{(can? :update, @content) ? true : ''}"

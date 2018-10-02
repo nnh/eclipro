@@ -17,6 +17,9 @@ import ReactDOM from 'react-dom'
 import Header from './header'
 import { ProtocolIndex } from './protocol'
 import './content_show'
+import I18n from './i18n'
+
+I18n.locale = document.body.dataset.locale;
 
 document.addEventListener('DOMContentLoaded', () => {
   // header
@@ -29,21 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
         {
           signedIn: headerData.signedIn,
           protocolUrl: headerData.protocolUrl,
-          protocolText: headerData.protocolText,
           newProtocolUrl: headerData.newProtocolUrl,
-          newProtocolText: headerData.newProtocolText,
-          helpText: headerData.helpText,
-          currentUserText: headerData.currentUserText,
+          currentUser: headerData.currentUser,
           editUrl: headerData.editUrl,
-          editText: headerData.editText,
           signOutUrl: headerData.signOutUrl,
-          signOutText: headerData.signOutText,
-          languageText: headerData.languageText,
-          japaneseText: headerData.japaneseText,
-          englishText: headerData.englishText,
           languageUrl: headerData.languageUrl,
-          signInUrl: headerData.signInUrl,
-          signInText: headerData.signInText
+          signInUrl: headerData.signInUrl
         },
         null
       ),
@@ -54,19 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // protocol index
   const protocolIndex = document.querySelector('.protocol-index');
   if (protocolIndex) {
-    const formData = JSON.parse(protocolIndex.dataset.form);
     ReactDOM.render(
-      React.createElement(
-        ProtocolIndex,
-        {
-          placeholder: formData.placeholder,
-          text: formData.text,
-          url: formData.url,
-          headers: formData.headers,
-          buttons: formData.buttons
-        },
-        null
-      ),
+      React.createElement(ProtocolIndex, { url: protocolIndex.dataset.url }, null),
       protocolIndex
     );
   }

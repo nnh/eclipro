@@ -17,17 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
       React.createElement(
         ContentTabs,
         {
-          sectionsText: menuData.sectionsText,
-          instructionsText: menuData.instructionsText,
-          exampleText: menuData.exampleText,
           instructions: menuData.instructions,
           example: menuData.example,
-          copyText: menuData.copyText,
-          copyConfirm: menuData.copyConfirm,
           noSeq: menuData.noSeq,
           editable: menuData.editable,
           contents: contents,
-          onCopy: (e) => { if (ecliproTinyMCE) ecliproTinyMCE.setContent(menuData.example); }
+          onCopy: () => ecliproTinyMCE && ecliproTinyMCE.setContent(menuData.example)
         },
         null
       ),
@@ -44,14 +39,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const commentButton = document.querySelector('.comment-button');
     if (commentButton) {
-      const commentButtonData = JSON.parse(commentButton.dataset.button);
-      const commentModalData = JSON.parse(commentButton.dataset.modal);
+      const commentButtonData = commentButton.dataset;
       ReactDOM.render(
         React.createElement(
           ShowCommentButton,
           {
-            buttonData: commentButtonData,
-            modalData: commentModalData,
+            count: commentButtonData.count,
+            contentId: commentButtonData.contentId,
+            currentUserId: commentButtonData.currentUserId,
+            url: commentButtonData.url,
             onCommentSubmitted: (json) => {
               const c = contents.find(e => e.no_seq === json.no_seq);
               c.comments_count = json.count;
@@ -66,13 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const historyButton = document.querySelector('.history-button');
     if (historyButton) {
-      const historyModalData = JSON.parse(historyButton.dataset.modal);
       ReactDOM.render(
-        React.createElement(
-          ShowHistoryButton,
-          { text: historyButton.dataset.text, modalData: historyModalData },
-          null
-        ),
+        React.createElement(ShowHistoryButton, { url: historyButton.dataset.url }, null),
         historyButton
       );
     }
