@@ -14,6 +14,5 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 Rails.application.config.assets.precompile += %w( export.css )
 Rails.application.config.assets.precompile += %w( tinymce/plugins/uploadimage/plugin.js tinymce/plugins/uploadimage/langs/en.js )
-Rails.application.config.assets.precompile << "#{Gem.loaded_specs['i18n-js'].full_gem_path}/app/assets/javascripts/i18n.js"
 
 Rails.application.config.assets.unknown_asset_fallback = true

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
+import I18n from './i18n'
 
 class Header extends React.Component {
   render() {

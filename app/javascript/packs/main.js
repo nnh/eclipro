@@ -17,10 +17,12 @@ import ReactDOM from 'react-dom'
 import Header from './header'
 import { ProtocolIndex } from './protocol'
 import './content_show'
+import I18n from './i18n'
 
-import '../../../public/assets/translations'
+I18n.locale = document.body.dataset.locale;
 
 document.addEventListener('DOMContentLoaded', () => {
+  
   // header
   const header = document.querySelector('.ecripro-header');
   const headerData = header.dataset;

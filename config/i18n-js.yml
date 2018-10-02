@@ -1,6 +1,0 @@
-fallbacks: true
-export_i18n_js: false
-
-translations:
-  - file: 'public/assets/translations.js'
-    only: '*.js'
