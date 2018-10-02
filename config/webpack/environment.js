@@ -13,6 +13,7 @@ environment.plugins.append(
   'RailsTranslationsPlugin',
   new RailsTranslationsPlugin({
     localesPath: path.resolve(__dirname, '../locales'),
+    pattern: '**/js.*.yml',
     root: path.resolve(__dirname, '../../app/javascript/packs')
   })
 )

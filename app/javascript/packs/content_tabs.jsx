@@ -1,5 +1,6 @@
 import React from 'react'
 import { Tab, Nav, NavItem, Button } from 'react-bootstrap'
+import I18n from './i18n'
 
 class SectionLink extends React.Component {
   render() {

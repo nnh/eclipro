@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Button, Modal } from 'react-bootstrap'
 import { fetchByJSON } from './custom_fetch'
+import I18n from './i18n'
 
 class Comment extends React.Component {
   constructor(props) {

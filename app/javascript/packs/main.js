@@ -22,7 +22,6 @@ import I18n from './i18n'
 I18n.locale = document.body.dataset.locale;
 
 document.addEventListener('DOMContentLoaded', () => {
-  
   // header
   const header = document.querySelector('.ecripro-header');
   const headerData = header.dataset;
