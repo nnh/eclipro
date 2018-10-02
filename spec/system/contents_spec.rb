@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature Content, js: true do
+feature Content, js: true, type: :system do
   let(:admin) { create(:user) }
   let(:author) { create(:user) }
   let(:other_author) { create(:user) }
@@ -177,7 +177,7 @@ feature Content, js: true do
     end
   end
 
-  describe 'admin' do
+  feature 'admin', type: :system do
     let(:current_user) { admin }
     it_should_behave_like 'can see contents'
     it_should_behave_like 'can update content'
@@ -189,7 +189,7 @@ feature Content, js: true do
     it_should_behave_like 'can revert'
   end
 
-  describe 'author' do
+  feature 'author', type: :system do
     let(:current_user) { author }
     it_should_behave_like 'can see contents'
     it_should_behave_like 'can update content'
@@ -201,7 +201,7 @@ feature Content, js: true do
     it_should_behave_like 'can revert'
   end
 
-  describe 'other section author' do
+  feature 'other section author', type: :system do
     let(:current_user) { other_author }
     it_should_behave_like 'can see contents'
     it_should_behave_like 'can not update content'
@@ -213,7 +213,7 @@ feature Content, js: true do
     it_should_behave_like 'can not revert'
   end
 
-  describe 'reviewer' do
+  feature 'reviewer', type: :system do
     let(:current_user) { reviewer }
     it_should_behave_like 'can see contents'
     it_should_behave_like 'can not update content'
@@ -225,7 +225,7 @@ feature Content, js: true do
     it_should_behave_like 'can not revert'
   end
 
-  describe 'other section reviewer' do
+  feature 'other section reviewer', type: :system do
     let(:current_user) { other_reviewer }
     it_should_behave_like 'can see contents'
     it_should_behave_like 'can not update content'

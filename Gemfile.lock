@@ -1,10 +1,3 @@
-GIT
-  remote: https://github.com/amatsuda/database_rewinder
-  revision: 894707e149d0f2b984effd0d4237f222a45551c2
-  branch: master
-  specs:
-    database_rewinder (0.9.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -376,7 +369,6 @@ DEPENDENCIES
   capybara
   chromedriver-helper
   counter_culture
-  database_rewinder!
   deep_cloneable
   devise
   devise-i18n
