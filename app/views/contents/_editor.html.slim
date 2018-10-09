@@ -20,8 +20,12 @@
           = f.text_area :body, class: 'tinymce'
 
           - if can? :update, content
-            = link_to t('.ready_for_review'), change_status_protocol_content_path(protocol, content, 'content[status]': 'under_review'),
-                      class: 'btn btn-default mt-m pull-right to-under-review', method: :put
+            - if content.has_reviewer?
+              = link_to t('.ready_for_review'), change_status_protocol_content_path(protocol, content, 'content[status]': 'under_review'),
+                                                class: 'btn btn-default mt-m pull-right', method: :put
+            - else
+              .alert-danger.p-s.mt-s = t('.no_reviewer')
+              = link_to t('.ready_for_review'), '#', class: 'btn btn-default mt-m pull-right disabled'
             = f.submit class: 'btn btn-primary mt-m pull-right content-submit-button'
           - if can? :review, content
             = link_to t('.review_completed'), change_status_protocol_content_path(protocol, content, 'content[status]': 'final'),
