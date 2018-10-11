@@ -1,10 +1,54 @@
-extends:
-  - eslint:recommended
-plugins: []
-parserOptions:
-  sourceType: module
 env:
   browser: true
   es6: true
   node: true
-  commonjs: true
+extends:
+  - eslint:recommended
+  - plugin:react/recommended
+globals:
+  window: true
+  document: true
+parserOptions:
+  ecmaVersion: 2017
+  sourceType: module
+  ecmaFeatures:
+    jsx: true
+plugins:
+  - react
+rules:
+  arrow-spacing: error
+  eqeqeq: error
+  generator-star-spacing: error
+  no-console: warn
+  no-duplicate-imports: error
+  no-unmodified-loop-condition: error
+  no-useless-computed-key: error
+  no-useless-constructor: error
+  no-useless-rename: error
+  no-var: error
+  object-shorthand: error
+  prefer-arrow-callback: warn
+  prefer-const: error
+  prefer-rest-params: error
+  prefer-spread: error
+  prefer-template: error
+  rest-spread-spacing: error
+  template-curly-spacing: error
+  yield-star-spacing: error
+  indent:
+    - error
+    - 2
+  linebreak-style:
+    - error
+    - unix
+  quotes:
+    - error
+    - single
+  semi:
+    - error
+    - always
+settings:
+  react:
+    createClass: createReactClass
+    pragma: React
+    version: 16.2.0

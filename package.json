@@ -22,12 +22,15 @@
     "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
-    "eslint": "^4.16.0",
+    "babel-eslint": "^8.2.6",
+    "eslint": "^5.3.0",
+    "eslint-plugin-react": "^7.10.0",
     "webpack-dev-server": "2.11.2"
   },
   "scripts": {
     "dev": "yarn install && bundle install && bundle exec foreman start -f Procfile.dev",
     "build": "bundle exec rails webpacker:compile",
-    "lint": "eslint app/javascript"
+    "lint": "eslint app/javascript/**/*.*",
+    "lint_fix": "eslint app/javascript/**/*.* --fix"
   }
 }
