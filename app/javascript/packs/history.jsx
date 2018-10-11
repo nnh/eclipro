@@ -1,8 +1,7 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Button, Modal } from 'react-bootstrap'
-import { fetchWithCors } from './custom_fetch'
-import I18n from './i18n'
+import React from 'react';
+import { Button, Modal } from 'react-bootstrap';
+import { fetchWithCors } from './custom_fetch';
+import I18n from './i18n';
 
 class History extends React.Component {
   constructor(props) {
@@ -70,7 +69,7 @@ class ShowHistoryButton extends React.Component {
       content: { versions: [] },
       compare: '',
       showCompare: false
-    }
+    };
     this.handleClose = this.handleClose.bind(this);
     this.handleShow = this.handleShow.bind(this);
     this.onShowCompare = this.onShowCompare.bind(this);
@@ -88,14 +87,14 @@ class ShowHistoryButton extends React.Component {
 
   getContent() {
     fetchWithCors(this.props.url).then((json) => {
-      this.setState({ content: json || { versions: [] } })
+      this.setState({ content: json || { versions: [] } });
     });
   }
 
   onShowCompare(show, compare) {
     this.setState({
       showCompare: show,
-      compare: compare
+      compare
     });
   }
 
@@ -105,8 +104,8 @@ class ShowHistoryButton extends React.Component {
 
     const histories = this.state.content.versions.map((version, index) =>
       <History content={this.state.content} version={version} index={index}
-               key={`history_${version.id}`} onShowCompare={this.onShowCompare} />
-    )
+        key={`history_${version.id}`} onShowCompare={this.onShowCompare} />
+    );
 
     const content = this.state.compare && this.state.showCompare ?
       <HistoryCompare data={this.state.compare} onShowCompare={this.onShowCompare} />
@@ -131,4 +130,4 @@ class ShowHistoryButton extends React.Component {
   }
 }
 
-export { ShowHistoryButton }
+export { ShowHistoryButton };

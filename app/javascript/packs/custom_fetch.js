@@ -1,9 +1,9 @@
-import 'whatwg-fetch'
+import 'whatwg-fetch';
 
 const baseOpts = {
   mode: 'cors',
   credentials: 'include'
-}
+};
 
 export function fetchWithCors(url) {
   return fetch(url, baseOpts).then((r) => r.json());
@@ -11,7 +11,7 @@ export function fetchWithCors(url) {
 
 export function fetchByJSON(url, method, body) {
   const opts = {
-    method: method,
+    method,
     headers: {
       'Content-Type': 'application/json'
     },

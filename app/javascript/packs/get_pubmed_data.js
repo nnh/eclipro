@@ -1,5 +1,5 @@
-import 'whatwg-fetch'
-import cheerio from 'cheerio'
+import 'whatwg-fetch';
+import cheerio from 'cheerio';
 
 export default async function getPubmedData(pmid) {
   const response = await fetch(`https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&retmode=xml&id=${pmid}`);

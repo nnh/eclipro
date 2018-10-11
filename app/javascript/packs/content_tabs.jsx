@@ -1,6 +1,6 @@
-import React from 'react'
-import { Tab, Nav, NavItem, Button } from 'react-bootstrap'
-import I18n from './i18n'
+import React from 'react';
+import { Tab, Nav, NavItem, Button } from 'react-bootstrap';
+import I18n from './i18n';
 
 class SectionLink extends React.Component {
   render() {
@@ -21,7 +21,7 @@ class SectionLink extends React.Component {
 export default class ContentTabs extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { contents : props.contents }
+    this.state = { contents : props.contents };
     this.onClick = this.onClick.bind(this);
   }
 

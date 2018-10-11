@@ -1,13 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Button, Modal } from 'react-bootstrap'
-import { fetchByJSON } from './custom_fetch'
-import I18n from './i18n'
+import React from 'react';
+import { Button, Modal } from 'react-bootstrap';
+import { fetchByJSON } from './custom_fetch';
+import I18n from './i18n';
 
 class Comment extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { showForm: false }
+    this.state = { showForm: false };
     this.onShowForm = this.onShowForm.bind(this);
   }
 
@@ -17,7 +16,7 @@ class Comment extends React.Component {
 
   render() {
     return(
-      <div className={`comment p-m mt-s mb-s${this.props.data.resolve ? ' resolve-comment' : '' }${this.props.data.resolve && !this.props.showResolved ? ' hidden' : ''}`} >
+      <div className={`comment p-m mt-s mb-s${this.props.data.resolve ? ' resolve-comment' : ''}${this.props.data.resolve && !this.props.showResolved ? ' hidden' : ''}`} >
         <div>
           <i className='fa fa-user mr-xs' />
           {this.props.data.user.name}
@@ -35,16 +34,16 @@ class Comment extends React.Component {
           }
         </div>
         <CommentForm show={this.state.showForm} parentId={this.props.data.id} key={`comment_form_key_${this.props.data.id}`}
-                     url={this.props.url} contentId={this.props.contentId} currentUserId={this.props.currentUserId}
-                     onShowForm={this.onShowForm} onCommentsChanged={this.props.onCommentsChanged}
-                     onCommentSubmitted={this.props.onCommentSubmitted} />
+          url={this.props.url} contentId={this.props.contentId} currentUserId={this.props.currentUserId}
+          onShowForm={this.onShowForm} onCommentsChanged={this.props.onCommentsChanged}
+          onCommentSubmitted={this.props.onCommentSubmitted} />
         <div className='ml-xl'>
           {
             this.props.data.replies.map((reply) =>
               <Comment data={reply} key={`comment_${reply.id}`}
-                       showResolved={this.props.showResolved} onCommentsChanged={this.props.onCommentsChanged}
-                       url={this.props.url} contentId={this.props.contentId} currentUserId={this.props.currentUserId}
-                       onCommentSubmitted={this.props.onCommentSubmitted} />
+                showResolved={this.props.showResolved} onCommentsChanged={this.props.onCommentsChanged}
+                url={this.props.url} contentId={this.props.contentId} currentUserId={this.props.currentUserId}
+                onCommentSubmitted={this.props.onCommentSubmitted} />
             )
           }
         </div>
@@ -171,8 +170,8 @@ class ShowCommentButton extends React.Component {
 
   onCommentsChanged(comments, count) {
     this.setState({
-      comments: comments,
-      count: count
+      comments,
+      count
     });
   }
 
@@ -187,7 +186,7 @@ class ShowCommentButton extends React.Component {
   render() {
     return (
       <span>
-        <Button bsStyle={this.state.count != 0 ? 'primary' : 'default'} onClick={this.handleShow}>
+        <Button bsStyle={this.state.count !== 0 ? 'primary' : 'default'} onClick={this.handleShow}>
           {`${I18n.t('js.comment.comments')}${this.state.count > 0 ? ` (${this.state.count})` : ''}`}
         </Button>
         <Modal show={this.state.show} onHide={this.handleClose}>
@@ -205,9 +204,9 @@ class ShowCommentButton extends React.Component {
               {
                 this.state.comments.map((comment) =>
                   <Comment data={comment} key={`comment_${comment.id}`}
-                           url={this.props.url} contentId={this.props.contentId} currentUserId={this.props.currentUserId}
-                           showResolved={this.state.showResolved} onCommentsChanged={this.onCommentsChanged}
-                           onCommentSubmitted={this.props.onCommentSubmitted} />
+                    url={this.props.url} contentId={this.props.contentId} currentUserId={this.props.currentUserId}
+                    showResolved={this.state.showResolved} onCommentsChanged={this.onCommentsChanged}
+                    onCommentSubmitted={this.props.onCommentSubmitted} />
                 )
               }
             </div>
@@ -215,9 +214,9 @@ class ShowCommentButton extends React.Component {
               { !this.state.showForm && (<Button onClick={this.onShowForm.bind(this, true)}>{I18n.t('js.comment.comment')}</Button>) }
             </div>
             <CommentForm show={this.state.showForm} parentId={null} key='comment_form_key_null'
-                         onShowForm={this.onShowForm} onCommentsChanged={this.onCommentsChanged}
-                         url={this.props.url} contentId={this.props.contentId} currentUserId={this.props.currentUserId}
-                         onCommentSubmitted={this.props.onCommentSubmitted} />
+              onShowForm={this.onShowForm} onCommentsChanged={this.onCommentsChanged}
+              url={this.props.url} contentId={this.props.contentId} currentUserId={this.props.currentUserId}
+              onCommentSubmitted={this.props.onCommentSubmitted} />
           </Modal.Body>
         </Modal>
       </span>
@@ -225,4 +224,4 @@ class ShowCommentButton extends React.Component {
   }
 }
 
-export { ShowCommentButton }
+export { ShowCommentButton };

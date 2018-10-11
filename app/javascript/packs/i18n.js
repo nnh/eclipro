@@ -1,4 +1,4 @@
-import translations from "./translations.json"
+import translations from './translations.json';
 
 export default class I18n {
   static t(key) {
