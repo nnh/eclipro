@@ -1,8 +1,9 @@
 import React from 'react';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import I18n from './i18n';
+import PropTypes from 'prop-types';
 
-class Header extends React.Component {
+export default class Header extends React.Component {
   render() {
     const signedIn = this.props.signedIn === 'true' ? true : false;
 
@@ -43,4 +44,13 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+Header.propTypes = {
+  signedIn: PropTypes.bool,
+  protocolUrl: PropTypes.string,
+  newProtocolUrl: PropTypes.string,
+  currentUser: PropTypes.string,
+  editUrl: PropTypes.string,
+  signOutUrl: PropTypes.string,
+  languageUrl: PropTypes.string,
+  signInUrl: PropTypes.string
+};

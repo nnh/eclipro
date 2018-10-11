@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { fetchWithCors } from './custom_fetch';
 import I18n from './i18n';
+import PropTypes from 'prop-types';
 
 class Protocol extends React.Component {
   constructor(props) {
@@ -29,7 +30,11 @@ class Protocol extends React.Component {
   }
 }
 
-class ProtocolIndex extends React.Component {
+Protocol.propTypes = {
+  data: PropTypes.object
+};
+
+export default class ProtocolIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -84,4 +89,6 @@ class ProtocolIndex extends React.Component {
   }
 }
 
-export { ProtocolIndex };
+ProtocolIndex.propTypes = {
+  url: PropTypes.string
+};

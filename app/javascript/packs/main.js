@@ -15,7 +15,7 @@ Rails.start();
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Header from './header';
-import { ProtocolIndex } from './protocol';
+import ProtocolIndex from './protocol';
 import './content_show';
 import I18n from './i18n';
 

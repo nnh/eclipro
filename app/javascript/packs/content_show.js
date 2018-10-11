@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ShowCommentButton } from './comment';
-import { ShowHistoryButton } from './history';
+import ShowCommentButton from './comment';
+import ShowHistoryButton from './history';
 import ContentTabs from './content_tabs';
 import EcliproTinyMCE from './tiny_mce';
 

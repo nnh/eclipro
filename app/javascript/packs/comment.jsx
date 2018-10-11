@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { fetchByJSON } from './custom_fetch';
 import I18n from './i18n';
+import PropTypes from 'prop-types';
 
 class Comment extends React.Component {
   constructor(props) {
@@ -51,6 +52,16 @@ class Comment extends React.Component {
     );
   }
 }
+
+Comment.propTypes = {
+  data: PropTypes.object,
+  showResolved: PropTypes.bool,
+  onCommentsChanged: PropTypes.func,
+  url: PropTypes.string,
+  contentId: PropTypes.number,
+  currentUserId: PropTypes.number,
+  onCommentSubmitted: PropTypes.func
+};
 
 class CommentForm extends React.Component {
   constructor(props) {
@@ -109,6 +120,17 @@ class CommentForm extends React.Component {
   }
 }
 
+CommentForm.propTypes = {
+  show: PropTypes.bool,
+  url: PropTypes.string,
+  contentId: PropTypes.number,
+  currentUserId: PropTypes.number,
+  parentId: PropTypes.number,
+  onCommentSubmitted: PropTypes.func,
+  onCommentsChanged: PropTypes.func,
+  onShowForm: PropTypes.func
+};
+
 class ResolveButton extends React.Component {
   constructor(props) {
     super(props);
@@ -130,7 +152,12 @@ class ResolveButton extends React.Component {
   }
 }
 
-class ShowCommentButton extends React.Component {
+ResolveButton.propTypes = {
+  url: PropTypes.string,
+  onCommentsChanged: PropTypes.func
+};
+
+export default class ShowCommentButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -224,4 +251,10 @@ class ShowCommentButton extends React.Component {
   }
 }
 
-export { ShowCommentButton };
+ShowCommentButton.propTypes = {
+  count: PropTypes.number,
+  url: PropTypes.string,
+  contentId: PropTypes.number,
+  currentUserId: PropTypes.number,
+  onCommentSubmitted: PropTypes.func
+};

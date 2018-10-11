@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { fetchWithCors } from './custom_fetch';
 import I18n from './i18n';
+import PropTypes from 'prop-types';
 
 class History extends React.Component {
   constructor(props) {
@@ -38,6 +39,13 @@ class History extends React.Component {
   }
 }
 
+History.propTypes = {
+  content: PropTypes.object,
+  index: PropTypes.number,
+  version: PropTypes.object,
+  onShowCompare: PropTypes.func
+};
+
 class HistoryCompare extends React.Component {
   constructor(props) {
     super(props);
@@ -61,7 +69,12 @@ class HistoryCompare extends React.Component {
   }
 }
 
-class ShowHistoryButton extends React.Component {
+HistoryCompare.propTypes = {
+  data: PropTypes.string,
+  onShowCompare: PropTypes.func
+};
+
+export default class ShowHistoryButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -130,4 +143,6 @@ class ShowHistoryButton extends React.Component {
   }
 }
 
-export { ShowHistoryButton };
+ShowHistoryButton.propTypes = {
+  url: PropTypes.string
+};
