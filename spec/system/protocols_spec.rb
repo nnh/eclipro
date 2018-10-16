@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature Protocol, js: true do
+feature Protocol, js: true, type: :system do
   let(:admin_user) { create(:user) }
   let(:general_user) { create(:user) }
   let(:protocol0) { create(:protocol, title: 'Test protocol') }
@@ -93,7 +93,7 @@ feature Protocol, js: true do
         expect(current_url).to have_content('.pdf')
       end
     end
-    scenario 'docx' do
+    skip 'docx (not work with headless)' do
       visit select_protocol_path(protocol1)
       all('.btn', text: 'Output in Japanese only').last.click
       wait_for_download
@@ -101,7 +101,7 @@ feature Protocol, js: true do
     end
   end
 
-  feature 'admin user' do
+  feature 'admin user', type: :system do
     let(:current_user) { admin_user }
     it_should_behave_like 'can see participating protocols'
     it_should_behave_like 'can create new protocol'
@@ -151,7 +151,7 @@ feature Protocol, js: true do
     end
   end
 
-  feature 'general user' do
+  feature 'general user', type: :system do
     let(:current_user) { general_user }
     it_should_behave_like 'can see participating protocols'
     it_should_behave_like 'can create new protocol'

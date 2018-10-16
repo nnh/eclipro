@@ -28,34 +28,7 @@ Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
-Capybara.javascript_driver = :headless_chrome
-Capybara.register_driver :headless_chrome do |app|
-  driver = Capybara::Selenium::Driver.new(
-    app,
-    browser: :chrome,
-    desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(
-      chrome_options: {
-        args: %w[headless no-sandbox disable-dev-shm-usage window-size=1920,1080],
-        prefs: { 'intl.accept_languages': 'en' }
-      }
-    )
-  )
-  bridge = driver.browser.send(:bridge)
-  path = "session/#{bridge.session_id}/chromium/send_command"
-  bridge.http.call(
-    :post, path,
-    cmd: 'Page.setDownloadBehavior',
-    params: {
-      behavior: 'allow',
-      downloadPath: DownloadHelpers::PATH.to_s
-    }
-  )
-  driver
-end
 Capybara.ignore_hidden_elements = false
-Capybara.configure do |config|
-  config.default_driver = :headless_chrome
-end
 Capybara.default_max_wait_time = 10
 
 RSpec.configure do |config|
@@ -88,27 +61,39 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.include FactoryBot::Syntax::Methods
-  config.include Warden::Test::Helpers, type: :feature
+  config.include Warden::Test::Helpers, type: :system
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include ActionDispatch::TestProcess
-  config.include DownloadHelpers, type: :feature
+  config.include DownloadHelpers, type: :system
 
   FactoryBot::SyntaxRunner.class_eval do
     include ActionDispatch::TestProcess
   end
 
   config.before(:suite) do
-    DatabaseRewinder.clean_all
     require Rails.root.join('db', 'seeds', 'section')
   end
   config.before(:each) do
     Warden.test_mode!
   end
+  config.before(:each, type: :system) do
+    # TODO: when using :headless_chrome option, default_directory option is ignored...
+    capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+      chrome_options: {
+        prefs: {
+          download: {
+            default_directory: DownloadHelpers::PATH,
+            prompt_for_download: false
+          }
+        }
+      }
+    )
+    driven_by :selenium, using: :headless_chrome, options: { desired_capabilities: capabilities }
+  end
   config.after(:each) do
     Warden.test_reset!
-    DatabaseRewinder.clean
   end
-  config.after(:each, type: :feature) do
+  config.after(:each, type: :system) do
     clear_downloads
   end
 end

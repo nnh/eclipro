@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature Participation do
+feature Participation, type: :system do
   let(:admin_user) { create(:user) }
   let(:general_user) { create(:user) }
   let!(:new_user) { create(:user) }
@@ -22,7 +22,7 @@ feature Participation do
     end
   end
 
-  feature 'admin user' do
+  feature 'admin user', type: :system do
     let(:current_user) { admin_user }
     it_should_behave_like 'can see participation users'
 
@@ -76,7 +76,7 @@ feature Participation do
     end
   end
 
-  feature 'general user' do
+  feature 'general user', type: :system do
     let(:current_user) { general_user }
     it_should_behave_like 'can see participation users'
 

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature Comment, js: true do
+feature Comment, js: true, type: :system do
   let(:user) { create(:user) }
   let(:protocol) { create(:protocol) }
   let(:content) { protocol.contents.find_by(no: 1, seq: 1) }
@@ -18,7 +18,7 @@ feature Comment, js: true do
     ActionController::Base.allow_forgery_protection = false
   end
 
-  feature 'participating user' do
+  feature 'participating user', type: :system do
     scenario 'can comment' do
       click_on 'Comment'
       find('.form-control').set('new comment')
