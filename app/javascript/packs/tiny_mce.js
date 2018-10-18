@@ -1,30 +1,30 @@
-import tinyMCE from 'tinymce'
-import 'tinymce/themes/modern/theme'
-import 'tinymce/plugins/advlist'
-import 'tinymce/plugins/anchor'
-import 'tinymce/plugins/charmap'
-import 'tinymce/plugins/emoticons'
-import 'tinymce/plugins/fullscreen'
-import 'tinymce/plugins/hr'
-import 'tinymce/plugins/image'
-import 'tinymce/plugins/insertdatetime'
-import 'tinymce/plugins/link'
-import 'tinymce/plugins/lists'
-import 'tinymce/plugins/media'
-import 'tinymce/plugins/nonbreaking'
-import 'tinymce/plugins/pagebreak'
-import 'tinymce/plugins/paste'
-import 'tinymce/plugins/preview'
-import 'tinymce/plugins/print'
-import 'tinymce/plugins/searchreplace'
-import 'tinymce/plugins/table'
-import 'tinymce/plugins/template'
-import 'tinymce/plugins/textcolor'
-import 'tinymce/plugins/toc'
-import 'tinymce/plugins/visualblocks'
-import 'tinymce/plugins/visualchars'
-import { fetchWithXCSRF } from './custom_fetch'
-import getPubmedData from './get_pubmed_data'
+import tinyMCE from 'tinymce';
+import 'tinymce/themes/modern/theme';
+import 'tinymce/plugins/advlist';
+import 'tinymce/plugins/anchor';
+import 'tinymce/plugins/charmap';
+import 'tinymce/plugins/emoticons';
+import 'tinymce/plugins/fullscreen';
+import 'tinymce/plugins/hr';
+import 'tinymce/plugins/image';
+import 'tinymce/plugins/insertdatetime';
+import 'tinymce/plugins/link';
+import 'tinymce/plugins/lists';
+import 'tinymce/plugins/media';
+import 'tinymce/plugins/nonbreaking';
+import 'tinymce/plugins/pagebreak';
+import 'tinymce/plugins/paste';
+import 'tinymce/plugins/preview';
+import 'tinymce/plugins/print';
+import 'tinymce/plugins/searchreplace';
+import 'tinymce/plugins/table';
+import 'tinymce/plugins/template';
+import 'tinymce/plugins/textcolor';
+import 'tinymce/plugins/toc';
+import 'tinymce/plugins/visualblocks';
+import 'tinymce/plugins/visualchars';
+import { fetchWithXCSRF } from './custom_fetch';
+import getPubmedData from './get_pubmed_data';
 
 require.context(
   'file-loader?name=[path][name].[ext]&context=node_modules/tinymce!tinymce/skins',
@@ -44,7 +44,7 @@ export default class EcliproTinyMCE {
       theme_advanced_statusbar_location: 'bottom',
       theme_advanced_buttons3_add: ['tablecontrols', 'fullscreen'],
       automatic_uploads: true,
-      content_css: `${(process.env.RAILS_ENV == 'test') ? '/packs-test' : '/packs'}/tiny_mce_style.css`,
+      content_css: `${(process.env.RAILS_ENV === 'test') ? '/packs-test' : '/packs'}/tiny_mce_style.css`,
       images_upload_handler: async (blobInfo, success, failure) => {
         const formData = new FormData();
         formData.append('file', blobInfo.blob(), blobInfo.filename());
@@ -123,6 +123,6 @@ export default class EcliproTinyMCE {
 
   setContent(content) {
     this.editor.setContent(`<div contenteditable="true">${content}</div>`);
-    this.textIsChanged = true
+    this.textIsChanged = true;
   }
 }

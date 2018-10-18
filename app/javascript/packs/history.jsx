@@ -1,8 +1,8 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Button, Modal } from 'react-bootstrap'
-import { fetchWithCors } from './custom_fetch'
-import I18n from './i18n'
+import React from 'react';
+import { Button, Modal } from 'react-bootstrap';
+import { fetchWithCors } from './custom_fetch';
+import I18n from './i18n';
+import PropTypes from 'prop-types';
 
 class History extends React.Component {
   constructor(props) {
@@ -39,6 +39,13 @@ class History extends React.Component {
   }
 }
 
+History.propTypes = {
+  content: PropTypes.object,
+  index: PropTypes.number,
+  version: PropTypes.object,
+  onShowCompare: PropTypes.func
+};
+
 class HistoryCompare extends React.Component {
   constructor(props) {
     super(props);
@@ -62,7 +69,12 @@ class HistoryCompare extends React.Component {
   }
 }
 
-class ShowHistoryButton extends React.Component {
+HistoryCompare.propTypes = {
+  data: PropTypes.string,
+  onShowCompare: PropTypes.func
+};
+
+export default class ShowHistoryButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -70,7 +82,7 @@ class ShowHistoryButton extends React.Component {
       content: { versions: [] },
       compare: '',
       showCompare: false
-    }
+    };
     this.handleClose = this.handleClose.bind(this);
     this.handleShow = this.handleShow.bind(this);
     this.onShowCompare = this.onShowCompare.bind(this);
@@ -88,14 +100,14 @@ class ShowHistoryButton extends React.Component {
 
   getContent() {
     fetchWithCors(this.props.url).then((json) => {
-      this.setState({ content: json || { versions: [] } })
+      this.setState({ content: json || { versions: [] } });
     });
   }
 
   onShowCompare(show, compare) {
     this.setState({
       showCompare: show,
-      compare: compare
+      compare
     });
   }
 
@@ -105,8 +117,8 @@ class ShowHistoryButton extends React.Component {
 
     const histories = this.state.content.versions.map((version, index) =>
       <History content={this.state.content} version={version} index={index}
-               key={`history_${version.id}`} onShowCompare={this.onShowCompare} />
-    )
+        key={`history_${version.id}`} onShowCompare={this.onShowCompare} />
+    );
 
     const content = this.state.compare && this.state.showCompare ?
       <HistoryCompare data={this.state.compare} onShowCompare={this.onShowCompare} />
@@ -131,4 +143,6 @@ class ShowHistoryButton extends React.Component {
   }
 }
 
-export { ShowHistoryButton }
+ShowHistoryButton.propTypes = {
+  url: PropTypes.string
+};

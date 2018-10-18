@@ -1,6 +1,7 @@
-import React from 'react'
-import { Tab, Nav, NavItem, Button } from 'react-bootstrap'
-import I18n from './i18n'
+import React from 'react';
+import { Tab, Nav, NavItem, Button } from 'react-bootstrap';
+import I18n from './i18n';
+import PropTypes from 'prop-types';
 
 class SectionLink extends React.Component {
   render() {
@@ -18,10 +19,15 @@ class SectionLink extends React.Component {
   }
 }
 
+SectionLink.propTypes = {
+  content: PropTypes.object,
+  noSeq: PropTypes.string
+};
+
 export default class ContentTabs extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { contents : props.contents }
+    this.state = { contents : props.contents };
     this.onClick = this.onClick.bind(this);
   }
 
@@ -69,3 +75,12 @@ export default class ContentTabs extends React.Component {
     );
   }
 }
+
+ContentTabs.propTypes = {
+  contents: PropTypes.array,
+  onCopy: PropTypes.func,
+  instructions: PropTypes.string,
+  example: PropTypes.string,
+  editable: PropTypes.bool,
+  noSeq: PropTypes.string
+};

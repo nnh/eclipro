@@ -1,8 +1,8 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Button } from 'react-bootstrap'
-import { fetchWithCors } from './custom_fetch'
-import I18n from './i18n'
+import React from 'react';
+import { Button } from 'react-bootstrap';
+import { fetchWithCors } from './custom_fetch';
+import I18n from './i18n';
+import PropTypes from 'prop-types';
 
 class Protocol extends React.Component {
   constructor(props) {
@@ -30,13 +30,17 @@ class Protocol extends React.Component {
   }
 }
 
-class ProtocolIndex extends React.Component {
+Protocol.propTypes = {
+  data: PropTypes.object
+};
+
+export default class ProtocolIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       word: '',
       data: []
-    }
+    };
     this.onChange = this.onChange.bind(this);
     this.onKeyPress = this.onKeyPress.bind(this);
     this.filtering = this.filtering.bind(this);
@@ -49,7 +53,7 @@ class ProtocolIndex extends React.Component {
   }
 
   onKeyPress(e) {
-    if (e.charCode == 13) this.filtering();
+    if (e.charCode === 13) this.filtering();
   }
 
   filtering() {
@@ -69,7 +73,7 @@ class ProtocolIndex extends React.Component {
       <div>
         <div className='input-group'>
           <input type='text' className='form-control' placeholder={I18n.t('js.protocol.placeholder')}
-                 onKeyPress={this.onKeyPress} onChange={this.onChange} />
+            onKeyPress={this.onKeyPress} onChange={this.onChange} />
           <div className='input-group-btn'>
             <Button onClick={this.filtering}>{I18n.t('js.protocol.filtering')}</Button>
           </div>
@@ -81,8 +85,10 @@ class ProtocolIndex extends React.Component {
           </table>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export { ProtocolIndex }
+ProtocolIndex.propTypes = {
+  url: PropTypes.string
+};

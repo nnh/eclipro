@@ -1,9 +1,9 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { ShowCommentButton } from './comment'
-import { ShowHistoryButton } from './history'
-import ContentTabs from './content_tabs'
-import EcliproTinyMCE from './tiny_mce'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import ShowCommentButton from './comment';
+import ShowHistoryButton from './history';
+import ContentTabs from './content_tabs';
+import EcliproTinyMCE from './tiny_mce';
 
 document.addEventListener('DOMContentLoaded', () => {
   const contentTabsElm = document.querySelector('.content-tabs');
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
           example: menuData.example,
           noSeq: menuData.noSeq,
           editable: menuData.editable,
-          contents: contents,
+          contents,
           onCopy: () => ecliproTinyMCE && ecliproTinyMCE.setContent(menuData.example)
         },
         null
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
             onCommentSubmitted: (json) => {
               const c = contents.find(e => e.no_seq === json.no_seq);
               c.comments_count = json.count;
-              contentTabs.setState({ contents: contents });
+              contentTabs.setState({ contents });
             }
           },
           null
