@@ -1,4 +1,7 @@
 language: ruby
+node_js:
+  - 'stable'
+  - 'lts/*'
 addons:
   chrome: stable
   apt_packages:
@@ -9,6 +12,7 @@ cache: bundler
 before_script:
   - bundle exec rake db:create
   - bundle exec rake db:migrate
+  - yarn install --ignore-engines
   - bundle exec rake assets:precompile
 script:
   - bundle exec rspec
