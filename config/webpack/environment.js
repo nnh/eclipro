@@ -25,10 +25,10 @@ module.exports = Object.assign({}, environment.toWebpackConfig(), {
     tiny_mce_style: './app/javascript/packs/tiny_mce_style.css'
   },
   module: {
-    loaders: [
+    rules: [
       {
-        test    : /\.json$/,
-        loader  : 'json-loader'
+        test: /\.json$/,
+        loader: 'json-loader'
       },
       {
         test: /\.(js|jsx)$/,
