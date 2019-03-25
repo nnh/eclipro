@@ -50,6 +50,7 @@ gem 'paper_trail'
 gem 'paper_trail-association_tracking'
 gem 'htmldiff'
 gem 'aws-sdk-s3'
+gem 'http-2'
 gem 'paperclip'
 
 gem 'deep_cloneable'
@@ -105,7 +106,7 @@ group :test do
   gem 'rspec-rails'
   gem 'launchy'
   gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
+  gem 'webdrivers'
   gem 'rails-controller-testing'
 end
 

@@ -2,7 +2,7 @@ h3 = t('.forgot_your_password', default: 'Forgot your password?')
 
 = form_for(resource, as: resource_name, url: password_path(resource_name),
                      html: { method: :post, class: 'form-horizontal', role: 'form' }) do |f|
-  = devise_error_messages!
+  = render 'devise/shared/error_messages', resource: resource
 
   .form-group
     = f.label :email, class: 'control-label'
