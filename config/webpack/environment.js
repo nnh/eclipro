@@ -14,6 +14,9 @@ module.exports = Object.assign({}, environment.toWebpackConfig(), {
     export: './app/javascript/packs/export.js',
     tiny_mce_style: './app/javascript/packs/tiny_mce_style.css'
   },
+  output: {
+    path: path.resolve(__dirname, '..', '..', 'public', 'packs'),
+  },
   module: {
     rules: [
       {

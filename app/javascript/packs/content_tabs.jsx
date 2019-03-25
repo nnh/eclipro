@@ -81,6 +81,6 @@ ContentTabs.propTypes = {
   onCopy: PropTypes.func,
   instructions: PropTypes.string,
   example: PropTypes.string,
-  editable: PropTypes.bool,
+  editable: PropTypes.string,
   noSeq: PropTypes.string
 };
