@@ -8,6 +8,8 @@ environment.plugins.append(
   new ExtractTextPlugin("[name].css")
 )
 
+const folder = process.env.RAILS_ENV === 'test' ? 'packs-test' : 'packs';
+
 module.exports = Object.assign({}, environment.toWebpackConfig(), {
   entry: {
     main: './app/javascript/packs/main.js',
@@ -15,7 +17,7 @@ module.exports = Object.assign({}, environment.toWebpackConfig(), {
     tiny_mce_style: './app/javascript/packs/tiny_mce_style.css'
   },
   output: {
-    path: path.resolve(__dirname, '..', '..', 'public', 'packs'),
+    path: path.resolve(__dirname, '..', '..', 'public', folder),
   },
   module: {
     rules: [
