@@ -1,7 +1,7 @@
 h3 = t('.title', resource: resource_class.model_name.human , default: "Edit #{resource_name.to_s.humanize}")
 = form_for(resource, as: resource_name, url: registration_path(resource_name),
                      html: { method: :put, class: 'form-horizontal', role: 'form' }) do |f|
-  = devise_error_messages!
+  = render 'devise/shared/error_messages', resource: resource
 
   .form-group
     = f.label :name, class: 'control-label'

@@ -1,7 +1,6 @@
 const { environment } = require('@rails/webpacker')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const RailsTranslationsPlugin = require('rails-translations-webpack-plugin');
 const path = require('path')
 
 environment.plugins.append(
@@ -9,14 +8,7 @@ environment.plugins.append(
   new ExtractTextPlugin("[name].css")
 )
 
-environment.plugins.append(
-  'RailsTranslationsPlugin',
-  new RailsTranslationsPlugin({
-    localesPath: path.resolve(__dirname, '../locales'),
-    pattern: '**/js.*.yml',
-    root: path.resolve(__dirname, '../../app/javascript/packs')
-  })
-)
+const folder = process.env.RAILS_ENV === 'test' ? 'packs-test' : 'packs';
 
 module.exports = Object.assign({}, environment.toWebpackConfig(), {
   entry: {
@@ -24,11 +16,17 @@ module.exports = Object.assign({}, environment.toWebpackConfig(), {
     export: './app/javascript/packs/export.js',
     tiny_mce_style: './app/javascript/packs/tiny_mce_style.css'
   },
+  output: {
+    path: path.resolve(__dirname, '..', '..', 'public', folder),
+  },
   module: {
-    loaders: [
+    rules: [
       {
-        test    : /\.json$/,
-        loader  : 'json-loader'
+        test: /\.(yml|yaml)$/,
+        use: [
+          { loader: require.resolve('json-loader') },
+          { loader: require.resolve('yaml-loader') }
+        ]
       },
       {
         test: /\.(js|jsx)$/,

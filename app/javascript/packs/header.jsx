@@ -45,7 +45,7 @@ export default class Header extends React.Component {
 }
 
 Header.propTypes = {
-  signedIn: PropTypes.bool,
+  signedIn: PropTypes.string,
   protocolUrl: PropTypes.string,
   newProtocolUrl: PropTypes.string,
   currentUser: PropTypes.string,

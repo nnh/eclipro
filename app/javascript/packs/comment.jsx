@@ -123,8 +123,8 @@ class CommentForm extends React.Component {
 CommentForm.propTypes = {
   show: PropTypes.bool,
   url: PropTypes.string,
-  contentId: PropTypes.number,
-  currentUserId: PropTypes.number,
+  contentId: PropTypes.string,
+  currentUserId: PropTypes.string,
   parentId: PropTypes.number,
   onCommentSubmitted: PropTypes.func,
   onCommentsChanged: PropTypes.func,
@@ -252,9 +252,9 @@ export default class ShowCommentButton extends React.Component {
 }
 
 ShowCommentButton.propTypes = {
-  count: PropTypes.number,
+  count: PropTypes.string,
   url: PropTypes.string,
-  contentId: PropTypes.number,
-  currentUserId: PropTypes.number,
+  contentId: PropTypes.string,
+  currentUserId: PropTypes.string,
   onCommentSubmitted: PropTypes.func
 };
