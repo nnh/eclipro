@@ -25,7 +25,8 @@
     "react-dom": "^16.2.0",
     "tinymce": "^4.7.4",
     "webpack": "^4.29.6",
-    "whatwg-fetch": "^2.0.4"
+    "whatwg-fetch": "^2.0.4",
+    "yaml-loader": "^0.5.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.6",
