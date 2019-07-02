@@ -9,10 +9,13 @@ addons:
     - chromium-chromedriver
 bundler_args: --without development --deployment
 cache: bundler
+before_install:
+  - gem update --system
+  - gem update bundler
 before_script:
   - bundle exec rake db:create
   - bundle exec rake db:migrate
-  - yarn install --ignore-engines
+  - yarn install --ignore-engines --frozen-lockfile
   - bundle exec rake assets:precompile
 script:
   - bundle exec rspec
