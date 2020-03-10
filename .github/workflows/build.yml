@@ -1,0 +1,52 @@
+name: Build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      RAILS_ENV: test
+
+    services:
+      postgres:
+        image: postgres:9.6-alpine
+        ports:
+        - 5432:5432
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: '2.6'
+
+    - name: Install
+      run: |
+        set -xe
+        sudo apt update
+        sudo apt install -y libpq-dev
+        gem update --system
+        bundle install --path vendor/bundle/ --jobs 4 --retry 3 --without development production
+        yarn install --frozen-lockfile
+
+    - name: Setup Database
+      run: |
+        set -xe
+        cp ci/database.yml config/database.yml
+        bundle exec rails db:create db:migrate
+
+    - name: Precompile assets
+      run: |
+        set -xe
+        bundle exec rake assets:precompile
+
+    - name: Run test
+      run: |
+        set -xe
+        bundle exec rspec
